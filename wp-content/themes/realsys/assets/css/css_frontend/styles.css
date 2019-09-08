@@ -1,0 +1,2782 @@
+﻿/*
+font-family: 'Poppins', sans-serif;
+font-family: 'Barlow', sans-serif;
+font-family: 'Barlow Condensed', sans-serif;*/
+
+@font-face {
+  font-family: "icomoon";
+  src: url("../fonts/icomoon/fonts/icomoon.eot");
+  src: url("../fonts/icomoon/fonts/icomoon.eot?#iefix") format("embedded-opentype"), url("../fonts/icomoon/fonts/icomoon.woff")
+      format("woff"), url("../fonts/icomoon/fonts/icomoon.ttf") format("truetype"), url("../fonts/icomoon/fonts/icomoon.svg#icomoon")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Barlow', sans-serif;
+}
+
+body, html {
+    scroll-behavior: smooth;
+}
+
+h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 70px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+h2 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    font-size: 36px;
+}
+h3 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+h4 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+h5 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+h6 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+p{
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none!important;
+    color: #e32219;
+}
+
+p a, .underline-links a {
+    text-decoration: underline!important;
+}
+
+
+
+ul li{
+   padding-bottom: 15px;
+   font-size: 15px;
+}
+
+ol, ul {
+    padding-bottom: 15px;
+    padding-left: 20px;
+    font-size: 15px;
+}
+ol li {
+    padding-left: 10px;
+    padding-bottom: 5px;
+}
+
+
+
+a:hover {
+    color: #00528f;
+}
+
+.red-button {
+    padding: 10px 30px;
+    text-transform: uppercase;
+    font-size: 17px;
+    font-family: "Poppins";
+    color: white;
+    background: #e32219;
+    border-radius: 30px;
+    transition: all 0.3s ease-in-out;
+    border: none;
+    cursor: pointer;
+}
+.red-button:hover {
+    background: #00528f;
+    color: white;
+}
+
+input:focus, a:focus, button:focus  { 
+    box-shadow: 0 0 3px 0.2rem rgba(0, 0, 0, 0)!important;
+    border-color: rgba(0, 0, 0, 0)!important;
+}
+
+input:-internal-autofill-selected {
+    background: #1a1a1a!important;
+    background-image: none !important;
+    color: white!important;
+}
+
+
+/*------------ header START -------------*/
+header {
+    display: flex;
+    align-items: center;
+    font-family: "Poppins";
+    font-size: 17px;
+    position: relative;
+    background-color: white;
+    z-index: 12 !important;
+}
+header .logo {
+    padding: 10px 20px;
+    background: #e32219;
+}
+header .logo img{
+    max-width: 215px;
+}
+header nav {
+    margin-right: auto;
+    margin-left: 50px;
+}
+nav ul {
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+}
+nav ul li {
+    padding-right: 50px;
+    list-style: none;
+    padding-bottom: 0px;
+}
+nav ul li a {
+    color: black;
+    transition: all 0.3s ease-in-out;
+}
+
+nav ul li.current_page_item a{
+    color: #e32219;
+    font-weight: bold;
+}
+
+nav ul li a:hover{
+    color: #e32219;
+}
+
+header .social-links {
+    margin-right: 60px;
+}
+header .social-links a {
+    color: #00528f;
+    font-size: 22px;
+    transition: all 0.3s ease-in-out;
+}
+header .social-links .facebook{
+    margin-right: 20px;
+}
+header .user-wrapper {
+    position: relative;
+}
+header .user-wrapper a, header .search-wrapper a  {
+    color: #e32219;
+    font-size: 22px;
+}
+header .search-wrapper {
+    margin-right: 30px;
+}
+header .user-wrapper > span, header .user-wrapper a{
+    margin-right: 15px;
+}         
+header .user-wrapper a span, header .search-wrapper a span {
+    padding: 6px;
+    color: #e32219;
+    border: 2px solid #e32219;
+    font-size: 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+}  
+
+header .user-wrapper a:hover span, header .search-wrapper a:hover span  {
+    background: #e32219;
+    color: white;
+}
+
+header .user-wrapper > .user-ico {
+    position: relative;
+    /*z-index: 9999;*/
+}
+
+
+.search-result {
+    padding: 20px;
+    background-color: whitesmoke;
+    margin-bottom: 30px;
+}
+
+
+
+
+.mobile-menu {
+    display: none;
+}
+
+/*------------ header END -------------*/
+
+
+/*------------ slider START -------------*/
+.slider {
+    height: calc(100vh - 77px);
+    width: 100%;
+    background: url(../images/slider-bcg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;  
+    overflow: hidden;
+    padding: 0px 20px;
+}
+
+.slider .slider-wrapper {
+    max-width: 1280px;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    padding: 30px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.slider h1 {
+    text-align: center;
+    margin-top: 4%;
+    margin-bottom: 40px;
+}
+.slider p {
+    font-size: 15px;
+}
+
+/*contest rules*/
+.contestRules {
+    margin-bottom: 30px;
+}
+.contestRules-box {
+    display: flex;
+    margin-right: 5%;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+.contestRules-box:last-child{
+    margin-right: 0px;
+}
+.contestRules-box .cirle-ico {
+    margin-right: 30px;
+    height: 95px;
+    width: 100%;
+    max-width: 95px;
+    text-align: center;
+    border-radius: 50%;
+    background: #e32219;
+    position: relative;
+    font-size: 50px;
+    line-height: 97px;
+}
+
+.contestRules-box .content {
+    line-height: 1.4;
+    font-size: 15px;
+    width: 100%;
+}
+.contestRules-box:after {
+    content: "\e90d";           
+    font-family: 'icomoon' !important;
+    display: block;
+    position: absolute;
+    right: -6%;
+    top: 45%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 25px;    
+}
+
+/*contest prizes*/
+.contestPrizes-wrapper {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+.contestPrizes-wrapper h2{
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+.contestPrizes-box {
+    display: flex;
+    margin-bottom: 20px;
+}
+.contestPrizes-box .ico{
+    margin-right: 30px;
+    width: 100%;
+    max-width: 65px;
+    text-align: right;
+    position: relative;
+    font-size: 70px;
+    line-height: 97px;
+    color: #e32219;
+}
+.contestPrizes-box .content h3 {
+    font-size: 21px;
+}
+.contestPrizes-box .content {
+    line-height: 1.4;
+    font-size: 15px;
+}
+
+.otherPrizes {
+    text-align: center;
+}
+.otherPrizes a {
+    font-weight: 800;
+    color: white;
+}
+.slider-wrapper .contestRules-box.last:after {
+    display: none;
+}
+
+/*contest login*/
+.contestLogin {
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.contestLogin .contentLogin-btn {
+    font-size: 28px;
+    font-family: "Poppins";    
+    padding: 20px 60px;
+    background: #e32219;
+    border-radius: 80px;    
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    cursor: pointer;
+}
+.contestLogin .contentLogin-btn:hover {
+    background: #ff8a00;
+}
+
+.contestLogin .contentLogin-btn .icon-upload1 {
+    font-size: 30px;   
+}
+.contestLogin .contentLogin-igLink {
+    font-size: 16px;
+    font-family: "Poppins";  
+    border-bottom: 2px solid white;
+    padding-bottom: 5px;
+    color: white;
+}
+
+.rulesAndConditions ul {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    padding-left: 13px;
+}
+.rulesAndConditions ul li {
+    padding-bottom: 0px;
+}
+
+.rulesAndConditions a {
+    font-size: 13px;
+    color: white;
+}
+/*.rulesAndConditions a:before {
+    content: "";
+    display: block;
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background: white;
+    position: relative;
+    left: -13px;
+    top: 50%;
+}      */
+.rulesAndConditions li:first-child a {
+    margin-right: 30px;            
+}
+/*------------ slider END -------------*/
+/*--new-slider--*/
+
+.slider .main-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.slider .main-title h1 {
+    font-size: 110px;
+    margin-bottom: 20px;
+    margin-top: 0px;
+}
+.slider .main-title h2 {
+    font-size: 60px;
+}
+
+.slider .next-contest {
+    text-align: center;
+}
+.slider .next-contest h3 {
+    font-size: 35px;
+    font-family: barlow;
+}
+
+.slider .next-contest .thin-title {
+    font-weight: 300;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.slider .next-contest .contest-date {
+    text-align: center;
+    font-size: 60px;
+    margin-bottom: 30px;
+}
+
+.slider .lastContest-btn {
+    display: inline-block;
+    font-size: 26px;
+    padding: 15px 45px;
+    border-radius: 40px;
+}
+.slider .lastContest-btn:hover {
+    background: #ff8a00;
+}
+
+.scroll-bellow span{
+    transform: rotate(90deg);
+    font-size: 30px;
+    display: inline-block;
+    margin-top: 45px;
+    color: white;
+}
+
+/*------------ slider END -------------*/
+
+
+/*------------- Winners START ---------------*/
+.winners-wrapper {
+    height: calc(100vh - 77px);
+    overflow: hidden;
+}
+
+.winners-wrapper .row {
+    height: 50%;
+}
+.winner-box {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0px;
+}
+.winner-box a {
+    background: rgba(0, 0, 0, 0.18);
+    transition: all 0.3s ease-in-out;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+.winner-box:hover a {
+    background: rgba(0,0,0,0);
+}
+
+.winner-box .winner-position {
+    color: white;
+    text-transform: uppercase;
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    width: 100%;
+    font-size: 17px;
+    font-family: "Poppins"; 
+    padding: 30px;   
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent);
+    transition: all 0.3s ease-in-out;
+}
+
+.winner-box .winner-position h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+
+.winner-box .position-circle {
+    height: 80px;
+    width: 100%;
+    max-width: 80px;
+    margin-right: 20px;
+    font-size: 35px;
+    color: white;
+    background: #e32219;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+.winner-box .winner-name{
+    margin-bottom: 20px;
+}
+/*
+.top-winners .winner-box:nth-child(1) .position-circle{
+    background: #ffd600;
+}
+.top-winners .winner-box:nth-child(2) .position-circle{
+    background: #c5c5c4;
+}
+.top-winners .winner-box:nth-child(3) .position-circle{
+    background: #ca6206;
+}
+
+.top-winners .winner-box:nth-child(1) .winner-name{
+    color: #ffd600;
+}
+.top-winners .winner-box:nth-child(2) .winner-name{
+    color: #c5c5c4;
+}
+.top-winners .winner-box:nth-child(3) .winner-name{
+    color: #ca6206;
+}
+*/
+
+/*------------- Winners END ---------------*/
+
+@media only screen and (max-width: 1000px) {
+    .slider .main-title h1 {
+        font-size: 80px;
+    }
+    
+    .slider .main-title h2 {
+        font-size: 40px;
+    }
+    
+    .slider .next-contest h3 {
+        font-size: 25px;
+    }
+    .slider .next-contest .contest-date {
+        font-size: 40px;
+    }
+    
+    .slider .lastContest-btn {
+        font-size: 20px;
+        padding: 10px 30px;
+    }
+    
+    .winner-box .position-circle {
+        height: 50px;
+        max-width: 50px;
+        margin-right: 10px;
+        font-size: 25px;
+    }
+    .winner-box .winner-name {
+        margin-bottom: 3px;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .slider .main-title {
+        margin-bottom: 0px;
+    }
+    .slider .main-title h1 {
+        font-size: 50px;
+    }
+    
+    .slider .main-title h2 {
+        font-size: 25px;
+    }
+    
+    .slider .next-contest h3 {
+        font-size: 20px;
+    }
+    .slider .next-contest .contest-date {
+        font-size: 30px;
+    }
+    .winners-wrapper .row {
+        height: auto;
+    }
+    .winner-box {
+        min-height: 250px;
+    }
+}
+
+
+/*------------ TheBestGallery START -------------*/
+.theBest-wrapper {
+    padding: 60px 0px;
+}
+.theBest-title {
+    margin-bottom: 40px;
+    text-align: center;
+    padding: 0px 20px;
+}
+.theBest-title h2 {
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+.bestGallery-wrapper {
+    margin-bottom: 60px;
+}
+
+.bestGallery-wrapper .row {
+    margin-left: 0px; 
+    margin-right: 0px; 
+}
+
+.bestGal-imgbox {
+    min-height: 350px;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    padding: 0px;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+}
+.bestGal-imgbox:hover {
+    /*box-shadow: rgba(0,0,0,0.30) 0px 0px 12px 0px;*/
+}
+.bestGal-imgbox a {
+    background: rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease-in-out;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.bestGal-imgbox:hover a {
+    background: rgba(0,0,0,0);
+}
+
+.bestGal-imgbox .bestGal-contestant {
+    color: white;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 0%;
+    width: 100%;
+    font-size: 17px;
+    font-family: "Poppins"; 
+    padding: 30px;   
+    opacity: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent);
+    transition: all 0.3s ease-in-out;
+}
+.bestGal-imgbox:hover .bestGal-contestant{
+    opacity: 1;   
+    height: 100%;
+}
+.bestGal-imgbox .bestGal-contestant h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+
+.bestGal-imgbox .rating-wrapper {
+    color: #e32219;
+}
+
+.bestGal-imgbox .rating-wrapper .icon-star {
+    margin-right: 5px;
+}
+
+.theBest-wrapper .otherPhotos {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+
+/*------------ TheBestGallery END -------------*/
+
+/*------------ latestWinners START -------------*/
+.latestWinners {
+    padding: 30px;
+    background-image: url(../images/latest-winners-bcg.jpg);
+    background-position: bottom;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.latestWinners-wrapper{
+    max-width: 1280px;
+    width: 100%;
+    margin:0 auto;
+    text-align: center;
+    padding: 60px 0px 30px;
+    border-top: 1px solid #f5f5f5;
+}
+
+.latestWin-box {
+    margin-bottom: 30px;
+}
+
+.latestWin-box .latestWinBox-wrapper {
+    border-radius: 15px;
+    background: #313131;
+    overflow: hidden;
+}
+.latestWinners .latestWinners-title {
+    margin-bottom: 50px;
+}
+.latestWin-box .winner-img {
+    background-position: center;
+    background-size: cover;
+    height: 250px;
+}
+
+.latestWin-box .winner-content {
+    color: white;
+    padding: 30px;
+}
+.latestWin-box .winner-content h3 {
+    font-size: 17px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.latestWin-box .winner-content .rating-wrapper {
+    color: #e32219;
+    font-family: "Poppins";   
+    margin-bottom: 10px;
+}
+.latestWin-box .winner-content .rating-wrapper .icon-star {
+    margin-right: 5px;
+}
+
+/*------------ latestWinners END -------------*/
+
+/*------------ footer START -------------*/
+footer {
+    color: #9e9e9e;
+    background: #1f1f1f;
+}
+footer .footer-wrapper {
+    padding: 60px 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+footer .footer-logo {
+    margin-bottom: 50px;
+}
+
+footer .footer-menu {
+    font-family: "Poppins"; 
+    margin-bottom: 15px;
+}
+
+footer .footer-menu ul li:last-child {
+    padding-right: 0px;
+}
+
+footer .footer-menu ul li a, footer .rulesAndConditions a {
+    color: #9e9e9e;
+}
+footer .footer-menu ul li a:hover, footer .rulesAndConditions a:hover {
+    color: #e32219;
+}
+footer .copyright-bar {
+    background: #1a1a1a;
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+}
+footer .copyright-bar p {
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+footer .copyright-bar p a {
+    color: #cecece;
+}
+
+footer .copyright-bar .social-links a {
+    color: #9e9e9e;
+    font-size: 22px;
+}
+footer .copyright-bar .facebook{
+    margin-right: 20px;
+}
+
+/*------------ footer END -------------*/
+
+/*--------- login form --------------*/
+
+header .user-wrapper .login-wrapper.show  {
+    display: flex;
+}
+
+.login-wrapper h2 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.login-wrapper {
+    position: absolute;
+    right: 5px;
+    top: -7px;
+    background: #313131;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    z-index: 999;
+    display: none;
+    width: 280px;
+}
+
+.show-login-wrapper{
+    cursor: pointer;
+}
+
+.login-wrapper .login-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.login-wrapper input[type=text], .login-form input[type=password] {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    height: 40px;
+    font-size: 15px;
+    color: white;
+    font-family: Poppins;
+    margin-bottom: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+.login-wrapper input[type=text]::placeholder, .login-form input[type=password]::placeholder {
+    color: white;
+    padding: 0px 2px;
+}
+.login-wrapper .checkBox-row {
+    font-size: 13px;
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.login-wrapper .checkBox-row input[type=checkbox] {
+    margin-right: 8px;
+}
+
+
+.login-wrapper button, .login-wrapper .registration-btn {
+    background: white;
+    border: none;
+    padding: 8px;
+    border-radius: 22px;
+    color: #2a7d93;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 5px 0px 10px;
+    color: white;
+    background: #e32219;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; 
+}
+.login-wrapper button:hover, .login-wrapper .newRegistration-btn:hover {
+    color: white;
+    background: #ff8a00;
+    border-color: #ff8a00;
+}
+
+.login-wrapper .newRegistration-btn {
+    font-size: 15px;
+    padding: 6px;
+    border: 2px solid #e32219;
+    border-radius: 30px;
+    text-align: center;
+    margin-right: 0px;
+    margin-top: 15px;
+    transition: all 0.3s ease-in-out; 
+}
+
+
+.login-wrapper .forgotten-pass {
+    color: white;
+    font-size: 13px;
+    margin-top: 10px;
+    transition: all 0.3s ease-in-out; 
+}
+
+.login-wrapper .forgotten-pass .icon-lock {
+    border: none;
+}
+.login-wrapper .forgotten-pass:hover {
+    color: #ff8a00;
+}
+
+
+
+/*---------search wrapper--------------*/
+
+.search-wrapper .searchField-wrapper.show {
+    display: block;
+}
+
+.search-wrapper .search{
+    cursor: pointer;
+}
+
+.search-wrapper .searchField-wrapper {
+   display: none;       
+    position: absolute;
+    right: 30px;
+    top: 5px;
+    width: 300px;
+    padding: 10px 20px;
+    background: #1a1a1a;
+    border-radius: 10px;
+    z-index: 99999;
+}   
+
+.search-wrapper .searchField-wrapper form {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
+}
+          
+.search-wrapper .searchField-wrapper .search-field {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    height: 40px;
+    font-size: 15px;
+    color: white;
+    font-family: Poppins;
+    margin-bottom: 10px;
+    padding-right: 7px;
+    margin-right: 20px;
+}
+.search-wrapper .searchField-wrapper .search-field::placeholder {
+    color: white;
+    padding: 0px 2px;
+}
+    
+.search-wrapper .searchField-wrapper .search-btn{
+    border: none;
+    border-radius: 35px;
+    color: white;
+    background: #e32219;
+    cursor: pointer;
+    height: 35px;
+    width: 100%;
+    max-width: 35px;
+    transition: all 0.3s ease-in-out;
+}
+
+.search-wrapper .searchField-wrapper .search-btn:hover {
+    background: #ff8a00;
+}
+
+.searchInfo{
+    text-align: center;
+    width: 100%;
+    letter-spacing: 1px;
+}
+
+.searchContainer .icon-search{
+    display: block;
+    font-size: 37px;
+    margin-bottom: 25px;
+    color: #e32319;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+/*---------------------------------------------------- Subpages START ------------------------------------------------*/
+
+/*pagebuilder elements*/
+.sow-image-container img {
+    border-radius: 15px;
+    overflow: hidden;
+}
+.so-widget-sow-button a {
+    transition: all 0.3s ease-in-out;
+    background: #e32219!important;
+    border: none!important;
+}
+
+.so-widget-sow-button a:hover {
+    background: #ff8a00!important;
+    border: none;
+}
+
+.container.subpage {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 60px 0px;
+}
+
+
+/*page title bar*/
+
+.page-titleBar {
+    padding: 80px 30px;
+    background-image: url(../images/pagetitle-bar.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    overflow: hidden;
+     
+}
+
+.page-titleBar .titleBar-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 1280px;
+    margin: auto;
+}
+
+.page-titleBar .titleBar-wrapper h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.page-titleBar .titleBar-wrapper .breadcrumbs ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin-bottom: 0px;
+}
+.page-titleBar .titleBar-wrapper .breadcrumbs ul li {
+    margin-right: 7px;
+    padding-bottom: 0px;
+}
+.page-titleBar .titleBar-wrapper .breadcrumbs ul li:last-child {
+    margin-right: 0px;
+}
+
+.page-titleBar .titleBar-wrapper .breadcrumbs ul li:after {
+    content: "/";
+    padding-left: 7px;
+}
+.page-titleBar .titleBar-wrapper .breadcrumbs ul li:last-child:after {
+    content: "";
+}
+
+
+
+
+/*------------------- photo page START -------------------*/
+.wrapper.photopage .container {
+    max-width: 960px;
+}
+
+.finish-registration{
+    text-align: center;
+    margin-top: 25px;
+}
+
+.finish-registration p {
+    margin-bottom: 5px;
+}
+                
+.wrapper.photopage {
+    border-top: 5px solid #e32219;
+}
+.photo-wrapper .photoAuthor-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0px;
+}
+
+.photo-wrapper .photoAuthor-wrapper .photo-date {
+    font-style: italic;
+    color: #9e9e9e;  
+    text-align: right;
+}
+
+.photo-wrapper .photo-date .date{
+    font-weight: 700;
+    margin-left: 5px;      
+}
+
+
+
+.photo-wrapper .photoAuthor-wrapper .photo-rank {
+    order: -1;
+}
+.photo-wrapper .photoAuthor-wrapper .photo-rank h3 {
+    font-size: 25px; 
+    margin-bottom: 5px;
+}
+.photo-wrapper .photoAuthor-wrapper .photo-rank h3 .rank {
+    font-size: 30px;   
+    color: #e32219;  
+}
+
+.photo-wrapper .photoAuthor-wrapper .photo-rank span {
+    font-size: 18px;   
+    color: #e32219; 
+    font-weight: 700;
+    margin-right: 5px;
+}
+
+
+.photo-wrapper .photoAuthor-wrapper h2 {
+    margin-bottom: 0px;
+}
+
+.photo-wrapper .contest-photo {
+    padding: 10px;
+    background: #eaeaea;
+    border-radius: 15px;
+    text-align: center;
+    display: block;
+    margin-bottom: 30px;
+}
+
+.photo-wrapper .contest-photo img {
+    border-radius: 10px;
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+.photo-wrapper .vote-wrapper {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.photo-wrapper .vote-wrapper .vote-btn{
+    margin-bottom: 10px;
+    font-size: 22px;
+    padding: 12px 35px;
+    display: inline-block;
+}
+.photo-wrapper .vote-wrapper .vote-btn .icon-star {
+    margin-left: 10px;
+}
+
+.photo-wrapper .share-wrapper {
+    padding: 0px;
+    background: #eaeaea;
+    border-radius: 145px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.photo-wrapper .share-wrapper .share-links {
+    display: flex;
+    justify-content: space-between;
+}
+.photo-wrapper .share-wrapper h3 {
+    font-size: 21px;
+    margin-left: 20px;
+    margin-bottom: 0px;
+}
+
+.photo-wrapper .share-wrapper .share-links a {
+    margin: 10px;
+    font-size: 20px;
+    padding: 20px;
+    background: #e32219;
+    color: white;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+.photo-wrapper .share-wrapper .share-links a:hover {
+    background: #00528f;
+}
+
+/*------------------- photo page END -------------------*/
+
+/*------------------- galerie page START -------------------*/
+.galerie-page {
+    
+}
+.galerie-wrapper {
+    
+}
+.galerieTitle-wrapper {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.galerieTitle-wrapper h2 {
+    margin-bottom: 15px;
+}
+.galerie-imgbox {
+    margin-bottom: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.galerie-imgbox .galerie-boxInner {
+    min-height: 300px;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    padding: 0px;
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.galerie-imgbox a {
+    background: rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease-in-out;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.galerie-imgbox:hover a {
+    background: rgba(0,0,0,0);
+}
+
+.galerie-imgbox .galerie-contestant {
+    color: white;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 0%;
+    width: 100%;
+    font-size: 17px;
+    font-family: "Poppins"; 
+    padding: 30px;   
+    opacity: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent);
+    transition: all 0.3s ease-in-out;
+}
+.galerie-imgbox:hover .galerie-contestant{
+    opacity: 1;   
+    height: 100%;
+}
+.galerie-imgbox .galerie-contestant h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 1px;
+}
+.galerie-imgbox .galerie-contestant .date {
+    font-size: 14px;
+}
+
+
+.galerie-imgbox .rating-wrapper {
+    color: #e32219;
+    margin-bottom: 23px;
+}
+.galerie-imgbox .rating-wrapper .icon-star {
+    margin-right: 5px;
+}
+
+.galerie-imgbox .contestant-order:before {
+    content: "";
+    background: #e32219;
+    position: absolute;
+    right: -75px;
+    top: -75px;
+    width: 150px;
+    height: 150px;
+    transform: rotate(45deg);
+}
+.galerie-imgbox .contestant-order .order {
+    position: absolute;
+    right: 18px;
+    top: 20px;
+    color: white;
+    font-family: "Poppins";
+    font-weight: 700;
+    font-size: 22px;
+}
+/*-------------------GALERIE VYPISY -------------------*/
+.galerie-Contests{
+    display: flex;
+    list-style: none;
+    padding: 0px;
+    margin-left: -10px;
+    margin-right: -10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.galerie-Contests li {
+    color: white;
+    text-transform: uppercase;
+    font-weight: normal;
+    margin-right: 10px;
+    padding-bottom: 0px;
+}
+
+.galerie-Contests li a{
+    color: white;
+    padding: 10px 20px;
+    background-color: #e32219;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.galerie-Contests li.current a{
+    background-color: #ff8a00;
+    font-weight: bold;
+}
+
+.galerie-Contests li a:hover{
+    background-color: #ff8a00;
+}
+
+
+
+/*----pagination----*/
+.pagination-wrapper {
+    margin-top: 20px;
+}
+
+
+.pagination-wrapper .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pagination-wrapper .pagination li {
+    padding: 0px;
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+.pagination-wrapper .pagination li:last-child {
+    margin-right: 0px;
+}
+.pagination-wrapper .pagination li a {
+    color: black;
+    text-decoration: none;
+    font-family: "Poppins";  
+    border-radius: 20px;
+    height: 25px;
+    width: 25px;
+    line-height: 25px;
+    display: inline-block;
+    text-align: center; 
+    transition: all 0.3s ease-in-out;
+}
+.pagination-wrapper .pagination li a:hover {
+    background: #f5f5f5;
+}
+
+.pagination-wrapper .pagination li.current a {
+    color: white;
+    background: #e32219;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+}
+
+.pagination-wrapper .pagination li.arrow a {
+    font-size: 18px;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination-wrapper .pagination li.arrow.left {
+    transform: rotate(180deg);
+}
+/*------------------- galerie page END -------------------*/
+
+
+/*------------------- user page START -------------------*/
+.user-page .content{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.alertContainer{
+    flex-basis: 100%;
+}
+
+.alertContainer .container{
+    max-width: 100%!important;
+}
+
+.userTitle-wrapper .username {
+    color: #e32219;
+}
+
+.userTitle-wrapper h2{
+    margin-bottom: 0px;
+}
+
+.userTitle-wrapper p {
+    font-style: italic;
+    margin-top: 0px;
+}
+
+.userGalerie-wrapper {
+    flex-grow: 2;
+}
+
+.userGalerie-wrapper .galerie-imgbox .galerie-boxInner {
+    min-height: 230px;
+    border-radius: 5px;
+}
+
+.userGalerie-wrapper .galerie-imgbox .rating-wrapper {
+    margin-bottom: 0px;
+}
+
+.userGalerie-wrapper .deleteWrap {
+    position: absolute;
+    top: -6px;
+    color: white;
+    left: 0px;
+    background-color: #e32319;
+    padding: 4px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 12px;
+    height: 20px;
+    width: 20px;
+    line-height: 23px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.userGalerie-wrapper .deleteWrap:hover{
+    background-color: black;
+}
+
+
+
+/*-user-bar-*/
+aside.user-bar {
+    width: 27%;
+    margin-left: 50px;
+    margin-top: 65px;
+}
+aside .userBar-wrapper {
+    display: flex;
+    flex-direction: column;
+    background: #f5f5f5;
+    padding: 30px;
+    color: #040404;
+    border-radius: 15px;
+}
+aside .userBar-wrapper h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+/*zmena udaju*/
+
+.userBar-wrapper .login-form{
+    display: flex;
+    flex-direction: column;
+}
+.userInfo-form {
+    margin-bottom: 12px;
+}
+
+.userInfo-form label{
+    margin-bottom: 3px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.userInfo-form  input[type=text], .userInfo-form  input[type=email], .userInfo-form  input[type=password] {
+    width: 100%;
+    background: #dadada;
+    border: none;
+    /* border-bottom: 1px solid black; */
+    height: 40px;
+    font-size: 15px;
+    color: darkslategray;
+    font-family: Poppins;
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+.userInfo-form input[type=text]::placeholder, .userInfo-form  input[type=email]::placeholder  {
+    color: grey;
+    padding: 0px 2px;
+}
+
+.userInfo-form  .input-email {
+    margin-bottom: 25px!important;
+}
+.userInfo-form .checkBox-row {
+    font-size: 13px;
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+
+.userInfo-form .checkBox-row input[type=checkbox] {
+    margin-right: 8px;
+}
+
+
+.userInfo-form button, .userBar-wrapper .sign-out {
+    border: none;
+    padding: 8px;
+    border-radius: 22px;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 5px 0px 10px;
+    color: white;
+    background: #e32219;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    transition: all 0.3s ease-in-out; 
+}
+
+.sign-out .icon-enter{
+    vertical-align: middle;
+    margin-right: 9px;
+    font-size: 12px;
+}
+
+.userInfo-form button {
+    margin-top: 10px;
+}
+
+.user-bar .userBar-wrapper .sign-out {
+    background: transparent;
+    border: 2px solid #e32219;
+    color: #e32219;
+}
+
+.userInfo-form button:hover, .userBar-wrapper .sign-out:hover {
+    color: white;
+    background: #ff8a00;
+    border-color: #ff8a00;
+}
+
+
+.user-bar .leave-contest {
+    display: flex;
+    margin-top: 30px;
+}
+.user-bar .leave-contest .leaveContest-btn {
+    width: 100%;
+    text-align: center;
+    padding: 15px 30px;
+}
+
+.user-bar .leave-contest .leaveContest-btn:hover {
+    color: white;
+    background: #ff8a00;
+}
+
+.user-bar label.error {
+    color: red;
+    font-weight: normal;
+    /* letter-spacing: 1px; */
+    display: block;
+    margin-top: -5px;
+}
+/*------------------- user page END -------------------*/
+
+/*------------------- user details not logged -------------*/
+
+.userDetailsInfo{
+    list-style: none;
+}
+
+.userDetailsInfo li {
+    margin-bottom: 5px;
+    padding-bottom: 0px;
+    position: relative;
+}
+
+.userDetailsInfo li:before{
+    content: "\e9d9";
+    font-family: "icomoon";
+    color: #e32219;
+    position: absolute;
+    left: -20px;
+}
+
+/*----------------- load another img ---------------*/
+.loadAnotherImg{
+    margin-top: 25px;
+    flex-basis: 100%;
+    text-align: center;
+}
+
+/*-------------pravidla-----------*/
+.pravidla-list {
+    border-radius: 15px;
+}
+
+/*---------festivaly--------------*/
+
+.festivaly-row {
+    border-radius: 15px;
+}
+
+.festival-table  {
+    width: 100%;
+}
+.festival-table tr{
+    border-bottom: 1px dashed #bfbfbf;
+}
+.festival-table tr td{
+    padding-bottom: 7px;
+    padding-top: 11px;
+}
+.festival-table tr td a {
+    font-weight: bold;
+} 
+
+.festival-table tr td:last-child {
+    text-align: right;
+    font-weight: bold;
+}
+
+.festival-galerie h3 {
+    display: block;
+    text-align: center;
+    margin-top: 15px!important;
+}
+
+
+/*-----------karneval---------*/
+.darkoveBalicky-row {
+    border-radius: 15px;
+    overflow: hidden;
+}
+.darkoveBalicky-col .so-panel {
+    margin-bottom: 20px;
+}
+
+.darkoveBalicky-col h4 {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 17px;
+    min-height: 125px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #e32219;
+    line-height: 1.4;
+    margin-bottom: 0px;
+}
+
+.section-separator {
+    border-top: 1px solid #e4e4e4;
+    margin-bottom: 40px;
+}
+
+.oKarnevalu-row ul li, .bcgList-row ul li{
+    font-size: 17px;
+    font-weight: 700;
+    background: #f5f5f5;
+    padding: 8px 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: #e32219;                     
+}
+
+.bcgList-row ul li {
+    color: #676767;
+}
+.karneval-years .karnevalYears-Wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;     
+}
+       
+.karneval-years .karnevalYears-Wrapper a {
+    padding: 10px 30px;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-family: "Poppins";
+    color: white;
+    background: #e32219;
+    border-radius: 30px;
+    margin: 0px 7px 15px;
+    transition: all 0.3s ease-in-out;
+}
+.karneval-years .karnevalYears-Wrapper a:hover {
+    background: #ff8a00;
+}
+/*----------------404-----------------*/
+
+.error-404 {
+    max-width: 1340px;
+    margin: 0 auto;
+    padding: 60px 30px;
+    min-height: 50vh;
+}
+.error-404 .page-content {
+    padding: 30px 0px 0px;
+    
+}
+
+.error-404 .page-content p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.error-404 .page-content form .screen-reader-text {
+    font-family: "Poppins";
+    font-weight: 700;
+    margin-right: 20px;
+}
+
+
+
+.error-404 .page-content form input[type=text] {
+    border-radius: 22px;
+    border: 2px solid #d0d0d0;
+    height: 39px;
+    font-size: 15px;
+    font-size: 15px;
+    color: black;
+    font-family: Poppins;
+    margin-bottom: 10px;
+    padding-right: 7px;
+    margin-right: 10px;
+}
+.error-404 .page-content form input[type=text]::placeholder {
+    color: black;
+    padding: 0px 2px;
+}
+
+
+.error-404 .page-content form #searchsubmit {
+    border: none;
+    padding: 8px 20px;
+    border-radius: 22px;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 5px 0px 10px;
+    color: white;
+    background: #e32219;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; 
+    font-family: Poppins;
+}
+
+
+.error-404 .page-content form #searchsubmit:hover {
+    background: #ff8a00;
+}
+
+
+/*------------erorpage------------*/
+
+.errorpage-wrapper {
+    flex-basis: 100%;
+}
+
+.errorpage-wrapper .errorpage-title {
+    text-align: center;
+    position: relative;
+    margin-bottom: 50px;
+}
+.errorpage-wrapper .errorpage-title:before {
+    content: "";
+    display: block;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: -20px;
+    left: 30px;
+    background-image: url(../images/sad.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;       
+}
+
+/*------------zapis soutez page------------*/
+
+.zapissoutez-wrapper .zapissoutez-title {
+    text-align: center;
+    position: relative;
+    margin-bottom: 90px;
+    margin-top: 80px;
+}
+.zapissoutez-wrapper .zapissoutez-title:before {
+    content: "";
+    display: block;
+    height: 500px;
+    width: 500px;
+    position: absolute;
+    top: -286px;
+    left: 50%;
+    transform: translate(-50%);
+    background-image: url(../images/thanks.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.1;
+    z-index: -1;    
+}
+
+/*------------------- post page START -------------------*/
+.container.post-page {
+    max-width: 860px;        
+}
+.post-wrapper {
+    padding: 30px;
+    background: #f5f5f5;
+    border-radius: 15px;
+}
+.post-page .image-wrapper {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.post-page .image-wrapper img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+.post-page .post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.post-page .post-meta .post-author h2 {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+.post-page .post-meta .post-date {
+    font-style: italic;
+}
+
+/*photo preview*/
+
+.photoPreview {
+    display: flex;
+    margin-top: 30px;
+}
+.photoPreview > div {
+    width: 50%;
+}
+
+.photoPreview .imgPreview-container {
+    margin-right: 30px;
+}
+.photoPreview .imgPreview-container img {
+    border-radius: 10px;
+}
+
+
+.photoPreview .previewContent h2 {
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+.photoPreview .previewContent .autor-date {
+    font-family: "Poppins";
+    font-weight: 700; 
+    font-size: 18px;
+    margin-bottom: 10px;      
+}
+.photoPreview .previewContent .autor-date > span {
+    display: inline-block;
+}
+
+.photoPreview .previewContent .author {
+    margin-right: 30px;
+    color: #e32219;
+}
+.photoPreview .previewContent .date {
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.photoPreview .previewContent .icon-calendar {
+    margin-right: 5px;
+}
+
+.photoPreview .previewContent .red-button{
+    display: inline-block;
+}
+
+/*------------------- post page END -------------------*/
+
+
+/*------------------- navody START -------------------*/
+/*rozcestnik*/
+
+
+.rozcestnik-box {
+    padding: 30px;
+    background: #f5f5f5;
+    border-radius: 15px;
+    text-align: center;
+    border: 4px solid #f5f5f5;
+    transition: all 0.3s ease-in-out;
+}
+.rozcestnik-box:hover {
+    border-color: #e32219;
+}
+.rozcestnik-box .rozcestnik-link img {
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+
+/*ig*/
+
+.igUpload-steps {
+    position: relative;
+}
+
+.igUpload-steps .sow-image-container {
+    padding: 40px;
+    max-width: 180px;
+    background: #f5f5f5;
+    margin: 0 auto;
+    border-radius: 50%;
+    position: relative;
+}
+
+.igUpload-steps .sow-image-container:after {
+    content: "1";
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    font-weight: 700;
+    background: red;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.igUpload-row .panel-grid-cell:nth-child(2) .igUpload-steps .sow-image-container:after {
+    content: "2";
+}
+.igUpload-row .panel-grid-cell:nth-child(3) .igUpload-steps .sow-image-container:after {
+    content: "3";
+}
+
+/*web*/
+
+.webUpload-row {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+
+.webUpload-row .so-widget-sow-image h3{
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e32219;
+    color: white;
+    border-radius: 50%;
+    font-size: 27px;
+}
+
+/*
+.panel-layout {
+    
+}
+.webUpload-row:nth-of-type(1):before {
+    content: "1";
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    font-weight: 700;
+    background: red;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+      */
+
+/*------------------- navody END -------------------*/
+
+/*-------------forms START--------------*/
+
+/*forgoten pass*/
+.form-page {
+    max-width: 860px;
+    margin: 0 auto 50px auto;
+}
+.forgotPass-form {
+    
+}
+.formPage-title h2{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.form-box {
+    margin-right: 5%;
+}
+
+.forgotPass-form {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    background: #f5f5f5;
+    border-radius: 15px;
+}
+
+.forgotPass-form input[type=text], .forgotPass-form input[type=password] {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #e32219;
+    height: 40px;
+    font-size: 15px;
+    color: #676767;
+    font-family: Poppins;
+    margin-bottom: 10px;
+}
+.forgotPass-form input[type=text]::placeholder, .forgotPass-form input[type=password]::placeholder {
+    color: #676767;
+    padding: 0px 2px;
+}
+.forgotPass-form .checkBox-row {
+    font-size: 13px;
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.forgotPass-form .checkBox-row input[type=checkbox] {
+    margin-right: 8px;
+}
+
+
+.forgotPass-form button {
+    border: none;
+    padding: 8px;
+    border-radius: 22px;
+    color: #2a7d93;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 5px 0px 10px;
+    color: white;
+    background: #e32219;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; 
+}
+.forgotPass-form button:hover {
+    color: white;
+    background: #ff8a00;
+    border-color: #ff8a00;
+}
+
+/*registrace*/
+
+.registrace-agrees{
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container.registrace-page {
+    max-width: 500px;    
+}
+.forgotPass-form {
+    
+}
+.registrace-title h2{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.registrace-form{
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    background: #f5f5f5;
+    border-radius: 15px;
+}
+
+.registrace-form input[type=text], .registrace-form input[type=password] {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #e32219;
+    height: 40px;
+    font-size: 15px;
+    color: #676767;
+    font-family: Poppins;
+    margin-bottom: 10px;
+}
+.registrace-form input[type=text]::placeholder, .registrace-form input[type=password]::placeholder {
+    color: #676767;
+    padding: 0px 2px;
+}
+.registrace-form .checkBox-row {
+    font-size: 13px;
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.registrace-form .checkBox-row input[type=checkbox] {
+    margin-right: 8px;
+}
+.registrace-form p {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.registrace-form button {
+    border: none;
+    padding: 8px;
+    border-radius: 22px;
+    color: #2a7d93;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 5px 0px 10px;
+    color: white;
+    background: #e32219;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; 
+}
+.registrace-form button:hover {
+    color: white;
+    background: #ff8a00;
+    border-color: #ff8a00;
+}
+
+/*-------------forms END --------------*/
+
+
+
+
+/*---------------------------------------------------- Subpages END ------------------------------------------------*/
+
+/*prihlaseni */
+
+
+
+.s7-button.s7-button--main {
+    display: inline-block;
+}
+
+/*-------------respo----------------*/
+
+/*mobile menu*/
+
+.mobile-menu-wrapper{
+    display: none;
+}
+
+.mobile-menu {
+    flex-grow: 1;
+}
+.mobile-menu .burger {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    cursor: pointer;
+}
+.mobile-menu .burger:hover .icon:after, .mobile-menu .burger:hover .icon:before, .mobile-menu .burger:hover .menu.icon{
+    background-color: black!important;
+}
+
+.mobile-menu .mobile-menu-wrapper {
+    /*display: flex;
+    flex-direction: column;*/
+    width: 100%;
+    position: absolute;
+    top: 77px;
+    background: #f5f5f5;
+    z-index: 999;
+    left: 0px;         
+}
+
+.mobile-menu .other-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.mobile-menu .other-links .user-wrapper, .mobile-menu .other-links .user-wrapper .user-menu {
+    margin-right: 0px;
+}
+
+.mobile-menu .mobile-menu-wrapper nav {
+    margin: 0px;
+}              
+.mobile-menu .mobile-menu-wrapper nav ul {
+    flex-direction: column;
+    border-top: 1px solid #d4d4d4;       
+}
+.mobile-menu .mobile-menu-wrapper nav ul li {
+    display: flex;
+    padding: 0px;
+}
+.mobile-menu .mobile-menu-wrapper nav ul li a {
+    padding: 5px 20px;
+    border-bottom: 1px solid #d4d4d4;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+    
+}
+.mobile-menu .mobile-menu-wrapper nav ul li a:hover{
+    background: #e32219;
+    color: white;
+}
+
+
+/**/
+
+@media only screen and (max-width: 1300px) {
+    header nav {
+        margin-right: auto;
+        margin-left: 20px;
+    }
+    nav ul li {
+        padding-right: 25px;
+    }
+    
+    header .social-links {
+        margin-right: 20px;
+    }
+    header .social-links .facebook {
+        margin-right: 8px;
+    }
+    header .user-wrapper > span, header .user-wrapper a {
+        margin-right: 6px;
+    }
+    
+    .slider h1 {
+        font-size: 50px;
+        margin-bottom: 20px;
+    }
+    
+    .contestPrizes-wrapper h2  {
+        font-size: 25px;
+        margin-bottom: 15px;
+    } 
+    .sllider h3 {
+        font-size: 18px;
+    }
+    .slider p {
+        font-size: 14px;
+        margin-bottom: 0px;
+    }
+        
+    .contestRules {
+        margin-bottom: 0px;
+    }
+    
+    .contestPrizes-wrapper {
+        margin-bottom: 5px;
+    }
+    
+    .contestLogin .contentLogin-btn {
+        font-size: 20px;
+        padding: 9px 40px;
+        margin-bottom: 15px;
+    }
+    .rulesAndConditions ul {
+        margin-top: 12px;
+    }
+    .contestRules-box .cirle-ico {
+        margin-right: 15px;
+        height: 75px; 
+        line-height: 80px;  
+        max-width: 75px;
+        width: 100%; 
+    }  
+    
+    .contestPrizes-box .ico {
+        margin-right: 15px;
+        max-width: 65px;
+        font-size: 55px;
+        line-height: 75px;
+    } 
+    
+    
+    .errorpage-wrapper .errorpage-title:before {
+        position: relative;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+}
+
+@media only screen and (max-width: 1300px) { 
+    .container.subpage {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+@media only screen and (max-width: 1100px) { 
+    nav ul li {
+        padding-right: 20px;
+        font-size: 13px;
+    }
+    .contestRules-box {
+        margin-right: 2%;
+    }
+    
+    .bestGal-imgbox {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    .latestWin-box {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    
+}
+
+@media only screen and (max-width: 1000px) {
+    nav ul li {
+        padding-right: 10px;
+        font-size: 12px;
+    }
+    
+    /*header .social-links a {
+        font-size: 18px;   
+    }  */
+    header .user-wrapper > span {
+        display: none;
+    }
+}
+
+
+
+@media only screen and (max-width: 800px) {
+    h2 {
+        font-size: 30px;
+    }
+
+    header > .menu-menu-hlavicka-container, header > .user-wrapper, header > .social-links, header > .search-wrapper {
+        display: none;
+    }
+    .mobile-menu {
+        display: flex;
+    }
+    header .social-links {
+        margin-right: auto;
+    }
+    header .search-wrapper {
+        margin-right: 0px;
+    }
+    header .user-wrapper {
+        margin-right: 10px!important;
+    }
+    .login-wrapper {
+        right: -45px;
+        top: -10px; 
+    }
+    .search-wrapper .searchField-wrapper {
+        right: 10px;
+        top: 0px;
+        left: 10px;
+        width: auto;
+    }
+    
+    .slider h1 {
+        font-size: 40px;
+    }    
+    .contestRules-box:after, .contestPrizes-wrapper {
+        display:none;
+    }
+    .contestRules-box {
+        margin-right: 0px;
+        margin-bottom: 10px;
+    }
+    .contestRules-box h3 {
+        margin-bottom: 0px;
+    }
+    
+    .rulesAndConditions ul {
+        margin-bottom: 0px;
+    }
+
+    .latestWin-box {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+         
+    .page-titleBar {
+        padding: 30px 30px;
+    }     
+         
+    .photo-wrapper .contest-photo img {
+      height: 400px;
+    }
+    aside.user-bar {
+        width: 100%;
+        margin-left: 0;
+    }
+    .darkoveBalicky-col h4 {
+        min-height: auto;
+    }
+    
+    .photoPreview {
+        flex-direction: column;
+    }
+    
+    .photoPreview img {
+        margin-bottom: 30px;
+    }
+    
+    .photoPreview > div {
+        width: 100%;
+    }
+
+    
+}
+@media only screen and (max-height: 750px) {
+    .contestRules-box:after, .contestPrizes-wrapper {
+        display:none;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .slider h1 {
+        font-size: 30px;
+    }
+    
+    .contestRules-box .cirle-ico {
+      margin-right: 10px;
+      height: 55px;
+      line-height: 60px;
+      max-width: 55px;
+      font-size: 35px;
+    }
+    .contestRules-box p {
+        margin-bottom: 0px;
+    }
+
+    footer nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+    footer nav ul li{
+        padding-right: 0px;
+    }
+    .rulesAndConditions ul {
+        flex-direction: column;
+    }
+    .bestGal-imgbox {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }   
+    
+    
+    footer .copyright-bar {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    footer .social-links {
+        margin-top: 10px;
+    }     
+    
+    .photo-wrapper .contest-photo img {
+      height: 300px;
+    }  
+    
+    .photo-wrapper .photoAuthor-wrapper {
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
+    .photo-wrapper .photoAuthor-wrapper .photo-rank {
+        order: 1;
+    }
+    .photo-wrapper .photoAuthor-wrapper .photo-date {
+        text-align: left;
+    }
+    
+    .fullscreen-popup--inner {
+        width: 100%;
+        padding: 30px;
+    }
+    
+}
+@media only screen and (max-width: 450px) {  
+    .slider h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .slider .rulesAndConditions {
+        display: none;
+    }
+    .contestRules-box h3 {
+        margin-bottom: 5px;
+        font-size: 18px;
+    }           
+    .contestRules-box .cirle-ico {
+        height: 35px;
+        line-height: 40px;
+        max-width: 35px;
+        font-size: 24px;
+    }  
+    .contestLogin .contentLogin-btn {
+        font-size: 15px;
+        padding: 8px 40px;
+        margin-bottom: 10px;
+    }
+    .contestLogin .contentLogin-btn .icon-upload1 {
+        font-size: 17px;
+    }
+    .contestLogin .contentLogin-igLink {
+        font-size: 14px;
+    }
+    
+    .page-titleBar .titleBar-wrapper h1 {
+        font-size: 35px;
+    }
+    
+    .photo-wrapper .share-wrapper {
+        flex-direction: column;
+    }
+    .photo-wrapper .share-wrapper h3 {
+        margin-left: 0px;
+        margin-top: 15px;
+    } 
+    .festival-table tr td {
+        padding-bottom: 5px;
+        padding-top: 5px;
+        width: 100%;
+        display: flex;
+    } 
+    
+    .fullscreen-popup h2 {
+        font-size: 35px;
+        margin-top: 30px;     
+    }
+             
+}
+
+@media only screen and (max-width: 320px) {
+    h1, h2, h3, h4, p {
+        word-break: break-word;
+    }
+    header .logo img {
+        max-width: 150px;
+        height: auto;
+    }
+    .mobile-menu .mobile-menu-wrapper {
+        top: 59px;
+    }
+    .slider {
+        height: calc(100vh - 60px);
+    }
+    
+    .login-wrapper {
+        width: 90vw;
+    }
+}
+
+@media only screen and (max-width: 280px) {
+    .slider p {
+        font-size: 13px;
+    }
+    .contestRules-box .cirle-ico {
+        display: none;
+    }
+    .contestLogin .contentLogin-igLink {
+        font-size: 13px;
+    }        
+}
+
+
+
+/*animations*/
+
+.shine:hover:after {
+    -webkit-animation-name: shine;
+    animation-name: shine;
+    -webkit-animation-duration: .5s;
+    animation-duration: .5s;
+    -webkit-animation-direction: normal;
+    animation-direction: normal;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-play-state: running;
+    animation-play-state: running;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+.shine:after {
+    content: "";
+    position: absolute;
+    top: -110%;
+    left: -210%;
+    width: 200%;
+    height: 200%;
+    opacity: 0;
+    -webkit-transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    transform: rotate(30deg);
+    background: rgba(255,255,255,.13);
+    background: -webkit-gradient(linear,left top,right top,from(rgba(255,255,255,.13)),color-stop(77%,rgba(255,255,255,.13)),color-stop(92%,rgba(255,255,255,.5)),to(rgba(255,255,255,0)));
+    background: -webkit-linear-gradient(left,rgba(255,255,255,.13) 0,rgba(255,255,255,.13) 77%,rgba(255,255,255,.5) 92%,rgba(255,255,255,0) 100%);
+    background: -o-linear-gradient(left,rgba(255,255,255,.13) 0,rgba(255,255,255,.13) 77%,rgba(255,255,255,.5) 92%,rgba(255,255,255,0) 100%);
+    background: linear-gradient(to right,rgba(255,255,255,.13) 0,rgba(255,255,255,.13) 77%,rgba(255,255,255,.5) 92%,rgba(255,255,255,0) 100%);
+}
+
+/*slider ani*/
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+
+.slider-wrapper h1 {
+    opacity: 0;
+    animation: fadein 0.3s linear 0s normal forwards;
+} 
+
+
+.slider-wrapper .contestRules .row .contestRules-box:first-child{
+    opacity: 0;
+    animation: fadein 0.3s linear 0.1s normal forwards;
+}
+
+.slider-wrapper .contestRules .row .contestRules-box:nth-child(2){
+    opacity: 0;
+    animation: fadein 0.3s linear 0.2s normal forwards;
+}
+.slider-wrapper .contestRules .row .contestRules-box:nth-child(3){
+    opacity: 0;
+    animation: fadein 0.3s linear 0.3s normal forwards;
+}
+
+
+.slider-wrapper .contestPrizes-wrapper h2 {
+    opacity: 0;
+    animation: fadein 0.3s linear 0.4s normal forwards;
+}
+
+.slider-wrapper .contestPrizes-wrapper .row .contestPrizes-box:nth-child(1){
+    opacity: 0;
+    animation: fadein 0.3s linear 0.5s normal forwards;
+}
+.slider-wrapper .contestPrizes-wrapper .row .contestPrizes-box:nth-child(2){
+    opacity: 0;
+    animation: fadein 0.3s linear 0.6s normal forwards;
+}
+.slider-wrapper .contestPrizes-wrapper .row .contestPrizes-box:nth-child(3){
+    opacity: 0;
+    animation: fadein 0.3s linear 0.7s normal forwards;
+}
+
+
+.slider-wrapper .otherPrizes {
+    opacity: 0;
+    animation: fadein 0.3s linear 0.8s normal forwards;
+}
+
+.slider-wrapper .contestLogin #dropArea {
+    opacity: 0;
+    animation: fadein 0.3s linear 0.9s normal forwards;
+}
+
+.slider-wrapper .contestLogin .contentLogin-igLink  {
+    opacity: 0;
+    animation: fadein 0.3s linear 1s normal forwards;
+}
+
+.slider-wrapper .contestLogin .rulesAndConditions {
+    opacity: 0;
+    animation: fadein 0.3s linear 1.1s normal forwards;
+}
+
+
+/*ico*/
+.menu.icon {
+    color: #e32219;
+    position: relative;
+    /* margin-left: 2px; */
+    /* margin-top: 10px; */
+    width: 30px;
+    height: 5px;
+    background-color: #e32219;
+    border-radius: 3px;
+}
+.menu.icon:before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0px;
+  height: 5px;
+  background-color: #e32219;
+    border-radius: 3px;
+}
+.menu.icon:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0px;
+  height: 5px;
+  background-color: #e32219;
+    border-radius: 3px;
+}
+

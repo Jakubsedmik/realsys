@@ -1,0 +1,189 @@
+.fullscreen-popup{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    justify-content: center;
+    align-items: center;
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#e32319+0,00528f+100 */
+    background: #e32319; /* Old browsers */
+    background: -moz-linear-gradient(45deg,  #e32319 0%, #00528f 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg,  #e32319 0%,#00528f 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg,  #e32319 0%,#00528f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e32319', endColorstr='#00528f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    z-index: 99;
+    display: none;
+}
+
+.fullscreen-popup.show {
+    display: flex;
+    transform: scale(1);
+    animation: wiggle 500ms ease-in-out;
+}
+
+@keyframes wiggle {
+    0% {transform: scale(0)}
+    40% {transform: scale(0.95);}
+    50% {transform: scale(1.0250);}
+    60% {transform: scale(0.9725);}
+    70% {transform: scale(1.0125);}
+    80% {transform: scale(0.9850);}
+    90% {transform: scale(1.0065);}
+    100% {transform: scale(1.00);}
+}
+
+.fullscreen-popup--inner{
+    width: 1080px;
+    padding: 70px;
+    border: 1px dashed white;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    background-color: #ffffff0f;
+    position: relative;
+}
+
+.fullscreen-popup h2{
+    font-size: 45px;
+    margin-bottom: 0px;
+}
+
+.fullscreen-popup--paragraph{
+    font-size: 16px;
+    font-style: italic;
+    max-width: 700px;
+    margin: 0px auto 30px auto;
+}
+
+.line-separator{
+    height: 3px;
+    background-color: white;
+    display: block;
+    width: 120px;
+    margin: 15px auto;
+
+}
+
+.fullscreen-popup--uploadedImg{
+    width: 100%;
+    margin: 0px auto;
+    height: 220px;
+    background-color: #ffffff47;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+}
+
+.fullscreen-popup--uploadedImage{
+    display: none;
+}
+
+.fullscreen-popup--checkboxes{
+    text-align: left;
+    margin-top: 35px;
+}
+
+.fullscreen-popup--fields .row > div{
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-bottom: 10px;
+}
+.fullscreen-popup a{
+    text-decoration: underline!important;
+    color: navajowhite;
+}
+
+.fullscreen-popup--oruseig{
+    margin-top: 15px;
+}
+
+.fullscreen-popup--oruseig i{
+    vertical-align: middle;
+    margin-right: 4px;
+    color: navajowhite;
+}
+
+.fullscreen-popup--loading{
+    border: 1px solid white;
+    padding: 4px;
+    border-radius: 5px;
+    background-color: transparent;
+    margin-top: 8px;
+}
+
+.fullscreen-popup--progressbar{
+    width: 0%;
+    overflow: hidden;
+    background-color: #5cb85c;
+    text-align: center;
+}
+
+.fullscreen-popup--uploadedImg h3{
+    font-size: 14px;
+    /* margin-bottom: -50px; */
+    margin-top: 0px;
+    position: absolute;
+    top: 57%;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.fullscreen-popup--submit{
+    margin-top: 20px;
+}
+
+
+.fullscreen-popup--close{
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.fullscreen-popup--close:hover{
+    color: #ff8a23;
+}
+
+.filepicker-prototype{
+    display: none;
+}
+
+.fullscreen-popup--uploadedImage{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.fullscreen-popup--uploadedImgLarge{
+    height: 480px;
+}
+
+.disableScroll{
+	overflow: hidden;
+}
+
+@media screen and (max-width: 800px){
+	.fullscreen-popup{
+		overflow-y: scroll;
+		align-items: flex-start;
+	}
+
+	.fullscreen-popup--inner{
+		border: none;
+	}
+
+	.fullscreen-popup--close{
+        top: 50px;
+        right: 50px;
+	}
+}
+

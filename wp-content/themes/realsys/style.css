@@ -1,0 +1,112 @@
+/*
+Theme Name: RealSys
+Theme URI: https://studioseven.cz
+Author: Studioseven
+Author URI: http://studioseven.cz/
+Description: Šablona a programové části pro kompletní funkcionalitu ralitního systému
+Version: 1.0
+License: Použití pouze se souhlasem autora
+Text Domain: realsys
+Tags: responsive, realsys, realitní server, realitní systém
+*/
+
+
+/*
+    GENERAL THINGS
+*/
+
+/*
+    VALIDAČNÍ FIELDY
+ */
+
+.form-field, .pretty{
+    position: relative;
+}
+
+.form-field label.error{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    background-color: red;
+    padding: 10px;
+    min-width: 100%;
+    border-radius: 6px;
+    top: calc(100% + 12px);
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+.pretty label.error{
+    position: absolute;
+    left: calc(100% + 20px);
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    background-color: red;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+.form-field label.error:before {
+    content: "";
+    border: 10px solid red;
+    top: 0px;
+    position: absolute;
+    top: -20px;
+    right: 50%;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+}
+
+.pretty label.error:before{
+    content: "";
+    border: 10px solid red;
+    top: 50%;
+    position: absolute;
+    left: -20px;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    transform: translateY(-50%);
+}
+
+.form-field .form-control.validation-error {
+    background-color: #ffd4d4;
+    border: 1px solid #ab0000;
+    box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
+}
+
+.pretty{
+    margin-bottom: 10px;
+}
+
+.loader{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0px;
+    background-color: #ffffffd4;
+    z-index: 999;
+    visibility: hidden;
+    flex-direction: column;
+}
+
+.loader.loading{
+    visibility: visible;
+}
+
+.form-field input[readonly]{
+    background-color: #b9b9b9!important;
+    color: whitesmoke!important;
+    user-select: none;
+    cursor: not-allowed;
+    color: #848484!important;
+}
