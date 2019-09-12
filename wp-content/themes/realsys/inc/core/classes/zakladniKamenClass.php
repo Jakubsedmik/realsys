@@ -32,7 +32,7 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
     /*
      * Konstruktor základního Kamene
      */
-    protected function __construct($id) {
+    public function __construct($id) {
         $this->db_id = $id;
         $this->tableName = $this->getTableName();
         
@@ -130,6 +130,11 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
         
         global $wpdb;
         $db_properties = $this->vratDbPromenne();
+
+	    if(!$this->valid){
+		    trigger_error("Došlo k chybám ve validaci vstupních promměných");
+	    	return false;
+	    }
                 
         unset($db_properties["id"]);
         
@@ -223,7 +228,9 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
      */
     public function __set($name, $value) {
         if(isset($value) && isset($name)){
-	        $this->valid = $this->checkValidity($name, $value);
+	        if($this->valid) {
+		        $this->valid = $this->checkValidity( $name, $value );
+	        }
         	$this->$name = $value;
             return $this->aktualizovat();
         }
@@ -234,9 +241,12 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
      * Set který neukládá hned do databáze, hodí se např pro nastavení mnoha proměných a pak až následné dávkové uložení do DB
      */
     public function set_not_update($name, $value) {
+
         if(isset($value) && isset($name)){
-        	$this->valid = $this->checkValidity($name, $value);
-            $this->$name = $value;
+        	if($this->valid){
+	            $this->valid = $this->checkValidity($name, $value);
+	        }
+	        $this->$name = $value;
         }
         
     }
@@ -449,6 +459,9 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
         foreach ($arrayOfParams as $key => $value) {
             $new_key = "db_" . $key;
             if(property_exists(get_class($this), $new_key)){
+	            if($this->valid){
+		            $this->valid = $this->checkValidity($new_key, $value);
+	            }
                 $this->$new_key = $value;
             }else{
                 trigger_error("Zadaná vlastnost " . $new_key . " v třídě " . __CLASS__ . " neexistuje : populateClass");
@@ -459,15 +472,15 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
     private function checkValidity($key, $value){
 		global $field_rules;
 		$format = array();
-		if(isset($field_rules[get_class($this)])){
-			$format = $field_rules[get_class($this)];
+		if(isset($field_rules[get_class($this)]) && isset($field_rules[get_class($this)][$key])){
+			$format = $field_rules[get_class($this)][$key];
 			$type = $format['type'];
 			$required = $format['required'];
 			$field_checker = new typeClass($key, $value, $required, $type);
 			return $field_checker->getStatus();
 		}else{
-			trigger_error("checkValidity:: Formát není specifikovaný.");
-			return false;
+			trigger_error("checkValidity:: Formát není specifikovaný. Neověřuji : " . $key);
+			return true;
 		}
 
     }

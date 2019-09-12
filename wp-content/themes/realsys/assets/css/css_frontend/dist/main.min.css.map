@@ -1,0 +1,1 @@
+{"version":3,"sources":["main.less"],"names":[],"mappings":"AAGA,MACE,OAAA,IAAA,MAAA","file":"main.min.css","sourcesContent":["@specialcolor: white;\r\n@production_url: \"https://\";\r\n\r\n.test{\r\n  border: 1px solid @specialcolor;\r\n}\r\n"]}

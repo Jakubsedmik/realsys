@@ -16,17 +16,33 @@ var lessDestinationFile_backend = "wp-content/themes/realsys/assets/css/css_back
 var jsFiles_backend = "wp-content/themes/realsys/assets/js/js_backend/src/";
 var jsDestinationFile_backend = "wp-content/themes/realsys/assets/js/js_backend/dist/";
 
-var stylesPaths = [
+var lessFiles_frontend = "wp-content/themes/realsys/assets/css/css_frontend/src/";
+var lessDestinationFile_frontend = "wp-content/themes/realsys/assets/css/css_frontend/dist/";
+var jsFiles_frontend = "wp-content/themes/realsys/assets/js/js_frontend/src/";
+var jsDestinationFile_frontend = "wp-content/themes/realsys/assets/js/js_frontend/dist/";
+
+var backend_stylesPaths = [
     lessFiles_backend + 'main.less'
 ];
 
-var scriptsPaths = [
+var frontend_stylesPaths = [
+    lessFiles_frontend + 'main.less'
+];
+
+
+
+var backend_scriptsPaths = [
     jsFiles_backend + 'jquery-3.4.1.js',
     jsFiles_backend + 'popper.min.js',
     jsFiles_backend + 'bootstrap.js',
     jsFiles_backend + 'mdb.js',
     jsFiles_backend + 'main.js'
 
+];
+
+var frontend_scriptsPaths = [
+    jsFiles_frontend + 'jquery-3.4.1.js',
+    jsFiles_frontend + 'main.js'
 ];
 
 /* Not all tasks need to use streams, a gulpfile is just another node program
@@ -42,8 +58,8 @@ function clean() {
 /*
  * Define our tasks using plain functions
  */
-function styles() {
-    return gulp.src(stylesPaths)
+function backend_styles() {
+    return gulp.src(backend_stylesPaths)
         .pipe(sourcemaps.init())
         .pipe(less())
         .pipe(cleanCSS())
@@ -56,11 +72,32 @@ function styles() {
         .pipe(gulp.dest(lessDestinationFile_backend));
 }
 
-function scripts() {
-    return gulp.src(scriptsPaths, { sourcemaps: true })
+function frontend_styles() {
+    return gulp.src(frontend_stylesPaths)
+        .pipe(sourcemaps.init())
+        .pipe(less())
+        .pipe(cleanCSS())
+        // pass in options to the stream
+        .pipe(rename({
+            basename: 'main',
+            suffix: '.min'
+        }))
+        .pipe(sourcemaps.write("./"))
+        .pipe(gulp.dest(lessDestinationFile_frontend));
+}
+
+function backend_scripts() {
+    return gulp.src(backend_scriptsPaths, { sourcemaps: true })
         .pipe(uglify())
         .pipe(concat('main.min.js'))
         .pipe(gulp.dest(jsDestinationFile_backend));
+}
+
+function frontend_scripts() {
+    return gulp.src(frontend_scriptsPaths, { sourcemaps: true })
+        .pipe(uglify())
+        .pipe(concat('main.min.js'))
+        .pipe(gulp.dest(jsDestinationFile_frontend));
 }
 
 function watch() {
@@ -71,16 +108,21 @@ function watch() {
 /*
  * Specify if tasks run in series or parallel using `gulp.series` and `gulp.parallel`
  */
-var build = gulp.series(clean, gulp.parallel(styles, scripts));
+var backend_build = gulp.series(clean, gulp.parallel(backend_styles, backend_scripts));
+var frontend_build = gulp.series(clean, gulp.parallel(frontend_styles, frontend_scripts));
+var build = gulp.series(clean, gulp.parallel(frontend_styles, frontend_scripts, backend_styles, backend_scripts));
 
 /*
  * You can use CommonJS `exports` module notation to declare tasks
  */
 exports.clean = clean;
-exports.styles = styles;
-exports.scripts = scripts;
-exports.watch = watch;
+exports.backend_scripts = backend_scripts;
+exports.backend_styles = backend_styles
+exports.frontend_scripts = frontend_scripts;
+exports.frontend_styles = frontend_styles;
 exports.build = build;
+
+exports.watch = watch;
 /*
  * Define default task that can be called by just running `gulp` from cli
  */

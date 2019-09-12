@@ -22,6 +22,9 @@ define("GLOBAL_AJAX_NONCE", "ajaxAction7854efas.");
 // deployment config
 define("DEPLOYMENT", false);
 
+//paths
+define("ASSETS_PATH", "/wp-content/themes/realsys/assets/");
+
 
 // recaptcha secret BE
 define("RECAPTCHA", "6Lf17KsUAAAAAAwgoEi1q0cTz3fXaFlBfHFQrmwv");
@@ -107,6 +110,10 @@ $field_rules = array(
 		"db_inzerat_id" => array(
 			"type" => NUMBER,
 			"required" => true
+		),
+		"db_front" => array(
+			"type" => BOOL,
+			"required" => false
 		)
 	)
 );
@@ -131,7 +138,8 @@ $dictionary = array(
     'db_cena' => '<i>Cena</i>',
     'db_kategorieid' => '<i>Kategorie</i>',
     'db_popisek' => '<i>Popisek</i>',
-    'db_kod' => '<i>Kód produktu</i>'
+    'db_kod' => '<i>Kód produktu</i>',
+	'db_inzerat_id' => 'ID Inzerátu'
 );
 
 

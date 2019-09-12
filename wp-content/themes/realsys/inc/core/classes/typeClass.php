@@ -69,7 +69,7 @@ class typeClass implements JsonSerializable {
 				}
 				break;
 			case 'url' :
-				if(!self::isValidUrl($this->value)){
+				if(!Tools::isValidUrl($this->value)){
 					$response =  "Pole" . globalUtils::translate($this->key) . " není URL.";
 					$status = false;
 					frontendError::addMessage($this->key, ERROR, $response, $this);
