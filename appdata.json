@@ -1,0 +1,47 @@
+{
+  "radky": [
+    {
+      "db_id": 1,
+      "db_nazev": "nejaky nazev",
+      "db_obr": "obr",
+      "uf": "ufyy"
+    },
+    {
+      "db_id": 5,
+      "db_nazev": "picka",
+      "db_obr": "obr",
+      "uf": "uf"
+    },
+    {
+      "db_id": 4,
+      "db_nazev": "pickm",
+      "db_obr": "obr",
+      "uf": "uf"
+    },
+    {
+      "db_id": 8,
+      "db_nazev": "neco",
+      "db_obr": "kunda",
+      "uf": "blb"
+    },
+    {
+      "db_id": 2,
+      "db_nazev": "kurvak",
+      "db_obr": "tarantino",
+      "uf": "ungo bungo"
+    },
+    {
+      "db_id": 7,
+      "db_nazev": "lara",
+      "db_obr": "croft",
+      "uf": "mrdka"
+    }
+  ],
+  "prekladHlavicek": {
+    "db_id": "ID",
+    "db_nazev": "Název",
+    "db_obr": "Obrázek",
+    "uf": "Nějaký uf"
+  },
+  "totalRecords": 60
+}

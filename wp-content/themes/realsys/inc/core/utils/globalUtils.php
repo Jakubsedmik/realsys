@@ -85,6 +85,9 @@ class globalUtils {
     }
     
     public static function renderDebug(){
+    	if(count(self::$debugstack) == 0){
+    		return "";
+	    }
 	    $output = '<style>
 		.debugPanel{
 		    position: fixed;
