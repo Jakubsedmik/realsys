@@ -52,7 +52,7 @@ add_action("template_redirect", "loadActions");
 
 require_once ("crons.php");
 require_once ("backend.php");
-
+require_once ("api.php")
 
 
 

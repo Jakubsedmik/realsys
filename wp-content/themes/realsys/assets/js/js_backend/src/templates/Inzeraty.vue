@@ -1,62 +1,98 @@
 <template>
-    <!-- Material input -->
-    <div :class="{waitingForData: !this.dataReady()}">
+    <div class="container-fluid pr-5">
         <!-- Material input -->
-        <div class="md-form input-group mb-3">
-            <input type="text" id="search_term" class="form-control" @keyup="search($event)" placeholder="Hledaný výraz">
-            <div class="input-group-append">
-                <button class="btn btn-md btn-secondary m-0 px-3" type="button" id="MaterialButton-addon2" @click.prevent="findOnServer()">Dohledat na serveru</button>
-            </div>
-        </div>
-        <table id="dt-material-checkbox dataTable" class="table table-striped " cellspacing="0" width="100%">
-            <thead>
-            <tr>
-                <th v-for="(th,index) in hlavickyComputed" class="sorting">
-                    <div class="sortingHandle">
-                        <span :class="{'active': isAsc(index), 'fshr-icon': true, 'fas': true, 'fa-sort-down' : true}" :data-sort-param="index" data-sort-order="asc" @click="sortBy($event)">
-                        </span>
-                        <span :class="{'active': isDesc(index), 'fshr-icon': true, 'fas': true, 'fa-sort-up' : true}" :data-sort-param="index" data-sort-order="desc" @click="sortBy($event)">
-                        </span>
+        <div :class="{waitingForData: !this.dataReady() || this.appWorking, mainApp: true}">
+            <!-- Material input -->
+            <div class="row justify-content-sm-end">
+                <div class="md-form input-group mb-3 col-sm-4">
+                    <input type="text" id="search_term" class="form-control" @keyup="search($event)" placeholder="Hledaný výraz">
+                    <div class="input-group-append">
+                        <button class="btn btn-md btn-secondary m-0 px-3" type="button" id="MaterialButton-addon2" @click.prevent="findOnServer()">Dohledat na serveru</button>
                     </div>
-                    {{th}}
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="radek in radkyComputed">
-                <td v-for="bunka in radek">{{bunka}}</td>
-                <!-- TODO if it is url or boolean say something -->
-            </tr>
-            </tbody>
-            <tfoot>
-            <tr>
-                <!-- TODO remove / edit function -->
-                <th
-                        v-for="(th,index) in hlavickyComputed"
-                        v-on:click="sortBy($event)"
-                        :data-sort-param="index">
-                    {{th}}
-                </th>
-            </tr>
-            </tfoot>
-        </table>
-        <nav aria-label="Page navigation example" v-if="showPagination()">
-            <ul class="pagination pg-blue">
-                <li class="page-item" @click="setPage(1)">
-                    <a class="page-link">First</a>
-                </li>
-                <li
-                        v-for="paging in filterPaginationNumbers()"
-                        :class="{'page-item': true, 'active': (page == paging)}"
-                        @click="setPage(paging)"
-                >
-                    <a class="page-link">{{paging}}</a>
-                </li>
+                </div>
+            </div>
+            <div class="fshr-filterBar" v-if="filters.length > 0">
+                <div class="grd-row">
+                    <div v-for="(filter,index) in filters" class="grd-col">
+                        <select :name="index" @change="setFilter(index, $event)" class="">
+                            <option v-for="val in filter.values" :value="val.val">{{val.nazev}} </option>
+                        </select>
 
-                <li class="page-item" @click="setPage(showPagination())">
-                    <a class="page-link">Last</a></li>
-            </ul>
-        </nav>
+                    </div>
+                </div>
+            </div>
+            <table id="dt-material-checkbox" class="table table-striped fshr-dynamicDataTable" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th v-for="th in hlavickyComputed" class="sorting">
+                        <span v-if="th.value">{{th.value}}</span>
+                        <div class="sortingHandle" v-if="th.value">
+                            <span :class="{'active': isAsc(th.key), 'fas': true, 'fa-sort-up' : true}" :data-sort-param="th.key" data-sort-order="asc" @click="sortBy($event)">
+                            </span>
+                            <span :class="{'active': isDesc(th.key), 'fas': true, 'fa-sort-down' : true}" :data-sort-param="th.key" data-sort-order="desc" @click="sortBy($event)">
+                            </span>
+                        </div>
+                    </th>
+                    <th>Upravit</th>
+                    <th>Smazat</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="radek in radkyComputed">
+                    <td v-for="bunka in radek" class="align-middle">
+
+                        <img :src="bunka.value" v-if="bunka.type=='image'">
+                        <div class="fas fa-check" v-else-if="bunka.type=='boolean' && bunka.value"></div>
+                        <div class="fas fa-times" v-else-if="bunka.type=='boolean' && !bunka.value"></div>
+                        <div class="fshr-icon fshr-icon--plus" v-else-if="bunka.type=='ajax_get_subinfo'"></div>
+                        <span v-else>{{bunka.value}}</span>
+                    </td>
+                    <td>
+                        <a :href="editLink(radek.db_id.value)" class="btn btn-info px-3 btn-rounded m-0"><i class="fas fa-edit" aria-hidden="true"></i></a>
+                    </td>
+                    <td>
+                        <a @click.prevent="removeItem(radek, $event)" class="btn btn-danger px-3 btn-rounded m-0"><i class="fas fa-trash" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+
+                    <th
+                            v-for="(th,index) in hlavickyComputed"
+                            v-on:click="sortBy($event)"
+                            :data-sort-param="index">
+                        <span v-if="th.value">
+                            {{th.value}}
+                        </span>
+                    </th>
+                    <th>
+                        Upravit
+                    </th>
+                    <th>
+                        Smazat
+                    </th>
+                </tr>
+                </tfoot>
+            </table>
+            <nav aria-label="Page navigation example" v-if="showPagination()">
+                <ul class="pagination pg-blue">
+                    <li class="page-item" @click="setPage(1)">
+                        <a class="page-link">First</a>
+                    </li>
+                    <li
+                            v-for="paging in filterPaginationNumbers()"
+                            :class="{'page-item': true, 'active': (page == paging)}"
+                            @click="setPage(paging)"
+                    >
+                        <a class="page-link">{{paging}}</a>
+                    </li>
+
+                    <li class="page-item" @click="setPage(showPagination())">
+                        <a class="page-link">Last</a></li>
+                </ul>
+            </nav>
+        </div>
     </div>
 </template>
 
@@ -64,10 +100,15 @@
 <script>
     import axios from 'axios';
     import VueAxios from 'vue-axios';
-
     export default {
         name: "Inzeraty",
-        props: [],
+        props: {
+            'api_url': {default:'/realsys/appdata.json'},
+            'model':{default:'inzeratyClass'},
+            'item_controller':{default:'inzeratyController'},
+            'allowed_columns':{default:{}},
+            'base_url' : {default: '/realsys/wp-admin/admin.php?page=realsys'}
+            },
         created: function(){
             this.fetchData();
         },
@@ -80,6 +121,28 @@
                 page: 2,
                 countPage: 4,
                 maxPageCount: 5,
+                // přesunout filtery do atributů
+                filters: {
+                    db_id: {
+                        preklad : "Platnost",
+                        values : [
+                            { nazev: "Pouze platné", val: 1 },
+                            { nazev: "Neplatné", val: 0}
+                        ]
+                    },
+                    db_nazev: {
+                        preklad : "Obrázek",
+                        values : [
+                            { nazev: "Velký", val: 1 },
+                            { nazev: "Malý", val: 0}
+                        ]
+                    }
+                },
+                filters_val: {},
+                appWorking: false,
+                stylesUrl: process.env.HOME_URL
+
+
             }
         },
         methods: {
@@ -91,7 +154,6 @@
                 this.searchParam = $(event.target).val();
             },
             isAsc: function (index) {
-
                 return ((this.sortOrder == "asc") && this.sortParam==index) ? true : false;
             },
             isDesc: function (index) {
@@ -100,21 +162,40 @@
             fetchData: function(){
                 var _this = this;
                 this.appData = null;
-                // TODO dodat cestu ze serveru
-                var getUrl = "/realsys/appdata.json?countPage=" + _this.countPage + "&page=" + _this.page;
-                getUrl += "&searchParam=" + this.searchParam;
+                var getUrl = this.api_url + "?model=" + this.model + "&countPage=" + _this.countPage + "&page=" + _this.page;
+
+                if(this.searchParam.length > 0){
+                    getUrl += "&searchParam=" + this.searchParam;
+                }
+
+                if(Object.keys(this.filters_val).length > 0){
+                    var result = "&";
+                    for(var item in this.filters_val){
+                        result += "&" + item + "=" + this.filters_val[item];
+                    }
+                    getUrl += result;
+                }
+
                 this.searchParam = "";
                 setTimeout(function () {
                     axios.get(getUrl).then(function (response) {
                         if (response)
-                            _this.appData = response.data;
+                            if(typeof response.data == "object"){
+                                if(response.data.hasOwnProperty("radky") && response.data.radky[0].hasOwnProperty("db_id")){
+                                    _this.appData = response.data;
+                                }else{
+                                    console.error("Bad data structure - missing radky, or db_id");
+                                }
+                            }else{
+                                console.error("Data is not type of Object");
+                            }
                     }).catch(function (error) {
-                        console.log(error);
+                        console.error(error);
                     });
                 }, 500);
             },
             dataReady: function () {
-                return (this.appData !== null);
+                return (this.appData !== null) && (typeof this.appData == "object");
             },
             showPagination: function () {
                 if(this.dataReady()){
@@ -122,7 +203,6 @@
                     var recordsPerPage = this.countPage;
                     var pageNumber = this.page;
                     var currentRecordsCount = this.appData.radky.length;
-
                     var totalPages = Math.ceil(totalRecords / recordsPerPage);
                     if(totalPages > 1){
                         return totalPages;
@@ -132,7 +212,6 @@
             },
             filterPaginationNumbers: function () {
                 var pagesCount = this.showPagination();
-
                 if (this.maxPageCount > pagesCount) this.maxPageCount = pagesCount;
                 var start = this.page - Math.floor(this.maxPageCount / 2);
                 start = Math.max(start, 1);
@@ -146,9 +225,44 @@
                     this.fetchData();
                 }
             },
-            findOnServer(){
+            findOnServer: function(){
                 this.page = 1;
                 this.fetchData();
+
+            },
+            setFilter: function (index, event) {
+                this.filters_val[index] = $(event.target).val();
+                this.fetchData();
+            },
+            removeItem: function (item, event) {
+                var removeApiUrl = this.api_url + "?action=removeElement&model=" + this.model + "&id=" + item.db_id.value;
+                var _this = this;
+
+                confirmPopup($(event.target), function () {
+                    _this.appWorking = true;
+                    axios.get(removeApiUrl).then(function (response) {
+                        if(typeof response.data == "object" && response.data.hasOwnProperty("status") && response.data.hasOwnProperty("message")){
+                            if(response.data.status === 1){
+                                var db_id = item.db_id.value;
+                                var newarr = _this.appData.radky.filter(function (el, index, arr) {
+                                    if(el.db_id.value !== db_id) return true;
+                                });
+                                _this.appData.radky = newarr;
+                                _this.appWorking = false;
+                            }else{
+                                console.error("Operation failed");
+                                alert("Chyba");
+                            }
+                        }else{
+                            console.error("Response is not JSON");
+                            alert("Chyba");
+                        }
+                    });
+                });
+
+            },
+            editLink: function (id) {
+                return this.base_url + '&controller=' + this.item_controller + '&action=edit&id=' + id;
             }
         },
         computed:{
@@ -156,13 +270,16 @@
                 var sortParam = this.sortParam;
                 var sortOrder = this.sortOrder;
                 var searchTerm = this.searchParam;
+
                 if(!this.dataReady()) return [];
+
 
                 var newarray = this.appData.radky;
                 newarray = newarray.filter(function (value, index, arr) {
                     for(var val in value){
-                        var hodnota = value[val];
-                        if(typeof hodnota == "number"){
+                        var hodnota = value[val].value;
+
+                        if(typeof hodnota == "number" || typeof hodnota == "boolean"){
                             hodnota = hodnota.toString();
                         }
                         if(hodnota.toUpperCase().search(searchTerm.toUpperCase())>=0){
@@ -171,16 +288,20 @@
                     }
                     return false;
                 });
+
+                if(sortParam.length == 0){
+                    return newarray;
+                }
                 return newarray.sort(
                     function (a, b) {
-                        if(a[sortParam] > b[sortParam]){
+                        if(a[sortParam].value > b[sortParam].value){
                             if(sortOrder == "asc"){
                                 return -1;
                             }
                             return 1;
                         }
-                        if(a[sortParam] < b[sortParam]){
-                            if(sortOrder == "asc"){
+                        if(a[sortParam].value < b[sortParam].value){
+                            if(sortOrder == "desc"){
                                 return 1;
                             }
                             return -1;
@@ -193,37 +314,60 @@
                 if(!this.dataReady()) {
                     return [];
                 }
-                return this.appData.prekladHlavicek;
+                var prvniRadek = this.appData.radky[0];
+                var hlavicka = [];
+                for(var bunka in prvniRadek){
+                    if(this.appData.prekladHlavicek.hasOwnProperty(bunka)){
+                        hlavicka.push({'key' : bunka, 'value' : this.appData.prekladHlavicek[bunka]});
+                    }else{
+                        hlavicka.push({'key': bunka, 'value': bunka});
+                    }
+                }
+
+                return hlavicka;
             }
         }
     }
 </script>
 
-<style scoped>
+<style scoped lang="less">
+
+    @website: "https://blb.cz";
+
     p {
         font-size: 35px;
     }
 
     .sortingHandle > *{
         cursor: pointer;
+        position: absolute;
     }
 
+    .sortingHandle .fa-sort-down{
+        left: 8px
+    }
     .sortingHandle{
         color: grey;
+        display: inline-flex;
+        position: relative;
+        width: 10px;
+        height: 11px;
+        flex-direction: column;
+        font-size: 12px;
     }
-
     .sortingHandle .active{
-        color: black;
+        color: red;
     }
 
+    .sortingHandle .fas:before{
+        line-height: 5px;
+    }
     .waitingForData{
         position: relative;
     }
-
     .waitingForData:after{
-        /* TODO REALTIVNI cesty */
         content: '';
-        background-image: url("/realsys/wp-content/themes/realsys/assets/images/images_backend/loading.gif");
+        background-image: url("@{website}wp-content/themes/realsys/assets/images/images_backend/loading.gif");
         position: absolute;
         top: 0;
         left: 0px;
@@ -234,4 +378,15 @@
         background-size: unset;
         background-repeat: no-repeat;
     }
+
+    .fshr-filterBar{
+        background-color: #f4f4f4;
+        padding: 20px;
+    }
+
+    .mainApp{
+        padding: 0px 15px;
+        border: 1px solid #dee2e6;
+    }
+
 </style>

@@ -43,6 +43,7 @@ function adminHeaders($hook){
 		wp_enqueue_media();
 		wp_enqueue_style("bootstrap_min_css", $pluginUrl . "/assets/css/css_backend/src/main.css");
 		wp_enqueue_style("jquery_ui_css", $pluginUrl . "/assets/css/css_backend/src/jquery-ui.css");
+		wp_enqueue_style("confirm_popup", $pluginUrl . "/assets/css/css_backend/src/confirmPopup.less");
 
 		wp_enqueue_script("jquery_min_js", $pluginUrl . "/assets/js/js_backend/src/jquery-3.4.1.js", array(), VERSION_LINKS, true);
 		wp_enqueue_script("popper_min_js", $pluginUrl . "/assets/js/js_backend/src/popper.min.js", array("jquery_min_js"), VERSION_LINKS, true);

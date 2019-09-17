@@ -1,5 +1,6 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const webpack = require("webpack");
 
 module.exports = {
     entry: './wp-content/themes/realsys/assets/js/js_backend/src/app.js',
@@ -7,6 +8,7 @@ module.exports = {
         path: path.resolve(__dirname, 'wp-content/themes/realsys/assets/js/js_backend/dist'),
         filename: 'bundle.js'
     },
+    mode: "development",
     module: {
         rules: [
             {
@@ -22,11 +24,30 @@ module.exports = {
                     'style-loader',
                     'css-loader'
                 ]
+            },
+            {
+                test: /\.less$/,
+                use: [
+                    'vue-style-loader',
+                    'style-loader',
+                    'css-loader',
+                    {
+                        loader: 'less-loader',
+                        options: {
+                            modifyVars: {
+                                'website': '"http://localhost/realsys/"'
+                            }
+                        },
+                    }
+                ]
             }
         ]
     },
     plugins: [
         // make sure to include the plugin for the magic
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new webpack.DefinePlugin({
+            'process.env.HOME_URL': JSON.stringify("http://localhost/realsys/")
+        }),
     ]
 };
