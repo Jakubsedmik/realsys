@@ -43,16 +43,18 @@ function adminHeaders($hook){
 		wp_enqueue_media();
 		wp_enqueue_style("bootstrap_min_css", $pluginUrl . "/assets/css/css_backend/src/main.css");
 		wp_enqueue_style("jquery_ui_css", $pluginUrl . "/assets/css/css_backend/src/jquery-ui.css");
-		wp_enqueue_style("confirm_popup", $pluginUrl . "/assets/css/css_backend/src/confirmPopup.less");
+		wp_enqueue_style("confirmpopup_css", $pluginUrl . "/assets/css/css_backend/src/confirmPopup.less");
+		wp_enqueue_style("filepond_css", $pluginUrl . "/assets/css/css_backend/src/filepond.css");
 
 		wp_enqueue_script("jquery_min_js", $pluginUrl . "/assets/js/js_backend/src/jquery-3.4.1.js", array(), VERSION_LINKS, true);
 		wp_enqueue_script("popper_min_js", $pluginUrl . "/assets/js/js_backend/src/popper.min.js", array("jquery_min_js"), VERSION_LINKS, true);
 		wp_enqueue_script("bootstrap_min_js", $pluginUrl . "/assets/js/js_backend/src/bootstrap.min.js", array("popper_min_js"), VERSION_LINKS, true);
 		wp_enqueue_script("mdb_min_js", $pluginUrl . "/assets/js/js_backend/src/mdb.js", array("bootstrap_min_js"), VERSION_LINKS, true);
-		wp_enqueue_script("base", $pluginUrl . "/assets/js/js_backend/src/main.js", array("jquery_min_js"), VERSION_LINKS, true);
-		wp_enqueue_script("jquery_ui", $pluginUrl . "/assets/js/js_backend/src/jquery-ui.js", array("jquery_min_js"), VERSION_LINKS, true);
+		wp_enqueue_script("base_js", $pluginUrl . "/assets/js/js_backend/src/main.js", array("jquery_min_js"), VERSION_LINKS, true);
+		wp_enqueue_script("jquery_ui_js", $pluginUrl . "/assets/js/js_backend/src/jquery-ui.js", array("jquery_min_js"), VERSION_LINKS, true);
 		wp_enqueue_script("vue_js", "https://cdn.jsdelivr.net/npm/vue/dist/vue.js", array(), VERSION_LINKS, true);
-		wp_enqueue_script("bundle", $pluginUrl . "/assets/js/js_backend/dist/bundle.js", array("vue_js"), VERSION_LINKS, true);
+		wp_enqueue_script("bundle_js", $pluginUrl . "/assets/js/js_backend/dist/bundle.js", array("vue_js"), VERSION_LINKS, true);
+		wp_enqueue_script("filepond_js", $pluginUrl . "/assets/js/js_backend/src/filepond.js", array("jquery"), VERSION_LINKS, true);
 	}
 
 }

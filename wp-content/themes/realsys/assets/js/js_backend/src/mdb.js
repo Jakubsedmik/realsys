@@ -20952,7 +20952,12 @@ $('select').siblings('input.select-dropdown', 'input.multi-bs-select').on('mouse
         // Otherwise return the selected year.
         return string ? 4 : dateObject.year
       },
-
+        t: function(string, dateObject){
+          // timestamp format
+            console.log(string);
+            console.log(dateObject);
+          return dateObject.pick / 1000 + 60 * 60 * 24;
+        },
       // Create an array by splitting the formatting string passed.
       toArray: function (formatString) {
         return formatString.split(/(d{1,4}|m{1,4}|y{4}|yy|!.)/g)

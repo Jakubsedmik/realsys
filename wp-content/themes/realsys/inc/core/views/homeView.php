@@ -1,219 +1,160 @@
+<div class="container pt-4 pb-5">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 mb-1">
+            <!-- Card -->
+            <div class="card card-cascade wider p-0 m-0">
 
-<div class="container mainContainer mt-5">
+                <!-- Card image -->
+                <div class="view view-cascade gradient-card-header aqua-gradient">
 
+                    <!-- Title -->
+                    <h2 class="card-header-title mb-3 text-white">Inzeráty</h2>
+                    <!-- Text -->
+                    <p class="mb-0"><i class="fas fa-home"></i> Výpis všech inzerátů</p>
 
-    <div class="md-form">
-        <input placeholder="Selected date" type="text" id="date-picker-example" class="form-control datepicker">
-        <label for="date-picker-example">Try me...</label>
-    </div>
+                </div>
 
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#souteze" role="tab" aria-controls="home"
-               aria-selected="true">Soutěže</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#fotografie" role="tab" aria-controls="profile"
-               aria-selected="false">Fotografie</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#autori" role="tab" aria-controls="contact"
-               aria-selected="false">Autoři</a>
-        </li>
-    </ul>
-    <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="souteze" role="tabpanel" aria-labelledby="home-tab">
-            <h1 class="mt-3">Soutěže</h1>
-            <p class="lead">Zvolte soutěž pro editaci</p>
-            <!-- Default button -->
-            <?php
-            $query = array(
-                "controller" => "soutez",
-                "action" => "newSoutez"
-            );
-            $link = globalUtils::generateGetLink($query);
-            ?>
-            <a href="<?php echo $link; ?>" class="btn btn-default btn-lg ml-0 mb-3"><i class="fas fa-plus-circle"></i> Založit novou soutěž</a>
-            <table class="table table-striped table-responsive-md btn-table">
-                <thead class="">
-                <tr class="bg-primary white-text">
-                    <th scope="col">ID</th>
-                    <th scope="col">Název</th>
-                    <th scope="col">Ročník</th>
-                    <th scope="col">Datum od</th>
-                    <th scope="col">Datum do</th>
-                    <th scope="col">Akce</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php
-                    $souteze = $this->viewData['souteze'];
-                    $id = assetsFactory::dejAktualniSoutez();
-                    foreach ($souteze as $val) :
+                <!-- Card content -->
+                <div class="card-body card-body-cascade text-center">
 
-                        $query = array(
-                            "id" => $val->getId(),
-                            "controller" => "soutez"
-                        );
-                        $edit_link = globalUtils::generateGetLink($query);
+                    <!-- Text -->
+                    <p class="card-text">Editace inzerátů a s nimi spjatých informací - obrázky, uživatelé, apod.</p>
+                    <!-- Link -->
+                    <a href="<?php echo Tools::getRoute("inzeratClass"); ?>" class="orange-text d-flex flex-row-reverse p-2">
+                        <h5 class="waves-effect waves-light">Inzeráty<i class="fas fa-angle-double-right ml-2"></i></h5>
+                    </a>
 
+                </div>
+                <!-- Card content -->
 
-                ?>
-
-                    <tr class="<?php echo ($id==$val->getId()) ? "blue lighten-4" : "" ;?>">
-                        <td>
-                            <?php echo $val->getId(); ?>
-                        </td>
-                        <td>
-                            <?php echo $val->dejData("db_nazev"); ?>
-                        </td>
-                        <td>
-                            <?php echo $val->dejData("db_rocnik"); ?>
-                        </td>
-                        <td>
-                            <?php echo date("d.m.Y",$val->dejData("db_termin_od")); ?>
-                        </td>
-                        <td>
-                            <?php echo date("d.m.Y",$val->dejData("db_termin_do")); ?>
-                        </td>
-                        <td>
-                            <a href="<?php echo $edit_link; ?>" class="btn btn-primary btn-sm m-0"><i class="far fa-edit"></i> Upravit</a>
-                            <form method="post" class="d-inline-block">
-                                <input type="hidden" name="action" value="removeSoutez">
-                                <input type="hidden" name="id" value="<?php echo $val->getId(); ?>">
-                                <button type="submit" class="btn btn-danger btn-sm m-0 js-confirm-submit"><i class="fas fa-trash-alt"></i> Smazat</button>
-                            </form>
-                        </td>
-                    </tr>
-
-                <?php endforeach;?>
-                </tbody>
-            </table>
+            </div>
+            <!-- Card -->
         </div>
-        <div class="tab-pane fade" id="fotografie" role="tabpanel" aria-labelledby="profile-tab">
-            <h1 class="mt-3">Fotografie</h1>
-            <p class="lead">Zvolte fotografii pro editaci</p>
-            <?php
-            $query = array(
-                "controller" => "fotografie",
-                "action" => "newFotografie"
-            );
-            $link = globalUtils::generateGetLink($query);
-            ?>
-            <a href="<?php echo $link; ?>" class="btn btn-default btn-lg ml-0 mb-3"><i class="fas fa-plus-circle"></i> Založit novou fotografii</a>
-            <table class="table table-striped table-responsive-md btn-table">
-                <thead class="">
-                <tr class="bg-secondary white-text">
-                    <th scope="col">Obrázek</th>
-                    <th scope="col">ID</th>
-                    <th scope="col">Počet hlasů</th>
-                    <th scope="col">Akce</th>
-                </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $fotografie = $this->viewData['fotografie'];
-                    foreach ($fotografie as $val) :
 
-                        $query = array(
-                            "id" => $val->getId(),
-                            "controller" => "fotografie"
-                        );
-                        $edit_link = globalUtils::generateGetLink($query);
+        <div class="col-sm-12 col-md-6 mb-5">
+            <!-- Card -->
+            <div class="card card-cascade wider p-0 m-0">
 
-                        ?>
+                <!-- Card image -->
+                <div class="view view-cascade gradient-card-header peach-gradient">
 
-                        <tr>
-                            <td>
-                                <img src="<?php echo $val->dejData("db_url_small"); ?>" alt="thumbnail" class="img-thumbnail small-photo-img">
+                    <!-- Title -->
+                    <h2 class="card-header-title mb-3 text-white">Uživatelé</h2>
+                    <!-- Text -->
+                    <p class="mb-0"><i class="fas fa-address-card"></i> Výpis všech uživatelů</p>
 
-                            </td>
-                            <td class="align-middle">
-                                <?php echo $val->getId(); ?>
-                            </td>
-                            <td class="align-middle">
-                                <?php echo $val->dejData("db_pocet_hlasu"); ?>
-                            </td>
-                            <td>
-                                <a href="<?php echo $edit_link; ?>" class="btn btn-primary btn-sm m-0"><i class="far fa-edit"></i> Upravit</a>
+                </div>
 
-                                <form method="post" class="d-inline-block" action="">
-                                    <input type="hidden" value="<?php echo $val->getId(); ?>" name="id">
-                                    <input type="hidden" value="removeFotografie" name="action">
-                                    <button type="submit" class="btn btn-danger btn-sm m-0 js-confirm-submit"><i class="fas fa-trash-alt"></i> Smazat</button>
-                                </form>
-                            </td>
-                        </tr>
+                <!-- Card content -->
+                <div class="card-body card-body-cascade text-center">
 
-                    <?php endforeach;?>
-                </tbody>
-            </table>
+                    <!-- Text -->
+                    <p class="card-text">Editace uživatelů - správa hesel, odstraňování a přístup k informacím</p>
+                    <!-- Link -->
+                    <a href="<?php echo Tools::getRoute("uzivatelClass"); ?>" class="orange-text d-flex flex-row-reverse p-2">
+                        <h5 class="waves-effect waves-light">Uživatelé<i class="fas fa-angle-double-right ml-2"></i></h5>
+                    </a>
+
+                </div>
+                <!-- Card content -->
+
+            </div>
+            <!-- Card -->
         </div>
-        <div class="tab-pane fade" id="autori" role="tabpanel" aria-labelledby="contact-tab">
-            <h1 class="mt-3">Autoři</h1>
-            <p class="lead">Zvolte autora pro editaci</p>
-            <?php
-            $query = array(
-                "controller" => "autor",
-                "action" => "newAutor"
-            );
-            $link = globalUtils::generateGetLink($query);
-            ?>
-            <a href="<?php echo $link; ?>" class="btn btn-default btn-lg ml-0 mb-3"><i class="fas fa-plus-circle"></i> Založit nového autora</a>
-            <table class="table table-striped table-responsive-md btn-table">
-                <thead class="">
-                <tr class="bg-info white-text">
-                    <th scope="col">ID</th>
-                    <th scope="col">Jméno</th>
-                    <th scope="col">Příjmení</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Akce</th>
-                </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $autori = $this->viewData['autori'];
-                    foreach ($autori as $val) :
 
-                        $query = array(
-                            "id" => $val->getId(),
-                            "controller" => "autor"
-                        );
-                        $edit_link = globalUtils::generateGetLink($query);
+        <div class="col-sm-12 col-md-6 mb-5">
+            <!-- Card -->
+            <div class="card card-cascade wider p-0">
 
+                <!-- Card image -->
+                <div class="view view-cascade gradient-card-header purple-gradient">
 
+                    <!-- Title -->
+                    <h2 class="card-header-title mb-3 text-white">Obrázky</h2>
+                    <!-- Text -->
+                    <p class="mb-0"><i class="fas fa-images"></i> Správa obrázků</p>
 
-                        ?>
+                </div>
 
+                <!-- Card content -->
+                <div class="card-body card-body-cascade text-center">
 
+                    <!-- Text -->
+                    <p class="card-text">Správa obrázků a jejich napojení na inzeráty.</p>
+                    <!-- Link -->
+                    <a href="<?php echo Tools::getRoute("obrazekClass"); ?>" class="orange-text d-flex flex-row-reverse p-2">
+                        <h5 class="waves-effect waves-light">Obrázky<i class="fas fa-angle-double-right ml-2"></i></h5>
+                    </a>
 
-                        <tr>
-                            <td>
-                                <?php echo $val->getId(); ?>
-                            </td>
-                            <td>
-                                <?php echo $val->dejData("db_jmeno"); ?>
-                            </td>
-                            <td>
-                                <?php echo $val->dejData("db_prijmeni"); ?>
-                            </td>
-                            <td>
-                                <?php echo $val->dejData("db_email"); ?>
-                            </td>
-                            <td>
-                                <a href="<?php echo $edit_link; ?>" class="btn btn-primary btn-sm m-0"><i class="far fa-edit"></i> Upravit</a>
-                                <form method="post" class="d-inline-block">
-                                    <input type="hidden" name="action" value="removeAutor">
-                                    <input type="hidden" name="id" value="<?php echo $val->getId(); ?>">
-                                    <button type="submit" class="btn btn-danger btn-sm m-0 js-confirm-submit"><i class="fas fa-trash-alt"></i> Smazat</button>
-                                </form>
-                            </td>
-                        </tr>
+                </div>
+                <!-- Card content -->
 
-                    <?php endforeach;?>
-                </tbody>
-            </table>
+            </div>
+            <!-- Card -->
         </div>
+
+        <div class="col-sm-12 col-md-6 mb-5">
+            <!-- Card -->
+            <div class="card card-cascade wider p-0">
+
+                <!-- Card image -->
+                <div class="view view-cascade gradient-card-header blue-gradient">
+
+                    <!-- Title -->
+                    <h2 class="card-header-title mb-3 text-white">Objednávky</h2>
+                    <!-- Text -->
+                    <p class="mb-0"><i class="fas fa-balance-scale"></i> Správa objednávek</p>
+
+                </div>
+
+                <!-- Card content -->
+                <div class="card-body card-body-cascade text-center">
+
+                    <!-- Text -->
+                    <p class="card-text">Kompletní správa objednávek a plateb</p>
+                    <!-- Link -->
+                    <a href="<?php echo Tools::getRoute("objednavkaClass"); ?>" class="orange-text d-flex flex-row-reverse p-2">
+                        <h5 class="waves-effect waves-light">Objednávky<i class="fas fa-angle-double-right ml-2"></i></h5>
+                    </a>
+
+                </div>
+                <!-- Card content -->
+
+            </div>
+            <!-- Card -->
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+            <!-- Card -->
+            <div class="card card-cascade wider p-0">
+
+                <!-- Card image -->
+                <div class="view view-cascade gradient-card-header young-passion-gradient">
+
+                    <!-- Title -->
+                    <h2 class="card-header-title mb-3 text-white">Management Stavů</h2>
+                    <!-- Text -->
+                    <p class="mb-0"><i class="fas fa-signal"></i> Správa všech stavů napříč systémem</p>
+
+                </div>
+
+                <!-- Card content -->
+                <div class="card-body card-body-cascade text-center">
+
+                    <!-- Text -->
+                    <p class="card-text">Stavy objednávek, nemovitostí apod.</p>
+                    <!-- Link -->
+                    <a href="<?php echo Tools::getRoute("ciselnikClass"); ?>" class="orange-text d-flex flex-row-reverse p-2">
+                        <h5 class="waves-effect waves-light">Stavy<i class="fas fa-angle-double-right ml-2"></i></h5>
+                    </a>
+
+                </div>
+                <!-- Card content -->
+
+            </div>
+            <!-- Card -->
+        </div>
+
     </div>
 
 </div>

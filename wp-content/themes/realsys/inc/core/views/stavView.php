@@ -1,0 +1,2 @@
+<?php
+echo "BOOM HEADSHOT";

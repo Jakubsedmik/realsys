@@ -64,21 +64,7 @@ class assetsFactory {
         $table = $tableName;
         $finalFilter = "";
         if($filter && count($filter) > 0){
-            $index = 1;
-            $finalFilter = " WHERE ";
-            foreach ($filter as $key => $value){
-                if($value instanceof filterClass){
-                    $finalFilter .= $value->createCondition();
-                }
-                if($index != count($filter)){
-                    if($filterOR){
-                        $finalFilter .= ' OR ';
-                    }else{
-                        $finalFilter .= ' AND ';
-                    }
-                }
-                $index++;
-            }
+			$finalFilter = self::processFilter($filter, $filterOR);
         }
         $limit = "";
         if($offset!==false && Tools::fieldChecker($offset, "number") && $countpage!==false && Tools::fieldChecker($countpage, "number")){
@@ -92,6 +78,52 @@ class assetsFactory {
         return $pole;
 
     }
+
+	public static function getAllEntityCount($className, $filter = NULL, $filterOR=FALSE){
+		global $wpdb;
+		$tableName = "";
+		if(class_exists($className)){
+			$pom = new $className(-1);
+			$tableName = $pom->getTableName();
+			unset($pom);
+			if(strlen($tableName)==0){
+				trigger_error("getAllEntity:: tato třída nemá správně vyplněný tableName ve funkci getTableName");
+				return false;
+			}
+		}else{
+			trigger_error("getAllEntity:: tato třída v systému neexistuje");
+			return false;
+		}
+
+		$table = $tableName;
+		$finalFilter = "";
+		if($filter && count($filter) > 0){
+			$finalFilter = self::processFilter($filter, $filterOR);
+		}
+
+		$result = $wpdb->get_var("SELECT count(id) FROM " . $table . " " . $finalFilter . " ");
+
+		return $result;
+	}
+
+	private static function processFilter($filter,$filterOR){
+		$index = 1;
+		$finalFilter = " WHERE ";
+		foreach ($filter as $key => $value){
+			if($value instanceof filterClass){
+				$finalFilter .= $value->createCondition();
+			}
+			if($index != count($filter)){
+				if($filterOR){
+					$finalFilter .= ' OR ';
+				}else{
+					$finalFilter .= ' AND ';
+				}
+			}
+			$index++;
+		}
+		return $finalFilter;
+	}
 
     public static function createEntity($className, $arrayOfParams){
 
@@ -147,6 +179,32 @@ class assetsFactory {
         return false;
     }
 
+
+    public static function getDial($classname, $propname, $value){
+    	$domainFilter = new filterClass('domain', '=',"'" . $classname . "'");
+    	$propFilter = new filterClass('property', '=',"'" . $propname . "'");
+    	$valueFilter = new filterClass('value', '=', $value);
+    	$filters = array($domainFilter, $propFilter, $valueFilter);
+    	$translation = self::getAllEntity("ciselnikClass",$filters);
+    	if(is_array($translation) && count($translation)==1){
+    		return array_shift($translation);
+	    }else{
+    		//trigger_error("getDial:: neočekávaný výsledek z DB");
+    		return false;
+	    }
+	}
+
+	public static function getAllDials($classname, $propname){
+		$domainFilter = new filterClass('domain', '=',"'" . $classname . "'");
+		$propFilter = new filterClass('property', '=',"'" . $propname . "'");
+		$filters = array($domainFilter, $propFilter);
+		$translation = self::getAllEntity("ciselnikClass",$filters);
+		if(is_array($translation) && count($translation)>0){
+			return $translation;
+		}else{
+			return array();
+		}
+	}
 
 
 

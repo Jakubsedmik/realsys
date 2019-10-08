@@ -1,5 +1,3 @@
-// Data Picker Initialization
-$('.datepicker').pickadate();
 
 function confirmPopup(element, action){
     if($(".confirmPopup").length){
@@ -40,4 +38,202 @@ $(document).ready(function () {
         e.preventDefault();
         confirmPopup(this, "submitForm");
     });
+
+    $("form").on("submit", function () {
+
+    });
+});
+
+$(window).on("load", function () {
+    initMap();
+});
+
+
+
+/* BOOTSTRAP MDB SELECT */
+$(document).ready(function() {
+    $('.mdb-select').materialSelect();
+    jQuery.extend( jQuery.fn.pickadate.defaults, {
+        monthsFull: [ 'leden', 'únor', 'březen', 'duben', 'květen', 'červen', 'červenec', 'srpen', 'září', 'říjen', 'listopad', 'prosinec' ],
+        monthsShort: [ 'led', 'úno', 'bře', 'dub', 'kvě', 'čer', 'čvc', 'srp', 'zář', 'říj', 'lis', 'pro' ],
+        weekdaysFull: [ 'neděle', 'pondělí', 'úterý', 'středa', 'čtvrtek', 'pátek', 'sobota' ],
+        weekdaysShort: [ 'ne', 'po', 'út', 'st', 'čt', 'pá', 'so' ],
+        today: 'dnes',
+        clear: 'vymazat',
+        firstDay: 1,
+        format: 'd. mmmm yyyy',
+        formatSubmit: 't',
+        hiddenPrefix: 'db_',
+        hiddenSuffix: ''
+    });
+    $('.datepicker').pickadate();
+});
+
+
+
+var map;
+function initMap() {
+
+    // The map, centered at Uluru
+
+    var mapElement = $('.preview-map');
+    var lat = mapElement.attr("data-lat") || false;
+    var lng = mapElement.attr("data-lng") || false;
+
+    if(!lat || !lng ){
+        mapElement.addClass("no-cordinates");
+        return false;
+    }
+
+
+    lat = parseFloat(lat);
+    lng = parseFloat(lng);
+
+    var cords = {"lat": lat, "lng": lng};
+
+    console.log(cords);
+    var map = new google.maps.Map(
+        mapElement[0],
+        {
+            zoom: 4,
+            center: cords
+        }
+        );
+
+    // The marker, positioned at Uluru
+    var marker = new google.maps.Marker({position: cords, map: map});
+}
+
+
+/** FILE UPLOADER **/
+
+$(document).ready(function () {
+
+    var element = $(".js-fileUploader");
+
+    if(element.length > 0){
+
+        var input = element.find("input[type=file]");
+        var ajax_url = element.data("ajax-url") || '/realsys/wp-admin/admin-ajax.php';
+
+        console.log("Setting uploader");
+        FilePond.setOptions({
+            server: {
+                url: ajax_url,
+                method: 'POST',
+                process: {
+                    onload: function (response) {
+                        window.app.$children[0].fetchData();
+                    },
+                    ondata: function (formData) {
+                        formData.append('action', 'upload');
+                        return formData;
+                    }
+                }
+
+            },
+            allowMultiple: true,
+            maxParallelUploads : 3,
+            labelIdle : "<i class=\"far fa-image\"></i> Nahrajte nové obrázky <span class=\"filepond--label-action\"> Procházet </span>",
+            labelFileLoading : "Načítání",
+            labelFileProcessing : "Uploadování",
+            labelFileProcessingComplete : "Úspěšně nahráno na server",
+            labelFileProcessingAborted: "Zrušeno",
+            labelTapToCancel: "Klepněte pro zrušení",
+            labelTapToRetry: "Klepněte pro opakování",
+            allowRevert: false
+
+        });
+
+        var pond = FilePond.create( input[0] );
+    }
+
+
+    var singleFileUploader = $(".js-singleFileUploader");
+
+
+    if(singleFileUploader.length > 0){
+
+        var ajax_url = singleFileUploader.data("ajax-url") || '/realsys/wp-admin/admin-ajax.php';
+        var primaryName = singleFileUploader.data("property-name") || 'db_url';
+        var secondaryName = singleFileUploader.data("secondary-property-name") || 'db_kod';
+        var input = singleFileUploader.find("input[type=file]");
+
+        FilePond.setOptions({
+            server: {
+                url: ajax_url,
+                method: 'POST',
+                process: {
+                    onload: function (response) {
+                        response = JSON.parse(response);
+                        singleFileUploader.find(".js-singleFileUploaderImage").attr("src", response.default_url);
+                        singleFileUploader.find("input[name=" + primaryName + "]").val(response.default_url);
+                        singleFileUploader.find("input[name=" + secondaryName + "]").val(response.universal_name);
+                    },
+                    ondata: function (formData) {
+                        formData.append('action', 'upload');
+                        formData.append('onlyupload', true);
+                        return formData;
+                    }
+                }
+
+            },
+            allowMultiple: false,
+            labelIdle : "<i class=\"far fa-image\"></i> Nahrajte nový obrázek <span class=\"filepond--label-action\"> Procházet </span>",
+            labelFileLoading : "Načítání",
+            labelFileProcessing : "Uploadování",
+            labelFileProcessingComplete : "Úspěšně nahráno na server",
+            labelFileProcessingAborted: "Zrušeno",
+            labelTapToCancel: "Klepněte pro zrušení",
+            labelTapToRetry: "Klepněte pro opakování",
+            allowRevert: false
+
+        });
+
+        var pond = FilePond.create( input[0] );
+    }
+
+});
+
+
+/* SECONDARY MEDIA UPLOADER */
+
+jQuery(function($){
+
+    var imageContainer = $(".js-change-image-container");
+    var imageChanger = imageContainer.find(".js-change-image");
+    var imageValue = imageContainer.find(".js-change-image-value");
+    var imageHolder = imageContainer.find(".js-change-image-img");
+    var frame;
+    // ADD IMAGE LINK
+    imageChanger.on( 'click', function( event ){
+
+        event.preventDefault();
+
+        if ( frame ) {
+            frame.open();
+            return;
+        }
+
+        // Create a new media frame
+        frame = wp.media({
+            title: 'Vyberte obrázek',
+            button: {
+                text: 'Použít tento obrázek'
+            },
+            multiple: false  // Set to true to allow multiple files to be selected
+        });
+
+
+        frame.on( 'select', function() {
+            var attachment = frame.state().get('selection').first().toJSON();
+            imageHolder.attr("src",attachment.url);
+            imageValue.val(attachment.url);
+        });
+
+        // Finally, open the modal on click
+        frame.open();
+    });
+
+
 });

@@ -9,3 +9,5 @@ var app = new Vue({
         Inzeraty
     }
 });
+
+window.app = app;

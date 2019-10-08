@@ -24,10 +24,12 @@ class typeClass implements JsonSerializable {
 			}else{
 				$response = "Pole " . globalUtils::translate($this->key) . " není přítomno.";
 				frontendError::addMessage($this->key, ERROR, $response, $this);
+				$this->message = $response;
 				return false;
 			}
 		}else{
 			if($this->value == null){
+				$this->status = true;
 				return true;
 			}else{
 				return $this->typeValidator();
@@ -40,7 +42,10 @@ class typeClass implements JsonSerializable {
 		$status = true;
 		switch($this->type){
 			case 'int':
-				if(!ctype_digit($this->value)){
+				if(is_string($this->value)){
+					$this->value = (int)$this->value;
+				}
+				if(!is_int($this->value)){
 					$response = "Pole " . globalUtils::translate($this->key) . " není číslo.";
 					$status = false;
 					frontendError::addMessage($this->key, ERROR, $response, $this);
@@ -97,12 +102,21 @@ class typeClass implements JsonSerializable {
 				}
 				break;
 			case "bool" :
-				if(!is_bool($this->value)){
+				if(!is_bool($this->value) && !($this->value == 1 || $this->value == 0)){
 					$response =  "Pole" . globalUtils::translate($this->key) . " není logická hodnota";
 					$status = false;
 					frontendError::addMessage($this->key, ERROR, $response, $this);
 				}
 				break;
+			case "image" :
+
+				if(!Tools::isValidUrl($this->value)){
+					$response =  "Pole" . globalUtils::translate($this->key) . " není obrázek";
+					$status = false;
+					frontendError::addMessage($this->key, ERROR, $response, $this);
+				}
+				break;
+
 		}
 		$this->status = $status;
 		$this->message = $response;
@@ -121,7 +135,8 @@ class typeClass implements JsonSerializable {
 			'key' => $this->key,
 			'value' => $this->value,
 			'type' => $this->type,
-			'required' => $this->required
+			'required' => $this->required,
+			'message'=> $this->message
 		);
 		return $info;
 	}

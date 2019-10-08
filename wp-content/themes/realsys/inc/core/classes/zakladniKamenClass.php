@@ -15,6 +15,8 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
     
     // db vars, vždy mají prefix db_
     protected $db_id;
+    protected $db_datum_zalozeni;
+    protected $db_datum_upravy;
     
     
     // runtime vars, jsou určeny pouze k běhu applikace a nikam se neeukládají
@@ -28,13 +30,18 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
     private $maskingContextColumn; // název sloupce v maskovacíTabulce podle, kterého má být maskováno
     private $maskingContextValue; // hodnota sloupce v maskovacíTabulce podle, které má být provedena maska
     private $maskingJoinColumn; // název sloupce přes který se má vyhledávat maska - vazba na ID
+
+	private $subobjects; // proměnná sloužící k automatickému načítání struktur, které jsou k objektu přiřazené pomocí vazeb
     
     /*
      * Konstruktor základního Kamene
      */
     public function __construct($id) {
         $this->db_id = $id;
+        $this->db_datum_zalozeni = time();
+        $this->db_datum_upravy = time();
         $this->tableName = $this->getTableName();
+        $this->subobjects = array();
         
         $this->maskProperties = array();
         $this->maskTable = NULL;
@@ -89,6 +96,7 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
      */
     public function aktualizovat() {
         global $wpdb;
+        $this->db_datum_upravy = time();
         $db_properties = $this->vratDbPromenne();
 
         if(!$this->valid){
@@ -256,6 +264,19 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
      */
     public function __get($name) {
         return $this->$name;
+    }
+
+    /*
+     * Get pro subobjekty
+     */
+    public function getSubobject($name){
+
+	    if(isset($this->subobjects[$name])){
+		    return $this->subobjects[$name];
+	    }else{
+		    return $this->loadRelatedObjects($name . "Class");
+	    }
+
     }
     
     /*
@@ -433,7 +454,9 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
                 $db_properties[$newkey] = $newvalue; 
             }
         }
-        if(!$this->ignoreInterface){
+
+
+        /*if(!$this->ignoreInterface){
             global $INTERFACE_DATA;
             if(isset($INTERFACE_DATA[get_class($this)])){
 
@@ -448,9 +471,29 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
                 }
                 return $output;
             }    
+        }*/
+
+        $interface = $this->getInterfaceTypes();
+        $json_properties = array();
+
+        foreach ($interface as $key => $val){
+	        if(isset($db_properties[$key])){
+		        $json_properties[$key] = array(
+			        "value" => $db_properties[$key],
+			        "type" => $val
+		        );
+	        }elseif(is_null($db_properties[$key])){
+		        $json_properties[$key] = array(
+			        "value" => '(hodnota nedostupná)',
+			        "type" => $val
+		        );
+	        }
         }
+
+
+
         
-        return $db_properties;
+        return $json_properties;
         
     }
 
@@ -485,9 +528,174 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
 
     }
 
+    // metoda sloužící pro fulltext search, prohledá celý objekt (datové proměné a pokud nalezne shodu vrátí true)
+    public function findMe($value){
+    	$db_properties = $this->vratDbPromenne();
+    	foreach ($db_properties as $key => $val){
+    		if(strpos($val, $value)!== false){
+    			return true;
+		    }
+	    }
+    	return false;
+    }
 
-        // predpis implementaci
+	/*
+	 * Metoda vrací pole, která specifikují typy jednotlivých sloupečků a jak se mají zobrazit např v ajax datatable
+	 * pořadí jednotlivých polí určuje pořadí i na samotném datatable. Metoda tyto data přebírá z konfigurace nicméně
+	 * každá třída si ji může přepsat a vyspecifikovat
+	 * array(
+	 *  db_id => array(
+	 *          "type" => INT,
+	 *          "value" => 5
+	 *      )
+	 * )
+	 */
+	public function getInterfaceTypes(){
+		global $field_rules;
+		$classname = get_class($this);
+		if(isset($field_rules[$classname])){
+			$class_field_rules = $field_rules[$classname];
+			if(is_array($class_field_rules)){
+				$interface = array();
+				foreach ($class_field_rules as $key => $val){
+					if(property_exists($this, $key)){
+						$interface[$key] = $val["type"];
+					}
+				}
+				return $interface;
+			}else{
+				trigger_error("getInterfaceTypes:: Špatný formát specifikovaného interfacu");
+				return array();
+			}
+		}else{
+			trigger_error("getInterfaceTypes:: objekt nemá v konfiguraci specifikovaný interface");
+			return array();
+		}
+	}
+
+
+	// vrací zdali existují nějaké vztahy k danému objektu a o jaké se jedná
+	protected function getRelations(){
+		global $relationships;
+		$classname = get_class($this);
+		if(isset($relationships[$classname])){
+			$relation = $relationships[$classname];
+			return $relation;
+		}
+		return false;
+	}
+
+	// metoda která se pokusí na základě konfigurace vztahů natáhnout do objektu přidružené objekty, natahuje jak vztah 1:N tak vztah N:1
+	public function loadRelatedObjects($objectName=false){
+		$relations = $this->getRelations();
+		if($objectName){
+			$relations = array_filter($relations, function($obj,$key) use ($objectName){
+				if(!$objectName){return true;}
+				if($obj['class'] == $objectName){ return true;}
+				return false;
+			},ARRAY_FILTER_USE_BOTH);
+			if(count($relations)==1){
+				$index = array_keys($relations);
+				$index = array_shift($index);
+				$key = $this->$index;
+
+				$relation = array_shift($relations);
+				$subObjKey = str_replace("class", "", $relation['class']);
+
+				$children = assetsFactory::getEntity($relation['class'],$key);
+				$this->subobjects[$subObjKey] = $children;
+				return $children;
+			}else {
+				global $relationships;
+				if(isset($relationships[$objectName])){
+					$relations = array_filter($relationships, function($obj,$key) use ($objectName){
+						if($key == $objectName){ return true;}
+						return false;
+					},ARRAY_FILTER_USE_BOTH);
+
+
+					if(count($relations)==1){
+						$relation = array_shift($relations);
+						$key = array_keys($relation);
+						$key = array_shift($key);
+						$key = str_replace("db_","",$key);
+
+						$filter = new filterClass($key,"=",$this->getId());
+						$children = assetsFactory::getAllEntity($objectName, array($filter));
+
+						$subObjKey = str_replace("class", "", $objectName);
+						$this->subobjects[$subObjKey] = $children;
+						return $children;
+					}else{
+						trigger_error("loadRelatedObjects:: pro zadaný název objektu nexistuje žádné pravidlo nebo jich existuje více");
+					}
+				}
+			}
+			return false;
+		}
+
+		if(is_array($relations)){
+			foreach ($relations as $index => $value){
+				if(property_exists($this, $index)){
+					if(class_exists($value['class'])){
+						$subObjKey = str_replace("class", "", $value['class']);
+						$key = $this->$index;
+						$this->subobjects[$subObjKey] = assetsFactory::getEntity($value['class'],$key);
+					}
+				}
+			}
+		}
+
+		global $relationships;
+		foreach ($relationships as $index => $value){
+			$classname = get_class($this);
+			$relations = array_filter($value, function($obj,$key) use ($classname){
+				if($obj['class'] == $classname){ return true;}
+				return false;
+			},ARRAY_FILTER_USE_BOTH);
+
+			if(count($relations)==1){
+
+				$key = array_keys($relations);
+				$key = array_shift($key);
+				$key = str_replace("db_","",$key);
+
+				$filter = new filterClass($key,"=",$this->getId());
+				$children = assetsFactory::getAllEntity($index, array($filter));
+
+				$subObjKey = str_replace("class", "", $index);
+				$this->subobjects[$subObjKey] = $children;
+			}
+		}
+		return true;
+	}
+
+	// metoda která překládá různé stav do hodnot přebraných z číselníků
+	public function writeDials(){
+		global $dials;
+		$classname = get_class($this);
+		if(isset($dials[$classname])){
+			$dials = $dials[$classname];
+			foreach ($dials as $propname){
+				if(property_exists($this,$propname)){
+					$value = $this->$propname;
+					if(!is_null($value)){
+						$translation = assetsFactory::getDial($classname, $propname, $value);
+						if($translation !== false){
+							$this->set_not_update($propname, $translation->db_translation);
+						}
+					}
+				}else{
+					trigger_error("V konfiguraci je chyba, atribut číselníku objekt nemá");
+				}
+			}
+		}
+	}
+
+
+	// predpis implementaci
     protected abstract function zakladniVypis();
     protected abstract function zakladniHtmlVypis();
-    protected abstract function getTableName();
+    public abstract function getTableName();
+
 }

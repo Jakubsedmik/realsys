@@ -116,4 +116,10 @@ abstract class controller {
         trigger_error("Nebyla specifikována akce, spouštím základní akci.");
         $this->action();
     }
+
+    public function getInstanceOrPostData($instanceName, $key){
+    	if(Tools::checkPresenceOfParam($this->requestData, $key)){
+
+	    }
+    }
 }

@@ -4,12 +4,16 @@
         <div :class="{waitingForData: !this.dataReady() || this.appWorking, mainApp: true}">
             <!-- Material input -->
             <div class="row justify-content-sm-end">
-                <div class="md-form input-group mb-3 col-sm-4">
+                <div class="col-sm-3 currentlySearched" v-if="this.currentSearchTerm.length > 0">
+                    <strong>Vyhledávaný výraz:</strong> {{this.currentSearchTerm}}
+                    <i class="far fa-times-circle" @click="resetServerSearch()"></i>
+                </div>
+                <form class="md-form input-group mb-3 col-sm-4" @submit.prevent="findOnServer()">
                     <input type="text" id="search_term" class="form-control" @keyup="search($event)" placeholder="Hledaný výraz">
                     <div class="input-group-append">
-                        <button class="btn btn-md btn-secondary m-0 px-3" type="button" id="MaterialButton-addon2" @click.prevent="findOnServer()">Dohledat na serveru</button>
+                        <button class="btn btn-md btn-secondary m-0 px-3" type="submit" id="MaterialButton-addon2" @click.prevent="findOnServer()">Dohledat na serveru</button>
                     </div>
-                </div>
+                </form>
             </div>
             <div class="fshr-filterBar" v-if="filters.length > 0">
                 <div class="grd-row">
@@ -41,10 +45,11 @@
                 <tr v-for="radek in radkyComputed">
                     <td v-for="bunka in radek" class="align-middle">
 
-                        <img :src="bunka.value" v-if="bunka.type=='image'">
+                        <img :src="bunka.value" v-if="bunka.type=='image'" class="img-fluid img-thumbnail datatable-img">
                         <div class="fas fa-check" v-else-if="bunka.type=='boolean' && bunka.value"></div>
                         <div class="fas fa-times" v-else-if="bunka.type=='boolean' && !bunka.value"></div>
                         <div class="fshr-icon fshr-icon--plus" v-else-if="bunka.type=='ajax_get_subinfo'"></div>
+                        <span v-else-if="bunka.type=='date'">{{timeConverter(bunka.value)}}</span>
                         <span v-else>{{bunka.value}}</span>
                     </td>
                     <td>
@@ -92,6 +97,7 @@
                         <a class="page-link">Last</a></li>
                 </ul>
             </nav>
+
         </div>
     </div>
 </template>
@@ -100,6 +106,9 @@
 <script>
     import axios from 'axios';
     import VueAxios from 'vue-axios';
+
+
+
     export default {
         name: "Inzeraty",
         props: {
@@ -107,7 +116,8 @@
             'model':{default:'inzeratyClass'},
             'item_controller':{default:'inzeratyController'},
             'allowed_columns':{default:{}},
-            'base_url' : {default: '/realsys/wp-admin/admin.php?page=realsys'}
+            'base_url' : {default: '/realsys/wp-admin/admin.php?page=realsys'},
+            'sub_params': {default: '?'}
             },
         created: function(){
             this.fetchData();
@@ -118,7 +128,7 @@
                 sortParam: "",
                 sortOrder: "",
                 searchParam: "",
-                page: 2,
+                page: 1,
                 countPage: 4,
                 maxPageCount: 5,
                 // přesunout filtery do atributů
@@ -138,9 +148,10 @@
                         ]
                     }
                 },
-                filters_val: {},
+                filters_val: {}, // todo vyřešit filtery
                 appWorking: false,
-                stylesUrl: process.env.HOME_URL
+                stylesUrl: process.env.HOME_URL,
+                currentSearchTerm: ""
 
 
             }
@@ -160,12 +171,14 @@
                 return ((this.sortOrder == "desc") && this.sortParam==index) ? true : false;
             },
             fetchData: function(){
+
+                /* TODO dodělat co když žádné výsledky nenajde, potom padá */
                 var _this = this;
                 this.appData = null;
-                var getUrl = this.api_url + "?model=" + this.model + "&countPage=" + _this.countPage + "&page=" + _this.page;
+                var getUrl = this.api_url + this.sub_params + "&model=" + this.model + "&countPage=" + _this.countPage + "&page=" + _this.page;
 
-                if(this.searchParam.length > 0){
-                    getUrl += "&searchParam=" + this.searchParam;
+                if(this.currentSearchTerm.length > 0){
+                    getUrl += "&search=" + this.currentSearchTerm;
                 }
 
                 if(Object.keys(this.filters_val).length > 0){
@@ -227,6 +240,8 @@
             },
             findOnServer: function(){
                 this.page = 1;
+                $("#search_term").val("");
+                this.currentSearchTerm = this.searchParam;
                 this.fetchData();
 
             },
@@ -263,7 +278,28 @@
             },
             editLink: function (id) {
                 return this.base_url + '&controller=' + this.item_controller + '&action=edit&id=' + id;
+            },
+            resetServerSearch: function(){
+                this.currentSearchTerm = "";
+                this.searchParam = "";
+                $("#search_term").val("");
+                this.fetchData();
+            },
+            timeConverter: function(UNIX_timestamp){
+                console.log(UNIX_timestamp);
+                var a = new Date(UNIX_timestamp * 1000);
+                //var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+                var year = a.getFullYear();
+                var month = a.getMonth()+1;
+                var date = a.getDate();
+                var min = a.getMinutes() < 10 ? '0' + a.getMinutes() : a.getMinutes();
+                var sec = a.getSeconds() < 10 ? '0' + a.getSeconds() : a.getSeconds();
+                var hour = a.getHours() < 10 ? '0' + a.getHours() : a.getHours();
+                var time = date + '.' + month + '.' + year + ' - ' + hour + ':' + min + ':' + sec ;
+                console.log(time);
+                return time;
             }
+
         },
         computed:{
             radkyComputed : function () {
@@ -387,6 +423,20 @@
     .mainApp{
         padding: 0px 15px;
         border: 1px solid #dee2e6;
+    }
+
+    .currentlySearched{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .currentlySearched i{
+        cursor: pointer;
+    }
+
+    .datatable-img{
+        width: 70px;
     }
 
 </style>
