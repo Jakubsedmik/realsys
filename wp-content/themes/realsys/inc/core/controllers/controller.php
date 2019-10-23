@@ -75,12 +75,16 @@ abstract class controller {
         echo "</code>";
         echo "</pre>";
     }
-    
+
+
+    /*
+     * Slouží k získávání dat z postu např při vytváření nových instancí
+     */
     protected function getPostData($key){
         if(isset($this->requestData[$key])){
             return $this->requestData[$key];
         }
-        return false;
+        return "";
     }
 
 

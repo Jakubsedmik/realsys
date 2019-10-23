@@ -9,13 +9,14 @@
 	</div>
 	<div class="app">
         <inzeraty
-                api_url="/realsys/wp-admin/admin-ajax.php?action=getElements"
+                api_url="/realsys/wp-admin/admin-ajax.php"
                 base_url="<?php echo ADMIN_BASE_URL ?>" model="uzivatelClass"
                 item_controller="uzivatel"
+                sub_params="?action=getElements"
         ></inzeraty>
 	</div>
 	<div class="container-fluid">
 		<a href="<?php echo ADMIN_BASE_URL;?>" class="btn btn-amber mt-3"><i class="fas fa-chevron-left mr-1"></i> Zpět na rozcestník</a>
-        <a href="" class="btn btn-success mt-3"><i class="fas fa-plus-circle"></i> Vytvořit uživatele</a>
+        <a href="<?php echo Tools::getRoute("uzivatelClass","create"); ?>" class="btn btn-success mt-3"><i class="fas fa-plus-circle"></i> Vytvořit uživatele</a>
 	</div>
 </div>

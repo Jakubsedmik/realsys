@@ -52,7 +52,7 @@ class typeClass implements JsonSerializable {
 				}
 				break;
 			case 'str':
-				if(!is_string($this->value)){
+				if(!is_string($this->value) || strlen($this->value) == 0){
 					$response =  "Pole " . globalUtils::translate($this->key) . " není řetězec.";
 					$status = false;
 					frontendError::addMessage($this->key, ERROR, $response, $this);

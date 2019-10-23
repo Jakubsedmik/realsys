@@ -17,6 +17,6 @@
 	</div>
 	<div class="container-fluid">
 		<a href="<?php echo ADMIN_BASE_URL;?>" class="btn btn-amber mt-3"><i class="fas fa-chevron-left mr-1"></i> Zpět na rozcestník</a>
-        <a href="" class="btn btn-success mt-3"><i class="fas fa-plus-circle"></i> Vytvořit objednávku</a>
+        <a href="<?php echo Tools::getRoute("objednavkaClass","create") ?>" class="btn btn-success mt-3"><i class="fas fa-plus-circle"></i> Vytvořit objednávku</a>
 	</div>
 </div>

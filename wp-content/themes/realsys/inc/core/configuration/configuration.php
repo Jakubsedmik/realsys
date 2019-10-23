@@ -218,7 +218,33 @@ $field_rules = array(
 		'db_top' => array(
 			'required' => true,
 			'type' => NUMBER
+		),
+		'db_stav_inzeratu' => array(
+			'required' => true,
+			'type' => NUMBER
 		)
+	),
+	"ciselnikClass" => array(
+		'db_id' => array(
+			'type' => NUMBER,
+			'required' => false
+		),
+		'db_domain' => array(
+			'type' => STRING,
+			'required' => false
+		),
+		'db_property' => array(
+			'type' => STRING,
+			'required' => false
+		),
+		'db_value' => array(
+			'type' => NUMBER,
+			'required' => false
+		),
+		'db_translation' => array(
+			'type' => STRING,
+			'required' => false
+		),
 	)
 );
 
@@ -255,7 +281,11 @@ $dictionary = array(
 	'db_typ_stavby' => "Typ stavby",
 	'db_typ_inzeratu' => "Typ inzerátu",
 	'db_parkovaci_misto' => "Parkovací místo",
-	'db_top' => "Top"
+	'db_top' => "Top",
+	'db_domain' => "Doména",
+	'db_property' => "Vlastnost",
+	'db_value' => "Hodnota",
+	'db_translation' => "Překlad"
 );
 
 
@@ -311,6 +341,15 @@ $dials = array(
 		'db_stav'
 	)
 
+);
+
+
+// clasess
+
+$classes = array(
+	'inzeratClass' => "Inzerát",
+	'obrazekClass' => "Obrázek",
+	'uzivatelClass' => "Uživatel"
 );
 
 require_once __DIR__ . "/configuration_images.php";

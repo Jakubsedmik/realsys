@@ -32,4 +32,24 @@ class objednavkaController extends controller {
 		$this->setView("upravObjednavku");
 		$this->performView();
 	}
+
+	public function create(){
+
+		if(Tools::checkPresenceOfParam("vytvorit", $this->requestData)){
+			$request_data = $this->requestData;
+			$response = Tools::formProcessor(
+				array("db_cena", "db_mnozstvi", "db_inzerat_id"),
+				$request_data,
+				'objednavkaClass',
+				'create'
+			);
+
+			if($response === true){
+				$this->requestData = array();
+			}
+		}
+
+		$this->setView("vytvoritObjednavku");
+		$this->performView();
+	}
 }

@@ -156,6 +156,7 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
             if($isOk){
                 return true;
             }else {
+
                 trigger_error("Nepodařilo se vložit objekt :: vytvorit");
             }
         }else {
@@ -500,7 +501,11 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
 
     public function populateClass($arrayOfParams){
         foreach ($arrayOfParams as $key => $value) {
-            $new_key = "db_" . $key;
+        	if(strstr($key, "db_")==false){
+                $new_key = "db_" . $key;
+	        }else{
+        		$new_key = $key;
+	        }
             if(property_exists(get_class($this), $new_key)){
 	            if($this->valid){
 		            $this->valid = $this->checkValidity($new_key, $value);

@@ -80,11 +80,21 @@ function uploadFile(){
 	if(is_object($response)){
 		$universal_name = $response->universal_name;
 		$default_url = $response->default_url;
-		assetsFactory::createEntity("obrazekClass", array(
-			'url' => $default_url,
-			'kod' => $universal_name
-		));
-		wp_send_json(frontendError::getJSONErrors());
+
+		if(Tools::checkPresenceOfParam("id",$_POST)){
+			$obrazek = assetsFactory::createEntity("obrazekClass", array(
+				'url' => $default_url,
+				'kod' => $universal_name,
+				'inzerat_id' => $_POST['id']
+			));
+		}else{
+			$obrazek = assetsFactory::createEntity("obrazekClass", array(
+				'url' => $default_url,
+				'kod' => $universal_name
+			));
+		}
+
+		$response->db_id = $obrazek->getId();
 	}
 	wp_send_json($response);
 	die();

@@ -5,6 +5,7 @@
 		<h5 class="card-header blue-gradient white-text text-center py-4">
 			<strong>Editace objednávky</strong>
 			<p class="mb-0 text-white">Zde můžete upravit objednávku</p>
+            <a class="position-absolute admin-nav" href="<?php echo Tools::getRoute("objednavkaClass"); ?>"><i class="fas fa-bars"></i> Zpět na výpis</a>
 		</h5>
 
 		<!--Card content-->
@@ -25,9 +26,6 @@
 					<label for="db_mnozstvi">Množství</label>
 				</div>
 				<!-- Připojený inzerát -->
-				<?php
-					globalUtils::writeDebug($this->viewData['objednavka']);
-				?>
 				<?php echo Tools::getSelectBoxForEntities("inzeratClass", $this->viewData['objednavka']->db_inzerat_id, array('db_id', 'db_titulek'),'Inzerát','db_inzerat_id'); ?>
 
 				<div class="form-row">

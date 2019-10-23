@@ -34,4 +34,27 @@ class uzivatelController extends controller {
 		$this->setView("upravUzivatele");
 		$this->performView();
 	}
+
+
+	public function create(){
+
+		if(Tools::checkPresenceOfParam("vytvorit", $this->requestData)){
+			$request_data = $this->requestData;
+			$response = Tools::formProcessor(
+				array("db_jmeno", "db_prijmeni","db_email",
+					"db_telefon", "db_popis", "db_fbid", "db_gmid", "db_stav",
+					"db_avatar"),
+				$request_data,
+				'uzivatelClass',
+				'create'
+			);
+
+			if($response === true){
+				$this->requestData = array();
+			}
+		}
+
+		$this->setView("vytvoritUzivatele");
+		$this->performView();
+	}
 }

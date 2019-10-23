@@ -291,7 +291,7 @@ class Tools {
                             $entity->aktualizovat();
                         }
                     }
-                    if(strlen($callbackSuccess) > 0){
+                    if(strlen($callbackSuccess) > 0 && function_exists($callbackFail)){
 	                    $callbackSuccess($entity, $source);
                     }
                     frontendError::addMessage("Úspěch", SUCCESS, "Úspěšně uloženo");
@@ -308,7 +308,10 @@ class Tools {
             }
             if($action == 'create'){
                 $entity = assetsFactory::createEntity($className, $db_properties);
-                $callbackSuccess($entity, $source);
+                if(strlen($callbackSuccess) > 0 && function_exists($callbackSuccess)){
+                    $callbackSuccess($entity, $source);
+                }
+	            frontendError::addMessage("Úspěch", SUCCESS, "Úspěšně vytvořeno");
                 return true;
 
             }
@@ -536,13 +539,44 @@ class Tools {
 
     public static function generateImageVariations($mages, $destination){
 	    global $image_sizes;
-	    globalUtils::writeDebug($image_sizes);
     }
 
 
 
 
     /* HTML TOOLS */
+
+    /*
+     * struktura
+     * array(
+     *  neco => 'neco'
+     * )
+     */
+	public static function getSelectBoxForCustom($dataFrom, $property, $currentValue, $label='Výběr', $id="vyber",$search_label='Vyhledávání', $dataPrefixed = false){
+
+		$output = '<select id="' . $id . '" name="' . $id .'" class="mdb-select md-form mt-0" searchable="' . $search_label . '">';
+		$output .= '<option value="" disabled selected>' . $label . '</option>';
+		foreach ($dataFrom as $key => $value){
+		    if($dataPrefixed !== false){
+			    $new_key = str_replace($dataPrefixed, "",$key);
+			    if($currentValue == $new_key) {
+
+				    $output .= '<option selected value="' . $new_key . '">' . $value . '</option>';
+			    }else{
+				    $output .= '<option value="' . $new_key . '">' .  $value . '</option>';
+			    }
+            }else{
+                if($key == $currentValue) {
+                    $output .= '<option selected value="' . $key . '">' . $value . '</option>';
+                }else{
+                    $output .= '<option value="' . $key . '">' .  $value . '</option>';
+                }
+		    }
+		}
+		$output .= '</select>';
+		return $output;
+	}
+
 
     public static function getSelectBoxForDials($classname, $property, $currentValue, $label='Výběr', $id="vyber",$search_label='Vyhledávání'){
         $allPossibleDials = assetsFactory::getAllDials($classname, $property);

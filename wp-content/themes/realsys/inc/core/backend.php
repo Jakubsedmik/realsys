@@ -52,8 +52,8 @@ function adminHeaders($hook){
 		wp_enqueue_script("mdb_min_js", $pluginUrl . "/assets/js/js_backend/src/mdb.js", array("bootstrap_min_js"), VERSION_LINKS, true);
 		wp_enqueue_script("base_js", $pluginUrl . "/assets/js/js_backend/src/main.js", array("jquery_min_js"), VERSION_LINKS, true);
 		wp_enqueue_script("jquery_ui_js", $pluginUrl . "/assets/js/js_backend/src/jquery-ui.js", array("jquery_min_js"), VERSION_LINKS, true);
-		wp_enqueue_script("vue_js", "https://cdn.jsdelivr.net/npm/vue/dist/vue.js", array(), VERSION_LINKS, true);
-		wp_enqueue_script("bundle_js", $pluginUrl . "/assets/js/js_backend/dist/bundle.js", array("vue_js"), VERSION_LINKS, true);
+		//wp_enqueue_script("vue_js", "https://cdn.jsdelivr.net/npm/vue/dist/vue.js", array(), VERSION_LINKS, true);
+		wp_enqueue_script("bundle_js", $pluginUrl . "/assets/js/js_backend/dist/bundle.js", array("jquery"), VERSION_LINKS, true);
 		wp_enqueue_script("filepond_js", $pluginUrl . "/assets/js/js_backend/src/filepond.js", array("jquery"), VERSION_LINKS, true);
 	}
 

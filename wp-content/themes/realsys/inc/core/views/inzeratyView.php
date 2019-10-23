@@ -9,13 +9,14 @@
 	</div>
 	<div class="app">
 		<inzeraty
-			api_url="<?php echo AJAXURL ?>?action=getElements"
+			api_url="<?php echo AJAXURL ?>"
 			base_url="<?php echo ADMIN_BASE_URL ?>" model="inzeratClass"
 			item_controller="inzeraty"
+            sub_params="?action=getElements"
 		></inzeraty>
 	</div>
 	<div class="container-fluid">
 		<a href="<?php echo ADMIN_BASE_URL;?>" class="btn btn-amber mt-3"><i class="fas fa-chevron-left mr-1"></i> Zpět na rozcestník</a>
-        <a href="" class="btn btn-success mt-3"><i class="fas fa-plus-circle"></i> Vytvořit inzerát</a>
+        <a href="<?php echo Tools::getRoute('inzeratClass','create'); ?>" class="btn btn-success mt-3"><i class="fas fa-plus-circle"></i> Vytvořit inzerát</a>
 	</div>
 </div>

@@ -5,6 +5,7 @@
 	<h5 class="card-header info-color white-text text-center py-4">
 		<strong>Editace inzerátu</strong>
 		<p class="mb-0 text-white">Zde můžete upravit inzerát</p>
+        <a class="position-absolute admin-nav" href="<?php echo Tools::getRoute("inzeratClass"); ?>"><i class="fas fa-bars"></i> Zpět na výpis</a>
 	</h5>
 
 	<!--Card content-->
@@ -72,7 +73,7 @@
 				</div>
 
                 <div class="col">
-					<?php echo Tools::switcher("Ano","Ne", "Garáž", 1, "db_parkovaci_misto", $this->viewData['inzerat']->db_parkovaci_misto); ?>
+					<?php echo Tools::switcher("Ano","Ne", "Parkovací místo", 1, "db_parkovaci_misto", $this->viewData['inzerat']->db_parkovaci_misto); ?>
                 </div>
 
 				<div class="col">
@@ -85,6 +86,11 @@
 			<div class="md-form mt-2">
 				<?php echo Tools::getSelectBoxForDials('inzeratClass', 'stav_objektu', $this->viewData['inzerat']->db_stav_objektu,'Stav objektu','db_stav_objektu'); ?>
 			</div>
+
+            <!-- Stav inzerátu -->
+            <div class="md-form mt-2">
+				<?php echo Tools::getSelectBoxForDials('inzeratClass', 'stav_inzeratu', $this->viewData['inzerat']->db_stav_inzeratu,'Stav inzerátu','db_stav_inzeratu'); ?>
+            </div>
 
 			<!-- Podlahová plocha -->
 			<div class="md-form">
@@ -186,6 +192,9 @@
 </div>
 <!-- Material form register -->
 
+</div>
+<div class="app">
+    <Obrazky></Obrazky>
 </div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDU9RxWxpRRoy9R-wAILv5Owb7GaXHLVaw"
