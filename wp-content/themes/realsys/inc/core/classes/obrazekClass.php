@@ -29,7 +29,8 @@ class obrazekClass extends zakladniKamenClass {
 			"db_id" => "number",
 			"db_url" => "image",
 			"db_titulek" => "string",
-			"db_popisek" => "string"
+			"db_popisek" => "string",
+			"db_front" => "bool"
 
 		);
 	}

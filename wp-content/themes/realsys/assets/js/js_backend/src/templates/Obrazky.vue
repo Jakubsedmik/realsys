@@ -3,17 +3,22 @@
         <div class="container">
             <h3 class="mt-4 mb-0">Editace obrázků</h3>
             <p class="mb-3">Editujte obrázky vztažené k inzerátu</p>
-            <div class="imagesBox">
-                <div :class="{imageItem: true, mainImageItem: obrazek.db_top}" v-for="obrazek in obrazky" v-bind:key="obrazek.db_id">
-                    <span class="removeImage" @click="removeItem(obrazek.db_id)"><i class="fas fa-times"></i> </span>
+            <div :class="{'imagesBox': true, 'loading': isLoading}">
+
+                <div v-if="obrazky.length > 0" :class="{imageItem: true, mainImageItem: (obrazek.db_front.value==1)}" v-for="obrazek in obrazky" v-bind:key="obrazek.db_id.value">
+                    <span class="removeImage" @click="removeItem(obrazek.db_id.value)"><i class="fas fa-times"></i> </span>
                     <figure class="imgWrap">
-                        <img :src="obrazek.db_url">
+                        <img :src="obrazek.db_url.value">
                     </figure>
-                    <input type="text" v-model="obrazek.db_titulek" v-on:change="setParam('db_titulek', obrazek.db_id)" class="caption">
-                    <input type="text" v-model="obrazek.db_popisek" v-on:change="setParam('db_popisek', obrazek.db_id)" class="description">
-                    <a class="editLink" href=""><i class="fas fa-edit"></i></a>
-                    <div :class="{checker:true, checked: obrazek.db_top}" @click="check(obrazek.db_id)"></div>
+                    <input type="text" v-model="obrazek.db_titulek.value" v-on:change="setParam('db_titulek', obrazek.db_id.value)" class="caption" ref="input">
+                    <input type="text" v-model="obrazek.db_popisek.value" v-on:change="setParam('db_popisek', obrazek.db_id.value)" class="description" ref="input">
+                    <a class="editLink" :href="edit_link + '&id=' + obrazek.db_id.value"><i class="fas fa-edit"></i></a>
+                    <div :class="{checker:true, checked: (obrazek.db_front.value==1)}" @click="check(obrazek.db_id.value)"></div>
                 </div>
+                <div v-if="obrazky.length==0" class="empty-yet">
+                    <span>Zatím žádné obrázky</span>
+                </div>
+
             </div>
             <file-pond
                     name="files"
@@ -41,48 +46,13 @@
         components: {
             FilePond
         },
+        created: function(){
+            this.fetchData();
+        },
         data: function () {
             return {
-                obrazky: [
-                    {
-                        'db_id' : 1,
-                        'db_url' : 'https://i.pinimg.com/736x/2a/f9/2f/2af92f1353153e78cf08cf4df5e92104.jpg',
-                        'db_titulek' : 'Speciální titulek',
-                        'db_popisek' : 'Speciální popisek',
-                        'db_top' : 1
-                    },
-                    {
-                        'db_id' : 2,
-                        'db_url' : 'https://i.pinimg.com/736x/2a/f9/2f/2af92f1353153e78cf08cf4df5e92104.jpg',
-                        'db_titulek' : 'Speciální titulek',
-                        'db_popisek' : 'Speciální popisek',
-                        'db_top' : 0
-                    },
-                    {
-                        'db_id' : 3,
-                        'db_url' : 'https://i.pinimg.com/736x/2a/f9/2f/2af92f1353153e78cf08cf4df5e92104.jpg',
-                        'db_titulek' : 'Speciální titulek',
-                        'db_popisek' : 'Speciální popisek',
-                        'db_top' : 0
-                    },
-                    {
-                        'db_id' : 4,
-                        'db_url' : 'https://i.pinimg.com/736x/2a/f9/2f/2af92f1353153e78cf08cf4df5e92104.jpg',
-                        'db_titulek' : 'Speciální titulek',
-                        'db_popisek' : 'Speciální popisek',
-                        'db_top' : 0
-                    },
-                    {
-                        'db_id' : 5,
-                        'db_url' : 'https://i.pinimg.com/736x/2a/f9/2f/2af92f1353153e78cf08cf4df5e92104.jpg',
-                        'db_titulek' : 'Speciální titulek',
-                        'db_popisek' : 'Speciální popisek',
-                        'db_top' : 0
-                    }
-                ],
-                isLoading: false,
-                id: 1
-
+                obrazky: [],
+                isLoading: true
             }
         },
         props: {
@@ -90,82 +60,219 @@
                 default: 5
             },
             'api_link' : {
-                default: ''
+                default: '/realsys/wp-admin/admin-ajax.php'
             },
             'sub_params': {
-                default: ''
+                default: function (){
+                    return {
+                        action: 'getInzeratObrazky'
+                    }
+                }
+            },
+            'edit_link': {
+                default: '/realsys/wp-admin/admin.php?page=realsys&controller=obrazek&action=edit'
+            },
+            'loading_delay':{
+                default: 1500
             }
         },
         methods: {
             removeItem : function (key) {
-                this.obrazky = this.obrazky.filter(function (value, index) {
-                    if(key == value.db_id){
-                        return false;
-                    }
-                    return true;
+                var element = $('<div></div>');
+                confirmPopup(element, "confirmed");
+                var _this = this;
+                element.on("confirmed", function (e) {
+                    _this.obrazky = _this.obrazky.filter(function (value, index) {
+                        if(key == value.db_id.value){
+                            _this.removePic(key);
+                            return false;
+                        }
+                        return true;
+                    });
                 });
+
+
             },
             check : function (id) {
+                var _this = this;
                 this.obrazky.forEach(function (value, index) {
-                    if(value.db_id == id){
-                        value.db_top = 1;
+                    if(value.db_id.value == id){
+                        value.db_front.value = 1;
+                        _this.updateParam(id,"db_front", 1);
                     }else{
-                        value.db_top = 0;
+                        value.db_front.value = 0;
                     }
                 })
             },
             setParam(param, id){
-                console.log(param, id);
-                var value = this.obrazky.filter(function (val, index) {
-                    if(val.db_id == id){
-                        return true;
-                    }else{
-                        return false;
+                var toupdate = [];
+                this.obrazky.forEach(function (val) {
+                    if(val.db_id.value == id){
+                        toupdate.push(val);
                     }
                 });
-                value = value.shift();
-                console.log("you should change id" + id + " parameter: " + param + " newvalue " + value);
+                toupdate = toupdate.shift();
+                var newValue = toupdate[param].value;
+                this.updateParam(id, param, newValue);
+                this.$refs.input.forEach(function (obj) {
+                   $(obj).blur();
+                });
+            },
+            updateParam: function(id, param, newValue){
+                this.isLoading = true;
+                var postUrl = this.api_link;
+                var params = new URLSearchParams();
+                params.append('id', id);
+                params.append('param', param);
+                params.append('new_value', newValue);
+                params.append('action', "setParam");
+                var _this = this;
+
+                axios.post(postUrl, params).then(function (response) {
+                    if (response){
+                        if(typeof response.data == "object"){
+                            if(response.data.status = 1){
+                                _this.isLoading = false;
+                            }else{
+                                console.error("Status is fail");
+                            }
+                        }else{
+                            console.error("Data is not type of Object");
+                        }
+                    }
+                }).catch(function (error) {
+                    console.error(error);
+                });
+
             },
             handleFileUploaded(response){
                 if(response.length > 0){
                     response = JSON.parse(response);
                     if(response.status == 1){
                         this.obrazky.push({
-                            'db_id' : response.db_id,
-                            'db_url' : response.default_url,
-                            'db_titulek' : "",
-                            'db_popisek' : "",
-                            'db_top': 0
+                            'db_id' : {value: response.db_id, type:"number"},
+                            'db_url' : {value: response.default_url, type: "string"},
+                            'db_titulek' : {value: response.universal_name, type: "string"},
+                            'db_popisek' : {value:"", type:"string"},
+                            'db_front': {value:0, type:"bool"}
                         });
                     }else{
                         alert("Došlo k chybě při vytváření obrázků");
                     }
                 }
             },
-            subParams(formData){
+            uploadSubParams(formData){
                 formData.append('action', 'upload');
-                formData.append('id', this.id);
+                formData.append('id', this.inzerat_id);
                 return formData;
             },
             serverConfig: function () {
                 return {
                     process: {
-                        url: '/realsys/wp-admin/admin-ajax.php',
+                        url: this.api_link,
                         method: 'POST',
                         withCredentials: false,
                         headers: {},
                         timeout: 7000,
                         onload: this.handleFileUploaded,
-                        ondata: this.subParams
+                        ondata: this.uploadSubParams
                     }
                 };
+            },
+            fetchData: function () {
+                this.obrazky = [];
+                var getUrl = this.api_link;
+                var _this = this;
+
+                if(getUrl.search("\\?") !== -1){
+                    getUrl += this.encodeQueryData(this.sub_params);
+                }else{
+                    getUrl += "?" + this.encodeQueryData(this.sub_params);
+                }
+
+                getUrl+= '&id=' + this.inzerat_id;
+
+                setTimeout(function () {
+                    axios.get(getUrl).then(function (response) {
+                        if (response){
+                            _this.isLoading = false;
+                            if(typeof response.data == "object"){
+                                if(response.data.status = 1 && response.data.hasOwnProperty('obrazky')){
+                                    for(var i in response.data.obrazky){
+                                        _this.obrazky.push(response.data.obrazky[i]);
+                                    }
+
+                                }else{
+                                    console.error("Bad data structure - missing obrazky or status is fail");
+                                }
+                            }else{
+                                console.error("Data is not type of Object");
+                            }
+                        }
+                    }).catch(function (error) {
+                        console.error(error);
+                    });
+                },this.loading_delay);
+
+            },
+            encodeQueryData: function(data) {
+                const ret = [];
+                for (let d in data)
+                    ret.push(encodeURIComponent(d) + '=' + encodeURIComponent(data[d]));
+                return ret.join('&');
+            },
+            removePic: function (id) {
+                this.isLoading = true;
+                var postUrl = this.api_link;
+                var params = new URLSearchParams();
+                params.append('id', id);
+                params.append('action', "removePic");
+                var _this = this;
+
+                axios.post(postUrl, params).then(function (response) {
+                    if (response){
+
+                        if(typeof response.data == "object"){
+                            if(response.data.status = 1){
+                                _this.isLoading = false;
+                            }else{
+                                console.error("Status is fail");
+                            }
+                        }else{
+                            console.error("Data is not type of Object");
+                        }
+                    }
+                }).catch(function (error) {
+                    console.error(error);
+                });
             }
         }
 
     }
 </script>
 
-<style scoped>
+<style scoped lang="less">
+
+    @website: "http://localhost/realsys/";
+
+
+    .loading{
+        position: relative;
+    }
+    .loading:after{
+        content: '';
+        background-image: url("@{website}wp-content/themes/realsys/assets/images/images_backend/loading.gif");
+        position: absolute;
+        top: 0;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        background-color: rgba(255,255,255,0.5);
+        background-position: center;
+        background-size: unset;
+        background-repeat: no-repeat;
+    }
+
     .imagesBox{
         display: flex;
         flex-wrap: wrap;
@@ -283,6 +390,21 @@
 
     .imageItem.mainImageItem .editLink{
         color: white;
+    }
+
+    .empty-yet{
+        min-height: 300px;
+        text-align: center;
+        color: #000;
+
+    }
+
+    .empty-yet {
+        display: flex;
+        justify-content: center;
+        margin-top: 35px;
+        font-size: 25px;
+        width: 100%;
     }
 
 

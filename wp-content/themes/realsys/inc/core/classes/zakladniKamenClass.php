@@ -677,18 +677,31 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
 
 	// metoda která překládá různé stav do hodnot přebraných z číselníků
 	public function writeDials(){
-		global $dials;
+		global $dials, $localDials;
 		$classname = get_class($this);
 		if(isset($dials[$classname])){
-			$dials = $dials[$classname];
-			foreach ($dials as $propname){
+			$dials_new = $dials[$classname];
+			foreach ($dials_new as $propname){
 				if(property_exists($this,$propname)){
+					$prop_name = str_replace("db_", "",$propname);
 					$value = $this->$propname;
 					if(!is_null($value)){
-						$translation = assetsFactory::getDial($classname, $propname, $value);
+						$translation = assetsFactory::getDial($classname, $prop_name, $value);
 						if($translation !== false){
 							$this->set_not_update($propname, $translation->db_translation);
 						}
+					}
+				}else{
+					trigger_error("V konfiguraci je chyba, atribut číselníku objekt nemá");
+				}
+			}
+		}elseif(isset($localDials[$classname])){
+			$prop_names = $localDials[$classname];
+			foreach ($prop_names as $key => $val){
+				if(property_exists($this, $key)){
+					$prop_value = $this->$key;
+					if(isset($val[$prop_value])){
+						$this->set_not_update($key, $val[$prop_value]);
 					}
 				}else{
 					trigger_error("V konfiguraci je chyba, atribut číselníku objekt nemá");

@@ -4,7 +4,10 @@ $api_actions = array(
 	'removeElement' => 'removeElement',
 	'getElements' => 'getElements',
 	'getElement' => 'getElement',
-	'upload' => 'uploadFile'
+	'upload' => 'uploadFile',
+	'getInzeratObrazky' => 'getInzeratObrazky',
+	'setParam' => 'setObrazkyParam',
+	'removePic' => 'removeObrazek'
 );
 
 
@@ -195,4 +198,71 @@ function getElements (){
 	}
 
 
+}
+
+function getInzeratObrazky(){
+	$response = new stdClass();
+	if(Tools::checkPresenceOfParam("id", $_GET)){
+		$id = $_GET['id'];
+		$filter = array();
+		$filter[] = new filterClass("inzerat_id","=", $id);
+		$obrazky = assetsFactory::getAllEntity("obrazekClass",$filter);
+		$response->status = 1;
+		$response->obrazky = $obrazky;
+	}else{
+		$response->status = 0;
+	}
+
+	wp_send_json($response);
+	die();
+}
+
+function setObrazkyParam(){
+	$response = new stdClass();
+	if(Tools::checkPresenceOfParam("id", $_POST) && Tools::checkPresenceOfParam("param", $_POST) && Tools::checkPresenceOfParam("new_value",$_POST)){
+		$id = $_POST['id'];
+		$param = $_POST['param'];
+		$new_value = $_POST['new_value'];
+
+		$obrazek = assetsFactory::getEntity("obrazekClass",$id);
+		if($param == "db_front"){
+			$filter = array();
+			$inzerat_id = $obrazek->db_inzerat_id;
+			$filter[] = new filterClass("inzerat_id", "=", $inzerat_id);
+			$obrazky = assetsFactory::getAllEntity("obrazekClass",$filter);
+			foreach ($obrazky as $key => $value){
+				$value->db_front = 0;
+			}
+		}
+		$obrazek->$param = $new_value;
+
+		$response->status = 1;
+		$response->message = "Uloženo";
+	}else{
+		$response->status = 0;
+		$response->message = "Chybějící parametry";
+	}
+	wp_send_json($response);
+	die();
+}
+
+
+function removeObrazek(){
+	$response = new stdClass();
+	if(Tools::checkPresenceOfParam("id", $_POST)){
+		$id = $_POST['id'];
+		$result = assetsFactory::removeEntity("obrazekClass",$id);
+		if($result){
+			$response->status = 1;
+			$response->message = "Smazáno";
+		}else{
+			$response->status = 0;
+			$response->message = "Došlo k chybě při mazání";
+		}
+	}else{
+		$response->status = 0;
+		$response->message = "Chybějící parametry";
+	}
+	wp_send_json($response);
+	die();
 }

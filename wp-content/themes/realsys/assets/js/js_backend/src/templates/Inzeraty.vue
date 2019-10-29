@@ -83,7 +83,7 @@
             <nav aria-label="Page navigation example" v-if="showPagination()">
                 <ul class="pagination pg-blue">
                     <li class="page-item" @click="setPage(1)">
-                        <a class="page-link">First</a>
+                        <a class="page-link">První</a>
                     </li>
                     <li
                             v-for="paging in filterPaginationNumbers()"
@@ -94,7 +94,7 @@
                     </li>
 
                     <li class="page-item" @click="setPage(showPagination())">
-                        <a class="page-link">Last</a></li>
+                        <a class="page-link">Poslední</a></li>
                 </ul>
             </nav>
 
@@ -368,7 +368,7 @@
 
 <style scoped lang="less">
 
-    @website: "https://blb.cz";
+    @website: "http://localhost/realsys/";
 
     p {
         font-size: 35px;

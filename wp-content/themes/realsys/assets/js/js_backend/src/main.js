@@ -23,8 +23,11 @@ function confirmPopup(element, action){
         if(action && {}.toString.call(action) === '[object Function]'){
             action();
         }else{
-            window[action](element);
+            if(window.hasOwnProperty(action)){
+                window[action](element);
+            }
         }
+        element.trigger(action);
         confirmPopUpElement.fadeOut(300);
     });
 

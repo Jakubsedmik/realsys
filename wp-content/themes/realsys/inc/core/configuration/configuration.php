@@ -285,7 +285,8 @@ $dictionary = array(
 	'db_domain' => "Doména",
 	'db_property' => "Vlastnost",
 	'db_value' => "Hodnota",
-	'db_translation' => "Překlad"
+	'db_translation' => "Překlad",
+	'db_front' => "Náhledový obrázek"
 );
 
 
@@ -309,6 +310,9 @@ $models = array(
 	),
 	"ciselnikClass" => array(
 		"backendController" => "stav"
+	),
+	"grafy" => array(
+		"backendController" => "graf"
 	)
 );
 
@@ -341,6 +345,15 @@ $dials = array(
 		'db_stav'
 	)
 
+);
+
+$localDials = array(
+	'obrazekClass' => array(
+		'db_front' => array(
+			0 => "Ne",
+			1 => "ANO"
+		)
+	)
 );
 
 

@@ -176,8 +176,13 @@
                 </div>
 			</div>
 
-			<div class="">
-				<?php echo Tools::getSelectBoxForEntities("uzivatelClass", $this->viewData['inzerat']->db_uzivatel_id, array('db_id', 'db_jmeno', 'db_prijmeni'),'Založil uživatel','db_uzivatel_id'); ?>
+			<div class="form-row">
+                <div class="col-10">
+				    <?php echo Tools::getSelectBoxForEntities("uzivatelClass", $this->viewData['inzerat']->db_uzivatel_id, array('db_id', 'db_jmeno', 'db_prijmeni'),'Založil uživatel','db_uzivatel_id'); ?>
+                </div>
+                <div class="col-2">
+                    <a href="<?php echo Tools::getRoute("uzivatelClass","edit",$this->viewData['inzerat']->db_uzivatel_id) ?>" class="btn btn-sm btn-secondary btn-block">Detail</a>
+                </div>
 			</div>
 
 			<!-- Sign up button -->
@@ -194,7 +199,11 @@
 
 </div>
 <div class="app">
-    <Obrazky></Obrazky>
+    <Obrazky
+            inzerat_id="<?php echo $this->viewData['inzerat']->getId(); ?>"
+            api_link="<?php echo AJAXURL; ?>"
+            edit_link="<?php echo Tools::getRoute("obrazekClass","edit"); ?>"
+    ></Obrazky>
 </div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDU9RxWxpRRoy9R-wAILv5Owb7GaXHLVaw"

@@ -155,6 +155,37 @@
             <!-- Card -->
         </div>
 
+        <div class="col-sm-12 col-md-6">
+            <!-- Card -->
+            <div class="card card-cascade wider p-0">
+
+                <!-- Card image -->
+                <div class="view view-cascade gradient-card-header dusty-grass-gradient">
+
+                    <!-- Title -->
+                    <h2 class="card-header-title mb-3 text-white">Grafy a reporty</h2>
+                    <!-- Text -->
+                    <p class="mb-0"><i class="fas fa-chart-area"></i> Grafické znázornění dat</p>
+
+                </div>
+
+                <!-- Card content -->
+                <div class="card-body card-body-cascade text-center">
+
+                    <!-- Text -->
+                    <p class="card-text">Počty objednávek, počty inzerátů a revenue</p>
+                    <!-- Link -->
+                    <a href="<?php echo Tools::getRoute("grafy"); ?>" class="orange-text d-flex flex-row-reverse p-2">
+                        <h5 class="waves-effect waves-light">Grafy<i class="fas fa-angle-double-right ml-2"></i></h5>
+                    </a>
+
+                </div>
+                <!-- Card content -->
+
+            </div>
+            <!-- Card -->
+        </div>
+
     </div>
 
 </div>
