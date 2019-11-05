@@ -26574,4 +26574,14 @@ button.md-toast-close-button {
   font-size: 12px;
   color: white!important;
 }
+.filepond--drop-label,
+.filepond--drop-label label {
+  cursor: pointer!important;
+}
+.userAdsContainer {
+  margin-bottom: 15px!important;
+}
+.userAdsContainer .container-fluid {
+  padding-right: 15px!important;
+}
 /*# sourceMappingURL=main.css.map */

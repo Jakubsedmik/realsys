@@ -56,7 +56,7 @@
 							<input type="text" id="db_kod" name="db_kod" class="form-control" value="<?php echo $this->viewData['obrazek']->dejData('db_kod'); ?>">
 							<label for="db_kod">Kód názvu</label>
 						</div>
-                        <div class="form-row">
+                        <div class="form-row js-detail-button">
                             <div class="col-10">
 						        <?php echo Tools::getSelectBoxForEntities("inzeratClass", $this->viewData['obrazek']->db_inzerat_id, array('db_id', 'db_titulek'),'Inzerát','db_inzerat_id'); ?>
                             </div>

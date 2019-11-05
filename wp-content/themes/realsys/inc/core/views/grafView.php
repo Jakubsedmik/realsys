@@ -1,7 +1,7 @@
 <div class="border p-5 mr-3">
 	<div class="container-fluid">
 		<h1>
-			<i class="fas fa-home"></i> Grafy a reporty
+			<i class="fas fa-chart-area"></i> Grafy a reporty
 		</h1>
 		<p class="lead">
 			Kompletní analýza současných prodejů a nových inzerátů
@@ -28,7 +28,7 @@
 
 			</div>
 		</div>
-
+		<hr>
 		<div class="row">
 			<div class="col-sm-6">
 				<div class="p-2 bg-success">
@@ -41,16 +41,21 @@
 			</div>
 
 			<div class="col-sm-6">
-				<div class="p-2 bg-success">
-					<h4 class="text-white text-center">Vytvořených obrázků za posledních 30 dní</h4>
+				<div class="p-2 bg-warning">
+					<h4 class="text-white text-center">Vytvořených uživatelů za posledních 30 dní</h4>
 				</div>
 				<?php
-					echo $this->getGraph("pocet_obr", "Počet obrázků", "obrazekClass", time() - 24 * 60 * 60 * 30, time(),"d.m.Y" );
+					echo $this->getGraph("pocet_uziv", "Počet uživatelů", "uzivatelClass", time() - 24 * 60 * 60 * 30, time(),"d.m.Y", false, 'line', 'rgba(255, 187, 51, 0.5)', '#ffbb33', 2);
 				?>
 
 			</div>
 
 		</div>
+		<hr>
 
 	</div>
+	<div class="container-fluid">
+		<a href="<?php echo ADMIN_BASE_URL;?>" class="btn btn-amber mt-3"><i class="fas fa-chevron-left mr-1"></i> Zpět na rozcestník</a>
+	</div>
 </div>
+

@@ -30,4 +30,15 @@ class uzivatelClass extends zakladniKamenClass {
 		return "s7_uzivatel";
 	}
 
+	public function getInterfaceTypes() {
+		return array(
+			"db_id" => "number",
+			"db_jmeno" => "string",
+			"db_prijmeni" => "string",
+			"db_email" => "string",
+			"db_telefon" => "string"
+
+		);
+	}
+
 }

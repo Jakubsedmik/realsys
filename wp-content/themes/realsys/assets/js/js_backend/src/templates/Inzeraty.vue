@@ -25,7 +25,7 @@
                     </div>
                 </div>
             </div>
-            <table id="dt-material-checkbox" class="table table-striped fshr-dynamicDataTable" cellspacing="0" width="100%">
+            <table id="dt-material-checkbox" class="table table-striped fshr-dynamicDataTable" cellspacing="0" width="100%" v-if="radkyComputed.length > 0">
                 <thead>
                 <tr>
                     <th v-for="th in hlavickyComputed" class="sorting">
@@ -80,6 +80,7 @@
                 </tr>
                 </tfoot>
             </table>
+            <div v-else class="no-records">Žádné záznamy</div>
             <nav aria-label="Page navigation example" v-if="showPagination()">
                 <ul class="pagination pg-blue">
                     <li class="page-item" @click="setPage(1)">
@@ -194,9 +195,10 @@
                     axios.get(getUrl).then(function (response) {
                         if (response)
                             if(typeof response.data == "object"){
-                                if(response.data.hasOwnProperty("radky") && response.data.radky[0].hasOwnProperty("db_id")){
+                                if(response.data.hasOwnProperty("radky") && response.data.radky.length>0 && response.data.radky[0].hasOwnProperty("db_id")){
                                     _this.appData = response.data;
                                 }else{
+                                    _this.appData = response.data;
                                     console.error("Bad data structure - missing radky, or db_id");
                                 }
                             }else{
@@ -437,6 +439,14 @@
 
     .datatable-img{
         width: 70px;
+    }
+
+    .no-records{
+        padding: 15px;
+        text-align: center;
+        font-weight: bold;
+        background-color: whitesmoke;
+        margin-bottom: 20px;
     }
 
 </style>

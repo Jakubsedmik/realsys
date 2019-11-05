@@ -34,6 +34,9 @@ class inzeratClass extends zakladniKamenClass {
 
 	protected $db_top;
 
+	protected $db_cena;
+	protected $db_cena_poznamka;
+
 
 
 

@@ -27,7 +27,9 @@ function confirmPopup(element, action){
                 window[action](element);
             }
         }
-        element.trigger(action);
+        if(typeof action == "string"){
+            element.trigger(action);
+        }
         confirmPopUpElement.fadeOut(300);
     });
 
@@ -135,9 +137,10 @@ $(document).ready(function () {
                 }
 
             },
+            maxFiles: 10,
             allowMultiple: true,
             maxParallelUploads : 3,
-            labelIdle : "<i class=\"far fa-image\"></i> Nahrajte nové obrázky <span class=\"filepond--label-action\"> Procházet </span>",
+            labelIdle : "<i class=\"far fa-image\"></i> Nahrajte nové obrázky (maximálně 10 v jednu chvíli) <span class=\"filepond--label-action\"> Procházet </span>",
             labelFileLoading : "Načítání",
             labelFileProcessing : "Uploadování",
             labelFileProcessingComplete : "Úspěšně nahráno na server",
@@ -240,3 +243,43 @@ jQuery(function($){
 
 
 });
+
+
+/* JS DETAIL BUTTON */
+jQuery(function($){
+    $("body").on("change" , ".js-detail-button select", function (e) {
+        var parent = $(this).closest(".js-detail-button");
+        var href = parent.find("a.btn").attr("href");
+        href = updateURLParameter(href, 'id', $(this).val());
+        parent.find("a.btn").attr("href", href).removeClass("disabled");
+    });
+
+    var href = $(".js-detail-button a.btn").attr("href");
+    if(href && href.search("id")== -1){
+        $(".js-detail-button a.btn").addClass("disabled");
+    }
+
+});
+
+
+/* URL CHANGER */
+
+function updateURLParameter(url, param, paramVal){
+    var newAdditionalURL = "";
+    var tempArray = url.split("?");
+    var baseURL = tempArray[0];
+    var additionalURL = tempArray[1];
+    var temp = "";
+    if (additionalURL) {
+        tempArray = additionalURL.split("&");
+        for (var i=0; i<tempArray.length; i++){
+            if(tempArray[i].split('=')[0] != param){
+                newAdditionalURL += temp + tempArray[i];
+                temp = "&";
+            }
+        }
+    }
+
+    var rows_txt = temp + "" + param + "=" + paramVal;
+    return baseURL + "?" + newAdditionalURL + rows_txt;
+}

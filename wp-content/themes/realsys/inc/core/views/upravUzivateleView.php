@@ -112,6 +112,18 @@
 			<!-- Form -->
 
 		</div>
+        <div class="p-3 text-center border-top">
+            <h3>Inzeráty uživatele</h3>
+            <p class="mb-0">Zde vidíte inzeráty, které uživatel vytvořil</p>
+        </div>
+        <div class="app mt-3 mb-2 userAdsContainer">
+            <inzeraty
+                    api_url="<?php echo AJAXURL ?>"
+                    base_url="<?php echo ADMIN_BASE_URL ?>" model="inzeratClass"
+                    item_controller="inzeraty"
+                    sub_params="?action=getElements&db_uzivatel_id=<?php echo $this->viewData['uzivatel']->getId(); ?>"
+            ></inzeraty>
+        </div>
 
 	</div>
 	<!-- Material form register -->

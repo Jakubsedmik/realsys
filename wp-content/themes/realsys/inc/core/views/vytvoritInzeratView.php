@@ -1,4 +1,8 @@
+
 <div class="container">
+	<?php if(isset($this->requestData['continue'])) : ?>
+        <a href="<?php echo $this->requestData['continue']; ?>" class="btn btn-secondary mt-2 mb-2"><i class="fas fa-upload mr-2"></i> Pokračovat k nahrání fotografií k inzerátu</a>
+	<?php endif; ?>
 	<!-- Material form register -->
 	<div class="card p-0 mw-100">
 
@@ -25,6 +29,18 @@
 					<textarea id="db_popis" name="db_popis" class="md-textarea form-control"><?php echo $this->getPostData('db_popis'); ?></textarea>
 					<label for="db_popis">Popisek</label>
 				</div>
+
+                <!--Cena-->
+                <div class="md-form">
+                    <input type="number" id="db_cena" name="db_cena" class="form-control" value="<?php echo $this->getPostData('db_cena'); ?>">
+                    <label for="db_cena">Cena</label>
+                </div>
+
+                <!--Cena poznámka-->
+                <div class="md-form">
+                    <input type="text" id="db_cena_poznamka" name="db_cena_poznamka" class="form-control" value="<?php echo $this->getPostData('db_cena_poznamka'); ?>">
+                    <label for="db_cena_poznamka">Poznámka k ceně</label>
+                </div>
 
 
 				<!-- Typ nemovitosti -->

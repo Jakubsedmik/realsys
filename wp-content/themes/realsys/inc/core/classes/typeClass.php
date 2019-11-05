@@ -9,117 +9,181 @@ class typeClass implements JsonSerializable {
 	protected $status;
 	protected $message;
 
-	public function __construct($key, $value, $required, $type) {
-		$this->key = $key;
-		$this->value = $value;
+	public function __construct( $key, $value, $required, $type ) {
+		$this->key      = $key;
+		$this->value    = $value;
 		$this->required = $required;
-		$this->type = $type;
+		$this->type     = $type;
 		$this->isValid();
 	}
 
-	public function isValid(){
-		if($this->required){
-			if($this->value !== null){
+	public function isValid() {
+		if ( $this->required ) {
+			if ( $this->value !== null ) {
 				return $this->typeValidator();
-			}else{
-				$response = "Pole " . globalUtils::translate($this->key) . " není přítomno.";
-				frontendError::addMessage($this->key, ERROR, $response, $this);
+			} else {
+				$response = "Pole " . globalUtils::translate( $this->key ) . " není přítomno.";
+				frontendError::addMessage( $this->key, ERROR, $response, $this );
 				$this->message = $response;
+
 				return false;
 			}
-		}else{
-			if($this->value == null){
+		} else {
+			if ( $this->value == null ) {
 				$this->status = true;
+
 				return true;
-			}else{
+			} else {
 				return $this->typeValidator();
 			}
 		}
 	}
 
-	public function typeValidator(){
+	public function typeValidator() {
 		$response = "";
-		$status = true;
-		switch($this->type){
+		$status   = true;
+		switch ( $this->type ) {
+
+			/* NUMERIC FILTERS */
 			case 'int':
-				if(is_string($this->value)){
-					$this->value = (int)$this->value;
-				}
-				if(!is_int($this->value)){
-					$response = "Pole " . globalUtils::translate($this->key) . " není číslo.";
-					$status = false;
-					frontendError::addMessage($this->key, ERROR, $response, $this);
-				}
-				break;
-			case 'str':
-				if(!is_string($this->value) || strlen($this->value) == 0){
-					$response =  "Pole " . globalUtils::translate($this->key) . " není řetězec.";
-					$status = false;
-					frontendError::addMessage($this->key, ERROR, $response, $this);
-				}
-				break;
-			case 'date':
-				$custom_date = $this->value;
-				$custom_date = str_replace(".","-",$custom_date);
-				if(strtotime($custom_date) === false){
-					$response =  "Pole " . globalUtils::translate($this->key) . " není datum.";
-					$status = false;
-					frontendError::addMessage($this->key, ERROR, $response, $this);
-				}
-				break;
-			case 'tel':
-				if(!preg_match(REGEX_TELEPHONE, $this->value)){
-					$response =  "Pole " . globalUtils::translate($this->key) . " není ve správném formátu.";
-					frontendError::addMessage($this->key, ERROR, $response , $this);
-				}
-				break;
-			case 'url' :
-				if(!Tools::isValidUrl($this->value)){
-					$response =  "Pole" . globalUtils::translate($this->key) . " není URL.";
-					$status = false;
-					frontendError::addMessage($this->key, ERROR, $response, $this);
-				}
-				break;
-			case "time" :
-				if(!preg_match(REGEX_TIME, $this->value)){
-					$response =  "Pole" . globalUtils::translate($this->key) . " není typu čas.";
-					$status = false;
-					frontendError::addMessage($this->key, ERROR, $response, $this);
-				}
-				break;
-			case "email" :
-				if(!preg_match(REGEX_EMAIL, $this->value)){
-					$response =  "Pole" . globalUtils::translate($this->key) . " není typu email.";
-					$status = false;
-					frontendError::addMessage($this->key, ERROR, $response, $this);
-				}
-				break;
-			case "array" :
-				if(!is_array($this->value)){
-					$response =  "Pole" . globalUtils::translate($this->key) . " není typu pole";
-					$status = false;
-					frontendError::addMessage($this->key, ERROR, $response, $this);
+				if ( ! $this->isInteger($this->value) ) {
+					$response = "Pole " . globalUtils::translate( $this->key ) . " není platné číslo.";
+					$status   = false;
+					frontendError::addMessage( $this->key, ERROR, $response, $this );
 				}
 				break;
 			case "bool" :
-				if(!is_bool($this->value) && !($this->value == 1 || $this->value == 0)){
-					$response =  "Pole" . globalUtils::translate($this->key) . " není logická hodnota";
-					$status = false;
-					frontendError::addMessage($this->key, ERROR, $response, $this);
+				if ( ! is_bool( $this->value ) && ! ( $this->value == 1 || $this->value == 0 ) ) {
+					$response = "Pole " . globalUtils::translate( $this->key ) . " není platná logická hodnota.";
+					$status   = false;
+					frontendError::addMessage( $this->key, ERROR, $response, $this );
 				}
 				break;
-			case "image" :
-
-				if(!Tools::isValidUrl($this->value)){
-					$response =  "Pole" . globalUtils::translate($this->key) . " není obrázek";
-					$status = false;
-					frontendError::addMessage($this->key, ERROR, $response, $this);
+			case "float" :
+				if ( $this->isFloat($this->value)) {
+					break;
+				}else{
+					$response = "Pole " . globalUtils::translate( $this->key ) . " není platné desetinné číslo.";
+					$status   = false;
+					frontendError::addMessage( $this->key, ERROR, $response, $this );
 				}
 				break;
 
+			/* TEXTUAL FILTERS */
+			case 'str63' :
+				if ( is_string( $this->value ) && strlen( $this->value ) < 64 ) {
+					break;
+				} else {
+					$response = "Pole " . globalUtils::translate( $this->key ) . " není řetězec o délce 63 znaků.";
+					$status   = false;
+					frontendError::addMessage( $this->key, ERROR, $response, $this );
+				}
+			case 'str255' :
+				if ( is_string( $this->value ) && strlen( $this->value ) < 256 ) {
+					break;
+				} else {
+					$response = "Pole " . globalUtils::translate( $this->key ) . " není řetězec o délce 255 znaků.";
+					$status   = false;
+					frontendError::addMessage( $this->key, ERROR, $response, $this );
+				}
+			case 'str511' :
+				if ( is_string( $this->value ) && strlen( $this->value ) < 512 ) {
+					break;
+				} else {
+					$response = "Pole " . globalUtils::translate( $this->key ) . " není řetězec o délce 511 znaků.";
+					$status   = false;
+					frontendError::addMessage( $this->key, ERROR, $response, $this );
+				}
+			case 'str':
+				if ( ! is_string( $this->value ) || strlen( $this->value ) == 0 ) {
+					$response = "Pole " . globalUtils::translate( $this->key ) . " není platný řetězec.";
+					$status   = false;
+					frontendError::addMessage( $this->key, ERROR, $response, $this );
+				}
+				break;
+
+			/* FUNCTIONAL FILTERS */
+			case 'date':
+				$custom_date = $this->value;
+				$custom_date = str_replace( ".", "-", $custom_date );
+				if ( strtotime( $custom_date ) === false ) {
+					$response = "Pole " . globalUtils::translate( $this->key ) . " není platné datum.";
+					$status   = false;
+					frontendError::addMessage( $this->key, ERROR, $response, $this );
+				}
+				break;
+			case 'tel':
+				if ( ! preg_match( REGEX_TELEPHONE, $this->value ) ) {
+					$response = "Pole " . globalUtils::translate( $this->key ) . " není ve správném formátu.";
+					$status   = false;
+					frontendError::addMessage( $this->key, ERROR, $response, $this );
+				}
+				break;
+			case 'url' :
+				if ( ! Tools::isValidUrl( $this->value ) ) {
+					$response = "Pole " . globalUtils::translate( $this->key ) . " není platná URL.";
+					$status   = false;
+					frontendError::addMessage( $this->key, ERROR, $response, $this );
+				}
+				break;
+			case "time" :
+				if ( ! preg_match( REGEX_TIME, $this->value ) ) {
+					$response = "Pole " . globalUtils::translate( $this->key ) . " není typu čas.";
+					$status   = false;
+					frontendError::addMessage( $this->key, ERROR, $response, $this );
+				}
+				break;
+			case "mail" :
+				if ( ! filter_var($this->value, FILTER_VALIDATE_EMAIL) ) {
+					$response = "Pole " . globalUtils::translate( $this->key ) . " není typu email.";
+					$status   = false;
+					frontendError::addMessage( $this->key, ERROR, $response, $this );
+				}
+				break;
+			case "array" :
+				if ( ! is_array( $this->value ) ) {
+					$response = "Pole " . globalUtils::translate( $this->key ) . " není typu pole.";
+					$status   = false;
+					frontendError::addMessage( $this->key, ERROR, $response, $this );
+				}
+				break;
+			case "price" :
+				if ( $this->isPrice( $this->value ) ) {
+					break;
+				} else {
+					$response = "Pole " . globalUtils::translate( $this->key ) . " není platná cena.";
+					$status   = false;
+					frontendError::addMessage( $this->key, ERROR, $response, $this );
+					break;
+				}
+			case 'timestamp' :
+				if ( $this->isTimestamp( $this->value ) ) {
+					break;
+				} else {
+					$response = "Pole " . globalUtils::translate( $this->key ) . " není platný časový údaj.";
+					$status   = false;
+					frontendError::addMessage( $this->key, ERROR, $response, $this );
+					break;
+				}
+			case 'fk' :
+				if ( $this->isForeignKey( $this->value ) ) {
+					break;
+				} else {
+					$response = "Pole " . globalUtils::translate( $this->key ) . " není platný cizí klíč.";
+					$status   = false;
+					frontendError::addMessage( $this->key, ERROR, $response, $this );
+				}
+			case 'url_rel' :
+				if ( ! preg_match( REGEX_URL_RELATIVE, $this->value ) ) {
+					$response = "Pole " . globalUtils::translate( $this->key ) . " není platná relativní cesta.";
+					$status   = false;
+					frontendError::addMessage( $this->key, ERROR, $response, $this );
+				}
+				break;
 		}
-		$this->status = $status;
+		$this->status  = $status;
 		$this->message = $response;
+
 		return $status;
 	}
 
@@ -132,12 +196,13 @@ class typeClass implements JsonSerializable {
 	 */
 	public function jsonSerialize() {
 		$info = array(
-			'key' => $this->key,
-			'value' => $this->value,
-			'type' => $this->type,
+			'key'      => $this->key,
+			'value'    => $this->value,
+			'type'     => $this->type,
 			'required' => $this->required,
-			'message'=> $this->message
+			'message'  => $this->message
 		);
+
 		return $info;
 	}
 
@@ -223,6 +288,28 @@ class typeClass implements JsonSerializable {
 	 */
 	public function setMessage( $message ) {
 		$this->message = $message;
+	}
+
+	public function isInteger( $integer ) {
+		$val = intval( $integer );
+		return ( $val == $integer ) && ( is_int( $val ) && $val < PHP_INT_MAX && $val > PHP_INT_MIN );
+	}
+
+	public function isFloat( $float ) {
+		$val = floatval( $float );
+		return ( $val == $float ) && ( is_float( $val ) && $val < PHP_FLOAT_MAX && $val > PHP_FLOAT_MIN );
+	}
+
+	public function isTimestamp( $timestamp ) {
+		return ( $this->isInteger( $timestamp ) && $timestamp > 0 );
+	}
+
+	public function isPrice( $price ) {
+		return ( $this->isInteger( $price ) && $price < PHP_INT_MAX && $price > 0 );
+	}
+
+	public function isForeignKey ( $key ){
+		return $this->isPrice($key);
 	}
 
 

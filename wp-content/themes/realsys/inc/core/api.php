@@ -1,13 +1,34 @@
 <?php
 
 $api_actions = array(
-	'removeElement' => 'removeElement',
-	'getElements' => 'getElements',
-	'getElement' => 'getElement',
-	'upload' => 'uploadFile',
-	'getInzeratObrazky' => 'getInzeratObrazky',
-	'setParam' => 'setObrazkyParam',
-	'removePic' => 'removeObrazek'
+	'removeElement' => array(
+		'callback' => 'removeElement',
+		'private' => true
+	),
+	'getElements' => array(
+		'callback' => 'getElements',
+		'private' => true
+	),
+	'getElement' => array(
+		'callback' => 'getElement',
+		'private' => true
+	),
+	'upload' => array(
+		'callback' => 'uploadFile',
+		'private' => true
+	),
+	'getInzeratObrazky' => array(
+		'callback' => 'getInzeratObrazky',
+		'private' => true
+	),
+	'setParam' => array(
+		'callback' => 'setObrazkyParam',
+		'private' => true
+	),
+	'removePic' => array(
+		'callback' => 'removeObrazek',
+		'private' => true
+	)
 );
 
 
@@ -148,6 +169,19 @@ function getElements (){
 	$count_page = $allrequest['countPage'];
 
 	// todo mělo by to umět akceptovat i filtery
+	$filters = array();
+	foreach ($allrequest as $key => $value){
+		if(property_exists($model, $key)){
+			$new_key = str_replace("db_","", $key);
+			$filters[$new_key] = $value;
+		}
+	}
+
+	$dbFilters = array();
+	foreach ($filters as $key => $value){
+		$dbFilters[] = new filterClass($key, "=", $value);
+	}
+
 
 
 	if(class_exists($model)){
@@ -157,7 +191,7 @@ function getElements (){
 
 		if(Tools::checkPresenceOfParam("search", $allrequest)){
 			$search = $allrequest['search'];
-			$items = assetsFactory::getAllEntity($model, null);
+			$items = assetsFactory::getAllEntity($model, $dbFilters);
 
 			$items = array_filter($items, function($obj, $index) use ($search){
 				return $obj->findMe($search);
@@ -168,8 +202,8 @@ function getElements (){
 
 		}else{
 
-			$items = assetsFactory::getAllEntity($model, null, $offset, $count_page);
-			$count = assetsFactory::getAllEntityCount($model, null);
+			$items = assetsFactory::getAllEntity($model, $dbFilters, $offset, $count_page);
+			$count = assetsFactory::getAllEntityCount($model, $dbFilters);
 
 		}
 

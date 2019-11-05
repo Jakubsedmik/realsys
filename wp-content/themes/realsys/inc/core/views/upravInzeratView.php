@@ -27,6 +27,18 @@
 				<label for="db_popis">Popisek</label>
 			</div>
 
+            <!--Cena-->
+            <div class="md-form">
+                <input type="number" id="db_cena" name="db_cena" class="form-control" value="<?php echo $this->viewData['inzerat']->dejData('db_cena'); ?>">
+                <label for="db_cena">Cena</label>
+            </div>
+
+            <!--Cena poznámka-->
+            <div class="md-form">
+                <input type="text" id="db_cena_poznamka" name="db_cena_poznamka" class="form-control" value="<?php echo $this->viewData['inzerat']->dejData('db_cena_poznamka'); ?>">
+                <label for="db_cena_poznamka">Poznámka k ceně</label>
+            </div>
+
 
 			<!-- Typ nemovitosti -->
 			<div class="md-form mt-0">
@@ -176,12 +188,12 @@
                 </div>
 			</div>
 
-			<div class="form-row">
+			<div class="form-row js-detail-button">
                 <div class="col-10">
 				    <?php echo Tools::getSelectBoxForEntities("uzivatelClass", $this->viewData['inzerat']->db_uzivatel_id, array('db_id', 'db_jmeno', 'db_prijmeni'),'Založil uživatel','db_uzivatel_id'); ?>
                 </div>
                 <div class="col-2">
-                    <a href="<?php echo Tools::getRoute("uzivatelClass","edit",$this->viewData['inzerat']->db_uzivatel_id) ?>" class="btn btn-sm btn-secondary btn-block">Detail</a>
+                    <a href="<?php echo Tools::getRoute("uzivatelClass","edit",$this->viewData['inzerat']->db_uzivatel_id)?>" class="btn btn-sm btn-secondary btn-block">Detail</a>
                 </div>
 			</div>
 
@@ -198,7 +210,7 @@
 <!-- Material form register -->
 
 </div>
-<div class="app">
+<div class="app" id="addImages">
     <Obrazky
             inzerat_id="<?php echo $this->viewData['inzerat']->getId(); ?>"
             api_link="<?php echo AJAXURL; ?>"

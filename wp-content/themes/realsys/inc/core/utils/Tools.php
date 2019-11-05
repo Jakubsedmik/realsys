@@ -10,6 +10,8 @@
  * @author Uzivatel
  */
 class Tools {
+
+    public static $last_created = false;
     
     /*
      * Kontroluje existenci proměné $what v poli $where
@@ -168,6 +170,7 @@ class Tools {
         if (parse_url($new_url, PHP_URL_SCHEME) != '') {
             return !(filter_var($new_url, FILTER_VALIDATE_URL) === false);
         }
+
         return false;
     }
 
@@ -300,7 +303,7 @@ class Tools {
                 }else{
                     trigger_error("formProcessor::ID není dostupné");
                     frontendError::addMessage("id", "ERROR", "Došlo k chybě!");
-	                if(strlen($callbackFail) > 0){
+	                if(is_object($callbackFail) || function_exists($callbackFail)){
 		                $callbackFail($source);
                     }
                     return false;
@@ -308,7 +311,9 @@ class Tools {
             }
             if($action == 'create'){
                 $entity = assetsFactory::createEntity($className, $db_properties);
-                if(strlen($callbackSuccess) > 0 && function_exists($callbackSuccess)){
+                self::$last_created = $entity;
+
+                if(is_object($callbackSuccess) || function_exists($callbackSuccess)){
                     $callbackSuccess($entity, $source);
                 }
 	            frontendError::addMessage("Úspěch", SUCCESS, "Úspěšně vytvořeno");

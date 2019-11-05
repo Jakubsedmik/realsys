@@ -23,12 +23,22 @@
             <file-pond
                     name="files"
                     allow-multiple="true"
-                    max-files="3"
-                    label-idle="Nahrajte další obrázky"
+                    max-files="10"
+                    label-idle="<i class='far fa-image'></i> Nahrajte nový obrázek (maximálně 10 v jednu chvíli) <span class='filepond--label-action'> Procházet </span>"
                     accepted-file-types="image/jpeg, image/png"
                     ref="pond"
-                    :server="serverConfig()"/>
-
+                    :server="serverConfig()"
+                    label-file-processing="Soubor je zpracováván"
+                    label-file-processing-complete="Nahrávání dokončeno"
+                    label-file-processing-aborted="Nahrávání zrušeno"
+                    label-file-processing-error="Chyba při nahrávání"
+                    label-tap-to-cancel="Klikněte pro zrušení"
+                    label-tap-to-retry="Klikněte pro opakování"
+                    label-tap-to-undo="Klikněte pro vrácení"
+                    label-button-abort-item-processing="Zrušit"
+                    label-button-process-item="Nahrát"
+                    allow-revert="false"
+            />
         </div>
     </form>
 </template>
