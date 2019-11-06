@@ -5,6 +5,6 @@ if(DEPLOYMENT){
 	);
 }else {
 	$routes = array(
-		'\/realsys\/new\/' => "zapissoutezController"
+		'\/realsys\/new\/' => "homeController"
 	);
 }

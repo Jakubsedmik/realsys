@@ -20,6 +20,7 @@ abstract class frontendController {
     protected $actionName;
     protected $view;
     protected $requestData;
+    protected $workData;
     protected $shortcodeData;
     
     public function __construct($actionName) {
@@ -27,6 +28,7 @@ abstract class frontendController {
         $this->actionName = $actionName;
         $this->view = $actionName . "View.php";
         $this->requestData = array();
+        $this->workData = array();
         $this->register();
         $this->registerRoute();
     }
@@ -60,8 +62,9 @@ abstract class frontendController {
 	    }, ARRAY_FILTER_USE_BOTH);
 
 	    if(count($routes_passed) > 0){
-	        add_filter("the_content", array($this, self::$afterHeadersMethod ));
-	        call_user_func(array($this, self::$beforeHeadersMethod));
+		    call_user_func(array($this, self::$beforeHeadersMethod));
+	    	add_filter("the_content", array($this, self::$afterHeadersMethod ));
+
 	    }
     }
 
@@ -126,11 +129,8 @@ abstract class frontendController {
 
 
     /* metoda která spouští věci před odesláním hlavičky */
-    public function beforeHeadersAction(){
-		if(method_exists($this, self::$beforeHeadersMethod)){
-			call_user_func(array($this, self::$beforeHeadersMethod));
-		}
-    }
+    public abstract function beforeHeadersAction();
+
 
     /* metoda která spouští věci po odeslání hlavičky */
     public function afterHeadersAction($the_content){
@@ -141,6 +141,7 @@ abstract class frontendController {
 
     /* metody které je třeba v controlleru implementovat*/
     public abstract function action();
+
 
     
 }

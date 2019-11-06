@@ -53,29 +53,33 @@ function s7_registrace_menu(){
 add_action( 'after_setup_theme', 's7_registrace_menu' );
 
 
+
+
 /*
- * Theme Supports
+ * Theme Supports & settings
  */
 
 add_theme_support("title_tag");
 add_theme_support('custom-logo', array(
     'height'      => 57,
     'width'       => 215,
-    'flex-height' => false,
+    'flex-width' => false,
+	'flex-height' => true
 ));
-add_theme_support( 'post-thumbnails' );
+add_theme_support( 'post-thumbnails', array("post", "page"));
+add_theme_support( 'html5' );
+//add_theme_support( 'automatic-feed-links' );
+
 set_post_thumbnail_size( 700, 500,true);
-add_theme_support( 'title-tag' );
 
-
-
-/*
- * Nastavení mailu aby byl HTML
- */
 function wpse27856_set_content_type(){
     return "text/html";
 }
 add_filter( 'wp_mail_content_type','wpse27856_set_content_type' );
+
+/* REMOVE EMOJIS */
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
 
 
 
