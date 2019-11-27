@@ -13,11 +13,24 @@ require_once (__DIR__ . '/Realsys_menu.php');
  */
 function s7_scripts_styles() {
 	if(!DEPLOYMENT){
+
+		// Pokud jsme na developmentu tak natahujeme všecko zvlášť abychom nemuseli spouštět bundler
+
+		// CSS - kompiluje ho automaticky LESS Watcher (při změně, ale dist nevytváří, nutno sepnout GULP)
 		wp_enqueue_style("main_css", site_url() . ASSETS_PATH . "css/css_frontend/src/main.css", array(), VERSION_LINKS);
+
+		// JS
 		wp_enqueue_script("main_js", site_url() . ASSETS_PATH . "js/js_frontend/src/main.js", array("jqeury_js"), VERSION_LINKS, true);
 		wp_enqueue_script("jquery_js", site_url() . ASSETS_PATH . "js/js_frontend/src/jquery-3.4.1.js", array(), VERSION_LINKS, true);
 	}else{
+
+		// Vše se kompiluje skrze GULP - gulp frontend_styles, gulp frontend_scripts - tyto úlohy
+		// packují všechno co se nachází v src a vytváří komplet file v dist
+
+		// CSS
 		wp_enqueue_style("main_css", site_url() . ASSETS_PATH . "css/css_frontend/dist/main.min.css", array(), VERSION_LINKS);
+
+		// JS
 		wp_enqueue_script("main_js", site_url() . ASSETS_PATH . "js/js_frontend/dist/main.min.js", array(), VERSION_LINKS, true);
 	}
 }
@@ -61,6 +74,56 @@ function s7_theme_editor($wp_customize){
 		'transport' => 'refresh',
 	) );
 
+	$wp_customize->add_setting( 'cta_hp_title' , array(
+		'default'   => 'NEPLAŤTE PROVIZI REALITCE,<br>KDYŽ NEMUSÍTE',
+		'transport' => 'refresh',
+	) );
+
+	$wp_customize->add_setting( 'cta_hp_subtitle' , array(
+		'default'   => 'S námi je to snadné! Inzerujte zdarma a neplaťte provizi nám, ani realitnímu makléři.',
+		'transport' => 'refresh',
+	) );
+
+	$wp_customize->add_setting( 'cta_hp_button1_text' , array(
+		'default'   => 'Přidat Inzerát',
+		'transport' => 'refresh',
+	) );
+
+	$wp_customize->add_setting( 'cta_hp_button2_text' , array(
+		'default'   => 'Je to zdarma',
+		'transport' => 'refresh',
+	) );
+
+	$wp_customize->add_setting( 'cta_hp_button1_url' , array(
+		'default'   => '/',
+		'transport' => 'refresh',
+	) );
+
+	$wp_customize->add_setting( 'cta_hp_button2_url' , array(
+		'default'   => '/',
+		'transport' => 'refresh',
+	) );
+
+	$wp_customize->add_setting( 'top_nemovitosti_title' , array(
+		'default'   => 'Top Nemovitosti',
+		'transport' => 'refresh',
+	) );
+
+	$wp_customize->add_setting( 'top_nemovitosti_nem_button_text' , array(
+		'default'   => 'Více info',
+		'transport' => 'refresh',
+	) );
+
+	$wp_customize->add_setting( 'top_nemovitosti_next_ads_url' , array(
+		'default'   => '/',
+		'transport' => 'refresh',
+	) );
+
+	$wp_customize->add_setting( 'top_nemovitosti_next_ads' , array(
+		'default'   => 'Další inzeráty',
+		'transport' => 'refresh',
+	) );
+
 
 	// KONTROLKY
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'slider_text_1_control', array(
@@ -85,6 +148,80 @@ function s7_theme_editor($wp_customize){
 		'section'    => 'main_setting',
 		'settings'   => 'slider_button_text'
 	)));
+
+
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'cta_hp_title_control', array(
+		'label'      => __( 'CTA Nadpis', 'realsys' ),
+		'description' => __("Nadpis v CTA bloku"),
+		'section'    => 'main_setting',
+		'settings'   => 'cta_hp_title',
+		'type' => 'textarea'
+	)));
+
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'cta_hp_subtitle_control', array(
+		'label'      => __( 'CTA Podnadpis', 'realsys' ),
+		'description' => __("Podnadpis v CTA bloku"),
+		'section'    => 'cta_hp_subtitle',
+		'settings'   => 'slider_button_text',
+		'type' => 'textarea'
+	)));
+
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'cta_hp_button1_text_control', array(
+		'label'      => __( 'CTA Tlačítko', 'realsys' ),
+		'description' => __("Text CTA tlačítka"),
+		'section'    => 'main_setting',
+		'settings'   => 'cta_hp_button1_text'
+	)));
+
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'cta_hp_button2_text_control', array(
+		'label'      => __( 'CTA Tlačítko 2', 'realsys' ),
+		'description' => __("Text CTA tlačítka 2"),
+		'section'    => 'main_setting',
+		'settings'   => 'cta_hp_button2_text'
+	)));
+
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'cta_hp_button1_url_control', array(
+		'label'      => __( 'CTA Tlačítko URL', 'realsys' ),
+		'description' => __("URL prvního tlačítka"),
+		'section'    => 'main_setting',
+		'settings'   => 'cta_hp_button1_url'
+	)));
+
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'cta_hp_button2_url_control', array(
+		'label'      => __( 'CTA Tlačítko URL', 'realsys' ),
+		'description' => __("URL druhého tlačítka"),
+		'section'    => 'main_setting',
+		'settings'   => 'cta_hp_button2_url'
+	)));
+
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'top_nemovitosti_title_control', array(
+		'label'      => __( 'Top Nemovitosti nadpis', 'realsys' ),
+		'description' => __("Nadpis sekce top nemovitosti"),
+		'section'    => 'main_setting',
+		'settings'   => 'top_nemovitosti_title'
+	)));
+
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'top_nemovitosti_nem_button_text_control', array(
+		'label'      => __( 'Top Nemovitosti tlačítko', 'realsys' ),
+		'description' => __("Top Nemovitosti text tlačítka na detail nemovitosti"),
+		'section'    => 'main_setting',
+		'settings'   => 'top_nemovitosti_nem_button_text'
+	)));
+
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'top_nemovitosti_next_ads_url_control', array(
+		'label'      => __( 'Načíst další URL', 'realsys' ),
+		'description' => __("Top Nemovitosti načíst další URL"),
+		'section'    => 'main_setting',
+		'settings'   => 'top_nemovitosti_next_ads_url'
+	)));
+
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'top_nemovitosti_next_ads_control', array(
+		'label'      => __( 'Načíst další', 'realsys' ),
+		'description' => __("Top Nemovitosti - načíst další text"),
+		'section'    => 'main_setting',
+		'settings'   => 'top_nemovitosti_next_ads'
+	)));
+
 }
 add_action("customize_register", "s7_theme_editor");
 

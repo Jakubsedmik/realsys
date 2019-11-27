@@ -2,6 +2,7 @@
 
 <?php
 	get_template_part("templates/page","slider");
+	get_template_part("templates/page", "topnemovitosti");
 	get_template_part("templates/page", "cta");
 ?>
 

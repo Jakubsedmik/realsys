@@ -808,7 +808,7 @@ header .user-login a {
 
 /* FOOTER BLOK START */
 footer {
-    background:url("/img/footer/footerbg.jpg");
+    background:url("img/footer/footerbg.jpg");
     background-position:center center;
     background-size:cover;
     padding-top:60px;
@@ -868,7 +868,7 @@ footer .footer_block span.phone {
 }
 footer .footer_block span.phone:before {
     content:"";
-    background-image:url("/img/ikony/contact.png");
+    background-image:url("img/ikony/contact.png");
     background-position: 0px 0px;
     width: 35px;
     height: 35px;
@@ -889,7 +889,7 @@ footer .footer_block span.mail {
 }
 footer .footer_block span.mail:before {
     content:"";
-    background-image:url("/img/ikony/contact.png");
+    background-image:url("img/ikony/contact.png");
     background-position: 0px 35px;
     width: 35px;
     height: 35px;
@@ -915,7 +915,7 @@ footer .footer_block span.mail:before {
     display:block;
     width:130px;
     height:103px;
-    background-image:url("/img/ikony/filter_icons.png");
+    background-image:url("img/ikony/filter_icons.png");
     background-repeat:no-repeat;
     background-size: initial;
     background-position: 0 0;  

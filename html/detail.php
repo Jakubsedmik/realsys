@@ -17,8 +17,8 @@
                             <span>Partnerské weby: <strong>Řemeslníci</strong> | <strong>Autoservis</strong></span>
                         </div>
                         <div class="user-login">
-                            <a href="#" class="login"><img src="img/header/prihlaseni.png" alt=""/>Přihlášení</a>                            
-                            <a href="#" class="signup"><img src="img/header/registrace.png" alt=""/>Registrace</a>
+                            <a href="#" class="login"><img src="/realsys/html/img/header/prihlaseni.png" alt=""/>Přihlášení</a>
+                            <a href="#" class="signup"><img src="/realsys/html/img/header/registrace.png" alt=""/>Registrace</a>
                             
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="main-header">
                     <div class="wrapper">
-                        <div class="logo"><img src="img/header/logo-bydleni.png" alt=""/></div>                    
+                        <div class="logo"><img src="/realsys/html/img/header/logo-bydleni.png" alt=""/></div>
 
                         <nav class="menu">
                             <ul>
