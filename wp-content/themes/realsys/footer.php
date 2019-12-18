@@ -32,5 +32,10 @@
             </footer>
         </div>
             <?php wp_footer(); ?>
+            <?php
+            if(!DEPLOYMENT){
+                echo globalUtils::renderDebug();
+            }
+            ?>
     </body>
 </html>

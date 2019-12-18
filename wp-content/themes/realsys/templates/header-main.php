@@ -51,17 +51,34 @@
     </div>
     <div class="menu-bar">
         <div class="wrapper">
-	        <?php if ( has_nav_menu( 'category_header_menu' ) ) : ?>
-                <nav class="menu">
-			        <?php
-			        $menu_args = array(
-				        'theme_location' => 'category_header_menu',
-				        'container' => ""
-			        );
-			        wp_nav_menu( $menu_args );
-			        ?>
-                </nav>
-	        <?php endif; ?>
+
+            <nav class="menu">
+	        <?php if ( has_nav_menu( 'category_header_menu' ) ) :
+
+                $menu_args = array(
+                    'theme_location' => 'category_header_menu',
+                    'container' => ""
+                );
+                wp_nav_menu( $menu_args );
+
+	            else:
+
+                    $ciselnik = assetsFactory::getAllDials("inzeratClass", "typ_nemovitosti");?>
+                    <ul id="menu-kategorie" class="menu">
+
+                        <?php foreach ($ciselnik as $key => $val) : ?>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom">
+                                <a href="#">
+                                    <?php echo $val->db_translation; ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+
+                    </ul>
+
+            <?php endif; ?>
+            </nav>
+
         </div>
     </div>
 </header>

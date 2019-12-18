@@ -49,6 +49,28 @@ add_action("template_redirect", "loadActions");
 
 
 
+/* MAKE REWRITES */
+
+function s7_register_query_vars( $vars ) {
+	global $rewrites;
+	foreach ($rewrites as $key => $val){
+		$vars[] = $key;
+	}
+	return $vars;
+}
+
+function s7_rewrite_tag_rule() {
+	global $rewrites;
+	foreach ($rewrites as $key => $val){
+		add_rewrite_rule( $val['regex'], $val['rewrite'],'top' );
+	}
+}
+
+add_filter( 'query_vars', 's7_register_query_vars' );
+add_action('init', 's7_rewrite_tag_rule', 10, 0);
+
+
+
 
 require_once ("crons.php");
 require_once ("backend.php");

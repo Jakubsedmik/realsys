@@ -55,6 +55,7 @@ abstract class frontendController {
     	$routes_passed = array_filter($routes, function($value, $index){
 			if($value == get_class($this)){
 				$current_url = $_SERVER["REQUEST_URI"];
+
 				if(preg_match('/' . $index . '/i', $current_url)){
 					return true;
 				}
@@ -123,6 +124,12 @@ abstract class frontendController {
                 return true;
             }
         }
+
+        /* načtení WP proměnných do requestData */
+        global $wp_query;
+        $query_vars = $wp_query->query_vars;
+        $this->requestData = array_merge($this->requestData, $query_vars);
+
         trigger_error("Nebyla specifikována akce, spouštím základní akci.");
         $this->action();
     }

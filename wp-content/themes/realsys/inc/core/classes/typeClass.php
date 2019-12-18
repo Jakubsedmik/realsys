@@ -71,28 +71,31 @@ class typeClass implements JsonSerializable {
 
 			/* TEXTUAL FILTERS */
 			case 'str63' :
-				if ( is_string( $this->value ) && strlen( $this->value ) < 64 ) {
+				if ( is_string( $this->value ) && strlen( $this->value ) < 64 && strlen($this->value) > 0 ) {
 					break;
 				} else {
 					$response = "Pole " . globalUtils::translate( $this->key ) . " není řetězec o délce 63 znaků.";
 					$status   = false;
 					frontendError::addMessage( $this->key, ERROR, $response, $this );
+					break;
 				}
 			case 'str255' :
-				if ( is_string( $this->value ) && strlen( $this->value ) < 256 ) {
+				if ( is_string( $this->value ) && strlen( $this->value ) < 256 && strlen($this->value) > 0 ) {
 					break;
 				} else {
 					$response = "Pole " . globalUtils::translate( $this->key ) . " není řetězec o délce 255 znaků.";
 					$status   = false;
 					frontendError::addMessage( $this->key, ERROR, $response, $this );
+					break;
 				}
 			case 'str511' :
-				if ( is_string( $this->value ) && strlen( $this->value ) < 512 ) {
+				if ( is_string( $this->value ) && strlen( $this->value ) < 512 && strlen($this->value) > 0 ) {
 					break;
 				} else {
 					$response = "Pole " . globalUtils::translate( $this->key ) . " není řetězec o délce 511 znaků.";
 					$status   = false;
 					frontendError::addMessage( $this->key, ERROR, $response, $this );
+					break;
 				}
 			case 'str':
 				if ( ! is_string( $this->value ) || strlen( $this->value ) == 0 ) {

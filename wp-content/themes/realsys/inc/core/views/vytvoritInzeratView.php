@@ -55,20 +55,30 @@
 							<?php echo Tools::getSelectBoxForDials('inzeratClass', 'typ_stavby', $this->getPostData('db_typ_stavby'),'Typ stavby', 'db_typ_stavby'); ?>
 						</div>
 					</div>
-
 					<div class="col">
 						<!-- Typ inzerátu -->
 						<div class="md-form">
 							<?php echo Tools::getSelectBoxForDials('inzeratClass', 'typ_inzeratu', $this->getPostData('db_typ_inzeratu'),'Typ inzerátu', 'db_typ_inzeratu'); ?>
 						</div>
 					</div>
-
+                    <div class="col">
+                        <!-- Penb -->
+                        <div class="md-form">
+							<?php echo Tools::getSelectBoxForDials('inzeratClass', 'penb', $this->getPostData('db_penb'),'PENB', 'db_penb'); ?>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <!-- Typ vlastnictví -->
+                        <div class="md-form">
+							<?php echo Tools::getSelectBoxForDials('inzeratClass', 'typ_vlastnictvi', $this->getPostData('db_typ_vlastnictvi'),'Typ vlastnictví', 'db_typ_vlastnictvi'); ?>
+                        </div>
+                    </div>
 				</div>
 				<div class="form-row">
 					<div class="col">
 						<!-- Počet místností -->
 						<div class="md-form">
-							<input type="number" id="pocet_mistnosti" name="db_pocet_mistnosti" class="form-control" value="<?php echo $this->getPostData('db_pocet_mistnosti'); ?>" min="1">
+							<input type="text" id="pocet_mistnosti" name="db_pocet_mistnosti" class="form-control" value="<?php echo $this->getPostData('db_pocet_mistnosti'); ?>" min="1">
 							<label for="pocet_mistnosti">Počet místností</label>
 						</div>
 					</div>
@@ -95,6 +105,13 @@
 						<?php echo Tools::switcher("Ano","Ne", "Balkón", 1, "db_balkon", $this->getPostData('db_balkon')); ?>
 					</div>
 
+                    <div class="col">
+						<?php echo Tools::switcher("Ano","Ne", "Terasa", 1, "db_terasa", $this->getPostData('db_terasa')); ?>
+                    </div>
+
+                    <div class="col">
+						<?php echo Tools::switcher("Ano","Ne", "Výtah", 1, "db_vytah", $this->getPostData('db_vytah')); ?>
+                    </div>
 				</div>
 
 				<!-- Stav objektu -->
@@ -106,6 +123,16 @@
 				<div class="md-form mt-2">
 					<?php echo Tools::getSelectBoxForDials('inzeratClass', 'stav_inzeratu', $this->getPostData('db_stav_inzeratu'),'Stav inzerátu','db_stav_inzeratu'); ?>
 				</div>
+
+                <!-- Vybavenost -->
+                <div class="md-form mt-2">
+					<?php echo Tools::getSelectBoxForDials('inzeratClass', 'vybavenost', $this->getPostData('db_vybavenost'),'Vybavenost','db_vybavenost'); ?>
+                </div>
+
+                <!-- Materiál -->
+                <div class="md-form mt-2">
+					<?php echo Tools::getSelectBoxForDials('inzeratClass', 'material', $this->getPostData('db_material'),'Materiál','db_material'); ?>
+                </div>
 
 				<!-- Podlahová plocha -->
 				<div class="md-form">
@@ -147,6 +174,12 @@
 							<label for="db_mesto">Město</label>
 						</div>
 					</div>
+                    <div class="col">
+                        <div class="md-form">
+                            <input type="text" id="db_mestska_cast" name="db_mestska_cast" class="form-control" value="<?php echo $this->getPostData('db_mestka_cast'); ?>">
+                            <label for="db_mestska_cast">Městská část</label>
+                        </div>
+                    </div>
 					<div class="col">
 						<div class="md-form">
 							<input type="text" id="db_psc" name="db_psc" class="form-control" value="<?php echo $this->getPostData('db_psc'); ?>">

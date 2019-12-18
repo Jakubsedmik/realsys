@@ -15,7 +15,7 @@ define( "DEBUG_PANEL", false );
 
 // STRÁNKOVÁNÍ
 define( "PAGING", 6 );
-define( "MAX_PAGING_POSITIONS", 5 );
+define( "MAX_PAGING_POSITIONS", 10 );
 
 //security nonce
 define( "GLOBAL_AJAX_NONCE", "ajaxAction7854efas." );
@@ -45,7 +45,7 @@ define( "AJAXURL", admin_url( "admin-ajax.php" ) );
 define( "REGEX_EMAIL", "/^(?!(?:(?:\x22?\x5C[\x00-\x7E]\x22?)|(?:\x22?[^\x5C\x22]\x22?)){255,})(?!(?:(?:\x22?\x5C[\x00-\x7E]\x22?)|(?:\x22?[^\x5C\x22]\x22?)){65,}@)(?:(?:[\x21\x23-\x27\x2A\x2B\x2D\x2F-\x39\x3D\x3F\x5E-\x7E]+)|(?:\x22(?:[\x01-\x08\x0B\x0C\x0E-\x1F\x21\x23-\x5B\x5D-\x7F]|(?:\x5C[\x00-\x7F]))*\x22))(?:\.(?:(?:[\x21\x23-\x27\x2A\x2B\x2D\x2F-\x39\x3D\x3F\x5E-\x7E]+)|(?:\x22(?:[\x01-\x08\x0B\x0C\x0E-\x1F\x21\x23-\x5B\x5D-\x7F]|(?:\x5C[\x00-\x7F]))*\x22)))*@(?:(?:(?!.*[^.]{64,})(?:(?:(?:xn--)?[a-z0-9]+(?:-[a-z0-9]+)*\.){1,126}){1,}(?:(?:[a-z][a-z0-9]*)|(?:(?:xn--)[a-z0-9]+))(?:-[a-z0-9]+)*)|(?:\[(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){7})|(?:(?!(?:.*[a-f0-9][:\]]){7,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?)))|(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){5}:)|(?:(?!(?:.*[a-f0-9]:){5,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3}:)?)))?(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))(?:\.(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))){3}))\]))$/iD" );
 define( "REGEX_TELEPHONE", "/^(\+420)? ?[1-9][0-9]{2} ?[0-9]{3} ?[0-9]{3}$/" );
 define( "REGEX_TIME", '/^\d{1,2}:\d{1,2}$/m' );
-define( "REGEX_URL_ABSOLUTE", '%^(?:(?:https?|ftp)://)(?:\S+(?::\S*)?@|\d{1,3}(?:\.\d{1,3}){3}|(?:(?:[a-z\d\x{00a1}-\x{ffff}]+-?)*[a-z\d\x{00a1}-\x{ffff}]+)(?:\.(?:[a-z\d\x{00a1}-\x{ffff}]+-?)*[a-z\d\x{00a1}-\x{ffff}]+)*(?:\.[a-z\x{00a1}-\x{ffff}]{2,6}))(?::\d+)?(?:[^\s]*)?$%iu');
+define( "REGEX_URL_ABSOLUTE", '%^(?:(?:https?|ftp)://)(?:\S+(?::\S*)?@|\d{1,3}(?:\.\d{1,3}){3}|(?:(?:[a-z\d\x{00a1}-\x{ffff}]+-?)*[a-z\d\x{00a1}-\x{ffff}]+)(?:\.(?:[a-z\d\x{00a1}-\x{ffff}]+-?)*[a-z\d\x{00a1}-\x{ffff}]+)*(?:\.[a-z\x{00a1}-\x{ffff}]{2,6}))(?::\d+)?(?:[^\s]*)?$%iu' );
 
 
 // DEFAULT CONTROLLER
@@ -85,32 +85,32 @@ define( "TIME", "time" ); // DEPRECATED
 // PRAVIDLA PRO JEDNOTLIVÉ TŘÍDY
 // tyto pravidla jsou defaultně zděděné do AJAX interfacu
 $field_rules = array(
-	"obrazekClass" => array(
-		'db_id'              => array(
+	"obrazekClass"    => array(
+		'db_id'         => array(
 			"type"     => NUMBER,
 			"required" => true
 		),
-		"db_titulek"         => array(
+		"db_titulek"    => array(
 			"type"     => STRING255,
 			"required" => false
 		),
-		"db_popisek"         => array(
+		"db_popisek"    => array(
 			"type"     => STRING511,
 			"required" => false
 		),
-		"db_kod"             => array(
+		"db_kod"        => array(
 			"type"     => STRING255,
 			"required" => true
 		),
-		"db_url"             => array(
+		"db_url"        => array(
 			"type"     => URL_RELATIVE,
 			"required" => true
 		),
-		"db_inzerat_id"      => array(
+		"db_inzerat_id" => array(
 			"type"     => FOREIGN_KEY,
 			"required" => false
 		),
-		"db_front"           => array(
+		"db_front"      => array(
 			"type"     => BOOL,
 			"required" => false
 		)
@@ -136,47 +136,47 @@ $field_rules = array(
 			"type"     => TEL,
 			"required" => true
 		),
-		"db_fbid"  => array(
+		"db_fbid"     => array(
 			"type"     => STRING255,
 			"required" => false
 		),
-		"db_gmid"  => array(
+		"db_gmid"     => array(
 			"type"     => STRING255,
 			"required" => false
 		),
-		"db_avatar"  => array(
+		"db_avatar"   => array(
 			"type"     => URL_RELATIVE,
 			"required" => false
 		),
-		"db_popis"  => array(
+		"db_popis"    => array(
 			"type"     => STRING,
 			"required" => false
 		),
-		"db_stav"  => array(
+		"db_stav"     => array(
 			"type"     => NUMBER,
 			"required" => false
 		)
 	),
 	'objednavkaClass' => array(
-		'db_id'              => array(
+		'db_id'         => array(
 			'type'     => NUMBER,
 			'required' => false
 		),
-		'db_inzerat_id'        => array(
+		'db_inzerat_id' => array(
 			'type'     => FOREIGN_KEY,
 			'required' => true
 		),
-		'db_cena'            => array(
+		'db_cena'       => array(
 			'type'     => PRICE,
 			'required' => true
 		),
-		'db_mnozstvi'        => array(
+		'db_mnozstvi'   => array(
 			'type'     => NUMBER,
 			'required' => true
 		)
 	),
 	"inzeratClass"    => array(
-		'db_id'              => array(
+		'db_id'               => array(
 			'type'     => NUMBER,
 			'required' => false
 		),
@@ -212,11 +212,19 @@ $field_rules = array(
 			"required" => true,
 			"type"     => BOOL
 		),
-		'db_garaz'  => array(
+		'db_garaz'            => array(
 			"required" => true,
 			"type"     => BOOL
 		),
-		'db_balkon'  => array(
+		'db_balkon'           => array(
+			"required" => true,
+			"type"     => BOOL
+		),
+		'db_vytah'           => array(
+			"required" => true,
+			"type"     => BOOL
+		),
+		'db_terasa'           => array(
 			"required" => true,
 			"type"     => BOOL
 		),
@@ -227,6 +235,22 @@ $field_rules = array(
 		'db_stav_inzeratu'    => array(
 			'required' => true,
 			'type'     => NUMBER
+		),
+		'db_penb'           => array(
+			"required" => true,
+			"type"     => NUMBER
+		),
+		'db_vybavenost'           => array(
+			"required" => true,
+			"type"     => NUMBER
+		),
+		'db_material'           => array(
+			"required" => true,
+			"type"     => NUMBER
+		),
+		'db_typ_vlastnictvi'           => array(
+			"required" => true,
+			"type"     => NUMBER
 		),
 		'db_podlahova_plocha' => array(
 			'required' => true,
@@ -252,6 +276,10 @@ $field_rules = array(
 			'required' => true,
 			'type'     => STRING255
 		),
+		'db_mestska_cast'           => array(
+			"required" => true,
+			"type"     => STRING255
+		),
 		'db_psc'              => array(
 			'required' => true,
 			'type'     => STRING63
@@ -260,7 +288,7 @@ $field_rules = array(
 			'required' => true,
 			'type'     => STRING63
 		),
-		'db_uzivatel_id'              => array(
+		'db_uzivatel_id'      => array(
 			'required' => false,
 			'type'     => FOREIGN_KEY
 		),
@@ -339,7 +367,14 @@ $dictionary = array(
 	'db_property'        => "Vlastnost",
 	'db_value'           => "Hodnota",
 	'db_translation'     => "Překlad",
-	'db_front'           => "Náhledový obrázek"
+	'db_front'           => "Náhledový obrázek",
+	'db_penb'            => 'PENB',
+	'db_vybavenost'      => 'Vybavenost',
+	'db_typ_vlastnictvi' => 'Typ vlastnictví',
+	'db_material'        => 'Materiál',
+	'db_vytah'           => 'Výtah',
+	'db_terasa'          => 'Terasa',
+	'db_mestska_cast'    => 'Městská část'
 );
 
 
@@ -392,7 +427,11 @@ $dials = array(
 		'db_typ_stavby',
 		'db_typ_inzeratu',
 		'db_stav_objektu',
-		'db_stav_inzeratu'
+		'db_stav_inzeratu',
+		'db_vybavenost',
+		'db_penb',
+		'db_typ_vlastnictvi',
+		'db_material'
 	),
 	'uzivatelClass' => array(
 		'db_stav'
@@ -421,4 +460,12 @@ $classes = array(
 require_once __DIR__ . "/configuration_images.php";
 
 
-define("FRONTEND_IMAGES_PATH", get_template_directory_uri() . "/assets/images/images_frontend/");
+define( "FRONTEND_IMAGES_PATH", get_template_directory_uri() . "/assets/images/images_frontend/" );
+
+// předvolby telefonní
+
+define( "PHONE", "(+420)" );
+
+// RADIUS PRO PODOBNÉ INZERÁTY
+
+define( "RADIUS", "0.5" );

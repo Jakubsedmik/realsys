@@ -1,4 +1,6 @@
 
+
+
 /* kontroller pro pupupy */
 function popupsController() {
     this.popups = $(".js-popup");
@@ -70,7 +72,7 @@ $("body").on("click touchstart",".js-delegateClick", function (e) {
 uploader handling
  */
 
-$("#filepicker").dmUploader({
+/*$("#filepicker").dmUploader({
     url: serverData.ajaxUrl,
     extraData: {
         "action": "file_upload"
@@ -109,7 +111,7 @@ $("#filepicker").dmUploader({
     onFileExtError : function (file) {
         alert("Přípona souboru není správná - povolené je pouze jpg a jpeg");
     }
-});
+});*/
 
 function cancelUploads() {
     $("#filepicker").dmUploader("cancel");
@@ -145,7 +147,7 @@ function setUploader(data) {
  user uploader handling
  */
 
-$("#user_file_pick").dmUploader({
+/*$("#user_file_pick").dmUploader({
     url: serverData.ajaxUrl,
     extraData: {
         "action": "file_upload"
@@ -180,7 +182,7 @@ $("#user_file_pick").dmUploader({
             alert("Došlo k chybě, kontaktujte prosím podporu");
         }
     }
-});
+});*/
 
 
 // validace formů
@@ -479,6 +481,41 @@ $(document).ready(function () {
 function submitForm(element) {
     $(element).closest("form").submit();
 }
+
+var map;
+function initMap() {
+    var mapElement = document.getElementsByClassName("google-map");
+    if(mapElement && mapElement.length>0){
+
+
+        var mapEl = mapElement[0];
+        var lat = $(mapEl).data("lat");
+        var lng = $(mapEl).data("lng");
+        var contentString = $(mapEl).data("content") || false;
+        var center = {'lat': lat, 'lng': lng};
+        map = new google.maps.Map(mapElement[0], {
+            'center': center,
+            zoom: 12
+        });
+
+        var marker = new google.maps.Marker({
+            position: center,
+            map: map
+        });
+
+        if(contentString){
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+            infowindow.open(map, marker);
+            marker.addListener('click', function() {
+                infowindow.open(map, marker);
+            });
+        }
+    }
+
+}
+
 
 
 

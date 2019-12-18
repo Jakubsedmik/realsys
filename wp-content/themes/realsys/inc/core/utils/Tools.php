@@ -662,5 +662,20 @@ class Tools {
 	    return number_format($val, 0, ",", " ") . " Kč";
     }
 
+	public static function getTextPart($string, $number_chars=32){
+		return strip_tags(substr($string, 0, $number_chars)) . "...";
+	}
+
+	public static function translateBinaryValue($binary){
+	    return ($binary == 1) ? "Ano" : "Ne";
+    }
+
+    public static function formatPhone($number){
+	    if(ctype_digit($number) && strlen($number) == 9) {
+		    $number = PHONE . ' ' . substr($number, 0, 3) .' '. substr($number, 3, 3) .' '. substr($number, 6);
+	    }
+	    return $number;
+    }
+
 
 }

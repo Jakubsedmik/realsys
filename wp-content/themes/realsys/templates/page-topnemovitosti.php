@@ -9,8 +9,9 @@
                 $walker = new assetWalkerClass(
                         "inzeratClass",
                         "nem_item.php",
-                        0,
-                        4);
+                        1,
+                        6
+                    );
                 $walker->listenURL();
                 $walker->walk(true);
             ?>

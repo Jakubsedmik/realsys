@@ -1003,7 +1003,7 @@ ul.paging li.active {
 .nemovitost-detail .metaInfo-bar {
     display:block
 } */
-.nemovitost-detail span.phone {
+.nemovitost-detail a.phone {
   display: block;
   position: relative;
   color: #fff;
@@ -1017,10 +1017,10 @@ ul.paging li.active {
   cursor: pointer;
   transition: all ease-in-out 200ms;
 }
-.nemovitost-detail span.phone:hover {
+.nemovitost-detail a.phone:hover {
   transform: scale(1.05);
 }
-.nemovitost-detail span.phone:before {
+.nemovitost-detail a.phone:before {
   content: "";
   background-image: url("http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ikony/contact2.png");
   background-position: 0px 0px;
@@ -1129,5 +1129,10 @@ ul.paging li.active {
     flex: 0 0 100%;
     max-width: 100%;
   }
+}
+/* MAPA */
+.google-map {
+  height: 350px;
+  width: 100%;
 }
 /*# sourceMappingURL=main.css.map */

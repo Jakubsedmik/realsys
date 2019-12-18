@@ -32,6 +32,14 @@ class inzeratyController extends controller {
 						"db_patro",
 						"db_parkovaci_misto",
 						"db_stav_objektu",
+						"db_vybavenost",
+						"db_material",
+						"db_penb",
+						"db_typ_vlastnictvi",
+						"db_terasa",
+						"db_vytah",
+						"db_mestska_cast",
+						"db_stav_objektu",
 						"db_podlahova_plocha",
 						"db_pozemkova_plocha",
 						"db_lat",
@@ -68,7 +76,7 @@ class inzeratyController extends controller {
 		if ( Tools::checkPresenceOfParam( "vytvorit", $this->requestData ) ) {
 			$request_data = $this->requestData;
 			$id           = false;
-			//globalUtils::writeDebug($request_data);
+
 			$response = Tools::formProcessor(
 				array(
 					"db_popis",
@@ -86,14 +94,21 @@ class inzeratyController extends controller {
 					"db_lng",
 					"db_ulice",
 					"db_mesto",
+					"db_mestska_cast",
 					"db_psc",
 					"db_cp",
 					"db_top",
 					"db_garaz",
+					"db_vytah",
+					"db_terasa",
 					"db_datum_zalozeni",
 					"db_uzivatel_id",
 					"db_balkon",
 					'db_stav_inzeratu',
+					"db_penb",
+					"db_typ_vlastnictvi",
+					"db_vybavenost",
+					"db_material",
 					'db_cena',
 					'db_cena_poznamka'
 				),

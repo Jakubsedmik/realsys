@@ -24,10 +24,10 @@ class assetWalkerClass {
 
 
 
-	public function __construct($model_name, $template, $page = 0, $page_count = PAGING, $wrap_el='div', $wrap_class='row', $has_paging=true, $sort_param="datum_zalozeni", $sort_direction="ASC", $model_condition=NULL, $model_filter_or = FALSE) {
+	public function __construct($model_name, $template, $page = 1, $page_count = PAGING, $wrap_el='div', $wrap_class='row', $has_paging=true, $sort_param="datum_zalozeni", $sort_direction="ASC", $custom_data = FALSE, $model_condition=NULL, $model_filter_or = FALSE) {
 		$this->model_name = $model_name;
 		$this->template = $template;
-		$this->page = $page;
+		$this->page = $page-1;
 		$this->page_count = $page_count;
 		$this->has_paging = $has_paging;
 		$this->sort_param = $sort_param;
@@ -38,11 +38,20 @@ class assetWalkerClass {
 		$this->filename = false;
 		$this->wrap_el = $wrap_el;
 		$this->wrap_class = $wrap_class;
+		if(is_array($custom_data)){
+			$this->items = $custom_data;
+		}
+
 	}
 
 	public function listenURL(){
 		if(Tools::checkPresenceOfParam("pg", $_GET)){
-			$this->page = $_GET['pg'];
+			if($_GET['pg'] > 0 ){
+				$this->page = intval($_GET['pg']) - 1;
+			}else{
+				trigger_error("Nesprávná stránka");
+				$this->page = 0;
+			}
 		}
 	}
 
@@ -50,8 +59,21 @@ class assetWalkerClass {
 
 		if(class_exists($this->model_name)){
 
+			$this->total_items = assetsFactory::getAllEntityCount(
+				$this->model_name,
+				$this->model_condition,
+				$this->model_filter_or
+			);
+			$this->total_pages = ceil($this->total_items / $this->page_count);
+
+			if($this->page > $this->total_pages-1 ){
+				trigger_error("Nesprávný index stránky");
+				$this->page = 0;
+			}
+
 			$offset = $this->page_count * $this->page;
 			$order = "ORDER BY " . $this->sort_param . " " . $this->sort_direction;
+
 			$this->items = assetsFactory::getAllEntity(
 				$this->model_name,
 				$this->model_condition,
@@ -61,14 +83,6 @@ class assetWalkerClass {
 				$order
 			);
 
-			$this->total_items = assetsFactory::getAllEntityCount(
-				$this->model_name,
-				$this->model_condition,
-				$this->model_filter_or
-			);
-
-			$this->total_pages = ceil($this->total_items / $this->page_count);
-
 		}else{
 			trigger_error("Takováto třída v rozhraní neexistuje :: loadWalker");
 			return false;
@@ -77,7 +91,10 @@ class assetWalkerClass {
 	}
 
 	public function walk($echo = false){
-		$this->loadWalker();
+		if(!is_array($this->items)){
+			$this->loadWalker();
+		}
+
 		$this->loadTemplate();
 		return $this->render($echo);
 	}
@@ -170,16 +187,16 @@ class assetWalkerClass {
 
 	public function renderPaging(){
 		$output = "";
-		if($this->total_pages >1){
+		if($this->total_pages > 1){
 			$output = '<ul class="pagination"><li class="arrow left"><a href="' . Tools::getCleanUrl() . '?pg=1">První</a></li>';
 			$maximum = $this->page + intval((MAX_PAGING_POSITIONS / 2));
-			$minimum = $this->page  - intval((MAX_PAGING_POSITIONS / 2));
+			$minimum = $this->page - intval((MAX_PAGING_POSITIONS / 2));
 
 			if($maximum > $this->total_pages){ $maximum = $this->total_pages;}
 			if($minimum < 1){ $minimum = 1;}
 
 			for($i=$minimum; $i<=$maximum; $i++){
-				if($i == $this->page){
+				if($i == ($this->page+1)){
 					$output .= '<li class="current"><a href="' . Tools::getCleanUrl() . '?pg=' . $i .  '">' . $i . '</a></li>';
 				}else {
 					$output .= '<li><a href="' . Tools::getCleanUrl() . '?pg=' . $i . '">' . $i . '</a></li>';

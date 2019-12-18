@@ -34,4 +34,13 @@ class obrazekClass extends zakladniKamenClass {
 
 		);
 	}
+
+	public function getImageDimensions(){
+		global $image_sizes;
+		$image_urls = array();
+		foreach ($image_sizes as $key => $value){
+			$image_urls[$key] = DEFAULT_UPLOAD_URL . $value['prefix'] . "_" . $this->db_kod;
+		}
+		return $image_urls;
+	}
 }
