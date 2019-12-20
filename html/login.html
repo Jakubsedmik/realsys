@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Szukaj</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,700|Roboto:400,700&display=swap&subset=latin-ext" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">  
+        <link href="style.css" rel="stylesheet" type="text/css"/>
+        <link href="login-style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    
+    <body>
+        <div class="body-wrapper">
+
+            <header>
+                
+            </header>
+            
+            <section>    
+                <div class="login-con">                    
+                    <div class="wrapper">
+                        <div class="login-tabs">
+                            <div class="tab-header">
+                                <a href="#" class="login active"><img src="img/header/prihlaseni.png" alt=""/>Přihlášení</a>                            
+                                <a href="#" class="signup"><img src="img/header/registrace.png" alt=""/>Registrace</a>
+                            </div> 
+
+                            <div class="tab-content " id="signup-tab">
+                                
+                                <div class="row">
+                                    <div class="col-sm"> 
+                                        <form>
+                                            <div class="form-cols">
+                                                <div class="form-col">
+                                                    <label>Jméno</label>
+                                                    <input type="text" placeholder="Karel">
+                                                </div>
+                                                <div class="form-col">
+                                                    <label>Příjmení</label>
+                                                    <input type="text" placeholder="Karel">
+                                                </div>
+                                                <div class="form-col">
+                                                    <label>Telefon</label>
+                                                    <input type="tel" placeholder="+420 777 888 999">
+                                                </div>
+                                                <div class="form-col">
+                                                    <label>Email</label>
+                                                    <input type="email" placeholder="novak@email.cz">
+                                                </div>
+                                            </div>
+                                            <div class="jakyUziv">
+                                                <label>Jste:</label>
+                                                <div class="radios">
+                                                    <div class="form-radio"><input type="radio" name="uzivatel" value="Uzivatel" checked> Uživatel</div>
+                                                    <div class="form-radio"><input type="radio" name="uzivatel" value="Pravnicka osoba"> Právnicka osoba</div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-cols">
+                                                <div class="form-col">
+                                                    <label>Heslo</label>
+                                                    <input type="password" placeholder="********">
+                                                </div>
+                                                <div class="form-col">
+                                                    <label>Zopakovat heslo</label>
+                                                    <input type="password" placeholder="********">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-btns">
+                                                <input type="submit" class="btn submit-btn" value="ZALOŽIT ÚČET">
+                                                <a href="#" class="lost-pass underline-link">POTŘEBUJETE PORADIT?</a>
+                                            </div>
+                                        </form>
+                                    </div>  
+                                    
+                                    <div class="col-sm registration-info"> 
+                                        <h3>Informace k založení účtu</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis porttitor aliquam. Duis id accumsan velit. Vestibulum dapibus volutpat metus, vel accumsan massa sagittis vel.</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis porttitor aliquam. Duis id accumsan velit. Vestibulum dapibus volutpat metus, vel accumsan massa sagittis vel. Aliquam sollicitudin, purus et maximus fermentum, mauris ligula tristique mi, quis accumsan mauris velit ac nunc. Nulla porta enim ligula, quis viverra sapien sagittis id. Fusce malesuada viverra ullamcorper. Cras non orci condimentum, lobortis sapien vel, porta eros. Mauris eleifend cursus lacus, eu lobortis elit laoreet sed. Pellentesque lobortis nunc dictum, pulvinar augue in, pellentesque lectus.</p>
+                                    </div>
+                                    
+                                </div>
+                            </div>           
+                            <div class="tab-content hidden" id="login-tab">
+                                
+                                <div class="row">
+                                    <div class="col-sm"> 
+                                        <form>
+                                            <div class="form-cols">
+                                                <div class="form-col">
+                                                    <label>Přihlašovací jméno</label>
+                                                    <input type="text" placeholder="Karel">
+                                                </div>
+                                            </div>                                            
+                                            <div class="form-cols">
+                                                <div class="form-col">
+                                                    <label>Heslo</label>
+                                                    <input type="password" placeholder="********">
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="stay-logged">
+                                                  <input type="checkbox" id="logged" name="login" checked> Zůstat přihlášen
+                                            </div>
+
+                                            <div class="form-btns">
+                                                <input type="submit" class="btn submit-btn" value="ZALOŽIT ÚČET">
+                                                <a href="#" class="lost-pass underline-link">ZAPOMENUTÉ HESLO?</a>
+                                            </div>
+                                        </form>
+                                    </div>  
+                                    
+                                    <div class="col-sm login-info"> 
+                                        <img src="img/slider/okno.png" alt=""/>
+                                        <h3>Vítejte</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis porttitor aliquam. Duis id accumsan velit. Vestibulum dapibus volutpat metus, vel accumsan massa sagittis vel.</p>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>     
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            
+            <footer>
+                <div class="wrapper">
+                    <div class="row">
+                       <div class="col-sm">  
+                       </div>
+                   </div>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
