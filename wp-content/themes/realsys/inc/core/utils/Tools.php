@@ -542,8 +542,79 @@ class Tools {
 
     }
 
-    public static function generateImageVariations($mages, $destination){
+
+	/**
+     * Regenruje obrázky dle pole image_sizes
+     * tyto obrázky se regenerují z original_kod.jpg. Pokud není nalezen tak daný obrázek neregeneruje a vyhodí chybu
+     * Jako parametr vstupují obrázky které chceme regenerovat.
+	 * @param $images
+	 *
+	 * @throws ImagickException
+	 */
+	public static function regenerateImages($images){
 	    global $image_sizes;
+	    $storePath = Tools::getPathTillFolder("wp-content", __DIR__) . DEFAULT_UPLOAD_TO;
+
+        echo "<ul>";
+	    if(is_array($images) && count($images)>0){
+	        foreach ($images as $key => $val){
+
+		        $original_filename = $storePath . "original_" . $val->db_kod;
+		        if(file_exists($original_filename)){
+			        echo "<li><strong>Regeneruji obrázek: " . $original_filename . "</strong></li>";
+			        if(count($image_sizes) > 0) echo "<ol>";
+
+                        foreach ($image_sizes as $key1 => $val1){
+                            $saving_as = $storePath . $val1["prefix"] . "_" . $val->db_kod;
+                            $destination_size = $val1['size'];
+
+                            if ( $destination_size !== 'original' ) {
+                                echo "<li>Rozměr: " . $val1['prefix'] . "</li>";
+                                $image  = new Imagick( $original_filename );
+                                $width  = array_shift( $destination_size );
+                                $height = array_shift( $destination_size );
+                                $image->cropThumbnailImage( $width, $height );
+                                $image->setImageCompressionQuality( IMAGE_QUALITY );
+                                $image->writeImage( $saving_as );
+                            }
+                        }
+
+			        if(count($image_sizes) > 0) echo "</ol>";
+		        }else{
+		            throw new Exception("Tento obrázek nebyl nalezen");
+                    echo "<h3>Chyba: tento obrázek nebyl nalezen - " . $original_filename . " - regenerace neproběhla";
+                }
+            }
+        }
+	    echo "</ul>";
+    }
+
+    /*
+     * Slouží k odmazání obrázků, které nejsou asociované v databázi a jedná se tedy o volné soubory
+     */
+    public static function cleanUnassociatedImages(){
+	    $storePath = Tools::getPathTillFolder("wp-content", __DIR__) . DEFAULT_UPLOAD_TO;
+	    $all_pics = assetsFactory::getAllEntity("obrazekClass");
+	    $images_in_folder = glob($storePath . "*_*.jpg");
+
+
+	    foreach ($all_pics as $key => $val){
+	        $kod = $val->db_kod;
+	        $kod = explode(".", $kod)[0];
+	        $matches = preg_grep("/.+_" . $kod . "\.jpg/m", $images_in_folder);
+
+	        if(count($matches) > 0){
+	            $keys_to_del = array_keys($matches);
+	            foreach ($keys_to_del as $key_to_del){
+		            unset($images_in_folder[$key_to_del]);
+                }
+            }
+        }
+
+	    foreach ($images_in_folder as $key => $val){
+	        unlink($val);
+        }
+
     }
 
 

@@ -46,7 +46,7 @@ $obrazky   = array_filter( $obrazky, function ( $val ) use ( &$front_obr ) {
 										$sizes = $value->getImageDimensions();
 										?>
                                         <div class="miniatura">
-                                            <img src="<?php echo $sizes['default']; ?>">
+                                            <img src="<?php echo $sizes['gallery']; ?>">
                                         </div>
 									<?php
 									endforeach;
@@ -197,6 +197,13 @@ $obrazky   = array_filter( $obrazky, function ( $val ) use ( &$front_obr ) {
                                 <div class="banner-place"></div>
                             </div>
                         </div>
+
+
+	                    <?php
+                            /*$obrazky = assetsFactory::getAllEntity("obrazekClass");
+	                        echo Tools::regenerateImages($obrazky);*/
+                            //Tools::cleanUnassociatedImages();
+	                    ?>
 
                         <div class="row">
                             <div class="col-sm">

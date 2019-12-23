@@ -11,12 +11,16 @@ $image_sizes = array(
 		'size' => array(400,600),
 		'prefix' => 'listing'
 	),
+	'gallery' => array(
+		'size' => array(200,200),
+		'prefix' => 'gallery'
+	),
 	'original' => array(
 		'size' => 'original',
 		'prefix' => 'original'
 	),
 	'default' => array(
-		'size' => array(700,700),
+		'size' => array(1000,1000),
 		'prefix' => 'default'
 	)
 );
