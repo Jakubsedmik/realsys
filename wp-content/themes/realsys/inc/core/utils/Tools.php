@@ -379,6 +379,28 @@ class Tools {
 
     }
 
+    public static function getFERoute($model, $id=false, $view="detail", $action=false){
+        global $routing_urls;
+        if(isset($routing_urls[$model])){
+            $route = $routing_urls[$model];
+            if(isset($route[$view])){
+                $route = $route[$view];
+
+	            if($id){
+		            $url = sprintf($route,$id);
+		            if($action){
+			            $url .= "?action=" . $action;
+		            }
+		            return $url;
+	            }
+            }else{
+                trigger_error("getFERoute:: pro tento model neexistuje daný view");
+            }
+        }else{
+            trigger_error("getFERoute:: pro tuto třídu neexistuje cesta");
+        }
+    }
+
 
     public static function getMdbNotationDate($timestamp){
 	    $datumVytvoreni =  $timestamp;
@@ -554,7 +576,7 @@ class Tools {
 	public static function regenerateImages($images){
 	    global $image_sizes;
 	    $storePath = Tools::getPathTillFolder("wp-content", __DIR__) . DEFAULT_UPLOAD_TO;
-
+        echo '<div class="workingImages">';
         echo "<ul>";
 	    if(is_array($images) && count($images)>0){
 	        foreach ($images as $key => $val){
@@ -587,6 +609,7 @@ class Tools {
             }
         }
 	    echo "</ul>";
+	    echo "</div>";
     }
 
     /*
@@ -610,11 +633,15 @@ class Tools {
                 }
             }
         }
-
-	    foreach ($images_in_folder as $key => $val){
-	        unlink($val);
-        }
-
+        echo '<div class="workingImages">';
+            echo "<h3> Cleaning images </h3>";
+            echo "<ul>";
+            foreach ($images_in_folder as $key => $val){
+                echo "<li> Cleaning image: " . $val . "</li>";
+                unlink($val);
+            }
+            echo "</ul>";
+        echo '</div>';
     }
 
 
@@ -746,6 +773,10 @@ class Tools {
 		    $number = PHONE . ' ' . substr($number, 0, 3) .' '. substr($number, 3, 3) .' '. substr($number, 6);
 	    }
 	    return $number;
+    }
+
+    public static function formatTime($time){
+	    return date(DATE_FORMAT ,$time);
     }
 
 

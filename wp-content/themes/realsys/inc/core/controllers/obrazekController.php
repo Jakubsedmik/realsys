@@ -33,4 +33,22 @@ class obrazekController extends controller {
 		$this->setView("upravObrazek");
 		$this->performView();
 	}
+
+	public function regenerateImages(){
+		if(Tools::checkPresenceOfParam("id", $this->requestData)){
+			$id = $this->requestData['id'];
+			$obrazek = assetsFactory::getEntity("obrazekClass",$id);
+			$obrazky = array($obrazek);
+			Tools::regenerateImages($obrazky);
+		}else{
+			$obrazky = assetsFactory::getAllEntity("obrazekClass");
+			Tools::regenerateImages($obrazky);
+		}
+		$this->performView();
+	}
+
+	public function cleanImages(){
+		Tools::cleanUnassociatedImages();
+		$this->performView();
+	}
 }

@@ -6,7 +6,8 @@ if(DEPLOYMENT){
 }else {
 	$routes = array(
 		'\/realsys\/new\/' => "homeController",
-		'\/realsys\/inzerat\/' => "inzeratDetailController"
+		'\/realsys\/inzerat\/' => "inzeratDetailController",
+		'\/realsys\/uzivatel\/' => "uzivatelDetailController"
 	);
 }
 
@@ -19,5 +20,21 @@ $rewrites = array(
 	'inzerat_id' => array(
 		'regex' => '^inzerat/([^/]*)/?',
 		'rewrite' => 'index.php?pagename=inzerat&inzerat_id=$matches[1]'
+	),
+	'uzivatel_id' => array(
+		'regex' => '^uzivatel/([^/]*)/?',
+		'rewrite' => 'index.php?pagename=uzivatel&uzivatel_id=$matches[1]'
+	)
+);
+
+
+/*
+ * Routing URLS
+ */
+
+$routing_urls = array(
+	"inzeratClass" => array(
+		'detail' => home_url() . '/inzerat/%d/',
+		'listing' => home_url()
 	)
 );

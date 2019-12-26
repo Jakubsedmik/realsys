@@ -17,6 +17,8 @@ class uzivatelClass extends zakladniKamenClass {
 	protected $db_popis;
 	protected $db_stav;
 
+	protected $db_heslo;
+
 
 	protected function zakladniVypis() {
 		// TODO: Implement zakladniVypis() method.
@@ -40,5 +42,51 @@ class uzivatelClass extends zakladniKamenClass {
 
 		);
 	}
+
+	public function getFullName(){
+		return $this->db_jmeno . " " . $this->db_prijmeni;
+	}
+
+
+	/*
+	 * Funkce pro obecnou funkci uživatele, heslo se musí hashovat
+	 */
+
+	public function storePassword($value) {
+		$this->db_heslo = password_hash($value, PASSWORD_BCRYPT);
+		$this->aktualizovat();
+		return $this->db_heslo;
+	}
+
+	public function populateClass($arrOfParams){
+		if(isset($arrOfParams['db_heslo'])){
+			$arrOfParams['db_heslo'] = password_hash($arrOfParams['heslo'], PASSWORD_BCRYPT);
+		}
+		parent::populateClass($arrOfParams);
+	}
+
+
+	public function isUserLoggedIn(){
+		return (isset($_SESSION['prihlaseny']) && $_SESSION['prihlaseny'] == $this->db_id);
+	}
+
+	public function logOut(){
+		if(isset($_SESSION['prihlaseny']) && $_SESSION['prihlaseny'] == $this->db_id){
+			unset($_SESSION['prihlaseny']);
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public static function getUserLoggedId(){
+		if(isset($_SESSION['prihlaseny'])){
+			return $_SESSION['prihlaseny'];
+		}else{
+			return false;
+		}
+	}
+
+
 
 }

@@ -97,7 +97,7 @@
 
 				<!-- Sign up button -->
 				<button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" name="ulozit" value="1" type="submit">Upravit</button>
-
+                <a href="<?php echo Tools::getRoute("obrazekClass","regenerateImages", $this->viewData['obrazek']->getId());?>" class="btn btn-blue-grey mt-3">Regenerovat obrázek <i class="far fa-image"></i></a>
 
 			</form>
 			<!-- Form -->

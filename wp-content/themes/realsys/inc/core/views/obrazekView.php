@@ -1,7 +1,7 @@
 <div class="border p-5 mr-3">
 	<div class="container-fluid">
 		<h1>
-			<i class="fas fa-home"></i> Výpis obrázků
+            <i class="fas fa-images"></i> Výpis obrázků
 		</h1>
 		<p class="lead">
 			Kompletní výpis obrůzků. Obrázky můžete upravovat,smazat či filtrovat.
@@ -27,5 +27,7 @@
 
 	<div class="container-fluid">
 		<a href="<?php echo ADMIN_BASE_URL;?>" class="btn btn-amber mt-3"><i class="fas fa-chevron-left mr-1"></i> Zpět na rozcestník</a>
+        <a href="<?php echo Tools::getRoute("obrazekClass","regenerateImages")?>" class="btn btn-blue-grey mt-3">Regenerovat všechny obrázky <i class="far fa-image"></i></a>
+        <a href="<?php echo Tools::getRoute("obrazekClass","cleanImages")?>" class="btn btn-mdb-color mt-3">Odstranit neasociované obrázky <i class="fas fa-trash-alt"></i></a>
 	</div>
 </div>

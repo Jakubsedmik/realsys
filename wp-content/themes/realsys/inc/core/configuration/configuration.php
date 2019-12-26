@@ -469,3 +469,6 @@ define( "PHONE", "(+420)" );
 // RADIUS PRO PODOBNÉ INZERÁTY
 
 define( "RADIUS", "0.5" );
+
+// DATE FORMAT
+define("DATE_FORMAT", "d.m.Y");

@@ -29,7 +29,7 @@
 
 			<div class="price-bar">
 				<h4 class="price"><?php echo Tools::convertCurrency($item->db_cena); ?></h4>
-				<a href="" class="btn more"><?php echo get_theme_mod("top_nemovitosti_nem_button_text"); ?></a>
+				<a href="<?php echo Tools::getFERoute("inzeratClass", $item->getId()); ?>" class="btn more"><?php echo get_theme_mod("top_nemovitosti_nem_button_text"); ?></a>
 			</div>
 		</div>
 	</div>

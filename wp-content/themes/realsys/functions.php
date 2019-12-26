@@ -18,6 +18,7 @@ function s7_scripts_styles() {
 
 		// CSS - kompiluje ho automaticky LESS Watcher (při změně, ale dist nevytváří, nutno sepnout GULP)
 		wp_enqueue_style("main_css", site_url() . ASSETS_PATH . "css/css_frontend/src/main.css", array(), VERSION_LINKS);
+		wp_enqueue_style("fontawesome_css", "https://use.fontawesome.com/releases/v5.9.0/css/all.css", array(), VERSION_LINKS);
 
 		// JS
 		wp_enqueue_script("main_js", site_url() . ASSETS_PATH . "js/js_frontend/src/main.js", array("jquery_js"), VERSION_LINKS, true);

@@ -26584,4 +26584,11 @@ button.md-toast-close-button {
 .userAdsContainer .container-fluid {
   padding-right: 15px!important;
 }
+.workingImages {
+  background-color: #6dcea2;
+  padding: 15px;
+  border: 1px dashed white;
+  color: white;
+  margin-top: 25px;
+}
 /*# sourceMappingURL=main.css.map */
