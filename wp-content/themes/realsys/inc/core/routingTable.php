@@ -7,7 +7,8 @@ if(DEPLOYMENT){
 	$routes = array(
 		'\/realsys\/new\/' => "homeController",
 		'\/realsys\/inzerat\/' => "inzeratDetailController",
-		'\/realsys\/uzivatel\/' => "uzivatelDetailController"
+		'\/realsys\/uzivatel\/' => "uzivatelDetailController",
+		"\/realsys\/login\/" => "loginController"
 	);
 }
 
@@ -36,5 +37,8 @@ $routing_urls = array(
 	"inzeratClass" => array(
 		'detail' => home_url() . '/inzerat/%d/',
 		'listing' => home_url()
+	),
+	"uzivatelClass" => array(
+		'detail' => home_url() . '/uzivatel/%d/'
 	)
 );

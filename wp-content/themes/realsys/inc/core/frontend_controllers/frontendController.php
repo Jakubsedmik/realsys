@@ -116,21 +116,25 @@ abstract class frontendController {
         }, ARRAY_FILTER_USE_BOTH);
 
         $this->requestData = $vanishedData;
+
+	    /* načtení WP proměnných do requestData */
+	    global $wp_query;
+	    $query_vars = $wp_query->query_vars;
+	    $this->requestData = array_merge($this->requestData, $query_vars);
         
         if(isset($request['action']) && strlen($request['action']) > 0){
             $call = $request['action'];
             if(method_exists($this, $request['action'])){
                 $this->$call();
                 return true;
+            }else{
+            	trigger_error("Zadaná akce neexistuje - spouštím základní akci");
+            	$this->action();
+            	return false;
             }
         }
 
-        /* načtení WP proměnných do requestData */
-        global $wp_query;
-        $query_vars = $wp_query->query_vars;
-        $this->requestData = array_merge($this->requestData, $query_vars);
-
-        trigger_error("Nebyla specifikována akce, spouštím základní akci.");
+        trigger_error("Nebyla specifikována akce - spouštím základní akci.");
         $this->action();
     }
 

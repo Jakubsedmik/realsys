@@ -65,6 +65,9 @@ class uzivatelClass extends zakladniKamenClass {
 		parent::populateClass($arrOfParams);
 	}
 
+	public function verifyPassword($password){
+		return password_verify($password, $this->db_heslo);
+	}
 
 	public function isUserLoggedIn(){
 		return (isset($_SESSION['prihlaseny']) && $_SESSION['prihlaseny'] == $this->db_id);

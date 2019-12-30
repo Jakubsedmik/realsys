@@ -4,7 +4,6 @@ $uzivatel = $this->workData['uzivatel'];
 $inzeraty  = $uzivatel->subobjects['inzeratClass'];
 if(!is_array($inzeraty)) $inzeraty = array();
 
-
 ?>
 
 <section>
@@ -88,122 +87,66 @@ if(!is_array($inzeraty)) $inzeraty = array();
 		</div>
 	</div>
 </section>
-<section>
-	<div class="top-nemovitosti">
-		<div class="wrapper">
-			<div class="section-title">
-				<h2><?php echo _e( "Nemovitosti uživatele", "realsys" ); ?></h2>
-			</div>
+<?php if(count($inzeraty)>0) : ?>
+    <section>
+        <div class="top-nemovitosti">
+            <div class="wrapper">
+                <div class="section-title">
+                    <h2><?php echo _e( "Nemovitosti uživatele", "realsys" ); ?></h2>
+                </div>
 
-			<div class="row">
-				<div class="col-sm nemovitost">
-					<div class="nemovitost-wrapper">
-						<div class="nemovitost-image" style="background-image: url(<?php echo FRONTEND_IMAGES_PATH ?>nemovitosti/nem.jpeg); "></div>
-						<div class="nemovitost-text">
-							<h3>Praha - Nebušice, 6+1 222m<sup>2</sup></h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non sem consectetur, porta sapien. </p>
+                <?php
+                    $walker = new assetWalkerClass(
+                        "inzeratClass",
+                        "nem_item.php",
+                        1,
+                        6,
+                        'div',
+                        'row',
+                        false,
+                        'top',
+                        "DESC",
+                        $inzeraty
 
-							<div class="metaInfo-bar">
-								<div class="infoIco location">
-									<img src="<?php echo FRONTEND_IMAGES_PATH ?>ikony/location.png" alt=""/><span class="metaTxt">Praha - Nebušice</span>
-								</div>
-								<div class="infoIco size">
-									<img src="<?php echo FRONTEND_IMAGES_PATH ?>ikony/size.png" alt=""/><span class="metaTxt">222m<sup>2</sup></span>
-								</div>
-							</div>
+                    );
+                    $walker->walk(true);
+                ?>
 
-							<div class="price-bar">
-								<h4 class="price">22 850 Kč</h4>
-								<a class="btn more">Více info</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm nemovitost">
-					<div class="nemovitost-wrapper">
-						<div class="nemovitost-image" style="background-image: url(<?php echo FRONTEND_IMAGES_PATH ?>nemovitosti/nem.jpeg); "></div>
-						<div class="nemovitost-text">
-							<h3>Praha - Nebušice, 6+1 222m<sup>2</sup></h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non sem consectetur, porta sapien. </p>
-
-							<div class="metaInfo-bar">
-								<div class="infoIco location">
-									<img src="<?php echo FRONTEND_IMAGES_PATH ?>ikony/location.png" alt=""/><span class="metaTxt">Praha - Nebušice</span>
-								</div>
-								<div class="infoIco size">
-									<img src="<?php echo FRONTEND_IMAGES_PATH ?>ikony/size.png" alt=""/><span class="metaTxt">222m<sup>2</sup></span>
-								</div>
-							</div>
-
-							<div class="price-bar">
-								<h4 class="price">22 850 Kč</h4>
-								<a class="btn more">Více info</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm nemovitost">
-					<div class="nemovitost-wrapper">
-						<div class="nemovitost-image" style="background-image: url(<?php echo FRONTEND_IMAGES_PATH ?>nemovitosti/nem.jpeg); "></div>
-						<div class="nemovitost-text">
-							<h3>Praha - Nebušice, 6+1 222m<sup>2</sup></h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non sem consectetur, porta sapien. </p>
-
-							<div class="metaInfo-bar">
-								<div class="infoIco location">
-									<img src="<?php echo FRONTEND_IMAGES_PATH ?>ikony/location.png" alt=""/><span class="metaTxt">Praha - Nebušice</span>
-								</div>
-								<div class="infoIco size">
-									<img src="<?php echo FRONTEND_IMAGES_PATH ?>ikony/size.png" alt=""/><span class="metaTxt">222m<sup>2</sup></span>
-								</div>
-							</div>
-
-							<div class="price-bar">
-								<h4 class="price">22 850 Kč</h4>
-								<a class="btn more">Více info</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-
-			</div>
-
-			<div class="section-btn">
-				<a class="btn" href="#">Další inzeráty</a>
-			</div>
-		</div>
-	</div>
-</section>
+                <div class="section-btn">
+                    <a class="btn" href="#"><?php echo _e( "Další inzeráty", "realsys" ); ?></a>
+                </div>
+            </div>
+        </div>
+    </section>
+<?php endif; ?>
 
 <section class="mb-4">
 
 	<div class="wrapper">
 		<div class="contact-con">
-			<h2>Kontaktní formulář</h2>
+			<h2><?php echo _e( "Kontaktní formulář", "realsys" ); ?></h2>
 
-			<form>
+			<form method="post">
+                <input type="hidden" name="action" value="sendMessage">
 				<div class="row">
 					<div class="col-sm">
 
 						<div class="form-cols">
 							<div class="form-col">
 								<label><?php echo _e( "Jméno", "realsys" ); ?></label>
-								<input type="text" placeholder="Karel">
+								<input required name="jmeno" type="text" placeholder="<?php echo _e( "Karel", "realsys" ); ?>">
 							</div>
 							<div class="form-col">
 								<label><?php echo _e( "Příjmení", "realsys" ); ?></label>
-								<input type="text" placeholder="Karel">
+								<input required name="prijmeni" type="text" placeholder="<?php echo _e( "Novák", "realsys" ); ?>">
 							</div>
 							<div class="form-col">
 								<label><?php echo _e( "Telefon", "realsys" ); ?></label>
-								<input type="tel" placeholder="+420 777 888 999">
+								<input required name="telefon" type="tel" placeholder="<?php echo _e( "Telefon-syntax", "realsys" ); ?>">
 							</div>
 							<div class="form-col">
 								<label><?php echo _e( "Email", "realsys" ); ?></label>
-								<input type="email" placeholder="novak@email.cz">
+								<input required name="email" type="email" placeholder="<?php echo _e( "Email-syntax", "realsys" ); ?>">
 							</div>
 						</div>
 
@@ -211,7 +154,7 @@ if(!is_array($inzeraty)) $inzeraty = array();
 
 					<div class="col-sm form-message">
 						<label><?php echo _e( "Zpráva", "realsys" ); ?></label>
-						<textarea placeholder="Vaše zpráva"></textarea>
+						<textarea name="zprava" placeholder="<?php echo _e( "Vaše zpráva", "realsys" ); ?>"></textarea>
 					</div>
 
 				</div>

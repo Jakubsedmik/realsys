@@ -14,20 +14,16 @@
     <body>
         <div class="body-wrapper">
 
-            <header>
-                
-            </header>
-            
             <section>    
                 <div class="login-con">                    
                     <div class="wrapper">
                         <div class="login-tabs">
                             <div class="tab-header">
-                                <a href="#" class="login active"><img src="img/header/prihlaseni.png" alt=""/>Přihlášení</a>                            
-                                <a href="#" class="signup"><img src="img/header/registrace.png" alt=""/>Registrace</a>
+                                <a href="#login-tab" class="login active js-tab"><img src="img/header/prihlaseni.png" alt=""/>Přihlášení</a>
+                                <a href="#signup-tab" class="signup js-tab"><img src="img/header/registrace.png" alt=""/>Registrace</a>
                             </div> 
 
-                            <div class="tab-content " id="signup-tab">
+                            <div class="tab-content hidden" id="signup-tab">
                                 
                                 <div class="row">
                                     <div class="col-sm"> 
@@ -84,7 +80,7 @@
                                     
                                 </div>
                             </div>           
-                            <div class="tab-content hidden" id="login-tab">
+                            <div class="tab-content" id="login-tab">
                                 
                                 <div class="row">
                                     <div class="col-sm"> 
@@ -137,5 +133,20 @@
                 </div>
             </footer>
         </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+        <script>
+
+            $(document).ready(function () {
+                $(".js-tab").on("click", function (e) {
+                    e.preventDefault();
+                    var href = $(this).attr("href");
+                    $(".tab-content").hide();
+                    $(href).show();
+                    $(".js-tab").removeClass("active");
+                    $(this).addClass("active");
+                })
+            });
+        </script>
     </body>
 </html>

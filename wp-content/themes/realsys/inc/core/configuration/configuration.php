@@ -472,3 +472,8 @@ define( "RADIUS", "0.5" );
 
 // DATE FORMAT
 define("DATE_FORMAT", "d.m.Y");
+
+
+// DEFAULT WATERMARK
+define("WATERMARK", __DIR__ . "/../../../assets/images/images_backend/watermark.png");
+define("WATERMARK_RESIZE_FACTOR", 1);

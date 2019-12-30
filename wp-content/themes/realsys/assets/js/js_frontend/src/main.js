@@ -187,7 +187,7 @@ function setUploader(data) {
 
 // validace formů
 $(document).ready(function () {
-    $(".js-user-passwords").validate({
+    /*$(".js-user-passwords").validate({
             rules : {
                 heslo : {
                     required : true,
@@ -298,7 +298,7 @@ $(document).ready(function () {
                 }
             }
         }
-    );
+    );*/
 });
 
 
@@ -317,7 +317,7 @@ function grecaptchaSubmit2 (){
 
 
 /* sticky menu */
-
+/*
 $(document).ready(function(){
 
     if($(document).outerWidth() > 800){
@@ -328,7 +328,7 @@ $(document).ready(function(){
         }
     }
 });
-
+*/
 
 /* js pro header zobrazení search a můj účet */
 
@@ -378,36 +378,10 @@ function onSubmit(token) {
 
 
 // initialize lightboxes
-$(document).ready(function () {
+/*$(document).ready(function () {
     var lightbox = $('.lightbox-image').simpleLightbox();
-});
+});*/
 
-
-// remove photos
-$(document).ready(function () {
-   $("body").on("click", ".js-removePhoto", function (e) {
-       var id = $(this).attr("data-removeid");
-       var con = confirm("Opravdu chcete smazat tuto fotografii?");
-       var holder = $(this).closest(".galerie-imgbox");
-       var dataToSnd = {
-           remove_id : id,
-           "action" : "remove_photo",
-           wp_nonce: serverData.ajax_nonce
-       };
-       if(con){
-       jQuery.post(serverData.ajaxUrl, dataToSnd).done(function (data) {
-           if("status" in data && data.status == 1){
-               alert("Fotografie byla úspěšně smazána.");
-               holder.remove();
-           }else{
-               alert("Došlo k chybě, nejspíš nejste přihlášeni.");
-           }
-       }).fail(function () {
-           alert("Smazání se nezdařilo. Kontaktujte podporu");
-       });
-       }
-   }) 
-});
 
 
 // mobile menu launcher
@@ -427,19 +401,7 @@ $(document).ready(function () {
 
 
 
-
-// change foto tlačítko
-
-$(document).ready(function () {
-   $("body").on("click", ".js-change-photo",function (e) {
-       e.preventDefault();
-       resetUploader();
-       $("#filepicker").trigger("click");
-   });
-});
-
-
-// confirmation
+// CONFIRM POPUP
 
 function confirmPopup(element, action){
     if($(".confirmPopup").length){
@@ -482,11 +444,12 @@ function submitForm(element) {
     $(element).closest("form").submit();
 }
 
+
+/* MAP DETAIL INZERATU */
 var map;
 function initMap() {
     var mapElement = document.getElementsByClassName("google-map");
     if(mapElement && mapElement.length>0){
-
 
         var mapEl = mapElement[0];
         var lat = $(mapEl).data("lat");
@@ -513,8 +476,21 @@ function initMap() {
             });
         }
     }
-
 }
+
+/* LOGIN TABS */
+
+// TODO je třeba dodělat sledování hash parametru
+$(document).ready(function () {
+    $(".js-tab").on("click", function (e) {
+        e.preventDefault();
+        var href = $(this).attr("href");
+        $(".tab-content").hide();
+        $(href).show();
+        $(".js-tab").removeClass("active");
+        $(this).addClass("active");
+    })
+});
 
 
 

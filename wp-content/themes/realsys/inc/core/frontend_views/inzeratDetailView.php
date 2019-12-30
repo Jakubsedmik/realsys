@@ -199,12 +199,6 @@ $obrazky   = array_filter( $obrazky, function ( $val ) use ( &$front_obr ) {
                         </div>
 
 
-	                    <?php
-                            /*$obrazky = assetsFactory::getAllEntity("obrazekClass");
-	                        echo Tools::regenerateImages($obrazky);*/
-                            //Tools::cleanUnassociatedImages();
-	                    ?>
-
                         <div class="row">
                             <div class="col-sm">
                                 <div class="mapa">

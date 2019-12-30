@@ -542,6 +542,7 @@ class Tools {
 		                $height = array_shift($destination_size);
 			            $image->cropThumbnailImage($width,$height);
 			            $image->setImageCompressionQuality(IMAGE_QUALITY);
+			            self::addImageWatermark($image);
 			            $image->writeImage($destination_path);
                     }
 	            }
@@ -597,6 +598,8 @@ class Tools {
                                 $height = array_shift( $destination_size );
                                 $image->cropThumbnailImage( $width, $height );
                                 $image->setImageCompressionQuality( IMAGE_QUALITY );
+                                self::addImageWatermark($image, false);
+                                echo "<strong>Making watermark for : " . $saving_as . "</strong>";
                                 $image->writeImage( $saving_as );
                             }
                         }
@@ -610,6 +613,36 @@ class Tools {
         }
 	    echo "</ul>";
 	    echo "</div>";
+    }
+
+
+    public static function addImageWatermark(&$originalImage, $save = TRUE){
+	    $watermark = new Imagick();
+	    $watermark->readImage(WATERMARK);
+
+	    $watermarkResizeFactor = WATERMARK_RESIZE_FACTOR;
+
+	    $img_Width = $originalImage->getImageWidth();
+	    $img_Height = $originalImage->getImageHeight();
+	    $watermark_Width = $watermark->getImageWidth();
+	    $watermark_Height = $watermark->getImageHeight();
+
+	    $spacex_for_watermark = $img_Width / 4;
+	    $ratio = $spacex_for_watermark / $watermark_Width;
+	    $spacey_for_watermark = $watermark_Height * $ratio;
+
+	    $watermark->scaleImage($spacex_for_watermark / $watermarkResizeFactor, $spacey_for_watermark / $watermarkResizeFactor);
+
+	    $watermark_Width = $watermark->getImageWidth();
+	    $watermark_Height = $watermark->getImageHeight();
+
+	    $x = ($img_Width - $watermark_Width);
+	    $y = ($img_Height - $watermark_Height);
+
+	    $originalImage->compositeImage($watermark, Imagick::COMPOSITE_OVER, $x, $y);
+	    if($save){
+	        $originalImage->writeImage();
+	    }
     }
 
     /*
@@ -644,6 +677,68 @@ class Tools {
         echo '</div>';
     }
 
+
+    /* MAIL TOOL */
+
+	/*
+     * $templateName Volí šablonu
+     * $arrayOfValues umísťuje do šablony proměné na vyznačená místa
+     * vrací html obsah pro odeslání emailu
+     */
+	public static function serveTemplate($templateName, $arrayOfValues){
+		if(is_string($templateName) && is_array($arrayOfValues) && count($arrayOfValues)>0){
+		    $filename = __DIR__ ."/../mailTemplates/" . $templateName . ".html";
+		    if(file_exists($filename)){
+			    $email = file_get_contents($filename);
+			    foreach ($arrayOfValues as $key => $value) {
+				    $find = "{" . $key . "}";
+				    $email = str_replace($find, $value, $email);
+			    }
+			    return $email;
+            }else{
+		        frontendError::addMessage("Email",ERROR, "Z technických důvodů se nepodařilo zprávu odeslat - kontaktujte administrátora");
+		        trigger_error("Email template not found :: serveTemplate");
+		        return false;
+            }
+		}
+		else {
+			frontendError::addMessage("Email",ERROR, "Z technických důvodů se nepodařilo zprávu odeslat - kontaktujte administrátora");
+			trigger_error("bad serve email params at :: serverTemplate");
+			return false;
+		}
+	}
+
+
+	public static function sendMail($to, $subject="Realys", $template=false, $data=array(), $headers=''){
+	    if(is_array($data) && $to && is_string($to)){
+		    if($template){
+			    $cargo = self::serveTemplate($template, $data);
+			    if($cargo){
+                    wp_mail(
+                        $to,
+                        $subject,
+                        $cargo,
+                        $headers
+                    );
+			    }
+		    }else{
+			    $cargo = implode("<br>", $data);
+			    wp_mail(
+				    $to,
+				    $subject,
+				    $cargo,
+				    $headers
+			    );
+
+		    }
+		    return true;
+        }else{
+		    frontendError::addMessage("Email",ERROR, "Z technických důvodů se nepodařilo zprávu odeslat - kontaktujte administrátora");
+	        trigger_error("Failed to send mail :: mising some parameters");
+	        return false;
+        }
+
+    }
 
 
 
