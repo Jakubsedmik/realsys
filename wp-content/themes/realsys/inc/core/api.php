@@ -28,10 +28,6 @@ $api_actions = array(
 	'removePic' => array(
 		'callback' => 'removeObrazek',
 		'private' => true
-	),
-	'userExists' => array(
-		'callback' => 'userExists',
-		'private' => false
 	)
 );
 
@@ -44,8 +40,8 @@ foreach ($api_actions as $key => $value){
 			if($value['private']){
 				add_action("wp_ajax_" . $key, $value['callback']);
 			}else{
+				add_action("wp_ajax_nopriv_" . $key, $value);
 				add_action("wp_ajax_" . $key, $value['callback']);
-				add_action("wp_ajax_nopriv_" . $key, $value['callback']);
 			}
 		}else{
 			trigger_error("Api.php :: zadaný callback neexistuje");
@@ -300,42 +296,6 @@ function removeObrazek(){
 	}else{
 		$response->status = 0;
 		$response->message = "Chybějící parametry";
-	}
-	wp_send_json($response);
-	die();
-}
-
-function userExists(){
-	$response = new stdClass();
-	$result = Tools::postChecker(
-		$_POST,
-		array(
-			"email" => array(
-				"type" => EMAIL,
-				"required" => true
-			)
-		),
-		true
-	);
-	if($result){
-		$email = $_POST['email'];
-		$uzivatel = assetsFactory::getAllEntity("uzivatelClass",array(new filterClass("email","=","'" . $email . "'")));
-		if(is_array($uzivatel) && count($uzivatel) == 0){
-			$response->status = 1;
-			$response->message = "Uživatel neexistuje";
-			// TODO pozor zde je třeba před loginem také ověřit token
-		}else{
-			$response->status = 0;
-			$response->message = "Tento uživatel již existuje";
-			$uzivatel = array_shift($uzivatel);
-			ob_start();
-			Tools::jsRedirect(Tools::getFERoute("uzivatelClass", $uzivatel->getId()),500);
-			$ob = ob_get_clean();
-			$response->actionHtml = $ob;
-		}
-	}else{
-		$response->status = -1;
-		$response->message = "Došlo k technické chybě - chybějící parametry";
 	}
 	wp_send_json($response);
 	die();

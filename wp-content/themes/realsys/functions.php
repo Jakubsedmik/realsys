@@ -12,7 +12,6 @@ require_once (__DIR__ . '/Realsys_menu.php');
  * Základní styly a skripty do FE
  */
 function s7_scripts_styles() {
-	global $ajax_localization;
 	if(!DEPLOYMENT){
 
 		// Pokud jsme na developmentu tak natahujeme všecko zvlášť abychom nemuseli spouštět bundler
@@ -22,13 +21,9 @@ function s7_scripts_styles() {
 		wp_enqueue_style("fontawesome_css", "https://use.fontawesome.com/releases/v5.9.0/css/all.css", array(), VERSION_LINKS);
 
 		// JS
-		wp_register_script("main_js",site_url() . ASSETS_PATH . "js/js_frontend/src/main.js", array("jquery_js"), VERSION_LINKS, true);
-		wp_localize_script("main_js","serverData", $ajax_localization);
-		wp_enqueue_script("main_js");
-
+		wp_enqueue_script("main_js", site_url() . ASSETS_PATH . "js/js_frontend/src/main.js", array("jquery_js"), VERSION_LINKS, true);
 		wp_enqueue_script("jquery_js", site_url() . ASSETS_PATH . "js/js_frontend/src/jquery-3.4.1.js", array(), VERSION_LINKS, true);
 		wp_enqueue_script("maps_js", "https://maps.googleapis.com/maps/api/js?key=AIzaSyDU9RxWxpRRoy9R-wAILv5Owb7GaXHLVaw&callback=initMap", array("main_js"), VERSION_LINKS, true);
-		wp_enqueue_script("platform_js", "https://apis.google.com/js/platform.js", array("main_js"), VERSION_LINKS, true);
 	}else{
 
 		// Vše se kompiluje skrze GULP - gulp frontend_styles, gulp frontend_scripts - tyto úlohy

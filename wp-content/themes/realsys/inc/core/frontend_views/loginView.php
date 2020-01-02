@@ -79,14 +79,14 @@
 								<input type="hidden" name="action" value="logIn">
 								<div class="form-cols">
 									<div class="form-col">
-										<label><?php echo _e( "Přihlašovací email", "realsys" ); ?></label>
-										<input required name="email" type="email" placeholder="<?php echo _e( "Email-syntax", "realsys" ); ?>">
+										<label><?php echo _e( "Přihlašovací jméno", "realsys" ); ?></label>
+										<input name="email" type="text" placeholder="<?php echo _e( "Email-syntax", "realsys" ); ?>">
 									</div>
 								</div>
 								<div class="form-cols">
 									<div class="form-col">
 										<label><?php echo _e( "Heslo", "realsys" ); ?></label>
-										<input required name="password" type="password" placeholder="********">
+										<input name="password" type="password" placeholder="********">
 									</div>
 								</div>
 
@@ -97,8 +97,6 @@
 								<div class="form-btns">
 									<button type="submit" class="btn submit-btn"><?php echo _e( "Přihlásit se", "realsys" ); ?></button>
 									<a href="#" class="lost-pass underline-link"><?php echo _e( "Zapomenuté heslo?", "realsys" ); ?></a>
-
-                                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
 								</div>
 							</form>
 						</div>
@@ -117,45 +115,3 @@
 		</div>
 	</div>
 </section>
-
-<div class="fullscreen-popup js-popup" id="googleRegDetails">
-    <div class="fullscreen-popup--inner">
-        <div class="fullscreen-popup--close js-closePopup"><i class="fas fa-times"></i> </div>
-        <h2>Doplnění údajů</h2>
-        <div class="line-separator"></div>
-        <p class="fullscreen-popup--paragraph">Děkujeme za registraci prostřednictvím Google. Dokončete registraci doplněním zbylých údajů. Děkujeme</p>
-
-        <form method="post" class="js-googleRegForm">
-            <input type="hidden" name="jmeno" value="">
-            <input type="hidden" name="prijmeni" value="">
-            <input type="hidden" name="email" value="">
-            <input type="hidden" name="token" value="">
-            <input type="hidden" name="gid" value="">
-            <input type="hidden" name="image" value="">
-            <input type="hidden" name="action" value="googleRegistration">
-
-            <div class="form-cols">
-                <div class="form-col">
-                    <label><?php echo _e( "Telefon", "realsys" ); ?></label>
-                    <input name="telefon" required type="tel" placeholder="<?php echo _e( "Telefon-syntax", "realsys" ); ?>">
-                </div>
-                <div class="jakyUziv form-col">
-                    <label><?php echo _e( "Jste:", "realsys" ); ?></label>
-                    <div class="radios">
-                        <div class="form-radio">
-                            <input type="radio" name="typ" value="Uzivatel" checked> <?php echo _e( "Uživatel", "realsys" ); ?>
-                        </div>
-                        <div class="form-radio">
-                            <input type="radio" name="typ" value="Pravnicka osoba"> <?php echo _e( "Právnická osoba", "realsys" ); ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-btns">
-                <button type="submit" class="btn submit-btn"><?php echo _e( "Potvrdit", "realsys" ); ?></button>
-            </div>
-
-        </form>
-
-    </div>
-</div>

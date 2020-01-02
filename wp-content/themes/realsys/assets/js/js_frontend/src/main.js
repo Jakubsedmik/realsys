@@ -489,53 +489,8 @@ $(document).ready(function () {
         $(href).show();
         $(".js-tab").removeClass("active");
         $(this).addClass("active");
-    });
+    })
 });
-
-
-/* GOOGLE LOGIN */
-
-function onSignIn(googleUser) {
-
-    var profile = googleUser.getBasicProfile();
-
-    var gid = profile.getId();
-    var email = profile.getEmail();
-    var token = googleUser.getAuthResponse().id_token;
-
-    /*
-    First check if user doesnt exist, if yes - request login and redirect
-     */
-
-    $.post(serverData.ajaxUrl, {action: "userExists", 'email': email, 'gid': gid, 'token': token}, function (data) {
-        if(data.status == 1){
-            popupsHandler.showPopup("googleRegDetails");
-            var el = $(".js-googleRegForm");
-            el.find('[name="jmeno"]').val(profile.getGivenName());
-            el.find('[name="prijmeni"]').val(profile.getFamilyName());
-            el.find('[name="email"]').val(email);
-            el.find('[name="gid"]').val(gid);
-            el.find('[name="image"]').val(profile.getImageUrl());
-            el.find('[name="token"]').val(token);
-        }else if(data.status == 0){
-            $("body").append(data.actionHtml);
-            var event = new Event('DOMContentLoaded');
-            document.dispatchEvent(event);
-        }else{
-
-        }
-    });
-
-
-
-
-    /*
-    If user doesnt exist open popup, request info and let register without password
-     */
-
-
-}
-
 
 
 
