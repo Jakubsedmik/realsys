@@ -54,6 +54,12 @@
                             <input type="text" id="db_telefon" name="db_telefon" class="form-control" value="<?php echo $this->viewData['uzivatel']->dejData('db_telefon'); ?>">
                             <label for="db_telefon">Telefon</label>
                         </div>
+
+                        <!--Heslo-->
+                        <div class="md-form">
+                            <input type="text" id="db_heslo" name="db_heslo" class="form-control" value="" placeholder="Pro změnu hesla - vyplňte">
+                            <label for="db_heslo">Heslo</label>
+                        </div>
 					</div>
 
 

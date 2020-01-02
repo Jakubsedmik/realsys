@@ -209,6 +209,35 @@ class Tools {
 
     public static function jsRedirect($url, $delay=2000, $description = "Probíhá přesměrování", $subdescription = ""){
         ?>
+
+        <style>
+            .loader{
+                position: fixed;
+                top: 0px;
+                left: 0px;
+                right: 0px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                bottom: 0px;
+                background-color: #ffffffd4;
+                z-index: 999;
+                visibility: hidden;
+                flex-direction: column;
+            }
+
+            .loader.loading{
+                visibility: visible;
+            }
+        </style>
+
+        <div class="loader" id="loader">
+            <h2 class="redirectInfo" id="loaderDescription">Probíhá přesměrování</h2>
+            <p class="loaderSubdescription" id="loaderSubdescription">Po úspěšné akci probíhá přesměrování</p>
+            <img src="<?php echo FRONTEND_IMAGES_PATH ?>/loading.gif">
+        </div>
+
+
         <script>
             document.addEventListener('DOMContentLoaded', (event) => {
                 setTimeout(function () {

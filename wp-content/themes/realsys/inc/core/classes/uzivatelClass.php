@@ -82,6 +82,10 @@ class uzivatelClass extends zakladniKamenClass {
 		}
 	}
 
+	public function logIn(){
+		$_SESSION['prihlaseny'] = $this->getId();
+	}
+
 	public static function getUserLoggedId(){
 		if(isset($_SESSION['prihlaseny'])){
 			return $_SESSION['prihlaseny'];
@@ -89,6 +93,23 @@ class uzivatelClass extends zakladniKamenClass {
 			return false;
 		}
 	}
+
+	public function set_not_update( $name, $value ) {
+		if($name == "db_heslo"){
+			$this->storePassword($value);
+		}else{
+			parent::set_not_update( $name, $value );
+		}
+	}
+
+	public function __set( $name, $value ) {
+		if($name == "db_heslo"){
+			$this->storePassword($value);
+		}else{
+			return parent::__set( $name, $value );
+		}
+	}
+
 
 
 

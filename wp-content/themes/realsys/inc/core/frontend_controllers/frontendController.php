@@ -22,6 +22,7 @@ abstract class frontendController {
     protected $requestData;
     protected $workData;
     protected $shortcodeData;
+
     
     public function __construct($actionName) {
 
