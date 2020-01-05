@@ -70,6 +70,8 @@
 						</div>
 
 						<div class="col-sm registration-info">
+
+                            
 							<h3><?php echo _e( "Informace k založení účtu", "realsys" ); ?></h3>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis porttitor aliquam. Duis id accumsan velit. Vestibulum dapibus volutpat metus, vel accumsan massa sagittis vel.</p>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis porttitor aliquam. Duis id accumsan velit. Vestibulum dapibus volutpat metus, vel accumsan massa sagittis vel. Aliquam sollicitudin, purus et maximus fermentum, mauris ligula tristique mi, quis accumsan mauris velit ac nunc. Nulla porta enim ligula, quis viverra sapien sagittis id. Fusce malesuada viverra ullamcorper. Cras non orci condimentum, lobortis sapien vel, porta eros. Mauris eleifend cursus lacus, eu lobortis elit laoreet sed. Pellentesque lobortis nunc dictum, pulvinar augue in, pellentesque lectus.</p>
