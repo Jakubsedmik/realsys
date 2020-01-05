@@ -150,6 +150,16 @@ abstract class frontendController {
 	    echo $this->performAction();
     }
 
+	/*
+	 * Slouží k získávání dat z postu např při vytváření nových instancí
+	 */
+	protected function getPostData($key){
+		if(isset($this->requestData[$key])){
+			return $this->requestData[$key];
+		}
+		return "";
+	}
+
 
     /* metody které je třeba v controlleru implementovat*/
     public abstract function action();

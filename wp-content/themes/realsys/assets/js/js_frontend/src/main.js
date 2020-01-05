@@ -507,7 +507,7 @@ function onSignIn(googleUser) {
     First check if user doesnt exist, if yes - request login and redirect
      */
 
-    $.post(serverData.ajaxUrl, {action: "userExists", 'email': email, 'gid': gid, 'token': token}, function (data) {
+    $.post(serverData.ajaxUrl, {action: "googleVerification", 'email': email, 'gid': gid, 'token': token}, function (data) {
         if(data.status == 1){
             popupsHandler.showPopup("googleRegDetails");
             var el = $(".js-googleRegForm");
@@ -522,7 +522,7 @@ function onSignIn(googleUser) {
             var event = new Event('DOMContentLoaded');
             document.dispatchEvent(event);
         }else{
-
+            alert(data.message);
         }
     });
 
@@ -532,9 +532,28 @@ function onSignIn(googleUser) {
     /*
     If user doesnt exist open popup, request info and let register without password
      */
-
-
 }
+
+function onLoad(){
+
+    $(".g-recaptcha").each(function() {
+        var object = $(this);
+        /**var captcha = $('<div class="captcha"></div>');
+        $(this).after(captcha);*/
+
+        grecaptcha.render(object.attr("id"), {
+            "sitekey" : "6Ld5jcwUAAAAANHZpw5Xa4g-EgVPTOMfmGSSqZ4l",
+            "callback" : function(token) {
+                object.parents('form').find(".g-recaptcha-response").val(token);
+                object.parents('form').submit();
+            },
+            "size" : "invisible"
+        });
+    });
+}
+
+
+
 
 
 

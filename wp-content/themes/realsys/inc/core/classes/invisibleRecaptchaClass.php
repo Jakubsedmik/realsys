@@ -47,4 +47,11 @@ class invisibleRecaptchaClass
 		    return false;
         }
     }
+
+    public function generateRecaptchaSubmitButton($text, $classes, $form_to_submit, $name="", $value=""){
+    	?>
+		    <script src="https://www.google.com/recaptcha/api.js?onload=onLoad&render=explicit" async defer></script>
+
+		<?php
+    }
 }

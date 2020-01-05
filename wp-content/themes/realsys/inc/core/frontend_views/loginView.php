@@ -4,36 +4,37 @@
 		<div class="wrapper">
 			<div class="login-tabs">
 				<div class="tab-header">
-					<a href="#login-tab" class="login active js-tab"><img src="<?php echo FRONTEND_IMAGES_PATH; ?>/header/prihlaseni.png" alt=""/>
+					<a href="#login-tab" class="login js-tab <?php if(!isset($this->requestData['action']) || $this->requestData['action']!="registerUser") { echo "active";}?>"><img src="<?php echo FRONTEND_IMAGES_PATH; ?>/header/prihlaseni.png" alt=""/>
 						<?php echo _e( "Přihlášení", "realsys" ); ?>
 					</a>
-					<a href="#signup-tab" class="signup js-tab"><img src="<?php echo FRONTEND_IMAGES_PATH; ?>/header/registrace.png" alt=""/>
+					<a href="#signup-tab" class="signup js-tab <?php if(isset($this->requestData['action']) && $this->requestData['action']=="registerUser") { echo "active";}?>"><img src="<?php echo FRONTEND_IMAGES_PATH; ?>/header/registrace.png" alt=""/>
 						<?php echo _e( "Registrace", "realsys" ); ?>
 					</a>
 				</div>
 
-				<div class="tab-content hidden" id="signup-tab">
+				<div class="tab-content <?php if(!isset($this->requestData['action']) || $this->requestData['action']!="registerUser") { echo "hidden";}?>" id="signup-tab">
 					<?php echo frontendError::getBackendErrors(); ?>
+
 					<div class="row">
 						<div class="col-sm">
 
-							<form>
+							<form method="post" id="regForm">
 								<div class="form-cols">
 									<div class="form-col">
 										<label><?php echo _e( "Jméno", "realsys" ); ?></label>
-										<input type="text" placeholder="<?php echo _e( "Karel", "realsys" ); ?>">
+										<input required name="db_jmeno" type="text" placeholder="<?php echo _e( "Karel", "realsys" ); ?>" value="<?php echo $this->getPostData("db_jmeno"); ?>">
 									</div>
 									<div class="form-col">
 										<label><?php echo _e( "Příjmení", "realsys" ); ?></label>
-										<input type="text" placeholder="<?php echo _e( "Novák", "realsys" ); ?>">
+										<input required name="db_prijmeni" type="text" placeholder="<?php echo _e( "Novák", "realsys" ); ?>" value="<?php echo $this->getPostData("db_prijmeni"); ?>">
 									</div>
 									<div class="form-col">
 										<label><?php echo _e( "Telefon", "realsys" ); ?></label>
-										<input type="tel" placeholder="<?php echo _e( "Telefon-syntax", "realsys" ); ?>">
+										<input required name="db_telefon" type="tel" placeholder="<?php echo _e( "Telefon-syntax", "realsys" ); ?>" value="<?php echo $this->getPostData("db_telefon"); ?>">
 									</div>
 									<div class="form-col">
 										<label><?php echo _e( "Email", "realsys" ); ?></label>
-										<input type="email" placeholder="<?php echo _e( "Email-syntax", "realsys" ); ?>">
+										<input required name="db_email" type="email" placeholder="<?php echo _e( "Email-syntax", "realsys" ); ?>" value="<?php echo $this->getPostData("db_email"); ?>">
 									</div>
 								</div>
 								<div class="jakyUziv">
@@ -47,18 +48,24 @@
 								<div class="form-cols">
 									<div class="form-col">
 										<label><?php echo _e( "Heslo", "realsys" ); ?></label>
-										<input type="password" placeholder="********">
+										<input required name="db_heslo" type="password" placeholder="********">
 									</div>
 									<div class="form-col">
 										<label><?php echo _e( "Zopakovat heslo", "realsys" ); ?></label>
-										<input type="password" placeholder="********">
+										<input required type="password" placeholder="********">
 									</div>
 								</div>
 
 								<div class="form-btns">
-									<input type="submit" class="btn submit-btn" value="ZALOŽIT ÚČET">
-									<a href="#" class="lost-pass underline-link"><?php echo _e( "Potřebujete poradit?", "realsys" ); ?></a>
+                                    <input type="hidden" name="action" value="registerUser">
+                                    <button type="submit" class="btn submit-btn g-recaptcha" id="captcha1">ZALOŽIT ÚČET</button>
+                                    <a href="#" class="lost-pass underline-link"><?php echo _e( "Potřebujete poradit?", "realsys" ); ?></a>
+                                    <?php
+                                        $recaptcha = $this->requestData['recaptcha'];
+                                        $recaptcha->generateRecaptchaSubmitButton("Založit účet", "btn submit-btn", "regForm", "action", "registerUser");
+                                    ?>
 								</div>
+                                <div class="g-signin2" data-onsuccess="onSignIn"></div>
 							</form>
 						</div>
 
@@ -70,7 +77,7 @@
 
 					</div>
 				</div>
-				<div class="tab-content" id="login-tab">
+				<div class="tab-content <?php if(isset($this->requestData['action']) || $this->requestData['action']=="registerUser") { echo "hidden";}?>" id="login-tab">
 					<?php echo frontendError::getBackendErrors(); ?>
 					<div class="row">
 						<div class="col-sm">

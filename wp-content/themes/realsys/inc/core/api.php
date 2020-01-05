@@ -29,8 +29,8 @@ $api_actions = array(
 		'callback' => 'removeObrazek',
 		'private' => true
 	),
-	'userExists' => array(
-		'callback' => 'userExists',
+	'googleVerification' => array(
+		'callback' => 'googleVerification',
 		'private' => false
 	)
 );
@@ -305,7 +305,8 @@ function removeObrazek(){
 	die();
 }
 
-function userExists(){
+
+function googleVerification(){
 	$response = new stdClass();
 	$result = Tools::postChecker(
 		$_POST,
@@ -313,25 +314,63 @@ function userExists(){
 			"email" => array(
 				"type" => EMAIL,
 				"required" => true
+			),
+			"gid" => array(
+				"type" => STRING,
+				"required" => true
+			),
+			"token" => array(
+				"type" => STRING,
+				"required" => true
 			)
 		),
 		true
 	);
 	if($result){
+
 		$email = $_POST['email'];
-		$uzivatel = assetsFactory::getAllEntity("uzivatelClass",array(new filterClass("email","=","'" . $email . "'")));
+		$gid = $_POST['gid'];
+		$token = $_POST['token'];
+
+		$uzivatel = assetsFactory::getAllEntity(
+			"uzivatelClass",
+			array(
+				new filterClass("email","=","'" . $email . "'"),
+				new filterClass("gmid", "=","'" . $gid . "'")
+			),
+			false,
+			false,
+			true
+		);
 		if(is_array($uzivatel) && count($uzivatel) == 0){
 			$response->status = 1;
 			$response->message = "Uživatel neexistuje";
-			// TODO pozor zde je třeba před loginem také ověřit token
 		}else{
-			$response->status = 0;
-			$response->message = "Tento uživatel již existuje";
-			$uzivatel = array_shift($uzivatel);
-			ob_start();
-			Tools::jsRedirect(Tools::getFERoute("uzivatelClass", $uzivatel->getId()),500);
-			$ob = ob_get_clean();
-			$response->actionHtml = $ob;
+
+
+			$verificationArray = array(
+				"email" => $_POST['email'],
+				"sub" => $_POST['gid']
+			);
+
+			$payload = Tools::googleTokenVerification($token, $verificationArray);
+			if($payload){
+
+				$response->status = 0;
+				$response->message = "Tento uživatel již existuje";
+				$uzivatel = array_shift($uzivatel);
+				$uzivatel->logIn();
+
+				ob_start();
+				Tools::jsRedirect(Tools::getFERoute("uzivatelClass", $uzivatel->getId()),500);
+				$ob = ob_get_clean();
+
+				$response->actionHtml = $ob;
+			}else{
+				$response->status = -2;
+				$response->message = "Systém - chyba, pokoušíte se o něco nekalého";
+			}
+
 		}
 	}else{
 		$response->status = -1;

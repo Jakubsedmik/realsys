@@ -33,8 +33,8 @@ define( "ADMIN_BASE_URL", BASE_URL . "wp-admin/admin.php?page=" . PLUGIN_SLUG );
 
 
 // recaptcha secret BE
-define( "RECAPTCHA", "6Lf17KsUAAAAAAwgoEi1q0cTz3fXaFlBfHFQrmwv" );
-define( "RECAPTCHA_SITEKEY", "6Lf17KsUAAAAAKbphw_SeDg3SYo9TkMXxHNJ77q9" );
+define( "RECAPTCHA", "6Ld5jcwUAAAAAHkJW4PKS2g11BUtuxMV7XvP2aud" );
+define( "RECAPTCHA_SITEKEY", "6Ld5jcwUAAAAANHZpw5Xa4g-EgVPTOMfmGSSqZ4l" );
 
 
 // ajax konstanty

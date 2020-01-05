@@ -138,6 +138,9 @@ class typeClass implements JsonSerializable {
 				break;
 			case "mail" :
 				if ( ! filter_var($this->value, FILTER_VALIDATE_EMAIL) ) {
+					if(strpos($this->value,"localhost") !== false){
+						break;
+					}
 					$response = "Pole " . globalUtils::translate( $this->key ) . " není typu email.";
 					$status   = false;
 					frontendError::addMessage( $this->key, ERROR, $response, $this );

@@ -715,7 +715,7 @@ class Tools {
      * vrací html obsah pro odeslání emailu
      */
 	public static function serveTemplate($templateName, $arrayOfValues){
-		if(is_string($templateName) && is_array($arrayOfValues) && count($arrayOfValues)>0){
+		if(is_string($templateName) && is_array($arrayOfValues)){
 		    $filename = __DIR__ ."/../mailTemplates/" . $templateName . ".html";
 		    if(file_exists($filename)){
 			    $email = file_get_contents($filename);
@@ -768,6 +768,34 @@ class Tools {
         }
 
     }
+
+	/**
+	 * Slouží pro verifikaci dat poslaných z GOOGLE Api.
+     *
+	 * @param $token
+     *
+	 * @return mixed
+	 */
+	public static function googleTokenVerification($token, $verifyData = false){
+		require_once (__DIR__ . "/../lib/google-api-php-client-2.4.0/vendor/autoload.php");
+		$client = new Google_Client(['client_id' => GOOGLE_ID]);
+		$payload = $client->verifyIdToken($token);
+
+		if($verifyData && is_array($verifyData)){
+		    foreach ($verifyData as $key => $val){
+                if(key_exists($key, $payload)){
+                    if($payload[$key] != $val){
+                        return false;
+                    }
+                }else{
+                    trigger_error("GoogleTokenVerification :: Zmíněná vlastnost v objektu nefiguruje. -> " . $key);
+                    return false;
+                }
+            }
+        }
+
+		return $payload;
+	}
 
 
 

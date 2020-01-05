@@ -18,6 +18,7 @@ class uzivatelClass extends zakladniKamenClass {
 	protected $db_stav;
 
 	protected $db_heslo;
+	protected $db_hash;
 
 
 	protected function zakladniVypis() {
@@ -60,7 +61,7 @@ class uzivatelClass extends zakladniKamenClass {
 
 	public function populateClass($arrOfParams){
 		if(isset($arrOfParams['db_heslo'])){
-			$arrOfParams['db_heslo'] = password_hash($arrOfParams['heslo'], PASSWORD_BCRYPT);
+			$arrOfParams['db_heslo'] = password_hash($arrOfParams['db_heslo'], PASSWORD_BCRYPT);
 		}
 		parent::populateClass($arrOfParams);
 	}
