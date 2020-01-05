@@ -2,6 +2,7 @@
 <html <?php language_attributes(); ?> class="no-js">
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
+    <meta name="google-signin-client_id" content="<?php echo GOOGLE_ID; ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<?php wp_head(); ?>
 </head>

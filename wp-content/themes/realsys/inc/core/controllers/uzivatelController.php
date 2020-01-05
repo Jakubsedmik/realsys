@@ -21,7 +21,7 @@ class uzivatelController extends controller {
 				$response = Tools::formProcessor(
 					array("db_id", "db_jmeno", "db_prijmeni","db_email",
 						"db_telefon", "db_popis", "db_fbid", "db_gmid", "db_stav",
-						"db_datum_zalozeni", "db_avatar"),
+						"db_datum_zalozeni", "db_avatar", "db_heslo"),
 					$request_data,
 					'uzivatelClass',
 					'edit'
