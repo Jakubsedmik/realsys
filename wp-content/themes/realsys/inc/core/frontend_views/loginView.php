@@ -4,15 +4,15 @@
 		<div class="wrapper">
 			<div class="login-tabs">
 				<div class="tab-header">
-					<a href="#login-tab" class="login js-tab <?php if(!isset($this->requestData['action']) || $this->requestData['action']!="registerUser") { echo "active";}?>"><img src="<?php echo FRONTEND_IMAGES_PATH; ?>/header/prihlaseni.png" alt=""/>
+					<a href="#login-tab" class="login js-tab <?php if($this->requestData['action']!="registerUser") { echo "active";}?>"><img src="<?php echo FRONTEND_IMAGES_PATH; ?>/header/prihlaseni.png" alt=""/>
 						<?php echo _e( "Přihlášení", "realsys" ); ?>
 					</a>
-					<a href="#signup-tab" class="signup js-tab <?php if(isset($this->requestData['action']) && $this->requestData['action']=="registerUser") { echo "active";}?>"><img src="<?php echo FRONTEND_IMAGES_PATH; ?>/header/registrace.png" alt=""/>
+					<a href="#signup-tab" class="signup js-tab <?php if($this->requestData['action']=="registerUser") { echo "active";}?>"><img src="<?php echo FRONTEND_IMAGES_PATH; ?>/header/registrace.png" alt=""/>
 						<?php echo _e( "Registrace", "realsys" ); ?>
 					</a>
 				</div>
 
-				<div class="tab-content <?php if(!isset($this->requestData['action']) || $this->requestData['action']!="registerUser") { echo "hidden";}?>" id="signup-tab">
+				<div class="tab-content <?php if($this->requestData['action']!="registerUser") { echo "hidden";}?>" id="signup-tab">
 					<?php echo frontendError::getBackendErrors(); ?>
 
 					<div class="row">
@@ -61,8 +61,10 @@
                                     <button type="submit" class="btn submit-btn g-recaptcha" id="captcha1">ZALOŽIT ÚČET</button>
                                     <a href="#" class="lost-pass underline-link"><?php echo _e( "Potřebujete poradit?", "realsys" ); ?></a>
                                     <?php
-                                        $recaptcha = $this->requestData['recaptcha'];
-                                        $recaptcha->generateRecaptchaSubmitButton("Založit účet", "btn submit-btn", "regForm", "action", "registerUser");
+                                        if(isset($this->requestData['recaptcha'])){
+                                            $recaptcha = $this->requestData['recaptcha'];
+                                            $recaptcha->generateRecaptchaSubmitButton("Založit účet", "btn submit-btn", "regForm", "action", "registerUser");
+                                        }
                                     ?>
 								</div>
                                 <div class="g-signin2" data-onsuccess="onSignIn"></div>
@@ -70,8 +72,6 @@
 						</div>
 
 						<div class="col-sm registration-info">
-
-                            
 							<h3><?php echo _e( "Informace k založení účtu", "realsys" ); ?></h3>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis porttitor aliquam. Duis id accumsan velit. Vestibulum dapibus volutpat metus, vel accumsan massa sagittis vel.</p>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis porttitor aliquam. Duis id accumsan velit. Vestibulum dapibus volutpat metus, vel accumsan massa sagittis vel. Aliquam sollicitudin, purus et maximus fermentum, mauris ligula tristique mi, quis accumsan mauris velit ac nunc. Nulla porta enim ligula, quis viverra sapien sagittis id. Fusce malesuada viverra ullamcorper. Cras non orci condimentum, lobortis sapien vel, porta eros. Mauris eleifend cursus lacus, eu lobortis elit laoreet sed. Pellentesque lobortis nunc dictum, pulvinar augue in, pellentesque lectus.</p>
@@ -79,7 +79,7 @@
 
 					</div>
 				</div>
-				<div class="tab-content <?php if(isset($this->requestData['action']) || $this->requestData['action']=="registerUser") { echo "hidden";}?>" id="login-tab">
+				<div class="tab-content <?php if($this->requestData['action']=="registerUser") { echo "hidden";}?>" id="login-tab">
 					<?php echo frontendError::getBackendErrors(); ?>
 					<div class="row">
 						<div class="col-sm">
