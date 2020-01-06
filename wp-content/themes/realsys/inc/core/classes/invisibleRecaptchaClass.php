@@ -3,22 +3,15 @@
 
 class invisibleRecaptchaClass
 {
-    protected $secret;
-    protected $remoteip;
-    protected $url;
+    protected static $secret = RECAPTCHA;
+    protected static $site_key = RECAPTCHA_SITEKEY;
+    protected static $url = "https://www.google.com/recaptcha/api/siteverify";
 
-    public function __construct()
-    {
-        $this->url = "https://www.google.com/recaptcha/api/siteverify";
-        $this->remoteip = $_SERVER['REMOTE_ADDR'];
-        $this->secret = RECAPTCHA;
-    }
-
-    public function verifyRecaptcha($recaptcha_hash){
+    public static function verifyRecaptcha($recaptcha_hash){
 
 		// Curl Request
 		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_URL, $this->url);
+		curl_setopt($curl, CURLOPT_URL, self::$url);
 		curl_setopt($curl, CURLOPT_POST, true);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_FAILONERROR, true);
@@ -26,9 +19,9 @@ class invisibleRecaptchaClass
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($curl, CURLOPT_POSTFIELDS, array(
-			'secret' => $this->secret,
+			'secret' => self::$secret,
 			'response' => $recaptcha_hash,
-			'remoteip' => $this->remoteip
+			'remoteip' => $_SERVER['REMOTE_ADDR']
 			));
 		$curlData = curl_exec($curl);
 		curl_close($curl);
@@ -46,12 +39,59 @@ class invisibleRecaptchaClass
 		    trigger_error("Failed to get recaptcha response");
 		    return false;
         }
+
     }
 
-    public function generateRecaptchaSubmitButton($text, $classes, $form_to_submit, $name="", $value=""){
-    	?>
-		    <script src="https://www.google.com/recaptcha/api.js?onload=onLoad&render=explicit" async defer></script>
+    public static function verifyRecaptchaOnController($controller){
+	    if(Tools::checkPresenceOfParam("g-recaptcha-response", $controller->requestData)){
+		    $token = $controller->requestData['g-recaptcha-response'];
+		    if(self::verifyRecaptcha($token)){
+			    return true;
+		    }
+	    }
 
+        frontendError::addMessage("Ověření", ERROR, "Ověření uživatele bylo neúspěšné");
+        $controller->setView("error");
+        return false;
+    }
+
+    public static function generateRecaptchaListeners(){
+    	?>
+		    <script src="https://www.google.com/recaptcha/api.js?onload=recaptchaScriptReady&render=explicit" async defer></script>
+            <script>
+                function recaptchaScriptReady(){
+                    $(document).ready(function () {
+                        $(".js-recaptchaForm").each(function (index, el) {
+                            var id = 'cpt-' + index;
+                            var recaptchaContainer = $('<div class="recaptchaContainer" id="' + id + '"></div>');
+                            $(this).append(recaptchaContainer);
+                            recaptchaContainer = recaptchaContainer.eq(0);
+                            var recaptchaWidgetId = grecaptcha.render(id, {
+                                'sitekey' : '<?php echo self::$site_key; ?>',
+                                'theme' : 'light',
+                                'size' : 'invisible',
+                                'callback' : continueForm
+                            });
+                            recaptchaContainer.attr("data-rid", recaptchaWidgetId);
+                        });
+
+                        $(".js-recaptchaForm button").on("click", function (e) {
+                            e.preventDefault();
+                            var widgetId = $(this).find(".recaptchaContainer").attr("data-rid");
+                            $(this).closest(".js-recaptchaForm").removeClass("execution");
+                            grecaptcha.reset(widgetId);
+                            grecaptcha.execute(widgetId);
+                            $(this).closest(".js-recaptchaForm").addClass("execution");
+                        });
+
+                    });
+                }
+                
+                function continueForm(token) {
+                    console.log("after form submission");
+                    $(".js-recaptchaForm.execution").submit();
+                }
+            </script>
 		<?php
     }
 }

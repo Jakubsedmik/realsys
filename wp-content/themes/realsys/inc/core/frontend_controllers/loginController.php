@@ -16,8 +16,7 @@ class loginController extends frontendController {
 	}
 
 	public function action() {
-		$recaptcha = new invisibleRecaptchaClass();
-		$this->requestData['recaptcha'] = $recaptcha;
+
 	}
 
 	public function logIn(){
@@ -167,21 +166,11 @@ class loginController extends frontendController {
 
 
 	public function registerUser(){
-		/*$result = Tools::postChecker(
-			$this->requestData,
-			array(
-				"jmeno" => array(),
-				"prijmeni" => array(),
-				""
-			),
-			true
-		);*/
 
 
 		$request_data = $this->requestData;
 
-		$recaptcha = new invisibleRecaptchaClass();
-		$this->requestData['recaptcha'] = $recaptcha;
+		if(!invisibleRecaptchaClass::verifyRecaptchaOnController($this)){return false;}
 
 		globalUtils::writeDebug($this->requestData);
 

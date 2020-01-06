@@ -1,4 +1,4 @@
-
+<?php invisibleRecaptchaClass::generateRecaptchaListeners(); ?>
 <section>
 	<div class="login-con">
 		<div class="wrapper">
@@ -18,7 +18,7 @@
 					<div class="row">
 						<div class="col-sm">
 
-							<form method="post" id="regForm">
+							<form method="post" id="regForm" class="js-recaptchaForm">
 								<div class="form-cols">
 									<div class="form-col">
 										<label><?php echo _e( "Jméno", "realsys" ); ?></label>
@@ -60,12 +60,6 @@
                                     <input type="hidden" name="action" value="registerUser">
                                     <button type="submit" class="btn submit-btn g-recaptcha" id="captcha1">ZALOŽIT ÚČET</button>
                                     <a href="#" class="lost-pass underline-link"><?php echo _e( "Potřebujete poradit?", "realsys" ); ?></a>
-                                    <?php
-                                        if(isset($this->requestData['recaptcha'])){
-                                            $recaptcha = $this->requestData['recaptcha'];
-                                            $recaptcha->generateRecaptchaSubmitButton("Založit účet", "btn submit-btn", "regForm", "action", "registerUser");
-                                        }
-                                    ?>
 								</div>
                                 <div class="g-signin2" data-onsuccess="onSignIn"></div>
 							</form>

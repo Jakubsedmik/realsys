@@ -534,24 +534,6 @@ function onSignIn(googleUser) {
      */
 }
 
-function onLoad(){
-
-    $(".g-recaptcha").each(function() {
-        var object = $(this);
-        /**var captcha = $('<div class="captcha"></div>');
-        $(this).after(captcha);*/
-
-        grecaptcha.render(object.attr("id"), {
-            "sitekey" : "6Ld5jcwUAAAAANHZpw5Xa4g-EgVPTOMfmGSSqZ4l",
-            "callback" : function(token) {
-                object.parents('form').find(".g-recaptcha-response").val(token);
-                object.parents('form').submit();
-            },
-            "size" : "invisible"
-        });
-    });
-}
-
 
 
 

@@ -19,7 +19,7 @@ abstract class frontendController {
 	public static $afterHeadersMethod = "afterHeadersAction";
     protected $actionName;
     protected $view;
-    protected $requestData;
+    public $requestData;
     protected $workData;
     protected $shortcodeData;
 
@@ -99,7 +99,7 @@ abstract class frontendController {
     /*
      * Může během běhu přenastavit view kontrolleru
      */
-    protected function setView($view){
+    public function setView($view){
         $this->view = $view . "View.php";
     }
 
