@@ -336,6 +336,67 @@ $field_rules = array(
 );
 
 
+$frontend_general_rules = array(
+
+	"db_heslo" => array(
+		"required" => true,
+		"minlength" => 6
+	),
+	"db_heslo2" => array(
+		"required" => true,
+        "minlength" => 6,
+        "equalTo" => "#heslo"
+	),
+	"db_jmeno" => array(
+		"required" => true,
+        "minlength" => 3
+	),
+	"db_prijmeni" =>array(
+		"required" => true,
+        "minlength" => 3
+	),
+	"db_telefon" => array(
+		"required" => true,
+        "phoneCZ" => true
+	),
+	"db_email" => array(
+		"required" => true,
+		"remote" => AJAXURL . "?action=checkUserExists"
+	),
+	"db_email_nocheck" => array(
+		"required" => true,
+		"email" => true
+	)
+);
+
+
+$frontend_general_messages = array(
+	"db_heslo" => array(
+		"required" => __("Heslo musí být vyplněno")
+	),
+	"db_heslo2" => array(
+		"required" => __("Prosím potvrďte heslo")
+	),
+	"db_email" => array(
+		"remote" => __("Uživatel s touto emailovou adresou již existuje")
+	)
+);
+
+$frontend_common_messages = array(
+		"required" => __("Toto pole je povinné."),
+        "email" => __("Zadejte platnou emailovou adresu."),
+        "url" => __("Zadejte platné URL."),
+        "date" => __("Zadejte platné datum."),
+        "dateISO" => __("Zadejte platné datum."),
+        "number" => __("Zadejte platné číslo."),
+        "digits" => __("Zadejte platné číslice."),
+        "creditcard" => __("Zadejte platné číslo kreditní karty."),
+        "maxlength" => __('Zadejte maximálně {0} znaků.'),
+        "minlength" => __('Zadejte minimálně {0} znaků.'),
+        "range" => __('Zadejte hodnotu mezi {0} a {1}.')
+);
+
+
 // VŠEOBECNÝ SLOVNÍK PRO PŘEKLADY FIELDŮ
 $dictionary = array(
 	'db_nazev_pob'       => 'Název pobočky',
@@ -465,7 +526,10 @@ $classes = array(
 
 
 $ajax_localization = array(
-	"ajaxUrl" => AJAXURL
+	"ajaxUrl" => AJAXURL,
+	"rules" => $frontend_general_rules,
+	"messages" => $frontend_general_messages,
+	"common_messages" => $frontend_common_messages
 );
 
 require_once __DIR__ . "/configuration_images.php";

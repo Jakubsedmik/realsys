@@ -6,6 +6,8 @@ if(!is_array($inzeraty)) $inzeraty = array();
 
 ?>
 
+
+<?php invisibleRecaptchaClass::generateRecaptchaListeners(); ?>
 <section>
 	<div class="profileInfo-con">
 		<div class="wrapper">
@@ -126,7 +128,7 @@ if(!is_array($inzeraty)) $inzeraty = array();
 		<div class="contact-con">
 			<h2><?php echo _e( "Kontaktní formulář", "realsys" ); ?></h2>
 
-			<form method="post">
+			<form method="post" class="js-validate-form js-recaptchaForm">
                 <input type="hidden" name="action" value="sendMessage">
 				<div class="row">
 					<div class="col-sm">
@@ -134,19 +136,27 @@ if(!is_array($inzeraty)) $inzeraty = array();
 						<div class="form-cols">
 							<div class="form-col">
 								<label><?php echo _e( "Jméno", "realsys" ); ?></label>
-								<input required name="jmeno" type="text" placeholder="<?php echo _e( "Karel", "realsys" ); ?>">
+                                <div class="form-field">
+								    <input required name="db_jmeno" type="text" placeholder="<?php echo _e( "Karel", "realsys" ); ?>">
+                                </div>
 							</div>
 							<div class="form-col">
 								<label><?php echo _e( "Příjmení", "realsys" ); ?></label>
-								<input required name="prijmeni" type="text" placeholder="<?php echo _e( "Novák", "realsys" ); ?>">
+                                <div class="form-field">
+								    <input required name="db_prijmeni" type="text" placeholder="<?php echo _e( "Novák", "realsys" ); ?>">
+                                </div>
 							</div>
 							<div class="form-col">
 								<label><?php echo _e( "Telefon", "realsys" ); ?></label>
-								<input required name="telefon" type="tel" placeholder="<?php echo _e( "Telefon-syntax", "realsys" ); ?>">
+                                <div class="form-field">
+								    <input required name="db_telefon" type="tel" placeholder="<?php echo _e( "Telefon-syntax", "realsys" ); ?>">
+                                </div>
 							</div>
 							<div class="form-col">
 								<label><?php echo _e( "Email", "realsys" ); ?></label>
-								<input required name="email" type="email" placeholder="<?php echo _e( "Email-syntax", "realsys" ); ?>">
+                                <div class="form-field">
+								    <input required name="db_email_nocheck" type="email" placeholder="<?php echo _e( "Email-syntax", "realsys" ); ?>">
+                                </div>
 							</div>
 						</div>
 
@@ -154,7 +164,9 @@ if(!is_array($inzeraty)) $inzeraty = array();
 
 					<div class="col-sm form-message">
 						<label><?php echo _e( "Zpráva", "realsys" ); ?></label>
-						<textarea name="zprava" placeholder="<?php echo _e( "Vaše zpráva", "realsys" ); ?>"></textarea>
+                        <div class="form-field">
+						    <textarea name="db_zprava" placeholder="<?php echo _e( "Vaše zpráva", "realsys" ); ?>"></textarea>
+                        </div>
 					</div>
 
 				</div>

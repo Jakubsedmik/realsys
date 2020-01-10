@@ -78,7 +78,7 @@ class invisibleRecaptchaClass
                         $(".js-recaptchaForm button").on("click", function (e) {
                             e.preventDefault();
                             var widgetId = $(this).find(".recaptchaContainer").attr("data-rid");
-                            $(this).closest(".js-recaptchaForm").removeClass("execution");
+                            $(".js-recaptchaForm").removeClass("execution");
                             grecaptcha.reset(widgetId);
                             grecaptcha.execute(widgetId);
                             $(this).closest(".js-recaptchaForm").addClass("execution");

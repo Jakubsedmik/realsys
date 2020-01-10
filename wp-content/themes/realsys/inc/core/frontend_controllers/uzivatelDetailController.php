@@ -44,24 +44,26 @@ class uzivatelDetailController extends frontendController {
 	public function sendMessage(){
 		global $wp_query;
 
+		if(!invisibleRecaptchaClass::verifyRecaptchaOnController($this)){return false;}
+
 		$result = Tools::postChecker($this->requestData, array(
-			"jmeno" => array(
+			"db_jmeno" => array(
 				"type" => STRING255,
 				"required" => true
 			),
-			"prijmeni" => array(
+			"db_prijmeni" => array(
 				"type" => STRING255,
 				"required" => true
 			),
-			"email" => array(
+			"db_email_nocheck" => array(
 				"type" => EMAIL,
 				"required" => true
 			),
-			"telefon" => array(
+			"db_telefon" => array(
 				"type" => TEL,
 				"required" => true
 			),
-			"zprava" => array(
+			"db_zprava" => array(
 				"type" => STRING,
 				"required" => true
 			),
@@ -73,11 +75,11 @@ class uzivatelDetailController extends frontendController {
 
 		if($result){
 
-			$jmeno = $this->requestData['jmeno'];
-			$prijmeni = $this->requestData['prijmeni'];
-			$email = $this->requestData['email'];
-			$telefon = $this->requestData['telefon'];
-			$zprava = $this->requestData['zprava'];
+			$jmeno = $this->requestData['db_jmeno'];
+			$prijmeni = $this->requestData['db_prijmeni'];
+			$email = $this->requestData['db_email_nocheck'];
+			$telefon = $this->requestData['db_telefon'];
+			$zprava = $this->requestData['db_zprava'];
 			$uzivatel_id = $this->requestData['uzivatel_id'];
 
 			$uzivatel = assetsFactory::getEntity("uzivatelClass",$uzivatel_id);

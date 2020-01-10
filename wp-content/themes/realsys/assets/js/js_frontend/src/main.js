@@ -143,146 +143,34 @@ function setUploader(data) {
 }
 
 
-/*
- user uploader handling
- */
 
-/*$("#user_file_pick").dmUploader({
-    url: serverData.ajaxUrl,
-    extraData: {
-        "action": "file_upload"
-    },
-    maxFileSize: Number(serverData.upload_size),
-    allowedTypes: "image/*",
-    extFilter: ["jpg", "jpeg"],
-    multiple: false,
-    fieldName: "uploadedImg",
-
-    onInit: function(){
-        console.log('Callback: Plugin initialized');
-    },
-    onBeforeUpload(id){
-        popupsHandler.showPopup("user_uploader")
-    },
-    onFileTypeError(file){
-        alert("Zvolili jste špatný typ souboru");
-    },
-    onUploadProgress(id, percent){
-        var progressbar = $("#user_uploader .js-progressbar");
-        progressbar.text(percent + "%");
-        progressbar.css({width: percent+"%"})
-    },
-    onFileSizeError (file){
-        alert("Soubor překročil hranici přípustné velikosti. Prosím vyberte soubor do 10mb");
-    },
-    onUploadSuccess(id, data){
-        if("status" in data && data.status == 1) {
-            setUploader(data);
-        }else{
-            alert("Došlo k chybě, kontaktujte prosím podporu");
-        }
-    }
-});*/
+// VALIDACE FORMULÁŘŮ
 
 
-// validace formů
 $(document).ready(function () {
-    /*$(".js-user-passwords").validate({
-            rules : {
-                heslo : {
-                    required : true,
-                    minlength : 6
-                },
-                heslo_potvrzeni : {
-                    required : true,
-                    minlength : 6,
-                    equalTo : "#heslo"
-                }
-            },
-        messages : {
 
-            heslo : {
-                required : "Heslo musít být vyplněno",
-                minlength : "Heslo musí mit alespoň 6 znaků"
-            },
-            heslo_potvrzeni: {
-                required : "Heslo musít být vyplněno",
-                minlength : "Heslo musí mit alespoň 6 znaků",
-                equalTo : "Hesla se musí shodovat"
-            }
-        }
+    $.validator.addMethod( "phoneCZ", function( phone_number, element ) {
+        phone_number = phone_number.replace( /\s+/g, "" );
+        console.log("validation");
+        var regexp = /^(\+420)? ?[1-9][0-9]{2} ?[0-9]{3} ?[0-9]{3}$/;
+        return this.optional( element ) || regexp.test( phone_number );
+    }, "Toto číslo není validní." );
+
+
+
+    $(".js-validate-form").each(function (index, obj) {
+        $(this).validate({
+            rules : serverData.rules,
+            messages: serverData.messages
+        });
     });
+
+    jQuery.extend(jQuery.validator.messages,
+        serverData.common_messages
+    );
+
+    /*
     $(".js-upload, .js-user-details").validate({
-            rules : {
-                jmeno : {
-                    required : true,
-                    minlength : 3
-                },
-                prijmeni : {
-                    required : true,
-                    minlength : 3
-                },
-                email : {
-                    required : true,
-                    remote : {
-                        url : serverData.ajaxUrl,
-                        type : "post",
-                        data : {
-                            action : "check_email"
-                        }
-                    }
-                },
-                heslo : {
-                    required : true,
-                    minlength : 6
-                },
-                heslo_potvrzeni : {
-                    required : true,
-                    minlength : 6,
-                    equalTo : "#heslo"
-                },
-                souhlas_podminky : {
-                    required : true
-                },
-                souhlas_osudaje : {
-                    required : true
-                }
-            },
-            messages : {
-                jmeno : {
-                    required : "Jméno musí být vyplněno.",
-                    minlength : "Jméno musí mít minimálně 3 znaky"
-                },
-                prijmeni : {
-                    required : "Příjmení musí být vyplněno",
-                    minlength : "Příjmení musí mít minimálně 3 znaky"
-                },
-                email : {
-                    required : "Email musí být vyplněný",
-                    email : "Email je ve špatném formátu. Správný formát test@seznam.cz"
-                },
-                heslo : {
-                    required : "Heslo musít být vyplněno",
-                    minlength : "Heslo musí mit alespoň 6 znaků"
-                },
-                heslo_potvrzeni: {
-                    required : "Heslo musít být vyplněno",
-                    minlength : "Heslo musí mit alespoň 6 znaků",
-                    equalTo : "Hesla se musí shodovat"
-                },
-                souhlas_podminky: {
-                    required : "S podmínkami soutěže musíte souhlasit"
-                },
-                souhlas_osudaje: {
-                    required : "S podmínkami zpracování os. údajů musíte souhlasit"
-                }
-            },
-            highlight : function (element, errorClass) {
-                $(element).addClass("validation-error");
-            },
-            unhighlight : function (element, errorClass) {
-                $(element).removeClass("validation-error");
-            },
             submitHandler : function (form) {
                 if(grecaptcha){
                     if (grecaptcha.getResponse()) {

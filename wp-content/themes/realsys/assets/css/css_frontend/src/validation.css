@@ -1,0 +1,46 @@
+.form-field{
+    position: relative;
+}
+
+.form-field label.error{
+    position: absolute;
+    background-color: red;
+    top: calc(100% + 10px);
+    padding: 5px 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 100%;
+    min-width: 70%;
+    /* right: 0px; */
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    text-transform: none;
+    letter-spacing: 0px;
+}
+
+.form-field label.error:after{
+    content: '';
+    border: 10px solid red;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-right-color: transparent;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    z-index: 999;
+}
+
+.form-field input.error, .form-field textarea.error{
+    border: 1px solid red;
+    background-color: #ffeaea;
+}
+
+
+.form-field input.valid, .form-field textarea.valid{
+    border: 1px solid #7ec242;
+    background-color: #f8fff1;
+}

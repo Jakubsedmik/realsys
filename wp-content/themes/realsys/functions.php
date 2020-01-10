@@ -27,6 +27,7 @@ function s7_scripts_styles() {
 		wp_enqueue_script("main_js");
 
 		wp_enqueue_script("jquery_js", site_url() . ASSETS_PATH . "js/js_frontend/src/jquery-3.4.1.js", array(), VERSION_LINKS, true);
+		wp_enqueue_script("jquery_validate_js", site_url() . ASSETS_PATH . "js/js_frontend/src/jquery.validate.js", array("jquery_js"), VERSION_LINKS, true);
 		wp_enqueue_script("maps_js", "https://maps.googleapis.com/maps/api/js?key=AIzaSyDU9RxWxpRRoy9R-wAILv5Owb7GaXHLVaw&callback=initMap", array("main_js"), VERSION_LINKS, true);
 		wp_enqueue_script("platform_js", "https://apis.google.com/js/platform.js", array("main_js"), VERSION_LINKS, true);
 	}else{

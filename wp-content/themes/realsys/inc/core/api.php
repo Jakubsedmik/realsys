@@ -32,6 +32,10 @@ $api_actions = array(
 	'googleVerification' => array(
 		'callback' => 'googleVerification',
 		'private' => false
+	),
+	'checkUserExists' => array(
+		'callback' => 'checkUserExists',
+		'private' => false
 	)
 );
 
@@ -378,4 +382,21 @@ function googleVerification(){
 	}
 	wp_send_json($response);
 	die();
+}
+
+
+
+function checkUserExists(){
+
+	if(Tools::checkPresenceOfParam("db_email", $_GET)){
+		$email = $_GET['db_email'];
+		$user_exists = assetsFactory::getAllEntity("uzivatelClass",array(new filterClass("email", "=", "'" . $email . "'")));
+		if($user_exists && is_array($user_exists) && count($user_exists) > 0){
+			wp_send_json(false);
+			die();
+		}
+	}
+	wp_send_json(true);
+	die();
+
 }

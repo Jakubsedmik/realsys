@@ -8,7 +8,8 @@ if(DEPLOYMENT){
 		'\/realsys\/new\/' => "homeController",
 		'\/realsys\/inzerat\/' => "inzeratDetailController",
 		'\/realsys\/uzivatel\/' => "uzivatelDetailController",
-		"\/realsys\/login\/" => "loginController"
+		"\/realsys\/login\/" => "loginController",
+		"\/realsys\/vypis\/" => "vypisController"
 	);
 }
 

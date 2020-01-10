@@ -18,23 +18,31 @@
 					<div class="row">
 						<div class="col-sm">
 
-							<form method="post" id="regForm" class="js-recaptchaForm">
+							<form method="post" id="regForm" class="js-recaptchaForm js-validate-form">
 								<div class="form-cols">
 									<div class="form-col">
 										<label><?php echo _e( "Jméno", "realsys" ); ?></label>
-										<input required name="db_jmeno" type="text" placeholder="<?php echo _e( "Karel", "realsys" ); ?>" value="<?php echo $this->getPostData("db_jmeno"); ?>">
+                                        <div class="form-field">
+										    <input required name="db_jmeno" type="text" placeholder="<?php echo _e( "Karel", "realsys" ); ?>" value="<?php echo $this->getPostData("db_jmeno"); ?>">
+                                        </div>
 									</div>
 									<div class="form-col">
 										<label><?php echo _e( "Příjmení", "realsys" ); ?></label>
-										<input required name="db_prijmeni" type="text" placeholder="<?php echo _e( "Novák", "realsys" ); ?>" value="<?php echo $this->getPostData("db_prijmeni"); ?>">
+                                        <div class="form-field">
+										    <input required name="db_prijmeni" type="text" placeholder="<?php echo _e( "Novák", "realsys" ); ?>" value="<?php echo $this->getPostData("db_prijmeni"); ?>">
+                                        </div>
 									</div>
 									<div class="form-col">
 										<label><?php echo _e( "Telefon", "realsys" ); ?></label>
-										<input required name="db_telefon" type="tel" placeholder="<?php echo _e( "Telefon-syntax", "realsys" ); ?>" value="<?php echo $this->getPostData("db_telefon"); ?>">
+                                        <div class="form-field">
+										    <input required name="db_telefon" type="tel" placeholder="<?php echo _e( "Telefon-syntax", "realsys" ); ?>" value="<?php echo $this->getPostData("db_telefon"); ?>">
+                                        </div>
 									</div>
 									<div class="form-col">
 										<label><?php echo _e( "Email", "realsys" ); ?></label>
-										<input required name="db_email" type="email" placeholder="<?php echo _e( "Email-syntax", "realsys" ); ?>" value="<?php echo $this->getPostData("db_email"); ?>">
+                                        <div class="form-field">
+										    <input required name="db_email" type="email" placeholder="<?php echo _e( "Email-syntax", "realsys" ); ?>" value="<?php echo $this->getPostData("db_email"); ?>">
+                                        </div>
 									</div>
 								</div>
 								<div class="jakyUziv">
@@ -48,11 +56,15 @@
 								<div class="form-cols">
 									<div class="form-col">
 										<label><?php echo _e( "Heslo", "realsys" ); ?></label>
-										<input required name="db_heslo" type="password" placeholder="********">
+                                        <div class="form-field">
+										    <input required id="heslo" name="db_heslo" type="password" placeholder="********">
+                                        </div>
 									</div>
 									<div class="form-col">
 										<label><?php echo _e( "Zopakovat heslo", "realsys" ); ?></label>
-										<input required type="password" placeholder="********">
+                                        <div class="form-field">
+										    <input name="db_heslo2" required type="password" placeholder="********">
+                                        </div>
 									</div>
 								</div>
 
