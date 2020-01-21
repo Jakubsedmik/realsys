@@ -909,7 +909,7 @@ class Tools {
 
 
 	public static function convertCurrency($val){
-	    return number_format($val, 0, ",", " ") . " Kč";
+	    return number_format($val, 0, ",", " ") . " " . CURRENCY;
     }
 
 	public static function getTextPart($string, $number_chars=32){

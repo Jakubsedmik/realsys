@@ -36,6 +36,10 @@ $api_actions = array(
 	'checkUserExists' => array(
 		'callback' => 'checkUserExists',
 		'private' => false
+	),
+	'getInzeraty' => array(
+		'callback' => 'getInzeraty',
+		'private' => false
 	)
 );
 
@@ -398,5 +402,44 @@ function checkUserExists(){
 	}
 	wp_send_json(true);
 	die();
+}
 
+
+function getInzeraty(){
+
+	// now shut down error reporting for a while
+	error_reporting(0);
+	ini_set('display_errors', 'Off');
+
+	$response = new stdClass();
+
+	$inzeraty = assetsFactory::getAllEntity("inzeratClass");
+	foreach ($inzeraty as $key => $val){
+		/*$val->getInterfaceTypes = (
+			function () {
+				return array(
+					"db_id" => "number",
+					"db_titulek" => "string",
+					"db_mesto" => "string",
+					"db_popis" => "string",
+					"db_podlahova_plocha" => "number",
+				);
+			}
+		)->bindTo($val);*/
+		$val->ignoreInterface();
+		$val->writeDials();
+
+	}
+
+	$response->status = 1;
+	$response->appData = new stdClass();
+	$response->appData->inzeraty = $inzeraty;
+	$response->appData->currency = CURRENCY;
+	$response->appData->totalRecordsCount = count($inzeraty);
+
+
+
+
+	wp_send_json($response);
+	die();
 }

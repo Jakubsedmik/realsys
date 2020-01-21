@@ -1,7 +1,6 @@
 import Vue from 'vue';
-import Inzerat from "./templates/Inzerat.vue";
-import Vyhledavani from "./templates/Vyhledavani.vue";
-import VyhledavaniMapa from "./templates/VyhledavaniMapa.vue";
+import Vypis from "./templates/Vypis.vue";
+
 
 
 var app = $(".app");
@@ -12,8 +11,11 @@ if(app.length > 0){
             test: "tetss"
         },
         components :{
-            Inzerat, Vyhledavani, VyhledavaniMapa
-        }
+            Vypis
+        },
+        mounted() {
+
+        },
     });
 
     window.app = app;

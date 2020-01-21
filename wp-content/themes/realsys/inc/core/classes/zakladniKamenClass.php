@@ -474,23 +474,28 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
             }    
         }*/
 
+
+
         $interface = $this->getInterfaceTypes();
         $json_properties = array();
 
-        foreach ($interface as $key => $val){
-	        if(isset($db_properties[$key])){
-		        $json_properties[$key] = array(
-			        "value" => $db_properties[$key],
-			        "type" => $val
-		        );
-	        }elseif(is_null($db_properties[$key])){
-		        $json_properties[$key] = array(
-			        "value" => '(hodnota nedostupná)',
-			        "type" => $val
-		        );
+	    if($this->ignoreInterface){
+			$json_properties = $all_properties;
+	    }else{
+	        foreach ($interface as $key => $val){
+		        if(isset($db_properties[$key])){
+			        $json_properties[$key] = array(
+				        "value" => $db_properties[$key],
+				        "type" => $val
+			        );
+		        }elseif(is_null($db_properties[$key])){
+			        $json_properties[$key] = array(
+				        "value" => '(hodnota nedostupná)',
+				        "type" => $val
+			        );
+		        }
 	        }
-        }
-
+	    }
 
 
         
