@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 04, 2020 at 10:16 PM
+-- Generation Time: Jan 29, 2020 at 10:40 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -116,16 +116,16 @@ CREATE TABLE `s7_inzerat` (
 --
 
 INSERT INTO `s7_inzerat` (`id`, `titulek`, `popis`, `typ_nemovitosti`, `typ_stavby`, `typ_inzeratu`, `pocet_mistnosti`, `patro`, `parkovaci_misto`, `garaz`, `balkon`, `vytah`, `terasa`, `stav_objektu`, `stav_inzeratu`, `vybavenost`, `penb`, `typ_vlastnictvi`, `material`, `podlahova_plocha`, `pozemkova_plocha`, `lat`, `lng`, `ulice`, `mesto`, `mestska_cast`, `psc`, `cp`, `uzivatel_id`, `top`, `cena`, `cena_poznamka`, `datum_upravy`, `datum_zalozeni`) VALUES
-(1, 'Prodej bytu 2+1', 'Testovací popisek pro byt. Speciální popisek.', 1, 2, 2, '5', 2, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 55, 150, 50.1609, 14.393, 'Tyršovo Náměstí', 'Roztoky', '', '25264', '45', 1, 1, 3, 'Cena bez energií a bez poplatků', 1576248046, 82800),
-(2, 'Prodej domu Kladno', 'Velice hezký domek', 1, 2, 2, '5', 2, 1, 1, 1, 0, 0, 3, 1, 0, 0, 0, 0, 255, 520, 55, 65, 'Tyršova', 'Kladno', '', '25267', '878/85', 2, 1, 0, NULL, 1570966376, 1570312800),
-(5, 'Velmi speciální byt', 'Ahoj Mahoj', 1, 2, 1, '3', 2, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 157, 185, 59.847, 65.554, 'Tyršova', 'Suchdol', '', '25262', '88', NULL, 1, 0, NULL, 1570965013, 1570965013),
-(6, 'Koloseum', 'Velice hezký a utulný barák', 1, 1, 2, '50', 3, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 450, 1024, 54, 58, 'Bengálská', 'Roztoky', '', '25263', '69', 1, 1, 0, NULL, 1572369605, 1572369605),
-(7, 'Bengál Haus', 'Bengál haus jak má být', 1, 2, 2, '3', 2, 0, 1, 0, 0, 0, 3, 1, 0, 0, 0, 0, 150, 150, 53, 58, 'Ulica', 'Město', '', '25478', '875/85', 2, 0, 0, NULL, 1572369825, 1572369825),
-(8, 'Nový byt', 'Bundy fundy', 1, 2, 1, '3', 4, 1, 1, 1, 0, 0, 3, 1, 0, 0, 0, 0, 25, 25, 8, 4, 't', 't', '', '25263', '87', 3, 1, 0, NULL, 1572369974, 1572369974),
-(9, 'Krypl Hacient', 'Krypl hacient', 1, 2, 1, '2', 2, 1, 1, 1, 0, 0, 3, 1, 0, 0, 0, 0, 15, 15, 55, 55, 's', 's', '', '25263', '88', 3, 1, 0, NULL, 1572370326, 1572370326),
-(10, 'Harem', 'Hárám hárám', 1, 2, 1, '5', 5, 0, 1, 0, 0, 0, 3, 1, 0, 0, 0, 0, 25, 25, 45, 45, 'asfsa', 'aga', '', '25263', '88', 2, 0, 200, 'Včetně energií a poplatků', 1572974892, 1572390000),
-(11, 'Garsoniera 1+1', 'Speciální byteček', 1, 2, 1, '2+1', 2, 1, 1, 1, 1, 1, 3, 1, 1, 1, 0, 0, 25, 35, 50.2609, 14.493, 'Chomáčová', 'Chomutov', 'Chomáč', '25267', '88', 3, 1, 2540, 'za metr čtvereční', 1576614754, 1574463600),
-(12, 'Slunný byt 1+1', 'Prodej slunného bytu 1+1 v centru České Lípy. Zrekonstruováný.', 1, 2, 2, '1+1', 3, 1, 0, 1, 1, 0, 1, 1, 1, 3, 0, 1, 34, 34, 50.3609, 14.593, 'Ladova', 'Česká Lípa', 'Chcanec', '25478', '8', 2, 0, 1150000, '+provize RK', 1576701966, 1576710000);
+(1, 'Prodej bytu 2+1', 'Testovací popisek pro byt. Speciální popisek.', 0, 0, 0, '5', 2, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 55, 150, 50.1609, 14.393, 'Tyršovo Náměstí', 'Roztoky', '', '25264', '45', 1, 1, 3, 'Cena bez energií a bez poplatků', 1580333114, 82800),
+(2, 'Prodej domu Kladno', 'Velice hezký domek', 0, 0, 0, '5', 2, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 255, 520, 55, 65, 'Tyršova', 'Kladno', '', '25267', '878/85', 2, 1, 0, NULL, 1580333114, 1570312800),
+(5, 'Velmi speciální byt', 'Ahoj Mahoj', 0, 0, 0, '3', 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 157, 185, 59.847, 65.554, 'Tyršova', 'Suchdol', '', '25262', '88', NULL, 1, 0, NULL, 1580333114, 1570965013),
+(6, 'Koloseum', 'Velice hezký a utulný barák', 0, 0, 0, '50', 3, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 450, 1024, 54, 58, 'Bengálská', 'Roztoky', '', '25263', '69', 1, 1, 0, NULL, 1580333114, 1572369605),
+(7, 'Bengál Haus', 'Bengál haus jak má být', 0, 0, 0, '3', 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 150, 150, 53, 58, 'Ulica', 'Město', '', '25478', '875/85', 2, 0, 0, NULL, 1580333114, 1572369825),
+(8, 'Nový byt', 'Bundy fundy', 0, 0, 0, '3', 4, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 25, 25, 8, 4, 't', 't', '', '25263', '87', 3, 1, 0, NULL, 1580333114, 1572369974),
+(9, 'Krypl Hacient', 'Krypl hacient', 0, 0, 0, '2', 2, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 15, 15, 55, 55, 's', 's', '', '25263', '88', 3, 1, 0, NULL, 1580333114, 1572370326),
+(10, 'Harem', 'Hárám hárám', 0, 0, 0, '5', 5, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 25, 45, 45, 'asfsa', 'aga', '', '25263', '88', 2, 0, 200, 'Včetně energií a poplatků', 1580333114, 1572390000),
+(11, 'Garsoniera 1+1', 'Speciální byteček', 0, 0, 0, '2+1', 2, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 25, 35, 50.2609, 14.493, 'Chomáčová', 'Chomutov', 'Chomáč', '25267', '88', 3, 1, 2540, 'za metr čtvereční', 1580331232, 1574463600),
+(12, 'Slunný byt 1+1', 'Prodej slunného bytu 1+1 v centru České Lípy. Zrekonstruováný.', 0, 0, 0, '1+1', 3, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 34, 34, 50.3609, 14.593, 'Ladova', 'Česká Lípa', 'Chcanec', '25478', '8', 2, 0, 1150000, '+provize RK', 1580331232, 1576710000);
 
 -- --------------------------------------------------------
 
@@ -220,6 +220,7 @@ CREATE TABLE `s7_uzivatel` (
   `popis` text COLLATE utf8mb4_czech_ci,
   `stav` int(11) DEFAULT '0',
   `heslo` varchar(255) COLLATE utf8mb4_czech_ci DEFAULT NULL,
+  `hash` varchar(32) COLLATE utf8mb4_czech_ci DEFAULT NULL,
   `datum_zalozeni` int(11) DEFAULT NULL,
   `datum_upravy` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_czech_ci COMMENT='Tabulka sloužící pro evidenci uživatelů';
@@ -228,12 +229,14 @@ CREATE TABLE `s7_uzivatel` (
 -- Dumping data for table `s7_uzivatel`
 --
 
-INSERT INTO `s7_uzivatel` (`id`, `jmeno`, `prijmeni`, `email`, `telefon`, `fbid`, `gmid`, `avatar`, `popis`, `stav`, `heslo`, `datum_zalozeni`, `datum_upravy`) VALUES
-(1, 'Jakub', 'Sedmíček', 'jjj@seznam.cz', '724855993', '554dasfa55', '5as4g5dagsd', 'http://localhost/realsys/wp-content/uploads/2019/10/20160817_125720.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pretium, ipsum sit amet tincidunt gravida, neque elit laoreet elit, ut interdum odio magna non purus. Morbi tincidunt libero at vulputate congue. Duis tincidunt est eros, at tincidunt justo ultrices non. Nulla accumsan dapibus sodales. Suspendisse eu faucibus urna. Proin ut turpis bibendum nisi efficitur scelerisque eget ac nunc. Donec enim tortor, gravida nec erat in, tempor varius enim. Morbi eget sapien id nulla convallis faucibus. Ut vel diam rhoncus arcu tincidunt tincidunt. Mauris malesuada libero non nisl faucibus pulvinar. Nulla varius convallis justo, in posuere eros luctus eget. Vestibulum euismod justo ut semper vestibulum. Mauris dapibus ornare velit, in vulputate nibh tincidunt vitae.', 1, NULL, 1571954400, 1570558287),
-(3, 'Roman', 'Harant', 'root@localhost', '777 888 999', 'zmrd', 'zmrd', 'http://localhost/realsys/wp-content/uploads/2019/11/IMG_20191030_212103.jpg', 'Je to rebel', 1, NULL, 1571090400, 1577634621),
-(2, 'Petr', 'Novák', 'Jjj@seznam.cz', '777888999', 'asgfasga5d4g', 'ds54gds4g', 'http://localhost/realsys/wp-content/uploads/2019/10/20160817_125720.jpg', 'Nic moc', 0, NULL, 1570312800, 1570471267),
-(4, 'Jakub', 'Sedmík', 'Alpha7@seznam.cz', '+420 724 855 993', '', '', 'http://localhost/realsys/wp-content/uploads/2019/10/20160817_125720.jpg', 'Nějaký ten popis test', 0, '$2y$10$t2q9I6UkJASHY12V4j56p.Z7qTg7UxF7PL0DLDksDf9ksxInoLITu', 1571090400, 1577789336),
-(7, 'Jakub', 'Sedmík', 'info@studioseven.cz', '777888999', NULL, '101048344963118167210', 'https://lh5.googleusercontent.com/-gxKF2Xy94aQ/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rcPqUztWck7LwYycN5N7TAtd2K8nw/s96-c/photo.jpg', NULL, NULL, NULL, 1577992603, 1577992603);
+INSERT INTO `s7_uzivatel` (`id`, `jmeno`, `prijmeni`, `email`, `telefon`, `fbid`, `gmid`, `avatar`, `popis`, `stav`, `heslo`, `hash`, `datum_zalozeni`, `datum_upravy`) VALUES
+(1, 'Jakub', 'Sedmíček', 'jjj@seznam.cz', '724855993', '554dasfa55', '5as4g5dagsd', 'http://localhost/realsys/wp-content/uploads/2019/10/20160817_125720.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pretium, ipsum sit amet tincidunt gravida, neque elit laoreet elit, ut interdum odio magna non purus. Morbi tincidunt libero at vulputate congue. Duis tincidunt est eros, at tincidunt justo ultrices non. Nulla accumsan dapibus sodales. Suspendisse eu faucibus urna. Proin ut turpis bibendum nisi efficitur scelerisque eget ac nunc. Donec enim tortor, gravida nec erat in, tempor varius enim. Morbi eget sapien id nulla convallis faucibus. Ut vel diam rhoncus arcu tincidunt tincidunt. Mauris malesuada libero non nisl faucibus pulvinar. Nulla varius convallis justo, in posuere eros luctus eget. Vestibulum euismod justo ut semper vestibulum. Mauris dapibus ornare velit, in vulputate nibh tincidunt vitae.', 1, NULL, NULL, 1571954400, 1570558287),
+(3, 'Roman', 'Harant', 'root@localhost.cz', '777 888 999', 'zmrd', 'zmrd', 'http://localhost/realsys/wp-content/uploads/2019/11/IMG_20191030_212103.jpg', 'Je to rebel', 1, NULL, NULL, 1571090400, 1577634621),
+(2, 'Petr', 'Novák', 'Jjj@seznam.cz', '777888999', 'asgfasga5d4g', 'ds54gds4g', 'http://localhost/realsys/wp-content/uploads/2019/10/20160817_125720.jpg', 'Nic moc', 0, NULL, NULL, 1570312800, 1570471267),
+(4, 'Jakub', 'Sedmík', 'Alpha7@seznam.cz', '+420 724 855 993', '', '', 'http://localhost/realsys/wp-content/uploads/2019/10/20160817_125720.jpg', 'Nějaký ten popis test', 0, '$2y$10$t2q9I6UkJASHY12V4j56p.Z7qTg7UxF7PL0DLDksDf9ksxInoLITu', NULL, 1571090400, 1577789336),
+(11, 'Mrd', 'Dka', 'info@studioseven.cz', '777888999', NULL, NULL, NULL, NULL, 0, '$2y$10$SSxTv9f9V5kVwJ0/9n/3yeJkwzbKkCa5UmCOSwcBfVrwo.9yetLD6', NULL, 1578228749, 1578228749),
+(13, 'Test', 'Test', 'root@localhost', '777888999', NULL, NULL, NULL, NULL, 1, '$2y$10$vBBDnItslwfEcycQDX0qseLCoVAYyPBvZ9ZDzuIhdr9WjXTpNQlEO', '', 1578243786, 1578245458),
+(14, 'Daniel', 'Gatyás', 'daniel@studioseven.cz', '777888999', NULL, '108157309920114050752', 'https://lh5.googleusercontent.com/-VOxcDT9X6Vo/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rerqAiBveMvm3Rj8rmnf7v9wHnrrg/s96-c/photo.jpg', NULL, NULL, NULL, NULL, 1578253859, 1578253859);
 
 -- --------------------------------------------------------
 
@@ -421,7 +424,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (100, 'widget_archives', 'a:2:{i:2;a:3:{s:5:\"title\";s:0:\"\";s:5:\"count\";i:0;s:8:\"dropdown\";i:0;}s:12:\"_multiwidget\";i:1;}', 'yes'),
 (101, 'widget_meta', 'a:2:{i:2;a:1:{s:5:\"title\";s:0:\"\";}s:12:\"_multiwidget\";i:1;}', 'yes'),
 (102, 'sidebars_widgets', 'a:6:{s:19:\"wp_inactive_widgets\";a:6:{i:0;s:8:\"search-2\";i:1;s:14:\"recent-posts-2\";i:2;s:17:\"recent-comments-2\";i:3;s:10:\"archives-2\";i:4;s:12:\"categories-2\";i:5;s:6:\"meta-2\";}s:16:\"first_footer_col\";a:1:{i:0;s:6:\"text-2\";}s:17:\"second_footer_col\";a:1:{i:0;s:6:\"text-4\";}s:16:\"third_footer_col\";a:1:{i:0;s:6:\"text-5\";}s:17:\"fourth_footer_col\";a:1:{i:0;s:6:\"text-3\";}s:13:\"array_version\";i:3;}', 'yes'),
-(103, 'cron', 'a:6:{i:1577999479;a:1:{s:34:\"wp_privacy_delete_old_export_files\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"hourly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:3600;}}}i:1578028279;a:3:{s:16:\"wp_version_check\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:17:\"wp_update_plugins\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:16:\"wp_update_themes\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}}i:1578071479;a:1:{s:32:\"recovery_mode_clean_expired_keys\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1578071488;a:2:{s:19:\"wp_scheduled_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}s:25:\"delete_expired_transients\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1578071489;a:1:{s:30:\"wp_scheduled_auto_draft_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}s:7:\"version\";i:2;}', 'yes'),
+(103, 'cron', 'a:6:{i:1580335879;a:1:{s:34:\"wp_privacy_delete_old_export_files\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"hourly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:3600;}}}i:1580361079;a:3:{s:16:\"wp_version_check\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:17:\"wp_update_plugins\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:16:\"wp_update_themes\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}}i:1580404279;a:1:{s:32:\"recovery_mode_clean_expired_keys\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1580404288;a:2:{s:19:\"wp_scheduled_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}s:25:\"delete_expired_transients\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1580404289;a:1:{s:30:\"wp_scheduled_auto_draft_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}s:7:\"version\";i:2;}', 'yes'),
 (104, 'widget_pages', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
 (105, 'widget_calendar', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
 (106, 'widget_media_audio', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
@@ -433,9 +436,9 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (112, 'widget_custom_html', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
 (114, 'recovery_keys', 'a:0:{}', 'yes'),
 (118, 'theme_mods_twentynineteen', 'a:2:{s:18:\"custom_css_post_id\";i:-1;s:16:\"sidebars_widgets\";a:2:{s:4:\"time\";i:1566929362;s:4:\"data\";a:2:{s:19:\"wp_inactive_widgets\";a:0:{}s:9:\"sidebar-1\";a:6:{i:0;s:8:\"search-2\";i:1;s:14:\"recent-posts-2\";i:2;s:17:\"recent-comments-2\";i:3;s:10:\"archives-2\";i:4;s:12:\"categories-2\";i:5;s:6:\"meta-2\";}}}}', 'yes'),
-(122, '_site_transient_update_core', 'O:8:\"stdClass\":4:{s:7:\"updates\";a:4:{i:0;O:8:\"stdClass\":10:{s:8:\"response\";s:7:\"upgrade\";s:8:\"download\";s:65:\"https://downloads.wordpress.org/release/cs_CZ/wordpress-5.3.2.zip\";s:6:\"locale\";s:5:\"cs_CZ\";s:8:\"packages\";O:8:\"stdClass\":5:{s:4:\"full\";s:65:\"https://downloads.wordpress.org/release/cs_CZ/wordpress-5.3.2.zip\";s:10:\"no_content\";b:0;s:11:\"new_bundled\";b:0;s:7:\"partial\";b:0;s:8:\"rollback\";b:0;}s:7:\"current\";s:5:\"5.3.2\";s:7:\"version\";s:5:\"5.3.2\";s:11:\"php_version\";s:6:\"5.6.20\";s:13:\"mysql_version\";s:3:\"5.0\";s:11:\"new_bundled\";s:3:\"5.3\";s:15:\"partial_version\";s:0:\"\";}i:1;O:8:\"stdClass\":10:{s:8:\"response\";s:7:\"upgrade\";s:8:\"download\";s:59:\"https://downloads.wordpress.org/release/wordpress-5.3.2.zip\";s:6:\"locale\";s:5:\"en_US\";s:8:\"packages\";O:8:\"stdClass\":5:{s:4:\"full\";s:59:\"https://downloads.wordpress.org/release/wordpress-5.3.2.zip\";s:10:\"no_content\";s:70:\"https://downloads.wordpress.org/release/wordpress-5.3.2-no-content.zip\";s:11:\"new_bundled\";s:71:\"https://downloads.wordpress.org/release/wordpress-5.3.2-new-bundled.zip\";s:7:\"partial\";b:0;s:8:\"rollback\";b:0;}s:7:\"current\";s:5:\"5.3.2\";s:7:\"version\";s:5:\"5.3.2\";s:11:\"php_version\";s:6:\"5.6.20\";s:13:\"mysql_version\";s:3:\"5.0\";s:11:\"new_bundled\";s:3:\"5.3\";s:15:\"partial_version\";s:0:\"\";}i:2;O:8:\"stdClass\":11:{s:8:\"response\";s:10:\"autoupdate\";s:8:\"download\";s:65:\"https://downloads.wordpress.org/release/cs_CZ/wordpress-5.3.2.zip\";s:6:\"locale\";s:5:\"cs_CZ\";s:8:\"packages\";O:8:\"stdClass\":5:{s:4:\"full\";s:65:\"https://downloads.wordpress.org/release/cs_CZ/wordpress-5.3.2.zip\";s:10:\"no_content\";b:0;s:11:\"new_bundled\";b:0;s:7:\"partial\";b:0;s:8:\"rollback\";b:0;}s:7:\"current\";s:5:\"5.3.2\";s:7:\"version\";s:5:\"5.3.2\";s:11:\"php_version\";s:6:\"5.6.20\";s:13:\"mysql_version\";s:3:\"5.0\";s:11:\"new_bundled\";s:3:\"5.3\";s:15:\"partial_version\";s:0:\"\";s:9:\"new_files\";s:1:\"1\";}i:3;O:8:\"stdClass\":11:{s:8:\"response\";s:10:\"autoupdate\";s:8:\"download\";s:65:\"https://downloads.wordpress.org/release/cs_CZ/wordpress-5.2.5.zip\";s:6:\"locale\";s:5:\"cs_CZ\";s:8:\"packages\";O:8:\"stdClass\":5:{s:4:\"full\";s:65:\"https://downloads.wordpress.org/release/cs_CZ/wordpress-5.2.5.zip\";s:10:\"no_content\";b:0;s:11:\"new_bundled\";b:0;s:7:\"partial\";b:0;s:8:\"rollback\";b:0;}s:7:\"current\";s:5:\"5.2.5\";s:7:\"version\";s:5:\"5.2.5\";s:11:\"php_version\";s:6:\"5.6.20\";s:13:\"mysql_version\";s:3:\"5.0\";s:11:\"new_bundled\";s:3:\"5.3\";s:15:\"partial_version\";s:0:\"\";s:9:\"new_files\";s:1:\"1\";}}s:12:\"last_checked\";i:1577987557;s:15:\"version_checked\";s:5:\"5.2.2\";s:12:\"translations\";a:0:{}}', 'no'),
-(123, '_site_transient_update_themes', 'O:8:\"stdClass\":4:{s:12:\"last_checked\";i:1577987558;s:7:\"checked\";a:2:{s:7:\"realsys\";s:3:\"1.0\";s:14:\"twentynineteen\";s:3:\"1.4\";}s:8:\"response\";a:0:{}s:12:\"translations\";a:0:{}}', 'no'),
-(124, '_site_transient_update_plugins', 'O:8:\"stdClass\":4:{s:12:\"last_checked\";i:1577987557;s:8:\"response\";a:0:{}s:12:\"translations\";a:0:{}s:9:\"no_update\";a:0:{}}', 'no'),
+(122, '_site_transient_update_core', 'O:8:\"stdClass\":4:{s:7:\"updates\";a:4:{i:0;O:8:\"stdClass\":10:{s:8:\"response\";s:7:\"upgrade\";s:8:\"download\";s:65:\"https://downloads.wordpress.org/release/cs_CZ/wordpress-5.3.2.zip\";s:6:\"locale\";s:5:\"cs_CZ\";s:8:\"packages\";O:8:\"stdClass\":5:{s:4:\"full\";s:65:\"https://downloads.wordpress.org/release/cs_CZ/wordpress-5.3.2.zip\";s:10:\"no_content\";b:0;s:11:\"new_bundled\";b:0;s:7:\"partial\";b:0;s:8:\"rollback\";b:0;}s:7:\"current\";s:5:\"5.3.2\";s:7:\"version\";s:5:\"5.3.2\";s:11:\"php_version\";s:6:\"5.6.20\";s:13:\"mysql_version\";s:3:\"5.0\";s:11:\"new_bundled\";s:3:\"5.3\";s:15:\"partial_version\";s:0:\"\";}i:1;O:8:\"stdClass\":10:{s:8:\"response\";s:7:\"upgrade\";s:8:\"download\";s:59:\"https://downloads.wordpress.org/release/wordpress-5.3.2.zip\";s:6:\"locale\";s:5:\"en_US\";s:8:\"packages\";O:8:\"stdClass\":5:{s:4:\"full\";s:59:\"https://downloads.wordpress.org/release/wordpress-5.3.2.zip\";s:10:\"no_content\";s:70:\"https://downloads.wordpress.org/release/wordpress-5.3.2-no-content.zip\";s:11:\"new_bundled\";s:71:\"https://downloads.wordpress.org/release/wordpress-5.3.2-new-bundled.zip\";s:7:\"partial\";b:0;s:8:\"rollback\";b:0;}s:7:\"current\";s:5:\"5.3.2\";s:7:\"version\";s:5:\"5.3.2\";s:11:\"php_version\";s:6:\"5.6.20\";s:13:\"mysql_version\";s:3:\"5.0\";s:11:\"new_bundled\";s:3:\"5.3\";s:15:\"partial_version\";s:0:\"\";}i:2;O:8:\"stdClass\":11:{s:8:\"response\";s:10:\"autoupdate\";s:8:\"download\";s:65:\"https://downloads.wordpress.org/release/cs_CZ/wordpress-5.3.2.zip\";s:6:\"locale\";s:5:\"cs_CZ\";s:8:\"packages\";O:8:\"stdClass\":5:{s:4:\"full\";s:65:\"https://downloads.wordpress.org/release/cs_CZ/wordpress-5.3.2.zip\";s:10:\"no_content\";b:0;s:11:\"new_bundled\";b:0;s:7:\"partial\";b:0;s:8:\"rollback\";b:0;}s:7:\"current\";s:5:\"5.3.2\";s:7:\"version\";s:5:\"5.3.2\";s:11:\"php_version\";s:6:\"5.6.20\";s:13:\"mysql_version\";s:3:\"5.0\";s:11:\"new_bundled\";s:3:\"5.3\";s:15:\"partial_version\";s:0:\"\";s:9:\"new_files\";s:1:\"1\";}i:3;O:8:\"stdClass\":11:{s:8:\"response\";s:10:\"autoupdate\";s:8:\"download\";s:65:\"https://downloads.wordpress.org/release/cs_CZ/wordpress-5.2.5.zip\";s:6:\"locale\";s:5:\"cs_CZ\";s:8:\"packages\";O:8:\"stdClass\":5:{s:4:\"full\";s:65:\"https://downloads.wordpress.org/release/cs_CZ/wordpress-5.2.5.zip\";s:10:\"no_content\";b:0;s:11:\"new_bundled\";b:0;s:7:\"partial\";b:0;s:8:\"rollback\";b:0;}s:7:\"current\";s:5:\"5.2.5\";s:7:\"version\";s:5:\"5.2.5\";s:11:\"php_version\";s:6:\"5.6.20\";s:13:\"mysql_version\";s:3:\"5.0\";s:11:\"new_bundled\";s:3:\"5.3\";s:15:\"partial_version\";s:0:\"\";s:9:\"new_files\";s:1:\"1\";}}s:12:\"last_checked\";i:1580324722;s:15:\"version_checked\";s:5:\"5.2.2\";s:12:\"translations\";a:0:{}}', 'no'),
+(123, '_site_transient_update_themes', 'O:8:\"stdClass\":4:{s:12:\"last_checked\";i:1580324724;s:7:\"checked\";a:2:{s:7:\"realsys\";s:3:\"1.0\";s:14:\"twentynineteen\";s:3:\"1.4\";}s:8:\"response\";a:0:{}s:12:\"translations\";a:0:{}}', 'no'),
+(124, '_site_transient_update_plugins', 'O:8:\"stdClass\":4:{s:12:\"last_checked\";i:1580324722;s:8:\"response\";a:0:{}s:12:\"translations\";a:0:{}s:9:\"no_update\";a:0:{}}', 'no'),
 (132, 'can_compress_scripts', '1', 'no'),
 (163, 'recently_activated', 'a:0:{}', 'yes'),
 (184, 'current_theme', 'RealSys', 'yes'),
@@ -443,10 +446,8 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (186, 'theme_switched', '', 'yes'),
 (284, 'recovery_mode_email_last_sent', '1574441198', 'yes'),
 (832, 'nav_menu_options', 'a:2:{i:0;b:0;s:8:\"auto_add\";a:0:{}}', 'yes'),
-(1093, '_site_transient_timeout_browser_237aa6249591b6a7ad6962bc73492c77', '1578224027', 'no'),
-(1094, '_site_transient_browser_237aa6249591b6a7ad6962bc73492c77', 'a:10:{s:4:\"name\";s:6:\"Chrome\";s:7:\"version\";s:12:\"79.0.3945.88\";s:8:\"platform\";s:7:\"Windows\";s:10:\"update_url\";s:29:\"https://www.google.com/chrome\";s:7:\"img_src\";s:43:\"http://s.w.org/images/browsers/chrome.png?1\";s:11:\"img_src_ssl\";s:44:\"https://s.w.org/images/browsers/chrome.png?1\";s:15:\"current_version\";s:2:\"18\";s:7:\"upgrade\";b:0;s:8:\"insecure\";b:0;s:6:\"mobile\";b:0;}', 'no'),
-(1151, '_site_transient_timeout_theme_roots', '1577989358', 'no'),
-(1152, '_site_transient_theme_roots', 'a:2:{s:7:\"realsys\";s:7:\"/themes\";s:14:\"twentynineteen\";s:7:\"/themes\";}', 'no');
+(1227, '_site_transient_timeout_theme_roots', '1580326523', 'no'),
+(1228, '_site_transient_theme_roots', 'a:2:{s:7:\"realsys\";s:7:\"/themes\";s:14:\"twentynineteen\";s:7:\"/themes\";}', 'no');
 
 -- --------------------------------------------------------
 
@@ -584,7 +585,8 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (183, 67, '_edit_lock', '1576609029:1'),
 (184, 1, '_edit_lock', '1576609508:1'),
 (185, 73, '_edit_lock', '1577284846:1'),
-(186, 75, '_edit_lock', '1577724615:1');
+(186, 75, '_edit_lock', '1577724615:1'),
+(187, 79, '_edit_lock', '1578681123:1');
 
 -- --------------------------------------------------------
 
@@ -664,7 +666,8 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (74, 1, '2019-12-25 15:43:09', '2019-12-25 14:43:09', '', 'uzivatel', '', 'inherit', 'closed', 'closed', '', '73-revision-v1', '', '', '2019-12-25 15:43:09', '2019-12-25 14:43:09', '', 73, 'http://localhost/realsys/73-revision-v1/', 0, 'revision', '', 0),
 (75, 1, '2019-12-30 17:52:37', '2019-12-30 16:52:37', '', 'login', '', 'publish', 'closed', 'closed', '', 'login', '', '', '2019-12-30 17:52:37', '2019-12-30 16:52:37', '', 0, 'http://localhost/realsys/?page_id=75', 0, 'page', '', 0),
 (76, 1, '2019-12-30 17:52:37', '2019-12-30 16:52:37', '', 'login', '', 'inherit', 'closed', 'closed', '', '75-revision-v1', '', '', '2019-12-30 17:52:37', '2019-12-30 16:52:37', '', 75, 'http://localhost/realsys/75-revision-v1/', 0, 'revision', '', 0),
-(77, 1, '2019-12-31 11:11:11', '0000-00-00 00:00:00', '', 'Automaticky vytvořený koncept', '', 'auto-draft', 'open', 'open', '', '', '', '', '2019-12-31 11:11:11', '0000-00-00 00:00:00', '', 0, 'http://localhost/realsys/?p=77', 0, 'post', '', 0);
+(79, 1, '2020-01-10 19:34:25', '2020-01-10 18:34:25', '', 'vypis', '', 'publish', 'closed', 'closed', '', 'vypis', '', '', '2020-01-10 19:34:25', '2020-01-10 18:34:25', '', 0, 'http://localhost/realsys/?page_id=79', 0, 'page', '', 0),
+(80, 1, '2020-01-10 19:34:25', '2020-01-10 18:34:25', '', 'vypis', '', 'inherit', 'closed', 'closed', '', '79-revision-v1', '', '', '2020-01-10 19:34:25', '2020-01-10 18:34:25', '', 79, 'http://localhost/realsys/79-revision-v1/', 0, 'revision', '', 0);
 
 -- --------------------------------------------------------
 
@@ -789,8 +792,8 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 (13, 1, 'wp_user_level', '10'),
 (14, 1, 'dismissed_wp_pointers', 'text_widget_custom_html'),
 (15, 1, 'show_welcome_panel', '1'),
-(16, 1, 'session_tokens', 'a:3:{s:64:\"2f9afbc9bbe1ea32e3fd52eb9e9547a13413512cfedb903979c6fed480886ea9\";a:4:{s:10:\"expiration\";i:1577792026;s:2:\"ip\";s:3:\"::1\";s:2:\"ua\";s:114:\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36\";s:5:\"login\";i:1577619226;}s:64:\"506dc7911cde5dfc1d533a97d3ed182fbc64464ec510e037741cdcb2ce0c5bb7\";a:4:{s:10:\"expiration\";i:1577897544;s:2:\"ip\";s:3:\"::1\";s:2:\"ua\";s:114:\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36\";s:5:\"login\";i:1577724744;}s:64:\"15a7271245fce55c71f481cb14debfd2cd5592e772fc3c4b6a34b4dff5028e12\";a:4:{s:10:\"expiration\";i:1577959870;s:2:\"ip\";s:3:\"::1\";s:2:\"ua\";s:114:\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36\";s:5:\"login\";i:1577787070;}}'),
-(17, 1, 'wp_dashboard_quick_press_last_post_id', '77'),
+(16, 1, 'session_tokens', 'a:1:{s:64:\"e67a9a05acbff75caf6e9bbba7cb89161acd5de79ecae00f9d8847aeb0d8b07f\";a:4:{s:10:\"expiration\";i:1578854015;s:2:\"ip\";s:3:\"::1\";s:2:\"ua\";s:114:\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36\";s:5:\"login\";i:1578681215;}}'),
+(17, 1, 'wp_dashboard_quick_press_last_post_id', '78'),
 (18, 1, 'wp_user-settings', 'libraryContent=browse&editor=html'),
 (19, 1, 'wp_user-settings-time', '1574437244'),
 (20, 1, 'managenav-menuscolumnshidden', 'a:4:{i:0;s:11:\"link-target\";i:1;s:15:\"title-attribute\";i:2;s:3:\"xfn\";i:3;s:11:\"description\";}'),
@@ -988,7 +991,7 @@ ALTER TABLE `s7_obrazek`
 -- AUTO_INCREMENT for table `s7_uzivatel`
 --
 ALTER TABLE `s7_uzivatel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `wp_commentmeta`
@@ -1012,19 +1015,19 @@ ALTER TABLE `wp_links`
 -- AUTO_INCREMENT for table `wp_options`
 --
 ALTER TABLE `wp_options`
-  MODIFY `option_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1153;
+  MODIFY `option_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1232;
 
 --
 -- AUTO_INCREMENT for table `wp_postmeta`
 --
 ALTER TABLE `wp_postmeta`
-  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
+  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=188;
 
 --
 -- AUTO_INCREMENT for table `wp_posts`
 --
 ALTER TABLE `wp_posts`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT for table `wp_termmeta`

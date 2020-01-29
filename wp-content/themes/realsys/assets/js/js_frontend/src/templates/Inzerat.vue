@@ -1,7 +1,7 @@
 <template>
     <div class="col-sm-3 nemovitost">
         <div class="nemovitost-wrapper">
-            <div class="nemovitost-image" style="background-image: url(img/nemovitosti/nem.jpeg); "></div>
+            <div class="nemovitost-image" :style="getFrontImage"></div>
             <div class="nemovitost-text">
                 <h3 v-html="getSpecialName"></h3>
 
@@ -18,7 +18,7 @@
 
                 <div class="price-bar">
                     <h4 class="price">{{formatMoney}} </h4>
-                    <a class="btn more" href="">Více info</a>
+                    <a class="btn more" :href="this.inzerat.link">Více info</a>
                 </div>
             </div>
         </div>
@@ -27,6 +27,7 @@
 
 <script>
     export default {
+
         name: "Inzerat",
         props: [
             "inzeratData", "assetsPath", "currency"
@@ -62,6 +63,18 @@
                     minimumFractionDigits: 0
                 });
                 return formatter.format(this.inzerat.db_cena);
+            },
+            getFrontImage: function () {
+                var frontImageUrl = {'backgroundImage' : 'url(' + this.assetsPath + "loading.gif"};
+                if(this.inzerat.hasOwnProperty("subobjects")){
+                    var images = this.inzerat.subobjects.obrazekClass;
+                    for(var image in images){
+                        if(images[image].db_front.value == 1){
+                            frontImageUrl = {'backgroundImage' : 'url(' + images[image].db_url.value + ')'};
+                        }
+                    }
+                }
+                return frontImageUrl;
             }
         }
 

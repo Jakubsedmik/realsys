@@ -6,41 +6,18 @@
                     <div class="col-sm filtr-blok">
                         <div class="bg-filtr one"></div>
 
-                        <div class="filtr-single">
-                            <label>Typ inzerátu
+                        <div class="filtr-single" v-for="(filter, index) in filters_first" v-bind:key="index">
+                            <label>{{filter.name}}
                                 <select name="">
-                                    <option value="">Pronájem</option>
+                                    <option
+                                            v-bind:value="key"
+                                            v-for="(value, key) in filter.values">
+                                        {{value}}
+                                    </option>
                                 </select>
                             </label>
                         </div>
 
-                        <div class="filtr-single">
-                            <label>Typ nemovitosti
-                                <select name="">
-                                    <option value="">Pronájem</option>
-                                </select>
-                            </label>
-                        </div>
-
-                        <div class="filtr-single">
-                            <label>Typ stavby
-                                <select name="">
-                                    <option value="">Pronájem</option>
-                                </select>
-                            </label>
-                        </div>
-
-                        <div class="filtr-single">
-                            <label>Cena od
-                                <input type="text">
-                            </label>
-                        </div>
-
-                        <div class="filtr-single">
-                            <label>Cena do
-                                <input type="text">
-                            </label>
-                        </div>
                     </div>
                 </div>
 
@@ -48,40 +25,18 @@
                     <div class="col-sm filtr-blok">
                         <div class="bg-filtr two"></div>
 
-                        <div class="filtr-single">
-                            <label>Typ inzerátu
+                        <div class="filtr-single" v-for="(filter, index) in filters_second" v-bind:key="index">
+                            <label>{{filter.name}}
                                 <select name="">
-                                    <option value="">Pronájem</option>
+                                    <option
+                                            v-bind:value="key"
+                                            v-for="(value, key) in filter.values">
+                                        {{value}}
+                                    </option>
                                 </select>
                             </label>
                         </div>
 
-                        <div class="filtr-single">
-                            <label>Typ inzerátu
-                                <select name="">
-                                    <option value="">Pronájem</option>
-                                </select>
-                            </label>
-                        </div>
-
-                        <div class="filtr-single">
-                            <label>Typ inzerátu
-                                <select name="">
-                                    <option value="">Pronájem</option>
-                                </select>
-                            </label>
-                        </div>
-
-                        <div class="filtr-single">
-                            <label>Cena od
-                                <div class="slidecontainer">
-                                    <input type="range" min="1" max="100" value="50" class="ranger" id="myRange">
-                                </div>
-                            </label>
-                        </div>
-
-                        <div class="filtr-single">
-                        </div>
                     </div>
                 </div>
 
@@ -92,7 +47,34 @@
 
 <script>
     export default {
-        name: "Vyhledavani"
+        name: "Vyhledavani",
+        props: [
+            'filters'
+        ],
+        computed: {
+            filters_first : function () {
+                var result = {};
+                var loops = 0;
+                for(var index in this.filters){
+                    if(loops<3){
+                        result[index] = this.filters[index];
+                    }
+                    loops++;
+                }
+                return result;
+            },
+            filters_second: function () {
+                var result = {};
+                var loops = 0;
+                for(var index in this.filters){
+                    if(loops>=3){
+                        result[index] = this.filters[index];
+                    }
+                    loops++;
+                }
+                return result;
+            }
+        }
     }
 </script>
 

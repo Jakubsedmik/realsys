@@ -8,8 +8,9 @@
             </div>
             <div class="col-sm-3">
                 <strong>Řadit dle:</strong>
-                <select name="">
-                    <option value="">Nejnovější</option>
+                <select @change="changeSorting()" ref="sorting" v-model="currentSort">
+                    <option value="db_datum_zalozeni">Nejnovější</option>
+                    <option value="db_cena">Nejlevnější</option>
                 </select>
             </div>
             <div class="col-sm-6 right">
@@ -27,12 +28,13 @@
         ],
         data: function () {
             return {
-
+                currentSort: "db_cena"
             }
         },
         methods: {
-            test: function () {
-
+            changeSorting: function () {
+                var value  = this.$refs.sorting.value;
+                this.$root.$emit("changeSorting", value);
             }
         }
     }

@@ -412,33 +412,50 @@ function getInzeraty(){
 	ini_set('display_errors', 'Off');
 
 	$response = new stdClass();
+	if(Tools::checkPresenceOfParam("countPage",$_GET) && Tools::checkPresenceOfParam("page", $_GET) && Tools::checkPresenceOfParam("sortBy", $_GET)){
 
-	$inzeraty = assetsFactory::getAllEntity("inzeratClass");
-	foreach ($inzeraty as $key => $val){
-		/*$val->getInterfaceTypes = (
-			function () {
-				return array(
-					"db_id" => "number",
-					"db_titulek" => "string",
-					"db_mesto" => "string",
-					"db_popis" => "string",
-					"db_podlahova_plocha" => "number",
-				);
-			}
-		)->bindTo($val);*/
-		$val->ignoreInterface();
-		$val->writeDials();
+		$sortBy = $_GET['sortBy'];
+		$sortBy = str_replace("db_", "", $sortBy);
+		$bufferSize = $_GET['countPage'];
+		$page = $_GET['page'];
 
+		$offset = $bufferSize * ($page-1);
+
+		$inzeraty = assetsFactory::getAllEntity(
+			"inzeratClass",
+			array(),
+			$offset,
+			$bufferSize,
+			false,
+			"ORDER BY $sortBy ASC"
+		);
+
+
+
+
+		$i = 0;
+		$ordered_list = array();
+		foreach ($inzeraty as $key => $val){
+			$val->ignoreInterface();
+			$val->writeDials();
+			$val->getSubobject("obrazek");
+			$val->link = Tools::getFERoute("inzeratClass", $val->getId());
+			$val->order = $i;
+			$ordered_list[] = $val;
+			$i++;
+		}
+
+
+		$response->status = 1;
+		$response->appData = new stdClass();
+		$response->appData->inzeraty = $inzeraty;
+		$response->appData->currency = CURRENCY;
+		$response->appData->totalRecordsCount = assetsFactory::getAllEntityCount("inzeratClass");
+
+	}else{
+		$response->status = 0;
+		$response->message = "Některé parametry nebyli specifikovány";
 	}
-
-	$response->status = 1;
-	$response->appData = new stdClass();
-	$response->appData->inzeraty = $inzeraty;
-	$response->appData->currency = CURRENCY;
-	$response->appData->totalRecordsCount = count($inzeraty);
-
-
-
 
 	wp_send_json($response);
 	die();
