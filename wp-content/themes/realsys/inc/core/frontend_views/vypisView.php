@@ -1,8 +1,9 @@
-
 <div class="app">
     <Vypis
             assetspath="<?php echo FRONTEND_IMAGES_PATH; ?>"
-            apiurl="<?php echo AJAXURL . "?action=getInzeraty"; ?>"></Vypis>
+            apiurl="<?php echo AJAXURL . "?action=getInzeraty"; ?>"
+            :filters="<?php echo $this->requestData['filter']; ?>">
+    </Vypis>
 </div>
 
 

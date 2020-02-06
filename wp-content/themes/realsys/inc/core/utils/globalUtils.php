@@ -186,6 +186,18 @@ class globalUtils {
     	$result = Tools::postChecker($array_data, $array_type, true);
     	return $result;
     }
-    
+
+    public static function getValuesForFilter($class, $state, $default = false){
+    	$values = assetsFactory::getAllDials($class, $state);
+    	$clearValues = array();
+    	foreach ($values as $key => $value){
+    		$clearValues[$value->db_value] = $value->db_translation;
+	    }
+    	if($default !== false){
+    		$clearValues[0] = $default;
+	    }
+    	return $clearValues;
+    }
+
     
 }

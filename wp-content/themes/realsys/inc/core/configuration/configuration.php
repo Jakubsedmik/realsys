@@ -555,3 +555,16 @@ define("DATE_FORMAT", "d.m.Y");
 // DEFAULT WATERMARK
 define("WATERMARK", __DIR__ . "/../../../assets/images/images_backend/watermark.png");
 define("WATERMARK_RESIZE_FACTOR", 1);
+
+
+// FILTER PARAMETERS
+$filter_parameters = array(
+	'db_typ_nemovitosti' => array(
+		'name' => 'Typ nemovitosti',
+		'values' => array()
+	),
+	'db_typ_vlastnictvi' => array(
+		'name' => 'Typ vlastnictví',
+		'values' => array()
+	)
+);

@@ -421,17 +421,26 @@ function getInzeraty(){
 
 		$offset = $bufferSize * ($page-1);
 
+		global $filter_parameters;
+		$filter_arr = array();
+		foreach ($filter_parameters as $key => $value){
+			if(Tools::checkPresenceOfParam($key, $_GET)){
+				$wanted_value = $_GET[$key];
+				$column = str_replace("db_","",$key);
+				$filter = new filterClass($column, "=", "'" . $wanted_value . "'");
+				$filter_arr[] = $filter;
+			}
+		}
+
+
 		$inzeraty = assetsFactory::getAllEntity(
 			"inzeratClass",
-			array(),
+			$filter_arr,
 			$offset,
 			$bufferSize,
 			false,
 			"ORDER BY $sortBy ASC"
 		);
-
-
-
 
 		$i = 0;
 		$ordered_list = array();
@@ -439,6 +448,7 @@ function getInzeraty(){
 			$val->ignoreInterface();
 			$val->writeDials();
 			$val->getSubobject("obrazek");
+			$val->setForceNotUpdate();
 			$val->link = Tools::getFERoute("inzeratClass", $val->getId());
 			$val->order = $i;
 			$ordered_list[] = $val;
@@ -450,7 +460,7 @@ function getInzeraty(){
 		$response->appData = new stdClass();
 		$response->appData->inzeraty = $inzeraty;
 		$response->appData->currency = CURRENCY;
-		$response->appData->totalRecordsCount = assetsFactory::getAllEntityCount("inzeratClass");
+		$response->appData->totalRecordsCount = assetsFactory::getAllEntityCount("inzeratClass", $filter_arr);
 
 	}else{
 		$response->status = 0;

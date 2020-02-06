@@ -55,7 +55,8 @@
                 },
                 page: 1,
                 isLoading: true,
-                sortBy: Filtr.data().currentSort
+                sortBy: Filtr.data().currentSort,
+                searchQuery: ""
             }
         },
         props : {
@@ -129,6 +130,11 @@
                 _this.fetchData();
                 _this.$forceUpdate();
             });
+
+            this.$root.$on("searchFor", function (searchFor) {
+                _this.searchQuery = searchFor;
+                _this.fetchData();
+            });
         },
         methods: {
             metoda1: function () {
@@ -138,6 +144,9 @@
                 this.isLoading = true;
                 var _this = this;
                 var getUrl = this.apiurl + "&countPage=" + this.bufferSize + "&page=" + this.page + "&sortBy=" + this.sortBy;
+                if(this.searchQuery.length > 0){
+                    getUrl += "&" + this.searchQuery;
+                }
 
                 setTimeout(function () {
                     Axios.get(getUrl).then(function (response) {

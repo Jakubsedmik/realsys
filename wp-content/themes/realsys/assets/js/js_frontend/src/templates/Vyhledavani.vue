@@ -8,7 +8,7 @@
 
                         <div class="filtr-single" v-for="(filter, index) in filters_first" v-bind:key="index">
                             <label>{{filter.name}}
-                                <select name="">
+                                <select :name="index" v-model="search_data[index]" v-on:change="searchResults">
                                     <option
                                             v-bind:value="key"
                                             v-for="(value, key) in filter.values">
@@ -27,7 +27,7 @@
 
                         <div class="filtr-single" v-for="(filter, index) in filters_second" v-bind:key="index">
                             <label>{{filter.name}}
-                                <select name="">
+                                <select :name="index" v-model="search_data[index]" v-on:change="searchResults">
                                     <option
                                             v-bind:value="key"
                                             v-for="(value, key) in filter.values">
@@ -51,6 +51,11 @@
         props: [
             'filters'
         ],
+        data: function(){
+            return {
+                search_data:{}
+            }
+        },
         computed: {
             filters_first : function () {
                 var result = {};
@@ -73,6 +78,20 @@
                     loops++;
                 }
                 return result;
+            }
+        },
+        methods: {
+            searchResults: function (e) {
+                var str = "";
+                var searchData = this.search_data;
+                for(var i in searchData){
+                    if (str != "") {
+                        str += "&";
+                    }
+                    str += i + "=" + encodeURIComponent(searchData[i]);
+                }
+
+                this.$root.$emit("searchFor", str);
             }
         }
     }

@@ -32,6 +32,7 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
     private $maskingJoinColumn; // název sloupce přes který se má vyhledávat maska - vazba na ID
 
 	private $subobjects; // proměnná sloužící k automatickému načítání struktur, které jsou k objektu přiřazené pomocí vazeb
+	private $forceNotUpdate;
     
     /*
      * Konstruktor základního Kamene
@@ -50,6 +51,7 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
         $this->maskingJoinColumn = NULL;
         $this->ignoreInterface = false;
         $this->valid = true;
+        $this->forceNotUpdate = false;
         
         if( $id > -1 ){
             $this->empty = true;
@@ -103,6 +105,7 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
         	trigger_error("Některé z položek třídy jsou nevalidní, tudíž nelze uložit");
         	return false;
         }
+
         $result = $wpdb->update(
             $this->tableName,
             $db_properties,
@@ -241,7 +244,9 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
 		        $this->valid = $this->checkValidity( $name, $value );
 	        }
         	$this->$name = $value;
-            return $this->aktualizovat();
+	        if(!$this->forceNotUpdate){
+                return $this->aktualizovat();
+	        }
         }
         
     }
@@ -713,6 +718,10 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
 				}
 			}
 		}
+	}
+
+	public function setForceNotUpdate(){
+		$this->set_not_update("forceNotUpdate",true);
 	}
 
 
