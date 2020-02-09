@@ -30,7 +30,8 @@
                                 <select :name="index" v-model="search_data[index]" v-on:change="searchResults">
                                     <option
                                             v-bind:value="key"
-                                            v-for="(value, key) in filter.values">
+                                            v-for="(value, key) in filter.values"
+                                            >
                                         {{value}}
                                     </option>
                                 </select>

@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vypis from "./templates/Vypis.vue";
+import Vyhledavanimapa from "./templates/Vyhledavanimapa.vue";
 
 
 
@@ -11,7 +12,7 @@ if(app.length > 0){
             test: "tetss"
         },
         components :{
-            Vypis
+            Vypis, Vyhledavanimapa
         },
         mounted() {
 

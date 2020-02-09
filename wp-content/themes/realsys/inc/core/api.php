@@ -426,9 +426,11 @@ function getInzeraty(){
 		foreach ($filter_parameters as $key => $value){
 			if(Tools::checkPresenceOfParam($key, $_GET)){
 				$wanted_value = $_GET[$key];
-				$column = str_replace("db_","",$key);
-				$filter = new filterClass($column, "=", "'" . $wanted_value . "'");
-				$filter_arr[] = $filter;
+				if($wanted_value != -1){
+					$column = str_replace("db_","",$key);
+					$filter = new filterClass($column, "=", "'" . $wanted_value . "'");
+					$filter_arr[] = $filter;
+				}
 			}
 		}
 

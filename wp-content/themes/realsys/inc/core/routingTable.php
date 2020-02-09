@@ -9,7 +9,8 @@ if(DEPLOYMENT){
 		'\/realsys\/inzerat\/' => "inzeratDetailController",
 		'\/realsys\/uzivatel\/' => "uzivatelDetailController",
 		"\/realsys\/login\/" => "loginController",
-		"\/realsys\/vypis\/" => "vypisController"
+		"\/realsys\/vypis\/" => "vypisController",
+		"\/realsys\/vypismapa\/" => "vypisMapaController"
 	);
 }
 

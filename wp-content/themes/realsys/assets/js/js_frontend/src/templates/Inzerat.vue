@@ -1,5 +1,5 @@
 <template>
-    <div class="col-sm-3 nemovitost">
+    <div :class="getInzeratClass">
         <div class="nemovitost-wrapper">
             <div class="nemovitost-image" :style="getFrontImage"></div>
             <div class="nemovitost-text">
@@ -29,9 +29,22 @@
     export default {
 
         name: "Inzerat",
-        props: [
-            "inzeratData", "assetsPath", "currency"
-        ],
+        props: {
+            "inzeratData" : {
+                type: Object
+            },
+            "assetsPath" : {
+                type: String
+            },
+            "currency" : {
+                type: String,
+                default: "CZK"
+            },
+            "proportion" : {
+                type: String,
+                default: 3
+            }
+        },
         data: function () {
             return {
                 inzerat: this.inzeratData
@@ -75,6 +88,13 @@
                     }
                 }
                 return frontImageUrl;
+            },
+            getInzeratClass: function () {
+                var class_name = "col-sm-" + this.proportion;
+                var classObj = new Object;
+                classObj[class_name] = true;
+                classObj['nemovitost'] = true;
+                return classObj;
             }
         }
 

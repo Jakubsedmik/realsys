@@ -194,7 +194,7 @@ class globalUtils {
     		$clearValues[$value->db_value] = $value->db_translation;
 	    }
     	if($default !== false){
-    		$clearValues[0] = $default;
+    		$clearValues[-1] = $default;
 	    }
     	return $clearValues;
     }

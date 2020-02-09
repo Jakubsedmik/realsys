@@ -365,6 +365,13 @@ function initMap() {
         }
     }
 }
+$(document).ready(function () {
+    var map = $(".google-map");
+    if(map.length > 0){
+        var script = '<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDU9RxWxpRRoy9R-wAILv5Owb7GaXHLVaw&callback=initMap"></script>';
+        $("body").append(script);
+    }
+});
 
 /* LOGIN TABS */
 

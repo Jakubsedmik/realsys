@@ -566,5 +566,17 @@ $filter_parameters = array(
 	'db_typ_vlastnictvi' => array(
 		'name' => 'Typ vlastnictví',
 		'values' => array()
-	)
+	),
+	'db_typ_stavby' => array(
+		'name' => 'Typ stavby',
+		'values' => array()
+	),
+	'db_stav_objektu' => array(
+		'name' => 'Stav objektu',
+		'values' => array()
+	),
+	'db_penb' => array(
+		'name' => 'PENB',
+		'values' => array()
+	),
 );
