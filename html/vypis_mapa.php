@@ -86,9 +86,9 @@
                               </div>
                               <div class="col-sm-6 right">
                                   <strong>Řadit dle:</strong>  
-                                      <select name="">
-                                          <option value="">Nejnovější</option>
-                                      </select>
+                                  <select name="">
+                                      <option value="">Nejnovější</option>
+                                  </select>
                               </div>
                           </div>
                         </div>

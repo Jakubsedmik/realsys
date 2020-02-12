@@ -1,5 +1,5 @@
 <template>
-    <div :class="getInzeratClass">
+    <div :class="getInzeratClass" @mouseover="highlightItem()" @mouseleave="unhighlightItem()">
         <div class="nemovitost-wrapper">
             <div class="nemovitost-image" :style="getFrontImage"></div>
             <div class="nemovitost-text">
@@ -96,6 +96,14 @@
                 classObj['nemovitost'] = true;
                 return classObj;
             }
+        },
+        methods: {
+            highlightItem: function () {
+                this.$root.$emit("highlightItem", this.inzeratData.db_id);
+            },
+            unhighlightItem: function () {
+                this.$root.$emit("unhighlightItem", this.inzeratData.db_id);
+            },
         }
 
     }

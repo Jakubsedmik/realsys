@@ -11,7 +11,10 @@
 
                     <div class="col-sm">
 
-                        <Filtr v-bind:inzeratyCount="this.appData.totalRecordsCount">
+                        <Filtr
+                                v-bind:inzeratyCount="this.appData.totalRecordsCount"
+                                design="simple"
+                        >
                         </Filtr>
 
                         <div :class="{row: true, isLoading: this.isLoading}">
@@ -28,7 +31,7 @@
 
                         <Paging
                                 v-bind:page="this.page"
-                                v-bind:totalRecordsCount="this.appData.totalRecordsCount"
+                                v-bind:totalRecordsCount="this.filteredResults.length"
                                 v-bind:inzeratyCount="this.bufferSize"
                         ></Paging>
 
@@ -47,6 +50,7 @@
     import Paging from "./Paging.vue";
     import Axios from "axios";
     import VueAxios from 'vue-axios';
+    import {debounce} from 'lodash';
 
     export default {
         name: "Vyhledavanimapa",
@@ -61,7 +65,8 @@
                 sortBy: Filtr.data().currentSort,
                 google: null,
                 map: null,
-                mapMarkers: []
+                mapMarkers: {},
+                filteredResults: []
             }
         },
         props : {
@@ -85,10 +90,8 @@
         async mounted() {
             // start map
             try {
-                const options = {libraries: ['drawing']};
+                const options = {libraries: []};
                 const loader = new Loader('AIzaSyDU9RxWxpRRoy9R-wAILv5Owb7GaXHLVaw', options);
-
-
                 const google = await loader.load();
                 this.google = google;
 
@@ -101,13 +104,22 @@
             var _this = this;
             this.$root.$on("changePage", function (page) {
                 _this.page = page;
-                _this.fetchData();
             });
 
             this.$root.$on("changeSorting", function (sort) {
                 _this.sortBy = sort;
                 _this.fetchData();
                 _this.$forceUpdate();
+            });
+
+            this.$root.$on("highlightItem", function (itemId) {
+                let marker = _this.mapMarkers[itemId];
+                marker.setAnimation(google.maps.Animation.BOUNCE);
+            });
+
+            this.$root.$on("unhighlightItem", function (itemId) {
+                let marker = _this.mapMarkers[itemId];
+                marker.setAnimation(null);
             });
 
             this.$root.$on("dataLoaded", function () {
@@ -120,40 +132,13 @@
                         zoom: 3,
                     });
 
-                    var polyOptions = {
-                        strokeWeight: 0,
-                        fillOpacity: 0.45,
-                        editable: true,
-                        fillColor: '#FF1493'
-                    };
-
-                    var drawingManager = new _this.google.maps.drawing.DrawingManager({
-                        drawingMode: google.maps.drawing.OverlayType.POLYGON,
-                        drawingControl: true,
-                        markerOptions: {
-                            draggable: true
-                        },
-                        polygonOptions: polyOptions
-                    });
-
-                    drawingManager.setMap(map);
-                    drawingManager.setDrawingMode(_this.google.maps.drawing.OverlayType.POLYGON);
-
                     _this.map = map;
                 }else{
                     map = _this.map;
                 }
 
-                /* CLEANING ALL */
-                for(var i in _this.appData.inzeraty){
-                    var inzerat2 = _this.appData.inzeraty[i];
-                    console.log(inzerat2);
-                    if('db_marker' in inzerat2){
-                        console.log(inzerat2.marker);
-                        inzerat2.marker.setMap(null);
-                        inzerat2.marker = null;
-                    }
-                }
+                _this.clearMapMarkers();
+
 
                 /* RENDERING */
                 var bounds = new google.maps.LatLngBounds();
@@ -166,26 +151,44 @@
                         map: map,
                         title: inzerat.db_titulek
                     });
-                    inzerat['db_marker'] = marker;
+
+                    _this.mapMarkers[inzerat.db_id] = marker;
                     bounds.extend(latLng);
                 }
+
+                var markerCluster = new MarkerClusterer(
+                    map,
+                    _this.mapMarkers,
+                    {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
+                );
 
                 /* FIT SCREEN TO MARKERS BOUNDS */
                 map.fitBounds(bounds);
 
+
+                /* CHANGE BOUDNS LISTENER */
+
+                map.addListener('bounds_changed', debounce(function () {
+                    _this.filterResults();
+                },500));
             });
+
+
+
         },
         methods: {
             fetchData: function(){
                 this.isLoading = true;
                 var _this = this;
-                var getUrl = this.apiurl + "&countPage=" + this.bufferSize + "&page=" + this.page + "&sortBy=" + this.sortBy;
+                var getUrl = this.apiurl + "&getAll=1" + "&sortBy=" + this.sortBy;
 
                 setTimeout(function () {
                     Axios.get(getUrl).then(function (response) {
                         if (response)
                             if(typeof response.data == "object"){
                                 _this.appData = response.data.appData;
+                                let count = Object.keys(response.data.appData.inzeraty).length;
+                                _this.appData.totalRecordsCount = count;
                                 _this.isLoading = false;
                                 _this.$root.$emit("dataLoaded");
                             }else{
@@ -195,14 +198,40 @@
                         console.error(error);
                     });
                 }, 500);
+            },
+            filterResults: function(){
+
+                var allItems = this.appData.inzeraty;
+                var map = this.map;
+                this.filteredResults = [];
+
+                for (var i in allItems){
+                    var item = allItems[i];
+
+                    var latLng = {lat: parseFloat(item.db_lat) , lng: parseFloat(item.db_lng)};
+
+                    if( map.getBounds().contains(latLng) ){
+                        this.filteredResults.push(item);
+                    }
+                }
+
+            },
+            clearMapMarkers: function () {
+                /* CLEANING ALL */
+                let markery = this.mapMarkers;
+                for(var index in markery){
+                    var marker = markery[index];
+                    marker.setMap(null);
+                }
+                this.mapMarkers = {};
             }
         },
         computed: {
             inzeraty: function () {
-                var inzeraty = this.appData.inzeraty;
+                var inzeraty = this.filteredResults;
                 var sortable = Object.values(inzeraty);
 
-                return sortable.sort(function (x, y) {
+                sortable = sortable.sort(function (x, y) {
                     if(x.order > y.order){
                         return 1;
                     }
@@ -212,8 +241,18 @@
                     return 0;
                 });
 
+
+                let page = this.page;
+                let bufferSize = this.bufferSize;
+
+                let start = (page-1) * bufferSize;
+                let end = page * bufferSize;
+
                 /* zde se to musí zastřihnout podle bufferu a podle čísla stránky
                 *  defaultně potřebujeme všechny záznamy načtené */
+                return sortable.slice(start,end);
+
+
             }
         }
     }

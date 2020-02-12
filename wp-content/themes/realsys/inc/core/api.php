@@ -412,7 +412,39 @@ function getInzeraty(){
 	ini_set('display_errors', 'Off');
 
 	$response = new stdClass();
-	if(Tools::checkPresenceOfParam("countPage",$_GET) && Tools::checkPresenceOfParam("page", $_GET) && Tools::checkPresenceOfParam("sortBy", $_GET)){
+
+	if(Tools::checkPresenceOfParam("sortBy", $_GET) && Tools::checkPresenceOfParam("getAll", $_GET)){
+
+		$sortBy = $_GET['sortBy'];
+		$sortBy = str_replace("db_", "", $sortBy);
+
+		$inzeraty = assetsFactory::getAllEntity(
+			"inzeratClass",
+			array(),
+			false,
+			false,
+			false,
+			"ORDER BY $sortBy ASC"
+		);
+
+		$i = 0;
+		$ordered_list = array();
+		foreach ($inzeraty as $key => $val){
+			$val->ignoreInterface();
+			$val->writeDials();
+			$val->getSubobject("obrazek");
+			$val->setForceNotUpdate();
+			$val->link = Tools::getFERoute("inzeratClass", $val->getId());
+			$val->order = $i;
+			$ordered_list[] = $val;
+			$i++;
+		}
+
+		$response->status = 1;
+		$response->appData = new stdClass();
+		$response->appData->inzeraty = $inzeraty;
+		$response->appData->currency = CURRENCY;
+	}elseif (Tools::checkPresenceOfParam("countPage",$_GET) && Tools::checkPresenceOfParam("page", $_GET) && Tools::checkPresenceOfParam("sortBy", $_GET)){
 
 		$sortBy = $_GET['sortBy'];
 		$sortBy = str_replace("db_", "", $sortBy);

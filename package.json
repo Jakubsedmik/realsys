@@ -18,6 +18,8 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
     "gulp-uglify-es": "^1.0.4",
+    "lodash": "^4.17.15",
+    "markerclustererplus": "^2.1.4",
     "vue-axios": "^2.1.5",
     "vue-filepond": "^5.1.3"
   },
