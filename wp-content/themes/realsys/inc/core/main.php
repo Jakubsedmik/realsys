@@ -5,6 +5,9 @@ $pluginPath = __DIR__;
 require_once __DIR__ . '/configuration/configuration.php';
 require_once (__DIR__ . "/routingTable.php");
 
+// COMPOSER AUTOLOAD
+require_once (__DIR__ . "/lib/vendor/autoload.php");
+
 
 function autoloader($className){
     if(file_exists(__DIR__ . "/classes/" . $className . ".php")){

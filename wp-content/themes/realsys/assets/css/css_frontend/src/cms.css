@@ -1,0 +1,33 @@
+.row.section-four-blocks{
+    margin-bottom: 60px;
+}
+
+.row.section-four-blocks .col-md{
+    background: #eeeeee;
+    padding: 30px;
+    margin-right: 40px;
+    border-radius: 5px;
+}
+
+.row.section-four-blocks .col-md:last-child{
+    margin-right: 0;
+}
+
+.cms-con{
+    padding: 50px 0px;
+}
+
+@media only screen and (max-width: 767px){
+    .cms-con{
+        padding: 0 30px;
+    }
+
+    .section-title h1.title{
+        font-size: 40px;
+    }
+
+    .row.section-four-blocks .col-md{
+        margin-right: 0;
+        margin-bottom: 30px;
+    }
+}

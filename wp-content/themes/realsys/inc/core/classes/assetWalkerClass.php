@@ -186,9 +186,10 @@ class assetWalkerClass {
 	}
 
 	public function renderPaging(){
+		
 		$output = "";
 		if($this->total_pages > 1){
-			$output = '<ul class="pagination"><li class="arrow left"><a href="' . Tools::getCleanUrl() . '?pg=1">První</a></li>';
+			$output = '<div class="section-paging"><a class="btn sub" href="' . Tools::getCleanUrl() . '?pg=1">První</a><ul class="paging">';
 			$maximum = $this->page + intval((MAX_PAGING_POSITIONS / 2));
 			$minimum = $this->page - intval((MAX_PAGING_POSITIONS / 2));
 
@@ -197,13 +198,15 @@ class assetWalkerClass {
 
 			for($i=$minimum; $i<=$maximum; $i++){
 				if($i == ($this->page+1)){
-					$output .= '<li class="current"><a href="' . Tools::getCleanUrl() . '?pg=' . $i .  '">' . $i . '</a></li>';
+					$output .= '<li class="active"><a href="' . Tools::getCleanUrl() . '?pg=' . $i .  '">' . $i . '</a></li>';
 				}else {
 					$output .= '<li><a href="' . Tools::getCleanUrl() . '?pg=' . $i . '">' . $i . '</a></li>';
 				}
 
 			}
-			$output .= '<li class="arrow right"><a href="' . Tools::getCleanUrl() . '?pg=' . $this->total_pages . '">Poslední</a></li></ul>';
+			$output .= '</ul>';
+			$output .= '<a class="btn sub" href="' . Tools::getCleanUrl() . '?pg=' . $this->total_pages . '">Poslední</a>';
+			$output .= '</div>';
 		}
 		return $output;
 	}

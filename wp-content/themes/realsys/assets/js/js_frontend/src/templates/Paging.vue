@@ -30,6 +30,7 @@
                     arr.push(i);
                 }
                 return arr;
+                
             }
         },
         methods: {

@@ -10,7 +10,8 @@ if(DEPLOYMENT){
 		'\/realsys\/uzivatel\/' => "uzivatelDetailController",
 		"\/realsys\/login\/" => "loginController",
 		"\/realsys\/vypis\/" => "vypisController",
-		"\/realsys\/vypismapa\/" => "vypisMapaController"
+		"\/realsys\/vypismapa\/" => "vypisMapaController",
+		"\/realsys\/gopay\/" => "gopayController",
 	);
 }
 
