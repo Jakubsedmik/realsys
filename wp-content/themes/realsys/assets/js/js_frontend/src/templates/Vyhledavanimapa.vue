@@ -66,7 +66,8 @@
                 google: null,
                 map: null,
                 mapMarkers: {},
-                filteredResults: []
+                filteredResults: [],
+                markerClusterer: null
             }
         },
         props : {
@@ -124,6 +125,7 @@
 
             this.$root.$on("dataLoaded", function () {
 
+
                 /* ESTABLISHING MAP */
                 var map;
                 if(_this.map == null){
@@ -161,6 +163,7 @@
                     _this.mapMarkers,
                     {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
                 );
+                _this.markerClusterer = markerCluster;
 
                 /* FIT SCREEN TO MARKERS BOUNDS */
                 map.fitBounds(bounds);
@@ -200,20 +203,25 @@
                 }, 500);
             },
             filterResults: function(){
+                var _this = this;
+                this.isLoading = true;
+                setTimeout(function () {
+                    var allItems = _this.appData.inzeraty;
+                    var map = _this.map;
+                    _this.filteredResults = [];
 
-                var allItems = this.appData.inzeraty;
-                var map = this.map;
-                this.filteredResults = [];
+                    for (var i in allItems){
+                        var item = allItems[i];
 
-                for (var i in allItems){
-                    var item = allItems[i];
+                        var latLng = {lat: parseFloat(item.db_lat) , lng: parseFloat(item.db_lng)};
 
-                    var latLng = {lat: parseFloat(item.db_lat) , lng: parseFloat(item.db_lng)};
-
-                    if( map.getBounds().contains(latLng) ){
-                        this.filteredResults.push(item);
+                        if( map.getBounds().contains(latLng) ){
+                            _this.filteredResults.push(item);
+                        }
                     }
-                }
+                    _this.isLoading = false;
+                },200);
+
 
             },
             clearMapMarkers: function () {
@@ -224,6 +232,10 @@
                     marker.setMap(null);
                 }
                 this.mapMarkers = {};
+                if(this.markerClusterer !== null){
+                    this.markerClusterer.clearMarkers();
+                    this.markerClusterer = null;
+                }
             }
         },
         computed: {
