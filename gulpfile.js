@@ -37,11 +37,11 @@ var backend_scriptsPaths = [
     jsFiles_backend + 'bootstrap.js',
     jsFiles_backend + 'mdb.js',
     jsFiles_backend + 'main.js'
-
 ];
 
 var frontend_scriptsPaths = [
     jsFiles_frontend + 'jquery-3.4.1.js',
+    jsFiles_frontend + 'filepond.js',
     jsFiles_frontend + 'main.js'
 ];
 

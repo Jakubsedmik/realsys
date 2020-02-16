@@ -331,7 +331,7 @@ class Tools {
 
                 }else{
                     trigger_error("formProcessor::ID není dostupné");
-                    frontendError::addMessage("id", "ERROR", "Došlo k chybě!");
+                    frontendError::addMessage("id", ERROR, "Došlo k chybě!");
 	                if(is_object($callbackFail) || function_exists($callbackFail)){
 		                $callbackFail($source);
                     }

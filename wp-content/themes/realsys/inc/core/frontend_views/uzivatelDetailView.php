@@ -1,8 +1,8 @@
 <?php
 
-$uzivatel = $this->workData['uzivatel'];
-$inzeraty  = $uzivatel->subobjects['inzeratClass'];
-if(!is_array($inzeraty)) $inzeraty = array();
+	$uzivatel = $this->workData['uzivatel'];
+	$inzeraty  = $uzivatel->subobjects['inzeratClass'];
+	if(!is_array($inzeraty)) $inzeraty = array();
 
 ?>
 
@@ -13,9 +13,7 @@ if(!is_array($inzeraty)) $inzeraty = array();
 		<div class="wrapper">
 			<div class="row top-info">
 				<div class="col-sm-2">
-					<div class="profile-img" style="background-image: url(<?php echo $uzivatel->db_avatar; ?>)">
-
-					</div>
+					<div class="profile-img" style="background-image: url(<?php echo $uzivatel->db_avatar; ?>)"></div>
 				</div>
 				<div class="col-sm-4">
 					<div class="basic-info">
@@ -27,7 +25,7 @@ if(!is_array($inzeraty)) $inzeraty = array();
 							<i class="fas fa-envelope"></i> <span class="email"><?php echo $uzivatel->db_email; ?></span>
 						</div>
 						<div class="info-row">
-							<i class="fas fa-bullhorn"></i> <span class="inzeraty"><strong><?php echo count($inzeraty); ?></strong> Aktivních inzerátů</span>
+							<i class="fas fa-bullhorn"></i> <span class="inzeraty"><strong><?php echo count($inzeraty); ?></strong> <?php echo _e( "Aktivních inzerátů", "realsys" ); ?></span>
 						</div>
 
 					</div>

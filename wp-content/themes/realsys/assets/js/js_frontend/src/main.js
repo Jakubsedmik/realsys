@@ -58,92 +58,6 @@ popupsHandler.addListeners();
 
 
 
-/*
-Otevírání file, delegace
- */
-
-$("body").on("click touchstart",".js-delegateClick", function (e) {
-    var delegateElement = $(this).attr("data-delegateelement");
-    $("#" + delegateElement).trigger("click");
-});
-
-
-/*
-uploader handling
- */
-
-/*$("#filepicker").dmUploader({
-    url: serverData.ajaxUrl,
-    extraData: {
-        "action": "file_upload"
-    },
-    maxFileSize: Number(serverData.upload_size),
-    allowedTypes: "image/*",
-    extFilter: ["jpg", "jpeg"],
-    multiple: false,
-    fieldName: "uploadedImg",
-    //... More settings here...
-
-    onInit: function(){
-    },
-    onBeforeUpload(id){
-        popupsHandler.showPopup("uploader")
-    },
-    onFileTypeError(file){
-        console.log("ERROR");
-        alert("Zvolili jste špatný typ souboru");
-    },
-    onUploadProgress(id, percent){
-        var progressbar = $("#uploader .js-progressbar");
-        progressbar.text(percent + "%");
-        progressbar.css({width: percent+"%"})
-    },
-    onFileSizeError (file){
-        alert("Soubor překročil hranici přípustné velikosti. Prosím vyberte soubor do 10mb");
-    },
-    onUploadSuccess(id, data){
-        if("status" in data && data.status == 1) {
-            setUploader(data);
-        }else{
-            alert("Došlo k chybě, kontaktujte prosím podporu");
-        }
-    },
-    onFileExtError : function (file) {
-        alert("Přípona souboru není správná - povolené je pouze jpg a jpeg");
-    }
-});*/
-
-function cancelUploads() {
-    $("#filepicker").dmUploader("cancel");
-    resetUploader();
-}
-
-function resetUploader() {
-    var progressbar = $("#uploader .js-progressbar");
-    $(".js-loading-img").show();
-    $(".js-loadingTitle").show();
-    $(".js-uploadedImage").hide();
-    $(".js-attend").addClass("js-disabled").addClass("s7-button--disabled");
-    $("#url_full").val("");
-    $("#url_thumb").val("");
-    progressbar.text("0%");
-    progressbar.css({width: 0});
-}
-
-function setUploader(data) {
-    if("url_thumb" in data && "url" in data){
-        $(".js-uploadedImage").attr("src", data.url_thumb);
-        $(".js-loading-img").hide();
-        $(".js-loadingTitle").hide();
-        $(".js-uploadedImage").show();
-        $(".js-attend").removeClass("js-disabled").removeClass("s7-button--disabled");
-        $("#url_full").val(data.url);
-        $("#url_thumb").val(data.url_thumb);
-    }
-}
-
-
-
 // VALIDACE FORMULÁŘŮ
 
 
@@ -429,6 +343,22 @@ function onSignIn(googleUser) {
     If user doesnt exist open popup, request info and let register without password
      */
 }
+
+
+/* PREPARING FUNCTIONALITY */
+$(document).ready(function () {
+    $(".js-preparing").on("click", function (e) {
+        e.preventDefault();
+        alert("Tuto funkcinalitu pro Vás připravujeme");
+    });
+});
+
+
+
+/* FILEPOND UPLOADER */
+$(document).ready(function () {
+    $('.my-pond').filepond();
+});
 
 
 

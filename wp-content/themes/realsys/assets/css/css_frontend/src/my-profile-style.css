@@ -1,0 +1,259 @@
+
+/*----------------my profile----------------*/
+
+
+
+.my-profile .short-description, .my-profile .top-info  {
+    position: relative;
+}
+
+.my-profile .top-info > div .edit-icon{
+    position: absolute;
+    top: -10px;
+    left: 0px;
+}
+.my-profile .short-description .edit-icon{
+    position: absolute;
+    top: -10px;
+    right: 0px;
+    left: unset!important;
+}
+
+.hints-con {
+    margin-top: 40px;
+}
+.edit-profile-box-wrap{
+    display: flex;
+    background: #f5f5f5;
+    border-radius: 5px;
+}
+.edit-profile-box .ico-box {
+    font-size: 70px;
+    color: #7ec242;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #c3c3c3;
+}
+.edit-profile-box .txt-box h3 {
+    text-transform: unset;
+}
+.edit-profile-box .txt-box {
+    padding: 30px;
+    
+}
+
+.security-hint-box-wrap{
+    padding-top: 20px;
+}
+.ico-btn {
+    padding-left: 28px;
+}
+.ico-btn i {
+    margin-right: 7px;
+}
+
+.separator .edit-icon {
+    position: absolute;
+    right: 0px;
+    top: -4px;
+}
+
+
+
+/*----inzeraty----*/
+
+.nem-row-box {
+    position: relative;
+}
+.nem-row-box .nemovitost-wrapper .row > div {
+    padding: 20px;
+    padding-left: 0px;
+    padding-right: 25px;
+}
+
+
+.nem-row-box .nemovitost-image {
+    padding: 0px!important;
+    height: 150px;
+}
+.inzerat-id {
+    font-family: "Poppins";
+    font-size: 14px;
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 5px 0px;
+    background: white;
+    display: inline-block;
+    position: absolute;
+    left: 15px;
+    top: 0px;
+}
+.inzerat-id .id {
+    font-weight: 400;
+    font-family: "Roboto";
+} 
+
+
+.nem-row-box .nemovitost-text{
+    padding-left: 25px!important;
+}
+
+
+.nem-row-box .nemovitost-text .price{
+    font-size: 18px;
+    color: #3e6a58;
+    margin-bottom: 0px;
+}
+.nem-row-box .nemovitost-text p {
+    margin-bottom: 10px;
+}
+
+
+.nemovitost-ranks table {
+    font-size: 15px;
+}
+.nemovitost-ranks table tr {
+    border-bottom: 1px dashed #c3c3c3;
+}
+.nemovitost-ranks table tr:last-child {
+    border-bottom: 0px;
+} 
+.nemovitost-ranks table tr *:last-child {
+    text-align: right;
+}
+.nemovitost-ranks table th, .nemovitost-ranks table td {
+    padding: 7px 5px;
+}
+.nemovitost-ranks table th {
+    font-size: 14px;
+}
+
+.nemovitost-activate .activate-txt {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #ff253a;
+    font-family: "Poppins";
+    font-weight: 700;
+}
+
+.active .nemovitost-activate .activate-txt {
+    color: #7ec242;
+}
+
+.nemovitost-activate, .nemovitost-topovani  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.nemovitost-activate .btn, .nemovitost-topovani .btn {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+
+.edit-icon-wrap {
+    position: absolute;
+    top: -20px;
+    right: 0px;
+    display: flex; 
+}
+.edit-icon-wrap a:first-child {
+    margin-right: 10px;
+}
+
+
+.edit-icon, .close-icon {
+    display: block;
+    width: 35px;
+    height: 35px;
+    line-height: 25px;
+    text-align: center;
+    padding: 5px;
+    background: white;
+    border-radius: 50%;
+    border: 1px solid #e4e4e4;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+}
+.edit-icon {
+    color: #7ec242;
+}
+.close-icon {
+    color: #ff253a;
+    font-size: 20px;
+}
+
+
+.sides-align {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+
+/*--------------edit my profile ---------*/
+
+
+.left-align {
+    text-align: left!important;
+}
+
+.auto-w {
+    width: auto;
+}
+
+.my-profile-edit .short-description{
+    margin-top: 0px!important;
+}
+.my-profile-edit .form-row {
+    margin-bottom: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+input {
+    width: 100%;
+    background: #f5f5f5;
+    border: none;
+    /* border-bottom: 1px solid #e32219; */
+    height: 40px;
+    font-size: 15px;
+    color: black;
+    font-family: "Roboto";
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+
+
+.my-profile-edit .top-info {
+    margin-bottom: 10px;
+}
+.my-profile-edit .profile-img {
+    height: 160px;
+}
+
+
+.my-profile-edit .change-pass-form .submit-btn {
+    margin-top: 20px;
+}
+.my-profile-edit .security-hint-box-wrap {
+    margin-top: 40px;
+    margin-bottom: 60px;
+    padding: 30px 30px 40px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.17);
+}
+
+
+.profileInfo-con .submit-btn{
+    margin-top: 10px;
+}
+
+.my-profile-edit .security-hint-box {
+    margin-top: 50px;
+}
