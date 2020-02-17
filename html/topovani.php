@@ -16,6 +16,7 @@
         <link href="real-estate-icons/next-ico/font/flaticon.css" rel="stylesheet" type="text/css"/>
         <link href="pridat-inz-style.css" rel="stylesheet" type="text/css"/>
         <link href="kredity-topovani.css" rel="stylesheet" type="text/css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
     
     <body>
@@ -115,18 +116,99 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                        <div class="row moreInfo-separator">
-                            <div class="col-sm-2">                                
-                                    <h3> Další informace</h3>                              
-                            </div>
-                            <div class="col-sm">
-                                <div class="separator"> 
-                                    <div class="collapse-icon"><i class="fas fa-sort-down"></i></div> 
+                            <div class="row moreInfo-separator">
+                                <div class="col-sm-2">                                
+                                        <h3> Další informace</h3>                              
+                                </div>
+                                <div class="col-sm">
+                                    <div class="separator"> 
+                                        <div class="collapse-icon"><i class="fas fa-sort-down"></i></div> 
 
+                                    </div>
                                 </div>
                             </div>
-                        </div> 
+                            <div class="showhide">
+                                <div class="row">
+                                    <div class="filtr-image">
+                                            <img src="ikony/homes.png">
+                                    </div>
+                                    <div class="col-sm filtr-blok"> 
+                                        <div class="filtr-single">
+                                            <label class="container label2">Patro
+                                                <input type="checkbox">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+
+                                        <div class="filtr-single">
+                                            <label class="container label2">Parkování
+                                                <input type="checkbox">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+
+                                        <div class="filtr-single">
+                                            <label class="container label2">Garáž
+                                                <input type="checkbox">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+
+                                        <div class="filtr-single">
+                                            <label class="container label2">Balkon
+                                                <input type="checkbox">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+
+                                        <div class="filtr-single">
+                                            <label class="label2">V popisu je také
+                                                <input type="text" value="Bazén">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="filtr-image">
+                                            <img src="ikony/homes.png">
+                                    </div>
+                                    <div class="col-sm filtr-blok"> 
+                                         <div class="filtr-single">
+                                            <label class="label2">Pozemek od
+                                                <input type="text" value="150">
+                                            </label>
+                                        </div>
+
+                                         <div class="filtr-single">
+                                            <label class="label2">Pozemek do
+                                                <input type="text" value="300">
+                                            </label>
+                                        </div>
+
+                                         <div class="filtr-single">
+                                            <label class="label2">plocha od
+                                                <input type="text" value="78">
+                                            </label>
+                                        </div>
+
+                                        <div class="filtr-single">
+                                            <label class="label2">plocha do
+                                                <input type="text" value="130">
+                                            </label>
+                                        </div>
+
+                                        <div class="filtr-single">
+                                            <label>Stav objektu
+                                                    <div class="slidecontainer">
+                                                        <input type="range" id="statusInput" name="statusInput" class="ranger" min="1" max="10" value="7" oninput="status.value=statusInput.value">                               <output name="status" id="status" for="statusInput">7</output>
+                                                    </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        </form>
+                        
                         <div class="options-box">
                             <form>
                                 <div class="section-title">
@@ -180,6 +262,19 @@
                     </div>
                 </div>
             </section>
+            
+            <footer>
+                
+            </footer>
+            <script>
+                $(document).ready(function(){
+                    var par = $(".showhide");
+                    $(par).hide();
+                    $(".fa-sort-down").click(function(){
+                      $(par).toggle();
+                    });
+                });   
+            </script>
         </div>
     </body>
 </html>

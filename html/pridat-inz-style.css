@@ -129,8 +129,13 @@ select option:hover {
     margin-bottom: 15px;
 }
 
+.tab-inz{
+    overflow: hidden;
+}
 
-
+.tab-inz .tab-inz-btn{
+    max-width: 20%;
+}
 
 .inz-nav{
     position: relative;
@@ -169,7 +174,7 @@ select option:hover {
     text-align: center;
 }
 
-.nav-box-wrap:hover, .nav-box.active .nav-box-wrap{
+.nav-box-wrap:hover, .nav-box .nav-box-wrap.active{
     color: white;
     background: #7ec242;
 }
@@ -217,7 +222,13 @@ select option:hover {
     margin-bottom: 35px;
 }
 
+.tabcontent{
+    display: none;
+}
 
+.tablinks{
+    padding: 8px;
+}
 
 .select-box {
     padding: 20px 30px;
@@ -302,6 +313,17 @@ select option:hover {
     width: 100%;
 }
 
+.inz-sec-1 .buttons-prevnext{
+    justify-content: center;
+}
+
+.buttons-prevnext{
+    display: flex;
+    justify-content: space-between;
+    max-width: 300px;
+    text-align: center;
+    margin: 0 auto;
+}
 
 /*-------fotografie--------*/
 
