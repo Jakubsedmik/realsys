@@ -17,8 +17,8 @@
                             <span>Partnerské weby: <strong>Řemeslníci</strong> | <strong>Autoservis</strong></span>
                         </div>
                         <div class="user-login">
-                            <a href="#" class="login"><img src="/realsys/html/img/header/prihlaseni.png" alt=""/>Přihlášení</a>
-                            <a href="#" class="signup"><img src="/realsys/html/img/header/registrace.png" alt=""/>Registrace</a>
+                            <a href="#" class="login"><img src="img/header/prihlaseni.png" alt=""/>Přihlášení</a>                            
+                            <a href="#" class="signup"><img src="img/header/registrace.png" alt=""/>Registrace</a>
                             
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="main-header">
                     <div class="wrapper">
-                        <div class="logo"><img src="/realsys/html/img/header/logo-bydleni.png" alt=""/></div>
+                        <div class="logo"><img src="img/header/logo-bydleni.png" alt=""/></div>                    
 
                         <nav class="menu">
                             <ul>
@@ -81,19 +81,19 @@
                                             </div> 
                                             <div class="nemovitost-miniatury">
                                                 <div class="miniatura">
-                                                    <img src="img/nemovitosti/byt.jpg">
+                                                    <a href="img/nemovitosti/byt.jpg"><img src="img/nemovitosti/byt.jpg"></a>
                                                 </div>
                                                 <div class="miniatura">
-                                                    <img src="img/nemovitosti/byt.jpg">
+                                                    <a href="img/nemovitosti/byt.jpg"><img src="img/nemovitosti/byt.jpg"></a>
                                                 </div>
                                                 <div class="miniatura">
-                                                    <img src="img/nemovitosti/byt.jpg">
+                                                    <a href="img/nemovitosti/byt.jpg"><img src="img/nemovitosti/byt.jpg"></a>
                                                 </div>
                                                 <div class="miniatura">
-                                                    <img src="img/nemovitosti/byt.jpg">
+                                                    <a href="img/nemovitosti/byt.jpg"><img src="img/nemovitosti/byt.jpg"></a>
                                                 </div>
                                                 <div class="miniatura">
-                                                    <img src="img/nemovitosti/byt.jpg">
+                                                    <a href="img/nemovitosti/byt.jpg"><img src="img/nemovitosti/byt.jpg"></a>
                                                 </div>
                                             </div>
                                         </div>   
@@ -431,14 +431,20 @@ Cena nemovitosti s příslušenstvím 3.390.000,- Kč.</p>
                 </div>
             </footer>
         </div>
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script src="/lightbox/simple-lightbox.jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="/lightbox/simple-lightbox.css" />
 <script>
-var slider = document.getElementById("myRange");
-var output = document.getElementById("demo");
-output.innerHTML = slider.value;
+/*$( document ).ready(function() {
+$('.nemovitost-miniatury div a').on('show.simplelightbox', function () {
+	// do something…
+});
+}); */
+$('.nemovitost-miniatury div a').simpleLightbox({ /* options */ });
 
-slider.oninput = function() {
-  output.innerHTML = this.value;
-}
 </script>        
     </body>
 </html>
