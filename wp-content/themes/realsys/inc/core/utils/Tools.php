@@ -421,7 +421,10 @@ class Tools {
 			            $url .= "?action=" . $action;
 		            }
 		            return $url;
-	            }
+	            }else{
+	                $url = $route;
+	                return $url;
+                }
             }else{
                 trigger_error("getFERoute:: pro tento model neexistuje daný view");
             }
@@ -906,6 +909,32 @@ class Tools {
 		$output .= '</select>';
 		return $output;
 	}
+
+	public static function getFrontendFilters(){
+		global $filter_parameters, $filter_hp_parameters;
+		$final_filter = array();
+		foreach ($filter_hp_parameters as $key => $value){
+		    if(isset($filter_parameters[$value])){
+			    $key_new = str_replace("db_","", $value);
+		        $final_filter[$value]['values'] = globalUtils::getValuesForFilter("inzeratClass", $key_new, "-- Bez filtru --");
+			    $final_filter[$value]['name'] = $filter_parameters[$value]['name'];
+            }
+		}
+
+		foreach ($final_filter as $key => $val){
+		    ?>
+            <div class="customSel-wrapper">
+                <label><?php echo $val['name']; ?></label>
+                <select name="<?php echo $key; ?>" class="select-hidden">
+                    <?php foreach ($val['values'] as $key2 => $value2): ?>
+                        <option value="<?php echo $key2 ?>" <?php echo ($key2 == -1)? 'selected' : '' ?>><?php echo $value2 ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <?php
+        }
+
+    }
 
 
 	public static function convertCurrency($val){

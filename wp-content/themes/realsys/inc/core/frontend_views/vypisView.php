@@ -2,7 +2,8 @@
     <Vypis
             assetspath="<?php echo FRONTEND_IMAGES_PATH; ?>"
             apiurl="<?php echo AJAXURL . "?action=getInzeraty"; ?>"
-            :filters="<?php echo $this->requestData['filter']; ?>">
+            :filters="<?php echo $this->requestData['filter']; ?>"
+            :filterpreset="<?php echo $this->requestData['filterPreset']; ?>">
     </Vypis>
 </div>
 

@@ -435,8 +435,8 @@ Cena nemovitosti s příslušenstvím 3.390.000,- Kč.</p>
   src="https://code.jquery.com/jquery-2.2.4.min.js"
   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
   crossorigin="anonymous"></script>
-<script src="/lightbox/simple-lightbox.jquery.js"></script>
-<link rel="stylesheet" type="text/css" href="/lightbox/simple-lightbox.css" />
+<script src="/realsys/html/lightbox/simple-lightbox.jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="/realsys/html/lightbox/simple-lightbox.css" />
 <script>
 /*$( document ).ready(function() {
 $('.nemovitost-miniatury div a').on('show.simplelightbox', function () {

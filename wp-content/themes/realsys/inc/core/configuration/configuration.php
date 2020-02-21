@@ -580,3 +580,11 @@ $filter_parameters = array(
 		'values' => array()
 	),
 );
+
+// FILTER HP PARAMETERS
+$filter_hp_parameters = array(
+	'db_typ_nemovitosti',
+	'db_typ_vlastnictvi',
+	'db_typ_stavby',
+	'db_stav_objektu'
+);

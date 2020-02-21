@@ -50,11 +50,20 @@
     export default {
         name: "Vyhledavani",
         props: [
-            'filters'
+            'filters', 'filterpreset'
         ],
+        created() {
+            if(Object.entries(this.filterpreset).length > 0){
+                this.search_data = this.filterpreset;
+                this.$nextTick(function () {
+                    this.searchResults();
+                });
+            }
+
+        },
         data: function(){
             return {
-                search_data:{}
+                search_data: {}
             }
         },
         computed: {
@@ -91,6 +100,7 @@
                     }
                     str += i + "=" + encodeURIComponent(searchData[i]);
                 }
+                console.log("TRY TO EMIT");
 
                 this.$root.$emit("searchFor", str);
             }

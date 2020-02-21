@@ -43,5 +43,9 @@ $routing_urls = array(
 	),
 	"uzivatelClass" => array(
 		'detail' => home_url() . '/uzivatel/%d/'
+	),
+	"vypis" => array(
+		'listing' => home_url() . '/vypis/',
+		'map' => home_url() . '/vypismapa/'
 	)
 );

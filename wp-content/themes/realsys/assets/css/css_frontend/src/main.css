@@ -403,6 +403,7 @@ header .user-login a {
   right: -3%;
   position: absolute;
   z-index: 0;
+  pointer-events: none;
 }
 .slider-title h1 {
   font-weight: 400;

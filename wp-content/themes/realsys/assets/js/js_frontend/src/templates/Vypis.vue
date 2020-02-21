@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Vyhledavani v-bind:filters="this.filters"></Vyhledavani>
+        <Vyhledavani v-bind:filters="this.filters" v-bind:filterpreset="this.filterpreset"></Vyhledavani>
         <section>
             <div class="top-nemovitosti">
                 <div class="wrapper">
@@ -113,12 +113,20 @@
                         }
                     }
                 }
+            },
+            filterpreset : {
+                type: Object,
+                default: null
+
             }
         },
         components: { Filtr, Inzerat, Paging, Vyhledavani },
         mounted() {
 
-            this.fetchData();
+            if(Object.entries(this.filterpreset) == 0 ){
+                this.fetchData();
+            }
+
             var _this = this;
             this.$root.$on("changePage", function (page) {
                 _this.page = page;
@@ -133,6 +141,7 @@
 
             this.$root.$on("searchFor", function (searchFor) {
                 _this.searchQuery = searchFor;
+                console.log("OK");
                 _this.fetchData();
             });
         },
