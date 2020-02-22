@@ -27,7 +27,6 @@ define( "DEPLOYMENT", false );
 define( "PLUGIN_SLUG", "realsys" );
 
 //paths
-define( "BASE_URL", "/realsys/" );
 define( "ASSETS_PATH", "/wp-content/themes/realsys/assets/" );
 define( "ADMIN_BASE_URL", BASE_URL . "wp-admin/admin.php?page=" . PLUGIN_SLUG );
 
