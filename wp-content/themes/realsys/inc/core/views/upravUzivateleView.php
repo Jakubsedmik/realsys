@@ -26,7 +26,7 @@
                             <?php if($obr != null): ?>
                                 <img src="<?php echo $this->viewData['uzivatel']->dejData('db_avatar'); ?>" class="img-fluid js-change-image-img">
                             <?php else: ?>
-                                <img src="<?php echo BASE_URL . ASSETS_PATH . 'images/images_backend/default_profile.jpg'; ?>" class="img-fluid js-change-image-img">
+                                <img src="<?php echo home_url() . ASSETS_PATH . 'images/images_backend/default_profile.jpg'; ?>" class="img-fluid js-change-image-img">
                             <?php endif; ?>
                         </figure>
                         <button type="button" class="btn btn-primary btn-sm js-change-image">Upravit Avatar</button>
