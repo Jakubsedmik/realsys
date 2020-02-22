@@ -1,3 +1,2 @@
 <?php
-echo "nenalezeno";
-print_r($wp_query->query_vars);
+echo "<h1>nenalezeno</h1>";

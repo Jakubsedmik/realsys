@@ -9,8 +9,8 @@
 	</div>
 	<div class="app">
         <inzeraty
-                api_url="/realsys/wp-admin/admin-ajax.php"
-                base_url="<?php echo ADMIN_BASE_URL ?>" model="uzivatelClass"
+                api_url="<?php echo AJAXURL; ?>"
+                base_url="<?php echo ADMIN_BASE_URL; ?>" model="uzivatelClass"
                 item_controller="uzivatel"
                 sub_params="?action=getElements"
         ></inzeraty>

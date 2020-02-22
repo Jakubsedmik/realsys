@@ -9,8 +9,8 @@
 	</div>
 	<div class="app">
 		<inzeraty
-			api_url="<?php echo AJAXURL ?>"
-			base_url="<?php echo ADMIN_BASE_URL ?>" model="inzeratClass"
+			api_url="<?php echo AJAXURL; ?>"
+			base_url="<?php echo ADMIN_BASE_URL; ?>" model="inzeratClass"
 			item_controller="inzeraty"
             sub_params="?action=getElements"
 		></inzeraty>
