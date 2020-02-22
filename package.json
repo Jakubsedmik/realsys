@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "css-loader": "^3.2.0",
+    "gulp-replace": "^1.0.0",
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
     "style-loader": "^1.0.0",

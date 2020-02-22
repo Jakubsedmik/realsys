@@ -13,11 +13,11 @@
                 </span>
             </div>
             <div class="user-login">
-                <a href="#" class="login">
+                <a href="<?php echo home_url() . "/login/" ?>" class="login">
                     <img src="<?php echo FRONTEND_IMAGES_PATH; ?>header/prihlaseni.png" alt=""/>
                     <?php _e("Přihlášení", "realsys"); ?>
                 </a>
-                <a href="#" class="signup">
+                <a href="<?php echo home_url() . "/login/" ?>" class="signup">
                     <img src="<?php echo FRONTEND_IMAGES_PATH; ?>header/registrace.png" alt=""/>
 	                <?php _e("Registrace", "realsys"); ?>
                 </a>

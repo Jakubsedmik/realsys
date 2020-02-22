@@ -9,6 +9,7 @@ var del = require('del');
 var jsImport = require('gulp-js-import');
 var sourcemaps = require('gulp-sourcemaps');
 let uglify = require('gulp-uglify-es').default;
+var replace = require('gulp-replace');
 
 
 var lessFiles_backend = "wp-content/themes/realsys/assets/css/css_backend/src/";
@@ -44,6 +45,9 @@ var frontend_scriptsPaths = [
     jsFiles_frontend + 'filepond.js',
     jsFiles_frontend + 'main.js'
 ];
+
+
+var frontendLessPath = lessFiles_frontend + "main.less";
 
 /* Not all tasks need to use streams, a gulpfile is just another node program
  * and you can use all packages available on npm, but it must return either a
@@ -105,6 +109,22 @@ function watch() {
     gulp.watch(paths.styles.src, styles);
 }
 
+function set_deploy_environment(){
+
+
+    return gulp.src(frontendLessPath)
+        .pipe(sourcemaps.init())
+        .pipe(less(
+            {
+                modifyVars: {
+                    '@productionurl': '"http://szukajdom.eu"',
+                }
+            }
+            )
+        )
+        .pipe(gulp.dest(lessFiles_frontend, {overwrite: true}))
+}
+
 /*
  * Specify if tasks run in series or parallel using `gulp.series` and `gulp.parallel`
  */
@@ -115,6 +135,7 @@ var build = gulp.series(clean, gulp.parallel(frontend_styles, frontend_scripts, 
 /*
  * You can use CommonJS `exports` module notation to declare tasks
  */
+exports.deploySettings = set_deploy_environment;
 exports.clean = clean;
 exports.backend_scripts = backend_scripts;
 exports.backend_styles = backend_styles
