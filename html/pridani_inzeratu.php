@@ -19,7 +19,7 @@
     </head>
 
     <body>
-        <div class="body-wrapper add-inz">
+        <div class="body-wrapper add-inz" id="rn_top">
 
             <header>
 
@@ -39,31 +39,31 @@
 
                             <div class="row inz-nav tab-inz">
                                 <div class="col-sm nav-box tab-inz-btn">
-                                    <a class="nav-box-wrap btn tablinks" onclick="openTab(event, 'First')" id="defaultOpen">
+                                    <a class="nav-box-wrap btn tablinks active" id="First-t" onclick="openTab(event, 'First')" id="defaultOpen">
                                         <span class="num">1</span><h2>Základní informace</h2>
                                     </a>
                                 </div>
 
                                 <div class="col-sm nav-box tab-inz-btn">
-                                    <a class="nav-box-wrap btn tablinks" onclick="openTab(event, 'Second')">
+                                    <a class="nav-box-wrap btn tablinks" id="Second-t" onclick="openTab(event, 'Second')">
                                         <span class="num">2</span><h2>Doplňující informace</h2>
                                     </a>
                                 </div>
 
                                 <div class="col-sm nav-box tab-inz-btn">
-                                    <a class="nav-box-wrap btn tablinks" onclick="openTab(event, 'Third')">
+                                    <a class="nav-box-wrap btn tablinks" id="Third-t" onclick="openTab(event, 'Third')">
                                         <span class="num">3</span><h2>Přihlášení</h2>
                                     </a>
                                 </div>
 
                                 <div class="col-sm nav-box tab-inz-btn">
-                                    <a class="nav-box-wrap btn tablinks" onclick="openTab(event, 'Fourth')">
+                                    <a class="nav-box-wrap btn tablinks" id="Fourth-t" onclick="openTab(event, 'Fourth')">
                                         <span class="num">4</span><h2>Sumarizace</h2>
                                     </a>
                                 </div>
 
                                 <div class="col-sm nav-box tab-inz-btn">
-                                    <a class="nav-box-wrap btn tablinks" onclick="openTab(event, 'Fifth')">
+                                    <a class="nav-box-wrap btn tablinks" id="Fifth-t" onclick="openTab(event, 'Fifth')">
                                         <span class="num">5</span><h2>Fotografie</h2>
                                     </a>
                                 </div>
@@ -74,7 +74,7 @@
 
 
 
-                            <section id="First" class="inz-form-sec tabcontent inz-sec-1">                                
+                            <section id="First" class="inz-form-sec tabcontent inz-sec-1" style="display:block">                                
                                 <div class="inz-box">                                    
                                     <h3>Typ inzerátu</h3>
 
@@ -471,10 +471,10 @@
                                 
                                 <div class="buttons-prevnext">
                                     <div class="inz-submit">
-                                        <a class="btn buttons-prevnext-a" onclick="openTab(event, 'Third')">Zpět</a>
+                                        <a class="btn buttons-prevnext-a" onclick="openTab(event, 'Second')">Zpět</a>
                                     </div>
                                     <div class="inz-submit">
-                                        <a class="btn buttons-prevnext-a" onclick="openTab(event, 'Fifth')">Pokračovat</a>
+                                        <a class="btn buttons-prevnext-a" onclick="openTab(event, 'Fourth')">Pokračovat</a>
                                     </div>
                                 </div>
                             
@@ -534,10 +534,10 @@
                                 
                                 <div class="buttons-prevnext">
                                     <div class="inz-submit">
-                                        <a class="btn buttons-prevnext-a" onclick="openTab(event, 'Second')">Zpět</a>
+                                        <a class="btn buttons-prevnext-a" onclick="openTab(event, 'Third')">Zpět</a>
                                     </div>
                                     <div class="inz-submit">
-                                        <a class="btn buttons-prevnext-a" onclick="openTab(event, 'Fourth')">Pokračovat</a>
+                                        <a class="btn buttons-prevnext-a" onclick="openTab(event, 'Fifth')">Pokračovat</a>
                                     </div>
                                 </div>                       
                                                        
@@ -623,7 +623,8 @@
                     
         <script>
             function openTab(evt, tabName) {
-                var i, tabcontent, tablinks;
+                var i, tabcontent, tablinks, tablinksx;
+                
                 tabcontent = document.getElementsByClassName("tabcontent");
                 for (i = 0; i < tabcontent.length; i++) {
                     tabcontent[i].style.display = "none";
@@ -632,8 +633,17 @@
                 for (i = 0; i < tablinks.length; i++) {
                     tablinks[i].className = tablinks[i].className.replace(" active", "");
                 }
+                
+
                 document.getElementById(tabName).style.display = "block";
-                evt.currentTarget.className += " active";
+                /*evt.currentTarget.className += " active";*/
+                tablinksx = document.getElementById(tabName + "-t");
+                tablinksx.className += " active";
+                window.scrollTo({
+                    'behavior': 'smooth',
+                    'left': 0,
+                    'top': 0
+                    });
             }
 
             // Get the element with id="defaultOpen" and click on it
