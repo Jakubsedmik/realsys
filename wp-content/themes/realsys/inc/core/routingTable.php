@@ -12,6 +12,7 @@ if(DEPLOYMENT){
 		"\/realsys\/vypis\/" => "vypisController",
 		"\/realsys\/vypismapa\/" => "vypisMapaController",
 		"\/realsys\/gopay\/" => "gopayController",
+		"\/realsys\/objednavka\/" => "objednavkaController",
 	);
 }
 
@@ -47,5 +48,9 @@ $routing_urls = array(
 	"vypis" => array(
 		'listing' => home_url() . '/vypis/',
 		'map' => home_url() . '/vypismapa/'
+	),
+	"gopay" => array(
+		"payment" => home_url() . "/gopay/?id=%d",
+		"confirmation" => home_url() . "/gopay/"
 	)
 );

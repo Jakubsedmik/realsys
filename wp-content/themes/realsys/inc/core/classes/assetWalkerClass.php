@@ -24,7 +24,19 @@ class assetWalkerClass {
 
 
 
-	public function __construct($model_name, $template, $page = 1, $page_count = PAGING, $wrap_el='div', $wrap_class='row', $has_paging=true, $sort_param="datum_zalozeni", $sort_direction="ASC", $custom_data = FALSE, $model_condition=NULL, $model_filter_or = FALSE) {
+	public function __construct(
+			$model_name,
+			$template,
+			$page = 1,
+			$page_count = PAGING,
+			$wrap_el='div',
+			$wrap_class='row',
+			$has_paging=true,
+			$sort_param="datum_zalozeni",
+			$sort_direction="ASC",
+			$custom_data = FALSE,
+			$model_condition=NULL,
+			$model_filter_or = FALSE) {
 		$this->model_name = $model_name;
 		$this->template = $template;
 		$this->page = $page-1;

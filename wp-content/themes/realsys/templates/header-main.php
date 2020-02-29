@@ -13,9 +13,9 @@
                 </span>
             </div>
 	        <?php if(UzivatelClass::getUserLoggedId() !== false): ?>
-
+            <?php $uzivatel = assetsFactory::getEntity("uzivatelClass", uzivatelClass::getUserLoggedId()); ?>
             <div class="user-logged">
-                <a href="#" class="logged"><img src="img/header/uzivatel-prihlasen.png" alt=""/><span>Josef Vomáčka</span></a>
+                <a class="logged"><img src="img/header/uzivatel-prihlasen.png" alt=""/><span><?php echo $uzivatel->getFullName(); ?></span></a>
                 <div class="user-login-block">
                     <div class="user-login-content">
                         <a href="<?php echo Tools::getFERoute("uzivatelClass", UzivatelClass::getUserLoggedId()) ?>"><?php _e("Můj profil", "realsys"); ?></a>

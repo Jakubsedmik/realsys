@@ -47,6 +47,7 @@ header .logged {
     align-items: center;
     flex-direction: row-reverse;
     text-align: right;
+    color: black!important;
 }
 
 header .logged:hover {

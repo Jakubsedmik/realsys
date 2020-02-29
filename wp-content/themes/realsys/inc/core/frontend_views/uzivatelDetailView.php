@@ -2,6 +2,9 @@
 
 	$uzivatel = $this->workData['uzivatel'];
 	$inzeraty  = $uzivatel->subobjects['inzeratClass'];
+	$inzeraty = array_filter($inzeraty, function ($value, $key){
+	    return $value->db_stav_inzeratu == 1;
+    },ARRAY_FILTER_USE_BOTH);
 	if(!is_array($inzeraty)) $inzeraty = array();
 
 ?>

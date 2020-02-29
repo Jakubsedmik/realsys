@@ -10,6 +10,9 @@ class objednavkaClass extends zakladniKamenClass {
 	protected $db_cena;
 	protected $db_mnozstvi;
 
+	protected $db_stav;
+	protected $db_hash;
+
 	protected function zakladniVypis() {
 		// TODO: Implement zakladniVypis() method.
 	}

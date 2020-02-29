@@ -432,7 +432,9 @@ function getInzeraty(){
 
 		$inzeraty = assetsFactory::getAllEntity(
 			"inzeratClass",
-			array(),
+			array(
+				new filterClass("stav_inzeratu", "=", 1)
+			),
 			false,
 			false,
 			false,
@@ -477,6 +479,8 @@ function getInzeraty(){
 				}
 			}
 		}
+
+		$filter_arr[] = new filterClass("stav_inzeratu","=",1);
 
 
 		$inzeraty = assetsFactory::getAllEntity(

@@ -57,9 +57,9 @@
                         $activators_style = '';
                         $deactivators_style = '';
                         if($item->db_stav_inzeratu < 1) {
-                            $activators_style = 'display: none;';
+	                        $deactivators_style = 'display: none;';
                         }else{
-                            $deactivators_style = 'display: none;';
+	                        $activators_style = 'display: none;';
                         }
                     ?>
 

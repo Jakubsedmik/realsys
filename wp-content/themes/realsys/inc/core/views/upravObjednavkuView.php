@@ -35,6 +35,11 @@
                     </div>
                 </div>
 
+				<!-- Stav objednávky -->
+				<div class="md-form">
+					<?php echo Tools::getSelectBoxForDials("objednavkaClass","stav",$this->viewData['objednavka']->db_stav, 'Stav objednávky', "db_stav"); ?>
+				</div>
+
 				<div class="form-row">
 					<div class="col">
 						<div class="md-form">

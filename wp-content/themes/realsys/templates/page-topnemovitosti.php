@@ -7,11 +7,20 @@
 
             <?php
                 $walker = new assetWalkerClass(
-                        "inzeratClass",
-                        "nem_item.php",
-                        1,
-                        6
-                    );
+                	"inzeratClass",
+	                "nem_item.php",
+	                1,
+	                6,
+	                'div',
+	                'row',
+	                true,
+	                "datum_zalozeni",
+	                "ASC",
+	                FALSE,
+	                $model_condition=array(
+	                	new filterClass("stav_inzeratu", "=", 1)
+	                )
+                );
                 $walker->listenURL();
                 $walker->walk(true);
             ?>

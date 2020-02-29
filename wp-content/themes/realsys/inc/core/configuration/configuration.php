@@ -181,6 +181,14 @@ $field_rules = array(
 		'db_mnozstvi'   => array(
 			'type'     => NUMBER,
 			'required' => true
+		),
+		'db_stav' => array(
+			'type' => NUMBER,
+			'required' => true
+		),
+		'db_hash' => array(
+			'type' => STRING255,
+			'required' => false
 		)
 	),
 	"inzeratClass"    => array(
@@ -444,12 +452,16 @@ $dictionary = array(
 	'db_vytah'           => 'Výtah',
 	'db_terasa'          => 'Terasa',
 	'db_mestska_cast'    => 'Městská část',
-	'db_stav_inzeratu'   => 'Stav inzerátu'
+	'db_stav_inzeratu'   => 'Stav inzerátu',
+	'db_stav'            => 'Stav objednávky',
+	'db_hash'            => 'Hash platební brány'
 );
 
 
 // EPAYMENT KONSTANTY
 define( "TEST_MODE", true );
+define( "GOPAY_INLINE", false);
+define ("GOPAY_STANDARD_CALLBACK", home_url() . "/gopay/?action=confirmPayment");
 
 // MODEL / CONTROLLER  napojení
 $models = array(
@@ -505,6 +517,9 @@ $dials = array(
 	),
 	'uzivatelClass' => array(
 		'db_stav'
+	),
+	'objednavkaClass' => array(
+		'db_stav'
 	)
 
 );
@@ -524,7 +539,8 @@ $localDials = array(
 $classes = array(
 	'inzeratClass'  => "Inzerát",
 	'obrazekClass'  => "Obrázek",
-	'uzivatelClass' => "Uživatel"
+	'uzivatelClass' => "Uživatel",
+	'objednavkaClass' => "Objednávka"
 );
 
 
@@ -587,4 +603,13 @@ $filter_hp_parameters = array(
 	'db_typ_vlastnictvi',
 	'db_typ_stavby',
 	'db_stav_objektu'
+);
+
+
+// CENIK TOPOVANI
+$cenik = array(
+	20 => 100,
+	50 => 200,
+	100 => 500,
+	500 => 800
 );

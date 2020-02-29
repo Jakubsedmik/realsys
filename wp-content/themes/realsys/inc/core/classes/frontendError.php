@@ -52,7 +52,12 @@ class frontendError {
 
 
     public static function getFrontendErrors(){
-
+	    $html = '<div class="backendErrors p-0 mt-3">';
+	    foreach (self::$allErrors as $key => $value) {
+		    $html .= $value->getBackendMessage();
+	    }
+	    $html .= '</div>';
+	    return $html;
     }
 
     public static function getJSONErrors(){
