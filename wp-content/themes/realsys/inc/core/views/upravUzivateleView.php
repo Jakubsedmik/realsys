@@ -127,6 +127,7 @@
                     api_url="<?php echo AJAXURL ?>"
                     base_url="<?php echo ADMIN_BASE_URL ?>" model="inzeratClass"
                     item_controller="inzeraty"
+                    home_url="<?php echo home_url() ?>"
                     sub_params="?action=getElements&db_uzivatel_id=<?php echo $this->viewData['uzivatel']->getId(); ?>"
             ></inzeraty>
         </div>

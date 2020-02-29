@@ -86,6 +86,10 @@
                 type: String,
                 default: "/"
             },
+            home_url:{
+                type: String,
+                default: 'http://localhost/realsys'
+            },
         },
         components: { Filtr, Inzerat, Paging},
         async mounted() {

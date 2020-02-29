@@ -8,7 +8,7 @@
                 <div v-if="obrazky.length > 0" :class="{imageItem: true, mainImageItem: (obrazek.db_front.value==1)}" v-for="obrazek in obrazky" v-bind:key="obrazek.db_id.value">
                     <span class="removeImage" @click="removeItem(obrazek.db_id.value)"><i class="fas fa-times"></i> </span>
                     <figure class="imgWrap">
-                        <img :src="obrazek.db_url.value">
+                        <img :src="home_url + obrazek.db_url.value">
                     </figure>
                     <input type="text" v-model="obrazek.db_titulek.value" v-on:change="setParam('db_titulek', obrazek.db_id.value)" class="caption" ref="input">
                     <input type="text" v-model="obrazek.db_popisek.value" v-on:change="setParam('db_popisek', obrazek.db_id.value)" class="description" ref="input">
@@ -84,6 +84,9 @@
             },
             'loading_delay':{
                 default: 1500
+            },
+            'home_url' : {
+                default:  'http://localhost/realsys'
             }
         },
         methods: {

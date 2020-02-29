@@ -15,6 +15,7 @@
 	<VyhledavaniMapa
 		assetspath="<?php echo FRONTEND_IMAGES_PATH; ?>"
 		apiurl="<?php echo AJAXURL . "?action=getInzeraty"; ?>"
+        home_url="<?php echo home_url(); ?>"
 	></VyhledavaniMapa>
 </div>
 

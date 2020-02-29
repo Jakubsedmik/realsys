@@ -14,12 +14,10 @@
 			<form class="js-validate-form" method="post">
 				<div class="row top-info">
 					<div class="col-sm-2">
-						<a href="#" class="edit-icon"><i class="fas fa-pen"></i></a>
+						<a href="#" class="edit-icon js-changeImage"><i class="fas fa-pen"></i></a>
 
 						<div class="profile-img" style="background-image: url(<?php echo $uzivatel->dejData('db_avatar'); ?>)"></div>
-                        <div>
-                            <input type="file" class="my-pond" name="filepond"/>
-                        </div>
+
 					</div>
 
 					<div class="col-sm-4">
@@ -103,3 +101,20 @@
 		</div>
 	</div>
 </section>
+
+
+<div class="fullscreen-popup js-popup" id="addUserImage">
+    <div class="fullscreen-popup--inner">
+        <div class="fullscreen-popup--close js-closePopup"><i class="fas fa-times"></i> </div>
+        <h2>Změna obrázku uživatele</h2>
+        <div class="line-separator"></div>
+        <p class="fullscreen-popup--paragraph">Pro změnu obrázku nahrajte obrázek nový.</p>
+        <div>
+            <input type="hidden" name="uzivatel_id" id="uzivatel_id" value="<?php echo $uzivatel->getId(); ?>">
+            <input type="file" class="my-pond" name="files"/>
+        </div>
+        <div class="js-uploadImageResult uploadImageResult">
+
+        </div>
+    </div>
+</div>

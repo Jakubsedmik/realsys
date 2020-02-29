@@ -13,6 +13,7 @@ popupsController.prototype.hideAll = function () {
 
 popupsController.prototype.showPopup = function (idpopup) {
     this.hideAll();
+    console.log("showing popup");
     this.popups.each(function (index, obj) {
         if($(obj).attr("id") == idpopup){
             $(obj).addClass("show");
@@ -226,7 +227,11 @@ function confirmPopup(element, action){
     confirmPopUpElement.fadeIn(300);
 
     confirmPopUpElement.on("click", ".js-confirm", function(e){
-        window[action](element);
+        if(typeof  window[action] === "function"){
+            window[action](element);
+        }else{
+            console.error("Volaná funkce neexistuje");
+        }
         confirmPopUpElement.fadeOut(300);
     });
 
@@ -357,9 +362,145 @@ $(document).ready(function () {
 
 /* FILEPOND UPLOADER */
 $(document).ready(function () {
-    $('.my-pond').filepond();
+    console.log(serverData.ajaxUrl);
+    FilePond.setOptions({
+        server: {
+            url: serverData.ajaxUrl,
+            method: 'POST',
+            process: {
+                onload: function (response) {
+                    response = JSON.parse(response);
+                    if(response.status == 1){
+                        $(".js-uploadImageResult").text(response.message).show();
+
+                        setTimeout(function () {
+                            popupsHandler.hideAll();
+                            $(".profile-img").css({'background-image': 'url(' + response.gallery_url + ')'});
+                            $(".js-uploadImageResult").hide()
+                            $("body").trigger("remove-files");
+                        }, 1500);
+                    }else{
+                        alert("Došlo k chybě při uploadu souboru");
+                    }
+                },
+                ondata: function (formData) {
+                    var idUser = parseInt($("#uzivatel_id").val());
+                    formData.append("action","changeUserAvatar");
+                    formData.append("id", idUser);
+                    return formData;
+                },
+
+            }
+        },
+        maxFiles: 1,
+        allowMultiple: true,
+        maxParallelUploads : 3,
+        labelIdle : "Nahrajte svůj obrázek",
+        labelFileLoading : "Načítání",
+        labelFileProcessing : "Uploadování",
+        labelFileProcessingComplete : "Úspěšně nahráno na server",
+        labelFileProcessingAborted: "Zrušeno",
+        labelTapToCancel: "Klepněte pro zrušení",
+        labelTapToRetry: "Klepněte pro opakování",
+        allowRevert: false
+
+    });
+
+    var pondEl = $('.my-pond').get(0);
+    const pond = FilePond.create( pondEl );
+
+    $("body").on("remove-files", function (e) {
+        pond.removeFiles();
+    });
+
 });
 
+
+/* CHANGE USER IMAGE */
+$(document).ready(function () {
+    $(".js-changeImage").click(function (e) {
+        popupsHandler.showPopup("addUserImage");
+    });
+})
+
+
+/* MENU BURGER MOBILE */
+$(document).ready(function () {
+    $("#nav-icon3").click(function () {
+        $(this).toggleClass("open");
+        $(".menu-wrap").toggleClass("active");
+    });
+});
+
+
+/* GALLERIE DETAIL */
+$( document ).ready(function() {
+    var galleries = $('.nemovitost-miniatury div a');
+    if(galleries.length > 0){
+        galleries.simpleLightbox();
+    }
+});
+
+
+/* REMOVE, ACTIVATE, DEACTIVATE INZERAT */
+$( document ).ready(function() {
+    $(".js-send-request").click(function (e) {
+        e.preventDefault();
+        var confirm = $(this).attr("data-confirm") || false;
+        if(confirm){
+            confirmPopup(this, "processRequest");
+        }else{
+            processRequest(this);
+        }
+    });
+});
+
+function processRequest(element) {
+    var allData = $(element).data();
+    var postData = {};
+    for(var i in allData){
+        if(i.search("post") > -1){
+            var newI = i.replace("post","").toLowerCase();
+            postData[newI] = allData[i];
+        }
+    }
+
+    var finishAction = $(element).attr('data-finish') || false;
+
+    $.post(serverData.ajaxUrl, postData,function (data) {
+        if(data.status==1){
+            alert(data.message);
+            if(finishAction && typeof window[finishAction] === "function"){
+                window[finishAction](element);
+            }
+        }else{
+            alert("Došlo k chybě:" + data.message);
+            console.log(data.message);
+        }
+    }).fail(function () {
+        alert("Nastala chyba v komunikaci se serverem");
+    });
+}
+
+function removeInzerat(element) {
+    $(element).closest(".nemovitost").remove();
+}
+
+function activeInzerat(element) {
+    var nemovitost = $(element).closest(".nemovitost");
+    nemovitost.removeClass("non-active");
+    nemovitost.addClass("active");
+    nemovitost.find(".inzeratActivator").hide();
+    nemovitost.find(".inzeratDeactivator").show();
+}
+
+function deactiveInzerat(element) {
+    var nemovitost = $(element).closest(".nemovitost");
+    nemovitost.addClass("non-active");
+    nemovitost.removeClass("active");
+    nemovitost.find(".inzeratActivator").show();
+    nemovitost.find(".inzeratDeactivator").hide();
+}
 
 
 

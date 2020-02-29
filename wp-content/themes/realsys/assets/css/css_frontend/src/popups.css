@@ -85,6 +85,13 @@
 	overflow: hidden;
 }
 
+.uploadImageResult{
+    color: green;
+    border: 1px dashed green;
+    padding: 10px;
+    display: none;
+}
+
 @media screen and (max-width: 800px){
 	.fullscreen-popup{
 		overflow-y: scroll;

@@ -13,6 +13,7 @@
                 base_url="<?php echo ADMIN_BASE_URL ?>" model="obrazekClass"
                 sub_params="?action=getElements"
                 item_controller="obrazek"
+                home_url="<?php echo home_url() ?>"
 		></inzeraty>
 	</div>
 

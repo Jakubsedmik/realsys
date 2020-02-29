@@ -443,7 +443,8 @@ $dictionary = array(
 	'db_material'        => 'Materiál',
 	'db_vytah'           => 'Výtah',
 	'db_terasa'          => 'Terasa',
-	'db_mestska_cast'    => 'Městská část'
+	'db_mestska_cast'    => 'Městská část',
+	'db_stav_inzeratu'   => 'Stav inzerátu'
 );
 
 

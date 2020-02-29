@@ -13,6 +13,7 @@
 			base_url="<?php echo ADMIN_BASE_URL ?>" model="ciselnikClass"
 			sub_params="?action=getElements"
 			item_controller="stav"
+			home_url="<?php echo home_url() ?>"
 		></inzeraty>
 	</div>
 

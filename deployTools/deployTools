@@ -1,0 +1,1 @@
+gulp deploySettings && npx webpack --config ./deployTools/webpack.config.js && npx webpack --config ./deployTools/backend_webpack.config.js

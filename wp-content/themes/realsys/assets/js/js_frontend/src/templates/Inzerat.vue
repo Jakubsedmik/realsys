@@ -40,6 +40,10 @@
                 type: String,
                 default: "CZK"
             },
+            "home_url" :{
+                type: String,
+                default: 'http://localhost/realsys'
+            },
             "proportion" : {
                 type: String,
                 default: 3
@@ -83,7 +87,7 @@
                     var images = this.inzerat.subobjects.obrazekClass;
                     for(var image in images){
                         if(images[image].db_front.value == 1){
-                            frontImageUrl = {'backgroundImage' : 'url(' + images[image].db_url.value + ')'};
+                            frontImageUrl = {'backgroundImage' : 'url(' + this.home_url + images[image].db_url.value + ')'};
                         }
                     }
                 }

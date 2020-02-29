@@ -40,6 +40,18 @@ $api_actions = array(
 	'getInzeraty' => array(
 		'callback' => 'getInzeraty',
 		'private' => false
+	),
+	'changeUserAvatar' => array(
+		'callback' => 'changeUserAvatar',
+		'private' => false
+	),
+	'removeInzerat' => array(
+		'callback' => 'removeInzerat',
+		'private' => 'false'
+	),
+	'changeInzeratStatus' => array(
+		'callback' => 'changeInzeratStatus',
+		'private' => 'false'
 	)
 );
 
@@ -496,6 +508,159 @@ function getInzeraty(){
 		$response->appData->currency = CURRENCY;
 		$response->appData->totalRecordsCount = assetsFactory::getAllEntityCount("inzeratClass", $filter_arr);
 
+	}else{
+		$response->status = 0;
+		$response->message = "Některé parametry nebyli specifikovány";
+	}
+
+	wp_send_json($response);
+	die();
+}
+
+
+function changeUserAvatar() {
+	$result = Tools::postChecker($_POST,array(
+		'id' => array(
+			'required' => true,
+			'type' => NUMBER
+		)
+	),true);
+	if($result){
+
+		$response = Tools::uploadImage();
+
+		if(is_object($response)){
+			$universal_name = $response->universal_name;
+			$default_url = $response->default_url;
+
+
+			$obrazek = assetsFactory::createEntity("obrazekClass", array(
+				'url' => $default_url,
+				'kod' => $universal_name
+			));
+
+			$id = $_POST['id'];
+			$uzivatel = assetsFactory::getEntity("uzivatelClass", $id);
+
+			if($uzivatel && $uzivatel->isUserLoggedIn()){
+				$url = home_url() . $obrazek->getImageDimensions()['gallery'];
+				$response->gallery_url = $url;
+				$uzivatel->db_avatar = $url;
+				$response->db_id = $obrazek->getId();
+			}else{
+				$response = new stdClass();
+				$response->status = 0;
+				$response->message = "Uživatel neexistuje nebo není zalogován";
+			}
+		}else{
+			$response = new stdClass();
+			$response->status = 0;
+			$response->message = "Nastala chyba!";
+		}
+
+
+	}else{
+		$response = new stdClass();
+		$response->status = 0;
+		$response->message = "Některé parametry nebyli specifikovány";
+	}
+
+	wp_send_json($response);
+	die();
+}
+
+
+function removeInzerat(){
+	$response = new stdClass();
+
+	$result = Tools::postChecker($_POST, array(
+		"inzeratid" => array(
+			'required' => true,
+			'type' => NUMBER
+		),
+		"userid" => array(
+			'required' => true,
+			'type' => NUMBER
+		)
+	), true);
+
+	if($result){
+		$uzivatel_id = $_POST['userid'];
+		$inzerat_id = $_POST['inzeratid'];
+		$uzivatel = assetsFactory::getEntity('uzivatelClass', $uzivatel_id);
+		if($uzivatel->isUserLoggedIn()){
+			$inzerat = assetsFactory::getEntity("inzeratClass", $inzerat_id);
+			if($inzerat && $inzerat->db_uzivatel_id == $uzivatel_id){
+				$result = assetsFactory::removeEntity("inzeratClass", $inzerat_id);
+				if($result){
+					$response->status = 1;
+					$response->message = "Úspěšně smazáno";
+				}else{
+					$response->status = 0;
+					$response->message = "Smazání se nevydařilo";
+				}
+			}else{
+				$response->status = 0;
+				$response->message = "Inzerát není ve vlastnictví uživatele.";
+			}
+		}else{
+			$response->status = 0;
+			$response->message = "Uživatel není přihlášen";
+		}
+	}else{
+		$response->status = 0;
+		$response->message = "Některé parametry nebyli specifikovány";
+	}
+
+	wp_send_json($response);
+	die();
+}
+
+
+function changeInzeratStatus(){
+	$response = new stdClass();
+
+	$result = Tools::postChecker($_POST, array(
+		"inzeratid" => array(
+			'required' => true,
+			'type' => NUMBER
+		),
+		"userid" => array(
+			'required' => true,
+			'type' => NUMBER
+		),
+		"inzeratstatus" => array(
+			'required' => true,
+			'type' => NUMBER
+		)
+	), true);
+
+	if($result){
+		$uzivatel_id = $_POST['userid'];
+		$inzerat_id = $_POST['inzeratid'];
+		$inzerat_status = $_POST['inzeratstatus'];
+
+		$uzivatel = assetsFactory::getEntity('uzivatelClass', $uzivatel_id);
+		if($uzivatel->isUserLoggedIn()){
+			$inzerat = assetsFactory::getEntity("inzeratClass", $inzerat_id);
+			if($inzerat && $inzerat->db_uzivatel_id == $uzivatel_id){
+				if($inzerat_status == 0 || $inzerat_status == 1){
+					$inzerat->db_stav_inzeratu = $inzerat_status;
+					$response->status = 1;
+					$response->message = "Úspěšná změna stavu inzerátu";
+				}else{
+					$response->status = 0;
+					$response->message = "Nepřípustné hodnoty stavu inzerátu";
+				}
+
+			}else{
+				$response->status = 0;
+				$response->message = "Inzerát není ve vlastnictví uživatele";
+			}
+		}else{
+			$response->status = 0;
+			$response->message = "Uživatel není přihlášen";
+		}
 	}else{
 		$response->status = 0;
 		$response->message = "Některé parametry nebyli specifikovány";

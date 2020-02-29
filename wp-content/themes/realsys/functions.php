@@ -25,9 +25,9 @@ function s7_scripts_styles() {
 		wp_enqueue_script("jquery_js", site_url() . ASSETS_PATH . "js/js_frontend/src/jquery-3.4.1.js", array(), VERSION_LINKS, true);
 		wp_enqueue_script("jquery_validate_js", site_url() . ASSETS_PATH . "js/js_frontend/src/jquery.validate.js", array("jquery_js"), VERSION_LINKS, true);
 		wp_enqueue_script("filepond_js", site_url() . ASSETS_PATH . "js/js_frontend/src/filepond.js", array("jquery_js"), true);
-		wp_enqueue_script("filepond_adapter_js", site_url() . ASSETS_PATH . "js/js_frontend/src/filepond.jquery.js", array("filepond_js"), true);
+		wp_enqueue_script("simplelightbox_js", site_url() . ASSETS_PATH . "js/js_frontend/src/simple-lightbox.jquery.js", array("jquery_js"), true);
 
-		wp_register_script("main_js",site_url() . ASSETS_PATH . "js/js_frontend/src/main.js", array("jquery_js","filepond_js"), VERSION_LINKS, true);
+		wp_register_script("main_js",site_url() . ASSETS_PATH . "js/js_frontend/src/main.js", array("jquery_js","filepond_js", "simplelightbox_js"), VERSION_LINKS, true);
 		wp_localize_script("main_js","serverData", $ajax_localization);
 		wp_enqueue_script("main_js");
 

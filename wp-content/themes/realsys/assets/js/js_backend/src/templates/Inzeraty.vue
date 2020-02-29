@@ -45,7 +45,7 @@
                 <tr v-for="radek in radkyComputed">
                     <td v-for="bunka in radek" class="align-middle">
 
-                        <img :src="bunka.value" v-if="bunka.type=='image'" class="img-fluid img-thumbnail datatable-img">
+                        <img :src="home_url + bunka.value" v-if="bunka.type=='image'" class="img-fluid img-thumbnail datatable-img">
                         <div class="fas fa-check" v-else-if="bunka.type=='boolean' && bunka.value"></div>
                         <div class="fas fa-times" v-else-if="bunka.type=='boolean' && !bunka.value"></div>
                         <div class="fshr-icon fshr-icon--plus" v-else-if="bunka.type=='ajax_get_subinfo'"></div>
@@ -118,7 +118,9 @@
             'item_controller':{default:'inzeratyController'},
             'allowed_columns':{default:{}},
             'base_url' : {default: '/realsys/wp-admin/admin.php?page=realsys'},
-            'sub_params': {default: '?'}
+            'sub_params': {default: '?'},
+            'home_url' : {default:  'http://localhost/realsys'}
+
             },
         created: function(){
             this.fetchData();

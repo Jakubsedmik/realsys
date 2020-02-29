@@ -13,7 +13,7 @@
 				}
 			}
 		?>
-		<div class="nemovitost-image" style="background-image: url(<?php echo $front_img; ?>); "></div>
+		<div class="nemovitost-image" style="background-image: url(<?php echo home_url() . $front_img; ?>); "></div>
 		<div class="nemovitost-text">
 			<h3><?php echo $item->db_titulek . ', ' . $item->db_pocet_mistnosti . ', ' . $item->db_podlahova_plocha; ?> m<sup>2</sup></h3>
 			<p><?php echo $item->db_popis; ?></p>

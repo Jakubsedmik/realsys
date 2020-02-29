@@ -14,7 +14,8 @@
                                 v-bind:key="inzerat.db_id"
                                 v-bind:inzeratData="inzerat"
                                 v-bind:currency="appData.currency"
-                                v-bind:assetsPath="assetspath">
+                                v-bind:assetsPath="assetspath"
+                                v-bind:home_url="home_url">
                         </Inzerat>
 
                     </div>
@@ -62,6 +63,10 @@
         props : {
             translationData:{
                 type: Object
+            },
+            home_url:{
+                type: String,
+                default: 'http://localhost/realsys'
             },
             assetspath:{
                 type: String,

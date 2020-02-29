@@ -38,7 +38,7 @@ $obrazky   = array_filter( $obrazky, function ( $val ) use ( &$front_obr ) {
                         <div class="row">
                             <div class="col-sm-8">
                                 <div class="nemovitost-image">
-                                    <img src="<?php echo $front_obr->db_url; ?>">
+                                    <img src="<?php echo home_url() . $front_obr->db_url; ?>">
                                 </div>
                                 <div class="nemovitost-miniatury">
 									<?php
@@ -46,7 +46,9 @@ $obrazky   = array_filter( $obrazky, function ( $val ) use ( &$front_obr ) {
 										$sizes = $value->getImageDimensions();
 										?>
                                         <div class="miniatura">
-                                            <img src="<?php echo $sizes['gallery']; ?>">
+                                            <a href="<?php echo home_url() . $sizes['default']; ?>">
+                                                <img src="<?php echo home_url() . $sizes['gallery']; ?>">
+                                            </a>
                                         </div>
 									<?php
 									endforeach;

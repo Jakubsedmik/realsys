@@ -13,6 +13,7 @@
                 base_url="<?php echo ADMIN_BASE_URL; ?>" model="uzivatelClass"
                 item_controller="uzivatel"
                 sub_params="?action=getElements"
+                home_url="<?php echo home_url() ?>"
         ></inzeraty>
 	</div>
 	<div class="container-fluid">

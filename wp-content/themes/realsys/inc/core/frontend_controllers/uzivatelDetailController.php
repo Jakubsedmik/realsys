@@ -270,4 +270,42 @@ class uzivatelDetailController extends frontendController {
 
 		$this->performView();
 	}
+
+	public function logOut(){
+
+		$is_ok = Tools::postChecker($this->requestData, array(
+			"uzivatel_id" => array(
+				"type"=> "int",
+				"required" => true
+			)
+		),true);
+
+		if($is_ok){
+
+			$id = $this->requestData['uzivatel_id'];
+			$uzivatel = assetsFactory::getEntity("uzivatelClass", $id);
+
+			if($uzivatel && $uzivatel->isUserLoggedIn()){
+
+				$uzivatel->writeDials();
+				$this->workData['uzivatel'] = $uzivatel;
+				$uzivatel->logOut();
+				$this->setView("uzivatelDetailPrivate");
+				$this->performView();
+				Tools::jsRedirect(home_url(), "500","Úspěch","Byl jste úspěšně odhlášení, probíhá přesměrování");
+
+			}else{
+				trigger_error("Tento uživatel neexistuje nebo nemáte oprávnění");
+				frontendError::addMessage("id", ERROR, "Zadaný uživatel neexistuje nebo nemáte oprávnění");
+				$this->setView("notFound");
+			}
+
+		}else{
+			trigger_error("Došlo k chybě ve validaci parametrů :: action|uzivatelDetailController");
+			$this->setView("error");
+		}
+
+		$this->performView();
+
+	}
 }
