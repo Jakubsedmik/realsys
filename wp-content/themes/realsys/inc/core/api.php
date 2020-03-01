@@ -47,11 +47,15 @@ $api_actions = array(
 	),
 	'removeInzerat' => array(
 		'callback' => 'removeInzerat',
-		'private' => 'false'
+		'private' => false
 	),
 	'changeInzeratStatus' => array(
 		'callback' => 'changeInzeratStatus',
-		'private' => 'false'
+		'private' => false
+	),
+	'createInzeratImages' =>array(
+		'callback' => 'createInzeratImages',
+		'private' => false
 	)
 );
 
@@ -666,6 +670,57 @@ function changeInzeratStatus(){
 			$response->message = "Uživatel není přihlášen";
 		}
 	}else{
+		$response->status = 0;
+		$response->message = "Některé parametry nebyli specifikovány";
+	}
+
+	wp_send_json($response);
+	die();
+}
+
+
+function createInzeratImages(){
+	$result = Tools::postChecker($_POST,array(
+		'id' => array(
+			'required' => true,
+			'type' => NUMBER
+		)
+	),true);
+	if($result){
+
+		$response = Tools::uploadImage();
+
+		if(is_object($response)){
+			$universal_name = $response->universal_name;
+			$default_url = $response->default_url;
+
+
+			$obrazek = assetsFactory::createEntity("obrazekClass", array(
+				'url' => $default_url,
+				'kod' => $universal_name
+			));
+
+			$id = $_POST['id'];
+			$uzivatel = assetsFactory::getEntity("uzivatelClass", $id);
+
+			if($uzivatel && $uzivatel->isUserLoggedIn()){
+				$url = home_url() . $obrazek->getImageDimensions()['listing'];
+				$response->gallery_url = $url;
+				$response->db_id = $obrazek->getId();
+			}else{
+				$response = new stdClass();
+				$response->status = 0;
+				$response->message = "Uživatel neexistuje nebo není zalogován";
+			}
+		}else{
+			$response = new stdClass();
+			$response->status = 0;
+			$response->message = "Nastala chyba!";
+		}
+
+
+	}else{
+		$response = new stdClass();
 		$response->status = 0;
 		$response->message = "Některé parametry nebyli specifikovány";
 	}

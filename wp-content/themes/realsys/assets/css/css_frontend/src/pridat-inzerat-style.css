@@ -373,6 +373,7 @@ select option:hover {
 
 .image-choose {
     margin-bottom: 30px;
+    cursor: pointer;
 }
 .image-choose-inside {
     height: 180px;
@@ -434,4 +435,27 @@ select option:hover {
 
 .basic-select input:checked ~ .select-box {
     background-color: #7ec242;
+    color: white;
 }
+
+.image-prototype{
+    display: none;
+}
+
+.js-add-inzerat-photos{
+    cursor: pointer;
+}
+
+.add-inz-con .select-hidden{
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    margin: 0;
+}
+
+.image-feed .selected-image .image-choose-inside {
+    outline: 8px solid #7ec242;
+}
+
+
+

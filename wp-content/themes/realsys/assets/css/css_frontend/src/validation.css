@@ -46,3 +46,39 @@
     border: 1px solid #7ec242;
     background-color: #f8fff1;
 }
+
+.photo-required label.error:after{
+    content: '';
+    border: 10px solid red;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    z-index: 999;
+}
+
+.photo-required {
+    position: relative;
+}
+
+.photo-required label.error{
+    position: absolute;
+    background-color: red;
+    top: -30px;
+    padding: 5px 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 100%;
+    min-width: 70%;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    text-transform: none;
+    letter-spacing: 0px;
+    z-index: 999;
+}

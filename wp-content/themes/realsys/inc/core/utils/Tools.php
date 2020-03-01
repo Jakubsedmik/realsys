@@ -338,8 +338,8 @@ class Tools {
                             $entity->aktualizovat();
                         }
                     }
-                    if(strlen($callbackSuccess) > 0 && function_exists($callbackFail)){
-	                    $callbackSuccess($entity, $source);
+                    if(is_callable($callbackSuccess)){
+	                    call_user_func($callbackSuccess,$entity, $source);
                     }
                     frontendError::addMessage("Úspěch", SUCCESS, "Úspěšně uloženo");
                     return true;
@@ -356,10 +356,9 @@ class Tools {
             if($action == 'create'){
                 $entity = assetsFactory::createEntity($className, $db_properties);
                 self::$last_created = $entity;
-
-                if(is_object($callbackSuccess) || function_exists($callbackSuccess)){
-                    $callbackSuccess($entity, $source);
-                }
+	            if(is_callable($callbackSuccess)){
+		            call_user_func($callbackSuccess,$entity, $source);
+	            }
 	            frontendError::addMessage("Úspěch", SUCCESS, "Úspěšně vytvořeno");
                 return true;
 

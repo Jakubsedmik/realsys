@@ -2,7 +2,9 @@
 
     <div class="add-inz-con">
         <div class="wrapper">
-
+            <?php
+                echo frontendError::getFrontendErrors();
+            ?>
             <div class="section-title">
                 <h2>Vytváření inzerátu</h2>
                 <h3 class="green-highlight">Do 5 minut</h3>
@@ -178,6 +180,12 @@
 		                                        <textarea placeholder="Prodávám tento krásný dům..." name="db_popis"></textarea>
 			                                </div>
 		                                </div>
+			                            <div class="form-row">
+				                            <div class="form-field">
+					                            <label>Městská část</label>
+					                            <input type="text" placeholder="Např. Jiráskova 15, Chomutov" name="db_mestska_cast">
+				                            </div>
+			                            </div>
 		                            </div>
 		                        </div>
 		                    </div>
@@ -190,6 +198,13 @@
 							                <input type="number" placeholder="100 000" step="1000" value="" name="db_cena">
 						                </div>
 						                <span class="currency"><?php echo CURRENCY; ?></span>
+					                </div>
+				                </div>
+				                <div class="col-sm col-spacer"></div>
+				                <div class="form-row">
+					                <div class="form-field">
+						                <label>Poznámka k ceně</label>
+						                <input type="text" placeholder="Např. včetně poplatků" name="db_cena_poznamka">
 					                </div>
 				                </div>
 			                </div>
@@ -213,8 +228,8 @@
 			                        foreach ($dials as $key => $value) :
 			                        ?>
 			                            <div class="col-sm basic-select">
-				                            <label>
-					                            <input type="radio" name="db_typ_stavby" value="<?php echo $value->db_value; ?>">
+				                            <label class="form-field">
+					                            <input type="radio" name="db_material" value="<?php echo $value->db_value; ?>">
 				                                <div class="select-box">
 				                                    <span class="sel-input-name"><?php echo $value->db_translation; ?></span>
 				                                </div>
@@ -232,38 +247,48 @@
 
 		                        <div class="row selects">
 
-		                            <div class="col-sm">
-		                                <div class="select-box">
-		                                    <span class="sel-input-name">Novostavba</span>
-		                                </div>
-		                            </div>
-		                            <div class="col-sm">
-		                                <div class="select-box">
-		                                    <span class="sel-input-name">Velmi dobrý</span>
-		                                </div>
-		                            </div>
-		                            <div class="col-sm">
-		                                <div class="select-box">
-		                                    <span class="sel-input-name">Dobrý</span>
-		                                </div>
-		                            </div>
-		                            <div class="col-sm">
-		                                <div class="select-box">
-		                                    <span class="sel-input-name">Špatný</span>
-		                                </div>
-		                            </div>
-		                            <div class="col-sm">
-		                                <div class="select-box">
-		                                    <span class="sel-input-name">K demolici</span>
-		                                </div>
-		                            </div>
-		                            <div class="col-sm">
-		                                <div class="select-box">
-		                                    <span class="sel-input-name">Ve výstavbě</span>
-		                                </div>
-		                            </div>
+			                        <?php
+			                        $dials = assetsFactory::getAllDials("inzeratClass","stav_objektu");
+			                        foreach ($dials as $key => $value) :
+				                        ?>
+				                        <div class="col-sm basic-select">
+					                        <label class="form-field">
+						                        <input type="radio" name="db_stav_objektu" value="<?php echo $value->db_value; ?>">
+						                        <div class="select-box">
+							                        <span class="sel-input-name"><?php echo $value->db_translation; ?></span>
+						                        </div>
+					                        </label>
+				                        </div>
+			                        <?php
+			                        endforeach;
+			                        ?>
+
 		                        </div>
 		                    </div>
+
+			                <div class="inz-box">
+				                <h3>Vybavenost</h3>
+
+				                <div class="row selects">
+
+					                <?php
+					                $dials = assetsFactory::getAllDials("inzeratClass","vybavenost");
+					                foreach ($dials as $key => $value) :
+						                ?>
+						                <div class="col-sm basic-select">
+							                <label class="form-field">
+								                <input type="radio" name="db_vybavenost" value="<?php echo $value->db_value; ?>">
+								                <div class="select-box">
+									                <span class="sel-input-name"><?php echo $value->db_translation; ?></span>
+								                </div>
+							                </label>
+						                </div>
+					                <?php
+					                endforeach;
+					                ?>
+
+				                </div>
+			                </div>
 
 
 		                    <div class="row">
@@ -272,22 +297,41 @@
 
 		                                <div class="form-row area-input">
 		                                    <label>Plocha pozemku</label>
-		                                    <div class="meters-input"><input type="number" placeholder="100 000"><span
-		                                                class="area">m<sup>2</sup></span></div>
+		                                    <div class="meters-input form-field">
+			                                    <input type="number" name="db_podlahova_plocha" placeholder="100 000"><span class="area">m<sup>2</sup></span>
+		                                    </div>
 		                                </div>
+
 		                                <div class="form-row area-input">
 		                                    <label>Plocha objektu</label>
-		                                    <div class="meters-input"><input type="number" placeholder="100 000"><span
-		                                                class="area">m<sup>2</sup></span></div>
+		                                    <div class="meters-input form-field">
+			                                    <input type="number" name="db_pozemkova_plocha" placeholder="100 000"><span class="area">m<sup>2</sup></span>
+		                                    </div>
 		                                </div>
 
 
 		                                <div class="form-row checks">
 		                                    <h3>Vybavení</h3>
-		                                    <label class="check-wrap"><input type="checkbox" name="vybaveni" value="Patro">Patro</label>
-		                                    <label class="check-wrap"><input type="checkbox" name="vybaveni" value="Parkovani">Parkování</label>
-		                                    <label class="check-wrap"><input type="checkbox" name="vybaveni" value="Garaz">Garáž</label>
-		                                    <label class="check-wrap"><input type="checkbox" name="vybaveni" value="Balkon">Balkon</label>
+		                                    <label class="check-wrap">
+			                                    <input id="zeroValue" type="hidden" value="0" name="db_terasa">
+                                                <input type="checkbox" name="db_terasa" value="1">Terasa
+		                                    </label>
+			                                <label class="check-wrap">
+				                                <input id="zeroValue" type="hidden" value="0" name="db_vytah">
+				                                <input type="checkbox" name="db_vytah" value="1">Výtah
+			                                </label>
+		                                    <label class="check-wrap">
+			                                    <input id="zeroValue" type="hidden" value="0" name="db_parkovaci_misto">
+			                                    <input type="checkbox" name="db_parkovaci_misto" value="1">Parkování
+		                                    </label>
+		                                    <label class="check-wrap">
+			                                    <input id="zeroValue" type="hidden" value="0" name="db_garaz">
+			                                    <input type="checkbox" name="db_garaz" value="1">Garáž
+		                                    </label>
+		                                    <label class="check-wrap">
+			                                    <input id="zeroValue" type="hidden" value="0" name="db_balkon">
+			                                    <input type="checkbox" name="db_balkon" value="1">Balkon
+		                                    </label>
 		                                </div>
 		                            </div>
 		                        </div>
@@ -301,24 +345,30 @@
 
 		                                <div class="form-row">
 		                                    <label>Energetická hodnota</label>
-		                                    <select name="">
-		                                        <option value="">A</option>
-		                                        <option value="">B</option>
-		                                        <option value="">C</option>
-		                                        <option value="">D</option>
-		                                        <option value="">E</option>
-		                                        <option value="">F</option>
-		                                        <option value="">G - neuvededo</option>
+			                                <?php $penb = assetsFactory::getAllDials("inzeratClass","penb"); ?>
+		                                    <select name="db_penb">
+												<?php foreach ($penb as $key => $value) : ?>
+													<option value="<?php echo $value->db_value ?>"><?php echo $value->db_translation; ?></option>
+			                                    <?php endforeach;?>
 		                                    </select>
 		                                </div>
 		                                <div class="form-row">
 		                                    <label>Vlastnictví</label>
-		                                    <select name="">
-		                                        <option value="">Osobní</option>
-		                                        <option value="">Družstevní</option>
-		                                        <option value="">Státní/obecní</option>
-		                                    </select>
+			                                <?php $typ_vlastnictvi = assetsFactory::getAllDials("inzeratClass","typ_vlastnictvi"); ?>
+			                                <select name="db_typ_vlastnictvi">
+				                                <?php foreach ($typ_vlastnictvi as $key => $value) : ?>
+					                                <option value="<?php echo $value->db_value ?>"><?php echo $value->db_translation; ?></option>
+				                                <?php endforeach;?>
+			                                </select>
 		                                </div>
+
+			                            <div class="form-row area-input">
+				                            <label>Patro</label>
+				                            <div class="meters-input form-field">
+					                            <input type="number" name="db_patro" placeholder="2"><span class="area">poschodí</span>
+				                            </div>
+			                            </div>
+
 		                            </div>
 		                        </div>
 		                    </div>
@@ -337,65 +387,40 @@
 
 	                <section id="third" class="inz-form-sec tabcontent inz-sec-3 js-inz-tab">
 
-	                    <div class="inz-box">
-	                        <h2>Fotografie</h2>
+		                <form class="js-partialValidation photo-required">
+		                    <div class="inz-box">
+		                        <h2>Fotografie</h2>
+								<input type="hidden" value="<?php echo uzivatelClass::getUserLoggedId(); ?>" name="uzivatelid" id="uzivatel_id">
+								<div class="js-add-inzerat-photos">
+									<input type="file" name="files">
+								</div>
 
-	                        <div class="row image-drop-wrap">
-	                            <div class="col-sm image-drop">
-	                                <i class="flaticon-photo ico"></i>
-	                                <p>Sem přetáhněte fotky</p>
-	                            </div>
-	                        </div>
-
-	                        <a class="btn" href="#">Přidat fotky</a>
-
-	                    </div>
+		                    </div>
 
 
-	                    <div class="inz-box">
-	                        <h3>Vyberte náhledový obrázek</h3>
+			                    <div class="inz-box js-loadedImages" style="display: none;">
+			                        <h3>Vyberte náhledový obrázek</h3>
 
-	                        <div class="row image-feed">
-	                            <div class="col-sm-3 image-choose">
-	                                <div class="image-choose-inside"
-	                                     style="background-image: url(img/nemovitosti/nem.jpeg)"></div>
-	                            </div>
-	                            <div class="col-sm-3 image-choose">
-	                                <div class="image-choose-inside"
-	                                     style="background-image: url(img/nemovitosti/nem.jpeg)"></div>
-	                            </div>
-	                            <div class="col-sm-3 image-choose">
-	                                <div class="image-choose-inside"
-	                                     style="background-image: url(img/nemovitosti/nem.jpeg)"></div>
-	                            </div>
-	                            <div class="col-sm-3 image-choose">
-	                                <div class="image-choose-inside"
-	                                     style="background-image: url(img/nemovitosti/nem.jpeg)"></div>
-	                            </div>
-	                            <div class="col-sm-3 image-choose">
-	                                <div class="image-choose-inside"
-	                                     style="background-image: url(img/nemovitosti/nem.jpeg)"></div>
-	                            </div>
-	                            <div class="col-sm-3 image-choose">
-	                                <div class="image-choose-inside"
-	                                     style="background-image: url(img/nemovitosti/nem.jpeg)"></div>
-	                            </div>
-	                            <div class="col-sm-3 image-choose">
-	                                <div class="image-choose-inside"
-	                                     style="background-image: url(img/nemovitosti/nem.jpeg)"></div>
-	                            </div>
-	                        </div>
-	                    </div>
+			                        <div class="row image-feed js-loadedImages-wrapper">
+			                            <div class="col-sm-3 image-choose js-choose-image js-loadedImagePrototype image-prototype">
+			                                <div class="image-choose-inside js-loadedImageItself"></div>
+			                            </div>
+			                        </div>
+			                    </div>
+
+				                <select id="inzerat_obrazky" multiple name="db_inzerat_obrazky[]" class="select-hidden"></select>
+		                        <input type="number" name="db_obrazek_front" value="" id="obrazek_front" class="select-hidden">
 
 
-	                    <div class="buttons-prevnext">
-	                        <div class="inz-submit">
-	                            <a class="btn buttons-prevnext-a js-prev-tab">Zpět</a>
-	                        </div>
-	                        <div class="inz-submit">
-	                            <a class="btn buttons-prevnext-a js-next-tab">Pokračovat</a>
-	                        </div>
-	                    </div>
+		                    <div class="buttons-prevnext">
+		                        <div class="inz-submit">
+		                            <a class="btn buttons-prevnext-a js-prev-tab">Zpět</a>
+		                        </div>
+		                        <div class="inz-submit">
+		                            <a class="btn buttons-prevnext-a js-next-tab js-transfer-to-prototype">Pokračovat</a>
+		                        </div>
+		                    </div>
+		                </form>
 	                </section>
 
 
@@ -406,28 +431,26 @@
 	                        <h2>Náhled přidaného inzerátu</h2>
 
 	                        <div class="row">
-	                            <div class="col-sm-4 nemovitost">
+	                            <div class="col-sm-4 nemovitost js-nem-prototype">
 
 	                                <div class="nemovitost-wrapper">
-	                                    <div class="nemovitost-image"
-	                                         style="background-image: url(img/nemovitosti/nem.jpeg); "></div>
+	                                    <div class="nemovitost-image js-nem-prototype-image" style="background-image: url(img/nemovitosti/nem.jpeg); "></div>
 	                                    <div class="nemovitost-text">
-	                                        <h3>Praha - Nebušice, 6+1 222m<sup>2</sup></h3>
-	                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non sem
+	                                        <h3><span class="js-nem-prototype-name">Praha - Nebušice, 6+1 222</span></h3>
+	                                        <p class="js-nem-prototype-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non sem
 	                                            consectetur, porta sapien. </p>
 
 	                                        <div class="metaInfo-bar">
 	                                            <div class="infoIco location">
-	                                                <img src="img/ikony/location.png" alt=""/><span class="metaTxt">Praha - Nebušice</span>
+	                                                <img src="<?php echo FRONTEND_IMAGES_PATH ?>/ikony/location.png" alt=""/><span class="metaTxt js-nem-prototype-location">Praha - Nebušice</span>
 	                                            </div>
 	                                            <div class="infoIco size">
-	                                                <img src="img/ikony/size.png" alt=""/><span
-	                                                        class="metaTxt">222m<sup>2</sup></span>
+	                                                <img src="<?php echo FRONTEND_IMAGES_PATH ?>/ikony/size.png" alt=""/><span class="metaTxt"><span class="js-nem-prototype-area">222</span>m<sup>2</sup></span>
 	                                            </div>
 	                                        </div>
 
 	                                        <div class="price-bar">
-	                                            <h4 class="price">22 850 Kč</h4>
+	                                            <h4 class="price"><span class="js-nem-prototype-price">22 850</span> <?php echo CURRENCY; ?></h4>
 	                                            <a class="btn more">Více info</a>
 	                                        </div>
 	                                    </div>

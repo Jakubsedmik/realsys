@@ -83,6 +83,7 @@ define( "FOREIGN_KEY", "fk" ); // foreign key OK (with control against relations
 define( "TEL", "tel" ); // telephone like +48 777 777 777 OK
 define( "PRICE", "price" ); // price only positive till 2 147 483 647 OK
 define( "TIMESTAMP", "timestamp" ); // valid timestamp OK
+define( "PHPARRAY", "array" ); // valid PHP array
 
 define( "DATE", "date" ); // DEPRECATED
 define( "TIME", "time" ); // DEPRECATED
@@ -428,6 +429,37 @@ $frontend_general_rules = array(
 	'db_typ_inzeratu' => array(
 		"required" => true,
 		"number" => true
+	),
+	'db_pozemkova_plocha' => array(
+		"required" => true,
+		"number" => true
+	),
+	'db_typ_stavby' => array(
+		"required" => true,
+		"number" => true
+	),
+	'db_stav_objektu' => array(
+		"required" => true,
+		"number" => true
+	),
+	'db_vybavenost' => array(
+		"required" => true,
+		"number" => true
+	),
+	'db_penb' => array(
+		"required" => true,
+		"number" => true
+	),
+	'db_typ_vlastnictvi' => array(
+		"required" => true,
+		"number" => true
+	),
+	'db_patro' => array(
+		"required" => true,
+		"number" => true
+	),
+	'db_inzerat_obrazky[]' => array(
+		"required" => true
 	)
 );
 

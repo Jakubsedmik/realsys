@@ -367,7 +367,6 @@ $(document).ready(function () {
 
 /* FILEPOND UPLOADER */
 $(document).ready(function () {
-    console.log(serverData.ajaxUrl);
     FilePond.setOptions({
         server: {
             url: serverData.ajaxUrl,
@@ -512,14 +511,22 @@ function deactiveInzerat(element) {
 
 $(document).ready(function (e) {
 
-    $(".js-partialValidation").validate({
-        rules : serverData.rules,
-        messages: serverData.messages,
+    $(".js-partialValidation").each(function (index) {
+        serverData.rules.db_obrazek_front = {
+            required: function (element) {
+                return $("#inzerat_obrazky").val().length > 0;
+            }
+        }
+        $(this).validate({
+            rules : serverData.rules,
+            messages: serverData.messages,
+        });
     });
 
     $(".js-next-tab").click(function () {
 
         var form = $(this).closest(".js-inz-tab").find(".js-partialValidation");
+        console.log(form);
         var proceed = true;
         if(form.length){
             console.log(form);
@@ -556,7 +563,7 @@ $(document).ready(function (e) {
         main.changeElementType("form");
         main = $("form.js-form-wrapper");
         main.attr("method", "post");
-        //main.submit();
+        main.submit();
     });
 
     $(".js-prev-tab").click(function () {
@@ -600,7 +607,94 @@ $(document).ready(function (e) {
                 return $("<" + newType + "/>", attrs).append($(this).contents());
             });
         };
+
     })(jQuery);
+
+    $(".js-transfer-to-prototype").click(function (e) {
+        var imageUrl = $(".js-loadedImages-wrapper .selected-image").attr("data-url");
+        var image = $(".js-nem-prototype-image");
+        image.css({"background-image": "url('" + imageUrl + "')"});
+
+        var mesto = $('input[name="db_mesto"]').val();
+        $(".js-nem-prototype-location").text(mesto);
+
+        var podlahova_plocha = $('input[name="db_podlahova_plocha"]').val();
+        $(".js-nem-prototype-area").text(podlahova_plocha);
+
+        var popis = $('textarea[name="db_popis"]').val();
+        $(".js-nem-prototype-description").text(popis);
+
+        var cena = $('input[name="db_cena"]').val();
+        $(".js-nem-prototype-price").text(cena);
+
+        var titulek = $('input[name="db_titulek"]').val();
+        $(".js-nem-prototype-name").text("titulek");
+    });
+
+
+
+    // PHOTO UPLOADER FOR INZERAT
+    FilePond.setOptions({
+        server: {
+            url: serverData.ajaxUrl,
+            method: 'POST',
+            process: {
+                onload: function (response) {
+                    response = JSON.parse(response);
+                    if(response.status == 1){
+                        $(".js-loadedImages").fadeIn();
+                        var prototype = $(".js-loadedImagePrototype");
+                        var newImage = prototype.clone();
+                        newImage.removeClass("js-loadedImagePrototype").removeClass("image-prototype");
+                        newImage.find(".js-loadedImageItself").css({"background-image" : "url(" + response.gallery_url + ")"});
+                        newImage.attr('data-id', response.db_id);
+                        newImage.attr("data-url", response.gallery_url);
+                        $(".js-loadedImages-wrapper").append(newImage);
+
+                        var newOption = '<option selected value="' + response.db_id + '">obr</option>';
+                        $("#inzerat_obrazky").append(newOption);
+
+                    }else{
+                        alert("Došlo k chybě při uploadu souboru");
+                    }
+                },
+                ondata: function (formData) {
+                    var idUser = parseInt($("#uzivatel_id").val());
+                    formData.append("action","createInzeratImages");
+                    formData.append("id", idUser);
+                    return formData;
+                },
+
+            }
+        },
+        maxFiles: 10,
+        allowMultiple: true,
+        maxParallelUploads : 3,
+        labelIdle : "Nahrajte obrázky inzerátu",
+        labelFileLoading : "Načítání",
+        labelFileProcessing : "Uploadování",
+        labelFileProcessingComplete : "Úspěšně nahráno na server",
+        labelFileProcessingAborted: "Zrušeno",
+        labelTapToCancel: "Klepněte pro zrušení",
+        labelTapToRetry: "Klepněte pro opakování",
+        allowRevert: false
+
+    });
+
+    var pondEl = $('.js-add-inzerat-photos input').get(0);
+    const pond = FilePond.create( pondEl );
+
+    $("body").on("remove-files", function (e) {
+        pond.removeFiles();
+    });
+
+    $("body").on("click", ".js-choose-image", function (e) {
+        var idFront = $(this).attr("data-id");
+        $(".js-loadedImages-wrapper .selected-image").removeClass("selected-image");
+        $(this).addClass("selected-image");
+
+        $("#obrazek_front").val(idFront);
+    });
 
 })
 
