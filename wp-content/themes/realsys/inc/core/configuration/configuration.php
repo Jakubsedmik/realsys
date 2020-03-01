@@ -41,6 +41,8 @@ define( "AJAXURL", admin_url( "admin-ajax.php" ) );
 
 // Google auth id
 define("GOOGLE_ID", "169419171066-51n84mk31m3sdi47rtkj84tprnrppker.apps.googleusercontent.com");
+define("GOOGLE_API_KEY", "AIzaSyDU9RxWxpRRoy9R-wAILv5Owb7GaXHLVaw");
+define("GOOGLE_SERVER_API_KEY", "AIzaSyDLb5HxunZlhEtXHmELaNbd9XMajfkoQvc");
 
 // CURRENCY
 define("CURRENCY", "Kč");
@@ -376,6 +378,56 @@ $frontend_general_rules = array(
 	"db_email_nocheck" => array(
 		"required" => true,
 		"email" => true
+	),
+	"db_ulice" => array(
+		"required" => true,
+		"minlength" => 2
+	),
+	"db_cp" => array(
+		"required" => true,
+		"minlength" => 2
+	),
+	"db_mesto" => array(
+		"required" => true,
+		"minlength" => 2
+	),
+	"db_psc" => array(
+		"required" => true,
+		"zip" => true
+	),
+	"db_mestska_cast" => array(
+		"required" => true,
+		"minlength" => 2
+	),
+	"db_podlahova_plocha" => array(
+		"required" => true,
+		"number" => true
+	),
+	"db_pozemkova_plocha" => array(
+		"required" => true,
+		"number" => true
+	),
+	"db_titulek" => array(
+		"required" => true
+	),
+	"db_pocet_mistnosti" => array(
+		"required" => true,
+		"minlength" => 2
+	),
+	"db_popis" => array(
+		"required" => false,
+	),
+	"db_cena" => array(
+		"required" => true,
+		"number" => true
+	),
+	'db_typ_stavby' => array(
+		"required" => true,
+		"number" => true
+	),
+	'db_typ_inzeratu' => array(
+		"required" => true,
+		"number" => true
 	)
 );
 

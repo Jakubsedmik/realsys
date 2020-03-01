@@ -27,8 +27,7 @@
 						<button type="submit" class="btn submit-btn"><?php _e("Hledej inzerát", "realsys"); ?></button>
 					</form>
 
-					<!-- TODO LINK -->
-					<a href="#" class="find-more-btn"><?php _e("Rozšířené hledání", "realsys"); ?></a>
+					<a href="<?php echo Tools::getFERoute("vypis", false, "map"); ?>" class="find-more-btn"><?php _e("Vyhledávání na mapě", "realsys"); ?></a>
 				</div>
 			</div>
 			<img class="obr-slider popredi skrin" src="<?php echo FRONTEND_IMAGES_PATH; ?>slider/skrinka.png" alt=""/>

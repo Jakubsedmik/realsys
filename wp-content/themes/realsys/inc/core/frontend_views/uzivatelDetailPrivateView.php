@@ -121,7 +121,7 @@
 
 					<div class="section-title sides-align">
 						<h2><?php echo _e( "Nemovitosti uživatele", "realsys" ); ?></h2>
-						<a class="btn" href="#">Vložit inzerát</a>
+						<a class="btn" href="<?php echo Tools::getFERoute("inzeratClass",false, "add") ?>">Vložit inzerát</a>
 					</div>
 
 					<?php
@@ -141,8 +141,8 @@
 					?>
 
 					<div class="section-btn sides-align">
-						<a class="btn" href="#">Všechny inzeráty</a>
-						<a class="btn" href="#">Vložit inzerát</a>
+						<a class="btn" href="<?php echo Tools::getFERoute("inzeratClass",false, "listing") ?>">Všechny inzeráty</a>
+						<a class="btn" href="<?php echo Tools::getFERoute("inzeratClass",false, "add") ?>">Vložit inzerát</a>
 					</div>
 
 				</div>

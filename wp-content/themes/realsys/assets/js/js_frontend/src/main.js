@@ -66,10 +66,15 @@ $(document).ready(function () {
 
     $.validator.addMethod( "phoneCZ", function( phone_number, element ) {
         phone_number = phone_number.replace( /\s+/g, "" );
-        console.log("validation");
         var regexp = /^(\+420)? ?[1-9][0-9]{2} ?[0-9]{3} ?[0-9]{3}$/;
         return this.optional( element ) || regexp.test( phone_number );
     }, "Toto číslo není validní." );
+
+    $.validator.addMethod( "zip", function( phone_number, element ) {
+        phone_number = phone_number.replace( /\s+/g, "" );
+        var regexp = /\d{3} ?\d{2}/;
+        return this.optional( element ) || regexp.test( phone_number );
+    }, "Toto PSČ není validní. Formát 123 45." );
 
 
 
@@ -501,6 +506,103 @@ function deactiveInzerat(element) {
     nemovitost.find(".inzeratActivator").show();
     nemovitost.find(".inzeratDeactivator").hide();
 }
+
+
+/* PŘEPÍNÁNÍ TABŮ A VYTVÁŘENÍ INZ */
+
+$(document).ready(function (e) {
+
+    $(".js-partialValidation").validate({
+        rules : serverData.rules,
+        messages: serverData.messages,
+    });
+
+    $(".js-next-tab").click(function () {
+
+        var form = $(this).closest(".js-inz-tab").find(".js-partialValidation");
+        var proceed = true;
+        if(form.length){
+            console.log(form);
+            proceed = false;
+            proceed = form.valid();
+        }
+        if(proceed){
+            var current = $(".js-inz-tab.active");
+            console.log(current);
+            current.removeClass("active");
+            var next = current.next();
+            next.addClass("active");
+
+            var currentNavItem = $(".js-nav-tabs .js-nav-link.active");
+            var nextNavItem = currentNavItem.next();
+
+            currentNavItem.removeClass("active");
+            nextNavItem.addClass("active");
+
+            window.scrollTo({
+                'behavior': 'smooth',
+                'left': 0,
+                'top': 0
+            });
+        }
+    });
+
+    $(".js-finish").click(function () {
+        var main = $(".js-form-wrapper");
+        var allPartials = main.find(".js-partialValidation");
+        allPartials.each(function (index, val) {
+            $(this).changeElementType("div");
+        })
+        main.changeElementType("form");
+        main = $("form.js-form-wrapper");
+        main.attr("method", "post");
+        //main.submit();
+    });
+
+    $(".js-prev-tab").click(function () {
+        var current = $(".js-inz-tab.active");
+        current.removeClass("active");
+        var next = current.prev();
+        next.addClass("active");
+
+        var currentNavItem = $(".js-nav-tabs .js-nav-link.active");
+        var prevNavItem = currentNavItem.prev();
+
+        currentNavItem.removeClass("active");
+        prevNavItem.addClass("active");
+
+        window.scrollTo({
+            'behavior': 'smooth',
+            'left': 0,
+            'top': 0
+        });
+    });
+
+    $(".js-nav-link").click(function (e) {
+        e.preventDefault();
+        $(".js-nav-tabs .js-nav-link.active").removeClass("active");
+        $(".js-tabs .active").removeClass("active");
+        var target = $(this).find("a").attr("href");
+
+        $(target).addClass("active");
+        $(this).addClass("active");
+    });
+
+    (function($) {
+        $.fn.changeElementType = function(newType) {
+            var attrs = {};
+
+            $.each(this[0].attributes, function(idx, attr) {
+                attrs[attr.nodeName] = attr.nodeValue;
+            });
+
+            this.replaceWith(function() {
+                return $("<" + newType + "/>", attrs).append($(this).contents());
+            });
+        };
+    })(jQuery);
+
+})
 
 
 

@@ -5,10 +5,10 @@
                 <span>
                     <?php _e("Partnerské weby", "realsys"); ?>
                     <strong>
-                        <?php _e("Řemeslníci", "realsys"); ?>
+                        <a href="https://www.nejremeslnici.cz/"><?php _e("Řemeslníci", "realsys"); ?></a>
                     </strong> |
                     <strong>
-                        <?php _e("Autoservis", "realsys"); ?>
+                        <a href="http://autonahlovsky.cz/"><?php _e("Autoservis", "realsys"); ?></a>
                     </strong>
                 </span>
             </div>

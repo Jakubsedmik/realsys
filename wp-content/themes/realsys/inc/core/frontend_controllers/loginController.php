@@ -40,8 +40,13 @@ class loginController extends frontendController {
 				$login_result = $uzivatel->verifyPassword($heslo);
 				if($login_result){
 					$uzivatel->logIn();
-					frontendError::addMessage("Přihlášení", SUCCESS, "Přihlášení proběhlo úspěšně, probíhá přesměrování na Váš profil.");
-					Tools::jsRedirect(Tools::getFERoute("uzivatelClass",$uzivatel->getId()),1500,"Přesměrování na Váš profil");
+					if(Tools::checkPresenceOfParam("create",$this->requestData)){
+						frontendError::addMessage("Přihlášení", SUCCESS, "Přihlášení proběhlo úspěšně, probíhá přesměrování na vytváření inzerátu");
+						Tools::jsRedirect(Tools::getFERoute("inzeratClass",$uzivatel->getId(), "add"),1500,"Přesměrování na vytváření inzerátu");
+					}else{
+						frontendError::addMessage("Přihlášení", SUCCESS, "Přihlášení proběhlo úspěšně, probíhá přesměrování na Váš profil.");
+						Tools::jsRedirect(Tools::getFERoute("uzivatelClass",$uzivatel->getId()),1500,"Přesměrování na Váš profil");
+					}
 				}else{
 					frontendError::addMessage("Uživatel",ERROR, "Špatné heslo");
 				}

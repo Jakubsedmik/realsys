@@ -13,6 +13,8 @@ if(DEPLOYMENT){
 		"\/realsys\/vypismapa\/" => "vypisMapaController",
 		"\/realsys\/gopay\/" => "gopayController",
 		"\/realsys\/objednavka\/" => "objednavkaController",
+		"\/realsys\/editace-inzeratu\/" => "inzeratEditController",
+		"\/realsys\/pridat-inzerat\/" => "pridatInzeratController",
 	);
 }
 
@@ -40,7 +42,9 @@ $rewrites = array(
 $routing_urls = array(
 	"inzeratClass" => array(
 		'detail' => home_url() . '/inzerat/%d/',
-		'listing' => home_url()
+		'listing' => home_url() . '/vypis/',
+		'add' => home_url() . '/pridat-inzerat/',
+		'edit' => home_url() . '/editace-inzeratu/?id=%d'
 	),
 	"uzivatelClass" => array(
 		'detail' => home_url() . '/uzivatel/%d/'
@@ -50,7 +54,7 @@ $routing_urls = array(
 		'map' => home_url() . '/vypismapa/'
 	),
 	"gopay" => array(
-		"payment" => home_url() . "/gopay/?id=%d",
-		"confirmation" => home_url() . "/gopay/"
+		"payment" => home_url() . '/gopay/?id=%d',
+		"confirmation" => home_url() . '/gopay/'
 	)
 );

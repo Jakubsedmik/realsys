@@ -2,6 +2,12 @@
 <section>
 	<div class="login-con">
 		<div class="wrapper">
+            <?php
+                if(Tools::checkPresenceOfParam("create",$this->requestData)) :
+            ?>
+                <h2>Před vytvořením inzerátu se nejprve přihlašte</h2>
+                <p>Pro vytvoření inzerátu je třeba být přihlášen nebo registrován. Následně Vás přesuneme hned na vytváření inzerátu.</p>
+            <?php endif; ?>
 			<div class="login-tabs">
 				<div class="tab-header">
 					<a href="#login-tab" class="login js-tab <?php if($this->requestData['action']!="registerUser") { echo "active";}?>"><img src="<?php echo FRONTEND_IMAGES_PATH; ?>/header/prihlaseni.png" alt=""/>

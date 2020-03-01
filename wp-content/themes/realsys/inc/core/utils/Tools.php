@@ -282,7 +282,8 @@ class Tools {
             $action,
 	        $format = null,
             $callbackSuccess="",
-            $callbackFail=""
+            $callbackFail="",
+            $editOnlyAllowed = false
 	        ){
 
 	    if(!class_exists($className)){
@@ -297,6 +298,7 @@ class Tools {
             }
         }
 
+
 	    if($format == null) {
 	        global $field_rules;
 	        if(isset($field_rules[$className])){
@@ -306,6 +308,19 @@ class Tools {
 	            return false;
             }
         }
+
+	    if($editOnlyAllowed){
+	        $new_format = array();
+	        foreach ($format as $key => $value){
+	            if(key_exists($key, $newsource)){
+	                $new_format[$key] = $value;
+                }
+            }
+	        $format = $new_format;
+        }
+
+
+
 
         $result = self::postChecker($newsource, $format, true);
         if($result){
@@ -958,6 +973,22 @@ class Tools {
 
     public static function formatTime($time){
 	    return date(DATE_FORMAT ,$time);
+    }
+
+    public static function geocodeAdress($addres){
+	    $address = urlencode($addres);
+	    $link = 'https://maps.googleapis.com/maps/api/geocode/json?address=' . $address . '&key=' . GOOGLE_SERVER_API_KEY;
+	    $result = json_decode(file_get_contents($link));
+	    if(property_exists($result, "results")){
+	        $result = array_pop($result->results);
+	        if(property_exists($result, "geometry")){
+	            $geometry = $result->geometry;
+	            if(property_exists($geometry, "location")){
+	                return $geometry->location;
+                }
+            }
+        }
+	    return false;
     }
 
 

@@ -14,7 +14,7 @@
     <div class="col-sm nemovitost nem-row-box <?php echo ($item->db_stav_inzeratu < 1) ? 'non-active' : 'active'?>">
 
         <div class="edit-icon-wrap">
-            <a class="edit-icon"><i class="fas fa-pen"></i></a>
+            <a href="<?php echo Tools::getFERoute("inzeratClass",$item->getId(), "edit"); ?>" class="edit-icon"><i class="fas fa-pen"></i></a>
             <a
                     class="close-icon js-send-request"
                     data-post-action="removeInzerat"

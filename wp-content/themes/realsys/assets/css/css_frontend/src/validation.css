@@ -1,5 +1,6 @@
 .form-field{
     position: relative;
+    width: 100%;
 }
 
 .form-field label.error{
@@ -19,6 +20,7 @@
     font-weight: normal;
     text-transform: none;
     letter-spacing: 0px;
+    z-index: 999;
 }
 
 .form-field label.error:after{

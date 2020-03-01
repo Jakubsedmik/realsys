@@ -87,6 +87,11 @@ function s7_theme_editor($wp_customize){
 		'transport' => 'refresh',
 	) );
 
+	$wp_customize->add_setting( 'slider_button_url' , array(
+		'default'   => '/',
+		'transport' => 'refresh',
+	) );
+
 	$wp_customize->add_setting( 'cta_hp_title' , array(
 		'default'   => 'NEPLAŤTE PROVIZI REALITCE,<br>KDYŽ NEMUSÍTE',
 		'transport' => 'refresh',
@@ -162,6 +167,12 @@ function s7_theme_editor($wp_customize){
 		'settings'   => 'slider_button_text'
 	)));
 
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'slider_button_url_control', array(
+		'label'      => __( 'Url odkazu ve slideru', 'realsys' ),
+		'description' => __("Tlačítko přidat inzerát - url"),
+		'section'    => 'main_setting',
+		'settings'   => 'slider_button_url'
+	)));
 
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'cta_hp_title_control', array(
 		'label'      => __( 'CTA Nadpis', 'realsys' ),
