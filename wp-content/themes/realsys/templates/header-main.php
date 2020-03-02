@@ -12,7 +12,7 @@
                     </strong>
                 </span>
             </div>
-	        <?php if(UzivatelClass::getUserLoggedId() !== false): ?>
+	        <?php if(uzivatelClass::getUserLoggedId() !== false): ?>
             <?php $uzivatel = assetsFactory::getEntity("uzivatelClass", uzivatelClass::getUserLoggedId()); ?>
             <div class="user-logged">
                 <a class="logged"><img src="img/header/uzivatel-prihlasen.png" alt=""/><span><?php echo $uzivatel->getFullName(); ?></span></a>
