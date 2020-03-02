@@ -980,7 +980,7 @@ class Tools {
 	    $result = json_decode(file_get_contents($link));
 	    if(property_exists($result, "results")){
 	        $result = array_pop($result->results);
-	        if(property_exists($result, "geometry")){
+	        if(is_object($result) && property_exists($result, "geometry")){
 	            $geometry = $result->geometry;
 	            if(property_exists($geometry, "location")){
 	                return $geometry->location;

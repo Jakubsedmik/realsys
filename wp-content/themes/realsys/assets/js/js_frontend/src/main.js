@@ -585,7 +585,7 @@ $(document).ready(function (e) {
         });
     });
 
-    $(".js-nav-link").click(function (e) {
+    /*$(".js-nav-link").click(function (e) {
         e.preventDefault();
         $(".js-nav-tabs .js-nav-link.active").removeClass("active");
         $(".js-tabs .active").removeClass("active");
@@ -593,7 +593,7 @@ $(document).ready(function (e) {
 
         $(target).addClass("active");
         $(this).addClass("active");
-    });
+    });*/
 
     (function($) {
         $.fn.changeElementType = function(newType) {
@@ -628,7 +628,7 @@ $(document).ready(function (e) {
         $(".js-nem-prototype-price").text(cena);
 
         var titulek = $('input[name="db_titulek"]').val();
-        $(".js-nem-prototype-name").text("titulek");
+        $(".js-nem-prototype-name").text(titulek);
     });
 
 

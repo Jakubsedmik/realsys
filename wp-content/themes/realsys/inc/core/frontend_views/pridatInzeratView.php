@@ -485,6 +485,7 @@
 	                            <a class="btn buttons-prevnext-a js-prev-tab">Zpět</a>
 	                        </div>
 	                        <div class="inz-submit">
+                                <input type="hidden" name="action" value="createInzerat">
 	                            <button type="button" class="btn nav-box-wrap js-finish">Dokončit</button>
 	                        </div>
 	                    </div>

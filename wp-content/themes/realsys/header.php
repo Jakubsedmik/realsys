@@ -4,6 +4,7 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
     <meta name="google-signin-client_id" content="<?php echo GOOGLE_ID; ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title><?php bloginfo('name'); ?><?php wp_title(); ?></title>
 	<?php wp_head(); ?>
 </head>
 

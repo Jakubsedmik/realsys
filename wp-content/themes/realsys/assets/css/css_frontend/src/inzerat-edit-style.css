@@ -295,6 +295,7 @@ select option:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .select-box.w-icon{
@@ -303,7 +304,9 @@ select option:hover {
     justify-content: flex-start;
 }
 
-
+.js-finish{
+    cursor: pointer;
+}
 
 
 .select-box .ico:before {

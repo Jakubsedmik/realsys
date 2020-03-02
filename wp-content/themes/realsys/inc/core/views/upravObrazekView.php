@@ -26,7 +26,7 @@
                                 <input type="hidden" name="db_url" value="<?php echo $obr ?>">
                                 <input type="hidden" name="db_kod" value="<?php echo $obr ?>">
                                 <?php if($obr != null): ?>
-                                    <img src="<?php echo $obr; ?>" class="img-fluid js-singleFileUploaderImage">
+                                    <img src="<?php echo home_url() . $obr; ?>" class="img-fluid js-singleFileUploaderImage">
                                 <?php else: ?>
                                     <img src="<?php echo BASE_URL . ASSETS_PATH . 'images/images_backend/default_profile.jpg'; ?>" class="img-fluid js-singleFileUploaderImage">
                                 <?php endif; ?>

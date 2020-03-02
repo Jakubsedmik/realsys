@@ -10,11 +10,11 @@ class pridatInzeratController extends frontendController {
 	}
 
 	public function action() {
-		globalUtils::writeDebug($this->requestData);
-		$this->createInzerat();
+
 	}
 
 	public function createInzerat(){
+		globalUtils::writeDebug($this->requestData);
 		$result = Tools::postChecker($this->requestData, array(
 			'db_inzerat_obrazky' => array(
 				'required' => true,
@@ -53,8 +53,12 @@ class pridatInzeratController extends frontendController {
 						$this->requestData['db_lat'] = $lat;
 						$this->requestData['db_lng'] = $lng;
 					}else{
-
+						frontendError::addMessage("Geokódování", ERROR, "Zadaná adresa se nepodařila geokódovat. Inzerát nebyl vytvořen");
+						$this->setView("error");
+						return false;
 					}
+
+					$_this = $this;
 
 					$response = Tools::formProcessor(array(
 						"db_typ_inzeratu", "db_pocet_mistnosti", "db_ulice", "db_cp", "db_mesto", "db_psc", "db_titulek", "db_popis",
@@ -66,8 +70,8 @@ class pridatInzeratController extends frontendController {
 						"inzeratClass",
 						"create",
 						NULL,
-						function($entity, $source) use ($obrazky, $obrazek_front){
-
+						function($entity, $source) use ($obrazky, $obrazek_front, $_this){
+							$_this->requestData['inzerat'] = $entity;
 							$inzerat_id = $entity->getId();
 							foreach ($obrazky as $key => $value){
 								$obrazek = assetsFactory::getEntity("obrazekClass", $value);
@@ -77,19 +81,32 @@ class pridatInzeratController extends frontendController {
 										$obrazek->db_front = 1;
 									}
 								}else{
-
+									frontendError::addMessage("Obrázky", ERROR, "Některé obrázky nebyli nalezeny");
 								}
 							}
 						});
+					if($response){
+						$this->setView("inzeratCreated");
+						return true;
+					}else{
+						$this->setView("error");
+						return false;
+					}
 
 				}else{
-
+					frontendError::addMessage("Uživatel", ERROR, "Uživatel neexistuje");
+					$this->setView("error");
+					return false;
 				}
 			}else{
-
+				frontendError::addMessage("Uživatel", ERROR, "Uživatel není přihlášen nebo nemáte dostatečná oprávnění");
+				$this->setView("error");
+				return false;
 			}
 		}else{
-
+			frontendError::addMessage("Pole", ERROR, "Některá pole nebyla vyplněna");
+			$this->setView("error");
+			return false;
 		}
 	}
 }

@@ -2,6 +2,9 @@
 
 	$uzivatel = $this->workData['uzivatel'];
 	$inzeraty  = $uzivatel->subobjects['inzeratClass'];
+	$aktivniInzeraty = array_filter($inzeraty, function ($element, $index){
+	    return $element->db_stav_inzeratu;
+    }, ARRAY_FILTER_USE_BOTH);
 	if(!is_array($inzeraty)) $inzeraty = array();
 
 ?>
@@ -25,7 +28,7 @@
 							<i class="fas fa-envelope"></i> <span class="email"><?php echo $uzivatel->db_email; ?></span>
 						</div>
 						<div class="info-row">
-							<i class="fas fa-bullhorn"></i> <span class="inzeraty"><strong><?php echo count($inzeraty); ?></strong> <?php echo _e( "Aktivních inzerátů", "realsys" ); ?></span>
+							<i class="fas fa-bullhorn"></i> <span class="inzeraty"><strong><?php echo count($aktivniInzeraty); ?></strong> <?php echo _e( "Aktivních inzerátů", "realsys" ); ?></span>
 						</div>
 					</div>
 

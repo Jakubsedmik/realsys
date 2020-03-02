@@ -4,7 +4,7 @@
             <i class="fas fa-images"></i> Výpis obrázků
 		</h1>
 		<p class="lead">
-			Kompletní výpis obrůzků. Obrázky můžete upravovat,smazat či filtrovat.
+			Kompletní výpis obrázků. Obrázky můžete upravovat,smazat či filtrovat.
 		</p>
 	</div>
 	<div class="app">

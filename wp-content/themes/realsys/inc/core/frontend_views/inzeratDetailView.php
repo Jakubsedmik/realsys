@@ -31,7 +31,7 @@ $obrazky   = array_filter( $obrazky, function ( $val ) use ( &$front_obr ) {
 <section>
     <div class="detail-nemovitosti">
         <div class="wrapper">
-
+            <?php echo frontendError::getFrontendErrors(); ?>
             <div class="row">
                 <div class="col-sm nemovitost-detail">
                     <div class="nemovitost-wrapper">

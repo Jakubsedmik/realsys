@@ -35,7 +35,7 @@ class uzivatelDetailController extends frontendController {
 
 				trigger_error("Tento uživatel neexistuje");
 				frontendError::addMessage("id", ERROR, "zadaný uživatel neexistuje");
-				$this->setView("notFound");
+				$this->setView("error");
 			}
 
 

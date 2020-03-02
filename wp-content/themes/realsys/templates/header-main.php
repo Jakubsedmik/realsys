@@ -101,7 +101,13 @@
     </div>
 
     <div class="mobile-menu">
-        <div class="logo"><img src="img/header/logo-bydleni.png" alt=""></div>
+        <div class="logo">
+	        <?php
+	        if ( function_exists( 'the_custom_logo' ) ) {
+		        the_custom_logo();
+	        }
+	        ?>
+        </div>
         <div id="nav-icon3" class="burger-menu-icon">
             <span></span>
             <span></span>
