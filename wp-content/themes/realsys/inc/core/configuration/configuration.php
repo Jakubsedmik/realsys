@@ -581,6 +581,11 @@ $relationships = array(
 		'db_inzerat_id' => array(
 			'class' => 'inzeratClass',
 		)
+	),
+	"hlidacipesClass" => array(
+		'db_uzivatel_id' => array(
+			'class' => 'uzivatelClass'
+		)
 	)
 );
 
@@ -661,24 +666,50 @@ define("WATERMARK_RESIZE_FACTOR", 1);
 $filter_parameters = array(
 	'db_typ_nemovitosti' => array(
 		'name' => 'Typ nemovitosti',
+		'type' => 'select',
 		'values' => array()
 	),
 	'db_typ_vlastnictvi' => array(
 		'name' => 'Typ vlastnictví',
+		'type' => 'select',
 		'values' => array()
 	),
 	'db_typ_stavby' => array(
 		'name' => 'Typ stavby',
+		'type' => 'select',
 		'values' => array()
 	),
 	'db_stav_objektu' => array(
 		'name' => 'Stav objektu',
+		'type' => 'select',
 		'values' => array()
+
 	),
 	'db_penb' => array(
 		'name' => 'PENB',
+		'type' => 'select',
 		'values' => array()
 	),
+	/*'db_cena' => array(
+		'name' => 'Cena',
+		'type' => 'slider',
+		'values' => array(0,100)
+	),
+	'db_lokalita' => array(
+		'name' => "Lokalita",
+		'type' => 'text',
+		'values' => false
+	),
+	'db_neco' => array(
+		'name' => "Něco",
+		'type' => 'option',
+		'values' => array( 0 => "Ano", 1 => "Ne", 2 => "Třeba" )
+	),
+	'db_checkbox' => array(
+		'name' => "Checkbox",
+		'type' => "checkbox",
+		'values' => false
+	)*/
 );
 
 // FILTER HP PARAMETERS

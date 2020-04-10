@@ -43,6 +43,10 @@ class loginController extends frontendController {
 					if(Tools::checkPresenceOfParam("create",$this->requestData)){
 						frontendError::addMessage("Přihlášení", SUCCESS, "Přihlášení proběhlo úspěšně, probíhá přesměrování na vytváření inzerátu");
 						Tools::jsRedirect(Tools::getFERoute("inzeratClass",$uzivatel->getId(), "add"),1500,"Přesměrování na vytváření inzerátu");
+					}elseif(Tools::checkPresenceOfParam("watchdog", $this->requestData)){
+						$watchdogid = $this->requestData['watchdog'];
+						frontendError::addMessage("Přihlášení", SUCCESS, "Přihlášení proběhlo úspěšně, probíhá přesměrování na výpis vašeho hlídacího psa.");
+						Tools::jsRedirect(Tools::getFERoute("hlidacipesClass", $watchdogid),1500,"Přesměrování na výpis hlídacího psa");
 					}else{
 						frontendError::addMessage("Přihlášení", SUCCESS, "Přihlášení proběhlo úspěšně, probíhá přesměrování na Váš profil.");
 						Tools::jsRedirect(Tools::getFERoute("uzivatelClass",$uzivatel->getId()),1500,"Přesměrování na Váš profil");
@@ -107,7 +111,6 @@ class loginController extends frontendController {
 				"sub" => $this->requestData['gid']
 			);
 			$payload = Tools::googleTokenVerification($this->requestData['token'], $verificationArray);
-			globalUtils::writeDebug($payload);
 
 			if($payload){
 

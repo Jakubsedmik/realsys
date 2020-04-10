@@ -15,6 +15,7 @@ if(DEPLOYMENT){
 		"\/realsys\/objednavka\/" => "objednavkaController",
 		"\/realsys\/editace-inzeratu\/" => "inzeratEditController",
 		"\/realsys\/pridat-inzerat\/" => "pridatInzeratController",
+		"\/realsys\/hlidacipes\/" => "hlidacipesController",
 	);
 }
 
@@ -56,5 +57,9 @@ $routing_urls = array(
 	"gopay" => array(
 		"payment" => home_url() . '/gopay/?id=%d',
 		"confirmation" => home_url() . '/gopay/'
+	),
+	"hlidacipesClass" => array(
+		"detail" => home_url() . "/hlidacipes/?id=%d",
+		"listing" => home_url() . "/uzivatel/%d/"
 	)
 );

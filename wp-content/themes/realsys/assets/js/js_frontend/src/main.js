@@ -506,6 +506,14 @@ function deactiveInzerat(element) {
     nemovitost.find(".inzeratDeactivator").hide();
 }
 
+function removePes(element) {
+    $(element).closest(".js-watchdog").remove();
+    var allDogs = $(".js-watchdog");
+    if(allDogs.length == 0){
+        $(".js-watchdogwrapper").remove();
+    }
+}
+
 
 /* PŘEPÍNÁNÍ TABŮ A VYTVÁŘENÍ INZ */
 

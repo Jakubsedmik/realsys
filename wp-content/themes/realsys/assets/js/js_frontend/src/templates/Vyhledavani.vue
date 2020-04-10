@@ -41,17 +41,23 @@
                     </div>
                 </div>
 
+                <Filterfield v-bind:filterData="this.filters.db_checkbox" filterName="db_checkbox" ></Filterfield>
+
             </div>
         </div>
     </section>
 </template>
 
 <script>
+
+    import Filterfield from "./Filterfield.vue";
+
     export default {
         name: "Vyhledavani",
         props: [
             'filters', 'filterpreset'
         ],
+        components: { Filterfield },
         created() {
             if(Object.entries(this.filterpreset).length > 0){
                 this.search_data = this.filterpreset;
@@ -59,6 +65,10 @@
                     this.searchResults();
                 });
             }
+
+            this.$root.$on("fieldChanged", function (fieldValues) {
+                console.log(fieldValues);
+            });
 
         },
         data: function(){

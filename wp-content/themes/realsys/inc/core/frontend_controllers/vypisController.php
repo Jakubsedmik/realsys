@@ -23,7 +23,9 @@ class vypisController extends frontendController {
 		global $filter_parameters;
 		foreach ($filter_parameters as $key => $value){
 			$key_new = str_replace("db_","", $key);
-			$filter_parameters[$key]['values'] = globalUtils::getValuesForFilter("inzeratClass", $key_new, "-- Bez filtru --");
+			if($value['type'] == "select"){
+				$filter_parameters[$key]['values'] = globalUtils::getValuesForFilter("inzeratClass", $key_new, "-- Bez filtru --");
+			}
 		}
 
 		$this->requestData['filter'] = Tools::prepareJsonToOutputHtmlAttr($filter_parameters);

@@ -604,12 +604,14 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
 	public function loadRelatedObjects($objectName=false){
 		$relations = $this->getRelations();
 		if($objectName){
-			$relations = array_filter($relations, function($obj,$key) use ($objectName){
-				if(!$objectName){return true;}
-				if($obj['class'] == $objectName){ return true;}
-				return false;
-			},ARRAY_FILTER_USE_BOTH);
-			if(count($relations)==1){
+			if(is_array($relations)){
+				$relations = array_filter($relations, function($obj,$key) use ($objectName){
+					if(!$objectName){return true;}
+					if($obj['class'] == $objectName){ return true;}
+					return false;
+				},ARRAY_FILTER_USE_BOTH);
+			}
+			if(is_array($relations) && count($relations)==1){
 				$index = array_keys($relations);
 				$index = array_shift($index);
 				$key = $this->$index;

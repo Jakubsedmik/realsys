@@ -90,7 +90,6 @@
                                     </a>
                                 </li>
                             <?php endforeach; ?>
-
                         </ul>
 
                 <?php endif; ?>
