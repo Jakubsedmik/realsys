@@ -17,7 +17,7 @@ if ( have_posts() ) {
 	} // end while
 } // end if
 
-$hlidacipes = assetsFactory::createEntity("hlidacipesClass",array(
+/*$hlidacipes = assetsFactory::createEntity("hlidacipesClass",array(
 	'jmeno_psa' => "Muj pes",
 	'posledni_inzeraty' => array(),
 	'nastaveni_filtru' => array(
@@ -25,11 +25,11 @@ $hlidacipes = assetsFactory::createEntity("hlidacipesClass",array(
 	),
 	'uzivatel_id' => 4,
 	'premium' => 0
-));
+));*/
 
 //$hlidacipes = assetsFactory::getEntity("hlidacipesClass",3);
 
-$hlidacipes->cron_zkontrolujInzeraty();
+/*$hlidacipes->cron_zkontrolujInzeraty();*/
 
 //echo $hlidacipes->zobrazInzeraty();
 

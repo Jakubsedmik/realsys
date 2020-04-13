@@ -1,6 +1,11 @@
 <template>
     <div>
-        <Vyhledavani v-bind:filters="this.filters" v-bind:filterpreset="this.filterpreset"></Vyhledavani>
+        <Vyhledavani
+                v-bind:filters="this.filters"
+                v-bind:filterpreset="this.filterpreset"
+                v-bind:apiurl="this.apiurl"
+                v-bind:userLogged="this.user_logged"
+                v-bind:home_url="this.home_url"></Vyhledavani>
         <section>
             <div class="top-nemovitosti">
                 <div class="wrapper">
@@ -64,6 +69,10 @@
             translationData:{
                 type: Object
             },
+            user_logged: {
+                type: Object,
+                default: false
+            },
             home_url:{
                 type: String,
                 default: 'http://localhost/realsys'
@@ -120,7 +129,7 @@
                 }
             },
             filterpreset : {
-                type: Object,
+                type: Array,
                 default: null
 
             }
@@ -146,7 +155,6 @@
 
             this.$root.$on("searchFor", function (searchFor) {
                 _this.searchQuery = searchFor;
-                console.log("OK");
                 _this.fetchData();
             });
         },

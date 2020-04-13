@@ -81,11 +81,13 @@ class hlidacipesClass extends zakladniKamenClass {
 		$this->aktualizovat();
 	}
 
-	public function cron_zkontrolujInzeraty(){
+	public function cron_zkontrolujInzeraty($mail = false){
 		$this->zkontrolujInzeraty();
 		if(count($this->nove_inzeraty_objects) > 0){
 			$this->db_nove_inzeraty_pocet = count($this->nove_inzeraty_objects);
-			$this->mailInfo();
+			if($mail){
+				$this->mailInfo();
+			}
 		}
 	}
 
@@ -119,14 +121,24 @@ class hlidacipesClass extends zakladniKamenClass {
 
 
 	public function nastavFiltr($filtr_arr){
-		if(is_array($filtr_arr)){
+		/*if(is_array($filtr_arr)){
 
 			$filtr_arr = array_filter($filtr_arr, function ($value, $key){
 				return (get_class($value) == 'filterClass');
 			},ARRAY_FILTER_USE_BOTH);
 
 			$this->db_nastaveni_filtru = $filtr_arr;
+		}*/
+		$filters_to_save = array();
+		if(is_array($filtr_arr)){
+			foreach ($filtr_arr as $key => $value){
+				$new_key = str_replace("db_","",$key);
+				$filters_to_save[] = new filterClass($new_key, "=", $value);
+			}
 		}
+		$this->db_nastaveni_filtru = $filters_to_save;
+		$this->aktualizovat();
+
 		return false;
 	}
 

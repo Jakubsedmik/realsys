@@ -785,8 +785,15 @@ function removePes(){
 }
 
 function createWatchdog(){
+
+	// now shut down error reporting for a while
+	error_reporting(0);
+	ini_set('display_errors', 'Off');
+
+	$request_body = file_get_contents('php://input');
+	$data = json_decode($request_body, true);
 	$response = new stdClass();
-	$result = Tools::postChecker($_POST, array(
+	$result = Tools::postChecker($data, array(
 		"filters" => array(
 			"type" => PHPARRAY,
 			"required" => true
@@ -801,11 +808,12 @@ function createWatchdog(){
 		)
 	), true);
 
+
 	if($result){
 		$user = uzivatelClass::getUserLoggedId();
 		if($user !== false){
 			$user = assetsFactory::getEntity("uzivatelClass",$user);
-			$type = $_POST['type'];
+			$type = $data['type'];
 
 			if($type == 1 || $type == 2){
 				// TODO KREDITS CHECK
@@ -813,9 +821,13 @@ function createWatchdog(){
 				if($user_kredits >= 5){
 
 				}
+
+				$response->status = 0;
+				$response->message = "Hlídací pes nebyl vytvořen, protože platba kredity ještě není povolená.";
+
 			}else{
-				$jmeno_psa = $_POST['name'];
-				$filters = $_POST['filters'];
+				$jmeno_psa = $data['name'];
+				$filters = $data['filters'];
 				$hlidacipes = assetsFactory::createEntity("hlidacipesClass",array(
 					'jmeno_psa' => $jmeno_psa,
 					'posledni_inzeraty' => array(),
@@ -824,6 +836,7 @@ function createWatchdog(){
 					'premium' => $type
 				));
 				$hlidacipes->nastavFiltr($filters);
+				$hlidacipes->cron_zkontrolujInzeraty();
 				
 				if($hlidacipes){
 					$response->status = 1;

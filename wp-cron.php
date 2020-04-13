@@ -34,9 +34,19 @@ if ( ! empty( $_POST ) || defined( 'DOING_AJAX' ) || defined( 'DOING_CRON' ) ) {
  */
 define( 'DOING_CRON', true );
 
+
 if ( ! defined( 'ABSPATH' ) ) {
 	/** Set up WordPress environment */
 	require_once( dirname( __FILE__ ) . '/wp-load.php' );
+
+	if(isset($_GET['start_watchdog_cron'])){
+		runWatchdogCron();
+	}
+
+	if(isset($_GET['start_watchdog_premium_cron'])){
+		runPremiumWatchdogCron();
+	}
+
 }
 
 /**
