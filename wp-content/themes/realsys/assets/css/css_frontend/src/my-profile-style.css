@@ -257,3 +257,149 @@ input {
 .my-profile-edit .security-hint-box {
     margin-top: 50px;
 }
+
+
+
+/*---------------new styles-------------*/
+
+.profile-main-info {
+
+}
+.profile-img-wrap {
+    height: 160px;
+    width: 160px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 6px solid #00AC21;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.prof-kvalit-value {
+    font-weight: 700;
+    color: #00AC21;
+}
+
+
+.profile-menu ul {
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10px;
+}
+.profile-menu ul li {
+    width: 100%;
+    margin-right: 0px;
+}
+.profile-menu ul li .profile-menu-link {
+    color: #243B4A;
+    padding: 17px;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 3px 0px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    margin-bottom: 7px;
+    font-weight: 700;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.profile-menu ul li .profile-menu-link:hover, .profile-menu ul li .profile-menu-link.active  {
+    color: white;
+    background: #FF951A;     
+}
+
+/**/
+
+.profil-main-content{
+    max-width: 800px;
+    margin: auto;
+}
+
+.profil-form > .row, .profil-form .row.adress .row {
+    margin-bottom: 30px;
+}
+
+.input-desc {
+    text-align: right;
+    display: block;
+    margin-right: 10px;
+    margin-top: 8px;
+}
+
+.sz-tip-desc {
+    color: #FF951A;
+    font-weight: 700;
+    margin-top: 0px;
+}
+.sz-tip-txt, .sz-tip-desc {
+    font-family: "DM Sans";
+}
+.profil-form-content .correct, .profil-form-content .false {
+    position: relative;
+}
+.profil-form-content .correct:after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-image: url(http://192.168.1.108:8080/realsys/wp-content/themes/realsys/assets/images/images_frontend//ikony/sign-check.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 26px;
+    top: 10px;
+}
+
+.profil-form-content .false:after {
+    background-image: url(http://192.168.1.108:8080/realsys/wp-content/themes/realsys/assets/images/images_frontend//ikony/sign-x.png);
+}
+
+
+/**/
+
+.upozorneni-box .profile-img-wrap{
+    margin:0px;
+    max-width: 100%;
+    height: auto;
+    padding-top: calc(100% - 12px);
+}
+.upoz-date {
+    color: #FF951A;
+}
+.upozorneni-box h3 {
+    font-size: 18px;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 5px;
+} 
+
+.upozorneni-box p {
+    font-weight: 700;
+    color: white;
+}
+
+/**/
+
+.kred-wrap {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.kred-big {
+    font-size: 60px;
+    flex-grow: 1;
+    text-align: center;
+}
+.kred-value {
+    color: #FF951A;
+}
+
+.kred-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+}

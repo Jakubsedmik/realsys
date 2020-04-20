@@ -30,66 +30,180 @@ nav ul {
     align-items: center;
 }
 
+/*LOGIN*/
+
+.user-logged:hover .user-login-block {
+    display: block;
+}
+
 header .user-logged {
-    color: white;
     font-size: 16px;
     border: none;
+    position: relative;
 }
 
 header .logged {
     position: relative;
-    display: flex;
-    color: black;
-    text-transform: capitalize;
-    padding-bottom: 10px;
-    margin-bottom: -10px;
+    display: block;
     font-size: 14px;
     align-items: center;
     flex-direction: row-reverse;
     text-align: right;
     color: black!important;
+    height: 60px;
+}
+
+header .user-login-block {
+    padding: 15px;
+    top: 64px;
+    right: 0px;
+    display: none;
+    min-width: 250px;
+    z-index: 99999;
+    position: absolute;
+}
+
+.user-logged .icon-user {
+    font-size: 52px;
+    color: #243B4A;
+}
+
+.user-logged .mess-counter {
+    position: absolute;
+    top: 4px;
+    right: 0px;
+    background: white;
+    padding: 5px;
+    border-radius: 50%;
+    border: 1px solid #243B4A;
+    width: 17px;
+    height: 17px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #FF951A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-logged .user-info-wrap {
+    display: flex;
+    align-items: center;
 }
 
 header .logged:hover {
-    color: #7ec242;
-}
-
-header .logged img {
-    float: right;
-    margin-left: 8px;
-    height: 25px;
-    display: inline-block;
+    color: #FF951A;
 }
 
 header .logged span {
     line-height: 1.2;
 }
 
-header .user-login-block {
-    top: 45px;
-    position: absolute;
+.user-logged .user-info .avatar {
+    height: 60px;
+    width: 60px;
+    margin-right: 10px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #00AC21;
 }
 
-header .user-login-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    border-radius: 5px;
+.user-logged .user-info .user-name {
+    font-size: 20px;
+    margin-bottom: 0px;
 }
 
-header .user-login-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-transform: initial;
+.user-logged .user-info .user-email {
     font-size: 13px;
 }
 
+.user-credits {
+    font-family: "Source Sans Pro";
+    font-weight: 700;
+    font-size: 20px;
+    color: #243B4A;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #c0d2d2;
+    margin-bottom: 7px;
+}
+
+.credits-num {
+    font-size: 30px;
+    color: #FF951A;
+    margin-left: 10px;
+}
+
+.user-logged .user-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-logged .user-menu a {
+    color: #243B4A;
+    padding: 7px 0px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease-in-out;
+}
+
+.user-logged .user-menu a:hover {
+    color: #FF951A;
+}
+
+.user-menu .user-messages {}
+
+.user-mess-tit {
+    position: relative;
+    margin-right: 10px;
+}
+
+.user-menu .mes-dot {
+    position: absolute;
+    top: 0px;
+    right: -5px;
+    width: 8px;
+    height: 8px;
+    background: #FF951A;
+    border-radius: 50%;
+}
+
+.user-menu .mes-num {
+    color: #FF951A;
+    font-weight: 700;
+}
+
+header .user-login-block:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -5px;
+    right: 19px;
+    width: 10px;
+    height: 10px;
+    background: #DBF4F4;
+    /* box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.27); */
+    z-index: 1;
+    transform: rotate(45deg);
+}
+
+header .user-login a {
+    display: block;
+    text-decoration: none;
+    color: #243B4A;
+    font-family: "DM Sans";
+    font-size: 15px;
+}
+
+header .user-login a:first-child {
+    border-bottom: 1px solid #e6e6e6;
+}
+
+header .user-login a:hover {
+    color: #FF951A;
+}
+
 /* Icon 3 */
+
 #nav-icon3 {
     width: 30px;
     height: 25px;
@@ -222,40 +336,8 @@ header .user-login-content a {
     margin-top: 17px;
 }
 
-.user-login-content a:first-child:hover {
-    border-radius: 5px 5px 0 0;
-}
-
-.user-login-content a:last-child:hover {
-    border-radius: 0 0 5px 5px;
-}
-
-.user-login-content a:hover {
-    background-color: #ddd;
-    color: #7ec242;
-}
-
-.user-logged:hover .user-login-content {
-    display: block;
-}
-
-/*LOGIN*/
-
-
-header .user-login {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    max-width: 215px;
-    width: 100%;
-}
-
-header .user-login a {
-    display: block;
-    margin-right: 0;
-}
-
 /*RESPO*/
+
 @media only screen and (max-width: 1280px) {
     .wrapper {
         max-width: unset;
@@ -266,19 +348,15 @@ header .user-login a {
     .menu {
         margin-left: 20px;
     }
-
     .main-header nav ul li {
         margin-right: 10px;
     }
-
     .main-header nav ul li:last-child {
         margin-right: 0;
     }
-
     nav ul li {
         margin-right: 0;
     }
-
     nav ul li a {
         font-size: 11px;
         padding: 7px;
@@ -296,15 +374,12 @@ header .user-login a {
     .full-menu {
         display: none;
     }
-
     .mobile-menu .logo {
         padding: 0;
     }
-
     .mobile-menu .logo img {
         max-width: 150px;
     }
-
     .mobile-menu {
         display: flex;
         justify-content: space-between;
@@ -320,13 +395,13 @@ header .user-login a {
         width: unset;
         justify-content: flex-end;
     }
-
     header .user-login a:first-child {
         margin-bottom: 10px;
     }
 }
 
 /*ANIMATIONS*/
+
 @keyframes menu-fade {
     0% {
         opacity: 0;
@@ -361,3 +436,355 @@ header .user-login a {
         display: none;
     }
 }
+
+/**********************/
+
+/**********************/
+
+/**********************/
+
+/* NEW PATIČKA STYLES */
+
+/**********************/
+
+/**********************/
+
+/**********************/
+
+footer {
+    position: relative;
+}
+
+footer:after {
+    content: "";
+    width: 500px;
+    height: 220px;
+    position: absolute;
+    bottom: 0px;
+    background-size: contain;
+    background-repeat: no-repeat!important;
+    z-index: 150;
+    left: unset;
+    right: 0px;
+    background-position: right bottom!important;
+    background-image: url(/realsys/wp-content/themes/realsys/assets/images/images_frontend/footer/sd-illu-smaller-min.png);
+}
+
+footer {
+    padding: 80px 0px;
+    background: #5E849D!important;
+}
+
+.footer-spacer {
+    margin-bottom: 68px;
+}
+
+footer .footer-primary-title {
+    color: white;
+    font-size: 30px;
+    font-family: "Source Sans Pro";
+    margin-bottom: 30px;
+}
+
+footer .footer_block h3 {
+    color: #fff;
+    font-size: 22px;
+    font-family: "Source Sans Pro";
+}
+
+footer-widget-area .widget-title {
+    margin-bottom: 15px;
+    text-transform: none;
+    max-width: 155px;
+}
+
+footer .menu li {}
+
+footer .menu {
+    list-style-type: none;
+}
+
+footer .menu li {
+    padding-left: 0px;
+    padding-bottom: 0px;
+    line-height: 35px;
+    margin-bottom: 5px;
+}
+
+footer .menu li:hover {
+    background: none!important;
+}
+
+footer .menu li a {
+    color: #fff;
+    font-size: 17px;
+    font-family: "Source Sans Pro";
+    transition: all ease-in-out 300ms;
+}
+
+footer .menu li:hover a {
+    color: #FF951A!important;
+    text-decoration: none;
+}
+
+footer .menu li.active a {
+    color: #FF951A;
+}
+
+footer .footer-contact .aicon {
+    font-size: 48px;
+    color: #243B4A;
+    margin-right: 14px;
+    transition: color 0.3s ease-in-out;
+}
+
+footer .footer-contact a {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    font-size: 17px;
+    color: #fff;
+    transition: color 0.3s ease-in-out;
+}
+
+footer .footer-contact a span {
+    margin-bottom: 10px;
+    line-height: 1;
+}
+
+.footer-contact {
+    margin-bottom: 40px;
+}
+
+footer .footer-contact a:hover {
+    color: #ff951a;
+    text-decoration: none;
+}
+
+footer .footer-contact a:hover .aicon {
+    color: #ff951a;
+}
+
+footer .footer-soc-icos {
+    display: flex;
+}
+
+footer .social-ico {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #243B4A;
+    font-size: 50px;
+    transition: color 0.3s ease-in-out;
+}
+
+footer .social-ico:hover {
+    color: #ff951a;
+}
+footer .social-ico span {
+    border-radius: 50%;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+
+/**/
+
+footer .nswltr h2 {
+    margin-bottom: 20px;
+}
+
+footer .form-flex {
+    display: flex;
+    max-width: 550px;
+}
+
+#mc_embed_signup_scroll {
+    text-align: left;
+    margin: 0 auto;
+}
+#mc_embed_signup_scroll input[type=email]::placeholder {
+    color: #243B4A;
+}
+#mc_embed_signup_scroll input[type=email] {
+    padding: 10px!important;
+    border-radius: 5px!important;
+    border: 0px solid #b1b1b1!important;
+    height: 50px!important;
+    font-family: "DM Sans";
+    display: inline;
+    flex-grow: 1;
+    border-top-right-radius: 0px!important;
+    border-bottom-right-radius: 0px!important;
+}
+
+#mc_embed_signup_scroll input[type=email], #mc_embed_signup_scroll input[type=submit] {
+    /*width: 100%!important;*/
+    margin: 0 auto;
+    margin-bottom: 0px!important;
+}
+
+#mc_embed_signup_scroll input[type=submit] {
+    font-size: 17px;
+    padding: 0px 25px;
+    border-radius: 6px;
+    font-weight: 700;
+    height: 50px!important;
+    line-height: initial!important;
+    background: #FF951A;
+    color: white;
+    font-family: "DM Sans";
+    margin-right: 0px;
+    border: 0;
+    display: inline;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    width: auto;
+    cursor: pointer;
+}
+
+#mc_embed_signup_scroll input[type=submit]:hover {
+    background: #d87c12;
+}
+
+footer .gdpr-notice {
+    margin-top: 10px;
+    color: #243b4a;
+    font-size: 15px;
+}
+footer .gdpr-notice a {
+    color: #243b4a;
+    text-decoration: underline;
+}
+/*
+footer .footer_block span.phone:before {
+    background-image: url(/realsys/wp-content/themes/realsys/assets/images/images_frontend/footer/phone-ico.png)!important;
+    background-size: contain;
+    background-repeat:no-repeat;
+    width:50px!important;
+    height:50px!important;
+}
+
+footer .footer_block span.mail:before {
+    background-image: url(/realsys/wp-content/themes/realsys/assets/images/images_frontend/footer/plane-ico.png)!important;
+    background-size: contain;
+    background-repeat:no-repeat;
+    background-position: 0px 0px!important;
+    width:50px!important;
+    height:50px!important;
+}
+footer .footer_block span.mail, footer .footer_block span.phone {
+  padding-left:70px!important;
+  line-height:50px!important;
+  font-size:17px!important;
+  font-weight:400!important;
+}*/
+
+/*
+footer .footer-primary-title {
+  color: white;
+}
+
+footer:before {
+  content: "";
+  display: block;
+  position: relative;
+  left: 0px;
+  right: 0px;
+  top: 3px;
+  background-image: url("/wp-content/uploads/2020/03/sd-illu-min.png");
+  background-position: bottom center;
+  background-size: 100%;
+  height: 310px;
+  background-repeat: no-repeat;
+}
+footer {
+  position: relative;
+  padding-left: 20px!important;
+  padding-right: 20px!important;
+}
+
+footer:after {
+  content: "";
+  width: 500px;
+  height: 220px;
+  position: absolute;
+  bottom: 0px;
+  background-size: contain;
+  background-repeat: no-repeat!important;
+  z-index: 150;
+  left: unset;
+  right: 0px;
+  background-position: right bottom!important;
+  background-image: url(/wp-content/uploads/2020/03/sd-illu-smaller-min.png);
+}
+
+footer > .fusion-row {
+  position: relative;
+  z-index: 999;
+}
+*/
+
+/*
+footer .footer-contact .aicon {
+  width: 50px;
+  height: 50px;
+  margin-right: 25px;
+  text-align: center;
+  background-image: url(/wp-content/uploads/2020/04/phone-ico.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+footer .footer-contact .aicon.phone {
+  background-image: url(/wp-content/uploads/2020/04/phone-ico.png);
+}
+footer .footer-contact .aicon.email {
+  background-image: url(/wp-content/uploads/2020/04/plane-ico.png);
+}
+footer .footer-contact a:hover .aicon.phone  {
+  background-image: url(/wp-content/uploads/2020/04/phone-ico_hov.png);
+}
+footer .footer-contact a:hover .aicon.email  {
+  background-image: url(/wp-content/uploads/2020/04/plane-ico_hov.png);
+}
+
+footer .footer-contact .aicon img {
+  display: none;
+}
+
+
+footer .footer-soc-icos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+footer .social-ico {
+  width: 60px;
+  height: 60px;
+  margin-right: 15px;
+  background-image: url(/wp-content/uploads/2020/03/fb-ico.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+footer .social-ico.facebook {
+  background-image: url(/wp-content/uploads/2020/04/fb-ico.png);
+}
+footer .social-ico.pinterest {
+  background-image: url(/wp-content/uploads/2020/04/pint-ico.png);
+}
+footer .social-ico.instagram {
+  background-image: url(/wp-content/uploads/2020/04/ig-ico.png);
+}
+footer .social-ico.facebook:hover {
+  background-image: url(/wp-content/uploads/2020/04/fb-ico_hov.png);
+}
+footer .social-ico.pinterest:hover {
+  background-image: url(/wp-content/uploads/2020/04/pint-ico_hov.png);
+}
+footer .social-ico.instagram:hover {
+  background-image: url(/wp-content/uploads/2020/04/ig-ico_hov.png);
+}
+*/
