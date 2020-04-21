@@ -14,7 +14,7 @@
 			<h2>H2 titulek</h2>
 		</div>
 		<div class="element">
-			<!--h1 title-->
+			<!--h1 title--> 
 			<h2 class="sz-tit">H2 titulek</h2>
 		</div>
 		<div class="element">
@@ -218,7 +218,7 @@
 			</div>
 		</div>
 
-		
+
 		<!-- Button trigger modal -->
 		<button type="button" class="btn btn-primary mb-md-5" id="myInput" data-toggle="modal" data-target="#kontmajkreditModal">
 			Kontaktovat maj. kredit
