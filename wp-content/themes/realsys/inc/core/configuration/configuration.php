@@ -173,7 +173,7 @@ $field_rules = array(
 			'type'     => NUMBER,
 			'required' => false
 		),
-		'db_inzerat_id' => array(
+		'db_uzivatel_id' => array(
 			'type'     => FOREIGN_KEY,
 			'required' => true
 		),
@@ -538,7 +538,8 @@ $dictionary = array(
 	'db_mestska_cast'    => 'Městská část',
 	'db_stav_inzeratu'   => 'Stav inzerátu',
 	'db_stav'            => 'Stav objednávky',
-	'db_hash'            => 'Hash platební brány'
+	'db_hash'            => 'Hash platební brány',
+	'db_uzivatel_id'     => 'Id uživatele'
 );
 
 
@@ -580,6 +581,24 @@ $relationships = array(
 	"obrazekClass" => array(
 		'db_inzerat_id' => array(
 			'class' => 'inzeratClass',
+		)
+	),
+	"hlidacipesClass" => array(
+		'db_uzivatel_id' => array(
+			'class' => 'uzivatelClass'
+		)
+	),
+	"objednavkaClass" => array(
+		'db_uzivatel_id' => array(
+			'class' => 'uzivatelClass'
+		)
+	),
+	"transakceClass" => array(
+		'db_id_odesilatel' => array(
+			'class' => 'uzivatelClass'
+		),
+		'db_id_prijemce' => array(
+			'class' => 'uzivatelClass'
 		)
 	)
 );
@@ -624,7 +643,8 @@ $classes = array(
 	'inzeratClass'  => "Inzerát",
 	'obrazekClass'  => "Obrázek",
 	'uzivatelClass' => "Uživatel",
-	'objednavkaClass' => "Objednávka"
+	'objednavkaClass' => "Objednávka",
+	'transakceClass' => "Transakce"
 );
 
 
@@ -661,24 +681,50 @@ define("WATERMARK_RESIZE_FACTOR", 1);
 $filter_parameters = array(
 	'db_typ_nemovitosti' => array(
 		'name' => 'Typ nemovitosti',
+		'type' => 'select',
 		'values' => array()
 	),
 	'db_typ_vlastnictvi' => array(
 		'name' => 'Typ vlastnictví',
+		'type' => 'select',
 		'values' => array()
 	),
 	'db_typ_stavby' => array(
 		'name' => 'Typ stavby',
+		'type' => 'select',
 		'values' => array()
 	),
 	'db_stav_objektu' => array(
 		'name' => 'Stav objektu',
+		'type' => 'select',
 		'values' => array()
+
 	),
 	'db_penb' => array(
 		'name' => 'PENB',
+		'type' => 'select',
 		'values' => array()
 	),
+	/*'db_cena' => array(
+		'name' => 'Cena',
+		'type' => 'slider',
+		'values' => array(0,100)
+	),
+	'db_lokalita' => array(
+		'name' => "Lokalita",
+		'type' => 'text',
+		'values' => false
+	),
+	'db_neco' => array(
+		'name' => "Něco",
+		'type' => 'option',
+		'values' => array( 0 => "Ano", 1 => "Ne", 2 => "Třeba" )
+	),
+	'db_checkbox' => array(
+		'name' => "Checkbox",
+		'type' => "checkbox",
+		'values' => false
+	)*/
 );
 
 // FILTER HP PARAMETERS
@@ -696,4 +742,27 @@ $cenik = array(
 	50 => 200,
 	100 => 500,
 	500 => 800
+);
+
+
+// Ceníky služeb
+define("SLUZBA_HLIDACI_PES", 0);
+define("SLUZBA_TOPOVANI_INZERATU", 1);
+
+$cenik_sluzeb = array(
+	0 => array(
+		'id' => 0,
+		'name' => 'Hlídací pes',
+		'price' => 20
+	),
+	1 => array(
+		'id' => 1,
+		'name' => 'Topování inzerátu. ID inzerátu %d',
+		'price' => 40
+	),
+	2 => array(
+		'id' => 2,
+		'name' => "Testovací služba",
+		'price' => 20
+	)
 );

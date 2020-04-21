@@ -41,17 +41,30 @@
                     </div>
                 </div>
 
+                <!--Filterfield v-bind:filterData="this.filters.db_checkbox" filterName="db_checkbox"></Filterfield-->
+
+                <Hlidacipes
+                        v-bind:searchData="this.search_data"
+                        v-bind:apiurl="this.apiurl"
+                        v-bind:userLogged="this.userLogged"
+                        v-bind:home_url="this.home_url"></Hlidacipes>
+
             </div>
         </div>
     </section>
 </template>
 
 <script>
+
+    import Filterfield from "./Filterfield.vue";
+    import Hlidacipes from "./Hlidacipes.vue";
+
     export default {
         name: "Vyhledavani",
         props: [
-            'filters', 'filterpreset'
+            'filters', 'filterpreset', 'apiurl', 'userLogged', 'home_url'
         ],
+        components: { Filterfield, Hlidacipes },
         created() {
             if(Object.entries(this.filterpreset).length > 0){
                 this.search_data = this.filterpreset;
@@ -59,6 +72,10 @@
                     this.searchResults();
                 });
             }
+
+            this.$root.$on("fieldChanged", function (fieldValues) {
+                console.log(fieldValues);
+            });
 
         },
         data: function(){
@@ -100,7 +117,6 @@
                     }
                     str += i + "=" + encodeURIComponent(searchData[i]);
                 }
-                console.log("TRY TO EMIT");
 
                 this.$root.$emit("searchFor", str);
             }

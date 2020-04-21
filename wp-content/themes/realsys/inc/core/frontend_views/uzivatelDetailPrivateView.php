@@ -2,6 +2,7 @@
 
 	$uzivatel = $this->workData['uzivatel'];
 	$inzeraty  = $uzivatel->subobjects['inzeratClass'];
+	$hlidaci_psi = $uzivatel->subobjects['hlidacipesClass'];
 	$aktivniInzeraty = array_filter($inzeraty, function ($element, $index){
 	    return $element->db_stav_inzeratu;
     }, ARRAY_FILTER_USE_BOTH);
@@ -30,6 +31,9 @@
 						<div class="info-row">
 							<i class="fas fa-bullhorn"></i> <span class="inzeraty"><strong><?php echo count($aktivniInzeraty); ?></strong> <?php echo _e( "Aktivních inzerátů", "realsys" ); ?></span>
 						</div>
+                        <div class="info-row">
+                            <i class="fas fa-bullhorn"></i> <span class="inzeraty"><strong><?php echo $uzivatel->getUserBillance(); ?></strong> <?php echo _e( "Kreditů", "realsys" ); ?></span>
+                        </div>
 					</div>
 
 				</div>
@@ -153,3 +157,37 @@
 		</div>
 	</section>
 <?php endif; ?>
+
+
+<?php if(count($hlidaci_psi) > 0) : ?>
+    <section class="js-watchdogwrapper">
+        <div class="hlidaci_psi">
+            <div class="wrapper">
+                <div class="section-title sides-align">
+                    <h2>Hlídací psi</h2>
+                </div>
+                <?php foreach ($hlidaci_psi as $key => $value) : ?>
+                    <div class="hlidaciPes js-watchdog">
+                        <h3><a href="<?php echo Tools::getFERoute("hlidacipesClass",$value->getId(), "detail"); ?>">Název: <?php echo $value->db_jmeno_psa; ?></a></h3>
+                        <p>Poslední zobrazení: <?php echo Tools::formatTime($value->db_posledni_zobrazeni);?> </p>
+                        <div>Počet nových inzerátů: <strong><?php echo $value->db_nove_inzeraty_pocet; ?></strong> inzerátů</div>
+                        <div>Je prémium: <?php echo ($value->db_premium ==1) ?  "Ano" : "Ne"; ?> </div>
+                        <a href="#" class="js-send-request" data-post-action="removeWatchdog" data-post-id="<?php echo $value->getId(); ?>" data-post-user-id="<?php echo $uzivatel->getId(); ?>" data-finish="removePes" data-confirm="1">Odstranit psa</a>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+<?php endif; ?>
+
+
+<div class="app">
+    <Servicebuy
+        v-bind:is_user_logged="true"
+    >
+
+    </Servicebuy>
+</div>
+
+
+

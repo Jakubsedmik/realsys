@@ -45,7 +45,7 @@
                 default: 'http://localhost/realsys'
             },
             "proportion" : {
-                type: String,
+                type: [String, Number],
                 default: 3
             }
         },

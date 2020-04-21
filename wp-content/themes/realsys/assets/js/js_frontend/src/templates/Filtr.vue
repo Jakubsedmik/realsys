@@ -26,7 +26,7 @@
         name: "Filtr",
         props: {
             'inzeratyCount': {
-                type: Number
+                type: [Number, String]
             },
             'design':{
                 type: String,

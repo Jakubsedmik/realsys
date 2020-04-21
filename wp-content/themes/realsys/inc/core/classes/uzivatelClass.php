@@ -95,6 +95,14 @@ class uzivatelClass extends zakladniKamenClass {
 		}
 	}
 
+	public static function getUserLoggedObject(){
+		if(self::getUserLoggedId()){
+			$uzivatel = assetsFactory::getEntity("uzivatelClass", self::getUserLoggedId());
+			return $uzivatel;
+		}
+		return false;
+	}
+
 	public function set_not_update( $name, $value ) {
 		if($name == "db_heslo"){
 			$this->storePassword($value);
@@ -111,7 +119,35 @@ class uzivatelClass extends zakladniKamenClass {
 		}
 	}
 
+	public function getUserExpenses(){
+		$transakce = $this->loadRelatedObjects("transakceClass");
+		$_this = $this;
+		$expenses = array_filter($transakce, function ($value, $index) use ($_this){
+			return $value->db_id_odesilatel == $_this->getId();
+		}, ARRAY_FILTER_USE_BOTH);
 
+		return $expenses;
+	}
+
+	public function getUserBillance(){
+		$orders = $this->loadRelatedObjects("objednavkaClass");
+		$orders = array_filter($orders, function ($value, $index){
+			return $value->db_stav == 1;
+		},ARRAY_FILTER_USE_BOTH);
+
+		$expenses = $this->getUserExpenses();
+
+		$totalKredit = 0;
+		foreach ($orders as $key => $value){
+			$totalKredit += $value->db_mnozstvi;
+		}
+
+		foreach ($expenses as $key => $value){
+			$totalKredit -= $value->db_mnozstvi;
+		}
+
+		return $totalKredit;
+	}
 
 
 }

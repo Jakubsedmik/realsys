@@ -43,6 +43,10 @@ class uzivatelDetailController extends frontendController {
 			trigger_error("Došlo k chybě ve validaci parametrů :: action|uzivatelDetailController");
 			$this->setView("error");
 		}
+
+		//$transactionFactory = new transactionFactory(uzivatelClass::getUserLoggedObject(), uzivatelClass::getUserLoggedObject());
+		//$response = $transactionFactory->requestService(SLUZBA_TOPOVANI_INZERATU);
+		//globalUtils::writeDebug($response);
 		$this->performView();
 
 	}

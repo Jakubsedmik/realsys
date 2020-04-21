@@ -53,8 +53,20 @@ $api_actions = array(
 		'callback' => 'changeInzeratStatus',
 		'private' => false
 	),
-	'createInzeratImages' =>array(
+	'createInzeratImages' => array(
 		'callback' => 'createInzeratImages',
+		'private' => false
+	),
+	'removeWatchdog' => array(
+		'callback' => 'removePes',
+		'private' => false
+	),
+	'createWatchdog' => array(
+		'callback' => 'createWatchdog',
+		'private' => false
+	),
+	'checkUserCredits' => array(
+		'callback' => 'checkUserCredits',
 		'private' => false
 	)
 );
@@ -725,6 +737,138 @@ function createInzeratImages(){
 		$response->message = "Některé parametry nebyli specifikovány";
 	}
 
+	wp_send_json($response);
+	die();
+}
+
+
+function removePes(){
+	$response = new stdClass();
+
+	$result = Tools::postChecker($_POST, array(
+		"id" => array(
+			'required' => true,
+			'type' => NUMBER
+		),
+		"userid" => array(
+			'required' => true,
+			'type' => NUMBER
+		)
+	), true);
+
+	if($result){
+		$uzivatel_id = $_POST['userid'];
+		$pes_id = $_POST['id'];
+		$uzivatel = assetsFactory::getEntity('uzivatelClass', $uzivatel_id);
+		if($uzivatel->isUserLoggedIn()){
+			$pes = assetsFactory::getEntity("hlidacipesClass", $pes_id);
+			if($pes && $pes->db_uzivatel_id == $uzivatel_id){
+				$result = assetsFactory::removeEntity("hlidacipesClass", $pes_id);
+				if($result){
+					$response->status = 1;
+					$response->message = "Úspěšně smazáno";
+				}else{
+					$response->status = 0;
+					$response->message = "Smazání se nevydařilo";
+				}
+			}else{
+				$response->status = 0;
+				$response->message = "Inzerát není ve vlastnictví uživatele.";
+			}
+		}else{
+			$response->status = 0;
+			$response->message = "Uživatel není přihlášen";
+		}
+	}else{
+		$response->status = 0;
+		$response->message = "Některé parametry nebyli specifikovány";
+	}
+
+	wp_send_json($response);
+	die();
+}
+
+function createWatchdog(){
+
+	// now shut down error reporting for a while
+	error_reporting(0);
+	ini_set('display_errors', 'Off');
+
+	$request_body = file_get_contents('php://input');
+	$data = json_decode($request_body, true);
+	$response = new stdClass();
+	$result = Tools::postChecker($data, array(
+		"filters" => array(
+			"type" => PHPARRAY,
+			"required" => true
+		),
+		"name" => array(
+			"type" => STRING255,
+			"required" => true
+		),
+		"type" => array(
+			"type" => NUMBER,
+			"required" => true
+		)
+	), true);
+
+
+	if($result){
+		$user = uzivatelClass::getUserLoggedId();
+		if($user !== false){
+			$user = assetsFactory::getEntity("uzivatelClass",$user);
+			$type = $data['type'];
+
+			if($type == 1 || $type == 2){
+				// TODO KREDITS CHECK
+				$user_kredits = 5;
+				if($user_kredits >= 5){
+
+				}
+
+				$response->status = 0;
+				$response->message = "Hlídací pes nebyl vytvořen, protože platba kredity ještě není povolená.";
+
+			}else{
+				$jmeno_psa = $data['name'];
+				$filters = $data['filters'];
+				$hlidacipes = assetsFactory::createEntity("hlidacipesClass",array(
+					'jmeno_psa' => $jmeno_psa,
+					'posledni_inzeraty' => array(),
+					'nastaveni_filtru' => array(),
+					'uzivatel_id' => $user->getId(),
+					'premium' => $type
+				));
+				$hlidacipes->nastavFiltr($filters);
+				$hlidacipes->cron_zkontrolujInzeraty();
+				
+				if($hlidacipes){
+					$response->status = 1;
+					$response->message = "Hlídací pes úspěšně vytvořen";
+				}else{
+					$response->status = 0;
+					$response->message = "Hlídací pes se nepodařil vytvořit";
+				}
+			}
+		}else{
+			$response->status = 0;
+			$response->message = "Hlídací pes se nevytvořil. Nejste přihlášen.";
+		}
+	}else{
+		$response->status = 0;
+		$response->message = "Nebyli zadány všechny parametry";
+	}
+
+	wp_send_json($response);
+	die();
+}
+
+
+function checkUserCredits(){
+
+	$response = new stdClass();
+	$response->status = 1;
+	$response->message = "Ok";
 	wp_send_json($response);
 	die();
 }

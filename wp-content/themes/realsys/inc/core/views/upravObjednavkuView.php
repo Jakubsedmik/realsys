@@ -25,13 +25,13 @@
 					<input type="number" id="db_mnozstvi" name="db_mnozstvi" class="form-control" value="<?php echo $this->viewData['objednavka']->dejData('db_mnozstvi'); ?>">
 					<label for="db_mnozstvi">Množství</label>
 				</div>
-				<!-- Připojený inzerát -->
+				<!-- Připojený uživatel -->
                 <div class="form-row">
                     <div class="col-10">
-	                    <?php echo Tools::getSelectBoxForEntities("inzeratClass", $this->viewData['objednavka']->db_inzerat_id, array('db_id', 'db_titulek'),'Inzerát','db_inzerat_id'); ?>
+	                    <?php echo Tools::getSelectBoxForEntities("uzivatelClass", $this->viewData['objednavka']->db_uzivatel_id, array('db_id', 'db_email'),'Uživatel','db_uzivatel_id'); ?>
                     </div>
                     <div class="col-2">
-                        <a href="<?php echo Tools::getRoute("inzeratClass", "edit",$this->viewData['objednavka']->db_inzerat_id) ?>" class="btn-sm btn-block btn-secondary btn">Detail</a>
+                        <a href="<?php echo Tools::getRoute("uzivatelClass", "edit",$this->viewData['objednavka']->db_uzivatel_id) ?>" class="btn-sm btn-block btn-secondary btn">Detail</a>
                     </div>
                 </div>
 

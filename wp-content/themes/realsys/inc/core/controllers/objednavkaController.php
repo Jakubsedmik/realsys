@@ -19,7 +19,7 @@ class objednavkaController extends controller {
 			if(Tools::checkPresenceOfParam("ulozit", $this->requestData)){
 				$request_data = $this->requestData;
 				$response = Tools::formProcessor(
-					array("db_id", "db_cena", "db_mnozstvi", "db_inzerat_id", "db_datum_zalozeni", "db_stav"),
+					array("db_id", "db_cena", "db_mnozstvi", "db_uzivatel_id", "db_datum_zalozeni", "db_stav"),
 					$request_data,
 					'objednavkaClass',
 					'edit'
@@ -38,7 +38,7 @@ class objednavkaController extends controller {
 		if(Tools::checkPresenceOfParam("vytvorit", $this->requestData)){
 			$request_data = $this->requestData;
 			$response = Tools::formProcessor(
-				array("db_cena", "db_mnozstvi", "db_inzerat_id", "db_stav"),
+				array("db_cena", "db_mnozstvi", "db_uzivatel_id", "db_stav"),
 				$request_data,
 				'objednavkaClass',
 				'create'

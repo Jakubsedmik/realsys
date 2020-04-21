@@ -1,17 +1,13 @@
 <?php
 
 
-class objednavkaClass extends zakladniKamenClass {
+class transakceClass extends zakladniKamenClass {
 
-
-	// db vars
-
-	protected $db_uzivatel_id;
-	protected $db_cena;
+	protected $db_nazev_sluzby;
+	protected $db_id_odesilatel;
+	protected $db_id_prijemce;
 	protected $db_mnozstvi;
 
-	protected $db_stav;
-	protected $db_hash;
 
 	protected function zakladniVypis() {
 		// TODO: Implement zakladniVypis() method.
@@ -22,6 +18,10 @@ class objednavkaClass extends zakladniKamenClass {
 	}
 
 	public function getTableName() {
-		return "s7_objednavka";
+		return "s7_transakce";
+	}
+
+	public static function getUserTransactions($user){
+
 	}
 }
