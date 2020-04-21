@@ -31,6 +31,9 @@
 						<div class="info-row">
 							<i class="fas fa-bullhorn"></i> <span class="inzeraty"><strong><?php echo count($aktivniInzeraty); ?></strong> <?php echo _e( "Aktivních inzerátů", "realsys" ); ?></span>
 						</div>
+                        <div class="info-row">
+                            <i class="fas fa-bullhorn"></i> <span class="inzeraty"><strong><?php echo $uzivatel->getUserBillance(); ?></strong> <?php echo _e( "Kreditů", "realsys" ); ?></span>
+                        </div>
 					</div>
 
 				</div>
@@ -176,6 +179,15 @@
         </div>
     </section>
 <?php endif; ?>
+
+
+<div class="app">
+    <Servicebuy
+        v-bind:is_user_logged="true"
+    >
+
+    </Servicebuy>
+</div>
 
 
 

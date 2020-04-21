@@ -25,14 +25,14 @@
 					<label for="db_mnozstvi">Množství</label>
 				</div>
 				<!-- Připojený inzerát -->
-                <?php echo Tools::getSelectBoxForEntities("inzeratClass", $this->getPostData('db_inzerat_id'), array('db_id', 'db_titulek'),'Inzerát','db_inzerat_id'); ?>
+                <?php echo Tools::getSelectBoxForEntities("uzivatelClass", $this->getPostData('db_uzivatel_id'), array('db_id', 'db_email'),'Uživatel','db_uzivatel_id'); ?>
 
 				<!-- Stav objednávky -->
 				<div class="md-form">
 					<?php echo Tools::getSelectBoxForDials("objednavkaClass","stav", $this->getPostData('db_stav'), 'Stav objednávky', "db_stav"); ?>
 				</div>
 
-					<!-- Sign up button -->
+                <!-- Sign up button -->
 				<button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" name="vytvorit" value="1" type="submit">Vytvořit</button>
 
 

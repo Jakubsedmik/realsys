@@ -39,7 +39,7 @@ class objednavkaController extends frontendController {
 						$objednavka = assetsFactory::createEntity("objednavkaClass",array(
 							"db_mnozstvi" => $credits,
 							"db_cena" => $finalPrice,
-							"db_inzerat_id" => uzivatelClass::getUserLoggedId(),
+							"db_uzivatel_id" => uzivatelClass::getUserLoggedId(),
 							"db_stav" => 0
 						));
 						if($objednavka){

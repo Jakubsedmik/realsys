@@ -64,6 +64,10 @@ $api_actions = array(
 	'createWatchdog' => array(
 		'callback' => 'createWatchdog',
 		'private' => false
+	),
+	'checkUserCredits' => array(
+		'callback' => 'checkUserCredits',
+		'private' => false
 	)
 );
 
@@ -855,6 +859,16 @@ function createWatchdog(){
 		$response->message = "Nebyli zadány všechny parametry";
 	}
 
+	wp_send_json($response);
+	die();
+}
+
+
+function checkUserCredits(){
+
+	$response = new stdClass();
+	$response->status = 1;
+	$response->message = "Ok";
 	wp_send_json($response);
 	die();
 }
