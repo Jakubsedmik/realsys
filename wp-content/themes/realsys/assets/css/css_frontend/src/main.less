@@ -2,6 +2,16 @@
 @productionurl: "http://localhost/realsys";
 @path: "@{productionurl}/wp-content/themes/realsys/assets";
 
+/*
+Změn to zatím zpět, ale pokud to tedy někdy budeš potřebovat, tak potom tady musí zůstat a ty si potom uděláš něco takového:
+lessc main.less main.css @path='199.155.155.111:8080' - tím při kompilaci podstrčíš tu proměnnou a pošleš tam nastavení serveru, syntaxe je asi trošku jiná
+ted nevim, ale jde to, počkej podivám se
+to je v pohodě, já to ted nepotřebuju, dělám jen z jednoho, klidně to fakt přehodím na local, hlavně at to funguje a můžem to ukázat // NOTE:
+jo dej to všechno na localhost jinak se z toho poserem, jo ono ti to asi funguje protože assets_path se bere z DB home_url() takže proto ti to funguje no, tak ale nedělej to :D OK :D nebudu
+a až to budeš mazat
+tak si dej pozor na ty vnitřky ještě - tzn profil editace apod. měl by sis to rozdělit aby sme to pak smazali až si to zase přepíšeš viz. toto:
+ok dám
+*/
 @import "jcf.css";
 @import "dmsans.css";
 @import "pridat-inzerat-style.css";
@@ -13,9 +23,8 @@
 @import "cms.less";
 @import "my-profile-style.less";
 @import "filepond.css";
-@import "elements.css";
 @import "ico.css";
-
+@import "elements.css";
 
 /*colors
 #124734
@@ -99,6 +108,7 @@ a:hover {
 }
 
 
+
 input[type=text], input[type=password], input[type=email], .select-wrapper  {
   width: 100%;
   background: #f5f5f5;
@@ -114,20 +124,6 @@ input[type=text], input[type=password], input[type=email], .select-wrapper  {
 input[type=text]::placeholder, input[type=password]::placeholder, input[type=email]::placeholder {
   font-family: "Roboto";
 }
-
-.customSel-wrapper {
-  margin-bottom: 20px;
-  font-size: 15px;
-  position: relative;
-  z-index: 15;
-}
-.customSel-wrapper .select-hidden {
-  display: none;
-}
-
-
-
-
 
 
 label {
@@ -736,7 +732,7 @@ header .user-login a {
   left: 0px;
 }
 .cta:after {
-  background: url('@{path}/images/images_frontend/separator-bottom.png');
+  background: url('@{path}/images/images_frontend/separator-bottom.png'); // takhle se píšou cesty!ok
   background-position: bottom;
   bottom: -1px;
   top: initial;
@@ -1247,11 +1243,71 @@ ul.paging li.active {
   }
 }
 
-/* MAPA */
+/* MAPA - kuba */
 
 .google-map{
   height: 350px;
   width: 100%;
+}
+
+/* CUSTOM SEL - kuba */
+
+.customSel-wrapper {
+  margin-bottom: 20px;
+  font-size: 15px;
+  position: relative;
+  z-index: 15;
+}
+.customSel-wrapper .select-hidden {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+nav ul {
+  display: flex;
+  margin: 0px;
+  align-items: center;
+}
+nav ul li {
+  margin-right: 50px;
+  list-style: none;
+  padding-bottom: 0px;
+}
+nav ul li:last-child {
+  margin-right: 0px;
+}
+nav ul li a {
+  font-family: "DM Sans";
+  color: #243B4A;
+  padding: 7px 15px;
+  background: white!important;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none!important;
+}
+.main-header nav ul li a.btn {
+  background: #FF951A!important;
+}
+nav ul li a:hover {
+  color: #FF951A;
+}
+
+nav ul li a.btn:hover {
+  color: #fff!important;
+  background: #243B4A!important;
 }
 
 @import "login-style.css";
@@ -1260,3 +1316,5 @@ ul.paging li.active {
 @import "confirmPopup.less";
 @import "kredity-topovani.less";
 @import "inzerat-edit-style.css";
+@import (less) "cms.css";
+@import (less) "elements.css";

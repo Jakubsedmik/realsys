@@ -1,3 +1,469 @@
+
+/* ÚPRAVA HLAVIČKY 2020 - NOVÝ DESIGN */
+.top-bar {
+  display:none;
+}
+.menu-bar {
+  display:none;
+}
+.menu .btn:after {
+  display:none!important;
+}
+.menu .btn {
+  background-color:#FF951A;
+}
+.obr-slider {
+  display:none!important;
+}
+.slider {
+  background:#fff!important;
+}
+.slider-content:before {
+  display:none!important;
+}
+.slider .home-search {
+  max-width:960px!important;
+  background:#DBF4F4!important;
+  margin:0 auto;
+}
+.main-header nav ul li {
+  margin-right:10px!important;
+}
+.slider .home-search form {
+  flex-direction: row!important;
+  justify-content: space-between;
+}
+
+header {
+  -webkit-box-shadow: 0px 8px 10px -2px rgba(0,0,0,0.22);
+  -moz-box-shadow: 0px 8px 10px -2px rgba(0,0,0,0.22);
+  box-shadow: 0px 8px 10px -2px rgba(0,0,0,0.20)!important;
+}
+.slider-content {
+  flex-direction:column!important;
+}
+.slider-title {
+  color:#243B4A!important;
+  padding-top:0!important;
+  font-weight:700!important;
+}
+.slider-title h1 {
+  font-weight:700!important;
+  font-size:50px!important;
+}
+.slider-title:before {
+  display:none!important;
+}
+.slider-title .subtitle {
+  display:none!important;
+}
+.slider-title h1 {
+  text-transform: inherit;
+}
+
+.slider {
+  background: url(/realsys/wp-content/themes/realsys/assets/images/images_frontend/sd-illu-min.png)!important;
+  background-position: bottom!important;
+  background-size: contain!important;
+  background-repeat: no-repeat!important;
+  height: 800px!important;
+}
+
+
+
+/* FOOTER ÚPRAVA DESIGNU 2020 */
+
+
+
+
+
+/*
+.customSel-wrapper {
+  position: relative;
+  font-family: Arial;
+}
+
+.customSel-wrapper select {
+  display: none;
+}
+
+.select-selected {
+  background-color: DodgerBlue;
+}
+
+
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+*/
+
+
+.metaInfo-bar {
+  display:none!important;
+}
+
+
+
+
+
+/* DETAIL INZERÁTU NOVÝ */
+.slider_sub {
+  display:none!important;
+}
+.nemovitost-detail .nemovitost-text {
+    padding: 40px!important;
+    -moz-box-shadow: 0px 8px 10px -2px rgba(0,0,0,0.22);
+    -webkit-box-shadow: 0px 0px 15px 2px rgba(0,0,0,0.19);
+    -moz-box-shadow: 0px 0px 15px 2px rgba(0,0,0,0.19);
+    box-shadow: 0px 0px 15px 2px rgba(0,0,0,0.19);
+    border-radius:14px;
+}
+.nemovitost-detail .nemovitost-wrapper {
+  overflow:visible!important
+}
+.nemovitost-detail .nemovitost-image img {
+  border-radius:0!important;
+}
+.nemovitost-detail .nemovitost-text h3 {
+  text-align:center!important;
+}
+.contact-bar-new {
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  margin-top:40px;
+}
+.contact-bar-new .btn {
+  flex-basis:48%;
+  /*flex-grow:1; RESPO */
+}
+.nemovitost-miniatury .miniatura {
+    margin: 1px!important;
+    margin-top: 10px!important;
+}
+.nemovitost-miniatury .miniatura img {
+    border-radius:0!important;
+}
+.sl-overlay {
+    background: #243B4A!important;
+    opacity: 0.9!important;
+}
+.sl-wrapper .sl-navigation button {
+  color:#fff!important;
+}
+.detail-nemovitosti {
+  padding-top:0!important;
+}
+.nem-detail-table {
+  padding:40px!important;
+}
+.nem-detail-desc {
+  margin-top: 50px!important;
+  margin-bottom: 70px!important;
+  max-width: 57%!important;
+  text-align: justify!important;
+}
+.detail-nemovitosti p {
+  color:#243B4A;
+}
+.full-bg {
+  background: url(/realsys/wp-content/themes/realsys/assets/images/images_frontend/sd-illu-min.png);
+  background-position:bottom center;
+  background-repeat:no-repeat;
+  background-size:contain;
+  padding-bottom:180px!important;
+}
+.mapa-cont {
+  padding-top:70px;
+  padding-bottom:30px;
+}
+.back-to-page {
+  position:relative;
+  color:#FF951A!important;
+  font-size:18px!important;
+  margin-top:40px;
+  margin-left:30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.back-to-page:hover {
+  text-decoration:none;
+  color:#243B4A!important;
+}
+.back-to-page span.rotate {
+  transform:rotate(90deg);
+  margin-right:10px;
+  display:inline-block;
+}
+
+
+
+/* PŘIDÁNÍ INZERÁTU NOVÉ */
+.sm-h1 {
+  font-weight:400;
+}
+.add-inz-con {
+  padding-top:40px;
+}
+.add-inz-con .wrapper {
+/*  max-width:900px;*/
+}
+.add-inz-con label {
+  font-size:16px!important;
+  font-weight:400!important;
+  margin-right:8px;
+}
+.inz-nav {
+  background:#DBF4F4!important;
+  height:auto;
+  border-radius:6px!important;
+  max-width:900px;
+  margin:0 auto;
+}
+.inz-nav .nav-box {
+  padding:0!important;
+  border-radius:0!important;
+}
+.inz-nav .nav-box {
+  text-align:center;
+}
+.inz-nav .nav-box h2 {
+  font-size:16px!important;
+  margin:0 auto;
+  white-space: normal;
+  max-width:70%;
+}
+.add-inz-con .nav-box-wrap {
+  height:100%;
+  background:none!important;
+  border-radius:0!important;
+}
+.nav-box-wrap:hover, .nav-box.active .tablinks {
+  background: #FF951A!important;
+}
+.nav-box-wrap:hover h2, .nav-box.active .tablinks h2 {
+  color:#fff!important;
+}
+.inz-nav:before {
+  display:none!important;
+}
+.inz-nav .nav-box:first-of-type .nav-box-wrap {
+  border-top-left-radius:6px!important;
+  border-bottom-left-radius:6px!important;
+}
+.inz-nav .nav-box:last-of-type .nav-box-wrap {
+  border-top-right-radius:6px!important;
+  border-bottom-right-radius:6px!important;
+}
+.form-field {
+  display: flex!important;
+  flex-direction: row;
+  align-items: center;
+}
+.form-field .jcf-radio {
+  margin:0!important;
+  margin-left:8px!important;
+}
+.inz-box {
+  border-bottom:1px solid #243B4A48;
+  padding-bottom:30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
+  flex-wrap:wrap;
+}
+.inz-box h3 {
+  font-size:16px!important;
+  font-weight:400!important;
+  margin-right:50px;
+  margin-bottom:0!important;
+}
+.inz-form-sec {
+  margin-top:0!important;
+  padding:40px!important;
+}
+.form-row {
+  width:60%;
+}
+
+
+
+/*-----------------------modals-----------------------*/
+.modal {
+  background: rgba(36, 59, 74, 0.85);
+}
+
+.modal .modal-header {
+  padding-bottom: 0px;
+  border-bottom: none!important;
+}
+.modal .modal-body {
+  padding-top: 0px;
+}
+
+.modal .modal-dialog {
+  margin-top: 6%;
+}
+.modal .close {
+  font-size: 2.3rem;
+  color: #243B4A;
+  padding-top: 5px;
+}
+
+.kontk-maj-modal .modal-body p strong, .kontk-maj-kredit-modal .modal-body .p-w-kredit strong {
+  color: #FF951A;
+  font-size: 20px;
+}
+/**/
+
+.transakce-modal img{
+  max-width: 130px;
+}
+
+.transakce-modal p{
+  font-family: "DM Sans";
+  font-weight: 700;
+  font-size: 18px;
+  color: #243B4A;
+}
+.kredity-big {
+  font-size: 50px;
+  color: #FF951A;
+  margin-bottom: 0px;
+}
+
+/**/
+
+.kontk-maj-info-modal {
+
+}
+
+
+.slider .home-search {
+  max-width:1200px!important;
+}
+.customSel-wrapper {
+  margin-right:25px;
+}
+
+
+
+
+nav ul {
+  display: flex;
+  margin: 0px;
+  align-items: center;
+}
+nav ul li {
+  margin-right: 50px;
+  list-style: none;
+  padding-bottom: 0px;
+}
+nav ul li:last-child {
+  margin-right: 0px;
+}
+nav ul li a {
+  font-family: "DM Sans";
+  color: #243B4A;
+  padding: 7px 15px;
+  background: white;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none!important;
+  text-transform:none!important;
+}
+nav ul li a:hover {
+  color: #FF951A;
+}
+
+nav ul li a.btn:hover {
+  color: #fff!important;
+  background: #243B4A!important;
+}
+header .user-login a {
+  font-weight:400!important;
+}
+.shadow-sm {
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.27)!important;
+}
+.find-more-btn {
+  display:none!important;
+}
+.profile-menu ul li .profile-menu-link:hover, .profile-menu ul li .profile-menu-link.active {
+    color: white;
+    background: #FF951A!important;
+}
+
+
+/* END CMS.CSS */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 * {
     margin: 0;
     padding: 0;
@@ -19,6 +485,7 @@ h1 {
     font-size: 50px;
     line-height: 1.2;
     color: #243B4A;
+    text-transform:unset!important;
 }
 
 h2 {
@@ -28,6 +495,7 @@ h2 {
     font-size: 50px;
     line-height: 1.3;
     color: #243B4A;
+    text-transform:unset!important;
 }
 
 h3 {
@@ -37,6 +505,7 @@ h3 {
     font-size: 30px;
     line-height: 1.3;
     color: #243B4A;
+    text-transform:unset!important;
 }
 
 h4 {
@@ -46,6 +515,7 @@ h4 {
     font-size: 22px;
     line-height: 1.3;
     color: #243B4A;
+    text-transform:unset!important;
 }
 
 h5 {
@@ -55,6 +525,7 @@ h5 {
     font-size: 20px;
     line-height: 1.3;
     color: #243B4A;
+    text-transform:unset!important;
 }
 
 h6 {
@@ -64,6 +535,7 @@ h6 {
     font-size: 18px;
     line-height: 1.3;
     color: #243B4A;
+    text-transform:unset!important;
 }
 
 .sz-tit {
@@ -96,6 +568,7 @@ strong {
 a {
     text-decoration: none;
     color: #FF9505;
+    text-transform:unset!important;
 }
 
 a:hover {
@@ -104,7 +577,7 @@ a:hover {
 
 .u-link {
     color: #243B4A;
-    text-decoration: underline;
+    text-decoration: underline!important;
     font-weight: 700;
 }
 
@@ -113,7 +586,7 @@ a:hover {
 }
 
 .btn {
-    font-size: 17px;
+    font-size: 17px!important;
     padding: 13px 55px;
     border-radius: 6px;
     font-weight: 700;
@@ -122,6 +595,7 @@ a:hover {
     font-family: "DM Sans";
     margin-right: 0px;
     transition: all 0.3s ease-in-out;
+    text-transform:unset!important;
 }
 
 .btn:hover {
