@@ -7,6 +7,7 @@ class transakceClass extends zakladniKamenClass {
 	protected $db_id_odesilatel;
 	protected $db_id_prijemce;
 	protected $db_mnozstvi;
+	protected $db_accept;
 
 
 	protected function zakladniVypis() {

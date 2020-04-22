@@ -55,30 +55,15 @@
                 </div>
             </footer>
         </div>
-        <script src="/realsys/wp-content/themes/realsys/assets/js/js_frontend/src/jcf/jcf.js"></script>
-        <script src="/realsys/wp-content/themes/realsys/assets/js/js_frontend/src/jcf/jcf.select.js"></script>
-        <script src="/realsys/wp-content/themes/realsys/assets/js/js_frontend/src/jcf/jcf.radio.js"></script>
-        <script src="/realsys/wp-content/themes/realsys/assets/js/js_frontend/src/jcf/jcf.checkbox.js"></script>
-        <link rel="stylesheet" href="/realsys/wp-content/themes/realsys/assets/css/css_frontend/src/jcf.css">
-        <script>
-        $(document).ready(function(){
-                $('select').attr('data-jcf', '{"wrapNative": false, "wrapNativeOnMobile": false}');
-        });
-          $(function () {
-            jcf.replaceAll();
-          });
-        </script>
-
-
 
         <div class="prihlaseni-wrapper">
             <button type="button" class="btn btn-primary mb-md-5" id="myInput" data-toggle="modal" data-target="#prihlaseni">
                 Launch demo modal
             </button>
 
-<?php
-	get_template_part("templates/page", "login");
-?>
+            <?php
+                get_template_part("templates/page", "login");
+            ?>
         </div>
 
             <?php wp_footer(); ?>

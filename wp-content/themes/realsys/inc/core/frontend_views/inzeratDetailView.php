@@ -53,7 +53,7 @@ $obrazky   = array_filter( $obrazky, function ( $val ) use ( &$front_obr ) {
                             </div>
                             <div class="col-sm-5">
                                 <div class="nemovitost-text rounded-b">
-                                    <h3 class="sz-tit"><?php echo $inzerat->getAerialName(); ?><!--<?php echo $inzerat->db_titulek; ?>--></h3>
+                                    <h3 class="sz-tit"><?php echo $inzerat->getAerialName(); ?> <?php echo $inzerat->db_titulek; ?></h3>
 
 
 																		<table class="basic-table th-row" style="border-collapse: initial;">
@@ -371,4 +371,4 @@ $obrazky   = array_filter( $obrazky, function ( $val ) use ( &$front_obr ) {
     </section>
 <?php endif; ?>
 
-<!--<?php get_template_part( "templates/page", "cta" ); ?>-->
+<?php get_template_part( "templates/page", "cta" ); ?>

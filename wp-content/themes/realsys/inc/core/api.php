@@ -68,6 +68,10 @@ $api_actions = array(
 	'checkUserCredits' => array(
 		'callback' => 'checkUserCredits',
 		'private' => false
+	),
+	'payForService' => array(
+		'callback' => 'payForService',
+		'private' => false
 	)
 );
 
@@ -866,9 +870,99 @@ function createWatchdog(){
 
 function checkUserCredits(){
 
+	$result = Tools::postChecker($_GET, array(
+		'serviceid' => array(
+			'type' => NUMBER,
+			'required' => true
+		)
+	), true);
+
 	$response = new stdClass();
-	$response->status = 1;
-	$response->message = "Ok";
+
+	if($result){
+		$user_id = uzivatelClass::getUserLoggedId();
+		if($user_id !== false){
+			$user = assetsFactory::getEntity("uzivatelClass",$user_id);
+			if($user){
+				$billance = $user->getUserBillance();
+				$serviceid = $_GET['serviceid'];
+				global $cenik_sluzeb;
+				if(isset($cenik_sluzeb[$serviceid])){
+
+					$price = $cenik_sluzeb[$serviceid]['price'];
+
+					if($price <= $billance){
+						$response->status = 1;
+						$response->message = "Uživatel má dostatek kreditů";
+					}else{
+						$response->status = 0;
+						$response->message = "Uživatel nemá dostatek kreditů - stav kreditů: " . $billance . ", Požadované množství: " . $price;
+					}
+				}else{
+					$response->status = -1;
+					$response->message = "Tato služba neexistuje";
+				}
+			}else{
+				$response->status = -2;
+				$response->message = "Neexistující uživatel";
+			}
+		}else{
+			$response->status = -3;
+			$response->message = "Uživatel není přihlášen";
+		}
+	}else{
+		$response->status = -4;
+		$response->message = "Povinná pole nebyla vyplněna.";
+	}
+
 	wp_send_json($response);
+	die();
+}
+
+
+function payForService(){
+
+	$result = Tools::postChecker($_GET, array(
+		'serviceid' => array(
+			'type' => NUMBER,
+			'required' => true
+		)
+	), true);
+
+	$response = new stdClass();
+
+	if($result){
+		$user_id = uzivatelClass::getUserLoggedId();
+		if($user_id !== false){
+			$user = assetsFactory::getEntity("uzivatelClass",$user_id);
+			if($user){
+
+				$serviceid = $_GET['serviceid'];
+				global $cenik_sluzeb;
+
+				$factory = new transactionFactory($user, $user);
+				$result = $factory->requestService($serviceid);
+				if($result->status == 1){
+					$response->status = 1;
+					$response->message = "Ok";
+					$response->behavior = 'finish';
+				}else{
+					$response->status = 0;
+					$response->message = "Platba neproběhla";
+				}
+			}else{
+				$response->status = -2;
+				$response->message = "Neexistující uživatel";
+			}
+		}else{
+			$response->status = -3;
+			$response->message = "Uživatel není přihlášen";
+		}
+	}else{
+		$response->status = -4;
+		$response->message = "Povinná pole nebyla vyplněna.";
+	}
+
+		wp_send_json($response);
 	die();
 }

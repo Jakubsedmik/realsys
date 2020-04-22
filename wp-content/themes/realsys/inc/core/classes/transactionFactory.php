@@ -31,7 +31,8 @@ class transactionFactory {
 						"id_odesilatel" => $this->uzivatel->getId(),
 						"id_prijemce" => -1,
 						"mnozstvi" => $sluzba['price'],
-						"nazev_sluzby" => sprintf($sluzba['name'], $this->entity->getId())
+						"nazev_sluzby" => sprintf($sluzba['name'], $this->entity->getId()),
+						'accept' => 0
 					));
 
 					if(isset($sluzba['handleFunction'])){
@@ -57,6 +58,16 @@ class transactionFactory {
 		}
 
 		return $response;
+	}
+
+	public function confirmRealisation($transaction){
+		if(is_object($transaction)){
+			$transaction->db_accept = 1;
+		}elseif (is_numeric($transaction)){
+			$transaction = assetsFactory::getEntity("transakceClass",$transaction);
+			$transaction->db_accept = 1;
+		}
+		return $transaction;
 	}
 
 }

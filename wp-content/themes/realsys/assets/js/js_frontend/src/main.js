@@ -708,6 +708,17 @@ $(document).ready(function (e) {
 
 
 
+/* JCF INICIALIZACE MAJK */
+$(document).ready(function(){
+    $('select').attr('data-jcf', '{"wrapNative": false, "wrapNativeOnMobile": false}');
+});
+$(function () {
+    jcf.replaceAll();
+});
+
+
+
+
 
 
 
