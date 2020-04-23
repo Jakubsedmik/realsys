@@ -940,16 +940,47 @@ function payForService(){
 				$serviceid = $_GET['serviceid'];
 				global $cenik_sluzeb;
 
-				$factory = new transactionFactory($user, $user);
-				$result = $factory->requestService($serviceid);
-				if($result->status == 1){
-					$response->status = 1;
-					$response->message = "Ok";
-					$response->behavior = 'finish';
+				$service = $cenik_sluzeb[$serviceid];
+				if(isset($service['requireEntity'])){
+
+					$result = Tools::postChecker($_GET, array(
+						'entitytype' => array(
+							"type" => STRING255,
+							"required" => true
+						),
+						'entityid' => array(
+							"type" => NUMBER,
+							"required" => true
+						)
+						)
+					);
+
+					if($result){
+
+						$entitytype = $_GET['entitytype'];
+						$entityid = $_GET['entityid'];
+						$entity = assetsFactory::getEntity($entitytype, $entityid);
+
+						$factory = new transactionFactory($user, $entity);
+						$result = $factory->requestService($serviceid);
+
+					}else{
+						$response->status = -1;
+						$response->message = "Při objednání služby tohoto typu je třeba poskytnou informace o entitě a její ID";
+					}
 				}else{
-					$response->status = 0;
-					$response->message = "Platba neproběhla";
+					$factory = new transactionFactory($user);
+					$result = $factory->requestService($serviceid);
+					if($result->status == 1){
+						$response->status = 1;
+						$response->message = "Ok";
+						$response->behavior = 'finish';
+					}else{
+						$response->status = 0;
+						$response->message = "Platba neproběhla";
+					}
 				}
+
 			}else{
 				$response->status = -2;
 				$response->message = "Neexistující uživatel";

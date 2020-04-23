@@ -125,18 +125,18 @@ function grecaptchaSubmit2 (){
 
 
 /* sticky menu */
-/*
-$(document).ready(function(){
+
+/*$(document).ready(function(){
 
     if($(document).outerWidth() > 800){
         if($("body").hasClass("logged-in")){
-            $(".main-header").sticky({topSpacing:32});
+            $(".main-menu-top").sticky({topSpacing:32});
         }else{
-            $(".main-header").sticky({topSpacing:0});
+            $(".main-menu-top").sticky({topSpacing:0});
         }
     }
-});
-*/
+});*/
+
 
 /* js pro header zobrazení search a můj účet */
 

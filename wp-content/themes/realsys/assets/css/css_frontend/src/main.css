@@ -18,9 +18,9 @@ ok dám
 @import "validation.css";
 @import "filepond.css";
 @import "ico.css";
-@import "elements.css";
 @import "login-style.css";
 @import "header-styles.css";
+@import "footer-styles.css";
 @import "simple-lightbox.css";
 @import "inzerat-edit-style.css";
 .row.section-four-blocks {
@@ -1271,7 +1271,7 @@ header .user-login a {
   flex-direction: column;
 }
 .home-search form .submit-btn {
-  margin-top: 30px;
+  height: 76px;
 }
 .home-search .find-more-btn {
   text-transform: uppercase;
@@ -1569,67 +1569,69 @@ header .user-login a {
   margin-top: 20px;
 }
 /* FOOTER BLOK START */
+/*
 footer {
-  background: url("http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/footer/footerbg.jpg");
-  background-position: center center;
-  background-size: cover;
-  padding-top: 60px;
-  padding-bottom: 60px;
+  background:url("@{path}/images/images_frontend/footer/footerbg.jpg");
+  background-position:center center;
+  background-size:cover;
+  padding-top:60px;
+  padding-bottom:60px;
 }
 footer .footer_block img {
-  max-width: 100%;
-  margin-bottom: 30px;
+  max-width:100%;
+  margin-bottom:30px;
 }
 footer .footer_block {
-  padding: 15px;
+  padding:15px;
+
 }
 footer .footer_block h3 {
-  color: #fff;
-  font-size: 22px;
+  color:#fff;
+  font-size:22px;
 }
 footer .footer_block ul {
-  list-style-type: none;
+  list-style-type:none;
 }
 footer .footer_block ul li {
-  padding-left: 10px;
+  padding-left:10px;
   padding-bottom: 0px;
   font-size: 15px;
   line-height: 40px;
-  transition: all ease-in-out 300ms;
-  margin-bottom: 5px;
+  transition:all ease-in-out 300ms;
+  margin-bottom:5px;
 }
 footer .footer_block ul li a {
   font-family: "Roboto";
 }
 footer .footer_block ul li.active {
-  background: #7dc43d;
-  border-radius: 5px;
+  background:#7dc43d;
+  border-radius:5px;
 }
 footer .footer_block ul li.active a {
-  color: #fff;
+  color:#fff;
 }
 footer .footer_block ul li:hover {
-  background: #7dc43d;
-  border-radius: 5px;
+  background:#7dc43d;
+  border-radius:5px;
 }
 footer .footer_block ul li:hover a {
-  color: #fff;
+  color:#fff;
 }
 footer .footer_block p {
-  color: #fff;
+  color:#fff;
 }
 footer .footer_block span.phone {
-  display: block;
-  padding-left: 47px;
-  position: relative;
-  color: #fff;
-  font-size: 17px;
-  line-height: 35px;
-  font-weight: 600;
+  display:block;
+  padding-left:47px;
+  position:relative;
+  color:#fff;
+  font-size:17px;
+  line-height:35px;
+  font-weight:600;
 }
 footer .footer_block span.phone:before {
-  content: "";
-  background-image: url("http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ikony/contact.png");
+  content:"";
+  background-image:url("@{path}/images/images_frontend/ikony/contact.png");
   background-position: 0px 0px;
   width: 35px;
   height: 35px;
@@ -1637,26 +1639,27 @@ footer .footer_block span.phone:before {
   position: absolute;
   left: 0;
 }
+
 footer .footer_block span.mail {
-  display: block;
-  padding-left: 47px;
-  position: relative;
-  color: #fff;
-  font-size: 17px;
-  line-height: 35px;
-  margin-top: 15px;
-  font-weight: 600;
+  display:block;
+  padding-left:47px;
+  position:relative;
+  color:#fff;
+  font-size:17px;
+  line-height:35px;
+  margin-top:15px;
+  font-weight:600;
 }
 footer .footer_block span.mail:before {
-  content: "";
-  background-image: url("http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ikony/contact.png");
+  content:"";
+  background-image:url("@{path}/images/images_frontend/ikony/contact.png");
   background-position: 0px 35px;
   width: 35px;
   height: 35px;
   display: block;
   position: absolute;
   left: 0;
-}
+}*/
 /* FOOTER END */
 .filtr-blok {
   display: flex;
@@ -1974,7 +1977,6 @@ ul.paging li.active {
 }
 /* CUSTOM SEL - kuba */
 .customSel-wrapper {
-  margin-bottom: 20px;
   font-size: 15px;
   position: relative;
   z-index: 15;
@@ -2489,7 +2491,7 @@ label:last-child {
 /*--------------------kontaktovat-majitele------------------*/
 .kotaktovat-majitele {
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   display: flex;
   background: rgba(36, 59, 74, 0.85);
 }
@@ -2882,42 +2884,7 @@ header {
 .customSel-wrapper {
   margin-right: 25px;
 }
-nav ul {
-  display: flex;
-  margin: 0px;
-  align-items: center;
-}
-nav ul li {
-  margin-right: 50px;
-  list-style: none;
-  padding-bottom: 0px;
-}
-nav ul li:last-child {
-  margin-right: 0px;
-}
-nav ul li a {
-  font-family: "DM Sans";
-  color: #243B4A;
-  padding: 7px 15px;
-  background: white;
-  border-radius: 5px;
-  transition: all 0.3s ease-in-out;
-  text-decoration: none!important;
-  text-transform: none!important;
-}
-nav ul li a:hover {
-  color: #FF951A;
-}
-nav ul li a.btn:hover {
-  color: #fff !important;
-  background: #243B4A !important;
-}
-header .user-login a {
-  font-weight: 400!important;
-}
-.shadow-sm {
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.27) !important;
-}
+/*# sourceMappingURL=cms.css.map */
 /* ÚPRAVA HLAVIČKY 2020 - NOVÝ DESIGN */
 .top-bar {
   display: none;

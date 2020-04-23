@@ -1,4 +1,4 @@
-<header>
+<header class="main-menu-top">
     <div class="full-menu">
         <div class="main-header">
             <div class="wrapper">

@@ -753,7 +753,8 @@ $cenik_sluzeb = array(
 	0 => array(
 		'id' => 0,
 		'name' => 'Hlídací pes',
-		'price' => 20
+		'price' => 20,
+		'handleFunction' => 'handling'
 	),
 	1 => array(
 		'id' => 1,
@@ -763,6 +764,8 @@ $cenik_sluzeb = array(
 	2 => array(
 		'id' => 2,
 		'name' => "Testovací služba",
-		'price' => 20
+		'price' => 20,
+		'handleFunction' => 'handling',
+		'requireEntity' => true
 	)
 );

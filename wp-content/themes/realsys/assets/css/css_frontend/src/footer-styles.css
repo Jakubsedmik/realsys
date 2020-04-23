@@ -1,0 +1,351 @@
+/**********************/
+
+/**********************/
+
+/**********************/
+
+/* NEW PATIČKA STYLES */
+
+/**********************/
+
+/**********************/
+
+/**********************/
+
+footer {
+    position: relative;
+}
+
+footer:after {
+    content: "";
+    width: 500px;
+    height: 220px;
+    position: absolute;
+    bottom: 0px;
+    background-size: contain;
+    background-repeat: no-repeat!important;
+    z-index: 150;
+    left: unset;
+    right: 0px;
+    background-position: right bottom!important;
+    background-image: url(/realsys/wp-content/themes/realsys/assets/images/images_frontend/footer/sd-illu-smaller-min.png);
+}
+
+footer {
+    padding: 80px 0px;
+    background: #5E849D!important;
+}
+
+.footer-spacer {
+    margin-bottom: 68px;
+}
+
+footer .footer-primary-title, footer .wrapper .footer_block > h3{
+    color: white;
+    font-size: 30px;
+    font-family: "Source Sans Pro";
+    margin-bottom: 30px;
+}
+
+footer .footer_block h3 {
+    color: #fff;
+    font-size: 22px;
+    font-family: "Source Sans Pro";
+}
+
+footer-widget-area .widget-title {
+    margin-bottom: 15px;
+    text-transform: none;
+    max-width: 155px;
+}
+
+footer .menu li {}
+
+footer .menu {
+    list-style-type: none;
+}
+
+footer .menu li {
+    padding-left: 0px;
+    padding-bottom: 0px;
+    line-height: 35px;
+    margin-bottom: 5px;
+}
+
+footer .menu li:hover {
+    background: none!important;
+}
+
+footer .menu li a {
+    color: #fff;
+    font-size: 17px;
+    font-family: "Source Sans Pro";
+    transition: all ease-in-out 300ms;
+}
+
+footer .menu li:hover a {
+    color: #FF951A!important;
+    text-decoration: none;
+}
+
+footer .menu li.active a {
+    color: #FF951A;
+}
+
+footer .footer-contact .aicon {
+    font-size: 48px;
+    color: #243B4A;
+    margin-right: 14px;
+    transition: color 0.3s ease-in-out;
+}
+
+footer .footer-contact a {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    font-size: 17px;
+    color: #fff;
+    transition: color 0.3s ease-in-out;
+}
+
+footer .footer-contact a span {
+    margin-bottom: 10px;
+    line-height: 1;
+}
+
+.footer-contact {
+    margin-bottom: 40px;
+}
+
+footer .footer-contact a:hover {
+    color: #ff951a;
+    text-decoration: none;
+}
+
+footer .footer-contact a:hover .aicon {
+    color: #ff951a;
+}
+
+footer .footer-soc-icos {
+    display: flex;
+}
+
+footer .social-ico {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #243B4A;
+    font-size: 50px;
+    transition: color 0.3s ease-in-out;
+}
+
+footer .social-ico:hover {
+    color: #ff951a;
+}
+footer .social-ico span {
+    border-radius: 50%;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+
+/**/
+
+footer .nswltr h2 {
+    margin-bottom: 20px;
+}
+
+footer .form-flex {
+    display: flex;
+    max-width: 550px;
+}
+
+#mc_embed_signup_scroll {
+    text-align: left;
+    margin: 0 auto;
+}
+#mc_embed_signup_scroll input[type=email]::placeholder {
+    color: #243B4A;
+}
+#mc_embed_signup_scroll input[type=email] {
+    padding: 10px!important;
+    border-radius: 5px!important;
+    border: 0px solid #b1b1b1!important;
+    height: 50px!important;
+    font-family: "DM Sans";
+    display: inline;
+    flex-grow: 1;
+    border-top-right-radius: 0px!important;
+    border-bottom-right-radius: 0px!important;
+}
+
+#mc_embed_signup_scroll input[type=email], #mc_embed_signup_scroll input[type=submit] {
+    /*width: 100%!important;*/
+    margin: 0 auto;
+    margin-bottom: 0px!important;
+}
+
+#mc_embed_signup_scroll input[type=submit] {
+    font-size: 17px;
+    padding: 0px 25px;
+    border-radius: 6px;
+    font-weight: 700;
+    height: 50px!important;
+    line-height: initial!important;
+    background: #FF951A;
+    color: white;
+    font-family: "DM Sans";
+    margin-right: 0px;
+    border: 0;
+    display: inline;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    width: auto;
+    cursor: pointer;
+}
+
+#mc_embed_signup_scroll input[type=submit]:hover {
+    background: #d87c12;
+}
+
+footer .gdpr-notice {
+    margin-top: 10px;
+    color: #243b4a;
+    font-size: 15px;
+}
+footer .gdpr-notice a {
+    color: #243b4a;
+    text-decoration: underline;
+}
+/*
+footer .footer_block span.phone:before {
+    background-image: url(/realsys/wp-content/themes/realsys/assets/images/images_frontend/footer/phone-ico.png)!important;
+    background-size: contain;
+    background-repeat:no-repeat;
+    width:50px!important;
+    height:50px!important;
+}
+
+footer .footer_block span.mail:before {
+    background-image: url(/realsys/wp-content/themes/realsys/assets/images/images_frontend/footer/plane-ico.png)!important;
+    background-size: contain;
+    background-repeat:no-repeat;
+    background-position: 0px 0px!important;
+    width:50px!important;
+    height:50px!important;
+}
+footer .footer_block span.mail, footer .footer_block span.phone {
+  padding-left:70px!important;
+  line-height:50px!important;
+  font-size:17px!important;
+  font-weight:400!important;
+}*/
+
+/*
+footer .footer-primary-title {
+  color: white;
+}
+
+footer:before {
+  content: "";
+  display: block;
+  position: relative;
+  left: 0px;
+  right: 0px;
+  top: 3px;
+  background-image: url("/wp-content/uploads/2020/03/sd-illu-min.png");
+  background-position: bottom center;
+  background-size: 100%;
+  height: 310px;
+  background-repeat: no-repeat;
+}
+footer {
+  position: relative;
+  padding-left: 20px!important;
+  padding-right: 20px!important;
+}
+
+footer:after {
+  content: "";
+  width: 500px;
+  height: 220px;
+  position: absolute;
+  bottom: 0px;
+  background-size: contain;
+  background-repeat: no-repeat!important;
+  z-index: 150;
+  left: unset;
+  right: 0px;
+  background-position: right bottom!important;
+  background-image: url(/wp-content/uploads/2020/03/sd-illu-smaller-min.png);
+}
+
+footer > .fusion-row {
+  position: relative;
+  z-index: 999;
+}
+*/
+
+/*
+footer .footer-contact .aicon {
+  width: 50px;
+  height: 50px;
+  margin-right: 25px;
+  text-align: center;
+  background-image: url(/wp-content/uploads/2020/04/phone-ico.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+footer .footer-contact .aicon.phone {
+  background-image: url(/wp-content/uploads/2020/04/phone-ico.png);
+}
+footer .footer-contact .aicon.email {
+  background-image: url(/wp-content/uploads/2020/04/plane-ico.png);
+}
+footer .footer-contact a:hover .aicon.phone  {
+  background-image: url(/wp-content/uploads/2020/04/phone-ico_hov.png);
+}
+footer .footer-contact a:hover .aicon.email  {
+  background-image: url(/wp-content/uploads/2020/04/plane-ico_hov.png);
+}
+
+footer .footer-contact .aicon img {
+  display: none;
+}
+
+
+footer .footer-soc-icos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+footer .social-ico {
+  width: 60px;
+  height: 60px;
+  margin-right: 15px;
+  background-image: url(/wp-content/uploads/2020/03/fb-ico.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+footer .social-ico.facebook {
+  background-image: url(/wp-content/uploads/2020/04/fb-ico.png);
+}
+footer .social-ico.pinterest {
+  background-image: url(/wp-content/uploads/2020/04/pint-ico.png);
+}
+footer .social-ico.instagram {
+  background-image: url(/wp-content/uploads/2020/04/ig-ico.png);
+}
+footer .social-ico.facebook:hover {
+  background-image: url(/wp-content/uploads/2020/04/fb-ico_hov.png);
+}
+footer .social-ico.pinterest:hover {
+  background-image: url(/wp-content/uploads/2020/04/pint-ico_hov.png);
+}
+footer .social-ico.instagram:hover {
+  background-image: url(/wp-content/uploads/2020/04/ig-ico_hov.png);
+}
+*/
