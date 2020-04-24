@@ -3,9 +3,14 @@
         <Vyhledavani
                 v-bind:filters="this.filters"
                 v-bind:filterpreset="this.filterpreset"
-                v-bind:apiurl="this.apiurl"
-                v-bind:userLogged="this.user_logged"
-                v-bind:home_url="this.home_url"></Vyhledavani>
+                v-bind:user_logged="this.user_logged"
+                v-bind:home_url="this.home_url"
+                v-bind:login_link="this.login_link"
+                v-bind:payment_link="this.payment_link"
+                v-bind:service="this.service"
+                v-bind:currency="this.appData.currency"
+                v-bind:ajax_url="this.ajax_url"
+        ></Vyhledavani>
         <section>
             <div class="top-nemovitosti">
                 <div class="wrapper">
@@ -70,7 +75,7 @@
                 type: Object
             },
             user_logged: {
-                type: Object,
+                type: Number,
                 default: false
             },
             home_url:{
@@ -131,7 +136,18 @@
             filterpreset : {
                 type: Array,
                 default: null
-
+            },
+            login_link: {
+                type: String
+            },
+            payment_link: {
+                type: String
+            },
+            service:{
+                type: Object
+            },
+            ajax_url:{
+                type: String
             }
         },
         components: { Filtr, Inzerat, Paging, Vyhledavani },

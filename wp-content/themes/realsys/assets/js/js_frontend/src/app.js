@@ -16,10 +16,7 @@ if(app.length > 0){
             Vypis, Vyhledavanimapa, Servicebuy
         },
         mounted() {
-            this.$root.$on("paymentCompleted", function (data) {
-                console.log("Payment accepted");
-                console.log(data);
-            });
+
         },
     });
 

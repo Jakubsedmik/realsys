@@ -9,8 +9,8 @@
             <div :class="classList('right')">
                 <strong>Řadit dle:</strong>
                 <select @change="changeSorting()" ref="sorting" v-model="currentSort">
-                    <option value="db_datum_zalozeni">Nejnovější</option>
-                    <option value="db_cena">Nejlevnější</option>
+                    <option value="db_datum_zalozeni:DESC">Nejnovější</option>
+                    <option value="db_cena:ASC">Nejlevnější</option>
                 </select>
             </div>
             <div class="col-sm-6 right" v-if="design=='complex'">
@@ -35,7 +35,8 @@
         },
         data: function () {
             return {
-                currentSort: "db_cena"
+                currentSort: "db_datum_zalozeni:DESC",
+
             }
         },
         methods: {

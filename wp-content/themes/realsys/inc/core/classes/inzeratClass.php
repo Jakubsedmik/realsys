@@ -88,7 +88,7 @@ class inzeratClass extends zakladniKamenClass {
 	}
 
 
-	/* TODO PŘEDDĚLAT ALGORYTMUS NA SPRÁVNÝ -  https://stackoverflow.com/questions/5152683/find-all-locations-near-to-my-gps-location*/
+	/* TODO PŘEDĚLAT ALGORYTMUS NA SPRÁVNÝ -  https://stackoverflow.com/questions/5152683/find-all-locations-near-to-my-gps-location*/
 
 	public function getSimilar($max){
 		$latitudeMaxRadius = $this->db_lat + RADIUS;
@@ -115,6 +115,48 @@ class inzeratClass extends zakladniKamenClass {
 		);
 
 		return $similar;
+	}
+
+	public function handleTopInzerat($transakce){
+		$user = uzivatelClass::getUserLoggedObject();
+		$response = new stdClass();
+		if(is_object($transakce) && get_class($transakce) == 'transakceClass' && $user){
+			if($transakce->db_accept == 0 && $transakce->db_id_odesilatel == $user->getId()){
+
+				// already topped, storno transaction and error
+				if($this->db_top == 1){
+					assetsFactory::removeEntity("transakceClass", $transakce);
+					$response->status = -12;
+					$response->realization = 0;
+					$response->message = "Tento inzerát je již topovaný. Stornuji transakci.";
+				}else{
+					// confirm transaction
+					$transakce->db_accept = 1;
+					$transakce->aktualizovat();
+
+					//top inzerat
+					$this->db_top = 1;
+					$this->db_datum_zalozeni = time();
+					$this->aktualizovat();
+
+					// response
+					$response->status = 1;
+					$response->realization = 1;
+					$response->message = "Platba za službu proběhla úspěšně";
+					$response->behavior = "finish";
+				}
+
+			}else{
+				$response->status = -10;
+				$response->message = "Neodpovídající transakční objekt";
+				$response->realization = 0;
+			}
+		}else{
+			$response->status = -11;
+			$response->message = "Neplatné vstupní parametry pro realizaci";
+			$response->realization = 0;
+		}
+		return $response;
 	}
 
 }

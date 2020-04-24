@@ -1,8 +1,10 @@
 <template>
     <div :class="{serviceBuy: true, serviceLoading: this.loading}">
         <div class="userLogged" v-if="this.is_user_logged">
-            <h2>{{service.name}} - {{service.price}} {{currency}}</h2>
-            <button v-on:click="checkCredits()" class="btn">Koupit službu</button>
+            <div class="serviceControls" v-if="design=='interactive'">
+                <h2>{{service.name}} - {{service.price}} {{currency}}</h2>
+                <button v-on:click="checkCredits()" class="btn">Koupit službu</button>
+            </div>
             <transition name="bounce">
 
                 <div class="serviceBuyPopup servicePopup" v-if="this.openServiceBuyPopup && !this.loading">
@@ -14,7 +16,7 @@
                             <p>Cena: {{service.price}} {{service.currency}}</p>
                         </div>
 
-                        <button class="btn" v-on:click="proceedBuy()">Nakupit službu</button>
+                        <button class="btn" v-on:click="proceedBuy()">Nakoupit službu</button>
                     </div>
                 </div>
 
@@ -24,7 +26,7 @@
                         <p>{{creditStatus}}</p>
                         <p>Nejdříve pokračujte nákupem kreditů</p>
 
-                        <a :href="this.payment_link" class="btn">Nakoupit kredity</a>
+                        <a :href="this.payment_link + '?serviceOrder=' + this.service.id" class="btn">Nakoupit kredity</a>
                     </div>
                 </div>
 
@@ -32,6 +34,15 @@
                     <div class="innerPopup" v-click-outside="closePopup">
                         <h2>Služba byla zaplacena a nastavena</h2>
                         <p>Služba byla zaplacena a nastavena. Děkujeme</p>
+                        <button class="btn" v-on:click="closePopup">Zavřít</button>
+
+                    </div>
+                </div>
+
+                <div class="errorPopup servicePopup" v-if="this.openErrorPopup && !this.loading" >
+                    <div class="innerPopup" v-click-outside="closePopup">
+                        <h2>{{errorHeading}}</h2>
+                        <p>{{errorMessage}}</p>
                         <button class="btn" v-on:click="closePopup">Zavřít</button>
 
                     </div>
@@ -69,7 +80,7 @@
         props: {
             'is_user_logged' :{
                 default: false,
-                type: Boolean
+                type: Number
             },
             'login_link' : {
                 default: "/realsys/login/",
@@ -82,9 +93,12 @@
             'service' : {
                 default: function(){
                     return {
-                        id: 2,
-                        name: 'Testovací služba',
-                        price: 20
+                        id: 1,
+                        name: 'Topování inzerátu.',
+                        logName: 'Top inzerátu ID: %d',
+                        price: 1,
+                        requireEntity: true,
+                        handlingFunction: "handleTopInzerat"
                     }
                 },
                 type: Object
@@ -93,12 +107,26 @@
                 default: 'CZK',
                 type: String
             },
-            'api_url' : {
+            'ajax_url' : {
                 default: '/realsys/wp-admin/admin-ajax.php',
                 type: String
             },
             'assets_path' : {
                 default: '/realsys/wp-content/themes/realsys/assets/',
+                type: String
+            },
+            'entityid': {
+                default: 1,
+                type: Number,
+                required: false
+            },
+            'entitytype' : {
+                default: 'inzeratClass',
+                type: String,
+                required: false
+            },
+            'design' : {
+                default: 'interactive',
                 type: String
             }
         },
@@ -107,10 +135,13 @@
                 openServiceBuyPopup: false,
                 openCreditsBuyPopup: false,
                 openFinishPopup: false,
+                openErrorPopup: false,
                 loading: false,
                 proceedAvailable: false,
                 loadingMessage: "Načítání",
-                creditStatus: "Nedostatek kreditů"
+                creditStatus: "Nedostatek kreditů",
+                errorHeading: "",
+                errorMessage: ""
             }
         },
         mounted() {
@@ -120,9 +151,9 @@
         },
         methods: {
             checkCredits: function () {
-                if(this.is_user_logged){
+                if(this.is_user_logged != 0){
 
-                    var request = this.api_url + "?action=checkUserCredits&serviceid=" + this.service.id;
+                    var request = this.ajax_url + "?action=checkUserCredits&serviceid=" + this.service.id;
                     this.loading = true;
                     this.loadingMessage = "Probíhá ověřování stavu kreditů";
                     var _this = this;
@@ -163,11 +194,21 @@
                     this.openCreditsBuyPopup = false;
                     this.openServiceBuyPopup = false;
 
-                    var request = this.api_url + "?action=payForService&serviceid=" + this.service.id;
+                    var request = this.ajax_url + "?action=payForService&serviceid=" + this.service.id;
+
+                    if(this.service.requireEntity == 1){
+                        if(typeof this.entityid == "number" && this.entitytype){
+                            request += "&entitytype=" + this.entitytype + "&entityid=" + this.entityid;
+                        }else{
+                            alert("Nastala chyba v konfiguraci! Prosím kontaktujte administrátora.");
+                            this.closePopup();
+                        }
+                    }
+
                     setTimeout(function () {
                         Axios.get(request).then(function (response) {
                             _this.loading = false;
-                            if(response.data.status == 1){
+                            if(response.data.status > 0){
 
                                 if(response.data.hasOwnProperty("behavior")){
                                     var behavior = response.data.behavior.split(",");
@@ -187,6 +228,8 @@
                                     _this.openFinishPopup = true;
                                 }
 
+                            }else{
+                                _this.showError("Došlo k chybám",response.data.message);
                             }
                         }).catch(function (error) {
                             console.error(error);
@@ -194,10 +237,7 @@
                     }, 1000);
 
                 }else{
-                    alert("Pokoušíte se o něco nesprávného!");
-                    this.openCreditsBuyPopup = false;
-                    this.openCreditsBuyPopup = false;
-                    this.proceedAvailable = false;
+                    this.showError("Chyba", "Pokoušíte se o něco nesprávného");
                 }
             },
             closePopup: function (event) {
@@ -216,6 +256,17 @@
                 if(_this.openFinishPopup){
                     _this.openFinishPopup = false;
                 }
+
+                if(_this.openErrorPopup){
+                    _this.openErrorPopup = false;
+                }
+            },
+            showError: function(errorHeading, errorMessage){
+                this.closePopup();
+                this.openErrorPopup = true;
+                this.proceedAvailable = false;
+                this.errorHeading = errorHeading;
+                this.errorMessage = errorMessage;
             }
 
         }

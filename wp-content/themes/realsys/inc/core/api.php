@@ -447,7 +447,10 @@ function getInzeraty(){
 
 	if(Tools::checkPresenceOfParam("sortBy", $_GET) && Tools::checkPresenceOfParam("getAll", $_GET)){
 
-		$sortBy = $_GET['sortBy'];
+		$sorting = $_GET['sortBy'];
+		$sorting = explode(":", $sorting);
+		$sortBy = $sorting[0];
+		$sortDirection = $sorting[1];
 		$sortBy = str_replace("db_", "", $sortBy);
 
 		$inzeraty = assetsFactory::getAllEntity(
@@ -458,7 +461,7 @@ function getInzeraty(){
 			false,
 			false,
 			false,
-			"ORDER BY $sortBy ASC"
+			"ORDER BY $sortBy " . $sortDirection
 		);
 
 		$i = 0;
@@ -480,7 +483,10 @@ function getInzeraty(){
 		$response->appData->currency = CURRENCY;
 	}elseif (Tools::checkPresenceOfParam("countPage",$_GET) && Tools::checkPresenceOfParam("page", $_GET) && Tools::checkPresenceOfParam("sortBy", $_GET)){
 
-		$sortBy = $_GET['sortBy'];
+		$sorting = $_GET['sortBy'];
+		$sorting = explode(":", $sorting);
+		$sortBy = $sorting[0];
+		$sortDirection = $sorting[1];
 		$sortBy = str_replace("db_", "", $sortBy);
 		$bufferSize = $_GET['countPage'];
 		$page = $_GET['page'];
@@ -502,14 +508,13 @@ function getInzeraty(){
 
 		$filter_arr[] = new filterClass("stav_inzeratu","=",1);
 
-
 		$inzeraty = assetsFactory::getAllEntity(
 			"inzeratClass",
 			$filter_arr,
 			$offset,
 			$bufferSize,
 			false,
-			"ORDER BY $sortBy ASC"
+			"ORDER BY $sortBy " . $sortDirection
 		);
 
 		$i = 0;
@@ -825,26 +830,53 @@ function createWatchdog(){
 
 			if($type == 1 || $type == 2){
 				// TODO KREDITS CHECK
-				$user_kredits = 5;
-				if($user_kredits >= 5){
+				$result = Tools::postChecker($data, array(
+					"transactionId" => array(
+						"type" => NUMBER,
+						"required" => true
+					)
+				), true);
 
+				if($result){
+					$transactionid = $data['transactionId'];
+					$transaction = assetsFactory::getEntity("transakceClass", $transactionid);
+					if($transaction){
+						if(!$transaction->isConfirmed()){
+							if($transaction->isRequestedByCurrentUser()){
+
+								//account transaction
+								$transaction->db_accept = 1;
+								$transaction->aktualizovat();
+
+								// build watchdog
+								$hlidacipes = hlidacipesClass::setupDog($data, $user);
+
+								if($hlidacipes){
+									$response->status = 1;
+									$response->message = "Hlídací pes úspěšně vytvořen";
+								}else{
+									$response->status = 0;
+									$response->message = "Hlídací pes se nepodařil vytvořit";
+								}
+							}else{
+								$response->status = 0;
+								$response->message = "Nevalidní transakce";
+							}
+						}else{
+							$response->status = 0;
+							$response->message = "Neplatná transakce";
+						}
+					}else{
+						$response->status = 0;
+						$response->message = "Neexistující transakce";
+					}
+				}else{
+					$response->status = 0;
+					$response->message = "Hlídací pes nebyl vytvořen, protože nebyla doložena platná transakce.";
 				}
 
-				$response->status = 0;
-				$response->message = "Hlídací pes nebyl vytvořen, protože platba kredity ještě není povolená.";
-
 			}else{
-				$jmeno_psa = $data['name'];
-				$filters = $data['filters'];
-				$hlidacipes = assetsFactory::createEntity("hlidacipesClass",array(
-					'jmeno_psa' => $jmeno_psa,
-					'posledni_inzeraty' => array(),
-					'nastaveni_filtru' => array(),
-					'uzivatel_id' => $user->getId(),
-					'premium' => $type
-				));
-				$hlidacipes->nastavFiltr($filters);
-				$hlidacipes->cron_zkontrolujInzeraty();
+				$hlidacipes = hlidacipesClass::setupDog($data, $user);
 				
 				if($hlidacipes){
 					$response->status = 1;
@@ -951,36 +983,29 @@ function payForService(){
 						'entityid' => array(
 							"type" => NUMBER,
 							"required" => true
-						)
-						)
+						)),
+						true
 					);
 
 					if($result){
-
 						$entitytype = $_GET['entitytype'];
 						$entityid = $_GET['entityid'];
 						$entity = assetsFactory::getEntity($entitytype, $entityid);
-
-						$factory = new transactionFactory($user, $entity);
-						$result = $factory->requestService($serviceid);
-
+						if($entity){
+							$factory = new transactionFactory($user, $entity);
+							$response = $factory->requestService($serviceid);
+						}else{
+							$response->status = -8;
+							$response->message = "Zadaná entita nebyla nalezena.";
+						}
 					}else{
 						$response->status = -1;
 						$response->message = "Při objednání služby tohoto typu je třeba poskytnou informace o entitě a její ID";
 					}
 				}else{
 					$factory = new transactionFactory($user);
-					$result = $factory->requestService($serviceid);
-					if($result->status == 1){
-						$response->status = 1;
-						$response->message = "Ok";
-						$response->behavior = 'finish';
-					}else{
-						$response->status = 0;
-						$response->message = "Platba neproběhla";
-					}
+					$response = $factory->requestService($serviceid);
 				}
-
 			}else{
 				$response->status = -2;
 				$response->message = "Neexistující uživatel";

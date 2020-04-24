@@ -744,6 +744,8 @@ $cenik = array(
 	500 => 800
 );
 
+define("ALONE_CREDIT_PRICE", 4);
+
 
 // Ceníky služeb
 define("SLUZBA_HLIDACI_PES", 0);
@@ -753,19 +755,14 @@ $cenik_sluzeb = array(
 	0 => array(
 		'id' => 0,
 		'name' => 'Hlídací pes',
-		'price' => 20,
-		'handleFunction' => 'handling'
+		'price' => 2
 	),
 	1 => array(
 		'id' => 1,
-		'name' => 'Topování inzerátu. ID inzerátu %d',
-		'price' => 40
-	),
-	2 => array(
-		'id' => 2,
-		'name' => "Testovací služba",
-		'price' => 20,
-		'handleFunction' => 'handling',
-		'requireEntity' => true
+		'name' => 'Topování inzerátu.',
+		'logName' => 'Top inzerátu ID: %d',
+		'price' => 1,
+		'requireEntity' => true,
+		'handleFunction' => "handleTopInzerat"
 	)
 );

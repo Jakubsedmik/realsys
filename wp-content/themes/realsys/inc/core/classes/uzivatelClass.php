@@ -123,7 +123,7 @@ class uzivatelClass extends zakladniKamenClass {
 		$transakce = $this->loadRelatedObjects("transakceClass");
 		$_this = $this;
 		$expenses = array_filter($transakce, function ($value, $index) use ($_this){
-			return $value->db_id_odesilatel == $_this->getId();
+			return $value->db_id_odesilatel == $_this->getId() && $value->db_accept == 1;
 		}, ARRAY_FILTER_USE_BOTH);
 
 		return $expenses;

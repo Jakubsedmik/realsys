@@ -44,10 +44,15 @@
                 <!--Filterfield v-bind:filterData="this.filters.db_checkbox" filterName="db_checkbox"></Filterfield-->
 
                 <Hlidacipes
-                        v-bind:searchData="this.search_data"
-                        v-bind:apiurl="this.apiurl"
-                        v-bind:userLogged="this.userLogged"
-                        v-bind:home_url="this.home_url"></Hlidacipes>
+                        v-bind:search_data="this.search_data"
+                        v-bind:user_logged="this.user_logged"
+                        v-bind:home_url="this.home_url"
+                        v-bind:login_link="this.login_link"
+                        v-bind:payment_link="this.payment_link"
+                        v-bind:service="this.service"
+                        v-bind:currency="this.currency"
+                        v-bind:ajax_url="this.ajax_url"
+                ></Hlidacipes>
 
             </div>
         </div>
@@ -62,7 +67,7 @@
     export default {
         name: "Vyhledavani",
         props: [
-            'filters', 'filterpreset', 'apiurl', 'userLogged', 'home_url'
+            'filters', 'filterpreset', 'user_logged', 'home_url', 'login_link', 'payment_link', 'service', 'currency', 'ajax_url'
         ],
         components: { Filterfield, Hlidacipes },
         created() {

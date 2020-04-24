@@ -3,6 +3,7 @@
         <div class="nemovitost-wrapper">
             <div class="nemovitost-image" :style="getFrontImage"></div>
             <div class="nemovitost-text">
+                <div class="topInzerat" v-if="inzerat.db_top == 1">Top</div>
                 <h3 v-html="getSpecialName"></h3>
 
 
@@ -114,5 +115,18 @@
 </script>
 
 <style scoped>
-
+    .topInzerat{
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        height: 30px;
+        width: 30px;
+        background-color: #FF970B;
+        border-radius: 50%;
+        color: white;
+        text-align: center;
+        line-height: 30px;
+        text-transform: uppercase;
+        font-size: 10px;
+    }
 </style>

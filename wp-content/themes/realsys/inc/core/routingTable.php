@@ -48,7 +48,8 @@ $routing_urls = array(
 		'edit' => home_url() . '/editace-inzeratu/?id=%d'
 	),
 	"uzivatelClass" => array(
-		'detail' => home_url() . '/uzivatel/%d/'
+		'detail' => home_url() . '/uzivatel/%d/',
+		'login' => home_url() . "/login/"
 	),
 	"vypis" => array(
 		'listing' => home_url() . '/vypis/',
@@ -61,5 +62,8 @@ $routing_urls = array(
 	"hlidacipesClass" => array(
 		"detail" => home_url() . "/hlidacipes/?id=%d",
 		"listing" => home_url() . "/uzivatel/%d/"
+	),
+	"objednavkaClass" => array(
+		"detail" => home_url() . "/objednavka/"
 	)
 );

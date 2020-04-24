@@ -8,7 +8,7 @@ class transactionFactory {
 	protected $performable;
 
 	public function __construct($uzivatel, $entity = null) {
-		if(get_class($uzivatel) == "uzivatelClass" && is_object($entity)){
+		if(get_class($uzivatel) == "uzivatelClass" && (is_object($entity) || $entity == null)){
 			$this->uzivatel = $uzivatel;
 			$this->entity = $entity;
 			$this->performable = true;
@@ -27,21 +27,36 @@ class transactionFactory {
 				$user_billance = $this->uzivatel->getUserBillance();
 				if($user_billance >= $sluzba['price']){
 
+					$nazev_sluzby = "";
+
+					if($this->entity == null){
+						$nazev_sluzby = $sluzba['name'];
+					}else{
+						$nazev_sluzby = sprintf($sluzba['logName'], $this->entity->getId());
+					}
+
 					$transakce = assetsFactory::createEntity("transakceClass", array(
 						"id_odesilatel" => $this->uzivatel->getId(),
 						"id_prijemce" => -1,
 						"mnozstvi" => $sluzba['price'],
-						"nazev_sluzby" => sprintf($sluzba['name'], $this->entity->getId()),
+						"nazev_sluzby" => $nazev_sluzby,
 						'accept' => 0
 					));
 
 					if(isset($sluzba['handleFunction'])){
 						$handleFunction = $sluzba['handleFunction'];
-						$response = $this->entity->$handleFunction($transakce, $this->entity);
+						if(isset($sluzba['requireEntity'])){
+							$response = $this->entity->$handleFunction($transakce);
+						}else{
+							$response = transakceClass::$handleFunction($transakce);
+						}
 						return $response;
 					}
 
 					$response->status = 1;
+					$response->realization = 0;
+					$response->behavior = "close,announce";
+					$response->transactionid = $transakce->getId();
 					$response->message = "Transakce proběhla úspěšně.";
 
 				}else{

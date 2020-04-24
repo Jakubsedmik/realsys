@@ -206,4 +206,22 @@ class hlidacipesClass extends zakladniKamenClass {
 	public function getTableName() {
 		return "s7_hlidacipes";
 	}
+
+	public static function setupDog($data, $user){
+		$jmeno_psa = $data['name'];
+		$filters = $data['filters'];
+		$type = $data['type'];
+
+
+		$hlidacipes = assetsFactory::createEntity("hlidacipesClass",array(
+			'jmeno_psa' => $jmeno_psa,
+			'posledni_inzeraty' => array(),
+			'nastaveni_filtru' => array(),
+			'uzivatel_id' => $user->getId(),
+			'premium' => $type
+		));
+		$hlidacipes->nastavFiltr($filters);
+		$hlidacipes->cron_zkontrolujInzeraty();
+		return $hlidacipes;
+	}
 }

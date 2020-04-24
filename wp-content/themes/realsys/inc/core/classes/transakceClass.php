@@ -25,4 +25,13 @@ class transakceClass extends zakladniKamenClass {
 	public static function getUserTransactions($user){
 
 	}
+
+	public function isConfirmed(){
+		return $this->db_accept;
+	}
+
+	public function isRequestedByCurrentUser(){
+		$userid = uzivatelClass::getUserLoggedId();
+		return $userid == $this->db_id_odesilatel;
+	}
 }

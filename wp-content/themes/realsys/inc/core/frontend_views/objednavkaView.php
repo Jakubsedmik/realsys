@@ -10,7 +10,7 @@
             <div class="section-form">
                 <form class="js-validate-form" method="post">
                     <div class="inbox-form">
-                        <div class="col-md-6 col-first form-field">
+                        <div class="col-md-12 col-first form-field">
                             <h3>
 	                            <?php _e("Kolik chcete zakoupit kreditů?", "realsys"); ?>
                             </h3>
@@ -19,21 +19,37 @@
                                 $i = 1;
                                 foreach ($cenik as $key => $value) :
                             ?>
-                            <label>
-                                <input type="radio" name="credits" value="<?php echo $key; ?>" required>
-                                <div class="credits-div">
-                                    <div class="credits-amount">
-                                        <img src="<?php echo FRONTEND_IMAGES_PATH; ?>/ikony/kredity_<?php echo $i; $i++; ?>.png">
-                                        <strong><?php echo $key; ?></strong> <?php _e("Kreditů", "realsys"); ?>
+                                <label>
+                                    <input type="radio" name="credits" value="<?php echo $key; ?>" required>
+                                    <div class="credits-div">
+                                        <div class="credits-amount">
+                                            <img src="<?php echo FRONTEND_IMAGES_PATH; ?>/ikony/kredity_<?php echo $i; $i++; ?>.png">
+                                            <strong><?php echo $key; ?></strong> <?php _e("Kreditů", "realsys"); ?>
+                                        </div>
+                                        <div class="credits-cost">
+                                            <?php echo $value; ?> <?php echo CURRENCY; ?>
+                                        </div>
                                     </div>
-                                    <div class="credits-cost">
-	                                    <?php echo $value; ?> <?php echo CURRENCY; ?>
-                                    </div>
-                                </div>
-                            </label>
+                                </label>
                             <?php endforeach; ?>
+                            <?php if(isset($this->workData['customService'])): $customService = $this->workData['customService']; ?>
+                                <label>
+                                    <input type="radio" name="credits" value="<?php echo $customService['ammount']; ?>" required>
+                                    <div class="credits-div">
+                                        <div class="credits-amount">
+                                            <img src="<?php echo FRONTEND_IMAGES_PATH; ?>/ikony/kredity_1.png">
+                                            <strong><?php echo $customService['ammount'] ?></strong> <?php _e("Kreditů", "realsys"); ?>
+                                            <strong> Služba: <?php echo $customService['name'] ?></strong>
+                                            <p><?php echo $customService['message'] ?></p>
+                                        </div>
+                                        <div class="credits-cost">
+				                            <?php echo $customService['price']; ?> <?php echo CURRENCY; ?>
+                                        </div>
+                                    </div>
+                                </label>
+                            <?php endif; ?>
                         </div>
-                        <div class="col-md-6 col-last form-field">
+                        <div class="col-md-12 col-last form-field">
                             <h3>
 	                            <?php _e("Výběr platby", "realsys"); ?>
                             </h3>
