@@ -44,7 +44,6 @@
                         <h2>{{errorHeading}}</h2>
                         <p>{{errorMessage}}</p>
                         <button class="btn" v-on:click="closePopup">Zavřít</button>
-
                     </div>
                 </div>
 
@@ -56,7 +55,19 @@
                 </div>
             </transition>
         </div>
-        <div v-else class="userNotLogged">
+
+        <div class="topInzeratWrapper" v-if="design=='inzeratTop'">
+            <button v-on:click="checkCredits()" class="btn ico-btn" v-if="already_bought==0">
+                <i class="fas fa-star"></i>
+                Topovat
+            </button>
+            <div v-else>
+                Inzerát je již Topovaný
+                <div class="topInzerat">top</div>
+            </div>
+        </div>
+
+        <div v-if="design !== 'hidden' && is_user_logged==0" class="userNotLogged">
             <h2>Nejste přihlášen</h2>
             <p>Pro nákup této služby musíte být nejdříve přihlášen</p>
             <a :href="this.login_link" class="btn">Přihlásit se</a>
@@ -128,6 +139,11 @@
             'design' : {
                 default: 'interactive',
                 type: String
+            },
+            'already_bought' : {
+                default: 0,
+                type: Number,
+                required: false
             }
         },
         data: function () {
@@ -212,6 +228,7 @@
 
                                 if(response.data.hasOwnProperty("behavior")){
                                     var behavior = response.data.behavior.split(",");
+                                    _this.already_bought = 1;
 
                                     if(behavior.includes("close")){
                                         _this.closePopup()
@@ -306,6 +323,22 @@
     }
     .bounce-leave-active {
         animation: wiggle .5s reverse;
+    }
+
+    .topInzerat{
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 30px;
+        width: 30px;
+        background-color: #FF970B;
+        border-radius: 50%;
+        color: white;
+        text-align: center;
+        line-height: 30px;
+        text-transform: uppercase;
+        font-size: 10px;
     }
 
 </style>

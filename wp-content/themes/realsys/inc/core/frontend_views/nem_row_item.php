@@ -91,7 +91,21 @@
 				</div>
 
 				<div class="col-sm-2 nemovitost-topovani">
-					<a class="btn ico-btn js-preparing" href="#"><i class="fas fa-star"></i><?php echo _e( "Topovat", "realsys" ); ?></a>
+                    <Servicebuy
+                            design="inzeratTop"
+                            login_link="<?php echo Tools::getFERoute("uzivatelClass", false, "login"); ?>"
+                            payment_link="<?php echo Tools::getFERoute("objednavkaClass"); ?>"
+                            currency="<?php echo CURRENCY; ?>"
+                            ajax_url="<?php echo AJAXURL; ?>"
+                            assets_path="<?php echo home_url() . ASSETS_PATH?>"
+                            entitytype="inzeratClass"
+                            :already_bought="<?php echo $item->db_top; ?>"
+                            :entityid="<?php echo $item->getId(); ?>"
+                            :service="<?php global $cenik_sluzeb; echo Tools::prepareJsonToOutputHtmlAttr($cenik_sluzeb[1]); ?>"
+                            :is_user_logged="<?php echo uzivatelClass::getUserLoggedId();?>"
+
+
+                    ></Servicebuy>
 					<a href="#" class="simple-link"><?php echo _e( "Jak to funguje?", "realsys" ); ?></a>
 				</div>
 			</div>

@@ -124,7 +124,7 @@
 	<section>
 		<div class="top-nemovitosti">
 			<div class="wrapper">
-				<div class="nemovitost-rows-wrap">
+				<div class="nemovitost-rows-wrap app">
 
 					<div class="section-title sides-align">
 						<h2><?php echo _e( "Nemovitosti uživatele", "realsys" ); ?></h2>
@@ -179,15 +179,6 @@
         </div>
     </section>
 <?php endif; ?>
-
-
-<div class="app">
-    <Servicebuy
-        v-bind:is_user_logged="true"
-    >
-
-    </Servicebuy>
-</div>
 
 
 
