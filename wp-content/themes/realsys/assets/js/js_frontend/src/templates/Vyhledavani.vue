@@ -52,6 +52,7 @@
                         v-bind:service="this.service"
                         v-bind:currency="this.currency"
                         v-bind:ajax_url="this.ajax_url"
+                        v-bind:assets_path="this.assets_path"
                 ></Hlidacipes>
 
             </div>
@@ -67,7 +68,7 @@
     export default {
         name: "Vyhledavani",
         props: [
-            'filters', 'filterpreset', 'user_logged', 'home_url', 'login_link', 'payment_link', 'service', 'currency', 'ajax_url'
+            'filters', 'filterpreset', 'user_logged', 'home_url', 'login_link', 'payment_link', 'service', 'currency', 'ajax_url', 'assets_path'
         ],
         components: { Filterfield, Hlidacipes },
         created() {

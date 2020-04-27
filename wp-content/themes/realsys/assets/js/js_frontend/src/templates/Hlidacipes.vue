@@ -11,6 +11,7 @@
                 v-bind:login_link="this.login_link"
                 v-bind:ajax_url="this.ajax_url"
                 v-bind:currency="this.currency"
+                v-bind:assets_path="this.assets_path"
                 ref="servicebuy"
                 design="hidden"
         ></Servicebuy>
@@ -63,7 +64,7 @@
 
     export default {
         name: "Hlidacipes",
-        props: ['search_data', 'ajax_url', 'user_logged', 'home_url', 'login_link', 'payment_link', 'is_user_logged', 'service', 'currency'],
+        props: ['search_data', 'ajax_url', 'user_logged', 'home_url', 'login_link', 'payment_link', 'is_user_logged', 'service', 'currency', 'assets_path'],
         components: { Servicebuy },
         data: function () {
             return {

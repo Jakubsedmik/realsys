@@ -10,6 +10,7 @@
                 v-bind:service="this.service"
                 v-bind:currency="this.appData.currency"
                 v-bind:ajax_url="this.ajax_url"
+                v-bind:assets_path="this.assetspath"
         ></Vyhledavani>
         <section>
             <div class="top-nemovitosti">
@@ -17,6 +18,7 @@
 
                     <Filtr v-bind:inzeratyCount="this.appData.totalRecordsCount">
                     </Filtr>
+
 
                     <div :class="{row: true, isLoading: this.isLoading}">
                         <Inzerat
