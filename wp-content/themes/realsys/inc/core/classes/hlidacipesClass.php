@@ -92,8 +92,11 @@ class hlidacipesClass extends zakladniKamenClass {
 	}
 
 	public function mailInfo(){
+
+		$uzivatel = $this->getSubobject('uzivatel');
+
 		Tools::sendMail(
-			"root@localhost",
+			$uzivatel->db_email,
 			"Hlídací pes",
 			"watchdogInfo",
 			array("pocetNovychInzeratu" => $this->db_nove_inzeraty_pocet, "link" => home_url())
@@ -181,6 +184,7 @@ class hlidacipesClass extends zakladniKamenClass {
 	}
 
 	public function vypisStareInzeraty(){
+
 		$html = "";
 		$walker = new assetWalkerClass(
 			"inzeratClass",
