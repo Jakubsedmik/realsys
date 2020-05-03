@@ -40,6 +40,21 @@
 								</div>
 
 								<div class="form-col">
+									<label><?php echo _e("Telefon", "realsys"); ?></label>
+									<input name="db_telefon" required type="tel" placeholder="<?php echo _e("Telefon-syntax", "realsys"); ?>">
+								</div>
+
+								<div class="form-col">
+									<label><?php echo _e("Jméno", "realsys"); ?></label>
+									<input name="db_jmeno" required type="text" placeholder="<?php echo _e("Jméno-syntax", "realsys"); ?>">
+								</div>
+
+								<div class="form-col">
+									<label><?php echo _e("Příjmení", "realsys"); ?></label>
+									<input name="db_prijmeni" required type="text" placeholder="<?php echo _e("Prijmeni-syntax", "realsys"); ?>">
+								</div>
+
+								<div class="form-col">
 									<label><?php echo _e("Heslo", "realsys"); ?></label>
 									<div class="form-field">
 										<input required id="heslo" name="db_heslo" type="password" placeholder="********">
@@ -59,7 +74,7 @@
 									<button type="submit" class="btn submit-btn g-recaptcha" id="captcha1">Registrovať</button>
 									<div class="g-signin2" data-onsuccess="onSignIn"></div>
 								</div>
-								
+
 							</form>
 						</div>
 
