@@ -764,5 +764,12 @@ $cenik_sluzeb = array(
 		'price' => 1,
 		'requireEntity' => true,
 		'handleFunction' => "handleTopInzerat"
+	),
+	2 => array(
+		'id' => 2,
+		'name' => 'Zobrazení kontaktu',
+		'logName' => 'Zobrazení kontaktu ID: %d',
+		'price' => 3,
+		'requireEntity' => true
 	)
 );

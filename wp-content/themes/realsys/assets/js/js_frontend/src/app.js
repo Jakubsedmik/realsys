@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vypis from "./templates/Vypis.vue";
 import Vyhledavanimapa from "./templates/Vyhledavanimapa.vue";
-import Servicebuy from "./templates/Servicebuy.vue";
+import Zobrazkontakt from "./templates/Zobrazkontakt.vue";
 
 
 
@@ -13,7 +13,7 @@ if(app.length > 0){
             test: "tetss"
         },
         components :{
-            Vypis, Vyhledavanimapa, Servicebuy
+            Vypis, Vyhledavanimapa, Zobrazkontakt
         },
         mounted() {
 
