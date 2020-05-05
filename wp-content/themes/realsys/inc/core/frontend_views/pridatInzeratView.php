@@ -1,5 +1,9 @@
 <section>
 
+	<div class="app">
+		<Pridatinzerat></Pridatinzerat>
+	</div>
+
     <div class="add-inz-con">
         <div class="wrapper">
             <?php
