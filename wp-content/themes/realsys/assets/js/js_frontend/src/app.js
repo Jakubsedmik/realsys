@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vypis from "./templates/Vypis.vue";
 import Vyhledavanimapa from "./templates/Vyhledavanimapa.vue";
 import Zobrazkontakt from "./templates/Zobrazkontakt.vue";
+import Pridatinzerat from "./templates/Pridatinzerat.vue";
 
 
 
@@ -13,7 +14,7 @@ if(app.length > 0){
             test: "tetss"
         },
         components :{
-            Vypis, Vyhledavanimapa, Zobrazkontakt
+            Vypis, Vyhledavanimapa, Zobrazkontakt, Pridatinzerat
         },
         mounted() {
 

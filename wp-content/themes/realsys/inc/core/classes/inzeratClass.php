@@ -12,6 +12,7 @@ class inzeratClass extends zakladniKamenClass {
 	protected $db_typ_inzeratu;
 	protected $db_pocet_mistnosti;
 	protected $db_patro;
+	protected $db_celkem_podlazi; // OK
 
 	protected $db_parkovaci_misto;
 	protected $db_garaz;
@@ -43,8 +44,14 @@ class inzeratClass extends zakladniKamenClass {
 	protected $db_top;
 
 	protected $db_cena;
-	protected $db_cena_poznamka;
+	protected $db_cena_poznamka; // OK
+	protected $db_cena_najem; // OK
+	protected $db_poplatky; // OK
+	protected $db_kauce; // OK
 
+	protected $db_vhodny_pro; // OK
+	protected $db_k_dispozici_od; // OK
+	protected $db_dalsi_vybaveni; // OK
 
 
 

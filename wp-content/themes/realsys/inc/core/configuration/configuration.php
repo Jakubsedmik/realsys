@@ -322,6 +322,30 @@ $field_rules = array(
 		'db_cena_poznamka'    => array(
 			'required' => false,
 			'type'     => STRING511
+		),
+		'db_cena_najem' => array(
+			'required' => false,
+			'type' => PRICE
+		),
+		'db_poplatky' => array(
+			'required' => false,
+			'type' => PRICE
+		),
+		'db_kauce' => array(
+			'required' => false,
+			'type' => PRICE
+		),
+		'db_vhodny_pro' => array(
+			'required' => false,
+			'type' => NUMBER
+		),
+		'db_k_dispozici_od' => array(
+			'required' => false,
+			'type' => TIMESTAMP
+		),
+		'db_dalsi_vybaveni' => array(
+			'required' => false,
+			'type' => STRING
 		)
 	),
 	"ciselnikClass"   => array(
