@@ -104,12 +104,14 @@ $obrazky   = array_filter( $obrazky, function ( $val ) use ( &$front_obr ) {
                                         <Zobrazkontakt
                                                 :user_logged="<?php echo (uzivatelClass::getUserLoggedId()) ? uzivatelClass::getUserLoggedId() : "false"; ?>"
                                                 :service="<?php global $cenik_sluzeb; echo Tools::prepareJsonToOutputHtmlAttr($cenik_sluzeb[2]); ?>"
+                                                :inzerat_id="<?php echo $inzerat->getId(); ?>"
                                                 home_url="<?php echo home_url(); ?>"
                                                 login_link="<?php echo Tools::getFERoute("uzivatelClass",false, "login"); ?>"
                                                 payment_link="<?php echo Tools::getFERoute("objednavkaClass"); ?>"
                                                 ajax_url="<?php echo AJAXURL; ?>"
                                                 currency="<?php echo CURRENCY; ?>"
                                                 assets_path="<?php echo FRONTEND_IMAGES_PATH; ?>"
+
                                         ></Zobrazkontakt>
                                     </div>
 

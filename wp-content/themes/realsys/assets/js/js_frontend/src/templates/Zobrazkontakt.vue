@@ -10,6 +10,8 @@
                 v-bind:ajax_url="this.ajax_url"
                 v-bind:currency="this.currency"
                 v-bind:assets_path="this.assets_path"
+                v-bind:entityid="this.inzerat_id"
+                v-bind:entitytype="inzeratClass"
                 ref="servicebuy"
                 design="hidden"
         ></Servicebuy>
@@ -31,12 +33,12 @@
                         <h2>Zobrazení kontaktu</h2>
                         <p>Váš kontakt na uživatele naleznete níže.</p>
                         <ul>
-                            <li>Jméno: </li>
-                            <li>Příjmení: </li>
-                            <li>Telefon: </li>
-                            <li>Email: </li>
+                            <li>Jméno: {{jmeno}}</li>
+                            <li>Příjmení: {{prijmeni}}</li>
+                            <li>Telefon: <a :href="'tel:' + this.telefon">{{telefon}}</a></li>
+                            <li>Email: <a :href="'mailto:'+ this.email">{{email}}</a></li>
                         </ul>
-                        <a :href="this.home_url + '/uzivatel/'+ this.user_logged + '/'" class="btn">Zobrazit profil uživatele</a>
+                        <a :href="this.uzivatel_url" class="btn">Zobrazit profil uživatele</a>
                     </div>
                 </div>
             </div>
@@ -46,6 +48,10 @@
 
 <script>
     import Servicebuy from "./Servicebuy.vue";
+    import Axios from "axios";
+    import VueAxios from 'vue-axios';
+
+
     export default {
         name: "Zobrazkontakt",
         components: {
@@ -55,11 +61,16 @@
             return {
                 contactAvailable: false,
                 popupOn: false,
-                transactionId: false
+                transactionId: false,
+                jmeno: false,
+                prijmeni: false,
+                telefon: false,
+                email: false,
+                uzivatel_url: false
             }
         },
         props: [
-            'user_logged', 'service', 'payment_link', 'login_link', 'ajax_url', 'currency', 'assets_path', 'home_url'
+            'user_logged', 'service', 'payment_link', 'login_link', 'ajax_url', 'currency', 'assets_path', 'home_url', 'inzerat_id'
         ],
 
         methods: {
@@ -70,11 +81,33 @@
                 this.popupOn = 0;
             },
             payForContact(){
+                var _this = this;
                 if(this.transactionId == false){
                     this.$refs['servicebuy'].checkCredits();
                 }else{
-                    // realizace služby
-                    alert("Dochází k realizaci služby");
+
+
+                    var bodyFormData = new FormData();
+                    bodyFormData.append("action", "payForContact");
+                    bodyFormData.append("transactionid", this.transactionId);
+                    bodyFormData.append("entityid", this.inzerat_id);
+
+                    Axios.post(this.ajax_url, bodyFormData).then(function (response) {
+                        if(response && response.data.hasOwnProperty("status") && response.data.status == 1){
+
+                            _this.jmeno = response.data.jmeno;
+                            _this.prijmeni = response.data.prijmeni;
+                            _this.telefon = response.data.telefon;
+                            _this.email = response.data.email;
+                            _this.uzivatel_url = response.data.uzivatel_url;
+
+                            _this.contactAvailable = true;
+                        }else{
+                            alert("Došlo k chybě v systému: " + response.data.message);
+                        }
+                    }).catch(function (e) {
+                        console.error(e);
+                    });
                 }
             }
         },

@@ -72,6 +72,10 @@ $api_actions = array(
 	'payForService' => array(
 		'callback' => 'payForService',
 		'private' => false
+	),
+	'payForContact' => array(
+		'callback' => 'payForContact',
+		'private' => false
 	)
 );
 
@@ -1019,6 +1023,92 @@ function payForService(){
 		$response->message = "Povinná pole nebyla vyplněna.";
 	}
 
-		wp_send_json($response);
+	wp_send_json($response);
+	die();
+}
+
+
+
+
+function payForContact(){
+
+	// now shut down error reporting for a while
+	error_reporting(0);
+	ini_set('display_errors', 'Off');
+
+	$response = new stdClass();
+	$result = Tools::postChecker($_POST, array(
+		"transactionid" => array(
+			"type" => NUMBER,
+			"required" => true
+		),
+		"entityid" => array(
+			"type" => NUMBER,
+			"required" => true
+		)
+	), true);
+
+
+	if($result){
+		$user = uzivatelClass::getUserLoggedId();
+		if($user !== false){
+			$user = assetsFactory::getEntity("uzivatelClass",$user);
+
+			$transactionid = $_POST['transactionid'];
+			$entityid = $_POST['entityid'];
+
+			$transaction = assetsFactory::getEntity("transakceClass", $transactionid);
+
+			if($transaction){
+				if(!$transaction->isConfirmed()){
+					if($transaction->isRequestedByCurrentUser()){
+
+						//account transaction
+						$transaction->db_accept = 1;
+						$transaction->aktualizovat();
+
+						// get contact
+						$inzerat = assetsFactory::getEntity("inzeratClass",$entityid);
+						if($inzerat){
+							$uzivatel = $inzerat->getSubobject("uzivatel");
+							if($uzivatel){
+								$response->status = 1;
+								$response->jmeno = $uzivatel->db_jmeno;
+								$response->prijmeni = $uzivatel->db_prijmeni;
+								$response->telefon = $uzivatel->db_telefon;
+								$response->email = $uzivatel->db_email;
+								$response->uzivatel_url = Tools::getFERoute("uzivatelClass",$uzivatel->getId(),"detail");
+								$response->message = "Kontakt úspěšně získán";
+							}else{
+								$response->status = 0;
+								$response->message = "Kontakt se nepodařilo získat. Neplatný uživatel.";
+							}
+						}else{
+							$response->status = 0;
+							$response->message = "Kontakt se nepodařilo získat. Neplatný inzerát.";
+						}
+					}else{
+						$response->status = 0;
+						$response->message = "Nevalidní transakce";
+					}
+				}else{
+					$response->status = 0;
+					$response->message = "Neplatná transakce";
+				}
+			}else{
+				$response->status = 0;
+				$response->message = "Neexistující transakce";
+			}
+
+		}else{
+			$response->status = 0;
+			$response->message = "Kontakt nebyl získán. Nejste přihlášen.";
+		}
+	}else{
+		$response->status = 0;
+		$response->message = "Nebyli zadány všechny parametry";
+	}
+
+	wp_send_json($response);
 	die();
 }
