@@ -43,154 +43,143 @@
 	                <section id="first" class="inz-form-sec rounded-b shadow-big tabcontent inz-sec-1 active js-inz-tab">
 		                <form class="js-partialValidation">
 			                <div class="inz-box">
-				                <h3><?php echo _e( "Typ inzerátu", "realsys" ); ?></h3>
+                        <div class="form-content">
+                          <h3><?php echo _e( "Typ inzerátu", "realsys" ); ?></h3>
+                          <div class="input-content">
 
-				                <?php
-				                $icons = array(
-					                2 => 'flaticon-149-hand-gesture',
-					                1 => 'flaticon-043-closing',
-					                3 => 'flaticon-support',
-				                )
+    				                <?php
+    				                $icons = array(
+    					                2 => 'flaticon-149-hand-gesture',
+    					                1 => 'flaticon-043-closing',
+    					                3 => 'flaticon-support',
+    				                )
 
-				                ?>
+    				                ?>
 
-				                <div class="row selects">
+    				                <div class="row selects">
 
-					                <?php
-					                $dials = assetsFactory::getAllDials("inzeratClass","typ_inzeratu");
-					                foreach ($dials as $key => $value) :
-						                ?>
-						                <div class="col-sm-3">
-							                <label class="form-field">
-                                <span class="sel-input-name"><?php echo $value->db_translation?></span>
-								                <input type="radio" name="db_typ_inzeratu" value="<?php echo $value->db_value?>">
-							                </label>
-						                </div>
-					                <?php
-					                endforeach;
-					                ?>
+    					                <?php
+    					                $dials = assetsFactory::getAllDials("inzeratClass","typ_inzeratu");
+    					                foreach ($dials as $key => $value) :
+    						                ?>
+    						                <div class="single-input">
+    							                <label class="form-field">
+                                    <span class="sel-input-name"><?php echo $value->db_translation?></span>
+    								                <input type="radio" name="db_typ_inzeratu" value="<?php echo $value->db_value?>">
+    							                </label>
+    						                </div>
+    					                <?php
+    					                endforeach;
+    					                ?>
 
-				                </div>
+    				                </div>
+                          </div>
+                        </div>
 			                </div>
 
 			                <div class="inz-box">
-				                <h3><?php echo _e( "Typ Nemovitosti", "realsys" ); ?></h3>
+                        <div class="form-content">
+  				                <h3><?php echo _e( "Typ nemovitosti", "realsys" ); ?></h3>
+                          <div class="input-content">
 
-				                <?php
-				                $icons = array(
-					                0 => 'flaticon-070-real-estate-4',
-					                1 => 'flaticon-021-sit-down',
-					                2 => 'flaticon-115-picket',
-					                3 => 'flaticon-136-book-bag',
-					                4 => 'flaticon-046-storehouse'
-				                )
+  				                <?php
+  				                $icons = array(
+  					                0 => 'flaticon-070-real-estate-4',
+  					                1 => 'flaticon-021-sit-down',
+  					                2 => 'flaticon-115-picket',
+  					                3 => 'flaticon-136-book-bag',
+  					                4 => 'flaticon-046-storehouse'
+  				                )
 
-				                ?>
+  				                ?>
 
-				                <div class="row selects ico-smaller">
+  				                <div class="row selects ico-smaller">
 
-					                <?php
-					                $dials = assetsFactory::getAllDials("inzeratClass","typ_stavby");
-					                foreach ($dials as $key => $value) :
-						                ?>
+  					                <?php
+  					                $dials = assetsFactory::getAllDials("inzeratClass","typ_stavby");
+  					                foreach ($dials as $key => $value) :
+  						                ?>
 
-						                <div class="col-sm">
-							                <label class="form-field">
-                                <span class="sel-input-name"><?php echo $value->db_translation; ?></span>
-								                <input type="radio" name="db_typ_stavby" value="<?php echo $value->db_value; ?>">
-							                </label>
-						                </div>
-					                <?php
-					                endforeach;
-					                ?>
+  						                <div class="single-input">
+  							                <label class="form-field">
+                                  <span class="sel-input-name"><?php echo $value->db_translation; ?></span>
+  								                <input type="radio" name="db_typ_stavby" value="<?php echo $value->db_value; ?>">
+  							                </label>
+  						                </div>
+  					                <?php
+  					                endforeach;
+  					                ?>
 
-				                </div>
+  				                </div>
+                          </div>
+                        </div>
 			                </div>
 
+                      <div class="inz-box">
+                        <div class="form-content">
+                          <h3><?php echo _e( "Dispozice", "realsys" ); ?></h3>
+                          <div class="single-val-form">
+                            <label class="form-field">
+                              <select name="db_dispozice">
+                                <option value="1+KK">1+KK</option>
+                                <option value="1+1">1+1</option>
+                                <option value="2+1">2+1</option>
+                                <option value="3+1">3+1</option>
+                                <option value="4+1">4+1</option>
+                                <option value="5+1">5+1</option>
+                              </select>
+                          </label>
+                          </div>
+                      </div>
+                      </div>
 
-		                    <div class="row">
-		                        <div class="col-sm bigger-label">
-		                            <div class="inz-box align-left">
+                      <div class="inz-box">
+                        <div class="form-content">
+                          <h3><?php echo _e( "Rozloha", "realsys" ); ?></h3>
+                          <div class="input-content">
+                            <label class="form-field">
+                              <input type="text" name="db_pozemkova_plocha" value="" class="input-outline" placeholder="Užitková plocha" required>
+                            </label>
+                            <label class="form-field">
+                              <input type="text" name="db_podlahova_plocha" value="" class="input-outline" placeholder="Podlahová plocha" required>
+                            </label>
+                          </div>
+                      </div>
+                      </div>
 
-		                                <div class="form-row">
-			                                <div class="form-field">
-		                                        <label><?php echo _e( "Místnosti", "realsys" ); ?></label>
-		                                        <input type="text" placeholder="Změnít informaci" name="db_pocet_mistnosti" class="input-outline">
-			                                </div>
-		                                </div>
-		                                <div class="form-row">
-			                                <div class="form-field">
-		                                        <label><?php echo _e( "Ulice", "realsys" ); ?></label>
-		                                        <input type="text" placeholder="Např. Jiráskova 15, Chomutov" name="db_ulice" class="input-outline">
-			                                </div>
-		                                </div>
-			                            <div class="form-row">
-				                            <div class="form-field">
-				                                <label><?php echo _e( "Číslo popisné", "realsys" ); ?></label>
-				                                <input type="text" placeholder="Např. Jiráskova 15, Chomutov" name="db_cp" class="input-outline">
-				                            </div>
-			                            </div>
-			                            <div class="form-row">
-				                            <div class="form-field">
-				                                <label><?php echo _e( "Město", "realsys" ); ?></label>
-				                                <input type="text" placeholder="Např. Jiráskova 15, Chomutov" name="db_mesto" class="input-outline">
-				                            </div>
-			                            </div>
-			                            <div class="form-row">
-				                            <div class="form-field">
-				                                <label><?php echo _e( "PSČ", "realsys" ); ?></label>
-				                                <input type="text" placeholder="Např. Jiráskova 15, Chomutov" name="db_psc" class="input-outline">
-				                            </div>
-			                            </div>
-		                            </div>
-		                        </div>
-
-		                        <div class="col-sm col-spacer">
-
-		                        </div>
-
-		                        <div class="col-sm nazev-popis">
-		                            <div class="inz-box align-left">
-		                                <h3><?php echo _e( "Název a popis", "realsys" ); ?></h3>
-
-		                                <div class="form-row">
-			                                <div class="form-field">
-		                                        <label><?php echo _e( "Název", "realsys" ); ?></label>
-		                                        <input type="text" placeholder="Velký moderní dům v Jiráskově" name="db_titulek" class="input-outline">
-			                                </div>
-		                                </div>
-		                                <div class="form-row form-message">
-			                                <div class="form-field">
-		                                        <label><?php echo _e( "Popis", "realsys" ); ?></label>
-		                                        <textarea placeholder="Prodávám tento krásný dům..." name="db_popis" class="input-outline"></textarea>
-			                                </div>
-		                                </div>
-			                            <div class="form-row">
-				                            <div class="form-field">
-					                            <label><?php echo _e( "Městská část", "realsys" ); ?></label>
-					                            <input type="text" placeholder="Např. Jiráskova 15, Chomutov" name="db_mestska_cast" class="input-outline">
-				                            </div>
-			                            </div>
-		                            </div>
-		                        </div>
-		                    </div>
+                      <div class="inz-box">
+                        <div class="form-content">
+                          <h3><?php echo _e( "Poloha", "realsys" ); ?></h3>
+                          <div class="input-content">
+                            <label class="form-field">
+                              <input type="text" name="db_mesto" value="" class="input-outline" placeholder="Město" required>
+                            </label>
+                            <label class="form-field">
+                              <input type="text" name="db_ulice" value="" class="input-outline" placeholder="Ulice" required>
+                            </label>
+                          </div>
+                      </div>
+                      </div>
 
 			                <div class="inz-box center-inz-box bigger-label">
 				                <div class="form-row price-input">
-					                <label><?php echo _e( "Cena nemovitosti", "realsys" ); ?></label>
+					                <h3><?php echo _e( "Cena", "realsys" ); ?></h3>
 					                <div class="currency-input">
-						                <div class="form-field">
-							                <input type="number" placeholder="100 000" step="1000" value="" name="db_cena" class="input-outline">
-						                </div>
-						                <span class="currency"><?php echo CURRENCY; ?></span>
-					                </div>
-				                </div>
-				                <div class="col-sm col-spacer"></div>
-				                <div class="form-row">
-					                <div class="form-field">
-						                <label><?php echo _e( "Poznámka k ceně", "realsys" ); ?></label>
-						                <input type="text" placeholder="Např. včetně poplatků" name="db_cena_poznamka" class="input-outline">
-					                </div>
+						                <div class="form-field price-field">
+							                <input type="number" placeholder="Cena nájmu" step="1000" value="" name="db_cena_najmu" class="input-outline" required>
+                            <span class="currency"><?php echo CURRENCY; ?> / měsíc</span>
+                            </div>
+
+                            <div class="form-field price-field">
+							                <input type="number" placeholder="Poplatky" step="1000" value="" name="db_poplatky" class="input-outline" required>
+                            <span class="currency"><?php echo CURRENCY; ?> / měsíc</span>
+                            </div>
+
+                            <div class="form-field price-field">
+							                <input type="number" placeholder="Vratná záloha" step="1000" value="" name="db_kauce" class="input-outline" required>
+                            <span class="currency"><?php echo CURRENCY; ?></span>
+                            </div>
+                          </div>
 				                </div>
 			                </div>
 
@@ -204,54 +193,19 @@
 
 	                <section id="second" class="inz-form-sec tabcontent inz-sec-2 js-inz-tab">
 		                <form class="js-partialValidation">
-		                    <div class="inz-box">
-		                        <h3><?php echo _e( "Typ stavby", "realsys" ); ?></h3>
 
-		                        <div class="row selects">
-			                        <?php
-			                        $dials = assetsFactory::getAllDials("inzeratClass","material");
-			                        foreach ($dials as $key => $value) :
-			                        ?>
-			                            <div class="col-sm basic-select">
-				                            <label class="form-field">
-					                            <input type="radio" name="db_material" value="<?php echo $value->db_value; ?>">
-				                                <div class="select-box">
-				                                    <span class="sel-input-name"><?php echo $value->db_translation; ?></span>
-				                                </div>
-				                            </label>
-			                            </div>
-			                        <?php
-			                            endforeach;
-			                        ?>
-		                        </div>
-		                    </div>
+                      <div class="inz-box">
+                        <div class="form-content">
+                          <h3><?php echo _e( "K dispozici od", "realsys" ); ?></h3>
+                          <div class="single-val-form">
+                            <label class="form-field">
+                              <input type="date" id="start" name="db_volny_od" class="input-outline" value="2020-05-20" min="2020-05-14" max="2025-12-31">
+                          </label>
+                          </div>
+                      </div>
+                      </div>
 
-
-		                    <div class="inz-box">
-		                        <h3><?php echo _e( "Stav objektu", "realsys" ); ?></h3>
-
-		                        <div class="row selects">
-
-			                        <?php
-			                        $dials = assetsFactory::getAllDials("inzeratClass","stav_objektu");
-			                        foreach ($dials as $key => $value) :
-				                        ?>
-				                        <div class="col-sm basic-select">
-					                        <label class="form-field">
-						                        <input type="radio" name="db_stav_objektu" value="<?php echo $value->db_value; ?>">
-						                        <div class="select-box">
-							                        <span class="sel-input-name"><?php echo $value->db_translation; ?></span>
-						                        </div>
-					                        </label>
-				                        </div>
-			                        <?php
-			                        endforeach;
-			                        ?>
-
-		                        </div>
-		                    </div>
-
-			                <div class="inz-box">
+                      <div class="inz-box no-border v2">
 				                <h3><?php echo _e( "Vybavenost", "realsys" ); ?></h3>
 
 				                <div class="row selects">
@@ -262,10 +216,8 @@
 						                ?>
 						                <div class="col-sm basic-select">
 							                <label class="form-field">
+                                <span class="sel-input-name"><?php echo $value->db_translation; ?></span>
 								                <input type="radio" name="db_vybavenost" value="<?php echo $value->db_value; ?>">
-								                <div class="select-box">
-									                <span class="sel-input-name"><?php echo $value->db_translation; ?></span>
-								                </div>
 							                </label>
 						                </div>
 					                <?php
@@ -273,90 +225,219 @@
 					                ?>
 
 				                </div>
-			                </div>
+                      </div>
+                      <div class="inz-box no-border v2">
+                        <h3><?php echo _e( "Vybavení", "realsys" ); ?></h3>
+                        <div class="form-row checks">
+                            <label class="check-wrap">
+                              <input id="zeroValue" type="hidden" value="0" name="db_terasa">
+                                <input type="checkbox" name="db_terasa" value="1">
+                                  <span class="sel-input-name"><?php echo _e( "Terasa", "realsys" ); ?></span>
+                            </label>
+                          <label class="check-wrap">
+                            <input id="zeroValue" type="hidden" value="0" name="db_vytah">
+                            <input type="checkbox" name="db_vytah" value="1">
+                            <span class="sel-input-name"><?php echo _e( "Výtah", "realsys" ); ?></span>
+                          </label>
+                            <label class="check-wrap">
+                              <input id="zeroValue" type="hidden" value="0" name="db_parkovaci_misto">
+                              <input type="checkbox" name="db_parkovaci_misto" value="1">
+                              <span class="sel-input-name"><?php echo _e( "Parkování", "realsys" ); ?></span>
+                            </label>
+                            <label class="check-wrap">
+                              <input id="zeroValue" type="hidden" value="0" name="db_garaz">
+                              <input type="checkbox" name="db_garaz" value="1">
+                              <span class="sel-input-name"><?php echo _e( "Garáž", "realsys" ); ?></span>
+                            </label>
+                            <label class="check-wrap">
+                              <input id="zeroValue" type="hidden" value="0" name="db_balkon">
+                              <input type="checkbox" name="db_balkon" value="1">
+                              <span class="sel-input-name"><?php echo _e( "Balkon", "realsys" ); ?></span>
+                            </label>
+                            <label class="check-wrap">
+                              <input id="zeroValue" type="hidden" value="0" name="db_pivnice">
+                              <input type="checkbox" name="db_pivnice" value="1">
+                              <span class="sel-input-name"><?php echo _e( "Pivnice", "realsys" ); ?></span>
+                            </label>
+                            <label class="check-wrap">
+                              <input id="zeroValue" type="hidden" value="0" name="db_lednicka">
+                              <input type="checkbox" name="db_lednicka" value="1">
+                              <span class="sel-input-name"><?php echo _e( "Lednička", "realsys" ); ?></span>
+                            </label>
+                            <label class="check-wrap">
+                              <input id="zeroValue" type="hidden" value="0" name="db_pracka">
+                              <input type="checkbox" name="db_pracka" value="1">
+                              <span class="sel-input-name"><?php echo _e( "Pračka", "realsys" ); ?></span>
+                            </label>
+                            <label class="check-wrap">
+                              <input id="zeroValue" type="hidden" value="0" name="db_mycka">
 
+                              <input type="checkbox" name="db_mycka" value="1">
+                              <span class="sel-input-name"><?php echo _e( "Myčka", "realsys" ); ?></span>
+                            </label>
+                        </div>
+                      </div>
 
-		                    <div class="row">
-		                        <div class="col-sm bigger-label">
-		                            <div class="inz-box align-left">
+                      <div class="inz-box">
+                        <div class="form-content">
+                          <h3><?php echo _e( "Další vybavení", "realsys" ); ?></h3>
+                          <div class="input-content">
+                            <label class="form-field">
+                              <input type="text" name="db_dalsi_vybaveni" value="" class="input-outline" placeholder="Další vybavení">
+                            </label>
+                          </div>
+                      </div>
+                      </div>
 
-		                                <div class="form-row area-input">
-		                                    <label><?php echo _e( "Plocha pozemku", "realsys" ); ?></label>
-		                                    <div class="meters-input form-field">
-			                                    <input type="number" name="db_podlahova_plocha" placeholder="100 000"><span class="area">m<sup>2</sup></span>
-		                                    </div>
-		                                </div>
+                      <div class="inz-box">
+                        <div class="form-content">
+                          <h3><?php echo _e( "Poschodí", "realsys" ); ?></h3>
+                          <div class="input-content">
+                            <label class="form-field">
+                              <select name="db_poschodi">
+                                <option value="1. patro">1. patro</option>
+                                <option value="2. patro">2. patro</option>
+                                <option value="3. patro">3. patro</option>
+                                <option value="4. patro">4. patro</option>
+                                <option value="5. patro">5. patro</option>
+                                <option value="6. patro">6. patro</option>
+                                <option value="7. patro">7. patro</option>
+                                <option value="8. patro">8. patro</option>
+                                <option value="9. patro">9. patro</option>
+                                <option value="10. patro">10. patro</option>
+                                <option value="11. patro">11. patro</option>
+                                <option value="12. patro">12. patro</option>
+                                <option value="13. patro">13. patro</option>
+                                <option value="14. patro">14. patro</option>
+                                <option value="15. patro">15. patro</option>
+                              </select>
+                            </label>
+                            <span class="form-comment">z</span>
+                            <label class="form-field">
+                              <select name="db_poschodi_celkem">
+                                <option value="jednoho">jednoho</option>
+                                <option value="dvou">dvou</option>
+                                <option value="tří">tří</option>
+                                <option value="čtyř">čtyř</option>
+                                <option value="pěti">pěti</option>
+                                <option value="šesti">šesti</option>
+                                <option value="sedmi">sedmi</option>
+                                <option value="osmi">osmi</option>
+                                <option value="devíti">devíti</option>
+                                <option value="deseti">deseti</option>
+                                <option value="jedenácti">jedenácti</option>
+                                <option value="dvanácti">dvanácti</option>
+                                <option value="třinácti">třinácti</option>
+                                <option value="čtrnácti">čtrnácti</option>
+                                <option value="patnácti">patnácti</option>
+                              </select>
+                            </label>
+                          </div>
+                      </div>
+                      </div>
 
-		                                <div class="form-row area-input">
-		                                    <label><?php echo _e( "Plocha objektu", "realsys" ); ?></label>
-		                                    <div class="meters-input form-field">
-			                                    <input type="number" name="db_pozemkova_plocha" placeholder="100 000"><span class="area">m<sup>2</sup></span>
-		                                    </div>
-		                                </div>
+                      <div class="inz-box">
+                          <h3><?php echo _e( "Stav objektu", "realsys" ); ?></h3>
+                          <div class="row selects">
+                            <?php
+                            $dials = assetsFactory::getAllDials("inzeratClass","stav_objektu");
+                            foreach ($dials as $key => $value) :
+                              ?>
+                              <div class="col-sm basic-select">
+                                <label class="form-field">
+                                  <span class="sel-input-name"><?php echo $value->db_translation; ?></span>
+                                  <input type="radio" name="db_stav_objektu" value="<?php echo $value->db_value; ?>">
+                                </label>
+                              </div>
+                            <?php
+                            endforeach;
+                            ?>
 
+                          </div>
+                      </div>
 
-		                                <div class="form-row checks">
-		                                    <h3><?php echo _e( "Vybavení", "realsys" ); ?></h3>
-		                                    <label class="check-wrap">
-			                                    <input id="zeroValue" type="hidden" value="0" name="db_terasa">
-                                                <input type="checkbox" name="db_terasa" value="1">Terasa
-		                                    </label>
-			                                <label class="check-wrap">
-				                                <input id="zeroValue" type="hidden" value="0" name="db_vytah">
-				                                <input type="checkbox" name="db_vytah" value="1">Výtah
-			                                </label>
-		                                    <label class="check-wrap">
-			                                    <input id="zeroValue" type="hidden" value="0" name="db_parkovaci_misto">
-			                                    <input type="checkbox" name="db_parkovaci_misto" value="1">Parkování
-		                                    </label>
-		                                    <label class="check-wrap">
-			                                    <input id="zeroValue" type="hidden" value="0" name="db_garaz">
-			                                    <input type="checkbox" name="db_garaz" value="1">Garáž
-		                                    </label>
-		                                    <label class="check-wrap">
-			                                    <input id="zeroValue" type="hidden" value="0" name="db_balkon">
-			                                    <input type="checkbox" name="db_balkon" value="1">Balkon
-		                                    </label>
-		                                </div>
-		                            </div>
-		                        </div>
+                      <div class="inz-box">
+                        <div class="form-content">
+                          <h3><?php echo _e( "Vlastnictví", "realsys" ); ?></h3>
+                          <div class="input-content">
+                              <?php $typ_vlastnictvi = assetsFactory::getAllDials("inzeratClass","typ_vlastnictvi"); ?>
+                              <select name="db_typ_vlastnictvi">
+                                <?php foreach ($typ_vlastnictvi as $key => $value) : ?>
+                                  <option value="<?php echo $value->db_value ?>"><?php echo $value->db_translation; ?></option>
+                                <?php endforeach;?>
+                              </select>
+                            </div>
+                        </div>
+                      </div>
 
-		                        <div class="col-sm col-spacer">
-
-		                        </div>
-
-		                        <div class="col-sm bigger-label">
-		                            <div class="inz-box align-left">
-
-		                                <div class="form-row">
-		                                    <label><?php echo _e( "Energetická hodnota", "realsys" ); ?></label>
-			                                <?php $penb = assetsFactory::getAllDials("inzeratClass","penb"); ?>
-		                                    <select name="db_penb">
-												<?php foreach ($penb as $key => $value) : ?>
-													<option value="<?php echo $value->db_value ?>"><?php echo $value->db_translation; ?></option>
-			                                    <?php endforeach;?>
-		                                    </select>
-		                                </div>
-		                                <div class="form-row">
-		                                    <label><?php echo _e( "Vlastnictví", "realsys" ); ?></label>
-			                                <?php $typ_vlastnictvi = assetsFactory::getAllDials("inzeratClass","typ_vlastnictvi"); ?>
-			                                <select name="db_typ_vlastnictvi">
-				                                <?php foreach ($typ_vlastnictvi as $key => $value) : ?>
-					                                <option value="<?php echo $value->db_value ?>"><?php echo $value->db_translation; ?></option>
-				                                <?php endforeach;?>
-			                                </select>
-		                                </div>
-
-			                            <div class="form-row area-input">
-				                            <label><?php echo _e( "Patro", "realsys" ); ?></label>
-				                            <div class="meters-input form-field">
-					                            <input type="number" name="db_patro" placeholder="2"><span class="area"><?php echo _e( "poschodí", "realsys" ); ?></span>
-				                            </div>
-			                            </div>
-
-		                            </div>
-		                        </div>
+		                    <div class="inz-box">
+                          <div class="form-content">
+		                        <h3><?php echo _e( "Typ stavby", "realsys" ); ?></h3>
+                            <div class="input-content">
+  			                        <?php $dials = assetsFactory::getAllDials("inzeratClass","material");?>
+                                <select name="db_material">
+                                <?php foreach ($dials as $key => $value) : ?>
+  			                            <option value="<?php echo $value->db_value ?>"><?php echo $value->db_translation; ?></option>
+  			                        <?php endforeach;?>
+                              </select>
+                            </div>
+                          </div>
 		                    </div>
+
+                        <div class="inz-box align-left">
+                          <div class="form-content">
+		                        <h3><?php echo _e( "Energetická hodnota", "realsys" ); ?></h3>
+                            <div class="input-content">
+                              <?php $penb = assetsFactory::getAllDials("inzeratClass","penb"); ?>
+                                <select name="db_penb">
+                <?php foreach ($penb as $key => $value) : ?>
+                  <option value="<?php echo $value->db_value ?>"><?php echo $value->db_translation; ?></option>
+                                  <?php endforeach;?>
+                                </select>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="inz-box">
+                          <div class="form-content">
+                            <h3><?php echo _e( "Byt je vhodný pro", "realsys" ); ?></h3>
+                            <div class="input-content">
+                              <label class="form-field">
+                                <input type="text" name="db_vhodny_pro" value="" class="input-outline" placeholder="Např Mladý pár">
+                              </label>
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="inz-box">
+                          <div class="form-content">
+                            <h3><?php echo _e( "Okolí nemovitosti", "realsys" ); ?></h3>
+                            <div class="input-content">
+                              <label class="form-field">
+                                <textarea name="db_okoli" class="input-outline"><?php echo _e( "Popište, co se nachází v okolí nemovitosti...", "realsys" ); ?></textarea>
+                              </label>
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="inz-box no-border">
+                          <div class="form-content">
+                            <h3><?php echo _e( "Doplňující popis", "realsys" ); ?></h3>
+                            <div class="input-content">
+                              <label class="form-field">
+                                <textarea name="db_popis" class="input-outline"><?php echo _e( "Je ještě něco, co byste chtěli doplnit k inzerátu?", "realsys" ); ?></textarea>
+                              </label>
+                            </div>
+                        </div>
+                        </div>
+
+
+
+
+
+
+
+
 
 		                    <div class="buttons-prevnext">
 		                        <div class="inz-submit">
@@ -471,7 +552,7 @@
 	                        </div>
 	                        <div class="inz-submit">
                                 <input type="hidden" name="action" value="createInzerat">
-	                            <button type="button" class="btn nav-box-wrap js-finish">Dokončit</button>
+	                            <button type="button" class="btn js-finish">Dokončit</button>
 	                        </div>
 	                    </div>
 

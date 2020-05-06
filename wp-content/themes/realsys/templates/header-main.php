@@ -37,10 +37,10 @@
                                     <div class="avatar"><img src="<?php echo FRONTEND_IMAGES_PATH; ?>/avatar.png" alt=""></div>
                                     <div>
                                         <h4 class="user-name"><?php echo $uzivatel->getFullName(); ?></h4>
-                                        <span class="user-email">filip.sersik@outlook.com</span>
-                                    </div>                                    
+                                        <span class="user-email"><?php echo $uzivatel->db_email; ?></span>
+                                    </div>
                                 </div>
-                                <div class="user-credits"><span><?php echo _e("Moje kredity:", "realsys"); ?></span><span class="credits-num">182</span></div>
+                                <div class="user-credits"><span><?php echo _e("Moje kredity:", "realsys"); ?></span><span class="credits-num"><?php echo $uzivatel->getUserBillance(); ?></span></div>
                             </div>
                             <div class="user-menu">
                                 <a href="#" class="user-messages"><span class="user-mess-tit"><?php echo _e("Spravy", "realsys"); ?>
