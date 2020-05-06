@@ -11,12 +11,13 @@
                 v-bind:login_link="this.login_link"
                 v-bind:ajax_url="this.ajax_url"
                 v-bind:currency="this.currency"
+                v-bind:assets_path="this.assets_path"
                 ref="servicebuy"
                 design="hidden"
         ></Servicebuy>
         <transition name="bounce">
-            <div v-if="this.popupOn" class="hlidacipes-popup">
-                <div class="hlidacipes-popup--inner">
+            <div v-if="this.popupOn" class="service-popup">
+                <div class="service-popup--inner">
                     <form ref="form" v-on:submit.prevent="submitWatchdog()" v-if="user_logged !== false && this.watchDogCreated == 0">
                         <h2>Nastavení hlídacího psa</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis rhoncus, felis in consequat rutrum, purus quam vehicula metus, a semper purus odio ut sem. Pellentesque a ipsum ante. Ut sit amet ornare est.</p>
@@ -63,7 +64,7 @@
 
     export default {
         name: "Hlidacipes",
-        props: ['search_data', 'ajax_url', 'user_logged', 'home_url', 'login_link', 'payment_link', 'is_user_logged', 'service', 'currency'],
+        props: ['search_data', 'ajax_url', 'user_logged', 'home_url', 'login_link', 'payment_link', 'is_user_logged', 'service', 'currency', 'assets_path'],
         components: { Servicebuy },
         data: function () {
             return {
@@ -137,45 +138,5 @@
 </script>
 
 <style scoped>
-    .hlidacipes-popup{
-        position: fixed;
-        background-color: rgba(255,255,255,0.7);
-        left: 0px;
-        right: 0px;
-        top: 0px;
-        bottom: 0px;
-        z-index: 99;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .hlidacipes-popup--inner{
-        min-width: 800px;
-        max-width: 800px;
-        padding: 30px;
-        box-sizing: border-box;
-        background-color: white;
-        border-radius: 15px;
-        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.21);
-    }
-
-    .bounce-enter-active {
-        animation: bounce-in .5s;
-    }
-    .bounce-leave-active {
-        animation: bounce-in .5s reverse;
-    }
-    @keyframes bounce-in {
-        0% {
-            transform: scale(0);
-        }
-        50% {
-            transform: scale(1.5);
-        }
-        100% {
-            transform: scale(1);
-        }
-    }
 
 </style>

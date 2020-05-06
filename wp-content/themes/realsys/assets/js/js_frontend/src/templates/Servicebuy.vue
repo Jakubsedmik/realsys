@@ -50,7 +50,7 @@
                 <div class="loadingPopup servicePopup" v-if="this.loading">
                     <div class="innerPopup" v-click-outside="closePopup">
                         <h2>{{loadingMessage}}</h2>
-                        <img :src="this.assets_path + 'images/images_frontend/loading.gif'">
+                        <img :src="this.assets_path + 'loading.gif'">
                     </div>
                 </div>
             </transition>
