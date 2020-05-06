@@ -3,7 +3,11 @@
     width: 100%;
 }
 
-.form-field label.error{
+.form-field--error{
+    position: relative;
+}
+
+.form-field label.error, .form-field--error .error{
     position: absolute;
     background-color: red;
     top: calc(100% + 10px);
@@ -23,7 +27,7 @@
     z-index: 999;
 }
 
-.form-field label.error:after{
+.form-field label.error:after, .form-field--error .error:after{
     content: '';
     border: 10px solid red;
     position: absolute;

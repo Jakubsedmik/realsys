@@ -131,9 +131,6 @@ select option:hover {
     max-width: 25%;
 }
 
-.tabcontent.active{
-    display: block;
-}
 
 .inz-nav{
     position: relative;
@@ -221,10 +218,6 @@ select option:hover {
 .inz-box h3 {
     font-size: 22px;
     margin-bottom: 35px;
-}
-
-.tabcontent{
-    display: none;
 }
 
 .nav-box-wrap.tablinks{
