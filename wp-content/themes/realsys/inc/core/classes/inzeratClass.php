@@ -29,6 +29,7 @@ class inzeratClass extends zakladniKamenClass {
 	protected $db_material;
 
 	protected $db_podlahova_plocha;
+	protected $db_uzitkova_plocha;
 	protected $db_pozemkova_plocha;
 
 	protected $db_lat;

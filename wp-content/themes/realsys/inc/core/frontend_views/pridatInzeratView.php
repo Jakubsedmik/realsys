@@ -2,20 +2,38 @@
 
 	<?php
         $options = new stdClass();
+
         $typ_inzeratu = assetsFactory::getAllDials( "inzeratClass", "typ_inzeratu" );
 	    $typ_stavby = assetsFactory::getAllDials( "inzeratClass", "typ_stavby" );
-        $options->typ_inzeratu = $typ_inzeratu;
+	    $vybavenost = assetsFactory::getAllDials( "inzeratClass", "vybavenost" );
+	    $stav_objektu = assetsFactory::getAllDials( "inzeratClass", "stav_objektu" );
+	    $typ_vlastnictvi = assetsFactory::getAllDials( "inzeratClass", "typ_vlastnictvi" );
+	    $material = assetsFactory::getAllDials( "inzeratClass", "material" );
+	    $penb = assetsFactory::getAllDials( "inzeratClass", "penb" );
+
+
+	    $options->typ_inzeratu = $typ_inzeratu;
         $options->typ_stavby = $typ_stavby;
+	    $options->vybavenost = $vybavenost;
+	    $options->stav_objektu = $stav_objektu;
+	    $options->typ_vlastnictvi = $typ_vlastnictvi;
+	    $options->material = $material;
+	    $options->penb = $penb;
 
         ?>
 
     <div class="app">
         <Pridatinzerat
                 :options="<?php echo Tools::prepareJsonToOutputHtmlAttr($options); ?>"
+                :uzivatelid="<?php echo uzivatelClass::getUserLoggedId(); ?>"
+                ajax_url="<?php echo AJAXURL; ?>"
+                frontend_images_path="<?php echo FRONTEND_IMAGES_PATH; ?>"
+                currency_code="<?php echo CURRENCY_CODE; ?>"
+                lang_code="<?php echo LANG_CODE; ?>"
         ></Pridatinzerat>
     </div>
 
-    <div class="add-inz-con">
+    <div class="add-inz-con" style="display: none;">
         <div class="wrapper">
 			<?php
 			echo frontendError::getFrontendErrors();
@@ -544,12 +562,7 @@
 
                                     <div class="topovani-wrap">
                                         <h3>Chcete aby váš příspěvek měl větší pozornost?</h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu sem et elit
-                                            fringilla auctor sed nec nunc. In urna tellus, malesuada mattis iaculis nec,
-                                            hendrerit euismod felis. Phasellus vitae lectus velit. Ut feugiat, turpis
-                                            nec
-                                            laoreet aliquet, enim nisi mollis urna, in efficitur turpis orci quis
-                                            odio.</p>
+                                        <p></p>
 
                                         <div class="nemovitost-topovani">
                                             <h4>Vyzkoušejte topování</h4>
