@@ -40,6 +40,7 @@ class inzeratDetailController extends frontendController{
 				}
 
 				$inzerat->writeDials();
+				globalUtils::writeDebug($inzerat);
 				$inzerat->loadRelatedObjects();
 				$this->workData['inzerat'] = $inzerat;
 				$this->performView();

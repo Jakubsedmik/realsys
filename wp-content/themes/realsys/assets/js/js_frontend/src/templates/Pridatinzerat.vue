@@ -54,7 +54,7 @@
                                             <label class="form-field">
 
                                                 <span class="sel-input-name">{{value.db_translation.value}}</span>
-                                                <input type="radio" name="db_typ_inzeratu" :value="value.db_id.value" v-model.trim="$v.modelData.part_first.db_typ_inzeratu.$model">
+                                                <input type="radio" name="db_typ_inzeratu" :value="value.db_value.value" v-model.trim="$v.modelData.part_first.db_typ_inzeratu.$model">
 
                                             </label>
                                         </div>
@@ -74,7 +74,7 @@
                                         <div class="single-input" v-for="value in this.options.typ_stavby">
                                             <label class="form-field">
                                                 <span class="sel-input-name">{{value.db_translation.value}}</span>
-                                                <input type="radio" name="db_typ_stavby" :value="value.db_id.value" v-model.trim="$v.modelData.part_first.db_typ_stavby.$model">
+                                                <input type="radio" name="db_typ_stavby" :value="value.db_value.value" v-model.trim="$v.modelData.part_first.db_typ_stavby.$model">
                                             </label>
                                         </div>
 
@@ -91,12 +91,7 @@
                                 <div class="single-val-form">
                                     <label class="form-field" :class="{ 'form-field--error': $v.modelData.part_first.db_pocet_mistnosti.$error }">
                                         <select name="db_pocet_mistnosti" v-model.trim="$v.modelData.part_first.db_pocet_mistnosti.$model">
-                                            <option value="1+KK">1+KK</option>
-                                            <option value="1+1">1+1</option>
-                                            <option value="2+1">2+1</option>
-                                            <option value="3+1">3+1</option>
-                                            <option value="4+1">4+1</option>
-                                            <option value="5+1">5+1</option>
+                                            <option v-for="index in options.dispozice" :value="index">{{index}}</option>
                                         </select>
 
                                         <div class="error" v-if="!$v.modelData.part_first.db_pocet_mistnosti.required">{{translations.poleJePovinne}}</div>
@@ -223,7 +218,7 @@
                                 <div class="col-sm basic-select" v-for="value in this.options.vybavenost">
                                     <label class="form-field">
                                         <span class="sel-input-name">{{value.db_translation.value}}</span>
-                                        <input type="radio" name="db_vybavenost" :value="value.db_id.value" v-model.trim="$v.modelData.part_second.db_vybavenost.$model">
+                                        <input type="radio" name="db_vybavenost" :value="value.db_value.value" v-model.trim="$v.modelData.part_second.db_vybavenost.$model">
                                     </label>
                                 </div>
                                 <div class="error" v-if="errorAppear('part_second','db_vybavenost')">{{translations.poleJePovinne}}</div>
@@ -301,7 +296,7 @@
                                 <div class="col-sm basic-select" v-for="value in this.options.stav_objektu">
                                     <label class="form-field">
                                         <span class="sel-input-name">{{value.db_translation.value}}</span>
-                                        <input type="radio" name="db_stav_objektu" :value="value.db_id.value" v-model.trim="$v.modelData.part_second.db_stav_objektu.$model">
+                                        <input type="radio" name="db_stav_objektu" :value="value.db_value.value" v-model.trim="$v.modelData.part_second.db_stav_objektu.$model">
 
                                     </label>
                                 </div>
@@ -316,7 +311,7 @@
                                 <div class="input-content">
                                     <div class="form-field" :class="errorClass('part_second','db_typ_vlastnictvi')">
                                         <select name="db_typ_vlastnictvi" v-model.trim="$v.modelData.part_second.db_typ_vlastnictvi.$model">
-                                            <option v-for="value in options.typ_vlastnictvi" :value="value.db_id.value">{{value.db_translation.value}}</option>
+                                            <option v-for="value in options.typ_vlastnictvi" :value="value.db_value.value">{{value.db_translation.value}}</option>
                                         </select>
                                         <div class="error" v-if="errorAppear('part_second','db_typ_vlastnictvi')">{{translations.poleJePovinne}}</div>
                                     </div>
@@ -330,7 +325,7 @@
                                 <h3>{{translations.typStavby}}</h3>
                                 <div class="input-content form-field" :class="errorClass('part_second','db_material')">
                                     <select name="db_material" v-model.trim="$v.modelData.part_second.db_material.$model">
-                                        <option :value="value.db_id.value" v-for="value in options.material">{{value.db_translation.value}}</option>
+                                        <option :value="value.db_value.value" v-for="value in options.material">{{value.db_translation.value}}</option>
                                     </select>
                                     <div class="error" v-if="errorAppear('part_second','db_material')">{{translations.poleJePovinne}}</div>
                                 </div>
@@ -343,7 +338,7 @@
                                 <h3>{{translations.energetickaHodnota}}</h3>
                                 <div class="input-content form-field" :class="errorClass('part_second','db_penb')">
                                     <select name="db_penb" v-model.trim="$v.modelData.part_second.db_penb.$model">
-                                        <option :value="value.db_id.value" v-for="value in options.penb">{{value.db_translation.value}}</option>
+                                        <option :value="value.db_value.value" v-for="value in options.penb">{{value.db_translation.value}}</option>
                                     </select>
                                     <div class="error" v-if="errorAppear('part_second','db_penb')">{{translations.poleJePovinne}}</div>
                                 </div>
@@ -405,7 +400,7 @@
                     <form @submit.prevent="continueForm()">
 
 
-                        <h2>{{translations.fotografie}}</h2>
+                        <h2>{{translations.fotografie2}}</h2>
 
                         <div class="imagesLoader" :class="errorClass('part_third','db_inzerat_obrazky')">
                             <file-pond
@@ -562,16 +557,16 @@
                     return {
                         db_pocet_mistnosti: {
                             required: [
-                                {db_typ_stavby: 4, db_typ_inzeratu: 6},
-                                {db_typ_stavby: 3, db_typ_inzeratu: 6},
-                                {db_typ_stavby: 3, db_typ_inzeratu: 5},
-                                {db_typ_stavby: 4, db_typ_inzeratu: 5}
+                                {db_typ_stavby: 2, db_typ_inzeratu: 2},
+                                {db_typ_stavby: 1, db_typ_inzeratu: 2},
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1}
                             ],
                             appear: [
-                                {db_typ_stavby: 4, db_typ_inzeratu: 6},
-                                {db_typ_stavby: 3, db_typ_inzeratu: 6},
-                                {db_typ_stavby: 3, db_typ_inzeratu: 5},
-                                {db_typ_stavby: 4, db_typ_inzeratu: 5}
+                                {db_typ_stavby: 2, db_typ_inzeratu: 2},
+                                {db_typ_stavby: 1, db_typ_inzeratu: 2},
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1}
                             ],
                             type: Number
                         },
@@ -582,12 +577,12 @@
                         },
                         db_pozemkova_plocha: {
                             required: [
-                                {db_typ_stavby: 3, db_typ_inzeratu: 5},
-                                {db_typ_stavby: 3, db_typ_inzeratu: 6}
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 1, db_typ_inzeratu: 2}
                             ],
                             appear: [
-                                {db_typ_stavby: 3, db_typ_inzeratu: 5},
-                                {db_typ_stavby: 3, db_typ_inzeratu: 6}
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 1, db_typ_inzeratu: 2}
                             ],
                             type: Number
                         },
@@ -623,45 +618,45 @@
                         },
                         db_cena: {
                             required: [
-                                {db_typ_stavby: 3, db_typ_inzeratu: 6},
-                                {db_typ_stavby: 4, db_typ_inzeratu: 6}
+                                {db_typ_stavby: 1, db_typ_inzeratu: 2},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 2}
                             ],
                             appear: [
-                                {db_typ_stavby: 3, db_typ_inzeratu: 6},
-                                {db_typ_stavby: 4, db_typ_inzeratu: 6}
+                                {db_typ_stavby: 1, db_typ_inzeratu: 2},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 2}
                             ],
                             type: Number
                         },
                         db_cena_najem: {
                             required: [
-                                {db_typ_stavby: 3, db_typ_inzeratu: 5},
-                                {db_typ_stavby: 4, db_typ_inzeratu: 5}
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1}
                             ],
                             appear: [
-                                {db_typ_stavby: 3, db_typ_inzeratu: 5},
-                                {db_typ_stavby: 4, db_typ_inzeratu: 5}
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1}
                             ],
                             type: Number
                         },
                         db_kauce: {
                             required: [
-                                {db_typ_stavby: 3, db_typ_inzeratu: 5},
-                                {db_typ_stavby: 4, db_typ_inzeratu: 5}
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1}
                             ],
                             appear: [
-                                {db_typ_stavby: 3, db_typ_inzeratu: 5},
-                                {db_typ_stavby: 4, db_typ_inzeratu: 5}
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1}
                             ],
                             type: Number
                         },
                         db_poplatky: {
                             required: [
-                                {db_typ_stavby: 3, db_typ_inzeratu: 5},
-                                {db_typ_stavby: 4, db_typ_inzeratu: 5}
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1}
                             ],
                             appear: [
-                                {db_typ_stavby: 3, db_typ_inzeratu: 5},
-                                {db_typ_stavby: 4, db_typ_inzeratu: 5}
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1}
                             ],
                             type: Number
                         },
@@ -710,23 +705,23 @@
                         },
                         db_patro: {
                             required: [
-                                {db_typ_stavby: 4, db_typ_inzeratu: 5},
-                                {db_typ_stavby: 4, db_typ_inzeratu: 6}
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 2}
                             ],
                             appear: [
-                                {db_typ_stavby: 4, db_typ_inzeratu: 5},
-                                {db_typ_stavby: 4, db_typ_inzeratu: 6}
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 2}
                             ],
                             type: Number
                         },
                         db_celkem_podlazi: {
                             required: [
-                                {db_typ_stavby: 4, db_typ_inzeratu: 5},
-                                {db_typ_stavby: 4, db_typ_inzeratu: 6}
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 2}
                             ],
                             appear: [
-                                {db_typ_stavby: 4, db_typ_inzeratu: 5},
-                                {db_typ_stavby: 4, db_typ_inzeratu: 6}
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 2}
                             ],
                             type: Number
                         },
@@ -778,82 +773,9 @@
                     }
                 }
             },
+
             translations: {
                 type: Object,
-                default: function(){
-                    return {
-
-                        poleJePovinne: "Toto pole je povinné",
-
-                        zakladniInformace: "1. Základní informace",
-                        doplnujiciInformace: "2. Doplňující informace",
-                        fotografie: "3. Fotografie",
-                        sumarizace: "4. Summarizace",
-                        vlozeniInzeratu: "Vložení inzerátu",
-                        typInzeratu: "Typ inzerátu",
-                        typNemovitosti: "Typ nemovitosti",
-                        dispozice: "Dispozice",
-                        pokracovat: "Pokračovat",
-                        rozloha: "Rozloha",
-                        podlahovaPlocha: "Podlahová plocha",
-                        uzitkovaPlocha: "Užitková plocha",
-                        pozemkovaPlocha: "Plocha pozemku",
-                        poloha: "Poloha",
-                        mesto: "Město",
-                        ulice: "Ulice",
-                        cp: "Číslo popisné",
-                        psc: "PSČ",
-                        cena: "Cena",
-                        cenaNajmu: "Cena nájmu",
-                        poplatky: "Poplatky",
-                        kauce: "Kauce",
-                        mesic: "měsíc",
-                        kDispoziciOd: "K dispozici od",
-                        vybavenost: "Vybavenost",
-                        vybaveni: "Vybavení",
-                        terasa: "Terasa",
-                        vytah: "Výtah",
-                        parkovani: "Parkování",
-                        garaz: "Garáž",
-                        balkon: "Balkon",
-                        dalsiVybaveni: "Další vybavení",
-                        poschodi: "Poschodí",
-                        z: "z",
-                        stavObjektu: "Stav objektu",
-                        vlastnictvi: "Vlastnictví",
-                        typStavby: "Typ stavby",
-                        energetickaHodnota: "Energetická hodnota",
-                        bytVhodnyPro: "Byt je vhodný pro",
-                        mladyPar: "Např. mladý pár",
-                        okoliNemovitosti: "Okolí nemovitosti",
-                        popisteOkoli: "Popište, co se nachází v okolí nemovitosti...",
-                        doplnujiciPopis: "Doplňující popis",
-                        doplntePopis: "Je ještě něco, co byste chtěli doplnit k inzerátu?",
-                        zpet: "Zpět",
-                        fotografie: "Fotografie",
-                        vyberteNahledovyObrazek: "Vyberte náhledový obrázek",
-                        nahledPridanehoInzeratu: "Náhled přidaného inzerátu",
-                        viceInfo: "Více info",
-                        chceteAbyVasPrispevek: "Chcete aby váš příspěvek měl větší pozornost?",
-                        textPozornost: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lorem sit amet nulla auctor varius vel at ipsum. Praesent placerat, nisl sit amet interdum ornare, lectus odio vestibulum nibh, sed iaculis nisl dolor pellentesque libero.",
-                        vyzkousejteTopovani: "Vyzkoušejte topování",
-                        jakToFunguje: "Jak to funguje?",
-                        topovat: "Topovat",
-                        dokoncit: "Dokončit",
-                        processing: "Soubor je zpracováván",
-                        processingComplete: "Nahrávání dokončeno",
-                        processingAborted: "Nahrávání zrušeno",
-                        processingError: "Chyba při nahrávání",
-                        tapCancel: "Klikněte pro zrušení",
-                        tapRetry: "Klikněte pro opakování",
-                        tapUndo: "Klikněte pro vrácení",
-                        abortProcessing: "Zrušit",
-                        processItem: "Nahrát",
-
-                        titulekInzeratu: "Titulek inzerátu",
-                        mestskaCast: "Městská část"
-                    }
-                }
             },
             options: {
                 type: Object

@@ -7,7 +7,7 @@
                 <h3 v-html="getSpecialName"></h3>
 
 
-                <p>{{inzerat.db_popis}}</p>
+                <p>{{getDescription}}</p>
                 <div class="metaInfo-bar">
                     <div class="infoIco location">
                         <img :src="this.assetsPath + 'ikony/location.png'" alt=""/><span class="metaTxt">{{inzerat.db_mesto}}</span>
@@ -100,6 +100,13 @@
                 classObj[class_name] = true;
                 classObj['nemovitost'] = true;
                 return classObj;
+            },
+            getDescription(){
+                if(this.inzerat.db_popis.length > 100){
+                    return this.inzerat.db_popis.substring(0, 100) + "...";
+                }else{
+                    return this.inzerat.db_popis;
+                }
             }
         },
         methods: {

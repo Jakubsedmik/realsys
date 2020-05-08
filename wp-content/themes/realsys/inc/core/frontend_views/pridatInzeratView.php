@@ -2,7 +2,78 @@
 
 	<?php
         $options = new stdClass();
-        global $celkem_podlazi_options, $patra_options;
+        global $celkem_podlazi_options, $patra_options, $dispozice_options;
+
+        $inzerat_translations = array(
+            "poleJePovinne" => __("Toto pole je povinné"),
+            "zakladniInformace" => __("1. Základní informace"),
+            "doplnujiciInformace"=> __("2. Doplňující informace"),
+            "fotografie" => __("3. Fotografie"),
+            "sumarizace"=> __("4. Summarizace"),
+            "vlozeniInzeratu"=> __("Vložení inzerátu"),
+            "typInzeratu"=> __("Typ inzerátu"),
+            "typNemovitosti"=> __("Typ nemovitosti"),
+            "dispozice"=> __("Dispozice"),
+            "pokracovat"=> __("Pokračovat"),
+            "rozloha"=> __("Rozloha"),
+            "podlahovaPlocha"=> __("Podlahová plocha"),
+            "uzitkovaPlocha"=> __("Užitková plocha"),
+            "pozemkovaPlocha"=> __("Plocha pozemku"),
+            "poloha"=> __("Poloha"),
+            "mesto"=> __("Město"),
+            "ulice"=> __("Ulice"),
+            "cp"=> __("Číslo popisné"),
+            "psc"=> __("PSČ"),
+            "cena"=> __("Cena"),
+            "cenaNajmu"=> __("Cena nájmu"),
+            "poplatky"=> __("Poplatky"),
+            "kauce"=> __("Kauce"),
+            "mesic"=> __("měsíc"),
+            "kDispoziciOd"=> __("K dispozici od"),
+            "vybavenost"=> __("Vybavenost"),
+            "vybaveni"=> __("Vybavení"),
+            "terasa"=> __("Terasa"),
+            "vytah"=> __("Výtah"),
+            "parkovani"=> __("Parkování"),
+            "garaz"=> __("Garáž"),
+            "balkon"=> __("Balkon"),
+            "dalsiVybaveni"=> __("Další vybavení"),
+            "poschodi"=> __("Poschodí"),
+            "z"=> __("z"),
+            "stavObjektu"=> __("Stav objektu"),
+            "vlastnictvi"=> __("Vlastnictví"),
+            "typStavby"=> __("Typ stavby"),
+            "energetickaHodnota"=> __("Energetická hodnota"),
+            "bytVhodnyPro"=> __("Byt je vhodný pro"),
+            "mladyPar"=> __("Např. mladý pár"),
+            "okoliNemovitosti"=> __("Okolí nemovitosti"),
+            "popisteOkoli"=> __("Popište, co se nachází v okolí nemovitosti..."),
+            "doplnujiciPopis"=> __("Doplňující popis"),
+            "doplntePopis"=> __("Je ještě něco, co byste chtěli doplnit k inzerátu?"),
+            "zpet"=> __("Zpět"),
+            "fotografie2"=> __("Fotografie"),
+            "vyberteNahledovyObrazek"=> __("Vyberte náhledový obrázek"),
+            "nahledPridanehoInzeratu"=> __("Náhled přidaného inzerátu"),
+            "viceInfo"=> __("Více info"),
+            "chceteAbyVasPrispevek"=> __("Chcete aby váš příspěvek měl větší pozornost?"),
+            "textPozornost"=> __("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lorem sit amet nulla auctor varius vel at ipsum. Praesent placerat, nisl sit amet interdum ornare, lectus odio vestibulum nibh, sed iaculis nisl dolor pellentesque libero."),
+            "vyzkousejteTopovani"=> __("Vyzkoušejte topování"),
+            "jakToFunguje"=> __("Jak to funguje?"),
+            "topovat"=> __("Topovat"),
+            "dokoncit"=> __("Dokončit"),
+            "processing"=> __("Soubor je zpracováván"),
+            "processingComplete"=> __("Nahrávání dokončeno"),
+            "processingAborted"=> __("Nahrávání zrušeno"),
+            "processingError"=> __("Chyba při nahrávání"),
+            "tapCancel"=> __("Klikněte pro zrušení"),
+            "tapRetry"=> __("Klikněte pro opakování"),
+            "tapUndo"=> __("Klikněte pro vrácení"),
+            "abortProcessing"=> __("Zrušit"),
+            "processItem" => __("Nahrát"),
+            "titulekInzeratu"=> __("Titulek inzerátu"),
+            "mestskaCast"=> __("Městská část")
+        );
+
 
         $typ_inzeratu = assetsFactory::getAllDials( "inzeratClass", "typ_inzeratu" );
 	    $typ_stavby = assetsFactory::getAllDials( "inzeratClass", "typ_stavby" );
@@ -22,6 +93,7 @@
 	    $options->penb = $penb;
 	    $options->patro = $patra_options;
 	    $options->celkem_podlazi = $celkem_podlazi_options;
+	    $options->dispozice = $dispozice_options;
 
         ?>
 
@@ -29,6 +101,7 @@
         <Pridatinzerat
                 :options="<?php echo Tools::prepareJsonToOutputHtmlAttr($options); ?>"
                 :uzivatelid="<?php echo uzivatelClass::getUserLoggedId(); ?>"
+                :translations="<?php echo Tools::prepareJsonToOutputHtmlAttr($inzerat_translations); ?>"
                 ajax_url="<?php echo AJAXURL; ?>"
                 frontend_images_path="<?php echo FRONTEND_IMAGES_PATH; ?>"
                 currency_code="<?php echo CURRENCY_CODE; ?>"

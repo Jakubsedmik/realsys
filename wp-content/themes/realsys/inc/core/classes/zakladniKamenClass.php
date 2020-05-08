@@ -693,6 +693,7 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
 		$classname = get_class($this);
 		if(isset($dials[$classname])){
 			$dials_new = $dials[$classname];
+
 			foreach ($dials_new as $propname){
 				if(property_exists($this,$propname)){
 					$prop_name = str_replace("db_", "",$propname);

@@ -853,3 +853,13 @@ $celkem_podlazi_options = array(
 	14 => __("čtrnácti"),
 	15 => __("patnácti"),
 );
+
+$dispozice_options = array(
+	__("1+KK"),
+	__("1+KK"),
+	__("1+1"),
+	__("2+1"),
+	__("3+1"),
+	__("4+1"),
+	__("5+1")
+);
