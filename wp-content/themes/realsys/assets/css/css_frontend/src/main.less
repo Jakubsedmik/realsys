@@ -23,7 +23,20 @@ ok dám
 @import "my-profile-style.less";
 @import "filepond.css";
 @import "ico.css";
+[v-cloak] *{
+  display: none;
+}
 
+[v-cloak]:after{
+  content: "";
+  font-size: 18px;
+  display: block;
+  text-align: center;
+  background-image: url('@{path}/images/images_frontend/loading.gif');
+  min-height: 300px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
 /*colors
 #124734

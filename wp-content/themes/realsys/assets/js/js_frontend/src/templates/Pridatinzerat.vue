@@ -85,7 +85,7 @@
                         </div>
 
                         <!-- POCET MISTNOSTI -->
-                        <div class="inz-box" v-if="doesInputAppearRequire('db_pocet_mistnosti')">
+                        <div class="inz-box" v-show="doesInputAppearRequire('db_pocet_mistnosti')">
                             <div class="form-content">
                                 <h3>{{translations.dispozice}}</h3>
                                 <div class="single-val-form">
@@ -146,6 +146,11 @@
                                     <label class="form-field" v-if="doesInputAppearRequire('db_psc')" :class="errorClass('part_first','db_psc')">
                                         <input type="text" name="db_psc" class="input-outline" :placeholder="translations.psc" v-model.trim="$v.modelData.part_first.db_psc.$model">
                                         <div class="error" v-if="errorAppear('part_first','db_psc')">{{translations.poleJePovinne}}</div>
+                                    </label>
+                                    <!-- MESTSKA CAST -->
+                                    <label class="form-field" v-if="doesInputAppearRequire('db_mestska_cast')" :class="errorClass('part_first','db_mestska_cast')">
+                                        <input type="text" name="db_mestska_cast" class="input-outline" :placeholder="translations.mestskaCast" v-model.trim="$v.modelData.part_first.db_mestska_cast.$model">
+                                        <div class="error" v-if="errorAppear('part_first','db_mestska_cast')">{{translations.poleJePovinne}}</div>
                                     </label>
                                 </div>
                             </div>
@@ -268,48 +273,20 @@
                         </div>
 
                         <!-- PATRA -->
-                        <div class="inz-box" v-if="doesInputAppearRequire('db_patro') || doesInputAppearRequire('db_celkem_podlazi')">
+                        <div class="inz-box" v-show="doesInputAppearRequire('db_patro') || doesInputAppearRequire('db_celkem_podlazi')">
                             <div class="form-content">
                                 <h3>{{translations.poschodi}}</h3>
                                 <div class="input-content">
-                                    <label class="form-field" v-if="doesInputAppearRequire('db_patro')" :class="errorClass('part_second','db_patro')">
+                                    <label class="form-field" v-show="doesInputAppearRequire('db_patro')" :class="errorClass('part_second','db_patro')">
                                         <select name="db_patro" v-model.trim="$v.modelData.part_second.db_patro.$model">
-                                            <option value="1. patro">1. patro</option>
-                                            <option value="2. patro">2. patro</option>
-                                            <option value="3. patro">3. patro</option>
-                                            <option value="4. patro">4. patro</option>
-                                            <option value="5. patro">5. patro</option>
-                                            <option value="6. patro">6. patro</option>
-                                            <option value="7. patro">7. patro</option>
-                                            <option value="8. patro">8. patro</option>
-                                            <option value="9. patro">9. patro</option>
-                                            <option value="10. patro">10. patro</option>
-                                            <option value="11. patro">11. patro</option>
-                                            <option value="12. patro">12. patro</option>
-                                            <option value="13. patro">13. patro</option>
-                                            <option value="14. patro">14. patro</option>
-                                            <option value="15. patro">15. patro</option>
+                                            <option v-for="(val,index) in options.patro" :value="index">{{val}}</option>
                                         </select>
                                         <div class="error" v-if="errorAppear('part_second','db_patro')">{{translations.poleJePovinne}}</div>
                                     </label>
                                     <span class="form-comment">{{translations.z}}</span>
-                                    <label class="form-field" v-if="doesInputAppearRequire('db_celkem_podlazi')" :class="errorClass('part_second','db_celkem_podlazi')">
+                                    <label class="form-field" v-show="doesInputAppearRequire('db_celkem_podlazi')" :class="errorClass('part_second','db_celkem_podlazi')">
                                         <select name="db_celkem_podlazi" v-model.trim="$v.modelData.part_second.db_celkem_podlazi.$model">
-                                            <option value="jednoho">jednoho</option>
-                                            <option value="dvou">dvou</option>
-                                            <option value="tří">tří</option>
-                                            <option value="čtyř">čtyř</option>
-                                            <option value="pěti">pěti</option>
-                                            <option value="šesti">šesti</option>
-                                            <option value="sedmi">sedmi</option>
-                                            <option value="osmi">osmi</option>
-                                            <option value="devíti">devíti</option>
-                                            <option value="deseti">deseti</option>
-                                            <option value="jedenácti">jedenácti</option>
-                                            <option value="dvanácti">dvanácti</option>
-                                            <option value="třinácti">třinácti</option>
-                                            <option value="čtrnácti">čtrnácti</option>
-                                            <option value="patnácti">patnácti</option>
+                                            <option v-for="(val,index) in options.celkem_podlazi" :value="index">{{val}}</option>
                                         </select>
                                         <div class="error" v-if="errorAppear('part_second','db_celkem_podlazi')">{{translations.poleJePovinne}}</div>
                                     </label>
@@ -333,7 +310,7 @@
                         </div>
 
                         <!-- TYP VLASTNICTVÍ -->
-                        <div class="inz-box" v-if="doesInputAppearRequire('db_typ_vlastnictvi')">
+                        <div class="inz-box" v-show="doesInputAppearRequire('db_typ_vlastnictvi')">
                             <div class="form-content">
                                 <h3>{{translations.vlastnictvi}}</h3>
                                 <div class="input-content">
@@ -348,7 +325,7 @@
                         </div>
 
                         <!-- TYP STAVBY -->
-                        <div class="inz-box" v-if="doesInputAppearRequire('db_material')">
+                        <div class="inz-box" v-show="doesInputAppearRequire('db_material')">
                             <div class="form-content">
                                 <h3>{{translations.typStavby}}</h3>
                                 <div class="input-content form-field" :class="errorClass('part_second','db_material')">
@@ -361,7 +338,7 @@
                         </div>
 
                         <!-- ENERGETICKÁ HODNOTA -->
-                        <div class="inz-box align-left" v-if="doesInputAppearRequire('db_penb')">
+                        <div class="inz-box align-left" v-show="doesInputAppearRequire('db_penb')">
                             <div class="form-content">
                                 <h3>{{translations.energetickaHodnota}}</h3>
                                 <div class="input-content form-field" :class="errorClass('part_second','db_penb')">
@@ -386,6 +363,18 @@
                             </div>
                         </div>
 
+                        <!-- Titulek inzeratu -->
+                        <div class="inz-box no-border" v-if="doesInputAppearRequire('db_titulek')">
+                            <div class="form-content">
+                                <h3>{{translations.titulekInzeratu}}</h3>
+                                <div class="input-content">
+                                    <label class="form-field" :class="errorClass('part_second','db_titulek')">
+                                        <input type="text" name="db_titulek" value="" class="input-outline" :placeholder="translations.titulekInzeratu" v-model.trim="$v.modelData.part_second.db_titulek.$model">
+                                        <div class="error" v-if="errorAppear('part_second','db_titulek')">{{translations.poleJePovinne}}</div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
 
                         <!-- DOPLNUJICI POPIS -->
                         <div class="inz-box no-border" v-if="doesInputAppearRequire('db_popis')">
@@ -530,11 +519,11 @@
                         </div>
                     </div>
 
-                    <form ref="finalForm" type="POST">
+                    <form ref="finalForm" method="POST" style="display: none;">
                         <div v-for="(val,index) in this.finishedForm">
                             <input type="hidden" :value="val" :name="index" v-if="index !== 'db_inzerat_obrazky'">
                             <select v-else :name="index + '[]'" multiple>
-                                <option :value="obr.db_id" v-for="obr in val">{{obr.db_id}}</option>
+                                <option :value="obr.db_id" v-for="obr in val" selected>{{obr.db_id}}</option>
                             </select>
                         </div>
                     </form>
@@ -571,136 +560,220 @@
                 type: Object,
                 default: function () {
                     return {
-                        db_pocet_mistnosti:{
-                            visibleForAll: true,
-                            db_typ_stavby: [3,4],
-                            db_typ_inzeratu: [5,6],
-                            required: true
+                        db_pocet_mistnosti: {
+                            required: [
+                                {db_typ_stavby: 4, db_typ_inzeratu: 6},
+                                {db_typ_stavby: 3, db_typ_inzeratu: 6},
+                                {db_typ_stavby: 3, db_typ_inzeratu: 5},
+                                {db_typ_stavby: 4, db_typ_inzeratu: 5}
+                            ],
+                            appear: [
+                                {db_typ_stavby: 4, db_typ_inzeratu: 6},
+                                {db_typ_stavby: 3, db_typ_inzeratu: 6},
+                                {db_typ_stavby: 3, db_typ_inzeratu: 5},
+                                {db_typ_stavby: 4, db_typ_inzeratu: 5}
+                            ],
+                            type: Number
                         },
-                        db_uzitkova_plocha:{
-                            visibleForAll: true,
-                            required: true
+                        db_uzitkova_plocha: {
+                            required: true,
+                            appear: true,
+                            type: Number
                         },
-                        db_pozemkova_plocha:{
-                            db_typ_stavby: [3],
-                            db_typ_inzeratu: [6],
-                            required: true
+                        db_pozemkova_plocha: {
+                            required: [
+                                {db_typ_stavby: 3, db_typ_inzeratu: 5},
+                                {db_typ_stavby: 3, db_typ_inzeratu: 6}
+                            ],
+                            appear: [
+                                {db_typ_stavby: 3, db_typ_inzeratu: 5},
+                                {db_typ_stavby: 3, db_typ_inzeratu: 6}
+                            ],
+                            type: Number
                         },
-                        db_podlahova_plocha:{
-                            visibleForAll: true,
-                            required: true
+                        db_podlahova_plocha: {
+                            required: true,
+                            appear: true,
+                            type: Number
                         },
-                        db_mesto:{
-                            visibleForAll: true,
-                            required: true
+                        db_mesto: {
+                            required: true,
+                            appear: true,
+                            type: String
                         },
-                        db_ulice:{
-                            visibleForAll: true,
-                            required: true
+                        db_ulice: {
+                            required: true,
+                            appear: true,
+                            type: String
                         },
-                        db_cp:{
-                            visibleForAll: true,
-                            required: true
+                        db_cp: {
+                            required: true,
+                            appear: true,
+                            type: String
                         },
-                        db_psc:{
-                            visibleForAll: true,
-                            required: true
+                        db_psc: {
+                            required: true,
+                            appear: true,
+                            type: String
                         },
-                        db_cena:{
-                            db_typ_stavby: [3,4],
-                            db_typ_inzeratu: [6],
-                            required: true
+                        db_mestska_cast: {
+                            required: true,
+                            appear: true,
+                            type: String
                         },
-                        db_cena_najem:{
-                            db_typ_stavby: [3,4],
-                            db_typ_inzeratu: [5],
-                            required: true
+                        db_cena: {
+                            required: [
+                                {db_typ_stavby: 3, db_typ_inzeratu: 6},
+                                {db_typ_stavby: 4, db_typ_inzeratu: 6}
+                            ],
+                            appear: [
+                                {db_typ_stavby: 3, db_typ_inzeratu: 6},
+                                {db_typ_stavby: 4, db_typ_inzeratu: 6}
+                            ],
+                            type: Number
                         },
-                        db_kauce:{
-                            db_typ_stavby: [3,4],
-                            db_typ_inzeratu: [5],
-                            required: true
+                        db_cena_najem: {
+                            required: [
+                                {db_typ_stavby: 3, db_typ_inzeratu: 5},
+                                {db_typ_stavby: 4, db_typ_inzeratu: 5}
+                            ],
+                            appear: [
+                                {db_typ_stavby: 3, db_typ_inzeratu: 5},
+                                {db_typ_stavby: 4, db_typ_inzeratu: 5}
+                            ],
+                            type: Number
                         },
-                        db_poplatky:{
-                            db_typ_stavby: [3,4],
-                            db_typ_inzeratu: [5],
-                            required: true
+                        db_kauce: {
+                            required: [
+                                {db_typ_stavby: 3, db_typ_inzeratu: 5},
+                                {db_typ_stavby: 4, db_typ_inzeratu: 5}
+                            ],
+                            appear: [
+                                {db_typ_stavby: 3, db_typ_inzeratu: 5},
+                                {db_typ_stavby: 4, db_typ_inzeratu: 5}
+                            ],
+                            type: Number
+                        },
+                        db_poplatky: {
+                            required: [
+                                {db_typ_stavby: 3, db_typ_inzeratu: 5},
+                                {db_typ_stavby: 4, db_typ_inzeratu: 5}
+                            ],
+                            appear: [
+                                {db_typ_stavby: 3, db_typ_inzeratu: 5},
+                                {db_typ_stavby: 4, db_typ_inzeratu: 5}
+                            ],
+                            type: Number
                         },
 
-                        /* PART TWO */
-                        db_k_dispozici_od:{
-                            visibleForAll: true,
-                            required: true
+                        // PART TWO
+
+                        db_k_dispozici_od: {
+                            required: true,
+                            appear: true,
+                            type: Date
                         },
-                        db_vybavenost:{
-                            visibleForAll: true,
-                            required: true
+                        db_vybavenost: {
+                            required: true,
+                            appear: true,
+                            type: Number
                         },
-                        db_terasa:{
-                            visibleForAll: true,
-                            required: true
+                        db_terasa: {
+                            required: false,
+                            appear: true,
+                            type: Boolean
                         },
-                        db_vytah:{
-                            visibleForAll: true,
-                            required: true
+                        db_vytah: {
+                            required: false,
+                            appear: true,
+                            type: Boolean
                         },
-                        db_parkovaci_misto:{
-                            visibleForAll: true,
-                            required: true
+                        db_parkovaci_misto: {
+                            required: false,
+                            appear: true,
+                            type: Boolean
                         },
-                        db_garaz:{
-                            visibleForAll: true,
-                            required: true
+                        db_garaz: {
+                            required: false,
+                            appear: true,
+                            type: Boolean
                         },
-                        db_balkon:{
-                            visibleForAll: true,
-                            required: true
+                        db_balkon: {
+                            required: false,
+                            appear: true,
+                            type: Boolean
                         },
-                        db_dalsi_vybaveni:{
-                            visibleForAll: false,
-                            required: true
+                        db_dalsi_vybaveni: {
+                            required: true,
+                            appear: true,
+                            type: String
                         },
-                        db_patro:{
-                            db_typ_stavby: [4],
-                            db_typ_inzeratu: [6,5],
-                            required: true
+                        db_patro: {
+                            required: [
+                                {db_typ_stavby: 4, db_typ_inzeratu: 5},
+                                {db_typ_stavby: 4, db_typ_inzeratu: 6}
+                            ],
+                            appear: [
+                                {db_typ_stavby: 4, db_typ_inzeratu: 5},
+                                {db_typ_stavby: 4, db_typ_inzeratu: 6}
+                            ],
+                            type: Number
                         },
-                        db_celkem_podlazi:{
-                            db_typ_stavby: [4],
-                            db_typ_inzeratu: [6,5],
-                            required: true
+                        db_celkem_podlazi: {
+                            required: [
+                                {db_typ_stavby: 4, db_typ_inzeratu: 5},
+                                {db_typ_stavby: 4, db_typ_inzeratu: 6}
+                            ],
+                            appear: [
+                                {db_typ_stavby: 4, db_typ_inzeratu: 5},
+                                {db_typ_stavby: 4, db_typ_inzeratu: 6}
+                            ],
+                            type: Number
                         },
-                        db_stav_objektu:{
-                            visibleForAll: true,
-                            required: true
+                        db_stav_objektu: {
+                            required: true,
+                            appear: true,
+                            type: Number
                         },
-                        db_typ_vlastnictvi:{
-                            visibleForAll: true,
-                            required: true
+                        db_typ_vlastnictvi: {
+                            required: true,
+                            appear: true,
+                            type: Number
                         },
-                        db_material:{
-                            visibleForAll: true,
-                            required: true
+                        db_material: {
+                            required: true,
+                            appear: true,
+                            type: Number
                         },
-                        db_penb:{
-                            visibleForAll: true,
-                            required: true
+                        db_penb: {
+                            required: true,
+                            appear: true,
+                            type: Number
                         },
-                        db_vhodny_pro:{
-                            visibleForAll: true,
-                            required: true
+                        db_vhodny_pro: {
+                            required: true,
+                            appear: true,
+                            type: String
                         },
-                        db_popis:{
-                            visibleForAll: true,
-                            required: true
+                        db_popis: {
+                            required: true,
+                            appear: true,
+                            type: String
                         },
-                        db_inzerat_obrazky:{
-                            visibleForAll: true,
-                            required: true
+                        db_titulek: {
+                            required: true,
+                            appear: true,
+                            type: String
                         },
-                        db_obrazek_front:{
-                            visibleForAll: true,
-                            required: true
+                        db_inzerat_obrazky: {
+                            required: true,
+                            appear: true,
+                            type: Array
+                        },
+                        db_obrazek_front: {
+                            required: true,
+                            appear: true,
+                            type: Number
                         }
                     }
                 }
@@ -722,7 +795,7 @@
                         dispozice: "Dispozice",
                         pokracovat: "Pokračovat",
                         rozloha: "Rozloha",
-                        podlahovaPlocha: "Pdlahová plocha",
+                        podlahovaPlocha: "Podlahová plocha",
                         uzitkovaPlocha: "Užitková plocha",
                         pozemkovaPlocha: "Plocha pozemku",
                         poloha: "Poloha",
@@ -775,7 +848,10 @@
                         tapRetry: "Klikněte pro opakování",
                         tapUndo: "Klikněte pro vrácení",
                         abortProcessing: "Zrušit",
-                        processItem: "Nahrát"
+                        processItem: "Nahrát",
+
+                        titulekInzeratu: "Titulek inzerátu",
+                        mestskaCast: "Městská část"
                     }
                 }
             },
@@ -824,6 +900,7 @@
                         db_ulice: "",
                         db_cp: "",
                         db_psc: "",
+                        db_mestska_cast: "",
                         db_cena: "",
                         db_cena_najem: "",
                         db_kauce: "",
@@ -845,6 +922,7 @@
                         db_material: "",
                         db_penb: "",
                         db_vhodny_pro: "",
+                        db_titulek: "",
                         db_popis: ""
                     },
                     part_third: {
@@ -864,11 +942,31 @@
             doesInputAppearRequire: function(fieldName, requiring = false){
                 if(this.frontend_rules.hasOwnProperty(fieldName)){
                     let rule = this.frontend_rules[fieldName];
-                    let typ_stavby = parseInt(this.modelData.part_first.db_typ_stavby);
-                    let typ_inzeratu = parseInt(this.modelData.part_first.db_typ_inzeratu);
+
+                    if(rule.hasOwnProperty("appear") && rule.hasOwnProperty("required") && rule.hasOwnProperty("type")){
+                        let appear = rule.appear;
+                        let required = rule.required;
+                        if(requiring){
+                            if(typeof required == "boolean"){
+                                return required;
+                            }else{
+                                return this.checkRules(required);
+                            }
+                        }else{
+                            if(typeof appear == "boolean"){
+                                return appear;
+                            }else{
+                                return this.checkRules(appear);
+                            }
+                        }
 
 
-                    if(rule.hasOwnProperty("visibleForAll")){
+                    }else{
+                        console.error("Frontend rules doesnt have supported format: " + fieldName);
+                        return false;
+                    }
+
+                    /*if(rule.hasOwnProperty("visibleForAll")){
                         if(rule.visibleForAll){
                             if(requiring){
                                 return rule.required;
@@ -884,7 +982,7 @@
                             return rule.required;
                         }
                         return true;
-                    }
+                    }*/
 
                 }else{
                     return false;
@@ -969,6 +1067,30 @@
             },
             finishForm(){
                 this.$refs.finalForm.submit();
+            },
+            checkRules(rules){
+                var totalForm = this.finishedForm;
+
+                for(let index in rules){
+                    var currentRule = rules[index];
+
+                    var setRuleTrue = true;
+                    for(let property in currentRule){
+                        if(totalForm.hasOwnProperty(property)){
+                            if(totalForm[property] != currentRule[property]){
+                                setRuleTrue = false;
+                                break;
+                            }
+                        }else{
+                            console.warn("This property doesnt exist in totalForm: " + property);
+                        }
+                    }
+
+                    if(setRuleTrue){
+                        return setRuleTrue;
+                    }
+                }
+                return false;
             }
         },
         computed: {
@@ -1005,9 +1127,11 @@
                 }
             },
             finishedForm(){
-                var formData = Object.assign(this.modelData.part_first, this.modelData.part_second, this.modelData.part_third, this.modelData.part_fourth);
+                var formData = {...this.modelData.part_first, ...this.modelData.part_second, ...this.modelData.part_third, ...this.modelData.part_fourth};
                 formData = JSON.parse(JSON.stringify(formData));
+
                 formData.uzivatelid = this.uzivatelid;
+
                 return formData;
             }
         },
@@ -1058,6 +1182,11 @@
                     db_psc: {
                         required: requiredIf(function () {
                             return this.doesInputAppearRequire("db_psc", true);
+                        })
+                    },
+                    db_mestska_cast: {
+                        required: requiredIf(function () {
+                            return this.doesInputAppearRequire("db_mestska_cast", true);
                         })
                     },
                     db_cena: {
@@ -1137,6 +1266,11 @@
                             return this.doesInputAppearRequire("db_popis", true);
                         })
                     },
+                    db_titulek: {
+                        required: requiredIf(function () {
+                            return this.doesInputAppearRequire("db_titulek", true);
+                        })
+                    },
                     db_terasa: {
                         required: false
                     },
@@ -1171,21 +1305,13 @@
 </script>
 
 <style scoped>
+
     .error {
         display: none;
     }
 
     .form-field--error .error {
         display: block;
-    }
-
-    [v-cloak] *{
-        display: none;
-    }
-
-    [v-cloak]:after{
-        content: "Načítání";
-        font-size: 18px;
     }
 
     .frontImage, .imagesLoader{

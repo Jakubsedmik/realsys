@@ -230,6 +230,10 @@ $field_rules = array(
 			"required" => true,
 			"type"     => NUMBER
 		),
+		'db_celkem_podlazi' => array(
+			"required" => false,
+			"type" => NUMBER
+		),
 		'db_parkovaci_misto'  => array(
 			"required" => true,
 			"type"     => BOOL
@@ -275,11 +279,15 @@ $field_rules = array(
 			"type"     => NUMBER
 		),
 		'db_podlahova_plocha' => array(
-			'required' => true,
+			'required' => false,
 			'type'     => NUMBER
 		),
 		'db_pozemkova_plocha' => array(
-			'required' => true,
+			'required' => false,
+			'type'     => NUMBER
+		),
+		'db_uzitkova_plocha' => array(
+			'required' => false,
 			'type'     => NUMBER
 		),
 		'db_lat'              => array(
@@ -319,7 +327,7 @@ $field_rules = array(
 			'type'     => NUMBER
 		),
 		'db_cena'             => array(
-			'required' => true,
+			'required' => false,
 			'type'     => PRICE
 		),
 		'db_cena_poznamka'    => array(
@@ -449,15 +457,7 @@ $frontend_general_rules = array(
 		"required" => true,
 		"number" => true
 	),
-	'db_typ_stavby' => array(
-		"required" => true,
-		"number" => true
-	),
 	'db_typ_inzeratu' => array(
-		"required" => true,
-		"number" => true
-	),
-	'db_pozemkova_plocha' => array(
 		"required" => true,
 		"number" => true
 	),
@@ -482,11 +482,27 @@ $frontend_general_rules = array(
 		"number" => true
 	),
 	'db_patro' => array(
-		"required" => true,
+		"required" => false,
+		"number" => true
+	),
+	'db_celkem_podlazi' => array(
+		"required" => false,
 		"number" => true
 	),
 	'db_inzerat_obrazky[]' => array(
 		"required" => true
+	)
+);
+
+$frontend_add_rules = array(
+	'db_patro' => array(
+		'type' => NUMBER,
+		'required' => array(
+			array('db_typ_nemovitosti'=> 4, 'db_typ_stavby' => 5 ),
+		),
+		'appear' => array(
+
+		)
 	)
 );
 
@@ -799,4 +815,41 @@ $cenik_sluzeb = array(
 		'price' => 3,
 		'requireEntity' => true
 	)
+);
+
+$patra_options = array(
+	1 => __("1. patro"),
+	2 => __("2. patro"),
+	3 => __("3. patro"),
+	4 => __("4. patro"),
+	5 => __("5. patro"),
+	6 => __("6. patro"),
+	7 => __("7. patro"),
+	8 => __("8. patro"),
+	9 => __("9. patro"),
+	10 => __("10. patro"),
+	11 => __("11. patro"),
+	12 => __("12. patro"),
+	13 => __("13. patro"),
+	14 => __("14. patro"),
+	15 => __("15. patro"),
+);
+
+
+$celkem_podlazi_options = array(
+	1 => __("jednoho"),
+	2 => __("dvou"),
+	3 => __("tří"),
+	4 => __("čtyř"),
+	5 => __("pěti"),
+	6 => __("šesti"),
+	7 => __("sedmi"),
+	8 => __("osmi"),
+	9 => __("devíti"),
+	10 => __("deseti"),
+	11 => __("jedenácti"),
+	12 => __("dvanácti"),
+	13 => __("třinácti"),
+	14 => __("čtrnácti"),
+	15 => __("patnácti"),
 );

@@ -367,6 +367,19 @@ input {
   align-items: center;
   margin: auto;
 }
+[v-cloak] * {
+  display: none;
+}
+[v-cloak]:after {
+  content: "";
+  font-size: 18px;
+  display: block;
+  text-align: center;
+  background-image: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/loading.gif');
+  min-height: 300px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 /*colors
 #124734
 #7ec242

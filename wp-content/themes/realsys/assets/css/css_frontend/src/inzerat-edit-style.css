@@ -128,7 +128,7 @@ label .type-inz i:before, label .type-nem i:before{
 }
 .currency, .area{
     position: absolute;
-    right: 20px;
+    right: 40px;
     top: 8px;
     font-weight: 700;
     color: #154734;

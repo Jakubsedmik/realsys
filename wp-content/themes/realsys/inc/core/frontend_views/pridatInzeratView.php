@@ -2,6 +2,7 @@
 
 	<?php
         $options = new stdClass();
+        global $celkem_podlazi_options, $patra_options;
 
         $typ_inzeratu = assetsFactory::getAllDials( "inzeratClass", "typ_inzeratu" );
 	    $typ_stavby = assetsFactory::getAllDials( "inzeratClass", "typ_stavby" );
@@ -19,6 +20,8 @@
 	    $options->typ_vlastnictvi = $typ_vlastnictvi;
 	    $options->material = $material;
 	    $options->penb = $penb;
+	    $options->patro = $patra_options;
+	    $options->celkem_podlazi = $celkem_podlazi_options;
 
         ?>
 
@@ -30,6 +33,7 @@
                 frontend_images_path="<?php echo FRONTEND_IMAGES_PATH; ?>"
                 currency_code="<?php echo CURRENCY_CODE; ?>"
                 lang_code="<?php echo LANG_CODE; ?>"
+                v-cloak
         ></Pridatinzerat>
     </div>
 
