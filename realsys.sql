@@ -2,10 +2,10 @@
 -- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 27, 2020 at 05:34 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.2
+-- Počítač: 127.0.0.1
+-- Vytvořeno: Pát 08. kvě 2020, 19:14
+-- Verze serveru: 10.1.38-MariaDB
+-- Verze PHP: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `realsys`
+-- Databáze: `realsys`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `s7_ciselnik`
+-- Struktura tabulky `s7_ciselnik`
 --
 
 CREATE TABLE `s7_ciselnik` (
@@ -39,7 +39,7 @@ CREATE TABLE `s7_ciselnik` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_czech_ci COMMENT='Tabulka pro překlad jednotlivých stavů';
 
 --
--- Dumping data for table `s7_ciselnik`
+-- Vypisuji data pro tabulku `s7_ciselnik`
 --
 
 INSERT INTO `s7_ciselnik` (`id`, `domain`, `property`, `value`, `translation`, `datum_zalozeni`, `datum_upravy`) VALUES
@@ -74,7 +74,7 @@ INSERT INTO `s7_ciselnik` (`id`, `domain`, `property`, `value`, `translation`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `s7_hlidacipes`
+-- Struktura tabulky `s7_hlidacipes`
 --
 
 CREATE TABLE `s7_hlidacipes` (
@@ -91,19 +91,16 @@ CREATE TABLE `s7_hlidacipes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_czech_ci COMMENT='Tabulka pro evidenci hlídacích psů';
 
 --
--- Dumping data for table `s7_hlidacipes`
+-- Vypisuji data pro tabulku `s7_hlidacipes`
 --
 
 INSERT INTO `s7_hlidacipes` (`id`, `uzivatel_id`, `jmeno_psa`, `posledni_inzeraty`, `nastaveni_filtru`, `nove_inzeraty_pocet`, `posledni_zobrazeni`, `premium`, `datum_zalozeni`, `datum_upravy`) VALUES
-(1, 4, 'Muj pes', 'a:8:{i:0;s:2:\"39\";i:1;s:1:\"9\";i:2;s:1:\"8\";i:3;s:1:\"7\";i:4;s:1:\"6\";i:5;s:1:\"5\";i:6;s:1:\"1\";i:7;s:2:\"12\";}', 'a:1:{i:0;O:11:\"filterClass\":3:{s:11:\"\0*\0operator\";s:1:\">\";s:9:\"\0*\0value1\";s:16:\"podlahova_plocha\";s:9:\"\0*\0value2\";i:60;}}', 0, 1586773890, 0, 1586512544, 1586773890),
-(15, 4, 'Pejseeek', 'a:5:{i:0;s:2:\"39\";i:1;s:1:\"8\";i:2;s:1:\"7\";i:3;s:1:\"6\";i:4;s:1:\"5\";}', 'a:1:{i:0;O:11:\"filterClass\":3:{s:11:\"\0*\0operator\";s:1:\"=\";s:9:\"\0*\0value1\";s:12:\"stav_objektu\";s:9:\"\0*\0value2\";s:1:\"2\";}}', 0, 1588001500, 0, 1586779689, 1588001500),
-(18, 4, 'Nový pejsek', 'a:1:{i:0;s:1:\"6\";}', 'a:1:{i:0;O:11:\"filterClass\":3:{s:11:\"\0*\0operator\";s:1:\"=\";s:9:\"\0*\0value1\";s:15:\"typ_nemovitosti\";s:9:\"\0*\0value2\";s:1:\"1\";}}', 0, 1587755612, 1, 1587755601, 1587755612),
-(20, 4, 'Nový hlídací pes', 'a:3:{i:0;s:2:\"39\";i:1;s:1:\"7\";i:2;s:1:\"1\";}', 'a:1:{i:0;O:11:\"filterClass\":3:{s:11:\"\0*\0operator\";s:1:\"=\";s:9:\"\0*\0value1\";s:4:\"penb\";s:9:\"\0*\0value2\";s:1:\"2\";}}', 0, 1588001401, 1, 1587924300, 1588001401);
+(1, 4, 'Muj pes', 'a:8:{i:0;s:2:\"39\";i:1;s:1:\"9\";i:2;s:1:\"8\";i:3;s:1:\"7\";i:4;s:1:\"6\";i:5;s:1:\"5\";i:6;s:1:\"1\";i:7;s:2:\"12\";}', 'a:1:{i:0;O:11:\"filterClass\":3:{s:11:\"\0*\0operator\";s:1:\">\";s:9:\"\0*\0value1\";s:16:\"podlahova_plocha\";s:9:\"\0*\0value2\";i:60;}}', 0, 1586773890, 0, 1586512544, 1586773890);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `s7_inzerat`
+-- Struktura tabulky `s7_inzerat`
 --
 
 CREATE TABLE `s7_inzerat` (
@@ -114,7 +111,8 @@ CREATE TABLE `s7_inzerat` (
   `typ_stavby` int(11) NOT NULL,
   `typ_inzeratu` int(11) NOT NULL,
   `pocet_mistnosti` varchar(255) COLLATE utf8mb4_czech_ci NOT NULL,
-  `patro` int(11) NOT NULL,
+  `patro` int(11) DEFAULT NULL,
+  `celkem_podlazi` int(11) DEFAULT NULL,
   `parkovaci_misto` tinyint(1) NOT NULL DEFAULT '0',
   `garaz` tinyint(1) NOT NULL DEFAULT '0',
   `balkon` tinyint(1) NOT NULL DEFAULT '0',
@@ -126,8 +124,9 @@ CREATE TABLE `s7_inzerat` (
   `penb` int(11) NOT NULL,
   `typ_vlastnictvi` int(11) NOT NULL,
   `material` int(11) NOT NULL,
-  `podlahova_plocha` int(11) NOT NULL,
-  `pozemkova_plocha` int(11) NOT NULL,
+  `podlahova_plocha` int(11) DEFAULT NULL,
+  `pozemkova_plocha` int(11) DEFAULT NULL,
+  `uzitkova_plocha` int(11) DEFAULT NULL,
   `lat` float NOT NULL,
   `lng` float NOT NULL,
   `ulice` varchar(255) COLLATE utf8mb4_czech_ci NOT NULL,
@@ -137,32 +136,40 @@ CREATE TABLE `s7_inzerat` (
   `cp` varchar(63) COLLATE utf8mb4_czech_ci NOT NULL,
   `uzivatel_id` int(11) DEFAULT NULL,
   `top` int(11) NOT NULL DEFAULT '0',
-  `cena` int(11) NOT NULL,
+  `cena` int(11) DEFAULT NULL,
   `cena_poznamka` varchar(511) COLLATE utf8mb4_czech_ci DEFAULT NULL,
+  `cena_najem` int(11) DEFAULT NULL,
+  `poplatky` int(11) DEFAULT NULL,
+  `kauce` int(11) DEFAULT NULL,
+  `vhodny_pro` int(11) DEFAULT NULL,
+  `k_dispozici_od` int(11) DEFAULT NULL,
+  `dalsi_vybaveni` text COLLATE utf8mb4_czech_ci,
   `datum_upravy` int(11) NOT NULL,
   `datum_zalozeni` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_czech_ci COMMENT='Tabulka sloužící pro evidenci všech inzerátů';
 
 --
--- Dumping data for table `s7_inzerat`
+-- Vypisuji data pro tabulku `s7_inzerat`
 --
 
-INSERT INTO `s7_inzerat` (`id`, `titulek`, `popis`, `typ_nemovitosti`, `typ_stavby`, `typ_inzeratu`, `pocet_mistnosti`, `patro`, `parkovaci_misto`, `garaz`, `balkon`, `vytah`, `terasa`, `stav_objektu`, `stav_inzeratu`, `vybavenost`, `penb`, `typ_vlastnictvi`, `material`, `podlahova_plocha`, `pozemkova_plocha`, `lat`, `lng`, `ulice`, `mesto`, `mestska_cast`, `psc`, `cp`, `uzivatel_id`, `top`, `cena`, `cena_poznamka`, `datum_upravy`, `datum_zalozeni`) VALUES
-(1, 'Prodej bytu 2+1', 'Testovací popisek pro byt. Speciální popisek.', 5, 2, 1, 'Ateliér', 2, 1, 0, 1, 0, 0, 3, 1, 0, 2, 0, 0, 65, 150, 50.1609, 14.393, 'Tyršovo Náměstí', 'Roztoky', 'Praha západ', '25264', '45', 1, 0, 30000000, 'Cena bez energií a bez poplatků', 1587732126, 1587732126),
-(2, 'Prodej domu Kladno', 'Velice hezký domek', 5, 2, 2, '1+1', 2, 1, 1, 1, 1, 0, 3, 1, 1, 3, 0, 1, 22, 20, 55, 65, 'Františkova', 'Kladno', 'Doksy', '25267', '878/85', 2, 0, 180000, 'pouze 1/4 podíl', 1586427265, 1570312800),
-(5, 'Velmi speciální byt', 'Speciální byt, díky jeho přednostem.', 5, 2, 2, '3+1', 2, 1, 1, 0, 1, 0, 2, 1, 1, 1, 0, 1, 68, 185, 59.847, 65.554, 'Tyršova', 'Suchdol', 'Praha západ', '25262', '88', 14, 0, 1500000, 'Bez daně z nabytí', 1586433627, 1571004000),
-(6, 'Koloseum', 'Obrovské koloseum na prodej', 1, 1, 2, '5+kk', 3, 1, 1, 1, 0, 0, 2, 1, 2, 3, 1, 2, 450, 1024, 54, 58, 'Pražská', 'Velké Přílepy', 'Praha západ', '25263', '69', 1, 0, 15000000, 'Provize v ceně', 1583154784, 1572390000),
-(7, 'Dům domů', 'Velký dům pro velkou rodinu', 5, 1, 2, '8+kk', 4, 0, 1, 1, 0, 1, 2, 1, 1, 2, 0, 0, 143, 150, 53, 58, 'Václavské Náměstí', 'Praha', 'Praha 2', '12000', '875/85', 2, 0, 28000, 'Bez poplatků', 1583154704, 1572390000),
-(8, 'Nový byt', 'Nový byt na pronájem', 4, 2, 1, '3+kk', 2, 1, 1, 1, 0, 1, 2, 1, 1, 3, 0, 1, 80, 85, 8, 4, 'Tyršovo Náměstí', 'Roztoky', 'Praha západ', '25264', '87', 3, 0, 15000, 'bez poplatků', 1583154583, 1572390000),
-(9, 'Speciální domeček', 'Speciální domeček na prodej.', 5, 2, 2, '2kk', 2, 1, 1, 1, 0, 0, 3, 1, 1, 3, 1, 0, 85, 85, 55, 55, 'Vodičkova', 'Praha', 'Praha 6', '12000', '45/5', 3, 0, 150, 'bez DPH', 1586425646, 1572390000),
-(10, 'Krásný nový byt', 'Krásný nový byt na prodej na Praze 8', 5, 1, 1, '1+1', 5, 0, 1, 1, 0, 0, 3, 1, 0, 3, 1, 0, 25, 25, 45, 45, 'asfsa', 'aga', 'Ufff', '25263', '88', 2, 0, 200000, 'Včetně energií a poplatků', 1583153987, 1581721200),
-(12, 'Slunný byt 1+1', 'Prodej slunného bytu 1+1 v centru České Lípy. Zrekonstruováný.', 4, 1, 2, '1+1', 3, 1, 0, 1, 1, 0, 3, 1, 1, 3, 1, 0, 68, 10, 50.0503, 14.4392, 'Na Strži', 'Praha 4', 'Praha 4', '140 62', '65/1702', 4, 1, 1154000, '+provize RK', 1587926364, 1587926364),
-(39, 'Prodej bytu 2+1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue sed lorem sit amet mattis.', 5, 2, 2, '2+1', 1, 0, 1, 0, 1, 1, 2, 1, 1, 2, 0, 0, 150, 150, 50.1599, 14.3331, 'Příčná', 'Úholičky', 'Test', '25264', '88', 4, 1, 1500000, 'Bez DPH', 1587926139, 1587926139);
+INSERT INTO `s7_inzerat` (`id`, `titulek`, `popis`, `typ_nemovitosti`, `typ_stavby`, `typ_inzeratu`, `pocet_mistnosti`, `patro`, `celkem_podlazi`, `parkovaci_misto`, `garaz`, `balkon`, `vytah`, `terasa`, `stav_objektu`, `stav_inzeratu`, `vybavenost`, `penb`, `typ_vlastnictvi`, `material`, `podlahova_plocha`, `pozemkova_plocha`, `uzitkova_plocha`, `lat`, `lng`, `ulice`, `mesto`, `mestska_cast`, `psc`, `cp`, `uzivatel_id`, `top`, `cena`, `cena_poznamka`, `cena_najem`, `poplatky`, `kauce`, `vhodny_pro`, `k_dispozici_od`, `dalsi_vybaveni`, `datum_upravy`, `datum_zalozeni`) VALUES
+(1, 'Prodej bytu 2+1', 'Testovací popisek pro byt. Speciální popisek.', 5, 2, 1, 'Ateliér', 2, 0, 1, 0, 1, 0, 0, 3, 1, 0, 2, 0, 0, 65, 150, NULL, 50.1609, 14.393, 'Tyršovo Náměstí', 'Roztoky', 'Praha západ', '25264', '45', 1, 0, 30000000, 'Cena bez energií a bez poplatků', NULL, NULL, NULL, NULL, NULL, NULL, 1587732126, 1587732126),
+(2, 'Prodej domu Kladno', 'Velice hezký domek', 5, 2, 2, '1+1', 2, 0, 1, 1, 1, 1, 0, 3, 1, 1, 3, 0, 1, 22, 20, NULL, 55, 65, 'Františkova', 'Kladno', 'Doksy', '25267', '878/85', 2, 0, 180000, 'pouze 1/4 podíl', NULL, NULL, NULL, NULL, NULL, NULL, 1586427265, 1570312800),
+(5, 'Velmi speciální byt', 'Speciální byt, díky jeho přednostem.', 5, 2, 2, '3+1', 2, 0, 1, 1, 0, 1, 0, 2, 1, 1, 1, 0, 1, 68, 185, NULL, 59.847, 65.554, 'Tyršova', 'Suchdol', 'Praha západ', '25262', '88', 14, 0, 1500000, 'Bez daně z nabytí', NULL, NULL, NULL, NULL, NULL, NULL, 1586433627, 1571004000),
+(6, 'Koloseum', 'Obrovské koloseum na prodej', 1, 1, 2, '5+kk', 3, 0, 1, 1, 1, 0, 0, 2, 1, 2, 3, 1, 2, 450, 1024, NULL, 54, 58, 'Pražská', 'Velké Přílepy', 'Praha západ', '25263', '69', 1, 0, 15000000, 'Provize v ceně', NULL, NULL, NULL, NULL, NULL, NULL, 1583154784, 1572390000),
+(7, 'Dům domů', 'Velký dům pro velkou rodinu', 5, 1, 2, '8+kk', 4, 0, 0, 1, 1, 0, 1, 2, 1, 1, 2, 0, 0, 143, 150, NULL, 53, 58, 'Václavské Náměstí', 'Praha', 'Praha 2', '12000', '875/85', 2, 0, 28000, 'Bez poplatků', NULL, NULL, NULL, NULL, NULL, NULL, 1583154704, 1572390000),
+(8, 'Nový byt', 'Nový byt na pronájem', 4, 2, 1, '3+kk', 2, 0, 1, 1, 1, 0, 1, 2, 1, 1, 3, 0, 1, 80, 85, NULL, 8, 4, 'Tyršovo Náměstí', 'Roztoky', 'Praha západ', '25264', '87', 3, 0, 15000, 'bez poplatků', NULL, NULL, NULL, NULL, NULL, NULL, 1583154583, 1572390000),
+(9, 'Speciální domeček', 'Speciální domeček na prodej.', 5, 2, 2, '2kk', 2, 0, 1, 1, 1, 0, 0, 3, 1, 1, 3, 1, 0, 85, 85, NULL, 55, 55, 'Vodičkova', 'Praha', 'Praha 6', '12000', '45/5', 3, 0, 150, 'bez DPH', NULL, NULL, NULL, NULL, NULL, NULL, 1586425646, 1572390000),
+(10, 'Krásný nový byt', 'Krásný nový byt na prodej na Praze 8', 5, 1, 1, '1+1', 5, 0, 0, 1, 1, 0, 0, 3, 1, 0, 3, 1, 0, 25, 25, NULL, 45, 45, 'asfsa', 'aga', 'Ufff', '25263', '88', 2, 0, 200000, 'Včetně energií a poplatků', NULL, NULL, NULL, NULL, NULL, NULL, 1583153987, 1581721200),
+(12, 'Slunný byt 1+1', 'Prodej slunného bytu 1+1 v centru České Lípy. Zrekonstruováný.', 4, 1, 2, '1+1', 3, 0, 1, 0, 1, 1, 0, 3, 1, 1, 3, 1, 0, 68, 10, NULL, 50.0503, 14.4392, 'Na Strži', 'Praha 4', 'Praha 4', '140 62', '65/1702', 4, 1, 1154000, '+provize RK', NULL, NULL, NULL, NULL, NULL, NULL, 1587926364, 1587926364),
+(39, 'Prodej bytu 2+1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue sed lorem sit amet mattis.', 5, 2, 2, '2+1', 1, 0, 0, 1, 0, 1, 1, 2, 1, 1, 2, 0, 0, 150, 150, NULL, 50.1599, 14.3331, 'Příčná', 'Úholičky', 'Test', '25264', '88', 4, 1, 1500000, 'Bez DPH', NULL, NULL, NULL, NULL, NULL, NULL, 1587926139, 1587926139),
+(43, 'Koloseum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc efficitur tellus et ligula convallis porttitor. In scelerisque porttitor purus quis sodales. Suspendisse maximus, libero fringilla rhoncus euismod, ante enim commodo turpis, quis dapibus ante sapien eget velit. Quisque feugiat gravida mauris, eu viverra dolor tempor nec. Etiam hendrerit mauris nec urna ullamcorper rhoncus. Proin bibendum mauris vel facilisis condimentum. Nulla felis nibh, tempor eu lorem eget, egestas condimentum nisl. Morbi at orci semper, maximus lectus vel, tristique dolor. Nam a vulputate risus, et ultrices ante. Integer eget justo lacus. Donec enim mauris, facilisis eu sem eu, ultrices dignissim mi.', 5, 2, 2, '1+KK', 6, NULL, 0, 0, 0, 0, 0, 2, 0, 1, 2, 0, 1, 3, 0, 4, 50.2319, 12.872, 'Tyršovo Náměstí', 'Kralovy Vary', 'Praha západ', '25264', '87', 4, 0, 5000, NULL, 0, 0, 0, 0, 2020, 'Bug', 1588957977, 1588957977),
+(42, 'Prodej bytu 2+1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc efficitur tellus et ligula convallis porttitor. In scelerisque porttitor purus quis sodales. Suspendisse maximus, libero fringilla rhoncus euismod, ante enim commodo turpis, quis dapibus ante sapien eget velit. Quisque feugiat gravida mauris, eu viverra dolor tempor nec. Etiam hendrerit mauris nec urna ullamcorper rhoncus. Proin bibendum mauris vel facilisis condimentum. Nulla felis nibh, tempor eu lorem eget, egestas condimentum nisl. Morbi at orci semper, maximus lectus vel, tristique dolor. Nam a vulputate risus, et ultrices ante. Integer eget justo lacus. Donec enim mauris, facilisis eu sem eu, ultrices dignissim mi.', 5, 2, 1, '1+KK', 7, NULL, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 5, 0, 4, 50.1608, 14.3929, 'Tyršovo Náměstí', 'Kralovy Vary', 'Praha západ', '25263', '427', 4, 0, 0, NULL, 4000, 4000, 4000, 0, 2020, 'Test', 1588956883, 1588956883);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `s7_objednavka`
+-- Struktura tabulky `s7_objednavka`
 --
 
 CREATE TABLE `s7_objednavka` (
@@ -177,7 +184,7 @@ CREATE TABLE `s7_objednavka` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_czech_ci COMMENT='Tabulka sloužící pro evidenci všech objednávek';
 
 --
--- Dumping data for table `s7_objednavka`
+-- Vypisuji data pro tabulku `s7_objednavka`
 --
 
 INSERT INTO `s7_objednavka` (`id`, `uzivatel_id`, `cena`, `mnozstvi`, `stav`, `hash`, `datum_zalozeni`, `datum_upravy`) VALUES
@@ -189,12 +196,13 @@ INSERT INTO `s7_objednavka` (`id`, `uzivatel_id`, `cena`, `mnozstvi`, `stav`, `h
 (20, 4, 4, 1, 1, '3101197814', 1587732089, 1587732116),
 (21, 4, 8, 2, 1, '3101204418', 1587741714, 1587741829),
 (22, 4, 8, 2, 1, '3101220902', 1587755533, 1587755564),
-(23, 4, 500, 100, 1, '3101337278', 1587924248, 1587924276);
+(24, 4, 12, 3, 1, '3101899086', 1588699670, 1588699739),
+(25, 4, 200, 50, 1, '3102077472', 1588957096, 1588957137);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `s7_obrazek`
+-- Struktura tabulky `s7_obrazek`
 --
 
 CREATE TABLE `s7_obrazek` (
@@ -210,10 +218,15 @@ CREATE TABLE `s7_obrazek` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci COMMENT='Tabulka slouží pro evidenci obrázků navázaných na inzeráty';
 
 --
--- Dumping data for table `s7_obrazek`
+-- Vypisuji data pro tabulku `s7_obrazek`
 --
 
 INSERT INTO `s7_obrazek` (`id`, `titulek`, `popisek`, `kod`, `url`, `inzerat_id`, `front`, `datum_upravy`, `datum_zalozeni`) VALUES
+(198, NULL, NULL, '9b7a9259e2c0d583f4eb16c38cea3e54.jpg', '/wp-content/uploads/system_data/default_9b7a9259e2c0d583f4eb16c38cea3e54.jpg', NULL, NULL, 1588861206, 1588861206),
+(197, NULL, NULL, '49d389cdb56dd7dc225cb13ffa8d9d11.jpg', '/wp-content/uploads/system_data/default_49d389cdb56dd7dc225cb13ffa8d9d11.jpg', NULL, NULL, 1588861179, 1588861179),
+(194, NULL, NULL, '1ed8c4019b387371b66e1972d634da58.gif', '/wp-content/uploads/system_data/default_1ed8c4019b387371b66e1972d634da58.gif', NULL, NULL, 1588860532, 1588860532),
+(195, NULL, NULL, 'e1741f9b223d7463f1107d8ea2f3b8d0.jpg', '/wp-content/uploads/system_data/default_e1741f9b223d7463f1107d8ea2f3b8d0.jpg', NULL, NULL, 1588860997, 1588860997),
+(196, NULL, NULL, '518262e9ee56360b5114d176e0ed9347.jpg', '/wp-content/uploads/system_data/default_518262e9ee56360b5114d176e0ed9347.jpg', NULL, NULL, 1588861042, 1588861042),
 (175, NULL, NULL, 'e70cbb76817e3e4946c45ad0fc875735.jpg', '/wp-content/uploads/system_data/default_e70cbb76817e3e4946c45ad0fc875735.jpg', 5, 0, 1583154890, 1583154879),
 (171, NULL, NULL, 'd1677fdae88338e19f8e9f2d43c3d783.jpg', '/wp-content/uploads/system_data/default_d1677fdae88338e19f8e9f2d43c3d783.jpg', 6, 1, 1583154805, 1583154795),
 (172, NULL, NULL, '88ba1b63bf524654df51bdb9060e3216.jpg', '/wp-content/uploads/system_data/default_88ba1b63bf524654df51bdb9060e3216.jpg', 6, 0, 1583154805, 1583154796),
@@ -236,6 +249,7 @@ INSERT INTO `s7_obrazek` (`id`, `titulek`, `popisek`, `kod`, `url`, `inzerat_id`
 (190, NULL, NULL, '431d995baa68f7fa5075920004879af6.jpg', '/wp-content/uploads/system_data/default_431d995baa68f7fa5075920004879af6.jpg', 1, 0, 1583155038, 1583155033),
 (191, NULL, NULL, 'a05fbc6280336a5c26869ee1e393ff6b.jpg', '/wp-content/uploads/system_data/default_a05fbc6280336a5c26869ee1e393ff6b.jpg', 1, 0, 1583155038, 1583155035),
 (192, NULL, NULL, '93e5c7e203447335e12ec0effc9308d6.jpg', '/wp-content/uploads/system_data/default_93e5c7e203447335e12ec0effc9308d6.jpg', 1, 1, 1583155038, 1583155035),
+(193, NULL, NULL, '30ff2e20486bd6297c0edd81ce6ac8a1.jpg', '/wp-content/uploads/system_data/default_30ff2e20486bd6297c0edd81ce6ac8a1.jpg', NULL, NULL, 1588860465, 1588860465),
 (133, NULL, NULL, '6ed235b1995a1f135ebf9ac36ee79c8a.jpg', '/wp-content/uploads/system_data/default_6ed235b1995a1f135ebf9ac36ee79c8a.jpg', 39, 0, 1583153767, 1583153759),
 (134, NULL, NULL, '52cf66dd8efc5fe32832724859e2ac82.jpg', '/wp-content/uploads/system_data/default_52cf66dd8efc5fe32832724859e2ac82.jpg', 39, 1, 1583153767, 1583153760),
 (135, NULL, NULL, 'dec5b8c89dc8eba4f9726f1882a168b4.jpg', '/wp-content/uploads/system_data/default_dec5b8c89dc8eba4f9726f1882a168b4.jpg', 39, 0, 1583153767, 1583153762),
@@ -273,12 +287,77 @@ INSERT INTO `s7_obrazek` (`id`, `titulek`, `popisek`, `kod`, `url`, `inzerat_id`
 (167, NULL, NULL, '9080b9a4c15c131f29eba8caccbe1481.jpg', '/wp-content/uploads/system_data/default_9080b9a4c15c131f29eba8caccbe1481.jpg', 7, 0, 1583154698, 1583154692),
 (168, NULL, NULL, '25c6dae6f2b84b1343b402f05dc4dab5.jpg', '/wp-content/uploads/system_data/default_25c6dae6f2b84b1343b402f05dc4dab5.jpg', 7, 0, 1583154698, 1583154693),
 (169, NULL, NULL, '48accb7d6786a36354d0a5987e28be16.jpg', '/wp-content/uploads/system_data/default_48accb7d6786a36354d0a5987e28be16.jpg', 6, 0, 1583154805, 1583154793),
-(170, NULL, NULL, '3eb3a60a72a819e86d54aaf8d059c4d2.jpg', '/wp-content/uploads/system_data/default_3eb3a60a72a819e86d54aaf8d059c4d2.jpg', 6, 0, 1583154805, 1583154794);
+(170, NULL, NULL, '3eb3a60a72a819e86d54aaf8d059c4d2.jpg', '/wp-content/uploads/system_data/default_3eb3a60a72a819e86d54aaf8d059c4d2.jpg', 6, 0, 1583154805, 1583154794),
+(199, NULL, NULL, '5f2cb4932a3a1d82cba352dbdd6e4fa8.jpg', '/wp-content/uploads/system_data/default_5f2cb4932a3a1d82cba352dbdd6e4fa8.jpg', NULL, NULL, 1588861207, 1588861207),
+(200, NULL, NULL, 'c6ed301d007abc9bdcab35b8724a6545.jpg', '/wp-content/uploads/system_data/default_c6ed301d007abc9bdcab35b8724a6545.jpg', NULL, NULL, 1588861420, 1588861420),
+(201, NULL, NULL, 'cf3805081065db9c28542202c80dbb66.jpg', '/wp-content/uploads/system_data/default_cf3805081065db9c28542202c80dbb66.jpg', NULL, NULL, 1588861420, 1588861420),
+(202, NULL, NULL, '404b348138b42ccde5da7a845ca17c1e.jpg', '/wp-content/uploads/system_data/default_404b348138b42ccde5da7a845ca17c1e.jpg', NULL, NULL, 1588861422, 1588861422),
+(203, NULL, NULL, '6550c4fb57b20e3bc377ce1da2142862.jpg', '/wp-content/uploads/system_data/default_6550c4fb57b20e3bc377ce1da2142862.jpg', NULL, NULL, 1588861801, 1588861801),
+(204, NULL, NULL, '1cbb9c457437bb7ce7ef5756f5fd129a.jpg', '/wp-content/uploads/system_data/default_1cbb9c457437bb7ce7ef5756f5fd129a.jpg', NULL, NULL, 1588861802, 1588861802),
+(205, NULL, NULL, '28221df99a6fe047457cf5811d55db31.jpg', '/wp-content/uploads/system_data/default_28221df99a6fe047457cf5811d55db31.jpg', NULL, NULL, 1588861855, 1588861855),
+(206, NULL, NULL, 'aa55cdb67ac7f7fefb7ba97d6573d30e.jpg', '/wp-content/uploads/system_data/default_aa55cdb67ac7f7fefb7ba97d6573d30e.jpg', NULL, NULL, 1588861856, 1588861856),
+(207, NULL, NULL, 'c72dfee6e1fe2f910c0a991cf39310c8.jpg', '/wp-content/uploads/system_data/default_c72dfee6e1fe2f910c0a991cf39310c8.jpg', NULL, NULL, 1588864476, 1588864476),
+(208, NULL, NULL, '417400262c178d9be7e1f62e3b0efaab.jpg', '/wp-content/uploads/system_data/default_417400262c178d9be7e1f62e3b0efaab.jpg', NULL, NULL, 1588864476, 1588864476),
+(209, NULL, NULL, 'e5224843a2dc31efcd344dece4c87643.jpg', '/wp-content/uploads/system_data/default_e5224843a2dc31efcd344dece4c87643.jpg', NULL, NULL, 1588864747, 1588864747),
+(210, NULL, NULL, '0ff75b9333915be79561c4ab0d64b81a.jpg', '/wp-content/uploads/system_data/default_0ff75b9333915be79561c4ab0d64b81a.jpg', NULL, NULL, 1588864748, 1588864748),
+(211, NULL, NULL, '0609ba521f2f470cfbb0809bb45f7ec6.jpg', '/wp-content/uploads/system_data/default_0609ba521f2f470cfbb0809bb45f7ec6.jpg', NULL, NULL, 1588864750, 1588864750),
+(212, NULL, NULL, 'e5ac31e14e6d8fb7b1228810d711f9ce.jpg', '/wp-content/uploads/system_data/default_e5ac31e14e6d8fb7b1228810d711f9ce.jpg', NULL, NULL, 1588864946, 1588864946),
+(213, NULL, NULL, 'e33b7adb5f53feacc5301e521b7a8c32.jpg', '/wp-content/uploads/system_data/default_e33b7adb5f53feacc5301e521b7a8c32.jpg', NULL, NULL, 1588864947, 1588864947),
+(214, NULL, NULL, 'e6388f5dcd73656bfcc1962633b12901.jpg', '/wp-content/uploads/system_data/default_e6388f5dcd73656bfcc1962633b12901.jpg', NULL, NULL, 1588864949, 1588864949),
+(215, NULL, NULL, '56f3c45e395dbcdb8660c94bef8c18f6.jpg', '/wp-content/uploads/system_data/default_56f3c45e395dbcdb8660c94bef8c18f6.jpg', NULL, NULL, 1588867834, 1588867834),
+(216, NULL, NULL, 'c14ab3c24277215fd6d833f790bba63f.jpg', '/wp-content/uploads/system_data/default_c14ab3c24277215fd6d833f790bba63f.jpg', NULL, NULL, 1588867835, 1588867835),
+(217, NULL, NULL, '84ba167d4c5abd357566ca4d885bc591.jpg', '/wp-content/uploads/system_data/default_84ba167d4c5abd357566ca4d885bc591.jpg', NULL, NULL, 1588867837, 1588867837),
+(218, NULL, NULL, 'd4fe588ce35f2c70063c938ec9ed83ba.jpg', '/wp-content/uploads/system_data/default_d4fe588ce35f2c70063c938ec9ed83ba.jpg', NULL, NULL, 1588868198, 1588868198),
+(219, NULL, NULL, '7bb5a7d39eabdaf6991f31998ea25026.jpg', '/wp-content/uploads/system_data/default_7bb5a7d39eabdaf6991f31998ea25026.jpg', NULL, NULL, 1588868198, 1588868198),
+(220, NULL, NULL, '9de05d21876904424f485ba9e9e667dc.jpg', '/wp-content/uploads/system_data/default_9de05d21876904424f485ba9e9e667dc.jpg', NULL, NULL, 1588868200, 1588868200),
+(221, NULL, NULL, '1ca4e73b75eb54be547645ce5a71f827.jpg', '/wp-content/uploads/system_data/default_1ca4e73b75eb54be547645ce5a71f827.jpg', NULL, NULL, 1588868515, 1588868515),
+(222, NULL, NULL, '5d3a1e4612b98fa05c49d763bad724af.jpg', '/wp-content/uploads/system_data/default_5d3a1e4612b98fa05c49d763bad724af.jpg', NULL, NULL, 1588868516, 1588868516),
+(223, NULL, NULL, '0a8c257b6a5ba7ad0a551da907fbbfd3.jpg', '/wp-content/uploads/system_data/default_0a8c257b6a5ba7ad0a551da907fbbfd3.jpg', NULL, NULL, 1588868914, 1588868914),
+(224, NULL, NULL, '49f8282ced61f604f5b81e30da55967e.jpg', '/wp-content/uploads/system_data/default_49f8282ced61f604f5b81e30da55967e.jpg', NULL, NULL, 1588868915, 1588868915),
+(225, NULL, NULL, 'd02ef5d03c1bc7a750f22f270276edae.jpg', '/wp-content/uploads/system_data/default_d02ef5d03c1bc7a750f22f270276edae.jpg', NULL, NULL, 1588868916, 1588868916),
+(226, NULL, NULL, '3899e9c6c73f7817ec38534d54de7b2a.jpg', '/wp-content/uploads/system_data/default_3899e9c6c73f7817ec38534d54de7b2a.jpg', NULL, NULL, 1588869686, 1588869686),
+(227, NULL, NULL, '66132ae79b915c27c51baeef8bb03faf.jpg', '/wp-content/uploads/system_data/default_66132ae79b915c27c51baeef8bb03faf.jpg', NULL, NULL, 1588869687, 1588869687),
+(228, NULL, NULL, '4295a3e09b26a7fbd192611b6cb72a20.jpg', '/wp-content/uploads/system_data/default_4295a3e09b26a7fbd192611b6cb72a20.jpg', NULL, NULL, 1588869689, 1588869689),
+(229, NULL, NULL, '0035e7852b9a4f6bb47616dc9eda4920.jpg', '/wp-content/uploads/system_data/default_0035e7852b9a4f6bb47616dc9eda4920.jpg', NULL, NULL, 1588869806, 1588869806),
+(230, NULL, NULL, '60bec3a49e556a37e2a722d77afc7cc6.jpg', '/wp-content/uploads/system_data/default_60bec3a49e556a37e2a722d77afc7cc6.jpg', NULL, NULL, 1588869806, 1588869806),
+(231, NULL, NULL, 'cef9f99ffec4fc346846e8f62a088c37.jpg', '/wp-content/uploads/system_data/default_cef9f99ffec4fc346846e8f62a088c37.jpg', NULL, NULL, 1588869808, 1588869808),
+(232, NULL, NULL, '5315906e21d5816542ee3d7899804092.jpg', '/wp-content/uploads/system_data/default_5315906e21d5816542ee3d7899804092.jpg', NULL, NULL, 1588870238, 1588870238),
+(233, NULL, NULL, '372eea072bb75cd9494060de2625716e.jpg', '/wp-content/uploads/system_data/default_372eea072bb75cd9494060de2625716e.jpg', NULL, NULL, 1588870239, 1588870239),
+(234, NULL, NULL, '1eba6d72fb4c377e03256c6b88575484.jpg', '/wp-content/uploads/system_data/default_1eba6d72fb4c377e03256c6b88575484.jpg', NULL, NULL, 1588870240, 1588870240),
+(235, NULL, NULL, '203723b53f5dce945161de66f3cf1f0a.jpg', '/wp-content/uploads/system_data/default_203723b53f5dce945161de66f3cf1f0a.jpg', NULL, NULL, 1588870813, 1588870813),
+(236, NULL, NULL, 'e90c710a893b6182aa9e11d242707d2e.jpg', '/wp-content/uploads/system_data/default_e90c710a893b6182aa9e11d242707d2e.jpg', NULL, NULL, 1588870814, 1588870814),
+(237, NULL, NULL, '44475eba119f20d45f41a5a920bef447.jpg', '/wp-content/uploads/system_data/default_44475eba119f20d45f41a5a920bef447.jpg', NULL, NULL, 1588871316, 1588871316),
+(238, NULL, NULL, '6999d83fa14f6bb93324469c3a16692e.jpg', '/wp-content/uploads/system_data/default_6999d83fa14f6bb93324469c3a16692e.jpg', NULL, NULL, 1588871316, 1588871316),
+(239, NULL, NULL, 'a71ca130ee0c92f9add0273197f3284f.jpg', '/wp-content/uploads/system_data/default_a71ca130ee0c92f9add0273197f3284f.jpg', NULL, NULL, 1588871572, 1588871572),
+(240, NULL, NULL, '9910a1bfa940d1b630b2204518d2e6ee.jpg', '/wp-content/uploads/system_data/default_9910a1bfa940d1b630b2204518d2e6ee.jpg', NULL, NULL, 1588871573, 1588871573),
+(241, NULL, NULL, '46756cd010ace7301e925bc82f00aeb3.jpg', '/wp-content/uploads/system_data/default_46756cd010ace7301e925bc82f00aeb3.jpg', NULL, NULL, 1588871860, 1588871860),
+(242, NULL, NULL, 'fd3d98dec4ab9fe0bfae81e3eeb3711d.jpg', '/wp-content/uploads/system_data/default_fd3d98dec4ab9fe0bfae81e3eeb3711d.jpg', NULL, NULL, 1588871861, 1588871861),
+(243, NULL, NULL, '2f328ae00e3b9bd473d74ba383f1bae0.jpg', '/wp-content/uploads/system_data/default_2f328ae00e3b9bd473d74ba383f1bae0.jpg', NULL, NULL, 1588872046, 1588872046),
+(244, NULL, NULL, '40b0a9bb78869fb6a9befc1a2f7e4a25.jpg', '/wp-content/uploads/system_data/default_40b0a9bb78869fb6a9befc1a2f7e4a25.jpg', NULL, NULL, 1588872046, 1588872046),
+(245, NULL, NULL, '31d9038e311e8bbd37c24b62f6409792.jpg', '/wp-content/uploads/system_data/default_31d9038e311e8bbd37c24b62f6409792.jpg', NULL, NULL, 1588927594, 1588927594),
+(246, NULL, NULL, 'e08c78368599cdaea67a98963deee54b.jpg', '/wp-content/uploads/system_data/default_e08c78368599cdaea67a98963deee54b.jpg', NULL, NULL, 1588927595, 1588927595),
+(247, NULL, NULL, 'fff4813b7c681c2d01df6f242860e2a4.jpg', '/wp-content/uploads/system_data/default_fff4813b7c681c2d01df6f242860e2a4.jpg', NULL, NULL, 1588928053, 1588928053),
+(248, NULL, NULL, 'd73d733adaef1636a4b9c54bcfdbd184.jpg', '/wp-content/uploads/system_data/default_d73d733adaef1636a4b9c54bcfdbd184.jpg', NULL, NULL, 1588928054, 1588928054),
+(249, NULL, NULL, '60dd826923e1d262c3f839a7bb2fb212.jpg', '/wp-content/uploads/system_data/default_60dd826923e1d262c3f839a7bb2fb212.jpg', NULL, NULL, 1588928157, 1588928157),
+(250, NULL, NULL, '7dffdb5ba03d381e62c776abdeb2b525.jpg', '/wp-content/uploads/system_data/default_7dffdb5ba03d381e62c776abdeb2b525.jpg', NULL, NULL, 1588928158, 1588928158),
+(251, NULL, NULL, '44c00760a6f553e31b3fbd7b46abdea7.jpg', '/wp-content/uploads/system_data/default_44c00760a6f553e31b3fbd7b46abdea7.jpg', 0, 1, 1588928533, 1588928524),
+(252, NULL, NULL, '7c6688fd36807886ca52503908740e05.jpg', '/wp-content/uploads/system_data/default_7c6688fd36807886ca52503908740e05.jpg', 0, NULL, 1588928533, 1588928526),
+(253, NULL, NULL, '95c5e752543bc5977f9c9d0558bddd1e.jpg', '/wp-content/uploads/system_data/default_95c5e752543bc5977f9c9d0558bddd1e.jpg', 0, 1, 1588929192, 1588929100),
+(254, NULL, NULL, '18a11d0136bc710914b3ac5d5da95f64.jpg', '/wp-content/uploads/system_data/default_18a11d0136bc710914b3ac5d5da95f64.jpg', 0, NULL, 1588929192, 1588929103),
+(255, NULL, NULL, 'd57575762a77fde380927d23345a6a44.jpg', '/wp-content/uploads/system_data/default_d57575762a77fde380927d23345a6a44.jpg', 40, 1, 1588929393, 1588929386),
+(256, NULL, NULL, '410a035e8a44021e5cd96c2497216179.jpg', '/wp-content/uploads/system_data/default_410a035e8a44021e5cd96c2497216179.jpg', 40, NULL, 1588929393, 1588929388),
+(257, NULL, NULL, 'f2bf04d8f4f827a9d84a9ab7a50ce973.jpg', '/wp-content/uploads/system_data/default_f2bf04d8f4f827a9d84a9ab7a50ce973.jpg', 41, NULL, 1588954257, 1588954244),
+(258, NULL, NULL, '2484f86d546af3665023b3027da81994.jpg', '/wp-content/uploads/system_data/default_2484f86d546af3665023b3027da81994.jpg', 41, 1, 1588954257, 1588954246),
+(259, NULL, NULL, 'c8f780c3fa574fdae172be863562f356.jpg', '/wp-content/uploads/system_data/default_c8f780c3fa574fdae172be863562f356.jpg', 41, NULL, 1588954257, 1588954248),
+(260, NULL, NULL, '99ba5862563bbc2e85ff611b969d9a0d.jpg', '/wp-content/uploads/system_data/default_99ba5862563bbc2e85ff611b969d9a0d.jpg', 42, NULL, 1588956883, 1588956876),
+(261, NULL, NULL, '78de5687b6cefdf9f16ef809088e6d2a.jpg', '/wp-content/uploads/system_data/default_78de5687b6cefdf9f16ef809088e6d2a.jpg', 42, 1, 1588956883, 1588956878),
+(262, NULL, NULL, '08ad4c79b2a6d95fd6315ec7dffc6079.jpg', '/wp-content/uploads/system_data/default_08ad4c79b2a6d95fd6315ec7dffc6079.jpg', 43, 1, 1588957977, 1588957969),
+(263, NULL, NULL, '82183e2eab6e5bedf258b74172812561.jpg', '/wp-content/uploads/system_data/default_82183e2eab6e5bedf258b74172812561.jpg', 43, NULL, 1588957977, 1588957971);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `s7_transakce`
+-- Struktura tabulky `s7_transakce`
 --
 
 CREATE TABLE `s7_transakce` (
@@ -293,7 +372,7 @@ CREATE TABLE `s7_transakce` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_czech_ci COMMENT='Tabulka sloužící pro evidenci transakcí v systému';
 
 --
--- Dumping data for table `s7_transakce`
+-- Vypisuji data pro tabulku `s7_transakce`
 --
 
 INSERT INTO `s7_transakce` (`id`, `nazev_sluzby`, `id_odesilatel`, `id_prijemce`, `mnozstvi`, `accept`, `datum_zalozeni`, `datum_upravy`) VALUES
@@ -301,16 +380,15 @@ INSERT INTO `s7_transakce` (`id`, `nazev_sluzby`, `id_odesilatel`, `id_prijemce`
 (4, 'Testovací služba', 4, -1, 20, 1, 1587584853, 1587584853),
 (24, 'Hlídací pes', 4, -1, 2, 1, 1587755437, 1587755437),
 (25, 'Hlídací pes', 4, -1, 2, 1, 1587755601, 1587755601),
-(26, 'Hlídací pes', 4, -1, 2, 1, 1587924300, 1587924300),
-(27, 'Top inzerátu ID: 39', 4, -1, 1, 1, 1587925515, 1587925515),
 (28, 'Top inzerátu ID: 12', 4, -1, 1, 1, 1587925549, 1587925549),
-(29, 'Top inzerátu ID: 39', 4, -1, 1, 1, 1587926139, 1587926139),
-(30, 'Top inzerátu ID: 12', 4, -1, 1, 1, 1587926364, 1587926364);
+(43, 'Zobrazení kontaktu ID: 6', 4, -1, 3, 1, 1588699755, 1588699755),
+(44, 'Zobrazení kontaktu ID: 42', 4, -1, 3, 0, 1588957161, 1588957161),
+(45, 'Zobrazení kontaktu ID: 42', 4, -1, 3, 1, 1588957227, 1588957228);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `s7_uzivatel`
+-- Struktura tabulky `s7_uzivatel`
 --
 
 CREATE TABLE `s7_uzivatel` (
@@ -331,7 +409,7 @@ CREATE TABLE `s7_uzivatel` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_czech_ci COMMENT='Tabulka sloužící pro evidenci uživatelů';
 
 --
--- Dumping data for table `s7_uzivatel`
+-- Vypisuji data pro tabulku `s7_uzivatel`
 --
 
 INSERT INTO `s7_uzivatel` (`id`, `jmeno`, `prijmeni`, `email`, `telefon`, `fbid`, `gmid`, `avatar`, `popis`, `stav`, `heslo`, `hash`, `datum_zalozeni`, `datum_upravy`) VALUES
@@ -346,7 +424,7 @@ INSERT INTO `s7_uzivatel` (`id`, `jmeno`, `prijmeni`, `email`, `telefon`, `fbid`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_commentmeta`
+-- Struktura tabulky `wp_commentmeta`
 --
 
 CREATE TABLE `wp_commentmeta` (
@@ -359,7 +437,7 @@ CREATE TABLE `wp_commentmeta` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_comments`
+-- Struktura tabulky `wp_comments`
 --
 
 CREATE TABLE `wp_comments` (
@@ -381,7 +459,7 @@ CREATE TABLE `wp_comments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `wp_comments`
+-- Vypisuji data pro tabulku `wp_comments`
 --
 
 INSERT INTO `wp_comments` (`comment_ID`, `comment_post_ID`, `comment_author`, `comment_author_email`, `comment_author_url`, `comment_author_IP`, `comment_date`, `comment_date_gmt`, `comment_content`, `comment_karma`, `comment_approved`, `comment_agent`, `comment_type`, `comment_parent`, `user_id`) VALUES
@@ -390,7 +468,7 @@ INSERT INTO `wp_comments` (`comment_ID`, `comment_post_ID`, `comment_author`, `c
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_links`
+-- Struktura tabulky `wp_links`
 --
 
 CREATE TABLE `wp_links` (
@@ -412,7 +490,7 @@ CREATE TABLE `wp_links` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_options`
+-- Struktura tabulky `wp_options`
 --
 
 CREATE TABLE `wp_options` (
@@ -423,7 +501,7 @@ CREATE TABLE `wp_options` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `wp_options`
+-- Vypisuji data pro tabulku `wp_options`
 --
 
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
@@ -529,7 +607,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (100, 'widget_archives', 'a:2:{i:2;a:3:{s:5:\"title\";s:0:\"\";s:5:\"count\";i:0;s:8:\"dropdown\";i:0;}s:12:\"_multiwidget\";i:1;}', 'yes'),
 (101, 'widget_meta', 'a:2:{i:2;a:1:{s:5:\"title\";s:0:\"\";}s:12:\"_multiwidget\";i:1;}', 'yes'),
 (102, 'sidebars_widgets', 'a:6:{s:19:\"wp_inactive_widgets\";a:6:{i:0;s:8:\"search-2\";i:1;s:14:\"recent-posts-2\";i:2;s:17:\"recent-comments-2\";i:3;s:10:\"archives-2\";i:4;s:12:\"categories-2\";i:5;s:6:\"meta-2\";}s:16:\"first_footer_col\";a:2:{i:0;s:6:\"text-2\";i:1;s:13:\"custom_html-2\";}s:17:\"second_footer_col\";a:1:{i:0;s:10:\"nav_menu-3\";}s:16:\"third_footer_col\";a:1:{i:0;s:6:\"text-5\";}s:17:\"fourth_footer_col\";a:1:{i:0;s:13:\"custom_html-3\";}s:13:\"array_version\";i:3;}', 'yes'),
-(103, 'cron', 'a:5:{i:1588003879;a:1:{s:34:\"wp_privacy_delete_old_export_files\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"hourly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:3600;}}}i:1588007479;a:4:{s:32:\"recovery_mode_clean_expired_keys\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}s:16:\"wp_version_check\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:17:\"wp_update_plugins\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:16:\"wp_update_themes\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}}i:1588007488;a:2:{s:19:\"wp_scheduled_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}s:25:\"delete_expired_transients\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1588007489;a:1:{s:30:\"wp_scheduled_auto_draft_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}s:7:\"version\";i:2;}', 'yes'),
+(103, 'cron', 'a:6:{i:1588961479;a:1:{s:34:\"wp_privacy_delete_old_export_files\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"hourly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:3600;}}}i:1589001079;a:3:{s:16:\"wp_version_check\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:17:\"wp_update_plugins\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:16:\"wp_update_themes\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}}i:1589044279;a:1:{s:32:\"recovery_mode_clean_expired_keys\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1589044288;a:2:{s:19:\"wp_scheduled_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}s:25:\"delete_expired_transients\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1589044289;a:1:{s:30:\"wp_scheduled_auto_draft_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}s:7:\"version\";i:2;}', 'yes'),
 (104, 'widget_pages', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
 (105, 'widget_calendar', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
 (106, 'widget_media_audio', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
@@ -541,8 +619,8 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (112, 'widget_custom_html', 'a:3:{i:2;a:2:{s:5:\"title\";s:12:\"Obserwuj nas\";s:7:\"content\";s:423:\"<div class=\"footer-soc-icos\">\r\n	<a class=\"social-ico facebook\" href=\"https://www.facebook.com/szukamdompl\">\r\n		<span class=\"icon-facebook\"></span>\r\n	</a>\r\n	<a class=\"social-ico pinterest\" href=\"https://www.pinterest.com/szukamdom.pl\">\r\n		<span class=\"icon-pinterest\"></span>\r\n	</a>\r\n	<a class=\"social-ico instagram\" href=\"https://www.instagram.com/szukamdom.pl/\">\r\n		<span class=\"icon-instagram\"></span>\r\n	</a>\r\n\r\n	\r\n</div>\";}i:3;a:2:{s:5:\"title\";s:0:\"\";s:7:\"content\";s:340:\"<div class=\"footer-spacer\"></div>\r\n<h3 class=\"footer-sec-title\">Pre záujemcov <br>o nehnutelnosti</h3>\r\n<ul class=\"menu\">\r\n 	<li><a href=\"#\">Platba za kontakt</a></li>\r\n 	<li><a href=\"#\">Topování zpráv</a></li>\r\n 	<li><a href=\"#\">Hlídací pes</a></li>\r\n 	<li><a href=\"#\">Hypotéky</a></li>\r\n	<li><a href=\"#\">Stahování</a></li>\r\n</ul>\";}s:12:\"_multiwidget\";i:1;}', 'yes'),
 (114, 'recovery_keys', 'a:0:{}', 'yes'),
 (118, 'theme_mods_twentynineteen', 'a:2:{s:18:\"custom_css_post_id\";i:-1;s:16:\"sidebars_widgets\";a:2:{s:4:\"time\";i:1566929362;s:4:\"data\";a:2:{s:19:\"wp_inactive_widgets\";a:0:{}s:9:\"sidebar-1\";a:6:{i:0;s:8:\"search-2\";i:1;s:14:\"recent-posts-2\";i:2;s:17:\"recent-comments-2\";i:3;s:10:\"archives-2\";i:4;s:12:\"categories-2\";i:5;s:6:\"meta-2\";}}}}', 'yes'),
-(122, '_site_transient_update_core', 'O:8:\"stdClass\":4:{s:7:\"updates\";a:4:{i:0;O:8:\"stdClass\":10:{s:8:\"response\";s:7:\"upgrade\";s:8:\"download\";s:57:\"https://downloads.wordpress.org/release/wordpress-5.4.zip\";s:6:\"locale\";s:5:\"en_US\";s:8:\"packages\";O:8:\"stdClass\":5:{s:4:\"full\";s:57:\"https://downloads.wordpress.org/release/wordpress-5.4.zip\";s:10:\"no_content\";s:68:\"https://downloads.wordpress.org/release/wordpress-5.4-no-content.zip\";s:11:\"new_bundled\";s:69:\"https://downloads.wordpress.org/release/wordpress-5.4-new-bundled.zip\";s:7:\"partial\";b:0;s:8:\"rollback\";b:0;}s:7:\"current\";s:3:\"5.4\";s:7:\"version\";s:3:\"5.4\";s:11:\"php_version\";s:6:\"5.6.20\";s:13:\"mysql_version\";s:3:\"5.0\";s:11:\"new_bundled\";s:3:\"5.3\";s:15:\"partial_version\";s:0:\"\";}i:1;O:8:\"stdClass\":11:{s:8:\"response\";s:10:\"autoupdate\";s:8:\"download\";s:57:\"https://downloads.wordpress.org/release/wordpress-5.4.zip\";s:6:\"locale\";s:5:\"en_US\";s:8:\"packages\";O:8:\"stdClass\":5:{s:4:\"full\";s:57:\"https://downloads.wordpress.org/release/wordpress-5.4.zip\";s:10:\"no_content\";s:68:\"https://downloads.wordpress.org/release/wordpress-5.4-no-content.zip\";s:11:\"new_bundled\";s:69:\"https://downloads.wordpress.org/release/wordpress-5.4-new-bundled.zip\";s:7:\"partial\";b:0;s:8:\"rollback\";b:0;}s:7:\"current\";s:3:\"5.4\";s:7:\"version\";s:3:\"5.4\";s:11:\"php_version\";s:6:\"5.6.20\";s:13:\"mysql_version\";s:3:\"5.0\";s:11:\"new_bundled\";s:3:\"5.3\";s:15:\"partial_version\";s:0:\"\";s:9:\"new_files\";s:1:\"1\";}i:2;O:8:\"stdClass\":11:{s:8:\"response\";s:10:\"autoupdate\";s:8:\"download\";s:65:\"https://downloads.wordpress.org/release/cs_CZ/wordpress-5.3.2.zip\";s:6:\"locale\";s:5:\"cs_CZ\";s:8:\"packages\";O:8:\"stdClass\":5:{s:4:\"full\";s:65:\"https://downloads.wordpress.org/release/cs_CZ/wordpress-5.3.2.zip\";s:10:\"no_content\";b:0;s:11:\"new_bundled\";b:0;s:7:\"partial\";b:0;s:8:\"rollback\";b:0;}s:7:\"current\";s:5:\"5.3.2\";s:7:\"version\";s:5:\"5.3.2\";s:11:\"php_version\";s:6:\"5.6.20\";s:13:\"mysql_version\";s:3:\"5.0\";s:11:\"new_bundled\";s:3:\"5.3\";s:15:\"partial_version\";s:0:\"\";s:9:\"new_files\";s:1:\"1\";}i:3;O:8:\"stdClass\":11:{s:8:\"response\";s:10:\"autoupdate\";s:8:\"download\";s:65:\"https://downloads.wordpress.org/release/cs_CZ/wordpress-5.2.5.zip\";s:6:\"locale\";s:5:\"cs_CZ\";s:8:\"packages\";O:8:\"stdClass\":5:{s:4:\"full\";s:65:\"https://downloads.wordpress.org/release/cs_CZ/wordpress-5.2.5.zip\";s:10:\"no_content\";b:0;s:11:\"new_bundled\";b:0;s:7:\"partial\";b:0;s:8:\"rollback\";b:0;}s:7:\"current\";s:5:\"5.2.5\";s:7:\"version\";s:5:\"5.2.5\";s:11:\"php_version\";s:6:\"5.6.20\";s:13:\"mysql_version\";s:3:\"5.0\";s:11:\"new_bundled\";s:3:\"5.3\";s:15:\"partial_version\";s:0:\"\";s:9:\"new_files\";s:1:\"1\";}}s:12:\"last_checked\";i:1588001143;s:15:\"version_checked\";s:5:\"5.2.2\";s:12:\"translations\";a:0:{}}', 'no'),
-(124, '_site_transient_update_plugins', 'O:8:\"stdClass\":4:{s:12:\"last_checked\";i:1588001143;s:8:\"response\";a:0:{}s:12:\"translations\";a:0:{}s:9:\"no_update\";a:0:{}}', 'no'),
+(122, '_site_transient_update_core', 'O:8:\"stdClass\":4:{s:7:\"updates\";a:4:{i:0;O:8:\"stdClass\":10:{s:8:\"response\";s:7:\"upgrade\";s:8:\"download\";s:59:\"https://downloads.wordpress.org/release/wordpress-5.4.1.zip\";s:6:\"locale\";s:5:\"en_US\";s:8:\"packages\";O:8:\"stdClass\":5:{s:4:\"full\";s:59:\"https://downloads.wordpress.org/release/wordpress-5.4.1.zip\";s:10:\"no_content\";s:70:\"https://downloads.wordpress.org/release/wordpress-5.4.1-no-content.zip\";s:11:\"new_bundled\";s:71:\"https://downloads.wordpress.org/release/wordpress-5.4.1-new-bundled.zip\";s:7:\"partial\";b:0;s:8:\"rollback\";b:0;}s:7:\"current\";s:5:\"5.4.1\";s:7:\"version\";s:5:\"5.4.1\";s:11:\"php_version\";s:6:\"5.6.20\";s:13:\"mysql_version\";s:3:\"5.0\";s:11:\"new_bundled\";s:3:\"5.3\";s:15:\"partial_version\";s:0:\"\";}i:1;O:8:\"stdClass\":11:{s:8:\"response\";s:10:\"autoupdate\";s:8:\"download\";s:59:\"https://downloads.wordpress.org/release/wordpress-5.4.1.zip\";s:6:\"locale\";s:5:\"en_US\";s:8:\"packages\";O:8:\"stdClass\":5:{s:4:\"full\";s:59:\"https://downloads.wordpress.org/release/wordpress-5.4.1.zip\";s:10:\"no_content\";s:70:\"https://downloads.wordpress.org/release/wordpress-5.4.1-no-content.zip\";s:11:\"new_bundled\";s:71:\"https://downloads.wordpress.org/release/wordpress-5.4.1-new-bundled.zip\";s:7:\"partial\";b:0;s:8:\"rollback\";b:0;}s:7:\"current\";s:5:\"5.4.1\";s:7:\"version\";s:5:\"5.4.1\";s:11:\"php_version\";s:6:\"5.6.20\";s:13:\"mysql_version\";s:3:\"5.0\";s:11:\"new_bundled\";s:3:\"5.3\";s:15:\"partial_version\";s:0:\"\";s:9:\"new_files\";s:1:\"1\";}i:2;O:8:\"stdClass\":11:{s:8:\"response\";s:10:\"autoupdate\";s:8:\"download\";s:65:\"https://downloads.wordpress.org/release/cs_CZ/wordpress-5.3.3.zip\";s:6:\"locale\";s:5:\"cs_CZ\";s:8:\"packages\";O:8:\"stdClass\":5:{s:4:\"full\";s:65:\"https://downloads.wordpress.org/release/cs_CZ/wordpress-5.3.3.zip\";s:10:\"no_content\";b:0;s:11:\"new_bundled\";b:0;s:7:\"partial\";b:0;s:8:\"rollback\";b:0;}s:7:\"current\";s:5:\"5.3.3\";s:7:\"version\";s:5:\"5.3.3\";s:11:\"php_version\";s:6:\"5.6.20\";s:13:\"mysql_version\";s:3:\"5.0\";s:11:\"new_bundled\";s:3:\"5.3\";s:15:\"partial_version\";s:0:\"\";s:9:\"new_files\";s:1:\"1\";}i:3;O:8:\"stdClass\":11:{s:8:\"response\";s:10:\"autoupdate\";s:8:\"download\";s:65:\"https://downloads.wordpress.org/release/cs_CZ/wordpress-5.2.6.zip\";s:6:\"locale\";s:5:\"cs_CZ\";s:8:\"packages\";O:8:\"stdClass\":5:{s:4:\"full\";s:65:\"https://downloads.wordpress.org/release/cs_CZ/wordpress-5.2.6.zip\";s:10:\"no_content\";b:0;s:11:\"new_bundled\";b:0;s:7:\"partial\";b:0;s:8:\"rollback\";b:0;}s:7:\"current\";s:5:\"5.2.6\";s:7:\"version\";s:5:\"5.2.6\";s:11:\"php_version\";s:6:\"5.6.20\";s:13:\"mysql_version\";s:3:\"5.0\";s:11:\"new_bundled\";s:3:\"5.3\";s:15:\"partial_version\";s:0:\"\";s:9:\"new_files\";s:1:\"1\";}}s:12:\"last_checked\";i:1588957910;s:15:\"version_checked\";s:5:\"5.2.2\";s:12:\"translations\";a:0:{}}', 'no'),
+(124, '_site_transient_update_plugins', 'O:8:\"stdClass\":4:{s:12:\"last_checked\";i:1588957910;s:8:\"response\";a:0:{}s:12:\"translations\";a:0:{}s:9:\"no_update\";a:0:{}}', 'no'),
 (132, 'can_compress_scripts', '1', 'no'),
 (163, 'recently_activated', 'a:0:{}', 'yes'),
 (184, 'current_theme', 'RealSys', 'yes'),
@@ -550,18 +628,14 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (186, 'theme_switched', '', 'yes'),
 (284, 'recovery_mode_email_last_sent', '1583000087', 'yes'),
 (832, 'nav_menu_options', 'a:2:{i:0;b:0;s:8:\"auto_add\";a:0:{}}', 'yes'),
-(1599, '_site_transient_timeout_browser_952637548dc3e67d2638455ee5804af8', '1588235373', 'no'),
-(1600, '_site_transient_browser_952637548dc3e67d2638455ee5804af8', 'a:10:{s:4:\"name\";s:6:\"Chrome\";s:7:\"version\";s:13:\"81.0.4044.122\";s:8:\"platform\";s:7:\"Windows\";s:10:\"update_url\";s:29:\"https://www.google.com/chrome\";s:7:\"img_src\";s:43:\"http://s.w.org/images/browsers/chrome.png?1\";s:11:\"img_src_ssl\";s:44:\"https://s.w.org/images/browsers/chrome.png?1\";s:15:\"current_version\";s:2:\"18\";s:7:\"upgrade\";b:0;s:8:\"insecure\";b:0;s:6:\"mobile\";b:0;}', 'no'),
-(1601, '_site_transient_timeout_php_check_0cbcbda5109bcde6b94054595b5c2163', '1588235374', 'no'),
-(1602, '_site_transient_php_check_0cbcbda5109bcde6b94054595b5c2163', 'a:5:{s:19:\"recommended_version\";s:3:\"7.3\";s:15:\"minimum_version\";s:6:\"5.6.20\";s:12:\"is_supported\";b:1;s:9:\"is_secure\";b:1;s:13:\"is_acceptable\";b:1;}', 'no'),
-(1641, '_site_transient_timeout_theme_roots', '1588002944', 'no'),
-(1642, '_site_transient_theme_roots', 'a:2:{s:7:\"realsys\";s:7:\"/themes\";s:14:\"twentynineteen\";s:7:\"/themes\";}', 'no'),
-(1643, '_site_transient_update_themes', 'O:8:\"stdClass\":4:{s:12:\"last_checked\";i:1588001145;s:7:\"checked\";a:2:{s:7:\"realsys\";s:3:\"1.0\";s:14:\"twentynineteen\";s:3:\"1.4\";}s:8:\"response\";a:1:{s:14:\"twentynineteen\";a:6:{s:5:\"theme\";s:14:\"twentynineteen\";s:11:\"new_version\";s:3:\"1.5\";s:3:\"url\";s:44:\"https://wordpress.org/themes/twentynineteen/\";s:7:\"package\";s:60:\"https://downloads.wordpress.org/theme/twentynineteen.1.5.zip\";s:8:\"requires\";s:5:\"4.9.6\";s:12:\"requires_php\";s:5:\"5.2.4\";}}s:12:\"translations\";a:0:{}}', 'no');
+(1701, '_site_transient_timeout_theme_roots', '1588959710', 'no'),
+(1702, '_site_transient_theme_roots', 'a:2:{s:7:\"realsys\";s:7:\"/themes\";s:14:\"twentynineteen\";s:7:\"/themes\";}', 'no'),
+(1703, '_site_transient_update_themes', 'O:8:\"stdClass\":4:{s:12:\"last_checked\";i:1588957912;s:7:\"checked\";a:2:{s:7:\"realsys\";s:3:\"1.0\";s:14:\"twentynineteen\";s:3:\"1.4\";}s:8:\"response\";a:1:{s:14:\"twentynineteen\";a:6:{s:5:\"theme\";s:14:\"twentynineteen\";s:11:\"new_version\";s:3:\"1.5\";s:3:\"url\";s:44:\"https://wordpress.org/themes/twentynineteen/\";s:7:\"package\";s:60:\"https://downloads.wordpress.org/theme/twentynineteen.1.5.zip\";s:8:\"requires\";s:5:\"4.9.6\";s:12:\"requires_php\";s:5:\"5.2.4\";}}s:12:\"translations\";a:0:{}}', 'no');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_postmeta`
+-- Struktura tabulky `wp_postmeta`
 --
 
 CREATE TABLE `wp_postmeta` (
@@ -572,7 +646,7 @@ CREATE TABLE `wp_postmeta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `wp_postmeta`
+-- Vypisuji data pro tabulku `wp_postmeta`
 --
 
 INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
@@ -705,7 +779,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_posts`
+-- Struktura tabulky `wp_posts`
 --
 
 CREATE TABLE `wp_posts` (
@@ -735,7 +809,7 @@ CREATE TABLE `wp_posts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `wp_posts`
+-- Vypisuji data pro tabulku `wp_posts`
 --
 
 INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
@@ -792,13 +866,12 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (100, 1, '2020-03-01 11:05:56', '2020-03-01 10:05:56', '', 'editace-inzeratu', '', 'inherit', 'closed', 'closed', '', '99-revision-v1', '', '', '2020-03-01 11:05:56', '2020-03-01 10:05:56', '', 99, 'http://localhost/realsys/99-revision-v1/', 0, 'revision', '', 0),
 (101, 1, '2020-03-02 14:30:15', '2020-03-02 13:30:15', '', 'Mapa', '', 'inherit', 'closed', 'closed', '', '82-revision-v1', '', '', '2020-03-02 14:30:15', '2020-03-02 13:30:15', '', 82, 'http://localhost/realsys/82-revision-v1/', 0, 'revision', '', 0),
 (103, 1, '2020-04-09 13:14:44', '2020-04-09 11:14:44', '', 'hlidacipes', '', 'publish', 'closed', 'closed', '', 'hlidacipes', '', '', '2020-04-09 13:14:44', '2020-04-09 11:14:44', '', 0, 'http://localhost/realsys/?page_id=103', 0, 'page', '', 0),
-(104, 1, '2020-04-09 13:14:44', '2020-04-09 11:14:44', '', 'hlidacipes', '', 'inherit', 'closed', 'closed', '', '103-revision-v1', '', '', '2020-04-09 13:14:44', '2020-04-09 11:14:44', '', 103, 'http://localhost/realsys/103-revision-v1/', 0, 'revision', '', 0),
-(105, 1, '2020-04-23 10:29:34', '0000-00-00 00:00:00', '', 'Automaticky vytvořený koncept', '', 'auto-draft', 'open', 'open', '', '', '', '', '2020-04-23 10:29:34', '0000-00-00 00:00:00', '', 0, 'http://localhost/realsys/?p=105', 0, 'post', '', 0);
+(104, 1, '2020-04-09 13:14:44', '2020-04-09 11:14:44', '', 'hlidacipes', '', 'inherit', 'closed', 'closed', '', '103-revision-v1', '', '', '2020-04-09 13:14:44', '2020-04-09 11:14:44', '', 103, 'http://localhost/realsys/103-revision-v1/', 0, 'revision', '', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_termmeta`
+-- Struktura tabulky `wp_termmeta`
 --
 
 CREATE TABLE `wp_termmeta` (
@@ -811,7 +884,7 @@ CREATE TABLE `wp_termmeta` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_terms`
+-- Struktura tabulky `wp_terms`
 --
 
 CREATE TABLE `wp_terms` (
@@ -822,7 +895,7 @@ CREATE TABLE `wp_terms` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `wp_terms`
+-- Vypisuji data pro tabulku `wp_terms`
 --
 
 INSERT INTO `wp_terms` (`term_id`, `name`, `slug`, `term_group`) VALUES
@@ -833,7 +906,7 @@ INSERT INTO `wp_terms` (`term_id`, `name`, `slug`, `term_group`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_term_relationships`
+-- Struktura tabulky `wp_term_relationships`
 --
 
 CREATE TABLE `wp_term_relationships` (
@@ -843,7 +916,7 @@ CREATE TABLE `wp_term_relationships` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `wp_term_relationships`
+-- Vypisuji data pro tabulku `wp_term_relationships`
 --
 
 INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_order`) VALUES
@@ -864,7 +937,7 @@ INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_orde
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_term_taxonomy`
+-- Struktura tabulky `wp_term_taxonomy`
 --
 
 CREATE TABLE `wp_term_taxonomy` (
@@ -877,7 +950,7 @@ CREATE TABLE `wp_term_taxonomy` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `wp_term_taxonomy`
+-- Vypisuji data pro tabulku `wp_term_taxonomy`
 --
 
 INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `description`, `parent`, `count`) VALUES
@@ -888,7 +961,7 @@ INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `desc
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_usermeta`
+-- Struktura tabulky `wp_usermeta`
 --
 
 CREATE TABLE `wp_usermeta` (
@@ -899,7 +972,7 @@ CREATE TABLE `wp_usermeta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `wp_usermeta`
+-- Vypisuji data pro tabulku `wp_usermeta`
 --
 
 INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALUES
@@ -929,7 +1002,7 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_users`
+-- Struktura tabulky `wp_users`
 --
 
 CREATE TABLE `wp_users` (
@@ -946,60 +1019,60 @@ CREATE TABLE `wp_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `wp_users`
+-- Vypisuji data pro tabulku `wp_users`
 --
 
 INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `user_registered`, `user_activation_key`, `user_status`, `display_name`) VALUES
 (1, 'jakubsedmik', '$P$BuoMM/vKyyrMakVQS7CVfCYV9Lkjzf/', 'jakubsedmik', 'info@studioseven.cz', '', '2019-08-13 17:11:19', '', 0, 'jakubsedmik');
 
 --
--- Indexes for dumped tables
+-- Klíče pro exportované tabulky
 --
 
 --
--- Indexes for table `s7_ciselnik`
+-- Klíče pro tabulku `s7_ciselnik`
 --
 ALTER TABLE `s7_ciselnik`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `s7_hlidacipes`
+-- Klíče pro tabulku `s7_hlidacipes`
 --
 ALTER TABLE `s7_hlidacipes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `s7_inzerat`
+-- Klíče pro tabulku `s7_inzerat`
 --
 ALTER TABLE `s7_inzerat`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `s7_objednavka`
+-- Klíče pro tabulku `s7_objednavka`
 --
 ALTER TABLE `s7_objednavka`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `s7_obrazek`
+-- Klíče pro tabulku `s7_obrazek`
 --
 ALTER TABLE `s7_obrazek`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `s7_transakce`
+-- Klíče pro tabulku `s7_transakce`
 --
 ALTER TABLE `s7_transakce`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `s7_uzivatel`
+-- Klíče pro tabulku `s7_uzivatel`
 --
 ALTER TABLE `s7_uzivatel`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `wp_commentmeta`
+-- Klíče pro tabulku `wp_commentmeta`
 --
 ALTER TABLE `wp_commentmeta`
   ADD PRIMARY KEY (`meta_id`),
@@ -1007,7 +1080,7 @@ ALTER TABLE `wp_commentmeta`
   ADD KEY `meta_key` (`meta_key`(191));
 
 --
--- Indexes for table `wp_comments`
+-- Klíče pro tabulku `wp_comments`
 --
 ALTER TABLE `wp_comments`
   ADD PRIMARY KEY (`comment_ID`),
@@ -1018,21 +1091,21 @@ ALTER TABLE `wp_comments`
   ADD KEY `comment_author_email` (`comment_author_email`(10));
 
 --
--- Indexes for table `wp_links`
+-- Klíče pro tabulku `wp_links`
 --
 ALTER TABLE `wp_links`
   ADD PRIMARY KEY (`link_id`),
   ADD KEY `link_visible` (`link_visible`);
 
 --
--- Indexes for table `wp_options`
+-- Klíče pro tabulku `wp_options`
 --
 ALTER TABLE `wp_options`
   ADD PRIMARY KEY (`option_id`),
   ADD UNIQUE KEY `option_name` (`option_name`);
 
 --
--- Indexes for table `wp_postmeta`
+-- Klíče pro tabulku `wp_postmeta`
 --
 ALTER TABLE `wp_postmeta`
   ADD PRIMARY KEY (`meta_id`),
@@ -1040,7 +1113,7 @@ ALTER TABLE `wp_postmeta`
   ADD KEY `meta_key` (`meta_key`(191));
 
 --
--- Indexes for table `wp_posts`
+-- Klíče pro tabulku `wp_posts`
 --
 ALTER TABLE `wp_posts`
   ADD PRIMARY KEY (`ID`),
@@ -1050,7 +1123,7 @@ ALTER TABLE `wp_posts`
   ADD KEY `post_author` (`post_author`);
 
 --
--- Indexes for table `wp_termmeta`
+-- Klíče pro tabulku `wp_termmeta`
 --
 ALTER TABLE `wp_termmeta`
   ADD PRIMARY KEY (`meta_id`),
@@ -1058,7 +1131,7 @@ ALTER TABLE `wp_termmeta`
   ADD KEY `meta_key` (`meta_key`(191));
 
 --
--- Indexes for table `wp_terms`
+-- Klíče pro tabulku `wp_terms`
 --
 ALTER TABLE `wp_terms`
   ADD PRIMARY KEY (`term_id`),
@@ -1066,14 +1139,14 @@ ALTER TABLE `wp_terms`
   ADD KEY `name` (`name`(191));
 
 --
--- Indexes for table `wp_term_relationships`
+-- Klíče pro tabulku `wp_term_relationships`
 --
 ALTER TABLE `wp_term_relationships`
   ADD PRIMARY KEY (`object_id`,`term_taxonomy_id`),
   ADD KEY `term_taxonomy_id` (`term_taxonomy_id`);
 
 --
--- Indexes for table `wp_term_taxonomy`
+-- Klíče pro tabulku `wp_term_taxonomy`
 --
 ALTER TABLE `wp_term_taxonomy`
   ADD PRIMARY KEY (`term_taxonomy_id`),
@@ -1081,7 +1154,7 @@ ALTER TABLE `wp_term_taxonomy`
   ADD KEY `taxonomy` (`taxonomy`);
 
 --
--- Indexes for table `wp_usermeta`
+-- Klíče pro tabulku `wp_usermeta`
 --
 ALTER TABLE `wp_usermeta`
   ADD PRIMARY KEY (`umeta_id`),
@@ -1089,7 +1162,7 @@ ALTER TABLE `wp_usermeta`
   ADD KEY `meta_key` (`meta_key`(191));
 
 --
--- Indexes for table `wp_users`
+-- Klíče pro tabulku `wp_users`
 --
 ALTER TABLE `wp_users`
   ADD PRIMARY KEY (`ID`),
@@ -1098,113 +1171,113 @@ ALTER TABLE `wp_users`
   ADD KEY `user_email` (`user_email`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pro tabulky
 --
 
 --
--- AUTO_INCREMENT for table `s7_ciselnik`
+-- AUTO_INCREMENT pro tabulku `s7_ciselnik`
 --
 ALTER TABLE `s7_ciselnik`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT for table `s7_hlidacipes`
+-- AUTO_INCREMENT pro tabulku `s7_hlidacipes`
 --
 ALTER TABLE `s7_hlidacipes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `s7_inzerat`
+-- AUTO_INCREMENT pro tabulku `s7_inzerat`
 --
 ALTER TABLE `s7_inzerat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
--- AUTO_INCREMENT for table `s7_objednavka`
+-- AUTO_INCREMENT pro tabulku `s7_objednavka`
 --
 ALTER TABLE `s7_objednavka`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT for table `s7_obrazek`
+-- AUTO_INCREMENT pro tabulku `s7_obrazek`
 --
 ALTER TABLE `s7_obrazek`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=264;
 
 --
--- AUTO_INCREMENT for table `s7_transakce`
+-- AUTO_INCREMENT pro tabulku `s7_transakce`
 --
 ALTER TABLE `s7_transakce`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
--- AUTO_INCREMENT for table `s7_uzivatel`
+-- AUTO_INCREMENT pro tabulku `s7_uzivatel`
 --
 ALTER TABLE `s7_uzivatel`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `wp_commentmeta`
+-- AUTO_INCREMENT pro tabulku `wp_commentmeta`
 --
 ALTER TABLE `wp_commentmeta`
   MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `wp_comments`
+-- AUTO_INCREMENT pro tabulku `wp_comments`
 --
 ALTER TABLE `wp_comments`
   MODIFY `comment_ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `wp_links`
+-- AUTO_INCREMENT pro tabulku `wp_links`
 --
 ALTER TABLE `wp_links`
   MODIFY `link_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `wp_options`
+-- AUTO_INCREMENT pro tabulku `wp_options`
 --
 ALTER TABLE `wp_options`
-  MODIFY `option_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1644;
+  MODIFY `option_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1704;
 
 --
--- AUTO_INCREMENT for table `wp_postmeta`
+-- AUTO_INCREMENT pro tabulku `wp_postmeta`
 --
 ALTER TABLE `wp_postmeta`
   MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=223;
 
 --
--- AUTO_INCREMENT for table `wp_posts`
+-- AUTO_INCREMENT pro tabulku `wp_posts`
 --
 ALTER TABLE `wp_posts`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
--- AUTO_INCREMENT for table `wp_termmeta`
+-- AUTO_INCREMENT pro tabulku `wp_termmeta`
 --
 ALTER TABLE `wp_termmeta`
   MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `wp_terms`
+-- AUTO_INCREMENT pro tabulku `wp_terms`
 --
 ALTER TABLE `wp_terms`
   MODIFY `term_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `wp_term_taxonomy`
+-- AUTO_INCREMENT pro tabulku `wp_term_taxonomy`
 --
 ALTER TABLE `wp_term_taxonomy`
   MODIFY `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `wp_usermeta`
+-- AUTO_INCREMENT pro tabulku `wp_usermeta`
 --
 ALTER TABLE `wp_usermeta`
   MODIFY `umeta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT for table `wp_users`
+-- AUTO_INCREMENT pro tabulku `wp_users`
 --
 ALTER TABLE `wp_users`
   MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;

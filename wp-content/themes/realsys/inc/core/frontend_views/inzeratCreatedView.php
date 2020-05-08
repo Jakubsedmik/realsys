@@ -2,7 +2,7 @@
 	$inzerat = $this->requestData['inzerat'];
 	$link = Tools::getFERoute("inzeratClass",$inzerat->getId(),"detail");
 
-	//Tools::jsRedirect($link, 1500, "Přesměrovní", "Probíhá přesměrování na nový inzerát");
+	Tools::jsRedirect($link, 1500, "Přesměrovní", "Probíhá přesměrování na nový inzerát");
 ?>
 <section>
 	<div class="add-inz-con">

@@ -99,6 +99,9 @@
                 var classObj = new Object;
                 classObj[class_name] = true;
                 classObj['nemovitost'] = true;
+                if(this.inzerat.db_top == 1){
+                    classObj['nemovitost-top'] = true;
+                }
                 return classObj;
             },
             getDescription(){

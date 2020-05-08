@@ -958,6 +958,10 @@ function checkUserCredits(){
 
 function payForService(){
 
+	// now shut down error reporting for a while
+	error_reporting(0);
+	ini_set('display_errors', 'Off');
+
 	$result = Tools::postChecker($_GET, array(
 		'serviceid' => array(
 			'type' => NUMBER,

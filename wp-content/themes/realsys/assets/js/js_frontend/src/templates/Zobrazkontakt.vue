@@ -11,7 +11,7 @@
                 v-bind:currency="this.currency"
                 v-bind:assets_path="this.assets_path"
                 v-bind:entityid="this.inzerat_id"
-                v-bind:entitytype="inzeratClass"
+                v-bind:entitytype="'inzeratClass'"
                 ref="servicebuy"
                 design="hidden"
         ></Servicebuy>
