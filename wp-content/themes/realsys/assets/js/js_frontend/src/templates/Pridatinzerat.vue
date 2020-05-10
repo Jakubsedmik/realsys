@@ -48,7 +48,7 @@
                             <div class="form-content">
                                 <h3>{{translations.typInzeratu}}</h3>
                                 <div class="input-content">
-                                    <div class="row selects" :class="{ 'form-field--error': $v.modelData.part_first.db_typ_inzeratu.$error }">
+                                    <div class="row selects" :class="errorClass('part_first','db_typ_inzeratu')">
 
                                         <div class="single-input" v-for="value in this.options.typ_inzeratu">
                                             <label class="form-field">
@@ -69,7 +69,7 @@
                             <div class="form-content">
                                 <h3>{{translations.typNemovitosti}}</h3>
                                 <div class="input-content">
-                                    <div class="row selects ico-smaller" :class="{ 'form-field--error': $v.modelData.part_first.db_typ_stavby.$error }">
+                                    <div class="row selects ico-smaller" :class="errorClass('part_first','db_typ_stavby')">
 
                                         <div class="single-input" v-for="value in this.options.typ_stavby">
                                             <label class="form-field">
@@ -89,7 +89,7 @@
                             <div class="form-content">
                                 <h3>{{translations.dispozice}}</h3>
                                 <div class="single-val-form">
-                                    <label class="form-field" :class="{ 'form-field--error': $v.modelData.part_first.db_pocet_mistnosti.$error }">
+                                    <label class="form-field" :class="errorClass('part_first','db_pocet_mistnosti')">
                                         <select name="db_pocet_mistnosti" v-model.trim="$v.modelData.part_first.db_pocet_mistnosti.$model">
                                             <option v-for="index in options.dispozice" :value="index">{{index}}</option>
                                         </select>
@@ -105,16 +105,16 @@
                             <div class="form-content">
                                 <h3>{{translations.rozloha}}</h3>
                                 <div class="input-content">
-                                    <label class="form-field" :class="{ 'form-field--error': $v.modelData.part_first.db_uzitkova_plocha.$error }" v-if="doesInputAppearRequire('db_uzitkova_plocha')">
-                                        <input type="number" name="db_uzitkova_plocha" class="input-outline" :placeholder="translations.uzitkovaPlocha" v-model.trim="$v.modelData.part_first.db_uzitkova_plocha.$model">
+                                    <label class="form-field" :class="errorClass('part_first','db_uzitkova_plocha')" v-if="doesInputAppearRequire('db_uzitkova_plocha')">
+                                        <input type="number" min="0" name="db_uzitkova_plocha" class="input-outline" :placeholder="translations.uzitkovaPlocha" v-model.trim="$v.modelData.part_first.db_uzitkova_plocha.$model">
                                         <div class="error" v-if="!$v.modelData.part_first.db_uzitkova_plocha.required">{{translations.poleJePovinne}}</div>
                                     </label>
-                                    <label class="form-field" :class="{ 'form-field--error': $v.modelData.part_first.db_pozemkova_plocha.$error }" v-if="doesInputAppearRequire('db_pozemkova_plocha')">
-                                        <input type="number" name="db_pozemkova_plocha" class="input-outline" :placeholder="translations.pozemkovaPlocha" v-model.trim="$v.modelData.part_first.db_pozemkova_plocha.$model">
+                                    <label class="form-field" :class="errorClass('part_first','db_pozemkova_plocha')" v-if="doesInputAppearRequire('db_pozemkova_plocha')">
+                                        <input type="number" min="0" name="db_pozemkova_plocha" class="input-outline" :placeholder="translations.pozemkovaPlocha" v-model.trim="$v.modelData.part_first.db_pozemkova_plocha.$model">
                                         <div class="error" v-if="!$v.modelData.part_first.db_pozemkova_plocha.required">{{translations.poleJePovinne}}</div>
                                     </label>
-                                    <label class="form-field" :class="{ 'form-field--error': $v.modelData.part_first.db_podlahova_plocha.$error }" v-if="doesInputAppearRequire('db_podlahova_plocha')">
-                                        <input type="number" name="db_podlahova_plocha" class="input-outline" :placeholder="translations.podlahovaPlocha" v-model.trim="$v.modelData.part_first.db_podlahova_plocha.$model">
+                                    <label class="form-field" :class="errorClass('part_first','db_podlahova_plocha')" v-if="doesInputAppearRequire('db_podlahova_plocha')">
+                                        <input type="number" min="0" name="db_podlahova_plocha" class="input-outline" :placeholder="translations.podlahovaPlocha" v-model.trim="$v.modelData.part_first.db_podlahova_plocha.$model">
                                         <div class="error" v-if="!$v.modelData.part_first.db_podlahova_plocha.required">{{translations.poleJePovinne}}</div>
                                     </label>
                                 </div>
@@ -134,7 +134,7 @@
                                         <input type="text" name="db_ulice" class="input-outline" :placeholder="translations.ulice" v-model.trim="$v.modelData.part_first.db_ulice.$model">
                                         <div class="error" v-if="errorAppear('part_first','db_ulice')">{{translations.poleJePovinne}}</div>
                                     </label>
-                                    <label class="form-field" v-if="doesInputAppearRequire('db_cp')" :class="{ 'form-field--error': $v.modelData.part_first.db_cp.$error }">
+                                    <label class="form-field" v-if="doesInputAppearRequire('db_cp')" :class="errorClass('part_first','db_cp')">
                                         <input type="text" name="db_cp" class="input-outline" :placeholder="translations.cp" v-model.trim="$v.modelData.part_first.db_cp.$model">
                                         <div class="error" v-if="errorAppear('part_first','db_cp')">{{translations.poleJePovinne}}</div>
                                     </label>
@@ -158,25 +158,25 @@
                                 <div class="currency-input">
 
                                     <div class="form-field price-field" v-if="doesInputAppearRequire('db_cena')" :class="errorClass('part_first','db_cena')">
-                                        <input type="number" :placeholder="translations.cena" step="1000" name="db_cena_najmu" class="input-outline" v-model.trim="$v.modelData.part_first.db_cena.$model">
+                                        <input type="number" :placeholder="translations.cena" step="1" min="0" name="db_cena_najmu" class="input-outline" v-model.trim="$v.modelData.part_first.db_cena.$model">
                                         <span class="currency">{{currency}}</span>
                                         <div class="error" v-if="errorAppear('part_first','db_cena')">{{translations.poleJePovinne}}</div>
                                     </div>
 
                                     <div class="form-field price-field" v-if="doesInputAppearRequire('db_cena_najem')" :class="errorClass('part_first','db_cena_najem')">
-                                        <input type="number" :placeholder="translations.cenaNajmu" step="1000" name="db_cena_najem" class="input-outline" v-model.trim="$v.modelData.part_first.db_cena_najem.$model">
+                                        <input type="number" :placeholder="translations.cenaNajmu" step="1" min="0" name="db_cena_najem" class="input-outline" v-model.trim="$v.modelData.part_first.db_cena_najem.$model">
                                         <span class="currency">{{currency}} / {{translations.mesic}}</span>
                                         <div class="error" v-if="errorAppear('part_first','db_cena_najem')">{{translations.poleJePovinne}}</div>
                                     </div>
 
                                     <div class="form-field price-field" v-if="doesInputAppearRequire('db_poplatky')" :class="errorClass('part_first','db_poplatky')">
-                                        <input type="number" :placeholder="translations.poplatky" step="1000" name="db_poplatky" class="input-outline" v-model.trim="$v.modelData.part_first.db_poplatky.$model">
+                                        <input type="number" :placeholder="translations.poplatky" step="1" min="0" name="db_poplatky" class="input-outline" v-model.trim="$v.modelData.part_first.db_poplatky.$model">
                                         <span class="currency">{{currency}} / {{translations.mesic}}</span>
                                         <div class="error" v-if="errorAppear('part_first','db_poplatky')">{{translations.poleJePovinne}}</div>
                                     </div>
 
                                     <div class="form-field price-field" v-if="doesInputAppearRequire('db_kauce')" :class="errorClass('part_first','db_kauce')">
-                                        <input type="number" :placeholder="translations.kauce" step="1000" name="db_kauce" class="input-outline" v-model.trim="$v.modelData.part_first.db_kauce.$model">
+                                        <input type="number" :placeholder="translations.kauce" step="1" min="0" name="db_kauce" class="input-outline" v-model.trim="$v.modelData.part_first.db_kauce.$model">
                                         <span class="currency">{{currency}}</span>
                                         <div class="error" v-if="errorAppear('part_first','db_kauce')">{{translations.poleJePovinne}}</div>
                                     </div>
@@ -479,7 +479,7 @@
 
                                         <div class="price-bar">
                                             <h4 class="price">{{getPrice}}</h4>
-                                            <a class="btn more">{{translations.viceInfo}}</a>
+                                            <a v-if="false" class="btn more">{{translations.viceInfo}}</a>
                                         </div>
 
 
@@ -491,14 +491,16 @@
 
                             <div class="col-sm">
                                 <div class="topovani-wrap">
+
                                     <h3>{{translations.chceteAbyVasPrispevek}}</h3>
                                     <p>{{translations.textPozornost}}</p>
 
                                     <div class="nemovitost-topovani">
                                         <h4>{{translations.vyzkousejteTopovani}}</h4>
-                                        <a class="btn ico-btn" href="#"><i class="fas fa-star"></i>{{translations.topovat}}</a>
-                                        <a href="#" class="simple-link">{{translations.jakToFunguje}}</a>
+                                        <a class="btn ico-btn" href="#" v-if="false" ><i class="fas fa-star"></i>{{translations.topovat}}</a>
+                                        <a href="#" class="simple-link" v-if="false">{{translations.jakToFunguje}}</a>
                                     </div>
+
                                 </div>
                             </div>
 
@@ -555,6 +557,16 @@
                 type: Object,
                 default: function () {
                     return {
+                        db_typ_inzeratu: {
+                            type: Number,
+                            required: true,
+                            appear: true
+                        },
+                        db_typ_stavby: {
+                            type: Number,
+                            required: true,
+                            appear: true
+                        },
                         db_pocet_mistnosti: {
                             required: [
                                 {db_typ_stavby: 2, db_typ_inzeratu: 2},
@@ -746,7 +758,7 @@
                             type: Number
                         },
                         db_vhodny_pro: {
-                            required: true,
+                            required: false,
                             appear: true,
                             type: String
                         },
@@ -843,7 +855,7 @@
                         db_typ_vlastnictvi: "",
                         db_material: "",
                         db_penb: "",
-                        db_vhodny_pro: "",
+                        db_vhodny_pro: null,
                         db_titulek: "",
                         db_popis: ""
                     },
@@ -939,7 +951,7 @@
                 }
             },
             errorClass: function (part,fieldName) {
-                return {'form-field--error': this.$v.modelData[part][fieldName].$error };
+                return {'form-field--error': this.$v.modelData[part][fieldName].$error, 'required-field' : this.doesInputAppearRequire(fieldName, true)};
             },
             errorAppear: function (part, fieldName) {
                 return !this.$v.modelData[part][fieldName].required;

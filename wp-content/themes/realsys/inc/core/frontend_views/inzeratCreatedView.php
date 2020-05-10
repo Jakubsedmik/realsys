@@ -8,8 +8,12 @@
 	<div class="add-inz-con">
 		<div class="wrapper">
 			<h2>Inzerát byl vytvořen</h2>
+            <p>Děkujeme za vytvoření inzerátu.</p>
+            <!--
+            TODO prozatímní redirect na přidání inzerátu, po spuštění musí být na profil
 			<p>Děkujeme za vytvoření inzerátu. Na inzerát budete přesměrováni. Nebo klikněte na tlačítko níže.</p>
 			<a href="<?php echo $link; ?>" class="btn">Detail inzerátu</a>
+			-->
 		</div>
 	</div>
 </section>

@@ -137,21 +137,10 @@
 			<input type="hidden" name="image" value="">
 			<input type="hidden" name="action" value="googleRegistration">
 
-			<div class="form-cols">
+			<div class="form-cols google-login">
 				<div class="form-col">
 					<label><?php echo _e("Telefon", "realsys"); ?></label>
 					<input name="telefon" required type="tel" placeholder="<?php echo _e("Telefon-syntax", "realsys"); ?>">
-				</div>
-				<div class="jakyUziv form-col">
-					<label><?php echo _e("Jste:", "realsys"); ?></label>
-					<div class="radios">
-						<div class="form-radio">
-							<input type="radio" name="typ" value="Uzivatel" checked> <?php echo _e("Uživatel", "realsys"); ?>
-						</div>
-						<div class="form-radio">
-							<input type="radio" name="typ" value="Pravnicka osoba"> <?php echo _e("Právnická osoba", "realsys"); ?>
-						</div>
-					</div>
 				</div>
 			</div>
 			<div class="form-btns">

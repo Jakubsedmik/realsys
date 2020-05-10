@@ -165,6 +165,15 @@ class typeClass implements JsonSerializable {
 					frontendError::addMessage( $this->key, ERROR, $response, $this );
 					break;
 				}
+			case "price_zero" :
+				if ( $this->isPriceZero( $this->value ) ) {
+					break;
+				} else {
+					$response = "Pole " . globalUtils::translate( $this->key ) . " není platná cena.";
+					$status   = false;
+					frontendError::addMessage( $this->key, ERROR, $response, $this );
+					break;
+				}
 			case 'timestamp' :
 				if ( $this->isTimestamp( $this->value ) ) {
 					break;
@@ -315,6 +324,10 @@ class typeClass implements JsonSerializable {
 
 	public function isPrice( $price ) {
 		return ( $this->isInteger( $price ) && $price < PHP_INT_MAX && $price > 0 );
+	}
+
+	public function isPriceZero( $price ) {
+		return ( $this->isInteger( $price ) && $price < PHP_INT_MAX && $price > -1 );
 	}
 
 	public function isForeignKey ( $key ){

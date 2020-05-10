@@ -85,6 +85,7 @@ define( "EMAIL", "mail" ); // standard email OK
 define( "FOREIGN_KEY", "fk" ); // foreign key OK (with control against relations var)
 define( "TEL", "tel" ); // telephone like +48 777 777 777 OK
 define( "PRICE", "price" ); // price only positive till 2 147 483 647 OK
+define( "PRICE_ZERO", "price_zero" ); // price only positive till 2 147 483 647, including zero
 define( "TIMESTAMP", "timestamp" ); // valid timestamp OK
 define( "PHPARRAY", "array" ); // valid PHP array
 
@@ -340,11 +341,11 @@ $field_rules = array(
 		),
 		'db_poplatky' => array(
 			'required' => false,
-			'type' => PRICE
+			'type' => PRICE_ZERO
 		),
 		'db_kauce' => array(
 			'required' => false,
-			'type' => PRICE
+			'type' => PRICE_ZERO
 		),
 		'db_vhodny_pro' => array(
 			'required' => false,
@@ -855,7 +856,6 @@ $celkem_podlazi_options = array(
 );
 
 $dispozice_options = array(
-	__("1+KK"),
 	__("1+KK"),
 	__("1+1"),
 	__("2+1"),

@@ -61,6 +61,7 @@ class pridatInzeratController extends frontendController {
 					$_this = $this;
 
 
+
 					$response = Tools::formProcessor(array(
 						"db_typ_inzeratu", "db_pocet_mistnosti", "db_ulice", "db_cp", "db_mesto", "db_psc", "db_titulek", "db_popis",
 						"db_mestska_cast", "db_cena", "db_cena_poznamka", "db_cena_najem", "db_poplatky", "db_kauce", "db_typ_stavby",
