@@ -107,6 +107,9 @@ class typeClass implements JsonSerializable {
 
 			/* FUNCTIONAL FILTERS */
 			case 'date':
+				if ( $this->isTimestamp( $this->value ) ) {
+					break;
+				}
 				$custom_date = $this->value;
 				$custom_date = str_replace( ".", "-", $custom_date );
 				if ( strtotime( $custom_date ) === false ) {

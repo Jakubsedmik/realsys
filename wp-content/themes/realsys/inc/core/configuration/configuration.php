@@ -348,11 +348,11 @@ $field_rules = array(
 		),
 		'db_vhodny_pro' => array(
 			'required' => false,
-			'type' => NUMBER
+			'type' => STRING255
 		),
 		'db_k_dispozici_od' => array(
 			'required' => false,
-			'type' => TIMESTAMP
+			'type' => DATE
 		),
 		'db_dalsi_vybaveni' => array(
 			'required' => false,

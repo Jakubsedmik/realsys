@@ -54,7 +54,7 @@
                                             <label class="form-field">
 
                                                 <span class="sel-input-name">{{value.db_translation.value}}</span>
-                                                <input type="radio" name="db_typ_inzeratu" :value="value.db_value.value" v-model.trim="$v.modelData.part_first.db_typ_inzeratu.$model">
+                                                <input type="radio" name="db_typ_inzeratu" :value="value.db_value.value" v-model.trim="$v.modelData.part_first.db_typ_inzeratu.$model" @change="resetForm()">
 
                                             </label>
                                         </div>
@@ -74,7 +74,7 @@
                                         <div class="single-input" v-for="value in this.options.typ_stavby">
                                             <label class="form-field">
                                                 <span class="sel-input-name">{{value.db_translation.value}}</span>
-                                                <input type="radio" name="db_typ_stavby" :value="value.db_value.value" v-model.trim="$v.modelData.part_first.db_typ_stavby.$model">
+                                                <input type="radio" name="db_typ_stavby" :value="value.db_value.value" v-model.trim="$v.modelData.part_first.db_typ_stavby.$model" @change="resetForm()">
                                             </label>
                                         </div>
 
@@ -1013,6 +1013,18 @@
                     }
                 }
                 return false;
+            },
+            resetForm(){
+                this.modelData.part_second.db_patro = "";
+                this.modelData.part_second.db_celkem_podlazi = "";
+                this.modelData.part_first.db_cena = "";
+                this.modelData.part_first.db_cena_najem = "";
+                this.modelData.part_first.db_poplatky = "";
+                this.modelData.part_first.db_kauce = "";
+                this.modelData.part_first.db_podlahova_plocha = "";
+                this.modelData.part_first.db_pozemkova_plocha = "";
+                this.modelData.part_first.db_uzitkova_plocha = "";
+
             }
         },
         computed: {

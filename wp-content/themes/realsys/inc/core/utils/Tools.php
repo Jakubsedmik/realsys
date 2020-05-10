@@ -47,7 +47,7 @@ class Tools {
                 if(!$type_checker->getStatus()){
                     $arrOfWrong[$key] = $type_checker;
                 }else{
-                    $value = Tools::transformType($type, $val);
+                    $arr[$key] = Tools::transformType($type, $val);
                 }
             }
 
@@ -56,6 +56,17 @@ class Tools {
             }
 
             return $arrOfWrong;
+    }
+
+    public static function transformArr($arr, $rules){
+	    foreach ($rules as $key => $value) {
+		    $type = $value['type'];
+		    if(isset($arr[$key])){
+			    $val = $arr[$key];
+			    $arr[$key] = Tools::transformType($type, $val);
+		    }
+        }
+	    return $arr;
     }
     
     
@@ -323,8 +334,11 @@ class Tools {
 
 
         $result = self::postChecker($newsource, $format, true);
+	    $newsource = self::transformArr($newsource, $format);
+
         if($result){
             $db_properties = globalUtils::filterOnlyDbProperties($newsource);
+
 
             if($action == 'edit'){
                 if(Tools::checkPresenceOfParam("db_id", $db_properties)){
@@ -397,6 +411,7 @@ class Tools {
                 break;
             case "time" : break;
                 return $value;
+	        default: return $value;
         }
     }
 
