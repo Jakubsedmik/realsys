@@ -1,16 +1,1355 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Project-Id-Version: Package Name\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-08 18:48+0200\n"
+"PO-Revision-Date: 2020-05-10 22:29+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs_CZ\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.3.1\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
+"|| n%100>14) ? 1 : 2);\n"
+"Language: pl_PL\n"
 
-#. Description of the theme
+#: functions.php:76
+msgid "Vlastní nastavení šablony"
+msgstr ""
+
+#: functions.php:154
+msgid "Text slider 1"
+msgstr ""
+
+#: functions.php:155
+msgid "Text - typicky najdi si nový domov bez reality a bez provize"
+msgstr ""
+
+#: functions.php:162
+msgid "Text slider 2"
+msgstr ""
+
+#: functions.php:163
+msgid "Text - nebo inzeruj..."
+msgstr ""
+
+#: functions.php:170
+msgid "Tlačítko ve slideru"
+msgstr ""
+
+#: functions.php:171
+msgid "Tlačítko přidat inzerát text"
+msgstr "Dodać ogłoszenie"
+
+#: functions.php:177
+msgid "Url odkazu ve slideru"
+msgstr ""
+
+#: functions.php:178
+msgid "Tlačítko přidat inzerát - url"
+msgstr "Dodać ogłoszenie"
+
+#: functions.php:184
+msgid "CTA Nadpis"
+msgstr ""
+
+#: functions.php:185
+msgid "Nadpis v CTA bloku"
+msgstr ""
+
+#: functions.php:192
+msgid "CTA Podnadpis"
+msgstr ""
+
+#: functions.php:193
+msgid "Podnadpis v CTA bloku"
+msgstr ""
+
+#: functions.php:200
+msgid "CTA Tlačítko"
+msgstr ""
+
+#: functions.php:201
+msgid "Text CTA tlačítka"
+msgstr ""
+
+#: functions.php:207
+msgid "CTA Tlačítko 2"
+msgstr ""
+
+#: functions.php:208
+msgid "Text CTA tlačítka 2"
+msgstr ""
+
+#: functions.php:214 functions.php:221
+msgid "CTA Tlačítko URL"
+msgstr ""
+
+#: functions.php:215
+msgid "URL prvního tlačítka"
+msgstr ""
+
+#: functions.php:222
+msgid "URL druhého tlačítka"
+msgstr ""
+
+#: functions.php:228
+msgid "Top Nemovitosti nadpis"
+msgstr ""
+
+#: functions.php:229
+msgid "Nadpis sekce top nemovitosti"
+msgstr ""
+
+#: functions.php:235
+msgid "Top Nemovitosti tlačítko"
+msgstr ""
+
+#: functions.php:236
+msgid "Top Nemovitosti text tlačítka na detail nemovitosti"
+msgstr ""
+
+#: functions.php:242
+msgid "Načíst další URL"
+msgstr ""
+
+#: functions.php:243
+msgid "Top Nemovitosti načíst další URL"
+msgstr ""
+
+#: functions.php:249
+msgid "Načíst další"
+msgstr ""
+
+#: functions.php:250
+msgid "Top Nemovitosti - načíst další text"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:512
+msgid "Heslo musí být vyplněno"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:515
+msgid "Prosím potvrďte heslo"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:518
+msgid "Uživatel s touto emailovou adresou již existuje"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:523
+msgid "Toto pole je povinné."
+msgstr ""
+
+#: inc/core/configuration/configuration.php:524
+msgid "Zadejte platnou emailovou adresu."
+msgstr "Proszę podać poprawny adres e-mail."
+
+#: inc/core/configuration/configuration.php:525
+msgid "Zadejte platné URL."
+msgstr "Proszę podać poprawny adres URL."
+
+#: inc/core/configuration/configuration.php:526
+#: inc/core/configuration/configuration.php:527
+msgid "Zadejte platné datum."
+msgstr "Podaj prawidłową datę."
+
+#: inc/core/configuration/configuration.php:528
+msgid "Zadejte platné číslo."
+msgstr "Proszę podać poprawny numer."
+
+#: inc/core/configuration/configuration.php:529
+msgid "Zadejte platné číslice."
+msgstr "Wprowadź poprawne cyfry"
+
+#: inc/core/configuration/configuration.php:530
+msgid "Zadejte platné číslo kreditní karty."
+msgstr "Proszę podać poprawny numer karty kredytowej."
+
+#: inc/core/configuration/configuration.php:531
+msgid "Zadejte maximálně {0} znaků."
+msgstr "Wprowadź do {0} znaków."
+
+#: inc/core/configuration/configuration.php:532
+msgid "Zadejte minimálně {0} znaků."
+msgstr "Wpisz co najmniej {0} znaków."
+
+#: inc/core/configuration/configuration.php:533
+msgid "Zadejte hodnotu mezi {0} a {1}."
+msgstr "Wprowadź wartość z przedziału od {0} do {1}."
+
+#: inc/core/configuration/configuration.php:821
+msgid "1. patro"
+msgstr "1. piętro"
+
+#: inc/core/configuration/configuration.php:822
+msgid "2. patro"
+msgstr "2. piętro"
+
+#: inc/core/configuration/configuration.php:823
+msgid "3. patro"
+msgstr "3. piętro"
+
+#: inc/core/configuration/configuration.php:824
+msgid "4. patro"
+msgstr "4. piętro"
+
+#: inc/core/configuration/configuration.php:825
+msgid "5. patro"
+msgstr "5. piętro"
+
+#: inc/core/configuration/configuration.php:826
+msgid "6. patro"
+msgstr "6. piętro"
+
+#: inc/core/configuration/configuration.php:827
+msgid "7. patro"
+msgstr "7. piętro"
+
+#: inc/core/configuration/configuration.php:828
+msgid "8. patro"
+msgstr "8. piętro"
+
+#: inc/core/configuration/configuration.php:829
+msgid "9. patro"
+msgstr "9. piętro"
+
+#: inc/core/configuration/configuration.php:830
+msgid "10. patro"
+msgstr "10. piętro"
+
+#: inc/core/configuration/configuration.php:831
+msgid "11. patro"
+msgstr "11. piętro"
+
+#: inc/core/configuration/configuration.php:832
+msgid "12. patro"
+msgstr "12. piętro"
+
+#: inc/core/configuration/configuration.php:833
+msgid "13. patro"
+msgstr "13. piętro"
+
+#: inc/core/configuration/configuration.php:834
+msgid "14. patro"
+msgstr "14. piętro"
+
+#: inc/core/configuration/configuration.php:835
+msgid "15. patro"
+msgstr "15. piętro"
+
+#: inc/core/configuration/configuration.php:840
+msgid "jednoho"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:841
+msgid "dvou"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:842
+msgid "tří"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:843
+msgid "čtyř"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:844
+msgid "pěti"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:845
+msgid "šesti"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:846
+msgid "sedmi"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:847
+msgid "osmi"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:848
+msgid "devíti"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:849
+msgid "deseti"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:850
+msgid "jedenácti"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:851
+msgid "dvanácti"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:852
+msgid "třinácti"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:853
+msgid "čtrnácti"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:854
+msgid "patnácti"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:858
+#: inc/core/configuration/configuration.php:859
+msgid "1+KK"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:860
+msgid "1+1"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:861
+msgid "2+1"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:862
+msgid "3+1"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:863
+msgid "4+1"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:864
+msgid "5+1"
+msgstr ""
+
+#: inc/core/frontend_views/inzeratDetailView.php:23
+msgid "Späť na výpis"
+msgstr ""
+
+#: inc/core/frontend_views/inzeratDetailView.php:63
+#: inc/core/frontend_views/inzeratDetailView.php:140
+#: inc/core/frontend_views/inzeratDetailView.php:228
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:110
+#: inc/core/frontend_views/inzeratEditView.php:156
+#: inc/core/frontend_views/pridatInzeratView.php:16
+#: inc/core/frontend_views/pridatInzeratView.php:212
+msgid "Dispozice"
+msgstr "Dyspozycja"
+
+#: inc/core/frontend_views/inzeratDetailView.php:67
+#: inc/core/frontend_views/inzeratDetailView.php:144
+#: inc/core/frontend_views/inzeratDetailView.php:232
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:114
+#: inc/core/frontend_views/nem_row_item.php:49
+#: inc/core/frontend_views/pridatInzeratView.php:19
+msgid "Podlahová plocha"
+msgstr "Powierzchnia podłogowa"
+
+#: inc/core/frontend_views/inzeratDetailView.php:71
+#: inc/core/frontend_views/inzeratDetailView.php:152
+#: inc/core/frontend_views/inzeratDetailView.php:240
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:122
+#: inc/core/frontend_views/pridatInzeratView.php:27
+#: inc/core/frontend_views/pridatInzeratView.php:262
+msgid "Cena"
+msgstr "Cena"
+
+#: inc/core/frontend_views/inzeratDetailView.php:75
+#: inc/core/frontend_views/inzeratDetailView.php:156
+#: inc/core/frontend_views/inzeratDetailView.php:244
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:126
+msgid "Cena poznámka"
+msgstr "Nota cenowa"
+
+#: inc/core/frontend_views/inzeratDetailView.php:79
+#: inc/core/frontend_views/inzeratDetailView.php:160
+#: inc/core/frontend_views/inzeratDetailView.php:248
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:130
+#: inc/core/frontend_views/inzeratEditView.php:111
+#: inc/core/frontend_views/nem_row_item.php:46
+#: inc/core/frontend_views/pridatInzeratView.php:23
+#: templates/page-profil.php:108
+msgid "Město"
+msgstr "Miasto"
+
+#: inc/core/frontend_views/inzeratDetailView.php:83
+#: inc/core/frontend_views/inzeratDetailView.php:164
+#: inc/core/frontend_views/inzeratDetailView.php:252
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:134
+#: inc/core/frontend_views/inzeratEditView.php:123
+#: inc/core/frontend_views/pridatInzeratView.php:74
+msgid "Městská část"
+msgstr "Dzielnica miasta"
+
+#: inc/core/frontend_views/inzeratDetailView.php:87
+#: inc/core/frontend_views/inzeratDetailView.php:172
+#: inc/core/frontend_views/inzeratDetailView.php:260
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:142
+#: inc/core/frontend_views/inzeratEditView.php:99
+#: inc/core/frontend_views/pridatInzeratView.php:24
+#: templates/page-profil.php:104
+msgid "Ulice"
+msgstr "Ulica"
+
+#: inc/core/frontend_views/inzeratDetailView.php:91
+#: inc/core/frontend_views/inzeratDetailView.php:192
+#: inc/core/frontend_views/inzeratDetailView.php:280
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:162
+msgid "Podlaží"
+msgstr "Podłoga"
+
+#: inc/core/frontend_views/inzeratDetailView.php:95
+#: inc/core/frontend_views/inzeratDetailView.php:196
+#: inc/core/frontend_views/inzeratDetailView.php:284
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:166
+msgid "Balkón"
+msgstr "Balkon"
+
+#: inc/core/frontend_views/inzeratDetailView.php:103
+msgid "Viac informacií"
+msgstr "Więcej informacji"
+
+#: inc/core/frontend_views/inzeratDetailView.php:134
+msgid "Podrobné informácie"
+msgstr "Opis uzupełniający"
+
+#: inc/core/frontend_views/inzeratDetailView.php:148
+#: inc/core/frontend_views/inzeratDetailView.php:236
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:118
+msgid "Pozemková plocha"
+msgstr "Powierzchnia działki"
+
+#: inc/core/frontend_views/inzeratDetailView.php:168
+#: inc/core/frontend_views/inzeratDetailView.php:256
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:138
+#: inc/core/frontend_views/inzeratEditView.php:117
+#: inc/core/frontend_views/pridatInzeratView.php:26
+msgid "PSČ"
+msgstr "Kod pocztowy"
+
+#: inc/core/frontend_views/inzeratDetailView.php:176
+#: inc/core/frontend_views/inzeratDetailView.php:264
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:146
+msgid "Typ vlastnictví"
+msgstr "Własność"
+
+#: inc/core/frontend_views/inzeratDetailView.php:180
+#: inc/core/frontend_views/inzeratDetailView.php:268
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:150
+msgid "Typ budovy"
+msgstr "Rodzaj zabudowy"
+
+#: inc/core/frontend_views/inzeratDetailView.php:184
+#: inc/core/frontend_views/inzeratDetailView.php:272
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:154
+msgid "PENB"
+msgstr "Wartość energetyczna"
+
+#: inc/core/frontend_views/inzeratDetailView.php:188
+#: inc/core/frontend_views/inzeratDetailView.php:276
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:158
+#: inc/core/frontend_views/pridatInzeratView.php:33
+#: inc/core/frontend_views/pridatInzeratView.php:309
+msgid "Vybavenost"
+msgstr "Umeblowanie"
+
+#: inc/core/frontend_views/inzeratDetailView.php:200
+#: inc/core/frontend_views/inzeratDetailView.php:288
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:170
+#: inc/core/frontend_views/pridatInzeratView.php:35
+#: inc/core/frontend_views/pridatInzeratView.php:336
+msgid "Terasa"
+msgstr "Taras"
+
+#: inc/core/frontend_views/inzeratDetailView.php:204
+#: inc/core/frontend_views/inzeratDetailView.php:292
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:174
+#: inc/core/frontend_views/pridatInzeratView.php:36
+#: inc/core/frontend_views/pridatInzeratView.php:341
+msgid "Výtah"
+msgstr "Winda"
+
+#: inc/core/frontend_views/inzeratDetailView.php:208
+#: inc/core/frontend_views/inzeratDetailView.php:218
+#: inc/core/frontend_views/inzeratDetailView.php:296
+#: inc/core/frontend_views/inzeratDetailView.php:306
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:178
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:188
+#: inc/core/frontend_views/pridatInzeratView.php:38
+#: inc/core/frontend_views/pridatInzeratView.php:351
+msgid "Garáž"
+msgstr "Garaż"
+
+#: inc/core/frontend_views/inzeratDetailView.php:213
+#: inc/core/frontend_views/inzeratDetailView.php:301
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:183
+msgid "Parkovací místo"
+msgstr "Parking"
+
+#: inc/core/frontend_views/inzeratDetailView.php:315
+msgid "Mám záujem o túto ponuku"
+msgstr ""
+
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:65
+msgid "Základní informace"
+msgstr ""
+
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:78
+#: inc/core/frontend_views/inzeratEditView.php:172
+#: inc/core/frontend_views/pridatInzeratView_zaloha.php:188
+msgid "Cena nemovitosti"
+msgstr ""
+
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:85
+msgid "Kontaktujte prodejce"
+msgstr ""
+
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:97
+msgid "Popis nemovitosti"
+msgstr ""
+
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:106
+msgid "Parametry nemovitosti"
+msgstr ""
+
+#: inc/core/frontend_views/inzeratEditView.php:14
+msgid "Editace inzerátu"
+msgstr ""
+
+#: inc/core/frontend_views/inzeratEditView.php:20
+#: inc/core/frontend_views/pridatInzeratView.php:14
+#: inc/core/frontend_views/pridatInzeratView.php:158
+#: inc/core/frontend_views/pridatInzeratView_zaloha.php:46
+msgid "Typ inzerátu"
+msgstr "Typ ogłoszenia"
+
+#: inc/core/frontend_views/inzeratEditView.php:55
+#: inc/core/frontend_views/pridatInzeratView_zaloha.php:81
+msgid "Typ Nemovitosti"
+msgstr "Typ nieruchomości"
+
+#: inc/core/frontend_views/inzeratEditView.php:105
+#: inc/core/frontend_views/pridatInzeratView.php:25
+msgid "Číslo popisné"
+msgstr "Numer domu/lokalu"
+
+#: inc/core/frontend_views/inzeratEditView.php:134
+msgid "Název a popis"
+msgstr ""
+
+#: inc/core/frontend_views/inzeratEditView.php:138
+msgid "Podlahová plocha (v m2)"
+msgstr "Powierzchnia podłogowa (m2)"
+
+#: inc/core/frontend_views/inzeratEditView.php:144
+msgid "Pozemková plocha (v m2)"
+msgstr "Powierzchnia działki (m2)"
+
+#: inc/core/frontend_views/inzeratEditView.php:150
+msgid "Titulek"
+msgstr ""
+
+#: inc/core/frontend_views/inzeratEditView.php:162
+#: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:39
+#: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:40
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:43
+#: inc/core/frontend_views/uzivatelDetailView.php:39
+msgid "Popis"
+msgstr ""
+
+#: inc/core/frontend_views/inzeratEditView.php:185
+msgid "Upravit"
+msgstr ""
+
+#: inc/core/frontend_views/loginView.php:16 templates/header-main.php:61
 msgid "Přihlášení"
-msgstr "Přihlášení"
+msgstr "Zaloguj się"
+
+#: inc/core/frontend_views/loginView.php:21 templates/header-main.php:64
+msgid "Registrace"
+msgstr "Rejestracja"
+
+#: inc/core/frontend_views/loginView.php:36
+#: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:57
+#: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:58
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:92
+#: inc/core/frontend_views/uzivatelDetailView.php:65
+#: inc/core/frontend_views/uzivatelDetailView.php:157
+#: templates/page-profil.php:58
+msgid "Email"
+msgstr "E-mail"
+
+#: inc/core/frontend_views/loginView.php:38
+#: inc/core/frontend_views/loginView.php:95
+#: inc/core/frontend_views/uzivatelDetailView.php:159
+msgid "Email-syntax"
+msgstr "E-mail"
+
+#: inc/core/frontend_views/loginView.php:43
+#: inc/core/frontend_views/loginView.php:142
+#: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:50
+#: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:51
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:95
+#: inc/core/frontend_views/uzivatelDetailView.php:68
+#: inc/core/frontend_views/uzivatelDetailView.php:151
+#: templates/page-profil.php:59
+msgid "Telefon"
+msgstr ""
+
+#: inc/core/frontend_views/loginView.php:44
+#: inc/core/frontend_views/loginView.php:143
+#: inc/core/frontend_views/uzivatelDetailView.php:153
+msgid "Telefon-syntax"
+msgstr "Telefon"
+
+#: inc/core/frontend_views/loginView.php:48
+#: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:26
+#: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:27
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:86
+#: inc/core/frontend_views/uzivatelDetailView.php:59
+#: inc/core/frontend_views/uzivatelDetailView.php:139
+#: templates/page-profil.php:46
+msgid "Jméno"
+msgstr "Imię"
+
+#: inc/core/frontend_views/loginView.php:49
+msgid "Jméno-syntax"
+msgstr "Imię"
+
+#: inc/core/frontend_views/loginView.php:53
+#: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:30
+#: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:31
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:89
+#: inc/core/frontend_views/uzivatelDetailView.php:62
+#: inc/core/frontend_views/uzivatelDetailView.php:145
+#: templates/page-profil.php:47
+msgid "Příjmení"
+msgstr "Nazwisko"
+
+#: inc/core/frontend_views/loginView.php:54
+msgid "Prijmeni-syntax"
+msgstr "Nazwisko"
+
+#: inc/core/frontend_views/loginView.php:58
+#: inc/core/frontend_views/loginView.php:99
+msgid "Heslo"
+msgstr "Hasło"
+
+#: inc/core/frontend_views/loginView.php:64
+msgid "Zopakovat heslo"
+msgstr "Powtórz hasło"
+
+#: inc/core/frontend_views/loginView.php:94
+msgid "Přihlašovací email"
+msgstr "E-mail logowania"
+
+#: inc/core/frontend_views/loginView.php:102
+msgid "Zapomenuté heslo?"
+msgstr "Nie pamiętasz hasła?"
+
+#: inc/core/frontend_views/loginView.php:105
+msgid "Zůstat přihlášen"
+msgstr ""
+"16/5000\n"
+"Pozostań zalogowany"
+
+#: inc/core/frontend_views/loginView.php:109
+msgid "Přihlásit se"
+msgstr "Zaloguj się"
+
+#: inc/core/frontend_views/loginView.php:146
+msgid "Jste:"
+msgstr "Jesteś:"
+
+#: inc/core/frontend_views/loginView.php:149
+msgid "Uživatel"
+msgstr "Użytkownik"
+
+#: inc/core/frontend_views/loginView.php:152
+msgid "Právnická osoba"
+msgstr ""
+
+#: inc/core/frontend_views/loginView.php:158
+msgid "Potvrdit"
+msgstr "Potwierdź"
+
+#: inc/core/frontend_views/nem_row_item.php:74
+msgid "Aktivovat"
+msgstr "Aktywuj"
+
+#: inc/core/frontend_views/nem_row_item.php:76
+msgid "Inzerát je neaktivní"
+msgstr "Reklama jest nieaktywna"
+
+#: inc/core/frontend_views/nem_row_item.php:87
+msgid "Deaktivovat"
+msgstr "Dezaktywuj"
+
+#: inc/core/frontend_views/nem_row_item.php:89
+msgid "Inzerát je aktivní"
+msgstr "Reklama jest aktywna"
+
+#: inc/core/frontend_views/nem_row_item.php:109
+#: inc/core/frontend_views/pridatInzeratView.php:61
+msgid "Jak to funguje?"
+msgstr ""
+
+#: inc/core/frontend_views/objednavkaView.php:6
+msgid "Kredity"
+msgstr ""
+
+#: inc/core/frontend_views/objednavkaView.php:7
+msgid "KredityPopis"
+msgstr ""
+
+#: inc/core/frontend_views/objednavkaView.php:15
+msgid "Kolik chcete zakoupit kreditů?"
+msgstr ""
+
+#: inc/core/frontend_views/objednavkaView.php:27
+#: inc/core/frontend_views/objednavkaView.php:41
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:35
+msgid "Kreditů"
+msgstr ""
+
+#: inc/core/frontend_views/objednavkaView.php:54
+msgid "Výběr platby"
+msgstr ""
+
+#: inc/core/frontend_views/objednavkaView.php:61
+msgid "Visa / mastercard"
+msgstr ""
+
+#: inc/core/frontend_views/objednavkaView.php:70
+msgid "Potvrdit objednávku"
+msgstr ""
+
+#: inc/core/frontend_views/pridatInzeratView.php:8
+msgid "Toto pole je povinné"
+msgstr ""
+
+#: inc/core/frontend_views/pridatInzeratView.php:9
+#: inc/core/frontend_views/pridatInzeratView.php:127
+#: inc/core/frontend_views/pridatInzeratView_zaloha.php:17
+msgid "1. Základní informace"
+msgstr "1. Podstawowe informacje"
+
+#: inc/core/frontend_views/pridatInzeratView.php:10
+#: inc/core/frontend_views/pridatInzeratView.php:133
+#: inc/core/frontend_views/pridatInzeratView_zaloha.php:23
+msgid "2. Doplňující informace"
+msgstr "2. Dodatkowe informacje"
+
+#: inc/core/frontend_views/pridatInzeratView.php:11
+#: inc/core/frontend_views/pridatInzeratView.php:140
+#: inc/core/frontend_views/pridatInzeratView_zaloha.php:30
+msgid "3. Fotografie"
+msgstr "3. Zdjęcia"
+
+#: inc/core/frontend_views/pridatInzeratView.php:12
+msgid "4. Summarizace"
+msgstr "4. Podsumowanie"
+
+#: inc/core/frontend_views/pridatInzeratView.php:13
+msgid "Vložení inzerátu"
+msgstr "Dodanie ogłoszenia"
+
+#: inc/core/frontend_views/pridatInzeratView.php:15
+#: inc/core/frontend_views/pridatInzeratView.php:184
+msgid "Typ nemovitosti"
+msgstr "Typ nieruchomości"
+
+#: inc/core/frontend_views/pridatInzeratView.php:17
+#: inc/core/frontend_views/pridatInzeratView.php:287
+#: inc/core/frontend_views/pridatInzeratView.php:546
+#: inc/core/frontend_views/pridatInzeratView.php:588
+msgid "Pokračovat"
+msgstr "Kontynuuj"
+
+#: inc/core/frontend_views/pridatInzeratView.php:18
+#: inc/core/frontend_views/pridatInzeratView.php:230
+msgid "Rozloha"
+msgstr "Powierzchnia"
+
+#: inc/core/frontend_views/pridatInzeratView.php:20
+msgid "Užitková plocha"
+msgstr "Powierzchnia użytkowa"
+
+#: inc/core/frontend_views/pridatInzeratView.php:21
+msgid "Plocha pozemku"
+msgstr "Powierzchnia działki"
+
+#: inc/core/frontend_views/pridatInzeratView.php:22
+#: inc/core/frontend_views/pridatInzeratView.php:246
+msgid "Poloha"
+msgstr "Lokalizacja"
+
+#: inc/core/frontend_views/pridatInzeratView.php:28
+msgid "Cena nájmu"
+msgstr "Cena wynajmu"
+
+#: inc/core/frontend_views/pridatInzeratView.php:29
+msgid "Poplatky"
+msgstr "Opłaty"
+
+#: inc/core/frontend_views/pridatInzeratView.php:30
+msgid "Kauce"
+msgstr "Kaucja"
+
+#: inc/core/frontend_views/pridatInzeratView.php:31
+msgid "měsíc"
+msgstr "miesiąc"
+
+#: inc/core/frontend_views/pridatInzeratView.php:32
+#: inc/core/frontend_views/pridatInzeratView.php:298
+msgid "K dispozici od"
+msgstr "Dostępny od"
+
+#: inc/core/frontend_views/pridatInzeratView.php:34
+#: inc/core/frontend_views/pridatInzeratView.php:331
+msgid "Vybavení"
+msgstr "Wyposażenie"
+
+#: inc/core/frontend_views/pridatInzeratView.php:37
+#: inc/core/frontend_views/pridatInzeratView.php:346
+msgid "Parkování"
+msgstr "Parking"
+
+#: inc/core/frontend_views/pridatInzeratView.php:39
+#: inc/core/frontend_views/pridatInzeratView.php:356
+msgid "Balkon"
+msgstr "Balkon"
+
+#: inc/core/frontend_views/pridatInzeratView.php:40
+#: inc/core/frontend_views/pridatInzeratView.php:384
+msgid "Další vybavení"
+msgstr "Pozostałe wyposażenie"
+
+#: inc/core/frontend_views/pridatInzeratView.php:41
+#: inc/core/frontend_views/pridatInzeratView.php:396
+msgid "Poschodí"
+msgstr "Piętro"
+
+#: inc/core/frontend_views/pridatInzeratView.php:42
+msgid "z"
+msgstr "z"
+
+#: inc/core/frontend_views/pridatInzeratView.php:43
+#: inc/core/frontend_views/pridatInzeratView.php:442
+msgid "Stav objektu"
+msgstr "Stan obiektu"
+
+#: inc/core/frontend_views/pridatInzeratView.php:44
+#: inc/core/frontend_views/pridatInzeratView.php:464
+msgid "Vlastnictví"
+msgstr "Własność"
+
+#: inc/core/frontend_views/pridatInzeratView.php:45
+#: inc/core/frontend_views/pridatInzeratView.php:478
+msgid "Typ stavby"
+msgstr "Rodzaj zabudowy"
+
+#: inc/core/frontend_views/pridatInzeratView.php:46
+#: inc/core/frontend_views/pridatInzeratView.php:492
+msgid "Energetická hodnota"
+msgstr "Wartość energetyczna"
+
+#: inc/core/frontend_views/pridatInzeratView.php:47
+#: inc/core/frontend_views/pridatInzeratView.php:506
+msgid "Byt je vhodný pro"
+msgstr "Mieszkanie jest odpowiednie dla"
+
+#: inc/core/frontend_views/pridatInzeratView.php:48
+msgid "Např. mladý pár"
+msgstr "Np. młodej pary"
+
+#: inc/core/frontend_views/pridatInzeratView.php:49
+#: inc/core/frontend_views/pridatInzeratView.php:518
+msgid "Okolí nemovitosti"
+msgstr "Okolica nieruchomości"
+
+#: inc/core/frontend_views/pridatInzeratView.php:50
+#: inc/core/frontend_views/pridatInzeratView.php:522
+msgid "Popište, co se nachází v okolí nemovitosti..."
+msgstr "Opisz, co znajduje się w okolicy nieruchomości."
+
+#: inc/core/frontend_views/pridatInzeratView.php:51
+#: inc/core/frontend_views/pridatInzeratView.php:530
+msgid "Doplňující popis"
+msgstr "Opis uzupełniający"
+
+#: inc/core/frontend_views/pridatInzeratView.php:52
+#: inc/core/frontend_views/pridatInzeratView.php:534
+msgid "Je ještě něco, co byste chtěli doplnit k inzerátu?"
+msgstr "Czy jest jeszcze coś, co chciałbyś dodać do ogłoszenia?"
+
+#: inc/core/frontend_views/pridatInzeratView.php:53
+#: inc/core/frontend_views/pridatInzeratView.php:543
+#: inc/core/frontend_views/pridatInzeratView.php:585
+msgid "Zpět"
+msgstr "Wstecz"
+
+#: inc/core/frontend_views/pridatInzeratView.php:54
+#: inc/core/frontend_views/pridatInzeratView.php:557
+msgid "Fotografie"
+msgstr "Zdjęcia"
+
+#: inc/core/frontend_views/pridatInzeratView.php:55
+#: inc/core/frontend_views/pridatInzeratView.php:568
+msgid "Vyberte náhledový obrázek"
+msgstr "Wybierz obraz poglądowy"
+
+#: inc/core/frontend_views/pridatInzeratView.php:56
+#: inc/core/frontend_views/pridatInzeratView.php:599
+msgid "Náhled přidaného inzerátu"
+msgstr "Podgląd dodanego ogłoszenia"
+
+#: inc/core/frontend_views/pridatInzeratView.php:57
+msgid "Více info"
+msgstr "Więcej informacji"
+
+#: inc/core/frontend_views/pridatInzeratView.php:58
+msgid "Chcete aby váš příspěvek měl větší pozornost?"
+msgstr "Chcesz, aby Twój post zyskał więcej uwagi?"
+
+#: inc/core/frontend_views/pridatInzeratView.php:59
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis "
+"lorem sit amet nulla auctor varius vel at ipsum. Praesent placerat, nisl sit "
+"amet interdum ornare, lectus odio vestibulum nibh, sed iaculis nisl dolor "
+"pellentesque libero."
+msgstr "Przygotowujemy ..."
+
+#: inc/core/frontend_views/pridatInzeratView.php:60
+msgid "Vyzkoušejte topování"
+msgstr "Wypróbuj promowanie"
+
+#: inc/core/frontend_views/pridatInzeratView.php:62
+msgid "Topovat"
+msgstr "Promować"
+
+#: inc/core/frontend_views/pridatInzeratView.php:63
+msgid "Dokončit"
+msgstr "Zakończ"
+
+#: inc/core/frontend_views/pridatInzeratView.php:64
+msgid "Soubor je zpracováván"
+msgstr "Plik jest przetwarzany"
+
+#: inc/core/frontend_views/pridatInzeratView.php:65
+msgid "Nahrávání dokončeno"
+msgstr "Przetwarzanie zakończone"
+
+#: inc/core/frontend_views/pridatInzeratView.php:66
+msgid "Nahrávání zrušeno"
+msgstr "Przetwarzanie przerwane"
+
+#: inc/core/frontend_views/pridatInzeratView.php:67
+msgid "Chyba při nahrávání"
+msgstr "Błąd przy przetwarzaniu"
+
+#: inc/core/frontend_views/pridatInzeratView.php:68
+msgid "Klikněte pro zrušení"
+msgstr "Kliknij, aby anulować"
+
+#: inc/core/frontend_views/pridatInzeratView.php:69
+msgid "Klikněte pro opakování"
+msgstr "Kliknij, aby powtórzyć"
+
+#: inc/core/frontend_views/pridatInzeratView.php:70
+msgid "Klikněte pro vrácení"
+msgstr "Kliknij, aby wrócić"
+
+#: inc/core/frontend_views/pridatInzeratView.php:71
+msgid "Zrušit"
+msgstr "Anuluj"
+
+#: inc/core/frontend_views/pridatInzeratView.php:72
+msgid "Nahrát"
+msgstr "Nagraj"
+
+#: inc/core/frontend_views/pridatInzeratView.php:73
+msgid "Titulek inzerátu"
+msgstr "Tytuł ogłoszenia"
+
+#: inc/core/frontend_views/pridatInzeratView.php:146
+#: inc/core/frontend_views/pridatInzeratView_zaloha.php:36
+msgid "4. Sumarizace"
+msgstr "4. Podsumowanie"
+
+#: inc/core/frontend_views/pridatInzeratView.php:361
+msgid "Pivnice"
+msgstr "Bar"
+
+#: inc/core/frontend_views/pridatInzeratView.php:366
+msgid "Lednička"
+msgstr "Lodówka"
+
+#: inc/core/frontend_views/pridatInzeratView.php:371
+msgid "Pračka"
+msgstr "Pralka"
+
+#: inc/core/frontend_views/pridatInzeratView.php:377
+msgid "Myčka"
+msgstr "Zmywarka"
+
+#: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:11
+msgid "Hlavní informace"
+msgstr "Podstawowe informacje"
+
+#: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:64
+msgid "Potvrdit změny"
+msgstr ""
+
+#: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:73
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:64
+msgid "Zabezpečení účtu"
+msgstr ""
+
+#: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:74
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:65
+msgid "Nastavte si dostatečně silné heslo k vašemu účtu."
+msgstr ""
+
+#: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:82
+msgid "Nové heslo"
+msgstr ""
+
+#: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:88
+msgid "Potvrďte heslo"
+msgstr ""
+
+#: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:94
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:66
+msgid "Změnit heslo"
+msgstr ""
+
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:32
+#: inc/core/frontend_views/uzivatelDetailView.php:31
+msgid "Aktivních inzerátů"
+msgstr ""
+
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:57
+msgid ""
+"Přidáním fotografie a vyplněním všech informací, zvyšujete svojí "
+"důvěryhodnost"
+msgstr ""
+
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:58
+#: templates/header-main.php:51
+msgid "Upravit profil"
+msgstr ""
+
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:74
+#: inc/core/frontend_views/uzivatelDetailView.php:47
+msgid "Stav"
+msgstr ""
+
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:104
+#: inc/core/frontend_views/uzivatelDetailView.php:77
+msgid "Aktivní"
+msgstr ""
+
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:107
+#: inc/core/frontend_views/uzivatelDetailView.php:80
+msgid "Datum založení"
+msgstr ""
+
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:110
+#: inc/core/frontend_views/uzivatelDetailView.php:83
+msgid "Datum poslední úpravy"
+msgstr ""
+
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:130
+#: inc/core/frontend_views/uzivatelDetailView.php:98
+msgid "Nemovitosti uživatele"
+msgstr ""
+
+#: inc/core/frontend_views/uzivatelDetailView.php:119
+msgid "Další inzeráty"
+msgstr ""
+
+#: inc/core/frontend_views/uzivatelDetailView.php:130
+msgid "Kontaktní formulář"
+msgstr ""
+
+#: inc/core/frontend_views/uzivatelDetailView.php:141
+msgid "Karel"
+msgstr ""
+
+#: inc/core/frontend_views/uzivatelDetailView.php:147
+msgid "Novák"
+msgstr ""
+
+#: inc/core/frontend_views/uzivatelDetailView.php:167
+msgid "Zpráva"
+msgstr ""
+
+#: inc/core/frontend_views/uzivatelDetailView.php:169
+msgid "Vaše zpráva"
+msgstr ""
+
+#: inc/core/frontend_views/uzivatelDetailView.php:176
+msgid "Odeslat zprávu"
+msgstr ""
+
+#: inc/core/frontend_views/uzivatelDetailView.php:177
+msgid "Nepodařilo se odeslat?"
+msgstr ""
+
+#: templates/header-main.php:43
+msgid "Moje kredity:"
+msgstr ""
+
+#: templates/header-main.php:46
+msgid "Spravy"
+msgstr ""
+
+#: templates/header-main.php:50
+msgid "Můj profil"
+msgstr ""
+
+#: templates/header-main.php:52
+msgid "Odhlásit se"
+msgstr ""
+
+#: templates/page-cta.php:39
+msgid "Ako to funguje"
+msgstr ""
+
+#: templates/page-cta.php:40 templates/page-elements.php:30
+#: templates/page-elements.php:59 templates/page-elements.php:90
+#: templates/page-elements.php:119
+msgid "Kto je Szukam Dom a prečo tento projekt vznikol."
+msgstr ""
+
+#: templates/page-cta.php:41
+msgid "O nás"
+msgstr ""
+
+#: templates/page-cta.php:48 templates/page-cta.php:50
+msgid "Naše služby"
+msgstr ""
+
+#: templates/page-cta.php:49 templates/page-elements.php:39
+#: templates/page-elements.php:99
+msgid ""
+"Všetko, čo dokáže realitný maklér dokážete aj vy - a za zlomok ceny. My Vám "
+"s tým vieme pomôcť."
+msgstr ""
+
+#: templates/page-cta.php:57 templates/page-cta.php:59
+msgid "Blog"
+msgstr ""
+
+#: templates/page-cta.php:58 templates/page-elements.php:48
+#: templates/page-elements.php:77 templates/page-elements.php:108
+msgid ""
+"Zameriavame sa na long-form obsah pre Vás, aby ste našli všetky užitočné "
+"informácie."
+msgstr ""
+
+#: templates/page-elements.php:4 templates/page-elements.php:341
+#: templates/page-elements.php:367 templates/page-elements.php:422
+msgid "Kontaktovať majiteľa"
+msgstr ""
+
+#: templates/page-elements.php:8 templates/page-elements.php:345
+#: templates/page-elements.php:372
+msgid "Získať kontakt"
+msgstr ""
+
+#: templates/page-elements.php:16
+msgid "Všetko, čo dokáže reakitný maklér dokážete aj Vy. My Vám ukážeme ako."
+msgstr ""
+
+#: templates/page-elements.php:20
+msgid "Pre majiteľov nehnuteľností"
+msgstr ""
+
+#: templates/page-elements.php:21
+msgid "Pre záujemcov o nehnuteľnosti"
+msgstr ""
+
+#: templates/page-elements.php:29
+msgid "Topovanie inzerátov"
+msgstr ""
+
+#: templates/page-elements.php:31 templates/page-elements.php:40
+#: templates/page-elements.php:49 templates/page-elements.php:60
+#: templates/page-elements.php:69 templates/page-elements.php:78
+#: templates/page-elements.php:91 templates/page-elements.php:100
+#: templates/page-elements.php:109 templates/page-elements.php:120
+msgid "Více o službě"
+msgstr ""
+
+#: templates/page-elements.php:38
+msgid "Overenie bezdlžnosti"
+msgstr ""
+
+#: templates/page-elements.php:47
+msgid "Lepšia zmluva"
+msgstr ""
+
+#: templates/page-elements.php:58
+msgid "Poistenie platieb"
+msgstr ""
+
+#: templates/page-elements.php:67
+msgid "Profesionálne foto"
+msgstr ""
+
+#: templates/page-elements.php:68
+msgid "Fotenie alebo úprava fotografií"
+msgstr ""
+
+#: templates/page-elements.php:76
+msgid "Cenová mapa"
+msgstr ""
+
+#: templates/page-elements.php:89
+msgid "Sťahovanie"
+msgstr ""
+
+#: templates/page-elements.php:98
+msgid "Platba za kontakt"
+msgstr ""
+
+#: templates/page-elements.php:107
+msgid "Strážny pes"
+msgstr ""
+
+#: templates/page-elements.php:118
+msgid "Hypotéky"
+msgstr ""
+
+#: templates/page-elements.php:395
+msgid "Transakcia bola úspešná!"
+msgstr ""
+
+#: templates/page-elements.php:397
+msgid "Na Váš účet sme pripísali"
+msgstr ""
+
+#: templates/page-elements.php:399 templates/page-profil.php:155
+msgid "Kreditov"
+msgstr ""
+
+#: templates/page-profil.php:8
+msgid "Kvalita profilu "
+msgstr ""
+
+#: templates/page-profil.php:14
+msgid "Môj profil"
+msgstr ""
+
+#: templates/page-profil.php:15 templates/page-profil.php:128
+msgid "Upozornenia"
+msgstr ""
+
+#: templates/page-profil.php:16
+msgid "Obľúbené inzeráty"
+msgstr ""
+
+#: templates/page-profil.php:17 templates/page-profil.php:148
+msgid "Moja peňaženka"
+msgstr ""
+
+#: templates/page-profil.php:18
+msgid "Moje inzeráty"
+msgstr ""
+
+#: templates/page-profil.php:19
+msgid "Moje služby"
+msgstr ""
+
+#: templates/page-profil.php:20
+msgid "Odhlásiť sa"
+msgstr ""
+
+#: templates/page-profil.php:28
+msgid "Môj profil "
+msgstr ""
+
+#: templates/page-profil.php:33 templates/page-profil.php:149
+msgid "Szukamdom Tip:"
+msgstr ""
+
+#: templates/page-profil.php:36
+msgid ""
+"Čím viac informácii o sebe vyplníte, tým väčšia zaujímavejší je Váš profil "
+"pre tých, s ktorými ste v kontakte."
+msgstr ""
+
+#: templates/page-profil.php:42 templates/page-profil.php:54
+msgid "Základné údaje:"
+msgstr ""
+
+#: templates/page-profil.php:66
+msgid "Rok narodenia:"
+msgstr ""
+
+#: templates/page-profil.php:70
+msgid "Rok narodenia"
+msgstr ""
+
+#: templates/page-profil.php:77
+msgid "Povolanie/škola:"
+msgstr ""
+
+#: templates/page-profil.php:81
+msgid "Povolanie/škola"
+msgstr ""
+
+#: templates/page-profil.php:88
+msgid "Krátke bio:"
+msgstr ""
+
+#: templates/page-profil.php:92
+msgid "Krátke bio"
+msgstr ""
+
+#: templates/page-profil.php:100
+msgid "Adresa:"
+msgstr ""
+
+#: templates/page-profil.php:105 templates/page-profil.php:109
+msgid "Adresa 2"
+msgstr ""
+
+#: templates/page-profil.php:119
+msgid "Uložiť"
+msgstr ""
+
+#: templates/page-profil.php:149
+msgid ""
+"Kredity môžete používať ako platitdlo za služby. Nevyužité kredity Vám "
+"vrátime naspäť."
+msgstr ""
+
+#: templates/page-profil.php:157
+msgid "Dobiť kredity"
+msgstr ""
+
+#: templates/page-profil.php:158
+msgid "Získať kredity zdarma"
+msgstr ""
+
+#: templates/page-profil.php:162
+msgid "História transakcií"
+msgstr ""
+
+#: templates/page-slider.php:22
+msgid "Hledej inzerát"
+msgstr ""
+
+#: templates/page-slider.php:25
+msgid "Vyhledávání na mapě"
+msgstr ""
