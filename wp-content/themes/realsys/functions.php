@@ -351,4 +351,15 @@ remove_action( 'wp_print_styles', 'print_emoji_styles' );
 
 
 
+function change_my_from_address( $original_email_address ) {
+	return 'info@szukajdom.eu';
+}
+add_filter( 'wp_mail_from', 'change_my_from_address' );
+
+// Function to change sender name
+function change_my_sender_name( $original_email_from ) {
+	return 'Automat';
+}
+add_filter( 'wp_mail_from_name', 'change_my_sender_name' );
+
 

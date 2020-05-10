@@ -14,7 +14,7 @@ class pridatInzeratController extends frontendController {
 	}
 
 	public function createInzerat(){
-		globalUtils::writeDebug($this->requestData);
+
 		$result = Tools::postChecker($this->requestData, array(
 			'db_inzerat_obrazky' => array(
 				'required' => true,
@@ -60,11 +60,13 @@ class pridatInzeratController extends frontendController {
 
 					$_this = $this;
 
+
+
 					$response = Tools::formProcessor(array(
 						"db_typ_inzeratu", "db_pocet_mistnosti", "db_ulice", "db_cp", "db_mesto", "db_psc", "db_titulek", "db_popis",
 						"db_mestska_cast", "db_cena", "db_cena_poznamka", "db_cena_najem", "db_poplatky", "db_kauce", "db_typ_stavby",
 						"db_stav_objektu", "db_vybavenost", "db_podlahova_plocha", "db_uzitkova_plocha", "db_pozemkova_plocha", "db_terasa",
-						"db_vytah", "db_penb", "db_typ_vlastnictvi", "db_patro", "db_parkovaci_misto", "db_garaz", "db_balkon", "db_typ_nemovitosti",
+						"db_vytah", "db_penb", "db_typ_vlastnictvi", "db_patro", "db_celkem_podlazi", "db_parkovaci_misto", "db_garaz", "db_balkon", "db_typ_nemovitosti",
 						"db_stav_inzeratu", "db_material", "db_lat", "db_lng", "db_top", "db_uzivatel_id", "db_vhodny_pro", "db_k_dispozici_od", "db_dalsi_vybaveni"
 					),
 						$this->requestData,
@@ -87,7 +89,7 @@ class pridatInzeratController extends frontendController {
 							}
 						});
 
-					globalUtils::writeDebug($response);
+
 
 					if($response){
 						$this->setView("inzeratCreated");

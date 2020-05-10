@@ -81,6 +81,10 @@
     margin-bottom: 12px;
 }
 
+.google-login .form-col{
+    flex-basis: 100%;
+}
+
 
 .radios {
     display: flex;

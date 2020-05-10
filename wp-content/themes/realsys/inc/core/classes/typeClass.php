@@ -107,6 +107,9 @@ class typeClass implements JsonSerializable {
 
 			/* FUNCTIONAL FILTERS */
 			case 'date':
+				if ( $this->isTimestamp( $this->value ) ) {
+					break;
+				}
 				$custom_date = $this->value;
 				$custom_date = str_replace( ".", "-", $custom_date );
 				if ( strtotime( $custom_date ) === false ) {
@@ -155,6 +158,15 @@ class typeClass implements JsonSerializable {
 				break;
 			case "price" :
 				if ( $this->isPrice( $this->value ) ) {
+					break;
+				} else {
+					$response = "Pole " . globalUtils::translate( $this->key ) . " není platná cena.";
+					$status   = false;
+					frontendError::addMessage( $this->key, ERROR, $response, $this );
+					break;
+				}
+			case "price_zero" :
+				if ( $this->isPriceZero( $this->value ) ) {
 					break;
 				} else {
 					$response = "Pole " . globalUtils::translate( $this->key ) . " není platná cena.";
@@ -312,6 +324,10 @@ class typeClass implements JsonSerializable {
 
 	public function isPrice( $price ) {
 		return ( $this->isInteger( $price ) && $price < PHP_INT_MAX && $price > 0 );
+	}
+
+	public function isPriceZero( $price ) {
+		return ( $this->isInteger( $price ) && $price < PHP_INT_MAX && $price > -1 );
 	}
 
 	public function isForeignKey ( $key ){

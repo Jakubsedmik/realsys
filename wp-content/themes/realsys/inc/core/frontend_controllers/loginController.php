@@ -40,6 +40,10 @@ class loginController extends frontendController {
 				$login_result = $uzivatel->verifyPassword($heslo);
 				if($login_result){
 					$uzivatel->logIn();
+					/* TODO prozatímní redirect na přidání inzerátu, po spuštění musí být na profil */
+					frontendError::addMessage("Přihlášení", SUCCESS, "Přihlášení proběhlo úspěšně, probíhá přesměrování na vytváření inzerátu");
+					Tools::jsRedirect(Tools::getFERoute("inzeratClass",false, "add"),1500);
+					/*
 					if(Tools::checkPresenceOfParam("create",$this->requestData)){
 						frontendError::addMessage("Přihlášení", SUCCESS, "Přihlášení proběhlo úspěšně, probíhá přesměrování na vytváření inzerátu");
 						Tools::jsRedirect(Tools::getFERoute("inzeratClass",$uzivatel->getId(), "add"),1500,"Přesměrování na vytváření inzerátu");
@@ -50,7 +54,7 @@ class loginController extends frontendController {
 					}else{
 						frontendError::addMessage("Přihlášení", SUCCESS, "Přihlášení proběhlo úspěšně, probíhá přesměrování na Váš profil.");
 						Tools::jsRedirect(Tools::getFERoute("uzivatelClass",$uzivatel->getId()),1500,"Přesměrování na Váš profil");
-					}
+					}*/
 				}else{
 					frontendError::addMessage("Uživatel",ERROR, "Špatné heslo");
 				}
@@ -148,7 +152,9 @@ class loginController extends frontendController {
 				if($uzivatel){
 					frontendError::addMessage("Registrace",SUCCESS, "Registrace proběhla úspěšně. Budete přesměrováni");
 					$uzivatel->logIn();
-					Tools::jsRedirect(Tools::getFERoute("uzivatelClass",$uzivatel->getId()),1500);
+					//Tools::jsRedirect(Tools::getFERoute("uzivatelClass",$uzivatel->getId()),1500);
+					/* TODO prozatímní redirect na přidání inzerátu, po spuštění musí být na profil */
+					Tools::jsRedirect(Tools::getFERoute("inzeratClass",false, "add"),1500);
 				}else{
 					frontendError::addMessage("Registrace", ERROR, "Nastala chyba při vytváření uživatele. Kontaktujte prosím podporu");
 				}

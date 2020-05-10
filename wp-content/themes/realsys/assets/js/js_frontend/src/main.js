@@ -328,7 +328,7 @@ function onSignIn(googleUser) {
      */
 
     $.post(serverData.ajaxUrl, {action: "googleVerification", 'email': email, 'gid': gid, 'token': token}, function (data) {
-        if(data.status == 1){
+        if(data.status == 1) {
             popupsHandler.showPopup("googleRegDetails");
             var el = $(".js-googleRegForm");
             el.find('[name="jmeno"]').val(profile.getGivenName());
@@ -337,6 +337,10 @@ function onSignIn(googleUser) {
             el.find('[name="gid"]').val(gid);
             el.find('[name="image"]').val(profile.getImageUrl());
             el.find('[name="token"]').val(token);
+        }else if(data.status==2){
+            // uživatel neexistuje ale je přihlášený jako google
+
+
         }else if(data.status == 0){
             $("body").append(data.actionHtml);
             var event = new Event('DOMContentLoaded');
@@ -344,10 +348,8 @@ function onSignIn(googleUser) {
         }else{
             alert(data.message);
         }
+        gapi.auth2.getAuthInstance().disconnect();
     });
-
-
-
 
     /*
     If user doesnt exist open popup, request info and let register without password
