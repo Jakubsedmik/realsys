@@ -67,7 +67,7 @@
 									</div>
 								</div>
 
-								<p class="obch-podm">Stlačením tlačítka “Registrovať” vyjadrujete súhlas s <a href="#">Obchodnými podmienkami</a> a <a href="#">Spracovaním osobných údajov.</a></p>
+								<p class="obch-podm">Stlačením tlačítka “Registrovať” vyjadrujete súhlas s <a href="<?php echo home_url() . "/warunki-biznesowe/" ?>">Obchodnými podmienkami</a> a <a href="<?php echo home_url() . "/gdpr/"?>">Spracovaním osobných údajov.</a></p>
 
 								<div class="form-btns">
 									<input type="hidden" name="action" value="registerUser">

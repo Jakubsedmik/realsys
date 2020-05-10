@@ -43,10 +43,6 @@
                                 <div class="user-credits"><span><?php echo _e("Moje kredity:", "realsys"); ?></span><span class="credits-num"><?php echo $uzivatel->getUserBillance(); ?></span></div>
                             </div>
                             <div class="user-menu">
-                                <a href="#" class="user-messages"><span class="user-mess-tit"><?php echo _e("Spravy", "realsys"); ?>
-                                    <div class="mes-dot"></div></span><span class="mes-num-wrap">(<span class="mes-num">2</span>)</span>
-                                </a>
-                                <a href="#">Moje služby</a>
                                 <a href="<?php echo Tools::getFERoute("uzivatelClass", UzivatelClass::getUserLoggedId()) ?>"><?php _e("Můj profil", "realsys"); ?></a>
                                 <a href="<?php echo Tools::getFERoute("uzivatelClass", UzivatelClass::getUserLoggedId(), "detail", "editUser"); ?>"><?php _e("Upravit profil", "realsys"); ?></a>
                                 <a href="<?php echo Tools::getFERoute("uzivatelClass", UzivatelClass::getUserLoggedId(), "detail", "logOut"); ?>"><?php _e("Odhlásit se", "realsys"); ?></a>
@@ -122,23 +118,44 @@
         </div>
 
         <div class="menu-wrap">
-            <ul>
-                <li><span>Kategorie</span></li>
-                <li><a href="#">Prodej</a></li>
-                <li><a href="#">Pronájem</a></li>
-                <li><a href="#">Spolubydlení</a></li>
-                <li><a href="#">Komerční nemovitosti</a></li>
-                <li><a href="#">Pozemky</a></li>
-                <li class="separator"></li>
-                <li><span>Nabídka</span></li>
-                <li><a href="#">Vyhledat</a></li>
-                <li><a href="#">Výpis inzerátů</a></li>
-                <li><a href="#">Ceník</a></li>
-                <li><a href="#">Jak to funguje</a></li>
-                <li><a href="#">Služby</a></li>
-                <li><a href="#" class="btn">Přidat inzerát</a></li>
-            </ul>
+            <div class="mob-menu-btns">
+                <a href="<?php echo home_url() . "/pridat-inzerat/" ?>" class="btn"><?php _e("Přidat inzerát", "realsys"); ?></a>
+                <a href="#" class="btn" style="display:none"><?php _e("Hledat inzerát", "realsys"); ?></a>
+            </div>
+            <div class="mob-menu-nav" style="display:none">
+                <ul>
+                    <li><a href="#"><?php _e("Mapa", "realsys"); ?></a></li>
+                    <li><a href="#"><?php _e("Výpis inzerátů", "realsys"); ?></a></li>
+                    <li><a href="#"><?php _e("Ceník", "realsys"); ?></a></li>
+                    <li><a href="#"><?php _e("Jak to funguje", "realsys"); ?></a></li>
+                    <li><a href="#"><?php _e("Služby", "realsys"); ?></a></li>
+                </ul>
+            </div>
+
+            <div class="mob-user-wrap">
+                <?php if (uzivatelClass::getUserLoggedId() !== false) : ?>
+                <div class="mob-user">
+                    <ul class="mob-user-logout">
+                        <li><a href="<?php echo Tools::getFERoute("uzivatelClass", UzivatelClass::getUserLoggedId(), "detail", "logOut"); ?>"><?php _e("Odhlásit se", "realsys"); ?></a></li>
+                    </ul>
+                    <div class="mob-user-profile">
+                        <div class="mob-user-info">
+                            <h2><?php echo $uzivatel->getFullName(); ?></h2>
+                            <span class="profil-kvalita" style="display:none;">Kvalita profilu <span class="kvalita-data">100%</span></span>
+                        </div>
+                        <div class="mob-user-avatar" style="background-image: url(<?php echo FRONTEND_IMAGES_PATH; ?>/avatar.png)"></div>
+                    </div>
+                </div>
+                <?php else : ?>
+                  <ul class="mob-user-sign">
+                      <li><a href="<?php echo home_url() . "/login/" ?>"><?php _e("Přihlášení", "realsys"); ?></a></li>
+                      <li><a href="<?php echo home_url() . "/login/" ?>"><?php _e("Registrace", "realsys"); ?></a></li>
+                  </ul>
+                <?php endif; ?>
+
+
+            </div>
+
         </div>
     </div>
-
 </header>

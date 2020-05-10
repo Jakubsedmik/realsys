@@ -1709,6 +1709,123 @@ header {
 .inz-form-sec {
   margin-bottom: 60px!important;
 }
+.add-inz-con .form-field.required-field:after {
+  content: "*";
+  display: block;
+  position: absolute;
+  right: 6px;
+  top: 0px;
+  color: #ff951a;
+  font-size: 20px;
+  font-weight: 700;
+}
+/* TOPOVÁNÍ */
+.nemovitost-top .nemovitost-text {
+  background: #243b4a;
+}
+.nemovitost-top .nemovitost-text h3 {
+  color: #fff;
+}
+.nemovitost-top .nemovitost-text p {
+  color: #aebec8;
+}
+.nemovitost-top .price-bar .price {
+  color: #fff !important;
+}
+.phaseone-content {
+  max-width: 450px;
+  text-align: center;
+  margin: 0 auto;
+}
+.phaseone-content .btn {
+  margin-top: 30px;
+  max-width: 300px;
+}
+header nav ul li a:not(.btn) {
+  color: #fff;
+  cursor: default;
+  pointer-events: none;
+}
+/* HLAVIČKA RESPONZIVNÍ*/
+.menu-wrap {
+  position: absolute;
+  right: 0;
+  opacity: 0;
+  top: 100%;
+  transition: 0.3s ease-in-out;
+  background: transparent;
+  transform: translateX(100%);
+  animation: slide-out 1s ease-in-out 0s 1 forwards;
+  width: 100vw;
+  min-height: calc(100vh - 65px);
+  height: 100%;
+  flex-direction: column;
+  display: none;
+  justify-content: flex-start;
+}
+.menu-wrap.active {
+  opacity: 1;
+  background: #DBF4F4;
+  display: flex;
+  animation: slide-in 1s ease-in-out 0s 1 forwards;
+}
+.mob-menu-btns,
+.mob-user-wrap,
+.mob-menu-nav {
+  padding: 20px 20px 10px 20px;
+}
+.mob-menu-nav {
+  padding-top: 0px;
+}
+.mob-menu-btns .btn {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.menu-wrap ul {
+  padding: 0px;
+  margin-top: 2px;
+  margin-bottom: 0px;
+  text-align: right;
+}
+.menu-wrap ul li {
+  list-style: none;
+  font-size: 15px;
+  padding-bottom: 20px;
+}
+.menu-wrap ul li a {
+  color: #253c4b;
+}
+.mob-user-wrap {
+  margin-top: auto;
+  background: #abecf0;
+}
+.mob-user-profile {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.mob-user-info h2 {
+  font-size: 16px;
+  margin-bottom: 0px;
+  text-align: right;
+}
+.mob-user-info .profil-kvalita {
+  font-size: 14px;
+  text-align: right;
+}
+.mob-user-info .kvalita-data {
+  color: #FF951A;
+}
+.mob-user-avatar {
+  height: 100px;
+  width: 100px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-left: 15px;
+  background-position: center;
+  background-size: cover;
+}
 /**********************/
 /**********************/
 /**********************/
