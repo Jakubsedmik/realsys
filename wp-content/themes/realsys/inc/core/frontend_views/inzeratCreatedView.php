@@ -7,8 +7,8 @@
 <section>
 	<div class="add-inz-con">
 		<div class="wrapper">
-			<h2>Inzerát byl vytvořen</h2>
-            <p>Děkujeme za vytvoření inzerátu.</p>
+			<h2><?php echo __("Inzerát byl vytvořen", "realsys"); ?></h2>
+            <p><?php echo __("Děkujeme za vytvoření inzerátu.", "realsys"); ?></p>
             <!--
             TODO prozatímní redirect na přidání inzerátu, po spuštění musí být na profil
 			<p>Děkujeme za vytvoření inzerátu. Na inzerát budete přesměrováni. Nebo klikněte na tlačítko níže.</p>

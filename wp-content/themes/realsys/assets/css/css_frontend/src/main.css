@@ -1746,6 +1746,12 @@ header nav ul li a:not(.btn) {
   cursor: default;
   pointer-events: none;
 }
+header .user-login a {
+  margin-right: 15px;
+}
+.lost-pass {
+  display: none;
+}
 /***********************/
 /* HLAVIČKA RESPONZIVNÍ*/
 /***********************/
