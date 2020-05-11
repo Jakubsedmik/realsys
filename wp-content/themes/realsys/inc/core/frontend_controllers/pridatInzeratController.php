@@ -84,7 +84,7 @@ class pridatInzeratController extends frontendController {
 										$obrazek->db_front = 1;
 									}
 								}else{
-									frontendError::addMessage("Obrázky", ERROR, "Některé obrázky nebyli nalezeny");
+									frontendError::addMessage("Obrázky", ERROR, __("Některé obrázky nebyli nalezeny","realsys"));
 								}
 							}
 						});

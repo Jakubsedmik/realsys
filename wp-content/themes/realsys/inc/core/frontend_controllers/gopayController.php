@@ -60,27 +60,27 @@ class gopayController extends frontendController {
 				if($objednavka && $uzivatel){
 					if($objednavka->db_stav == 0){
 						$this->simpleOrderPayment($objednavka, $uzivatel);
-						frontendError::addMessage("Platba", SUCCESS, "Platební brána připravena. Pokračujte do platební brány");
+						frontendError::addMessage(__("Platba", "realsys"), SUCCESS, __("Platební brána připravena. Pokračujte do platební brány", "realsys"));
 						return true;
 					}else{
 						$this->setView("error");
-						frontendError::addMessage("Objednávka", ERROR, "Tato objednávka již byla zaplacena");
+						frontendError::addMessage(__("Objednávka", "realsys"), ERROR, __("Tato objednávka již byla zaplacena", "realsys"));
 						return false;
 					}
 
 				}else{
 					$this->setView("error");
-					frontendError::addMessage("Objednávka a uživatel", ERROR, "Objednávka nebo uživatel neexistuje");
+					frontendError::addMessage(__("Objednávka a uživatel", "realsys"), ERROR, __("Objednávka nebo uživatel neexistuje", "realsys"));
 					return false;
 				}
 			}else{
 				$this->setView("error");
-				frontendError::addMessage("Autorizace", ERROR, "Uživatel není přihlášen. Nemůžeme provést platbu");
+				frontendError::addMessage(__("Autorizace", "realsys"), ERROR, __("Uživatel není přihlášen. Neleze provést platbu", "realsys"));
 				return false;
 			}
 		}else{
 			$this->setView("error");
-			frontendError::addMessage("Povinná pole",ERROR, "Některá povinná pole nebyla vyplněna");
+			frontendError::addMessage(__("Povinná pole","realsys"),ERROR, __("Některá povinná pole nebyla vyplněna","realsys"));
 			return false;
 		}
 
@@ -115,31 +115,31 @@ class gopayController extends frontendController {
 						$objednavka->db_hash = $gopay_id;
 						$objednavka->db_stav = 1;
 
-						frontendError::addMessage("Úspěch", SUCCESS, "Objednávka byla úspěšně zaplacena.");
+						frontendError::addMessage(__("Úspěch","realsys"), SUCCESS, __("Objednávka byla úspěšně zaplacena.","realsys"));
 						$this->requestData['uzivatel'] = $uzivatel;
 						$this->requestData['objednavka'] = $objednavka;
 						$this->setView("confirmPayment");
 						return true;
 
 					}else{
-						frontendError::addMessage("Objednávka",ERROR, "Zadná objednávka v systému neexistuje a nemůže být zaplacena.");
+						frontendError::addMessage(__("Objednávka","realsys"),ERROR, __("Zadná objednávka v systému neexistuje a nemůže být zaplacena.","realsys"));
 						$this->setView("error");
 						return false;
 					}
 
 				}else{
-					frontendError::addMessage("Objednávka",ERROR, "Objednávka nebyla úspěšně zaplacena. Opakujte proces nebo kontaktujte administrátora");
+					frontendError::addMessage(__("Objednávka","realsys"),ERROR, __("Objednávka nebyla úspěšně zaplacena. Opakujte proces nebo kontaktujte administrátora","realsys"));
 					$this->requestData['orderid'] = $this->requestData['orderid'];
 					$this->setView("errorPayment");
 					return false;
 				}
 			}else{
-				frontendError::addMessage("Pole",ERROR, "Některá pole nebyla vyplněna.");
+				frontendError::addMessage(__("Povinná pole","realsys"),ERROR, __("Některá povinná pole nebyla vyplněna","realsys"));
 				$this->setView("error");
 				return false;
 			}
 		}else{
-			frontendError::addMessage("Nepřihlášený uživatel.",ERROR, "Uživatel není přihlášen");
+			frontendError::addMessage(__("Autorizace", "realsys"), ERROR, __("Uživatel není přihlášen. Nelze potvrdit platbu", "realsys"));
 			$this->setView("error");
 			return false;
 		}

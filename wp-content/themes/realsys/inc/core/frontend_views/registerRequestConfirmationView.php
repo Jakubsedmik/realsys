@@ -1,5 +1,5 @@
-Účet byl založen. Prosím aktivujte ho.
-Zkontrolujte vaši emailovu schránku a potvrďte emailovou adresu.
+<?php _e("Účet byl založen. Prosím aktivujte ho.", "realsys"); ?>
+<?php _e("Zkontrolujte vaši emailovu schránku a potvrďte emailovou adresu.", "realsys"); ?>
 
 
 <?php

@@ -8,7 +8,7 @@
 		<div class="wrapper">
 
 			<div class="section-title left-align">
-				<h2><?php echo _e( "Hlavní informace", "realsys" ); ?></h2>
+				<h2><?php _e( "Hlavní informace", "realsys" ); ?></h2>
 			</div>
 
 			<form class="js-validate-form" method="post">
@@ -23,12 +23,12 @@
 					<div class="col-sm-4">
 						<div class="basic-info">
 							<div class="form-row">
-								<label><?php echo _e( "Jméno", "realsys" ); ?></label>
-								<input type="text" placeholder="<?php echo _e( "Jméno", "realsys" ); ?>" value="<?php echo $uzivatel->dejData('db_jmeno'); ?>" name="db_jmeno">
+								<label><?php _e( "Jméno", "realsys" ); ?></label>
+								<input type="text" placeholder="<?php _e( "Jméno", "realsys" ); ?>" value="<?php echo $uzivatel->dejData('db_jmeno'); ?>" name="db_jmeno">
 							</div>
 							<div class="form-row">
-								<label><?php echo _e( "Příjmení", "realsys" ); ?></label>
-								<input type="text" placeholder="<?php echo _e( "Příjmení", "realsys" ); ?>" value="<?php echo $uzivatel->dejData('db_prijmeni'); ?>" name="db_prijmeni">
+								<label><?php _e( "Příjmení", "realsys" ); ?></label>
+								<input type="text" placeholder="<?php _e( "Příjmení", "realsys" ); ?>" value="<?php echo $uzivatel->dejData('db_prijmeni'); ?>" name="db_prijmeni">
 							</div>
 
 						</div>
@@ -36,8 +36,8 @@
 					</div>
 					<div class="col-sm-6">
 						<div class="short-description form-message">
-							<label><?php echo _e( "Popis", "realsys" ); ?></label>
-							<textarea placeholder="<?php echo _e( "Popis", "realsys" ); ?>" name="db_popis"><?php echo $uzivatel->dejData('db_popis'); ?></textarea>
+							<label><?php _e( "Popis", "realsys" ); ?></label>
+							<textarea placeholder="<?php _e( "Popis", "realsys" ); ?>" name="db_popis"><?php echo $uzivatel->dejData('db_popis'); ?></textarea>
 						</div>
 					</div>
 				</div>
@@ -47,21 +47,21 @@
 					<div class="col-sm-6">
 
 						<div class="form-row">
-							<label><i class="fas fa-phone-alt"></i><?php echo _e( "Telefon", "realsys" ); ?></label>
+							<label><i class="fas fa-phone-alt"></i><?php _e( "Telefon", "realsys" ); ?></label>
 							<input type="tel" placeholder="<?php echo _e( "Telefon", "realsys" );?>" value="<?php echo $uzivatel->dejData('db_telefon'); ?>" name="db_telefon">
 						</div>
 					</div>
 
 					<div class="col-sm-6">
 						<div class="form-row">
-							<label><i class="fas fa-envelope"></i> <?php echo _e( "Email", "realsys" ); ?></label>
-							<input type="email" placeholder="<?php echo _e( "Email", "realsys" );?>" value="<?php echo $uzivatel->dejData('db_email'); ?>" name="db_email_nocheck">
+							<label><i class="fas fa-envelope"></i> <?php _e( "Email", "realsys" ); ?></label>
+							<input type="email" placeholder="<?php _e( "Email", "realsys" );?>" value="<?php echo $uzivatel->dejData('db_email'); ?>" name="db_email_nocheck">
 						</div>
 					</div>
 
 				</div>
 
-				<button type="submit" class="btn submit-btn auto-w" name="action" value="changeUserDetails"><?php echo _e( "Potvrdit změny", "realsys" ); ?></button>
+				<button type="submit" class="btn submit-btn auto-w" name="action" value="changeUserDetails"><?php _e( "Potvrdit změny", "realsys" ); ?></button>
 			</form>
 
 
@@ -70,8 +70,8 @@
 
 					<div class="row">
 						<div class="col-sm">
-							<h3><?php echo _e( "Zabezpečení účtu", "realsys" );?></h3>
-							<p><?php echo _e( "Nastavte si dostatečně silné heslo k vašemu účtu.", "realsys" );?></p>
+							<h3><?php _e( "Zabezpečení účtu", "realsys" );?></h3>
+							<p><?php _e( "Nastavte si dostatečně silné heslo k vašemu účtu.", "realsys" );?></p>
 						</div>
 
 						<div class="col-sm">
@@ -79,19 +79,19 @@
 								<form class="js-validate-form" method="post"">
 									<div class="row">
 										<div class="col-sm">
-											<label><?php echo _e( "Nové heslo", "realsys" );?></label>
+											<label><?php _e( "Nové heslo", "realsys" );?></label>
 											<div class="form-field">
 												<input type="password" placeholder="*****" name="db_heslo" id="heslo">
 											</div>
 										</div>
 										<div class="col-sm">
-											<label><?php echo _e( "Potvrďte heslo", "realsys" );?></label>
+											<label><?php _e( "Potvrďte heslo", "realsys" );?></label>
 											<div class="form-field">
 												<input type="password" placeholder="*****" name="db_heslo2">
 											</div>
 										</div>
 									</div>
-									<button type="submit" class="btn submit-btn" name="action" value="changePassword"><?php echo _e( "Změnit heslo", "realsys" );?></button>
+									<button type="submit" class="btn submit-btn" name="action" value="changePassword"><?php _e( "Změnit heslo", "realsys" );?></button>
 								</form>
 							</div>
 						</div>
@@ -106,9 +106,9 @@
 <div class="fullscreen-popup js-popup" id="addUserImage">
     <div class="fullscreen-popup--inner">
         <div class="fullscreen-popup--close js-closePopup"><i class="fas fa-times"></i> </div>
-        <h2>Změna obrázku uživatele</h2>
+        <h2><?php _e( "Změna obrázku uživatele", "realsys" );?></h2>
         <div class="line-separator"></div>
-        <p class="fullscreen-popup--paragraph">Pro změnu obrázku nahrajte obrázek nový.</p>
+        <p class="fullscreen-popup--paragraph"><?php _e( "Pro změnu obrázku nahrajte obrázek nový.", "realsys" );?></p>
         <div>
             <input type="hidden" name="uzivatel_id" id="uzivatel_id" value="<?php echo $uzivatel->getId(); ?>">
             <input type="file" class="my-pond" name="files"/>

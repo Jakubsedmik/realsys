@@ -20,7 +20,7 @@ $obrazky   = array_filter( $obrazky, function ( $val ) use ( &$front_obr ) {
     <div class="wrapper">
         <div class="slider-content">
             <a href="#" class="back-to-page"><span
-                        class="icon-arrow rotate"></span><span><?php echo _e( "Späť na výpis", "realsys" ); ?></span></a>
+                        class="icon-arrow rotate"></span><span><?php _e( "Zpět na výpis", "realsys" ); ?></span></a>
         </div>
     </div>
 </section>
@@ -60,39 +60,39 @@ $obrazky   = array_filter( $obrazky, function ( $val ) use ( &$front_obr ) {
                                     <table class="basic-table th-row" style="border-collapse: initial;">
                                         <tbody>
                                         <tr>
-                                            <th><?php echo _e( "Dispozice", "realsys" ); ?>:</th>
+                                            <th><?php _e( "Dispozice", "realsys" ); ?>:</th>
                                             <td><?php echo $inzerat->db_pocet_mistnosti; ?></td>
                                         </tr>
                                         <tr>
-                                            <th><?php echo _e( "Podlahová plocha", "realsys" ); ?>:</th>
+                                            <th><?php _e( "Podlahová plocha", "realsys" ); ?>:</th>
                                             <td><?php echo $inzerat->getAerial(); ?></td>
                                         </tr>
                                         <tr>
-                                            <th><?php echo _e( "Cena", "realsys" ); ?>:</th>
+                                            <th><?php _e( "Cena", "realsys" ); ?>:</th>
                                             <td><?php echo Tools::convertCurrency( $inzerat->db_cena ); ?></td>
                                         </tr>
                                         <tr>
-                                            <th><?php echo _e( "Cena poznámka", "realsys" ); ?>:</th>
+                                            <th><?php _e( "Cena poznámka", "realsys" ); ?>:</th>
                                             <td><?php echo $inzerat->db_cena_poznamka; ?></td>
                                         </tr>
                                         <tr>
-                                            <th><?php echo _e( "Město", "realsys" ); ?>:</th>
+                                            <th><?php _e( "Město", "realsys" ); ?>:</th>
                                             <td><?php echo $inzerat->db_mesto; ?></td>
                                         </tr>
                                         <tr>
-                                            <th><?php echo _e( "Městská část", "realsys" ); ?>:</th>
+                                            <th><?php _e( "Městská část", "realsys" ); ?>:</th>
                                             <td><?php echo $inzerat->db_mestska_cast; ?></td>
                                         </tr>
                                         <tr>
-                                            <th><?php echo _e( "Ulice", "realsys" ); ?>:</th>
+                                            <th><?php _e( "Ulice", "realsys" ); ?>:</th>
                                             <td><?php echo $inzerat->db_ulice . " " . $inzerat->db_cp; ?></td>
                                         </tr>
                                         <tr>
-                                            <th><?php echo _e( "Podlaží", "realsys" ); ?>:</th>
+                                            <th><?php _e( "Podlaží", "realsys" ); ?>:</th>
                                             <td><?php echo $inzerat->db_patro; ?></td>
                                         </tr>
                                         <tr>
-                                            <th><?php echo _e( "Balkón", "realsys" ); ?>:</th>
+                                            <th><?php _e( "Balkón", "realsys" ); ?>:</th>
                                             <td><?php echo Tools::translateBinaryValue( $inzerat->db_balkon ); ?></td>
                                         </tr>
                                         </tbody>
@@ -131,91 +131,91 @@ $obrazky   = array_filter( $obrazky, function ( $val ) use ( &$front_obr ) {
                                 <div class="nem-detail-table shadow-big rounded-b">
 
                                     <div class="">
-                                        <h3 class="text-center"><?php echo _e( "Podrobné informácie", "realsys" ); ?></h3>
+                                        <h3 class="text-center"><?php _e( "Podrobné informácie", "realsys" ); ?></h3>
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <table class="basic-table th-row" style="border-collapse: initial;">
                                                     <tbody>
                                                     <tr>
-                                                        <th><?php echo _e( "Dispozice", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Dispozice", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->db_pocet_mistnosti; ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Podlahová plocha", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Podlahová plocha", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->getAerial(); ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Pozemková plocha", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Pozemková plocha", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->getTotalAerial(); ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Cena", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Cena", "realsys" ); ?>:</th>
                                                         <td><?php echo Tools::convertCurrency( $inzerat->db_cena ); ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Cena poznámka", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Cena poznámka", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->db_cena_poznamka; ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Město", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Město", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->db_mesto; ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Městská část", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Městská část", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->db_mestska_cast; ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "PSČ", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "PSČ", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->db_psc; ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Ulice", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Ulice", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->db_ulice . " " . $inzerat->db_cp; ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Typ vlastnictví", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Typ vlastnictví", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->db_typ_vlastnictvi; ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Typ budovy", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Typ budovy", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->db_material; ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "PENB", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "PENB", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->db_penb; ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Vybavenost", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Vybavenost", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->db_vybavenost; ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Podlaží", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Podlaží", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->db_patro; ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Balkón", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Balkón", "realsys" ); ?>:</th>
                                                         <td><?php echo Tools::translateBinaryValue( $inzerat->db_balkon ); ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Terasa", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Terasa", "realsys" ); ?>:</th>
                                                         <td><?php echo Tools::translateBinaryValue( $inzerat->db_terasa ); ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Výtah", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Výtah", "realsys" ); ?>:</th>
                                                         <td><?php echo Tools::translateBinaryValue( $inzerat->db_vytah ); ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Garáž", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Garáž", "realsys" ); ?>:</th>
                                                         <td><?php echo Tools::translateBinaryValue( $inzerat->db_garaz ); ?></td>
                                                     </tr>
 
                                                     <tr>
-                                                        <th><?php echo _e( "Parkovací místo", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Parkovací místo", "realsys" ); ?>:</th>
                                                         <td><?php echo Tools::translateBinaryValue( $inzerat->db_parkovaci_misto ); ?></td>
                                                     </tr>
 
                                                     <tr>
-                                                        <th><?php echo _e( "Garáž", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Garáž", "realsys" ); ?>:</th>
                                                         <td><?php echo Tools::translateBinaryValue( $inzerat->db_garaz ); ?></td>
                                                     </tr>
                                                     </tbody>
@@ -225,85 +225,85 @@ $obrazky   = array_filter( $obrazky, function ( $val ) use ( &$front_obr ) {
                                                 <table class="basic-table th-row" style="border-collapse: initial;">
                                                     <tbody>
                                                     <tr>
-                                                        <th><?php echo _e( "Dispozice", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Dispozice", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->db_pocet_mistnosti; ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Podlahová plocha", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Podlahová plocha", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->getAerial(); ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Pozemková plocha", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Pozemková plocha", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->getTotalAerial(); ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Cena", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Cena", "realsys" ); ?>:</th>
                                                         <td><?php echo Tools::convertCurrency( $inzerat->db_cena ); ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Cena poznámka", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Cena poznámka", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->db_cena_poznamka; ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Město", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Město", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->db_mesto; ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Městská část", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Městská část", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->db_mestska_cast; ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "PSČ", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "PSČ", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->db_psc; ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Ulice", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Ulice", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->db_ulice . " " . $inzerat->db_cp; ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Typ vlastnictví", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Typ vlastnictví", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->db_typ_vlastnictvi; ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Typ budovy", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Typ budovy", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->db_material; ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "PENB", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "PENB", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->db_penb; ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Vybavenost", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Vybavenost", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->db_vybavenost; ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Podlaží", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Podlaží", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->db_patro; ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Balkón", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Balkón", "realsys" ); ?>:</th>
                                                         <td><?php echo Tools::translateBinaryValue( $inzerat->db_balkon ); ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Terasa", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Terasa", "realsys" ); ?>:</th>
                                                         <td><?php echo Tools::translateBinaryValue( $inzerat->db_terasa ); ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Výtah", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Výtah", "realsys" ); ?>:</th>
                                                         <td><?php echo Tools::translateBinaryValue( $inzerat->db_vytah ); ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo _e( "Garáž", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Garáž", "realsys" ); ?>:</th>
                                                         <td><?php echo Tools::translateBinaryValue( $inzerat->db_garaz ); ?></td>
                                                     </tr>
 
                                                     <tr>
-                                                        <th><?php echo _e( "Parkovací místo", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Parkovací místo", "realsys" ); ?>:</th>
                                                         <td><?php echo Tools::translateBinaryValue( $inzerat->db_parkovaci_misto ); ?></td>
                                                     </tr>
 
                                                     <tr>
-                                                        <th><?php echo _e( "Garáž", "realsys" ); ?>:</th>
+                                                        <th><?php _e( "Garáž", "realsys" ); ?>:</th>
                                                         <td><?php echo Tools::translateBinaryValue( $inzerat->db_garaz ); ?></td>
                                                     </tr>
                                                     </tbody>
@@ -312,7 +312,7 @@ $obrazky   = array_filter( $obrazky, function ( $val ) use ( &$front_obr ) {
                                         </div>
                                         <div class="text-center mt-5">
                                             <a class="btn btn-small"
-                                               href=""><?php echo _e( "Mám záujem o túto ponuku", "realsys" ); ?></a>
+                                               href=""><?php _e( "Mám záujem o túto ponuku", "realsys" ); ?></a>
                                         </div>
                                     </div>
 
@@ -359,7 +359,7 @@ if ( count( $similar ) > 0 ) :
         <div class="podobne-nemovitosti">
             <div class="wrapper">
                 <div class="section-title">
-                    <h2>Podobné inzeráty</h2>
+                    <h2><?php _e("Podobné inzeráty","realsys"); ?></h2>
                 </div>
 
 				<?php

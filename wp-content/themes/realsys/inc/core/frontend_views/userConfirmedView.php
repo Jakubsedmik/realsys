@@ -1,3 +1,3 @@
-<h2>Uživatel byl ověřen</h2>
-<?php
-echo frontendError::getBackendErrors();
+<h2><?php _e("Uživatel byl ověřen", "realsys"); ?></h2>
+
+<?php echo frontendError::getBackendErrors(); ?>

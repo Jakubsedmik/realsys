@@ -28,7 +28,7 @@
 							<i class="fas fa-envelope"></i> <span class="email"><?php echo $uzivatel->db_email; ?></span>
 						</div>
 						<div class="info-row">
-							<i class="fas fa-bullhorn"></i> <span class="inzeraty"><strong><?php echo count($inzeraty); ?></strong> <?php echo _e( "Aktivních inzerátů", "realsys" ); ?></span>
+							<i class="fas fa-bullhorn"></i> <span class="inzeraty"><strong><?php echo count($inzeraty); ?></strong> <?php _e( "Aktivních inzerátů", "realsys" ); ?></span>
 						</div>
 
 					</div>
@@ -36,7 +36,7 @@
 				</div>
 				<div class="col-sm-6">
 					<div class="short-description">
-						<h3><?php echo _e( "Popis", "realsys" ); ?></h3>
+						<h3><?php _e( "Popis", "realsys" ); ?></h3>
 						<p><?php echo $uzivatel->db_popis; ?></p>
 					</div>
 				</div>
@@ -44,7 +44,7 @@
 
 			<div class="row moreInfo-separator">
 				<div class="col-sm-2">
-					<h3><?php echo _e( "Stav", "realsys" ); ?></h3>
+					<h3><?php _e( "Stav", "realsys" ); ?></h3>
 				</div>
 				<div class="col-sm">
 					<div class="separator"> <div class="collapse-icon"><i class="fas fa-sort-down"></i></div> </div>
@@ -56,16 +56,16 @@
 					<table class="info-table">
 						<tbody>
 						<tr>
-							<th><?php echo _e( "Jméno", "realsys" ); ?></th><td><?php echo $uzivatel->db_jmeno; ?></td>
+							<th><?php _e( "Jméno", "realsys" ); ?></th><td><?php echo $uzivatel->db_jmeno; ?></td>
 						</tr>
 						<tr>
-							<th><?php echo _e( "Příjmení", "realsys" ); ?></th><td><?php echo $uzivatel->db_prijmeni; ?></td>
+							<th><?php _e( "Příjmení", "realsys" ); ?></th><td><?php echo $uzivatel->db_prijmeni; ?></td>
 						</tr>
 						<tr>
-							<th><?php echo _e( "Email", "realsys" ); ?></th><td><?php echo $uzivatel->db_email; ?></td>
+							<th><?php _e( "Email", "realsys" ); ?></th><td><?php echo $uzivatel->db_email; ?></td>
 						</tr>
 						<tr>
-							<th><?php echo _e( "Telefon", "realsys" ); ?></th><td><?php echo Tools::formatPhone($uzivatel->db_telefon); ?></td>
+							<th><?php _e( "Telefon", "realsys" ); ?></th><td><?php echo Tools::formatPhone($uzivatel->db_telefon); ?></td>
 						</tr>
 						</tbody>
 					</table>
@@ -74,13 +74,13 @@
 					<table class="info-table">
 						<tbody>
 						<tr>
-							<th><?php echo _e( "Aktivní", "realsys" ); ?></th><td><?php echo Tools::translateBinaryValue($uzivatel->db_stav); ?></td>
+							<th><?php _e( "Aktivní", "realsys" ); ?></th><td><?php echo Tools::translateBinaryValue($uzivatel->db_stav); ?></td>
 						</tr>
 						<tr>
-							<th><?php echo _e( "Datum založení", "realsys" ); ?></th><td><?php echo Tools::formatTime($uzivatel->db_datum_zalozeni); ?></td>
+							<th><?php _e( "Datum založení", "realsys" ); ?></th><td><?php echo Tools::formatTime($uzivatel->db_datum_zalozeni); ?></td>
 						</tr>
 						<tr>
-							<th><?php echo _e( "Datum poslední úpravy", "realsys" ); ?></th><td><?php echo Tools::formatTime($uzivatel->db_datum_upravy); ?></td>
+							<th><?php _e( "Datum poslední úpravy", "realsys" ); ?></th><td><?php echo Tools::formatTime($uzivatel->db_datum_upravy); ?></td>
 						</tr>
 						</tbody>
 					</table>
@@ -95,7 +95,7 @@
         <div class="top-nemovitosti">
             <div class="wrapper">
                 <div class="section-title">
-                    <h2><?php echo _e( "Nemovitosti uživatele", "realsys" ); ?></h2>
+                    <h2><?php _e( "Nemovitosti uživatele", "realsys" ); ?></h2>
                 </div>
 
                 <?php
@@ -116,7 +116,7 @@
                 ?>
 
                 <div class="section-btn">
-                    <a class="btn" href="#"><?php echo _e( "Další inzeráty", "realsys" ); ?></a>
+                    <a class="btn" href="#"><?php _e( "Další inzeráty", "realsys" ); ?></a>
                 </div>
             </div>
         </div>
@@ -127,7 +127,7 @@
 
 	<div class="wrapper">
 		<div class="contact-con">
-			<h2><?php echo _e( "Kontaktní formulář", "realsys" ); ?></h2>
+			<h2><?php _e( "Kontaktní formulář", "realsys" ); ?></h2>
 
 			<form method="post" class="js-validate-form js-recaptchaForm">
                 <input type="hidden" name="action" value="sendMessage">
@@ -136,27 +136,27 @@
 
 						<div class="form-cols">
 							<div class="form-col">
-								<label><?php echo _e( "Jméno", "realsys" ); ?></label>
+								<label><?php _e( "Jméno", "realsys" ); ?></label>
                                 <div class="form-field">
-								    <input required name="db_jmeno" type="text" placeholder="<?php echo _e( "Karel", "realsys" ); ?>">
+								    <input required name="db_jmeno" type="text" placeholder="<?php _e( "Karel", "realsys" ); ?>">
                                 </div>
 							</div>
 							<div class="form-col">
-								<label><?php echo _e( "Příjmení", "realsys" ); ?></label>
+								<label><?php _e( "Příjmení", "realsys" ); ?></label>
                                 <div class="form-field">
-								    <input required name="db_prijmeni" type="text" placeholder="<?php echo _e( "Novák", "realsys" ); ?>">
+								    <input required name="db_prijmeni" type="text" placeholder="<?php _e( "Novák", "realsys" ); ?>">
                                 </div>
 							</div>
 							<div class="form-col">
-								<label><?php echo _e( "Telefon", "realsys" ); ?></label>
+								<label><?php _e( "Telefon", "realsys" ); ?></label>
                                 <div class="form-field">
-								    <input required name="db_telefon" type="tel" placeholder="<?php echo _e( "Telefon-syntax", "realsys" ); ?>">
+								    <input required name="db_telefon" type="tel" placeholder="<?php _e( "Telefon-syntax", "realsys" ); ?>">
                                 </div>
 							</div>
 							<div class="form-col">
-								<label><?php echo _e( "Email", "realsys" ); ?></label>
+								<label><?php _e( "Email", "realsys" ); ?></label>
                                 <div class="form-field">
-								    <input required name="db_email_nocheck" type="email" placeholder="<?php echo _e( "Email-syntax", "realsys" ); ?>">
+								    <input required name="db_email_nocheck" type="email" placeholder="<?php _e( "Email-syntax", "realsys" ); ?>">
                                 </div>
 							</div>
 						</div>
@@ -164,17 +164,17 @@
 					</div>
 
 					<div class="col-sm form-message">
-						<label><?php echo _e( "Zpráva", "realsys" ); ?></label>
+						<label><?php _e( "Zpráva", "realsys" ); ?></label>
                         <div class="form-field">
-						    <textarea name="db_zprava" placeholder="<?php echo _e( "Vaše zpráva", "realsys" ); ?>"></textarea>
+						    <textarea name="db_zprava" placeholder="<?php _e( "Vaše zpráva", "realsys" ); ?>"></textarea>
                         </div>
 					</div>
 
 				</div>
 
 				<div class="form-btns">
-					<button type="submit" class="btn submit-btn"><?php echo _e( "Odeslat zprávu", "realsys" ); ?></button>
-					<a href="#" class="lost-pass underline-link"><?php echo _e( "Nepodařilo se odeslat?", "realsys" ); ?></a>
+					<button type="submit" class="btn submit-btn"><?php _e( "Odeslat zprávu", "realsys" ); ?></button>
+					<a href="#" class="lost-pass underline-link"><?php _e( "Nepodařilo se odeslat?", "realsys" ); ?></a>
 				</div>
 			</form>
 

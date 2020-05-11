@@ -3,7 +3,7 @@
 		<div class="wrapper">
 			<div class="slider-content">
 				<div class="slider-title-second">
-					<h1><strong>Výpis nemovitostí dle mapy</strong></h1>
+					<h1><strong><?php _e("Výpis nemovitostí na mapě", "realsys"); ?></strong></h1>
 				</div>
 			</div>
 		</div>
@@ -25,12 +25,12 @@
         <div class="wrapper">
             <div class="row">
                 <div class="col-8">
-                    <h2>Neplaťte provizi realitce,<br> když nemusíte</h2>
-                    <p>S námi je to snadné! Inzerujte zdarma a neplaťte provizi nám, ani realitnímu makléři.</p>
+                    <h2><?php _e("Neplaťte provizi realitce,", "realsys"); ?><br> <?php _e("když nemusíte.", "realsys"); ?></h2>
+                    <p><?php _e("S námi je to snadné! Inzerujte zdarma a neplaťte provizi nám, ani realitnímu makléři.", "realsys"); ?></p>
                 </div>
                 <div class="col-4 cta-btns">
-                    <a class="btn bcg-btn" href="#">Přidat inzerát</a>
-                    <a class="btn free" href="#">Je to zdarma</a>
+                    <a class="btn bcg-btn" href="#"><?php _e("Přidat inzerát", "realsys"); ?></a>
+                    <a class="btn free" href="#"><?php _e("Je to zdarma", "realsys"); ?></a>
                 </div>
             </div>
         </div>

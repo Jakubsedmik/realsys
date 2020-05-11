@@ -43,10 +43,10 @@
 					<table class="rank-table">
 						<tbody>
 						<tr>
-							<th><?php echo _e( "Město", "realsys" ); ?></th><td><?php echo $item->db_mesto; ?></td>
+							<th><?php _e( "Město", "realsys" ); ?></th><td><?php echo $item->db_mesto; ?></td>
 						</tr>
 						<tr>
-							<th><?php echo _e( "Podlahová plocha", "realsys" ); ?></th><td><?php echo $item->db_podlahova_plocha; ?> m<sup>2</sup></td>
+							<th><?php _e( "Podlahová plocha", "realsys" ); ?></th><td><?php echo $item->db_podlahova_plocha; ?> m<sup>2</sup></td>
 						</tr>
 						</tbody>
 					</table>
@@ -71,9 +71,9 @@
                                 data-post-inzerat-id="<?php echo $item->getId(); ?>"
                                 data-post-user-id="<?php echo $item->db_uzivatel_id; ?>"
                                 data-finish="activeInzerat">
-                            <?php echo _e( "Aktivovat", "realsys" ); ?>
+                            <?php _e( "Aktivovat", "realsys" ); ?>
                         </a>
-                        <span class="activate-txt"><?php echo _e( "Inzerát je neaktivní", "realsys" ); ?></span>
+                        <span class="activate-txt"><?php _e( "Inzerát je neaktivní", "realsys" ); ?></span>
                     </span>
 
                     <span class="inzeratDeactivator" style="<?php echo $deactivators_style; ?>">
@@ -84,9 +84,9 @@
                                 data-post-inzerat-id="<?php echo $item->getId(); ?>"
                                 data-post-user-id="<?php echo $item->db_uzivatel_id; ?>"
                                 data-finish="deactiveInzerat">
-                            <?php echo _e( "Deaktivovat", "realsys" ); ?>
+                            <?php _e( "Deaktivovat", "realsys" ); ?>
                         </a>
-                        <span class="activate-txt"><?php echo _e( "Inzerát je aktivní", "realsys" ); ?></span>
+                        <span class="activate-txt"><?php _e( "Inzerát je aktivní", "realsys" ); ?></span>
 					</span>
 				</div>
 
@@ -106,7 +106,7 @@
 
 
                     ></Servicebuy>
-					<a href="#" class="simple-link"><?php echo _e( "Jak to funguje?", "realsys" ); ?></a>
+					<a href="#" class="simple-link"><?php _e( "Jak to funguje?", "realsys" ); ?></a>
 				</div>
 			</div>
 		</div>

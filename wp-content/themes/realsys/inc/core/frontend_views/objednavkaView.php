@@ -39,7 +39,7 @@
                                         <div class="credits-amount">
                                             <img src="<?php echo FRONTEND_IMAGES_PATH; ?>/ikony/kredity_1.png">
                                             <strong><?php echo $customService['ammount'] ?></strong> <?php _e("Kreditů", "realsys"); ?>
-                                            <strong> Služba: <?php echo $customService['name'] ?></strong>
+                                            <strong><?php _e("Služba:", "realsys"); ?> <?php echo $customService['name'] ?></strong>
                                             <p><?php echo $customService['message'] ?></p>
                                         </div>
                                         <div class="credits-cost">

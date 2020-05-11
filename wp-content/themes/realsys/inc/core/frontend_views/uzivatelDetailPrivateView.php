@@ -29,10 +29,10 @@
 							<i class="fas fa-envelope"></i> <span class="email"><?php echo $uzivatel->db_email; ?></span>
 						</div>
 						<div class="info-row">
-							<i class="fas fa-bullhorn"></i> <span class="inzeraty"><strong><?php echo count($aktivniInzeraty); ?></strong> <?php echo _e( "Aktivních inzerátů", "realsys" ); ?></span>
+							<i class="fas fa-bullhorn"></i> <span class="inzeraty"><strong><?php echo count($aktivniInzeraty); ?></strong> <?php _e( "Aktivních inzerátů", "realsys" ); ?></span>
 						</div>
                         <div class="info-row">
-                            <i class="fas fa-bullhorn"></i> <span class="inzeraty"><strong><?php echo $uzivatel->getUserBillance(); ?></strong> <?php echo _e( "Kreditů", "realsys" ); ?></span>
+                            <i class="fas fa-bullhorn"></i> <span class="inzeraty"><strong><?php echo $uzivatel->getUserBillance(); ?></strong> <?php _e( "Kreditů", "realsys" ); ?></span>
                         </div>
 					</div>
 
@@ -40,7 +40,7 @@
 				<div class="col-sm-6">
 					<div class="short-description">
 						<a href="<?php echo Tools::getFERoute("uzivatelClass", $uzivatel->getId(), "detail", "editUser"); ?>" class="edit-icon"><i class="fas fa-pen"></i></a>
-						<h3><?php echo _e( "Popis", "realsys" ); ?></h3>
+						<h3><?php _e( "Popis", "realsys" ); ?></h3>
 						<p><?php echo $uzivatel->db_popis; ?></p>
 					</div>
 				</div>
@@ -54,16 +54,16 @@
 							<i class="far fa-lightbulb"></i>
 						</div>
 						<div class="txt-box">
-							<h3><?php echo _e( "Přidáním fotografie a vyplněním všech informací, zvyšujete svojí důvěryhodnost", "realsys" ); ?></h3>
-							<a class="btn ico-btn" href="<?php echo Tools::getFERoute("uzivatelClass", $uzivatel->getId(), "detail", "editUser"); ?>"><i class="fas fa-pen"></i><?php echo _e( "Upravit profil", "realsys" ); ?></a>
+							<h3><?php _e( "Přidáním fotografie a vyplněním všech informací, zvyšujete svojí důvěryhodnost", "realsys" ); ?></h3>
+							<a class="btn ico-btn" href="<?php echo Tools::getFERoute("uzivatelClass", $uzivatel->getId(), "detail", "editUser"); ?>"><i class="fas fa-pen"></i><?php _e( "Upravit profil", "realsys" ); ?></a>
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6 security-hint-box">
 					<div class="security-hint-box-wrap">
-						<h3><?php echo _e( "Zabezpečení účtu", "realsys" ); ?></h3>
-						<p><?php echo _e( "Nastavte si dostatečně silné heslo k vašemu účtu.", "realsys" ); ?></p>
-						<a class="btn ico-btn" href="<?php echo Tools::getFERoute("uzivatelClass", $uzivatel->getId(), "detail", "editUser"); ?>"><i class="fas fa-lock"></i><?php echo _e( "Změnit heslo", "realsys" ); ?></a>
+						<h3><?php _e( "Zabezpečení účtu", "realsys" ); ?></h3>
+						<p><?php _e( "Nastavte si dostatečně silné heslo k vašemu účtu.", "realsys" ); ?></p>
+						<a class="btn ico-btn" href="<?php echo Tools::getFERoute("uzivatelClass", $uzivatel->getId(), "detail", "editUser"); ?>"><i class="fas fa-lock"></i><?php _e( "Změnit heslo", "realsys" ); ?></a>
 					</div>
 				</div>
 			</div>
@@ -71,7 +71,7 @@
 
 			<div class="row moreInfo-separator">
 				<div class="col-sm-2">
-					<h3><?php echo _e( "Stav", "realsys" ); ?></h3>
+					<h3><?php _e( "Stav", "realsys" ); ?></h3>
 				</div>
 				<div class="col-sm">
 					<div class="separator"> <div class="collapse-icon"><i class="fas fa-sort-down"></i></div> </div>
@@ -83,16 +83,16 @@
 					<table class="info-table">
 						<tbody>
 						<tr>
-							<th><?php echo _e( "Jméno", "realsys" ); ?></th><td><?php echo $uzivatel->db_jmeno; ?></td>
+							<th><?php _e( "Jméno", "realsys" ); ?></th><td><?php echo $uzivatel->db_jmeno; ?></td>
 						</tr>
 						<tr>
-							<th><?php echo _e( "Příjmení", "realsys" ); ?></th><td><?php echo $uzivatel->db_prijmeni; ?></td>
+							<th><?php _e( "Příjmení", "realsys" ); ?></th><td><?php echo $uzivatel->db_prijmeni; ?></td>
 						</tr>
 						<tr>
-							<th><?php echo _e( "Email", "realsys" ); ?></th><td><?php echo $uzivatel->db_email; ?></td>
+							<th><?php _e( "Email", "realsys" ); ?></th><td><?php echo $uzivatel->db_email; ?></td>
 						</tr>
 						<tr>
-							<th><?php echo _e( "Telefon", "realsys" ); ?></th><td><?php echo Tools::formatPhone($uzivatel->db_telefon); ?></td>
+							<th><?php _e( "Telefon", "realsys" ); ?></th><td><?php echo Tools::formatPhone($uzivatel->db_telefon); ?></td>
 						</tr>
 						</tbody>
 					</table>
@@ -101,13 +101,13 @@
 					<table class="info-table">
 						<tbody>
 						<tr>
-							<th><?php echo _e( "Aktivní", "realsys" ); ?></th><td><?php echo Tools::translateBinaryValue($uzivatel->db_stav); ?></td>
+							<th><?php _e( "Aktivní", "realsys" ); ?></th><td><?php echo Tools::translateBinaryValue($uzivatel->db_stav); ?></td>
 						</tr>
 						<tr>
-							<th><?php echo _e( "Datum založení", "realsys" ); ?></th><td><?php echo Tools::formatTime($uzivatel->db_datum_zalozeni); ?></td>
+							<th><?php _e( "Datum založení", "realsys" ); ?></th><td><?php echo Tools::formatTime($uzivatel->db_datum_zalozeni); ?></td>
 						</tr>
 						<tr>
-							<th><?php echo _e( "Datum poslední úpravy", "realsys" ); ?></th><td><?php echo Tools::formatTime($uzivatel->db_datum_upravy); ?></td>
+							<th><?php _e( "Datum poslední úpravy", "realsys" ); ?></th><td><?php echo Tools::formatTime($uzivatel->db_datum_upravy); ?></td>
 						</tr>
 						</tbody>
 					</table>
@@ -127,8 +127,8 @@
 				<div class="nemovitost-rows-wrap app">
 
 					<div class="section-title sides-align">
-						<h2><?php echo _e( "Nemovitosti uživatele", "realsys" ); ?></h2>
-						<a class="btn" href="<?php echo Tools::getFERoute("inzeratClass",false, "add") ?>">Vložit inzerát</a>
+						<h2><?php _e( "Nemovitosti uživatele", "realsys" ); ?></h2>
+						<a class="btn" href="<?php echo Tools::getFERoute("inzeratClass",false, "add") ?>"><?php _e( "Vložit inzerát", "realsys" );?></a>
 					</div>
 
 					<?php
@@ -148,8 +148,8 @@
 					?>
 
 					<div class="section-btn sides-align">
-						<a class="btn" href="<?php echo Tools::getFERoute("inzeratClass",false, "listing") ?>">Všechny inzeráty</a>
-						<a class="btn" href="<?php echo Tools::getFERoute("inzeratClass",false, "add") ?>">Vložit inzerát</a>
+						<a class="btn" href="<?php echo Tools::getFERoute("inzeratClass",false, "listing") ?>"><?php _e( "Všechny inzeráty", "realsys" );?></a>
+						<a class="btn" href="<?php echo Tools::getFERoute("inzeratClass",false, "add") ?>"><?php _e( "Vložit inzerát", "realsys" );?></a>
 					</div>
 
 				</div>
@@ -164,15 +164,15 @@
         <div class="hlidaci_psi">
             <div class="wrapper">
                 <div class="section-title sides-align">
-                    <h2>Hlídací psi</h2>
+                    <h2><?php _e( "Hlídací psi", "realsys" );?></h2>
                 </div>
                 <?php foreach ($hlidaci_psi as $key => $value) : ?>
                     <div class="hlidaciPes js-watchdog">
-                        <h3><a href="<?php echo Tools::getFERoute("hlidacipesClass",$value->getId(), "detail"); ?>">Název: <?php echo $value->db_jmeno_psa; ?></a></h3>
-                        <p>Poslední zobrazení: <?php echo Tools::formatTime($value->db_posledni_zobrazeni);?> </p>
-                        <div>Počet nových inzerátů: <strong><?php echo $value->db_nove_inzeraty_pocet; ?></strong> inzerátů</div>
-                        <div>Je prémium: <?php echo ($value->db_premium ==1) ?  "Ano" : "Ne"; ?> </div>
-                        <a href="#" class="js-send-request" data-post-action="removeWatchdog" data-post-id="<?php echo $value->getId(); ?>" data-post-user-id="<?php echo $uzivatel->getId(); ?>" data-finish="removePes" data-confirm="1">Odstranit psa</a>
+                        <h3><a href="<?php echo Tools::getFERoute("hlidacipesClass",$value->getId(), "detail"); ?>"><?php _e( "Název:", "realsys" );?> <?php echo $value->db_jmeno_psa; ?></a></h3>
+                        <p><?php _e( "Poslední zobrazení:", "realsys" );?> <?php echo Tools::formatTime($value->db_posledni_zobrazeni);?> </p>
+                        <div><?php _e( "Počet nových inzerátů:", "realsys" );?> <strong><?php echo $value->db_nove_inzeraty_pocet; ?></strong> <?php _e( "inzerátů", "realsys" );?></div>
+                        <div><?php _e( "Je prémium:", "realsys" );?> <?php echo ($value->db_premium ==1) ?  "Ano" : "Ne"; ?> </div>
+                        <a href="#" class="js-send-request" data-post-action="removeWatchdog" data-post-id="<?php echo $value->getId(); ?>" data-post-user-id="<?php echo $uzivatel->getId(); ?>" data-finish="removePes" data-confirm="1"><?php _e( "Odstranit psa", "realsys" );?></a>
                     </div>
                 <?php endforeach; ?>
             </div>
