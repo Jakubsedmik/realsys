@@ -142,6 +142,9 @@
 					<label><?php echo _e("Telefon", "realsys"); ?></label>
 					<input name="telefon" required type="tel" placeholder="<?php echo _e("Telefon-syntax", "realsys"); ?>">
 				</div>
+				<div class="form-col">
+					<p class="obch-podm"><?php echo __("Stisknutím tlačítka “Registrovat” vyjadřujete souhlas s ", "realsys"); ?> <a href="<?php echo home_url() . "/warunki-biznesowe/" ?>"><?php echo __("Obchodními podmínkami", "realsys"); ?></a> a <a href="<?php echo home_url() . "/gdpr/" ?>"><?php echo __("Zpracováním osobních údajů", "realsys"); ?></a></p>
+				</div>
 			</div>
 			<div class="form-btns">
 				<button type="submit" class="btn submit-btn"><?php echo _e("Potvrdit", "realsys"); ?></button>

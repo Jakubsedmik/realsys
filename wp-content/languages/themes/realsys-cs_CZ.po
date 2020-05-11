@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Package Name\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-11 10:47+0200\n"
-"PO-Revision-Date: 2020-05-11 11:02+0200\n"
+"PO-Revision-Date: 2020-05-11 22:47+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl_PL\n"
@@ -691,9 +691,7 @@ msgstr "Nie pamiętasz hasła?"
 
 #: inc/core/frontend_views/loginView.php:105
 msgid "Zůstat přihlášen"
-msgstr ""
-"16/5000\n"
-"Pozostań zalogowany"
+msgstr "Pozostań zalogowany"
 
 #: inc/core/frontend_views/loginView.php:109
 msgid "Přihlásit se"
@@ -776,7 +774,7 @@ msgstr ""
 
 #: inc/core/frontend_views/pridatInzeratView.php:8
 msgid "Toto pole je povinné"
-msgstr ""
+msgstr "To pole jest wymagane"
 
 #: inc/core/frontend_views/pridatInzeratView.php:9
 #: inc/core/frontend_views/pridatInzeratView.php:129
@@ -1161,11 +1159,11 @@ msgstr ""
 
 #: templates/header-main.php:46
 msgid "Můj profil"
-msgstr ""
+msgstr "Moje konto"
 
 #: templates/header-main.php:48 templates/header-main.php:139
 msgid "Odhlásit se"
-msgstr ""
+msgstr "Wyloguj się"
 
 #: templates/header-main.php:122
 msgid "Přidat inzerát"

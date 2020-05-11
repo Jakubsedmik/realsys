@@ -1752,6 +1752,24 @@ header .user-login a {
 .lost-pass {
   display: none;
 }
+.user-logged .mess-counter {
+  display: none!important;
+}
+.user-credits {
+  display: none;
+}
+.user-menu a:nth-of-type(1) {
+  display: none;
+}
+.user-menu a:nth-of-type(2) {
+  display: none;
+}
+footer .footer-contact a span {
+  margin-bottom: 0;
+}
+h2 {
+  font-size: 42px;
+}
 /***********************/
 /* HLAVIČKA RESPONZIVNÍ*/
 /***********************/

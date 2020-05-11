@@ -53,7 +53,7 @@ class pridatInzeratController extends frontendController {
 						$this->requestData['db_lat'] = $lat;
 						$this->requestData['db_lng'] = $lng;
 					}else{
-						frontendError::addMessage("Geokódování", ERROR, "Zadaná adresa se nepodařila geokódovat. Inzerát nebyl vytvořen");
+						frontendError::addMessage(__("Geokódování", "realsys"), ERROR, __("Zadaná adresa se nepodařila geokódovat. Inzerát nebyl vytvořen", "realsys"));
 						$this->setView("error");
 						return false;
 					}
@@ -84,7 +84,7 @@ class pridatInzeratController extends frontendController {
 										$obrazek->db_front = 1;
 									}
 								}else{
-									frontendError::addMessage("Obrázky", ERROR, __("Některé obrázky nebyli nalezeny","realsys"));
+									frontendError::addMessage(__("Obrázky", "realsys"), ERROR, __("Některé obrázky nebyly nalezeny", "realsys"));
 								}
 							}
 						});
@@ -100,17 +100,17 @@ class pridatInzeratController extends frontendController {
 					}
 
 				}else{
-					frontendError::addMessage("Uživatel", ERROR, "Uživatel neexistuje");
+					frontendError::addMessage(__("Uživatel", "realsys"), ERROR, __("Uživatel neexistuje", "realsys"));
 					$this->setView("error");
 					return false;
 				}
 			}else{
-				frontendError::addMessage("Uživatel", ERROR, "Uživatel není přihlášen nebo nemáte dostatečná oprávnění");
+				frontendError::addMessage(__("Uživatel", "realsys"), ERROR, __("Uživatel není přihlášen nebo nemáte dostatečná oprávnění", "realsys"));
 				$this->setView("error");
 				return false;
 			}
 		}else{
-			frontendError::addMessage("Pole", ERROR, "Některá pole nebyla vyplněna");
+			frontendError::addMessage(__("Pole", "realsys"), ERROR, __("Některá pole nebyla vyplněna", "realsys"));
 			$this->setView("error");
 			return false;
 		}
