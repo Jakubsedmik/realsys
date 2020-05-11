@@ -71,7 +71,9 @@
             "abortProcessing"=> __("Zrušit", "realsys"),
             "processItem" => __("Nahrát", "realsys"),
             "titulekInzeratu"=> __("Titulek inzerátu", "realsys"),
-            "mestskaCast"=> __("Městská část", "realsys")
+            "mestskaCast"=> __("Městská část", "realsys"),
+            "prochazet" => __(" Procházet", "realsys"),
+            "nahrajteNovy" => __("Nahrajte nový obrázek (maximálně 10 v jednu chvíli)","realsys")
         );
 
 

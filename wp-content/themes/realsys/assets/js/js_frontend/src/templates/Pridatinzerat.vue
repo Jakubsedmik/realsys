@@ -401,13 +401,12 @@
 
 
                         <h2>{{translations.fotografie2}}</h2>
-
                         <div class="imagesLoader" :class="errorClass('part_third','db_inzerat_obrazky')">
                             <file-pond
                                     name="files"
                                     allow-multiple="true"
                                     max-files="10"
-                                    label-idle="<i class='far fa-image'></i> Nahrajte nový obrázek (maximálně 10 v jednu chvíli) <span class='filepond--label-action'> Procházet </span>"
+                                    :label-idle="'<i class=\'far fa-image\'></i>' + translations.nahrajteNovy +  '<span class=\'filepond--label-action\'>' + translations.prochazet + '</span>'"
                                     accepted-file-types="image/jpeg, image/png"
                                     ref="pond"
                                     :server="serverConfig()"
