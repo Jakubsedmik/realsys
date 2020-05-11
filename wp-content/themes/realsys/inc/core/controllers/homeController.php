@@ -62,8 +62,8 @@ class homeController extends controller {
 			'datum_zalozeni' => time()
 		));*/
 
-		$inzerat = assetsFactory::getEntity('inzeratClass',1);
-		$inzerat->writeDials();
+		/*$inzerat = assetsFactory::getEntity('inzeratClass',1);
+		$inzerat->writeDials();*/
 
 		//$inzerat->getSubobject('uzivatel');
 		//$inzerat->loadRelatedObjects();
