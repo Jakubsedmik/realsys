@@ -36,7 +36,7 @@ module.exports = {
                         loader: 'less-loader',
                         options: {
                             modifyVars: {
-                                'website': '"http://szukajdom.eu/"'
+                                'website': '"http://szukamdom.pl/"'
                             }
                         },
                     }
@@ -48,7 +48,7 @@ module.exports = {
         // make sure to include the plugin for the magic
         new VueLoaderPlugin(),
         new webpack.DefinePlugin({
-            'process.env.HOME_URL': JSON.stringify("http://szukajdom.eu/")
+            'process.env.HOME_URL': JSON.stringify("http://szukamdom.pl/")
         }),
     ]
 };

@@ -117,7 +117,7 @@ function set_deploy_environment(){
         .pipe(less(
             {
                 modifyVars: {
-                    '@productionurl': '"http://szukajdom.eu"',
+                    '@productionurl': '"http://szukamdom.pl"',
                 }
             }
             )
