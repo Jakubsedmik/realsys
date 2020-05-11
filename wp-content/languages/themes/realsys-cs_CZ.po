@@ -7,17 +7,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Package Name\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 10:47+0200\n"
-"PO-Revision-Date: 2020-05-11 22:47+0200\n"
+"POT-Creation-Date: 2020-05-11 23:13+0200\n"
+"PO-Revision-Date: 2020-05-11 23:14+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 2.2.4\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
 "|| n%100>14) ? 1 : 2);\n"
+
+#: 404.php:8
+msgid "404 - STRANA NENALEZENA"
+msgstr ""
+
+#: 404.php:12
+msgid "Zpět na úvod"
+msgstr ""
 
 #: functions.php:76
 msgid "Vlastní nastavení šablony"
@@ -328,6 +336,185 @@ msgstr ""
 msgid "5+1"
 msgstr ""
 
+#: inc/core/frontend_controllers/gopayController.php:63
+msgid "Platba"
+msgstr ""
+
+#: inc/core/frontend_controllers/gopayController.php:63
+msgid "Platební brána připravena. Pokračujte do platební brány"
+msgstr ""
+
+#: inc/core/frontend_controllers/gopayController.php:67
+#: inc/core/frontend_controllers/gopayController.php:125
+#: inc/core/frontend_controllers/gopayController.php:131
+msgid "Objednávka"
+msgstr ""
+
+#: inc/core/frontend_controllers/gopayController.php:67
+msgid "Tato objednávka již byla zaplacena"
+msgstr ""
+
+#: inc/core/frontend_controllers/gopayController.php:73
+msgid "Objednávka a uživatel"
+msgstr ""
+
+#: inc/core/frontend_controllers/gopayController.php:73
+msgid "Objednávka nebo uživatel neexistuje"
+msgstr ""
+
+#: inc/core/frontend_controllers/gopayController.php:78
+#: inc/core/frontend_controllers/gopayController.php:142
+#, fuzzy
+#| msgid "4. Sumarizace"
+msgid "Autorizace"
+msgstr "4. Podsumowanie"
+
+#: inc/core/frontend_controllers/gopayController.php:78
+msgid "Uživatel není přihlášen. Neleze provést platbu"
+msgstr ""
+
+#: inc/core/frontend_controllers/gopayController.php:83
+#: inc/core/frontend_controllers/gopayController.php:137
+msgid "Povinná pole"
+msgstr ""
+
+#: inc/core/frontend_controllers/gopayController.php:83
+#: inc/core/frontend_controllers/gopayController.php:137
+msgid "Některá povinná pole nebyla vyplněna"
+msgstr ""
+
+#: inc/core/frontend_controllers/gopayController.php:118
+msgid "Úspěch"
+msgstr ""
+
+#: inc/core/frontend_controllers/gopayController.php:118
+msgid "Objednávka byla úspěšně zaplacena."
+msgstr ""
+
+#: inc/core/frontend_controllers/gopayController.php:125
+msgid "Zadná objednávka v systému neexistuje a nemůže být zaplacena."
+msgstr ""
+
+#: inc/core/frontend_controllers/gopayController.php:131
+msgid ""
+"Objednávka nebyla úspěšně zaplacena. Opakujte proces nebo kontaktujte "
+"administrátora"
+msgstr ""
+
+#: inc/core/frontend_controllers/gopayController.php:142
+msgid "Uživatel není přihlášen. Nelze potvrdit platbu"
+msgstr ""
+
+#: inc/core/frontend_controllers/pridatInzeratController.php:56
+#, fuzzy
+#| msgid "Parkování"
+msgid "Geokódování"
+msgstr "Parking"
+
+#: inc/core/frontend_controllers/pridatInzeratController.php:56
+msgid "Zadaná adresa se nepodařila geokódovat. Inzerát nebyl vytvořen"
+msgstr ""
+
+#: inc/core/frontend_controllers/pridatInzeratController.php:87
+msgid "Obrázky"
+msgstr ""
+
+#: inc/core/frontend_controllers/pridatInzeratController.php:87
+msgid "Některé obrázky nebyly nalezeny"
+msgstr ""
+
+#: inc/core/frontend_controllers/pridatInzeratController.php:103
+#: inc/core/frontend_controllers/pridatInzeratController.php:108
+msgid "Uživatel"
+msgstr "Użytkownik"
+
+#: inc/core/frontend_controllers/pridatInzeratController.php:103
+#, fuzzy
+#| msgid "Uživatel"
+msgid "Uživatel neexistuje"
+msgstr "Użytkownik"
+
+#: inc/core/frontend_controllers/pridatInzeratController.php:108
+msgid "Uživatel není přihlášen nebo nemáte dostatečná oprávnění"
+msgstr ""
+
+#: inc/core/frontend_controllers/pridatInzeratController.php:113
+msgid "Pole"
+msgstr ""
+
+#: inc/core/frontend_controllers/pridatInzeratController.php:113
+msgid "Některá pole nebyla vyplněna"
+msgstr ""
+
+#: inc/core/frontend_views/confirmPaymentView.php:5
+msgid "Objednávka byla zaplacena"
+msgstr ""
+
+#: inc/core/frontend_views/confirmPaymentView.php:7
+msgid "Děkujeme za zaplacení objednávky, níže je její rekapitulace"
+msgstr ""
+
+#: inc/core/frontend_views/confirmPaymentView.php:10
+msgid "Počet kreditů:"
+msgstr ""
+
+#: inc/core/frontend_views/confirmPaymentView.php:11
+#, fuzzy
+#| msgid "Cena"
+msgid "Cena:"
+msgstr "Cena"
+
+#: inc/core/frontend_views/confirmPaymentView.php:12
+msgid "Ve prospěch účtu:"
+msgstr ""
+
+#: inc/core/frontend_views/confirmPaymentView.php:15
+msgid "Zpět na svůj účet"
+msgstr ""
+
+#: inc/core/frontend_views/errorPaymentView.php:5
+msgid "Došlo k chybě při úhradě objednávky"
+msgstr ""
+
+#: inc/core/frontend_views/errorPaymentView.php:6
+msgid "Objednávka nebyla zaplacena."
+msgstr ""
+
+#: inc/core/frontend_views/errorPaymentView.php:7
+msgid "Znovu k platbě"
+msgstr ""
+
+#: inc/core/frontend_views/errorView.php:5
+msgid "Došlo k chybám! Snažíte se o něco špatného!"
+msgstr ""
+
+#: inc/core/frontend_views/errorView.php:6
+msgid "Došlo k chybám, tyto chyby jsou způsobené nesprávnou manipulací s webem"
+msgstr ""
+
+#: inc/core/frontend_views/gopayView.php:10
+msgid "Pokračujte do platební brány"
+msgstr ""
+
+#: inc/core/frontend_views/gopayView.php:11
+msgid ""
+"Úspěšně jsme pro Vás připravili platební bod - prosím pokračuje do platební "
+"brány"
+msgstr ""
+
+#: inc/core/frontend_views/gopayView.php:13
+msgid "Zaplatit platební kartou"
+msgstr ""
+
+#: inc/core/frontend_views/hlidacipesView.php:8
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:171
+msgid "Název:"
+msgstr ""
+
+#: inc/core/frontend_views/hlidacipesView.php:9
+msgid "Podívejte se jaké Vám hlídací pes pohlídal nové inzeráty."
+msgstr ""
+
 #: inc/core/frontend_views/inzeratCreatedView.php:10
 msgid "Inzerát byl vytvořen"
 msgstr "Ogłoszenie jest aktywna"
@@ -337,7 +524,7 @@ msgid "Děkujeme za vytvoření inzerátu."
 msgstr "Dziękujemy za utworzenie ogłoszenia."
 
 #: inc/core/frontend_views/inzeratDetailView.php:23
-msgid "Späť na výpis"
+msgid "Zpět na výpis"
 msgstr ""
 
 #: inc/core/frontend_views/inzeratDetailView.php:63
@@ -504,6 +691,12 @@ msgstr "Parking"
 msgid "Mám záujem o túto ponuku"
 msgstr ""
 
+#: inc/core/frontend_views/inzeratDetailView.php:362
+#, fuzzy
+#| msgid "Podrobné informácie"
+msgid "Podobné inzeráty"
+msgstr "Opis uzupełniający"
+
 #: inc/core/frontend_views/inzeratDetailView_zaloha.php:65
 msgid "Základní informace"
 msgstr ""
@@ -542,10 +735,30 @@ msgstr "Typ ogłoszenia"
 msgid "Typ Nemovitosti"
 msgstr "Typ nieruchomości"
 
+#: inc/core/frontend_views/inzeratEditView.php:100
+msgid "Např. Jiráskova"
+msgstr ""
+
 #: inc/core/frontend_views/inzeratEditView.php:105
 #: inc/core/frontend_views/pridatInzeratView.php:25
 msgid "Číslo popisné"
 msgstr "Numer domu/lokalu"
+
+#: inc/core/frontend_views/inzeratEditView.php:106
+msgid "Např. 15/225"
+msgstr ""
+
+#: inc/core/frontend_views/inzeratEditView.php:112
+msgid "Např. Chomutov"
+msgstr ""
+
+#: inc/core/frontend_views/inzeratEditView.php:118
+msgid "Např. 225 14"
+msgstr ""
+
+#: inc/core/frontend_views/inzeratEditView.php:124
+msgid "Např. Chomutov - sever"
+msgstr ""
 
 #: inc/core/frontend_views/inzeratEditView.php:134
 msgid "Název a popis"
@@ -555,12 +768,25 @@ msgstr ""
 msgid "Podlahová plocha (v m2)"
 msgstr "Powierzchnia podłogowa (m2)"
 
+#: inc/core/frontend_views/inzeratEditView.php:139
+#: inc/core/frontend_views/inzeratEditView.php:145
+msgid "Např. 225"
+msgstr ""
+
 #: inc/core/frontend_views/inzeratEditView.php:144
 msgid "Pozemková plocha (v m2)"
 msgstr "Powierzchnia działki (m2)"
 
 #: inc/core/frontend_views/inzeratEditView.php:150
 msgid "Titulek"
+msgstr ""
+
+#: inc/core/frontend_views/inzeratEditView.php:151
+msgid "Např. Velký moderní dům v Jiráskově"
+msgstr ""
+
+#: inc/core/frontend_views/inzeratEditView.php:157
+msgid "Např. 2+kk"
 msgstr ""
 
 #: inc/core/frontend_views/inzeratEditView.php:162
@@ -571,9 +797,19 @@ msgstr ""
 msgid "Popis"
 msgstr ""
 
+#: inc/core/frontend_views/inzeratEditView.php:163
+msgid "Např. Prodávám tento krásný dům..."
+msgstr ""
+
 #: inc/core/frontend_views/inzeratEditView.php:185
 msgid "Upravit"
 msgstr ""
+
+#: inc/core/frontend_views/inzeratEditView.php:191
+#, fuzzy
+#| msgid "Titulek inzerátu"
+msgid "Zobrazit inzerát"
+msgstr "Tytuł ogłoszenia"
 
 #: inc/core/frontend_views/loginView.php:8
 msgid "Před vytvořením inzerátu se nejprve přihlašte"
@@ -666,14 +902,17 @@ msgid "Zopakovat heslo"
 msgstr "Powtórz hasło"
 
 #: inc/core/frontend_views/loginView.php:70
+#: inc/core/frontend_views/loginView.php:146
 msgid "Stisknutím tlačítka “Registrovat” vyjadřujete souhlas s "
 msgstr "Naciskając przycisk „Zarejestruj się”, wyrażasz zgodę na "
 
 #: inc/core/frontend_views/loginView.php:70
+#: inc/core/frontend_views/loginView.php:146
 msgid "Obchodními podmínkami"
 msgstr "Warunki"
 
 #: inc/core/frontend_views/loginView.php:70
+#: inc/core/frontend_views/loginView.php:146
 msgid "Zpracováním osobních údajů"
 msgstr "Przetwarzanie danych osobowych"
 
@@ -717,9 +956,21 @@ msgstr ""
 "Dziękujemy za rejestrację za pośrednictwem Google. Dokończ rejestrację, "
 "wypełniając pozostałe dane. Dziękuję"
 
-#: inc/core/frontend_views/loginView.php:147
+#: inc/core/frontend_views/loginView.php:150
 msgid "Potvrdit"
 msgstr "Potwierdź"
+
+#: inc/core/frontend_views/messageSentView.php:2
+msgid "Zpráva byla odeslána"
+msgstr ""
+
+#: inc/core/frontend_views/messageSentView.php:3
+msgid "Děkujeme za zaslání zprávy - zpráva byla uživateli doručena"
+msgstr ""
+
+#: inc/core/frontend_views/messageSentView.php:4
+msgid "Zpět na uživatele"
+msgstr ""
 
 #: inc/core/frontend_views/nem_row_item.php:74
 msgid "Aktivovat"
@@ -758,6 +1009,10 @@ msgstr ""
 #: inc/core/frontend_views/objednavkaView.php:41
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:35
 msgid "Kreditů"
+msgstr ""
+
+#: inc/core/frontend_views/objednavkaView.php:42
+msgid "Služba:"
 msgstr ""
 
 #: inc/core/frontend_views/objednavkaView.php:54
@@ -1049,6 +1304,18 @@ msgstr "Pralka"
 msgid "Myčka"
 msgstr "Zmywarka"
 
+#: inc/core/frontend_views/registerRequestConfirmationView.php:1
+msgid "Účet byl založen. Prosím aktivujte ho."
+msgstr ""
+
+#: inc/core/frontend_views/registerRequestConfirmationView.php:2
+msgid "Zkontrolujte vaši emailovu schránku a potvrďte emailovou adresu."
+msgstr ""
+
+#: inc/core/frontend_views/userConfirmedView.php:1
+msgid "Uživatel byl ověřen"
+msgstr ""
+
 #: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:11
 msgid "Hlavní informace"
 msgstr "Podstawowe informacje"
@@ -1078,6 +1345,14 @@ msgstr ""
 #: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:94
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:66
 msgid "Změnit heslo"
+msgstr ""
+
+#: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:109
+msgid "Změna obrázku uživatele"
+msgstr ""
+
+#: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:111
+msgid "Pro změnu obrázku nahrajte obrázek nový."
 msgstr ""
 
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:32
@@ -1121,6 +1396,47 @@ msgstr ""
 msgid "Nemovitosti uživatele"
 msgstr ""
 
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:131
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:152
+#, fuzzy
+#| msgid "Vložení inzerátu"
+msgid "Vložit inzerát"
+msgstr "Dodanie ogłoszenia"
+
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:151
+#, fuzzy
+#| msgid "Vložení inzerátu"
+msgid "Všechny inzeráty"
+msgstr "Dodanie ogłoszenia"
+
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:167
+msgid "Hlídací psi"
+msgstr ""
+
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:172
+msgid "Poslední zobrazení:"
+msgstr ""
+
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:173
+#, fuzzy
+#| msgid "Typ inzerátu"
+msgid "Počet nových inzerátů:"
+msgstr "Typ ogłoszenia"
+
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:173
+#, fuzzy
+#| msgid "Typ inzerátu"
+msgid "inzerátů"
+msgstr "Typ ogłoszenia"
+
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:174
+msgid "Je prémium:"
+msgstr ""
+
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:175
+msgid "Odstranit psa"
+msgstr ""
+
 #: inc/core/frontend_views/uzivatelDetailView.php:119
 msgid "Další inzeráty"
 msgstr ""
@@ -1153,6 +1469,32 @@ msgstr ""
 msgid "Nepodařilo se odeslat?"
 msgstr ""
 
+#: inc/core/frontend_views/vypisMapaView.php:6
+msgid "Výpis nemovitostí na mapě"
+msgstr ""
+
+#: inc/core/frontend_views/vypisMapaView.php:28
+msgid "Neplaťte provizi realitce,"
+msgstr ""
+
+#: inc/core/frontend_views/vypisMapaView.php:28
+msgid "když nemusíte."
+msgstr ""
+
+#: inc/core/frontend_views/vypisMapaView.php:29
+msgid ""
+"S námi je to snadné! Inzerujte zdarma a neplaťte provizi nám, ani realitnímu "
+"makléři."
+msgstr ""
+
+#: inc/core/frontend_views/vypisMapaView.php:32 templates/header-main.php:122
+msgid "Přidat inzerát"
+msgstr "Dodaj ogłoszenia"
+
+#: inc/core/frontend_views/vypisMapaView.php:33
+msgid "Je to zdarma"
+msgstr ""
+
 #: templates/header-main.php:43
 msgid "Moje kredity:"
 msgstr ""
@@ -1164,10 +1506,6 @@ msgstr "Moje konto"
 #: templates/header-main.php:48 templates/header-main.php:139
 msgid "Odhlásit se"
 msgstr "Wyloguj się"
-
-#: templates/header-main.php:122
-msgid "Přidat inzerát"
-msgstr "Dodaj ogłoszenia"
 
 #: templates/header-main.php:123
 #, fuzzy
@@ -1433,6 +1771,3 @@ msgstr ""
 
 #~ msgid "Jste:"
 #~ msgstr "Jesteś:"
-
-#~ msgid "Uživatel"
-#~ msgstr "Użytkownik"
