@@ -316,7 +316,7 @@ input {
   content: "";
   width: 20px;
   height: 20px;
-  background-image: url('http://szukajdom.eu/wp-content/themes/realsys/assets/images/images_frontend/ikony/sign-check.png');
+  background-image: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ikony/sign-check.png');
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -325,7 +325,7 @@ input {
   top: 10px;
 }
 .profil-form-content .false:after {
-  background-image: url('http://szukajdom.eu/wp-content/themes/realsys/assets/images/images_frontend/ikony/sign-x.png');
+  background-image: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ikony/sign-x.png');
 }
 /**/
 .upozorneni-box .profile-img-wrap {
@@ -375,7 +375,7 @@ input {
   font-size: 18px;
   display: block;
   text-align: center;
-  background-image: url('http://szukajdom.eu/wp-content/themes/realsys/assets/images/images_frontend/loading.gif');
+  background-image: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/loading.gif');
   min-height: 300px;
   background-repeat: no-repeat;
   background-position: center;
@@ -676,7 +676,7 @@ header .user-login a {
   position: absolute;
   top: -27px;
   left: 10px;
-  background: url('http://szukajdom.eu/wp-content/themes/realsys/assets/images/images_frontend/header/zdarma.jpg');
+  background: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/header/zdarma.jpg');
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -706,7 +706,7 @@ header .user-login a {
 /*------------ header END -------------*/
 /*------------ slider START -------------*/
 .slider {
-  background: url('http://szukajdom.eu/wp-content/themes/realsys/assets/images/images_frontend/slider/slider-bcg.jpg');
+  background: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/slider/slider-bcg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -744,7 +744,7 @@ header .user-login a {
 .slider-title:before {
   content: "";
   display: block;
-  background: url("http://szukajdom.eu/wp-content/themes/realsys/assets/images/images_frontend/slider/slider-txt-bcg.png");
+  background: url("http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/slider/slider-txt-bcg.png");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -758,7 +758,7 @@ header .user-login a {
 .slider-content:before {
   content: "";
   display: block;
-  background: url('http://szukajdom.eu/wp-content/themes/realsys/assets/images/images_frontend/slider/lupa.png');
+  background: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/slider/lupa.png');
   background-position: right;
   background-size: contain;
   background-repeat: no-repeat;
@@ -871,7 +871,7 @@ header .user-login a {
 /*------------ slider END -------------*/
 /*------------ slider podstránky START -------------*/
 .slider_sub {
-  background: url('http://szukajdom.eu/wp-content/themes/realsys/assets/images/images_frontend/header/pagetitle.jpg');
+  background: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/header/pagetitle.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -994,13 +994,13 @@ header .user-login a {
 /*------------ top nemovitosti END ------------*/
 /*--------- cta START -------------*/
 .cta {
-  background: url('http://szukajdom.eu/wp-content/themes/realsys/assets/images/images_frontend/ctas/cta-bcg.jpg');
+  background: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ctas/cta-bcg.jpg');
   position: relative;
   padding: 140px 0px;
   color: white;
 }
 .cta.sub {
-  background: url('http://szukajdom.eu/wp-content/themes/realsys/assets/images/images_frontend/ctas/cta-sub.jpg');
+  background: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ctas/cta-sub.jpg');
   position: relative;
   padding: 140px 0px;
   color: white;
@@ -1010,7 +1010,7 @@ header .user-login a {
   content: "";
   width: 100%;
   height: 140px;
-  background: url('http://szukajdom.eu/wp-content/themes/realsys/assets/images/images_frontend/separator-top.png');
+  background: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/separator-top.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
@@ -1019,7 +1019,7 @@ header .user-login a {
   left: 0px;
 }
 .cta:after {
-  background: url('http://szukajdom.eu/wp-content/themes/realsys/assets/images/images_frontend/separator-bottom.png');
+  background: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/separator-bottom.png');
   background-position: bottom;
   bottom: -1px;
   top: initial;
@@ -1039,7 +1039,7 @@ header .user-login a {
   content: "";
   /* width: 100%; */
   /* height: 140px; */
-  background: url('http://szukajdom.eu/wp-content/themes/realsys/assets/images/images_frontend/ikony/btn-bcg.png');
+  background: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ikony/btn-bcg.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: top left;
@@ -1069,26 +1069,26 @@ header .user-login a {
   max-width: 100%;
   min-height: 150px;
   margin: 0 auto;
-  background: url("http://szukajdom.eu/wp-content/themes/realsys/assets/images/images_frontend/ikony/ikon-bcg1.png");
+  background: url("http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ikony/ikon-bcg1.png");
   background-position: center center;
   background-size: contain;
   background-repeat: no-repeat;
   transition: all ease-in-out 600ms;
 }
 .why_box .image_box.first {
-  background-image: url("http://szukajdom.eu/wp-content/themes/realsys/assets/images/images_frontend/ikony/ikon-bcg1.png");
+  background-image: url("http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ikony/ikon-bcg1.png");
 }
 .why_box .image_box.second {
-  background-image: url("http://szukajdom.eu/wp-content/themes/realsys/assets/images/images_frontend/ikony/ikon-bcg2.png");
+  background-image: url("http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ikony/ikon-bcg2.png");
 }
 .why_box .image_box.third {
-  background-image: url("http://szukajdom.eu/wp-content/themes/realsys/assets/images/images_frontend/ikony/ikon-bcg3.png");
+  background-image: url("http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ikony/ikon-bcg3.png");
 }
 .why_box .image_box.fourth {
-  background-image: url("http://szukajdom.eu/wp-content/themes/realsys/assets/images/images_frontend/ikony/ikon-bcg4.png");
+  background-image: url("http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ikony/ikon-bcg4.png");
 }
 .why_box .image_box.fifth {
-  background-image: url("http://szukajdom.eu/wp-content/themes/realsys/assets/images/images_frontend/ikony/ikon-bcg5.png");
+  background-image: url("http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ikony/ikon-bcg5.png");
 }
 .why_box .image_box:hover {
   transform: scale(1.05);
@@ -1212,7 +1212,7 @@ footer .footer_block span.mail:before {
   display: block;
   width: 130px;
   height: 103px;
-  background-image: url("http://szukajdom.eu/wp-content/themes/realsys/assets/images/images_frontend/ikony/filter_icons.png");
+  background-image: url("http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ikony/filter_icons.png");
   background-repeat: no-repeat;
   background-size: initial;
   background-position: 0 0;
@@ -1397,7 +1397,7 @@ ul.paging li.active {
 }
 .nemovitost-detail a.phone:before {
   content: "";
-  background-image: url("http://szukajdom.eu/wp-content/themes/realsys/assets/images/images_frontend/ikony/contact2.png");
+  background-image: url("http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ikony/contact2.png");
   background-position: 0px 0px;
   width: 35px;
   height: 35px;
@@ -1426,7 +1426,7 @@ ul.paging li.active {
 }
 .nemovitost-detail span.mail:before {
   content: "";
-  background-image: url("http://szukajdom.eu/wp-content/themes/realsys/assets/images/images_frontend/ikony/contact2.png");
+  background-image: url("http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ikony/contact2.png");
   background-position: 0px 35px;
   width: 35px;
   height: 35px;
@@ -1746,7 +1746,352 @@ header nav ul li a:not(.btn) {
   cursor: default;
   pointer-events: none;
 }
+/***********************/
 /* HLAVIČKA RESPONZIVNÍ*/
+/***********************/
+/*
+.menu-wrap {
+    position: absolute;
+    right: 0;
+    opacity: 0;
+    top: 100%;
+    transition: 0.3s ease-in-out;
+    background: transparent;
+    transform: translateX(100%);
+    animation: slide-out 1s ease-in-out 0s 1 forwards;
+    width: 100vw;
+    min-height: calc( 100vh - 65px );
+    height: 100%;
+    flex-direction: column;
+    display: none;
+    justify-content: flex-start;
+}
+
+.menu-wrap.active {
+    opacity: 1;
+    background: #DBF4F4;
+    display: flex;
+    animation: slide-in 1s ease-in-out 0s 1 forwards;
+}
+
+.mob-menu-btns, .mob-user-wrap, .mob-menu-nav {
+    padding: 20px 20px 10px 20px;
+}
+.mob-menu-nav {
+    padding-top: 0px;
+}
+
+.mob-menu-btns .btn {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+
+.menu-wrap ul {
+    padding: 0px;
+    margin-top: 2px;
+    margin-bottom: 0px;
+    text-align: right;
+}
+.menu-wrap ul li {
+    list-style: none;
+    font-size: 15px;
+    padding-bottom: 20px;
+}
+.menu-wrap ul li a {
+    color: #253c4b;
+}
+
+.mob-user-wrap {
+    margin-top: auto;
+    background: #abecf0;
+}
+.mob-user-profile {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.mob-user-info h2{
+    font-size: 16px;
+    margin-bottom: 0px;
+    text-align: right;
+}
+.mob-user-info .profil-kvalita {
+    font-size: 14px;
+    text-align: right;
+}
+.mob-user-info .kvalita-data {
+    color: #FF951A;
+}
+
+.mob-user-avatar {
+    height: 100px;
+    width: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-left: 15px;
+    background-position: center;
+    background-size: cover;
+}*/
+.wrapper {
+  position: relative;
+  padding: 0 30px;
+}
+.main-header .wrapper {
+  padding: 0 30px;
+}
+.top-bar .wrapper {
+  padding: 10px 30px;
+}
+.menu-bar .menu ul {
+  justify-content: space-between;
+  display: flex;
+}
+.menu-bar .menu ul li a {
+  padding: 18px 25px;
+}
+.top-bar .inzerat-pocitadlo {
+  margin-right: 20px;
+}
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/*LOGIN*/
+.user-logged:hover .user-login-block {
+  display: block;
+}
+header .user-logged {
+  font-size: 16px;
+  border: none;
+  position: relative;
+}
+header .logged {
+  position: relative;
+  display: block;
+  font-size: 14px;
+  align-items: center;
+  flex-direction: row-reverse;
+  text-align: right;
+  color: black!important;
+  height: 60px;
+}
+header .user-login-block {
+  padding: 15px;
+  top: 64px;
+  right: 0px;
+  display: none;
+  min-width: 250px;
+  z-index: 99999;
+  position: absolute;
+}
+.user-logged .icon-user {
+  font-size: 52px;
+  color: #243B4A;
+}
+.user-logged .mess-counter {
+  position: absolute;
+  top: 4px;
+  right: 0px;
+  background: white;
+  padding: 5px;
+  border-radius: 50%;
+  border: 1px solid #243B4A;
+  width: 17px;
+  height: 17px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #FF951A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.user-logged .user-info-wrap {
+  display: flex;
+  align-items: center;
+}
+header .logged:hover {
+  color: #FF951A;
+}
+header .logged span {
+  line-height: 1.2;
+}
+.user-logged .user-info .avatar {
+  height: 60px;
+  width: 60px;
+  margin-right: 10px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #00AC21;
+}
+.user-logged .user-info .user-name {
+  font-size: 20px;
+  margin-bottom: 0px;
+}
+.user-logged .user-info .user-email {
+  font-size: 13px;
+}
+.user-credits {
+  font-family: "Source Sans Pro";
+  font-weight: 700;
+  font-size: 20px;
+  color: #243B4A;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #c0d2d2;
+  margin-bottom: 7px;
+}
+.credits-num {
+  font-size: 30px;
+  color: #FF951A;
+  margin-left: 10px;
+}
+.user-logged .user-menu {
+  display: flex;
+  flex-direction: column;
+}
+.user-logged .user-menu a {
+  color: #243B4A;
+  padding: 7px 0px;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease-in-out;
+}
+.user-logged .user-menu a:hover {
+  color: #FF951A;
+}
+.user-mess-tit {
+  position: relative;
+  margin-right: 10px;
+}
+.user-menu .mes-dot {
+  position: absolute;
+  top: 0px;
+  right: -5px;
+  width: 8px;
+  height: 8px;
+  background: #FF951A;
+  border-radius: 50%;
+}
+.user-menu .mes-num {
+  color: #FF951A;
+  font-weight: 700;
+}
+header .user-login-block:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -5px;
+  right: 19px;
+  width: 10px;
+  height: 10px;
+  background: #DBF4F4;
+  /* box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.27); */
+  z-index: 1;
+  transform: rotate(45deg);
+}
+header .user-login a {
+  display: block;
+  text-decoration: none;
+  color: #243B4A;
+  font-family: "DM Sans";
+  font-size: 15px;
+}
+header .user-login a:first-child {
+  border-bottom: 1px solid #e6e6e6;
+}
+header .user-login a:hover {
+  color: #FF951A;
+}
+/* Icon 3 */
+#nav-icon3 {
+  width: 40px;
+  height: 25px;
+  position: relative;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+}
+#nav-icon3 span {
+  display: block;
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background: #072548;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.25s ease-in-out;
+  -moz-transition: 0.25s ease-in-out;
+  -o-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+}
+.burger-menu-icon {
+  margin-top: 7px;
+}
+.burger-menu-icon:after {
+  content: "Menu";
+  font-weight: 700;
+  font-size: 14px;
+  position: absolute;
+  top: -10px;
+  left: 0px;
+  text-transform: uppercase;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+.burger-menu-icon.open:after {
+  opacity: 0;
+}
+#nav-icon3 span:nth-child(1) {
+  top: 0px;
+  background: white!important;
+  display: none!important;
+}
+#nav-icon3 span:nth-child(2),
+#nav-icon3 span:nth-child(3) {
+  top: 10px;
+}
+#nav-icon3 span:nth-child(4) {
+  top: 20px;
+}
+#nav-icon3.open span:nth-child(1) {
+  top: 12px;
+  width: 0%;
+  left: 50%;
+}
+#nav-icon3.open span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+#nav-icon3.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+#nav-icon3.open span:nth-child(4) {
+  top: 18px;
+  width: 0%;
+  left: 50%;
+}
+#nav-icon3.open span,
+#nav-icon3:hover span {
+  background: #072548;
+}
 .menu-wrap {
   position: absolute;
   right: 0;
@@ -1772,7 +2117,7 @@ header nav ul li a:not(.btn) {
 .mob-menu-btns,
 .mob-user-wrap,
 .mob-menu-nav {
-  padding: 20px 20px 10px 20px;
+  padding: 20px 35px 10px 20px;
 }
 .mob-menu-nav {
   padding-top: 0px;
@@ -1813,6 +2158,7 @@ header nav ul li a:not(.btn) {
 .mob-user-info .profil-kvalita {
   font-size: 14px;
   text-align: right;
+  display: none;
 }
 .mob-user-info .kvalita-data {
   color: #FF951A;
@@ -1825,6 +2171,510 @@ header nav ul li a:not(.btn) {
   margin-left: 15px;
   background-position: center;
   background-size: cover;
+}
+/*RESPO*/
+@media only screen and (max-width: 1280px) {
+  .wrapper {
+    max-width: unset;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .menu {
+    margin-left: 20px;
+  }
+  .main-header nav ul li {
+    margin-right: 10px;
+  }
+  .main-header nav ul li:last-child {
+    margin-right: 0;
+  }
+  nav ul li {
+    margin-right: 0;
+  }
+  nav ul li a {
+    font-size: 11px;
+    padding: 7px;
+    text-align: center;
+  }
+}
+@media only screen and (min-width: 801px) {
+  .mobile-menu {
+    display: none;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .full-menu {
+    display: none;
+  }
+  .mobile-menu .logo {
+    padding: 0;
+  }
+  .mobile-menu .logo img {
+    max-width: 150px;
+  }
+  .mobile-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 20px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  header .user-login {
+    max-width: unset;
+    width: unset;
+    justify-content: flex-end;
+  }
+  header .user-login a:first-child {
+    margin-bottom: 10px;
+  }
+}
+/*ANIMATIONS*/
+@keyframes menu-fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes slide-in {
+  0% {
+    right: 0%;
+    opacity: 0;
+    display: none;
+  }
+  100% {
+    right: 100%;
+    opacity: 1;
+    display: flex;
+  }
+}
+@keyframes slide-out {
+  0% {
+    right: 100%;
+    opacity: 1;
+    display: flex;
+  }
+  100% {
+    right: 0%;
+    opacity: 0;
+    display: none;
+  }
+}
+header {
+  z-index: 99;
+}
+.menu-wrap ul {
+  background: none;
+}
+/* KONEC HEADER STYLES CSS */
+/***************************/
+/* finálka *****************/
+/*--------------dodelavky-----------------*/
+h2 {
+  font-size: 45px;
+}
+/*Change text in autofill textbox*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+input:-webkit-autofill:valid,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-transition-delay: 99999s;
+  -webkit-text-fill-color: #243B4A;
+  font-family: "DM Sans";
+}
+#login-tab .form-btns {
+  margin-top: 20px;
+}
+/*
+
+
+.add-inz-con .input-content .form-field {
+  min-width: 200px;
+}
+*/
+/*------------header---------------*/
+.main-menu-top {
+  z-index: 999999;
+}
+/*--------------------vlozeni inzeratu---------------------*/
+.add-inz-con .tabcontent form {
+  max-width: 900px;
+  margin: auto;
+}
+.add-inz-con .inz-box,
+.add-inz-con .form-content {
+  width: 100%;
+}
+.add-inz-con .input-content {
+  width: 75%;
+  flex-wrap: wrap;
+}
+.add-inz-con .form-content {
+  justify-content: flex-end;
+  align-items: baseline;
+}
+.add-inz-con .form-content {
+  align-items: flex-start;
+}
+.inz-box h3 {
+  margin-top: 1px;
+}
+.add-inz-con .input-content > .form-field {
+  width: 45%;
+  /*
+  max-width: 300px;
+  min-width: 200px;*/
+  margin-bottom: 10px;
+}
+.add-inz-con .selects {
+  flex-grow: 0;
+  justify-content: flex-start;
+}
+.add-inz-con .row.selects {
+  margin-left: 0px!important;
+  margin-right: 0px!important;
+}
+.add-inz-con .inz-box .single-val-form {
+  width: 76%;
+  margin: 0;
+}
+.add-inz-con .inz-box .single-val-form .form-field {
+  width: 50%;
+}
+.add-inz-con .center-inz-box .form-row {
+  max-width: 100%;
+  width: 100%;
+  justify-content: flex-end;
+}
+.add-inz-con .currency-input {
+  width: 76%;
+}
+.add-inz-con .currency-input .price-field {
+  width: 90%;
+}
+.add-inz-con .currency-input .price-field .currency {
+  right: 20px;
+}
+/*2*/
+.add-inz-con .inz-box.v2 {
+  justify-content: flex-end !important;
+}
+.add-inz-con .inz-box.v2 .selects {
+  width: 76%;
+  flex-wrap: wrap;
+  display: flex;
+}
+.add-inz-con .basic-select {
+  min-width: 200px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.add-inz-con .inz-box.v2 .checks {
+  width: 77%;
+  flex-wrap: wrap;
+  display: flex;
+  max-width: 100%;
+}
+.add-inz-con .inz-box {
+  justify-content: flex-end !important;
+}
+.add-inz-con .inz-box .selects {
+  width: 76%;
+  flex-wrap: wrap;
+  display: flex;
+}
+.add-inz-con .input-content.form-field .jcf-select {
+  width: 45%;
+}
+/*3*/
+.add-inz-con .tabs #third {
+  text-align: center;
+}
+#filepond--drop-label-vrv86sgvm {
+  display: flex;
+  align-items: center;
+}
+#filepond--drop-label-vrv86sgvm .fa-image {
+  font-size: 45px;
+}
+/*4*/
+/*
+.add-inz-con .tabs #first, .add-inz-con .tabs #second, .add-inz-con .tabs #third  {
+  display: none!important;
+}
+.add-inz-con .tabs #fourth {
+  display: block!important;
+}
+*/
+.add-inz-con #fourth .inz-box {
+  justify-content: center !important;
+}
+#fourth .topovani-wrap {
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
+  background: #dbf4f4;
+}
+#fourth .topovani-wrap h3 {
+  font-size: 25px!important;
+  font-weight: 700!important;
+  margin-right: 0px;
+  margin-bottom: 15px!important;
+  opacity: 1;
+}
+#fourth .row .col-spacer {
+  display: none;
+}
+/**/
+.add-inz-con .buttons-prevnext {
+  justify-content: center;
+}
+.add-inz-con .buttons-prevnext .inz-submit {
+  margin: 10px;
+}
+/*--------------foooter------------------*/
+@media only screen and (max-width: 576px) {
+  body footer {
+    padding: 30px 0px 150px;
+    background: #243b4a !important;
+    font-family: "DM Sans";
+  }
+  footer .wrapper {
+    padding: 20px;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  body footer .wrapper .footer_block > h3,
+  body footer .footer-primary-title,
+  body footer .footer_block h3 {
+    color: #FF951A;
+    font-size: 16px;
+    font-family: "DM Sans";
+    margin-bottom: 15px;
+  }
+  footer .footer-contact {
+    margin-bottom: 0px;
+  }
+  footer .footer-contact .aicon {
+    display: none;
+  }
+  footer .footer_block:nth-child(2) h3,
+  footer .row .col-sm:nth-child(3) .footer_block > h3 {
+    display: none;
+  }
+  footer .social-ico {
+    color: #ffffff !important;
+    font-size: 25px!important;
+  }
+  footer .social-ico span {
+    box-shadow: none!important;
+  }
+  /**/
+  footer .newsletter-block {
+    position: absolute;
+    top: 180px;
+    max-width: calc(100% - 40px) !important;
+    width: 100%!important;
+  }
+  footer .row .col-sm:first-child {
+    margin-bottom: 195px;
+  }
+  body footer .form-flex {
+    max-width: 100%!important;
+    width: 100%!important;
+  }
+  footer .nswltr h2 {
+    margin-bottom: 10px!important;
+  }
+  footer .form-flex {
+    flex-direction: column;
+    box-shadow: none!important;
+  }
+  footer #mc_embed_signup_scroll input[type=email] {
+    border-radius: 6px!important;
+  }
+  footer #mc_embed_signup_scroll input[type=submit] {
+    width: 100%;
+    border-radius: 6px;
+    margin-top: 15px;
+  }
+  .footer-spacer {
+    display: none;
+  }
+  footer .gdpr-notice {
+    display: none;
+  }
+  /**/
+  footer .menu {
+    display: none;
+  }
+  #menu-kategorie {
+    display: block;
+  }
+  footer .menu {
+    margin-left: 0px;
+  }
+  body footer .menu {
+    margin: 0px -20px;
+    padding: 10px 20px;
+    background: #DBF4F4;
+  }
+  body footer .menu li a {
+    color: #243B4A !important;
+    font-size: 16px;
+    font-family: "DM Sans";
+  }
+  footer .row .col-sm:nth-child(2) h3,
+  footer .row .col-sm:nth-child(3) h3,
+  footer .row .col-sm:nth-child(4) h3 {
+    position: relative;
+    margin-bottom: 0px;
+    margin: 0px -20px;
+    padding: 15px 20px;
+    border-bottom: 1px solid #dbf4f4;
+  }
+  .footer_block h3:after {
+    content: "\e902";
+    font-family: 'icomoon' !important;
+    line-height: 1;
+    display: block;
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    font-size: 17px;
+  }
+  footer .row .col-sm:first-child .footer_block > h3:after {
+    display: none;
+  }
+  /**/
+  body footer:after {
+    height: 120px;
+    background-position: left bottom!important;
+    background-image: url(http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/sd-illu-min.png) !important;
+    background-repeat: no-repeat !important;
+    background-size: 770px!important;
+    width: 100%;
+    left: 0px;
+  }
+}
+/*---------------------respo-----------------------*/
+@media only screen and (max-width: 800px) {
+  .add-inz-con h2 {
+    font-size: 33px;
+  }
+  .add-inz-con .inz-nav .nav-box {
+    flex-basis: 50%;
+    max-width: 50%;
+    height: 60px;
+  }
+  .add-inz-con .input-content {
+    width: 60%;
+  }
+  .add-inz-con .input-content > .form-field {
+    width: 100%;
+    margin-right: 0px!important;
+  }
+  .add-inz-con .inz-box .single-val-form {
+    width: 60%;
+  }
+  .add-inz-con .inz-box .single-val-form .form-field {
+    width: 100%;
+  }
+  .add-inz-con .currency-input .price-field {
+    width: 100%;
+  }
+  /**/
+  .add-inz-con .inz-box.v2 .selects {
+    width: 60%;
+  }
+  .add-inz-con .inz-box.v2 .checks {
+    width: 62%;
+  }
+  .add-inz-con .inz-box .selects {
+    width: 61%;
+  }
+  .add-inz-con .input-content.form-field .jcf-select,
+  .add-inz-con .input-content.form-field .jcf-select {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .add-inz-con .inz-nav .nav-box {
+    flex-basis: 100%;
+    max-width: 100%;
+    height: 55px;
+    margin-bottom: 7px;
+  }
+  .add-inz-con .inz-nav .nav-box:last-child {
+    margin-bottom: 0px;
+  }
+  .inz-nav .nav-box .nav-box-wrap {
+    border-radius: 6px!important;
+  }
+  .inz-nav .nav-box h2 {
+    max-width: 85%!important;
+  }
+  .add-inz-con .inz-form-sec {
+    padding: 20px!important;
+  }
+  #login-tab .stay-logged {
+    margin-top: 6px;
+  }
+  .add-inz-con .form-content {
+    justify-content: flex-start;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+  .add-inz-con .input-content {
+    width: 100%;
+  }
+  .add-inz-con .wrapper .inz-box h3 {
+    margin-bottom: 15px!important;
+  }
+  .add-inz-con .inz-box .single-val-form {
+    width: 100%;
+  }
+  .add-inz-con .center-inz-box .form-row {
+    justify-content: flex-start;
+  }
+  .add-inz-con .inz-box,
+  .add-inz-con .inz-box.v2 {
+    justify-content: flex-start !important;
+  }
+  .add-inz-con .currency-input {
+    width: 100%;
+  }
+  .add-inz-con .currency-input input {
+    padding-right: 20px;
+    min-width: 100%;
+  }
+  .add-inz-con .currency-input .currency {
+    font-size: 13px;
+    top: 13px;
+  }
+  .add-inz-con .basic-select,
+  .add-inz-con .check-wrap {
+    padding-left: 0px;
+  }
+  .form-field textarea {
+    min-width: unset!important;
+  }
+  /**/
+  .add-inz-con .inz-box.v2 .selects,
+  .add-inz-con .inz-box.v2 .checks,
+  .add-inz-con .inz-box .selects {
+    width: 100%;
+  }
 }
 /**********************/
 /**********************/
@@ -1848,7 +2698,7 @@ footer:after {
   left: unset;
   right: 0px;
   background-position: right bottom!important;
-  background-image: url('http://szukajdom.eu/wp-content/themes/realsys/assets/images/images_frontend/footer/sd-illu-smaller-min.png');
+  background-image: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/footer/sd-illu-smaller-min.png');
 }
 footer {
   padding: 80px 0px;
@@ -2198,7 +3048,7 @@ section {
   margin: 100px auto 40px;
 }
 .kredity-con .section-title h1:before {
-  background-image: url('http://szukajdom.eu/wp-content/themes/realsys/assets/ikony/kredity_1.png');
+  background-image: url('http://localhost/realsys/wp-content/themes/realsys/assets/ikony/kredity_1.png');
   background-repeat: no-repeat;
   background-size: 80px 80px;
   content: "";
@@ -2321,7 +3171,7 @@ label:last-child {
   margin: 0 30px;
 }
 .topovani-con .section-title h1.title:before {
-  background-image: url('http://szukajdom.eu/wp-content/themes/realsys/assets/ikony/pes.png');
+  background-image: url('http://localhost/realsys/wp-content/themes/realsys/assets/ikony/pes.png');
   background-repeat: no-repeat;
   background-size: cover;
   content: "";
@@ -2711,7 +3561,7 @@ header {
   text-transform: inherit;
 }
 .slider {
-  background: url('http://szukajdom.eu/wp-content/themes/realsys/assets/images/images_frontend/sd-illu-min.png') !important;
+  background: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/sd-illu-min.png') !important;
   background-position: bottom!important;
   background-size: contain!important;
   background-repeat: no-repeat !important;
@@ -2839,7 +3689,7 @@ header {
   color: #243B4A;
 }
 .full-bg {
-  background: url('http://szukajdom.eu/wp-content/themes/realsys/assets/images/images_frontend/sd-illu-min.png');
+  background: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/sd-illu-min.png');
   background-position: bottom center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -3066,7 +3916,7 @@ header {
   text-transform: inherit;
 }
 .slider {
-  background: url('http://szukajdom.eu/wp-content/themes/realsys/assets/images/images_frontend/sd-illu-min.png') !important;
+  background: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/sd-illu-min.png') !important;
   background-position: bottom!important;
   background-size: contain!important;
   background-repeat: no-repeat !important;
@@ -3928,3 +4778,4 @@ img {
     transform: scale(1);
   }
 }
+/*# sourceMappingURL=main.css.map */
