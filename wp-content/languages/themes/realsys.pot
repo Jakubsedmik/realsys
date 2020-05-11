@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Package Name\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 09:59+0200\n"
+"POT-Creation-Date: 2020-05-11 10:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -573,6 +573,16 @@ msgstr ""
 msgid "Upravit"
 msgstr ""
 
+#: inc/core/frontend_views/loginView.php:8
+msgid "Před vytvořením inzerátu se nejprve přihlašte"
+msgstr ""
+
+#: inc/core/frontend_views/loginView.php:9
+msgid ""
+"Pro vytvoření inzerátu je třeba být přihlášen nebo registrován. Následně Vás "
+"přesuneme hned na vytváření inzerátu."
+msgstr ""
+
 #: inc/core/frontend_views/loginView.php:16 templates/header-main.php:57
 #: templates/header-main.php:151
 msgid "Přihlášení"
@@ -653,6 +663,22 @@ msgstr ""
 msgid "Zopakovat heslo"
 msgstr ""
 
+#: inc/core/frontend_views/loginView.php:70
+msgid "Stisknutím tlačítka “Registrovat” vyjadřujete souhlas s "
+msgstr ""
+
+#: inc/core/frontend_views/loginView.php:70
+msgid "Obchodními podmínkami"
+msgstr ""
+
+#: inc/core/frontend_views/loginView.php:70
+msgid "Zpracováním osobních údajů"
+msgstr ""
+
+#: inc/core/frontend_views/loginView.php:74
+msgid "Registrovat"
+msgstr ""
+
 #: inc/core/frontend_views/loginView.php:94
 msgid "Přihlašovací email"
 msgstr ""
@@ -667,6 +693,24 @@ msgstr ""
 
 #: inc/core/frontend_views/loginView.php:109
 msgid "Přihlásit se"
+msgstr ""
+
+#: inc/core/frontend_views/loginView.php:111
+msgid "Nemáte ešte u nás účet?"
+msgstr ""
+
+#: inc/core/frontend_views/loginView.php:111
+msgid "Zaregistrujte sa"
+msgstr ""
+
+#: inc/core/frontend_views/loginView.php:127
+msgid "Doplnění údajů"
+msgstr ""
+
+#: inc/core/frontend_views/loginView.php:129
+msgid ""
+"Děkujeme za registraci prostřednictvím Google. Dokončete registraci "
+"doplněním zbylých údajů. Děkujeme"
 msgstr ""
 
 #: inc/core/frontend_views/loginView.php:147

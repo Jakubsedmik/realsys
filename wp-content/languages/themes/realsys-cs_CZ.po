@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Package Name\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 09:59+0200\n"
-"PO-Revision-Date: 2020-05-11 10:08+0200\n"
+"POT-Creation-Date: 2020-05-11 10:47+0200\n"
+"PO-Revision-Date: 2020-05-11 10:47+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 2.2.4\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
 "|| n%100>14) ? 1 : 2);\n"
 
@@ -575,6 +575,16 @@ msgstr ""
 msgid "Upravit"
 msgstr ""
 
+#: inc/core/frontend_views/loginView.php:8
+msgid "Před vytvořením inzerátu se nejprve přihlašte"
+msgstr ""
+
+#: inc/core/frontend_views/loginView.php:9
+msgid ""
+"Pro vytvoření inzerátu je třeba být přihlášen nebo registrován. Následně Vás "
+"přesuneme hned na vytváření inzerátu."
+msgstr ""
+
 #: inc/core/frontend_views/loginView.php:16 templates/header-main.php:57
 #: templates/header-main.php:151
 msgid "Přihlášení"
@@ -655,6 +665,24 @@ msgstr "Hasło"
 msgid "Zopakovat heslo"
 msgstr "Powtórz hasło"
 
+#: inc/core/frontend_views/loginView.php:70
+msgid "Stisknutím tlačítka “Registrovat” vyjadřujete souhlas s "
+msgstr ""
+
+#: inc/core/frontend_views/loginView.php:70
+msgid "Obchodními podmínkami"
+msgstr ""
+
+#: inc/core/frontend_views/loginView.php:70
+msgid "Zpracováním osobních údajů"
+msgstr ""
+
+#: inc/core/frontend_views/loginView.php:74
+#, fuzzy
+#| msgid "Registrace"
+msgid "Registrovat"
+msgstr "Rejestracja"
+
 #: inc/core/frontend_views/loginView.php:94
 msgid "Přihlašovací email"
 msgstr "E-mail logowania"
@@ -672,6 +700,24 @@ msgstr ""
 #: inc/core/frontend_views/loginView.php:109
 msgid "Přihlásit se"
 msgstr "Zaloguj się"
+
+#: inc/core/frontend_views/loginView.php:111
+msgid "Nemáte ešte u nás účet?"
+msgstr ""
+
+#: inc/core/frontend_views/loginView.php:111
+msgid "Zaregistrujte sa"
+msgstr ""
+
+#: inc/core/frontend_views/loginView.php:127
+msgid "Doplnění údajů"
+msgstr ""
+
+#: inc/core/frontend_views/loginView.php:129
+msgid ""
+"Děkujeme za registraci prostřednictvím Google. Dokončete registraci "
+"doplněním zbylých údajů. Děkujeme"
+msgstr ""
 
 #: inc/core/frontend_views/loginView.php:147
 msgid "Potvrdit"
