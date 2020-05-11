@@ -5,8 +5,8 @@
 			<?php
 			if (Tools::checkPresenceOfParam("create", $this->requestData)) :
 			?>
-				<h2>Před vytvořením inzerátu se nejprve přihlašte</h2>
-				<p>Pro vytvoření inzerátu je třeba být přihlášen nebo registrován. Následně Vás přesuneme hned na vytváření inzerátu.</p>
+				<h2><?php echo __("Před vytvořením inzerátu se nejprve přihlašte", "realsys"); ?></h2>
+				<p><?php echo __("Pro vytvoření inzerátu je třeba být přihlášen nebo registrován. Následně Vás přesuneme hned na vytváření inzerátu.", "realsys"); ?></p>
 			<?php endif; ?>
 			<div class="login-tabs rounded-b light-blue-bg">
 				<div class="tab-header">
@@ -67,11 +67,11 @@
 									</div>
 								</div>
 
-								<p class="obch-podm">Stlačením tlačítka “Registrovať” vyjadrujete súhlas s <a href="<?php echo home_url() . "/warunki-biznesowe/" ?>">Obchodnými podmienkami</a> a <a href="<?php echo home_url() . "/gdpr/"?>">Spracovaním osobných údajov.</a></p>
+								<p class="obch-podm"><?php echo __("Stisknutím tlačítka “Registrovat” vyjadřujete souhlas s ", "realsys"); ?> <a href="<?php echo home_url() . "/warunki-biznesowe/" ?>"><?php echo __("Obchodními podmínkami", "realsys"); ?></a> a <a href="<?php echo home_url() . "/gdpr/" ?>"><?php echo __("Zpracováním osobních údajů", "realsys"); ?></a></p>
 
 								<div class="form-btns">
 									<input type="hidden" name="action" value="registerUser">
-									<button type="submit" class="btn submit-btn g-recaptcha" id="captcha1">Registrovať</button>
+									<button type="submit" class="btn submit-btn g-recaptcha" id="captcha1"><?php echo __("Registrovat", "realsys"); ?></button>
 									<div class="g-signin2" data-onsuccess="onSignIn"></div>
 								</div>
 
@@ -108,7 +108,7 @@
 								<div class="form-btns">
 									<button type="submit" class="btn submit-btn"><?php echo _e("Přihlásit se", "realsys"); ?></button>
 									<div class="g-signin2" data-onsuccess="onSignIn"></div>
-									<p class="ucet-nemam">Nemáte ešte u nás účet? <a href="#">Zaregistrujte sa</a></p>
+									<p class="ucet-nemam"><?php echo __("Nemáte ešte u nás účet?", "realsys"); ?> <a href="#"><?php echo __("Zaregistrujte sa", "realsys"); ?></a></p>
 
 
 								</div>
@@ -124,9 +124,9 @@
 <div class="fullscreen-popup js-popup" id="googleRegDetails">
 	<div class="fullscreen-popup--inner">
 		<div class="fullscreen-popup--close js-closePopup"><i class="fas fa-times"></i> </div>
-		<h2>Doplnění údajů</h2>
+		<h2><?php echo __("Doplnění údajů", "realsys"); ?></h2>
 		<div class="line-separator"></div>
-		<p class="fullscreen-popup--paragraph">Děkujeme za registraci prostřednictvím Google. Dokončete registraci doplněním zbylých údajů. Děkujeme</p>
+		<p class="fullscreen-popup--paragraph"><?php echo __("Děkujeme za registraci prostřednictvím Google. Dokončete registraci doplněním zbylých údajů. Děkujeme", "realsys"); ?></p>
 
 		<form method="post" class="js-googleRegForm">
 			<input type="hidden" name="jmeno" value="">
