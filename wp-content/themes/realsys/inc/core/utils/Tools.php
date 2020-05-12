@@ -218,7 +218,7 @@ class Tools {
         return $ip;
     }
 
-    public static function jsRedirect($url, $delay=2000, $description = "Probíhá přesměrování", $subdescription = ""){
+    public static function jsRedirect($url, $delay=2000, $description = "", $subdescription = ""){
         ?>
 
         <style>
@@ -243,8 +243,8 @@ class Tools {
         </style>
 
         <div class="loader" id="loader">
-            <h2 class="redirectInfo" id="loaderDescription">Probíhá přesměrování</h2>
-            <p class="loaderSubdescription" id="loaderSubdescription">Po úspěšné akci probíhá přesměrování</p>
+            <h2 class="redirectInfo" id="loaderDescription"><?php _e("Probíhá přesměrování", "realsys"); ?></h2>
+            <p class="loaderSubdescription" id="loaderSubdescription"><?php _e("Po úspěšné akci probíhá přesměrování", "realsys"); ?></p>
             <img src="<?php echo FRONTEND_IMAGES_PATH ?>/loading.gif">
         </div>
 
@@ -253,8 +253,10 @@ class Tools {
             document.addEventListener('DOMContentLoaded', (event) => {
                 setTimeout(function () {
                     document.getElementById("loader").classList.add("loading");
-                    document.getElementById("loaderDescription").innerHTML = "<?php echo $description; ?>";
-                    document.getElementById("loaderSubdescription").innerHTML = "<?php echo $subdescription; ?>";
+                    <?php if(strlen($description) && strlen($subdescription)): ?>
+                        document.getElementById("loaderDescription").innerHTML = "<?php echo $description; ?>";
+                        document.getElementById("loaderSubdescription").innerHTML = "<?php echo $subdescription; ?>";
+                    <?php endif; ?>
                     window.location.href = '<?php echo $url; ?>';
                 },<?php echo $delay; ?>);
             })
