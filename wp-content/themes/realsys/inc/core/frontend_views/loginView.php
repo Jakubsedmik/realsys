@@ -41,17 +41,23 @@
 
 								<div class="form-col">
 									<label><?php echo _e("Telefon", "realsys"); ?></label>
-									<input name="db_telefon" required type="tel" placeholder="<?php echo _e("Telefon-syntax", "realsys"); ?>">
+									<div class="form-field">
+										<input name="db_telefon" required type="tel" placeholder="<?php echo _e("Telefon-syntax", "realsys"); ?>">
+									</div>
 								</div>
 
 								<div class="form-col">
 									<label><?php echo _e("Jméno", "realsys"); ?></label>
-									<input name="db_jmeno" required type="text" placeholder="<?php echo _e("Jméno-syntax", "realsys"); ?>">
+									<div class="form-field">
+										<input name="db_jmeno" required type="text" placeholder="<?php echo _e("Jméno-syntax", "realsys"); ?>">
+									</div>
 								</div>
 
 								<div class="form-col">
 									<label><?php echo _e("Příjmení", "realsys"); ?></label>
-									<input name="db_prijmeni" required type="text" placeholder="<?php echo _e("Prijmeni-syntax", "realsys"); ?>">
+									<div class="form-field">
+										<input name="db_prijmeni" required type="text" placeholder="<?php echo _e("Prijmeni-syntax", "realsys"); ?>">
+									</div>
 								</div>
 
 								<div class="form-col">

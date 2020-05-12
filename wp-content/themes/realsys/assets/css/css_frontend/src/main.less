@@ -1464,8 +1464,11 @@ header {
 .inz-form-sec {
   margin-bottom:60px!important;
 }
-.add-inz-con .form-field.required-field:after {
-  content:"*";
+.required-field {
+  position:relative;
+}
+.required-field:after {
+  content: "*";
   display:block;
   position:absolute;
   right: 6px;
@@ -1473,6 +1476,7 @@ header {
   color: #ff951a;
   font-size: 20px;
   font-weight: 700;
+  z-index:999;
 }
 
 /* TOPOVÁNÍ */
@@ -1488,6 +1492,7 @@ header {
 .nemovitost-top .price-bar .price {
   color:#fff!important;
 }
+/* TODO DO OSTRÉ */
 .phaseone-content {
   max-width:450px;
   text-align:center;
@@ -1525,6 +1530,31 @@ footer .footer-contact a span {
 }
 h2 {
 	font-size:42px;
+}
+.newsletter-block {
+  display:none;
+}
+body.home .slider {
+  height:92vh!important;
+}
+.user-logged .icon-user {
+  font-size: 52px;
+  color: #ff951a!important;
+}
+.user-login .icon-user {
+  font-size: 52px;
+  color: #243B4A;
+}
+header .user-login-block {
+  top:60px!important;
+}
+input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
+.add-inz-con label {
+    font-size: 15px!important;
+    margin-right: 5px!important;
 }
 
 /***********************/

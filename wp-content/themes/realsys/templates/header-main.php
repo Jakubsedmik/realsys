@@ -52,13 +52,7 @@
                 <?php else : ?>
 
                     <div class="user-login">
-
-                        <a href="<?php echo home_url() . "/login/" ?>" class="login">
-                            <?php _e("Přihlášení", "realsys"); ?>
-                        </a>
-                        <a href="<?php echo home_url() . "/login/" ?>" class="signup">
-                            <?php _e("Registrace", "realsys"); ?>
-                        </a>
+                      <a href="<?php echo home_url() . "/login/" ?>" class="logged"><span class="icon-user ico"></span></a>
 
                     </div>
                 <?php endif; ?>

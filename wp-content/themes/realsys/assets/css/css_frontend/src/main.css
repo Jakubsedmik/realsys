@@ -316,7 +316,7 @@ input {
   content: "";
   width: 20px;
   height: 20px;
-  background-image: url('http://szukamdom.pl/wp-content/themes/realsys/assets/images/images_frontend/ikony/sign-check.png');
+  background-image: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ikony/sign-check.png');
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -325,7 +325,7 @@ input {
   top: 10px;
 }
 .profil-form-content .false:after {
-  background-image: url('http://szukamdom.pl/wp-content/themes/realsys/assets/images/images_frontend/ikony/sign-x.png');
+  background-image: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ikony/sign-x.png');
 }
 /**/
 .upozorneni-box .profile-img-wrap {
@@ -375,7 +375,7 @@ input {
   font-size: 18px;
   display: block;
   text-align: center;
-  background-image: url('http://szukamdom.pl/wp-content/themes/realsys/assets/images/images_frontend/loading.gif');
+  background-image: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/loading.gif');
   min-height: 300px;
   background-repeat: no-repeat;
   background-position: center;
@@ -676,7 +676,7 @@ header .user-login a {
   position: absolute;
   top: -27px;
   left: 10px;
-  background: url('http://szukamdom.pl/wp-content/themes/realsys/assets/images/images_frontend/header/zdarma.jpg');
+  background: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/header/zdarma.jpg');
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -706,7 +706,7 @@ header .user-login a {
 /*------------ header END -------------*/
 /*------------ slider START -------------*/
 .slider {
-  background: url('http://szukamdom.pl/wp-content/themes/realsys/assets/images/images_frontend/slider/slider-bcg.jpg');
+  background: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/slider/slider-bcg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -744,7 +744,7 @@ header .user-login a {
 .slider-title:before {
   content: "";
   display: block;
-  background: url("http://szukamdom.pl/wp-content/themes/realsys/assets/images/images_frontend/slider/slider-txt-bcg.png");
+  background: url("http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/slider/slider-txt-bcg.png");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -758,7 +758,7 @@ header .user-login a {
 .slider-content:before {
   content: "";
   display: block;
-  background: url('http://szukamdom.pl/wp-content/themes/realsys/assets/images/images_frontend/slider/lupa.png');
+  background: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/slider/lupa.png');
   background-position: right;
   background-size: contain;
   background-repeat: no-repeat;
@@ -871,7 +871,7 @@ header .user-login a {
 /*------------ slider END -------------*/
 /*------------ slider podstránky START -------------*/
 .slider_sub {
-  background: url('http://szukamdom.pl/wp-content/themes/realsys/assets/images/images_frontend/header/pagetitle.jpg');
+  background: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/header/pagetitle.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -994,13 +994,13 @@ header .user-login a {
 /*------------ top nemovitosti END ------------*/
 /*--------- cta START -------------*/
 .cta {
-  background: url('http://szukamdom.pl/wp-content/themes/realsys/assets/images/images_frontend/ctas/cta-bcg.jpg');
+  background: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ctas/cta-bcg.jpg');
   position: relative;
   padding: 140px 0px;
   color: white;
 }
 .cta.sub {
-  background: url('http://szukamdom.pl/wp-content/themes/realsys/assets/images/images_frontend/ctas/cta-sub.jpg');
+  background: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ctas/cta-sub.jpg');
   position: relative;
   padding: 140px 0px;
   color: white;
@@ -1010,7 +1010,7 @@ header .user-login a {
   content: "";
   width: 100%;
   height: 140px;
-  background: url('http://szukamdom.pl/wp-content/themes/realsys/assets/images/images_frontend/separator-top.png');
+  background: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/separator-top.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
@@ -1019,7 +1019,7 @@ header .user-login a {
   left: 0px;
 }
 .cta:after {
-  background: url('http://szukamdom.pl/wp-content/themes/realsys/assets/images/images_frontend/separator-bottom.png');
+  background: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/separator-bottom.png');
   background-position: bottom;
   bottom: -1px;
   top: initial;
@@ -1039,7 +1039,7 @@ header .user-login a {
   content: "";
   /* width: 100%; */
   /* height: 140px; */
-  background: url('http://szukamdom.pl/wp-content/themes/realsys/assets/images/images_frontend/ikony/btn-bcg.png');
+  background: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ikony/btn-bcg.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: top left;
@@ -1069,26 +1069,26 @@ header .user-login a {
   max-width: 100%;
   min-height: 150px;
   margin: 0 auto;
-  background: url("http://szukamdom.pl/wp-content/themes/realsys/assets/images/images_frontend/ikony/ikon-bcg1.png");
+  background: url("http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ikony/ikon-bcg1.png");
   background-position: center center;
   background-size: contain;
   background-repeat: no-repeat;
   transition: all ease-in-out 600ms;
 }
 .why_box .image_box.first {
-  background-image: url("http://szukamdom.pl/wp-content/themes/realsys/assets/images/images_frontend/ikony/ikon-bcg1.png");
+  background-image: url("http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ikony/ikon-bcg1.png");
 }
 .why_box .image_box.second {
-  background-image: url("http://szukamdom.pl/wp-content/themes/realsys/assets/images/images_frontend/ikony/ikon-bcg2.png");
+  background-image: url("http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ikony/ikon-bcg2.png");
 }
 .why_box .image_box.third {
-  background-image: url("http://szukamdom.pl/wp-content/themes/realsys/assets/images/images_frontend/ikony/ikon-bcg3.png");
+  background-image: url("http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ikony/ikon-bcg3.png");
 }
 .why_box .image_box.fourth {
-  background-image: url("http://szukamdom.pl/wp-content/themes/realsys/assets/images/images_frontend/ikony/ikon-bcg4.png");
+  background-image: url("http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ikony/ikon-bcg4.png");
 }
 .why_box .image_box.fifth {
-  background-image: url("http://szukamdom.pl/wp-content/themes/realsys/assets/images/images_frontend/ikony/ikon-bcg5.png");
+  background-image: url("http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ikony/ikon-bcg5.png");
 }
 .why_box .image_box:hover {
   transform: scale(1.05);
@@ -1212,7 +1212,7 @@ footer .footer_block span.mail:before {
   display: block;
   width: 130px;
   height: 103px;
-  background-image: url("http://szukamdom.pl/wp-content/themes/realsys/assets/images/images_frontend/ikony/filter_icons.png");
+  background-image: url("http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ikony/filter_icons.png");
   background-repeat: no-repeat;
   background-size: initial;
   background-position: 0 0;
@@ -1397,7 +1397,7 @@ ul.paging li.active {
 }
 .nemovitost-detail a.phone:before {
   content: "";
-  background-image: url("http://szukamdom.pl/wp-content/themes/realsys/assets/images/images_frontend/ikony/contact2.png");
+  background-image: url("http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ikony/contact2.png");
   background-position: 0px 0px;
   width: 35px;
   height: 35px;
@@ -1426,7 +1426,7 @@ ul.paging li.active {
 }
 .nemovitost-detail span.mail:before {
   content: "";
-  background-image: url("http://szukamdom.pl/wp-content/themes/realsys/assets/images/images_frontend/ikony/contact2.png");
+  background-image: url("http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/ikony/contact2.png");
   background-position: 0px 35px;
   width: 35px;
   height: 35px;
@@ -1709,7 +1709,10 @@ header {
 .inz-form-sec {
   margin-bottom: 60px!important;
 }
-.add-inz-con .form-field.required-field:after {
+.required-field {
+  position: relative;
+}
+.required-field:after {
   content: "*";
   display: block;
   position: absolute;
@@ -1718,6 +1721,7 @@ header {
   color: #ff951a;
   font-size: 20px;
   font-weight: 700;
+  z-index: 999;
 }
 /* TOPOVÁNÍ */
 .nemovitost-top .nemovitost-text {
@@ -1732,6 +1736,7 @@ header {
 .nemovitost-top .price-bar .price {
   color: #fff !important;
 }
+/* TODO DO OSTRÉ */
 .phaseone-content {
   max-width: 450px;
   text-align: center;
@@ -1769,6 +1774,31 @@ footer .footer-contact a span {
 }
 h2 {
   font-size: 42px;
+}
+.newsletter-block {
+  display: none;
+}
+body.home .slider {
+  height: 92vh!important;
+}
+.user-logged .icon-user {
+  font-size: 52px;
+  color: #ff951a !important;
+}
+.user-login .icon-user {
+  font-size: 52px;
+  color: #243B4A;
+}
+header .user-login-block {
+  top: 60px!important;
+}
+input[type=date]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  display: none;
+}
+.add-inz-con label {
+  font-size: 15px!important;
+  margin-right: 5px!important;
 }
 /***********************/
 /* HLAVIČKA RESPONZIVNÍ*/
@@ -2722,7 +2752,7 @@ footer:after {
   left: unset;
   right: 0px;
   background-position: right bottom!important;
-  background-image: url('http://szukamdom.pl/wp-content/themes/realsys/assets/images/images_frontend/footer/sd-illu-smaller-min.png');
+  background-image: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/footer/sd-illu-smaller-min.png');
 }
 footer {
   padding: 80px 0px;
@@ -3072,7 +3102,7 @@ section {
   margin: 100px auto 40px;
 }
 .kredity-con .section-title h1:before {
-  background-image: url('http://szukamdom.pl/wp-content/themes/realsys/assets/ikony/kredity_1.png');
+  background-image: url('http://localhost/realsys/wp-content/themes/realsys/assets/ikony/kredity_1.png');
   background-repeat: no-repeat;
   background-size: 80px 80px;
   content: "";
@@ -3195,7 +3225,7 @@ label:last-child {
   margin: 0 30px;
 }
 .topovani-con .section-title h1.title:before {
-  background-image: url('http://szukamdom.pl/wp-content/themes/realsys/assets/ikony/pes.png');
+  background-image: url('http://localhost/realsys/wp-content/themes/realsys/assets/ikony/pes.png');
   background-repeat: no-repeat;
   background-size: cover;
   content: "";
@@ -3585,7 +3615,7 @@ header {
   text-transform: inherit;
 }
 .slider {
-  background: url('http://szukamdom.pl/wp-content/themes/realsys/assets/images/images_frontend/sd-illu-min.png') !important;
+  background: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/sd-illu-min.png') !important;
   background-position: bottom!important;
   background-size: contain!important;
   background-repeat: no-repeat !important;
@@ -3713,7 +3743,7 @@ header {
   color: #243B4A;
 }
 .full-bg {
-  background: url('http://szukamdom.pl/wp-content/themes/realsys/assets/images/images_frontend/sd-illu-min.png');
+  background: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/sd-illu-min.png');
   background-position: bottom center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -3940,7 +3970,7 @@ header {
   text-transform: inherit;
 }
 .slider {
-  background: url('http://szukamdom.pl/wp-content/themes/realsys/assets/images/images_frontend/sd-illu-min.png') !important;
+  background: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/sd-illu-min.png') !important;
   background-position: bottom!important;
   background-size: contain!important;
   background-repeat: no-repeat !important;
@@ -4802,3 +4832,4 @@ img {
     transform: scale(1);
   }
 }
+/*# sourceMappingURL=main.css.map */
