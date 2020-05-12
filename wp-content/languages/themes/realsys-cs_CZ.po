@@ -7,22 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Package Name\n"
 "Report-Msgid-Bugs-To: \n"
-<<<<<<< HEAD
-"POT-Creation-Date: 2020-05-11 23:13+0200\n"
-"PO-Revision-Date: 2020-05-11 23:22+0200\n"
-=======
-"POT-Creation-Date: 2020-05-12 11:06+0200\n"
-"PO-Revision-Date: 2020-05-12 11:07+0200\n"
->>>>>>> 721528d9e092fe3031ee0693a849c19f1098b528
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: cs_CZ\n"
 "X-Generator: Poedit 2.3.1\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
-"|| n%100>14) ? 1 : 2);\n"
 
 #: 404.php:8
 msgid "404 - STRANA NENALEZENA"
@@ -392,7 +385,7 @@ msgstr ""
 
 #: inc/core/frontend_controllers/gopayController.php:118
 msgid "Úspěch"
-msgstr ""
+msgstr "Sukces"
 
 #: inc/core/frontend_controllers/gopayController.php:118
 msgid "Objednávka byla úspěšně zaplacena."
@@ -420,7 +413,7 @@ msgstr "Zaloguj się"
 
 #: inc/core/frontend_controllers/loginController.php:44
 msgid "Přihlášení proběhlo úspěšně, probíhá přesměrování na vytváření inzerátu"
-msgstr ""
+msgstr "Logowanie powiodło się, przekierowano do tworzenia ogłoszenia"
 
 #: inc/core/frontend_controllers/loginController.php:59
 #: inc/core/frontend_controllers/loginController.php:62
@@ -453,25 +446,29 @@ msgstr "Rejestracja"
 
 #: inc/core/frontend_controllers/loginController.php:153
 msgid "Registrace proběhla úspěšně. Budete přesměrováni"
-msgstr ""
+msgstr "Rejestracja zakończyła się powodzeniem. Zostaniesz przekierowany"
 
 #: inc/core/frontend_controllers/loginController.php:159
 msgid "Nastala chyba při vytváření uživatele. Kontaktujte prosím podporu"
 msgstr ""
+"Wystąpił błąd podczas tworzenia użytkownika. Skontaktuj się z pomocą "
+"techniczną"
 
 #: inc/core/frontend_controllers/loginController.php:162
 msgid "Snažíte se o něco špatného. Budete reportováni."
-msgstr ""
+msgstr "Gdzieś popełniłeś błąd."
 
 #: inc/core/frontend_controllers/loginController.php:167
 msgid "Google"
-msgstr ""
+msgstr "Google"
 
 #: inc/core/frontend_controllers/loginController.php:167
 msgid ""
 "Došlo k chybě v registraci. Některá pole převzatá od systému Google "
 "nesplňují požadavky systému. Prosím proveďte manuální registraci"
 msgstr ""
+"Wystąpił błąd rejestracji. Niektóre pola pobrane z Google nie spełniają "
+"wymagań systemowych. Zarejestruj się ręcznie"
 
 #: inc/core/frontend_controllers/loginController.php:175
 #, fuzzy
@@ -481,12 +478,12 @@ msgstr "Zaloguj się"
 
 #: inc/core/frontend_controllers/loginController.php:175
 msgid "Úspěšně jsme Vás odhlásili"
-msgstr ""
+msgstr "Wylogowaliśmy Cię pomyślnie"
 
 #: inc/core/frontend_controllers/loginController.php:176
 #: inc/core/utils/Tools.php:246
 msgid "Probíhá přesměrování"
-msgstr ""
+msgstr "Przekierowanie"
 
 #: inc/core/frontend_controllers/loginController.php:176
 msgid ""
@@ -502,7 +499,7 @@ msgstr ""
 #: inc/core/frontend_controllers/loginController.php:321
 #: inc/core/frontend_controllers/loginController.php:326
 msgid "Ověření"
-msgstr ""
+msgstr "Weryfikacja"
 
 #: inc/core/frontend_controllers/loginController.php:299
 msgid "Tento uživatel byl již ověřen."
@@ -510,11 +507,11 @@ msgstr ""
 
 #: inc/core/frontend_controllers/loginController.php:315
 msgid "Uživatel byl ověřen."
-msgstr ""
+msgstr "Użytkownik został uwierzytelniony."
 
 #: inc/core/frontend_controllers/loginController.php:321
 msgid "Došlo k chybě! Snažíte se o něco špatného. Budete reportováni."
-msgstr ""
+msgstr "Wystąpił błąd!"
 
 #: inc/core/frontend_controllers/loginController.php:326
 msgid "Zadaný uživatel v systému buď nefiguruje nebo je duplikátem."
@@ -529,32 +526,31 @@ msgstr "Parking"
 #: inc/core/frontend_controllers/pridatInzeratController.php:56
 msgid "Zadaná adresa se nepodařila geokódovat. Inzerát nebyl vytvořen"
 msgstr ""
+"Wpisany adres nie może być geokodowany. Ogłoszenia nie została utworzona"
 
 #: inc/core/frontend_controllers/pridatInzeratController.php:87
 msgid "Obrázky"
-msgstr ""
+msgstr "Zdjęcia"
 
 #: inc/core/frontend_controllers/pridatInzeratController.php:87
 msgid "Některé obrázky nebyly nalezeny"
-msgstr ""
+msgstr "Nie znaleziono niektórych zdjęć"
 
 #: inc/core/frontend_controllers/pridatInzeratController.php:103
-#, fuzzy
-#| msgid "Uživatel"
 msgid "Uživatel neexistuje"
-msgstr "Użytkownik"
+msgstr "Użytkownik nie istnieje"
 
 #: inc/core/frontend_controllers/pridatInzeratController.php:108
 msgid "Uživatel není přihlášen nebo nemáte dostatečná oprávnění"
-msgstr ""
+msgstr "Użytkownik nie jest zalogowany lub nie masz wystarczających uprawnień"
 
 #: inc/core/frontend_controllers/pridatInzeratController.php:113
 msgid "Pole"
-msgstr ""
+msgstr "Input"
 
 #: inc/core/frontend_controllers/pridatInzeratController.php:113
 msgid "Některá pole nebyla vyplněna"
-msgstr ""
+msgstr "Niektóre pola pozostały puste"
 
 #: inc/core/frontend_views/confirmPaymentView.php:5
 msgid "Objednávka byla zaplacena"
