@@ -7,8 +7,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Package Name\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2020-05-11 23:13+0200\n"
 "PO-Revision-Date: 2020-05-11 23:22+0200\n"
+=======
+"POT-Creation-Date: 2020-05-12 11:06+0200\n"
+"PO-Revision-Date: 2020-05-12 11:07+0200\n"
+>>>>>>> 721528d9e092fe3031ee0693a849c19f1098b528
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl_PL\n"
@@ -148,6 +153,8 @@ msgid "Prosím potvrďte heslo"
 msgstr ""
 
 #: inc/core/configuration/configuration.php:519
+#: inc/core/frontend_controllers/loginController.php:135
+#: inc/core/frontend_controllers/loginController.php:229
 msgid "Uživatel s touto emailovou adresou již existuje"
 msgstr ""
 
@@ -405,6 +412,114 @@ msgstr ""
 msgid "Uživatel není přihlášen. Nelze potvrdit platbu"
 msgstr ""
 
+#: inc/core/frontend_controllers/loginController.php:44
+#: inc/core/frontend_views/loginView.php:16 templates/header-main.php:57
+#: templates/header-main.php:151
+msgid "Přihlášení"
+msgstr "Zaloguj się"
+
+#: inc/core/frontend_controllers/loginController.php:44
+msgid "Přihlášení proběhlo úspěšně, probíhá přesměrování na vytváření inzerátu"
+msgstr ""
+
+#: inc/core/frontend_controllers/loginController.php:59
+#: inc/core/frontend_controllers/loginController.php:62
+#: inc/core/frontend_controllers/loginController.php:135
+#: inc/core/frontend_controllers/loginController.php:229
+#: inc/core/frontend_controllers/pridatInzeratController.php:103
+#: inc/core/frontend_controllers/pridatInzeratController.php:108
+msgid "Uživatel"
+msgstr "Użytkownik"
+
+#: inc/core/frontend_controllers/loginController.php:59
+#, fuzzy
+#| msgid "Zapomenuté heslo?"
+msgid "Špatné heslo"
+msgstr "Nie pamiętasz hasła?"
+
+#: inc/core/frontend_controllers/loginController.php:62
+#, fuzzy
+#| msgid "Uživatel"
+msgid "Tento uživatel neexistuje"
+msgstr "Użytkownik"
+
+#: inc/core/frontend_controllers/loginController.php:153
+#: inc/core/frontend_controllers/loginController.php:159
+#: inc/core/frontend_controllers/loginController.php:162
+#: inc/core/frontend_views/loginView.php:21 templates/header-main.php:60
+#: templates/header-main.php:152
+msgid "Registrace"
+msgstr "Rejestracja"
+
+#: inc/core/frontend_controllers/loginController.php:153
+msgid "Registrace proběhla úspěšně. Budete přesměrováni"
+msgstr ""
+
+#: inc/core/frontend_controllers/loginController.php:159
+msgid "Nastala chyba při vytváření uživatele. Kontaktujte prosím podporu"
+msgstr ""
+
+#: inc/core/frontend_controllers/loginController.php:162
+msgid "Snažíte se o něco špatného. Budete reportováni."
+msgstr ""
+
+#: inc/core/frontend_controllers/loginController.php:167
+msgid "Google"
+msgstr ""
+
+#: inc/core/frontend_controllers/loginController.php:167
+msgid ""
+"Došlo k chybě v registraci. Některá pole převzatá od systému Google "
+"nesplňují požadavky systému. Prosím proveďte manuální registraci"
+msgstr ""
+
+#: inc/core/frontend_controllers/loginController.php:175
+#, fuzzy
+#| msgid "Přihlášení"
+msgid "Odhlášení"
+msgstr "Zaloguj się"
+
+#: inc/core/frontend_controllers/loginController.php:175
+msgid "Úspěšně jsme Vás odhlásili"
+msgstr ""
+
+#: inc/core/frontend_controllers/loginController.php:176
+#: inc/core/utils/Tools.php:246
+msgid "Probíhá přesměrování"
+msgstr ""
+
+#: inc/core/frontend_controllers/loginController.php:176
+msgid ""
+"Po úspěšném odhlášení Vás přesměrováváme na <strong>úvodní stránku</strong>"
+msgstr ""
+
+#: inc/core/frontend_controllers/loginController.php:237
+msgid "Potvrzení emailové adresy"
+msgstr ""
+
+#: inc/core/frontend_controllers/loginController.php:299
+#: inc/core/frontend_controllers/loginController.php:315
+#: inc/core/frontend_controllers/loginController.php:321
+#: inc/core/frontend_controllers/loginController.php:326
+msgid "Ověření"
+msgstr ""
+
+#: inc/core/frontend_controllers/loginController.php:299
+msgid "Tento uživatel byl již ověřen."
+msgstr ""
+
+#: inc/core/frontend_controllers/loginController.php:315
+msgid "Uživatel byl ověřen."
+msgstr ""
+
+#: inc/core/frontend_controllers/loginController.php:321
+msgid "Došlo k chybě! Snažíte se o něco špatného. Budete reportováni."
+msgstr ""
+
+#: inc/core/frontend_controllers/loginController.php:326
+msgid "Zadaný uživatel v systému buď nefiguruje nebo je duplikátem."
+msgstr ""
+
 #: inc/core/frontend_controllers/pridatInzeratController.php:56
 #, fuzzy
 #| msgid "Parkování"
@@ -422,11 +537,6 @@ msgstr ""
 #: inc/core/frontend_controllers/pridatInzeratController.php:87
 msgid "Některé obrázky nebyly nalezeny"
 msgstr ""
-
-#: inc/core/frontend_controllers/pridatInzeratController.php:103
-#: inc/core/frontend_controllers/pridatInzeratController.php:108
-msgid "Uživatel"
-msgstr "Użytkownik"
 
 #: inc/core/frontend_controllers/pridatInzeratController.php:103
 #, fuzzy
@@ -820,16 +930,6 @@ msgid ""
 "Pro vytvoření inzerátu je třeba být přihlášen nebo registrován. Následně Vás "
 "přesuneme hned na vytváření inzerátu."
 msgstr "Musisz być zalogowany lub zarejestrowany, aby utworzyć reklamę."
-
-#: inc/core/frontend_views/loginView.php:16 templates/header-main.php:57
-#: templates/header-main.php:151
-msgid "Přihlášení"
-msgstr "Zaloguj się"
-
-#: inc/core/frontend_views/loginView.php:21 templates/header-main.php:60
-#: templates/header-main.php:152
-msgid "Registrace"
-msgstr "Rejestracja"
 
 #: inc/core/frontend_views/loginView.php:36
 #: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:57
@@ -1493,6 +1593,10 @@ msgstr "Dodaj ogłoszenia"
 
 #: inc/core/frontend_views/vypisMapaView.php:33
 msgid "Je to zdarma"
+msgstr ""
+
+#: inc/core/utils/Tools.php:247
+msgid "Po úspěšné akci probíhá přesměrování"
 msgstr ""
 
 #: templates/header-main.php:43

@@ -41,7 +41,7 @@ class loginController extends frontendController {
 				if($login_result){
 					$uzivatel->logIn();
 					/* TODO prozatímní redirect na přidání inzerátu, po spuštění musí být na profil */
-					frontendError::addMessage("Přihlášení", SUCCESS, "Přihlášení proběhlo úspěšně, probíhá přesměrování na vytváření inzerátu");
+					frontendError::addMessage(__("Přihlášení","realsys"), SUCCESS, __("Přihlášení proběhlo úspěšně, probíhá přesměrování na vytváření inzerátu","realsys"));
 					Tools::jsRedirect(Tools::getFERoute("inzeratClass",false, "add"),1500);
 					/*
 					if(Tools::checkPresenceOfParam("create",$this->requestData)){
@@ -56,10 +56,10 @@ class loginController extends frontendController {
 						Tools::jsRedirect(Tools::getFERoute("uzivatelClass",$uzivatel->getId()),1500,"Přesměrování na Váš profil");
 					}*/
 				}else{
-					frontendError::addMessage("Uživatel",ERROR, "Špatné heslo");
+					frontendError::addMessage(__("Uživatel","realsys"),ERROR, __("Špatné heslo","realsys"));
 				}
 			}else{
-				frontendError::addMessage("Uživatel",ERROR, "Tento uživatel neexistuje");
+				frontendError::addMessage(__("Uživatel","realsys"),ERROR, __("Tento uživatel neexistuje","realsys"));
 			}
 		}else{
 			$this->setView("error");
@@ -132,7 +132,7 @@ class loginController extends frontendController {
 				);
 
 				if(count($user_exists) > 0){
-					frontendError::addMessage("System", ERROR, "Uživatel s touto emailovou adresou již existuje");
+					frontendError::addMessage(__("Uživatel","realsys"), ERROR, __("Uživatel s touto emailovou adresou již existuje","realsys"));
 					$this->setView("error");
 					return true;
 				}
@@ -150,21 +150,21 @@ class loginController extends frontendController {
 				$uzivatel = assetsFactory::createEntity("uzivatelClass", $creationArr);
 
 				if($uzivatel){
-					frontendError::addMessage("Registrace",SUCCESS, "Registrace proběhla úspěšně. Budete přesměrováni");
+					frontendError::addMessage(__("Registrace","realsys"),SUCCESS, __("Registrace proběhla úspěšně. Budete přesměrováni","realsys"));
 					$uzivatel->logIn();
 					//Tools::jsRedirect(Tools::getFERoute("uzivatelClass",$uzivatel->getId()),1500);
 					/* TODO prozatímní redirect na přidání inzerátu, po spuštění musí být na profil */
 					Tools::jsRedirect(Tools::getFERoute("inzeratClass",false, "add"),1500);
 				}else{
-					frontendError::addMessage("Registrace", ERROR, "Nastala chyba při vytváření uživatele. Kontaktujte prosím podporu");
+					frontendError::addMessage(__("Registrace","realsys"), ERROR, __("Nastala chyba při vytváření uživatele. Kontaktujte prosím podporu","realsys"));
 				}
 			}else{
-				frontendError::addMessage("System",ERROR,"Snažíte se o něco špatného. Budete reportováni.");
+				frontendError::addMessage(__("Registrace","realsys"),ERROR,__("Snažíte se o něco špatného. Budete reportováni.","realsys"));
 				$this->setView("error");
 			}
 
 		}else{
-			frontendError::addMessage("Google",ERROR, "Došlo k chybě v registraci. Některá pole převzatá od systému google nesplňují požadavky systému. Prosím proveďte manuální registraci");
+			frontendError::addMessage(__("Google","realsys"),ERROR, __("Došlo k chybě v registraci. Některá pole převzatá od systému Google nesplňují požadavky systému. Prosím proveďte manuální registraci","realsys"));
 		}
 	}
 
@@ -172,8 +172,8 @@ class loginController extends frontendController {
 		if(isset($_SESSION['prihlaseny'])){
 			$id = $_SESSION['prihlaseny'];
 			unset($_SESSION['prihlaseny']);
-			frontendError::addMessage("Odhlášení", SUCCESS, "Úspěšně jsme Vás odhlásili");
-			Tools::jsRedirect(home_url(), 1000, "Probíhá přesměrování", "Po úspěšném odhlášení Vás přesměrováváme na <strong>úvodní stránku</strong>");
+			frontendError::addMessage(__("Odhlášení","realsys"), SUCCESS, __("Úspěšně jsme Vás odhlásili","realsys"));
+			Tools::jsRedirect(home_url(), 1000, __("Probíhá přesměrování","realsys"), __("Po úspěšném odhlášení Vás přesměrováváme na <strong>úvodní stránku</strong>","realsys"));
 			return true;
 		}
 	}
@@ -226,7 +226,7 @@ class loginController extends frontendController {
 			);
 
 			if(count($uzivatel_existuje) > 0){
-				frontendError::addMessage("Uživatel", ERROR, "Uživatel s touto emailovou adresou již existuje");
+				frontendError::addMessage(__("Uživatel","realsys"), ERROR, __("Uživatel s touto emailovou adresou již existuje","realsys"));
 				return false;
 			}
 
@@ -234,7 +234,7 @@ class loginController extends frontendController {
 
 			Tools::sendMail(
 				$email,
-				"Potvrzení emailové adresy",
+				__("Potvrzení emailové adresy","realsys"),
 				"confirmEmail",
 				array(
 					"link" => $link
@@ -296,7 +296,7 @@ class loginController extends frontendController {
 
 				if(strlen($uzivatel->db_hash)==0){
 
-					frontendError::addMessage("Chyba", ERROR, "Tento uživatel byl již ověřen.");
+					frontendError::addMessage(__("Ověření","realsys"), ERROR, __("Tento uživatel byl již ověřen.","realsys"));
 					$this->setView("error");
 					return false;
 				}
@@ -312,18 +312,18 @@ class loginController extends frontendController {
 						"welcomeInSystem"
 					);
 
-					frontendError::addMessage("Úspěch",SUCCESS, "Uživatel byl ověřen.");
+					frontendError::addMessage(__("Ověření","realsys"),SUCCESS, __("Uživatel byl ověřen.","realsys"));
 					Tools::jsRedirect(Tools::getFERoute("uzivatelClass",$uzivatel->getId()));
 					return true;
 
 				}else{
 					$this->setView("error");
-					frontendError::addMessage("System",ERROR, "Došlo k chybě! Snažíte se o něco špatného. Budete reportováni.");
+					frontendError::addMessage(__("Ověření","realsys"),ERROR, __("Došlo k chybě! Snažíte se o něco špatného. Budete reportováni.","realsys"));
 					return false;
 				}
 			}else{
 				$this->setView("error");
-				frontendError::addMessage("System",ERROR, "Zadaný uživatel v systému buď nefiguruje nebo je duplikátem.");
+				frontendError::addMessage(__("Ověření","realsys"),ERROR, __("Zadaný uživatel v systému buď nefiguruje nebo je duplikátem.","realsys"));
 				return false;
 			}
 
