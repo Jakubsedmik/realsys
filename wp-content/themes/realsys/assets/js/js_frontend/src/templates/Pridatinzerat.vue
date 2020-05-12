@@ -571,7 +571,7 @@
                                 {db_typ_stavby: 2, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 1, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 1, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 2, db_typ_inzeratu: 1}
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
                             ],
                             appear: [
                                 {db_typ_stavby: 2, db_typ_inzeratu: 2},

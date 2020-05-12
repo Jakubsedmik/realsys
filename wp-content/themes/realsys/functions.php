@@ -352,7 +352,7 @@ remove_action( 'wp_print_styles', 'print_emoji_styles' );
 
 
 function change_my_from_address( $original_email_address ) {
-	return 'info@szukajdom.eu';
+	return 'info@szukamdom.pl';
 }
 add_filter( 'wp_mail_from', 'change_my_from_address' );
 

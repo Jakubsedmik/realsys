@@ -37,26 +37,30 @@ class loginController extends frontendController {
 			$uzivatel = assetsFactory::getAllEntity("uzivatelClass",array(new filterClass("email","=","'" . $email . "'")));
 			if(count($uzivatel) == 1){
 				$uzivatel = array_shift($uzivatel);
-				$login_result = $uzivatel->verifyPassword($heslo);
-				if($login_result){
-					$uzivatel->logIn();
-					/* TODO prozatímní redirect na přidání inzerátu, po spuštění musí být na profil */
-					frontendError::addMessage(__("Přihlášení","realsys"), SUCCESS, __("Přihlášení proběhlo úspěšně, probíhá přesměrování na vytváření inzerátu","realsys"));
-					Tools::jsRedirect(Tools::getFERoute("inzeratClass",false, "add"),1500);
-					/*
-					if(Tools::checkPresenceOfParam("create",$this->requestData)){
-						frontendError::addMessage("Přihlášení", SUCCESS, "Přihlášení proběhlo úspěšně, probíhá přesměrování na vytváření inzerátu");
-						Tools::jsRedirect(Tools::getFERoute("inzeratClass",$uzivatel->getId(), "add"),1500,"Přesměrování na vytváření inzerátu");
-					}elseif(Tools::checkPresenceOfParam("watchdog", $this->requestData)){
-						$watchdogid = $this->requestData['watchdog'];
-						frontendError::addMessage("Přihlášení", SUCCESS, "Přihlášení proběhlo úspěšně, probíhá přesměrování na výpis vašeho hlídacího psa.");
-						Tools::jsRedirect(Tools::getFERoute("hlidacipesClass", $watchdogid),1500,"Přesměrování na výpis hlídacího psa");
+				if($uzivatel->db_stav == 1){
+					$login_result = $uzivatel->verifyPassword($heslo);
+					if($login_result){
+						$uzivatel->logIn();
+						/* TODO prozatímní redirect na přidání inzerátu, po spuštění musí být na profil */
+						frontendError::addMessage(__("Přihlášení","realsys"), SUCCESS, __("Přihlášení proběhlo úspěšně, probíhá přesměrování na vytváření inzerátu","realsys"));
+						Tools::jsRedirect(Tools::getFERoute("inzeratClass",false, "add"),1500);
+						/*
+						if(Tools::checkPresenceOfParam("create",$this->requestData)){
+							frontendError::addMessage("Přihlášení", SUCCESS, "Přihlášení proběhlo úspěšně, probíhá přesměrování na vytváření inzerátu");
+							Tools::jsRedirect(Tools::getFERoute("inzeratClass",$uzivatel->getId(), "add"),1500,"Přesměrování na vytváření inzerátu");
+						}elseif(Tools::checkPresenceOfParam("watchdog", $this->requestData)){
+							$watchdogid = $this->requestData['watchdog'];
+							frontendError::addMessage("Přihlášení", SUCCESS, "Přihlášení proběhlo úspěšně, probíhá přesměrování na výpis vašeho hlídacího psa.");
+							Tools::jsRedirect(Tools::getFERoute("hlidacipesClass", $watchdogid),1500,"Přesměrování na výpis hlídacího psa");
+						}else{
+							frontendError::addMessage("Přihlášení", SUCCESS, "Přihlášení proběhlo úspěšně, probíhá přesměrování na Váš profil.");
+							Tools::jsRedirect(Tools::getFERoute("uzivatelClass",$uzivatel->getId()),1500,"Přesměrování na Váš profil");
+						}*/
 					}else{
-						frontendError::addMessage("Přihlášení", SUCCESS, "Přihlášení proběhlo úspěšně, probíhá přesměrování na Váš profil.");
-						Tools::jsRedirect(Tools::getFERoute("uzivatelClass",$uzivatel->getId()),1500,"Přesměrování na Váš profil");
-					}*/
+						frontendError::addMessage(__("Uživatel","realsys"),ERROR, __("Špatné heslo","realsys"));
+					}
 				}else{
-					frontendError::addMessage(__("Uživatel","realsys"),ERROR, __("Špatné heslo","realsys"));
+					frontendError::addMessage(__("Uživatel","realsys"), ERROR, __("Uživatel není ověřen, prosím nejdříve ověřte uživatele pomocí emailové adresy.","realsys"));
 				}
 			}else{
 				frontendError::addMessage(__("Uživatel","realsys"),ERROR, __("Tento uživatel neexistuje","realsys"));
@@ -186,7 +190,7 @@ class loginController extends frontendController {
 
 		if(!invisibleRecaptchaClass::verifyRecaptchaOnController($this)){return false;}
 
-		globalUtils::writeDebug($this->requestData);
+		//globalUtils::writeDebug($this->requestData);
 
 		$result = Tools::postChecker(
 			$this->requestData,
@@ -308,12 +312,16 @@ class loginController extends frontendController {
 					$this->setView("userConfirmed");
 					Tools::sendMail(
 						$uzivatel->db_email,
-						"Vítejte",
+						__("Vítejte","realsys"),
 						"welcomeInSystem"
 					);
 
+					/* TODO prozatímní redirect na přidání inzerátu, po spuštění musí být na profil */
 					frontendError::addMessage(__("Ověření","realsys"),SUCCESS, __("Uživatel byl ověřen.","realsys"));
-					Tools::jsRedirect(Tools::getFERoute("uzivatelClass",$uzivatel->getId()));
+					Tools::jsRedirect(Tools::getFERoute("inzeratClass",false, "add"),1500);
+
+					/*frontendError::addMessage(__("Ověření","realsys"),SUCCESS, __("Uživatel byl ověřen.","realsys"));
+					Tools::jsRedirect(Tools::getFERoute("uzivatelClass",$uzivatel->getId()));*/
 					return true;
 
 				}else{
