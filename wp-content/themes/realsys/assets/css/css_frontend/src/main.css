@@ -1775,6 +1775,29 @@ footer .footer-contact a span {
 h2 {
   font-size: 42px;
 }
+#regForm .form-field:after {
+  content: "*";
+  display: block;
+  position: absolute;
+  right: 6px;
+  top: 0px;
+  color: #ff951a;
+  font-size: 20px;
+  font-weight: 700;
+  z-index: 999;
+}
+.page-id-73 section {
+  display: none;
+}
+.add-inz-con .inz-box label {
+  font-size: 15px!important;
+}
+header .user-login a:first-child {
+  border: 0;
+}
+.main-menu-top {
+  z-index: 999;
+}
 .newsletter-block {
   display: none;
 }
@@ -1799,6 +1822,14 @@ input[type=date]::-webkit-inner-spin-button {
 .add-inz-con label {
   font-size: 15px!important;
   margin-right: 5px!important;
+}
+.rn_widget_menu_2 {
+  display: none;
+}
+body .sluzby-tabs .btn.active.inactive {
+  color: #243B4A !important;
+  background: transparent!important;
+  border: 1px solid #243B4A !important;
 }
 /***********************/
 /* HLAVIČKA RESPONZIVNÍ*/
