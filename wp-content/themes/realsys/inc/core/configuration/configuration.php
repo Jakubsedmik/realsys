@@ -45,9 +45,9 @@ define("GOOGLE_API_KEY", "AIzaSyDU9RxWxpRRoy9R-wAILv5Owb7GaXHLVaw");
 define("GOOGLE_SERVER_API_KEY", "AIzaSyDLb5HxunZlhEtXHmELaNbd9XMajfkoQvc");
 
 // CURRENCY
-define("CURRENCY", "Kč");
-define("CURRENCY_CODE", "CZK");
-define("LANG_CODE", "cs-CZ");
+define("CURRENCY", "PLN");
+define("CURRENCY_CODE", "PLN");
+define("LANG_CODE", "pl-PL");
 
 
 // regex check konstanty

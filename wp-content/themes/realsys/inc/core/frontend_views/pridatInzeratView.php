@@ -108,6 +108,7 @@
                 frontend_images_path="<?php echo FRONTEND_IMAGES_PATH; ?>"
                 currency_code="<?php echo CURRENCY_CODE; ?>"
                 lang_code="<?php echo LANG_CODE; ?>"
+                currency="<?php echo CURRENCY; ?>"
                 v-cloak
         ></Pridatinzerat>
     </div>
