@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Package Name\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: \n"
+"POT-Creation-Date: 2020-05-12 18:29+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs_CZ\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #: 404.php:8
 msgid "404 - STRANA NENALEZENA"
@@ -146,8 +146,8 @@ msgid "Prosím potvrďte heslo"
 msgstr ""
 
 #: inc/core/configuration/configuration.php:519
-#: inc/core/frontend_controllers/loginController.php:135
-#: inc/core/frontend_controllers/loginController.php:229
+#: inc/core/frontend_controllers/loginController.php:139
+#: inc/core/frontend_controllers/loginController.php:233
 msgid "Uživatel s touto emailovou adresou již existuje"
 msgstr ""
 
@@ -191,6 +191,21 @@ msgstr "Wpisz co najmniej {0} znaków."
 #: inc/core/configuration/configuration.php:534
 msgid "Zadejte hodnotu mezi {0} a {1}."
 msgstr "Wprowadź wartość z przedziału od {0} do {1}."
+
+#: inc/core/configuration/configuration.php:801
+#: inc/core/frontend_controllers/hlidacipesController.php:39
+msgid "Hlídací pes"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:806
+#, fuzzy
+#| msgid "Typ inzerátu"
+msgid "Topování inzerátu."
+msgstr "Typ ogłoszenia"
+
+#: inc/core/configuration/configuration.php:814
+msgid "Zobrazení kontaktu"
+msgstr ""
 
 #: inc/core/configuration/configuration.php:822
 msgid "1. patro"
@@ -347,6 +362,8 @@ msgstr ""
 #: inc/core/frontend_controllers/gopayController.php:67
 #: inc/core/frontend_controllers/gopayController.php:125
 #: inc/core/frontend_controllers/gopayController.php:131
+#: inc/core/frontend_controllers/objednavkaController.php:96
+#: inc/core/frontend_controllers/objednavkaController.php:99
 msgid "Objednávka"
 msgstr ""
 
@@ -364,6 +381,9 @@ msgstr ""
 
 #: inc/core/frontend_controllers/gopayController.php:78
 #: inc/core/frontend_controllers/gopayController.php:142
+#: inc/core/frontend_controllers/inzeratEditController.php:128
+#: inc/core/frontend_controllers/objednavkaController.php:12
+#: inc/core/frontend_controllers/objednavkaController.php:120
 #, fuzzy
 #| msgid "4. Sumarizace"
 msgid "Autorizace"
@@ -375,6 +395,17 @@ msgstr ""
 
 #: inc/core/frontend_controllers/gopayController.php:83
 #: inc/core/frontend_controllers/gopayController.php:137
+#: inc/core/frontend_controllers/hlidacipesController.php:45
+#: inc/core/frontend_controllers/inzeratDetailController.php:54
+#: inc/core/frontend_controllers/inzeratEditController.php:46
+#: inc/core/frontend_controllers/inzeratEditController.php:133
+#: inc/core/frontend_controllers/objednavkaController.php:115
+#: inc/core/frontend_controllers/uzivatelDetailController.php:44
+#: inc/core/frontend_controllers/uzivatelDetailController.php:121
+#: inc/core/frontend_controllers/uzivatelDetailController.php:157
+#: inc/core/frontend_controllers/uzivatelDetailController.php:200
+#: inc/core/frontend_controllers/uzivatelDetailController.php:277
+#: inc/core/frontend_controllers/uzivatelDetailController.php:315
 msgid "Povinná pole"
 msgstr ""
 
@@ -384,6 +415,7 @@ msgid "Některá povinná pole nebyla vyplněna"
 msgstr ""
 
 #: inc/core/frontend_controllers/gopayController.php:118
+#: inc/core/frontend_controllers/uzivatelDetailController.php:305
 msgid "Úspěch"
 msgstr "Sukces"
 
@@ -405,64 +437,162 @@ msgstr ""
 msgid "Uživatel není přihlášen. Nelze potvrdit platbu"
 msgstr ""
 
-#: inc/core/frontend_controllers/loginController.php:44
-#: inc/core/frontend_views/loginView.php:16 templates/header-main.php:57
-#: templates/header-main.php:151
+#: inc/core/frontend_controllers/hlidacipesController.php:39
+msgid "Tento hlídací pes Vám nepatří."
+msgstr ""
+
+#: inc/core/frontend_controllers/hlidacipesController.php:45
+#: inc/core/frontend_controllers/inzeratDetailController.php:54
+#: inc/core/frontend_controllers/inzeratEditController.php:46
+#: inc/core/frontend_controllers/inzeratEditController.php:133
+#: inc/core/frontend_controllers/objednavkaController.php:115
+#: inc/core/frontend_controllers/pridatInzeratController.php:113
+#: inc/core/frontend_controllers/uzivatelDetailController.php:44
+#: inc/core/frontend_controllers/uzivatelDetailController.php:121
+#: inc/core/frontend_controllers/uzivatelDetailController.php:157
+#: inc/core/frontend_controllers/uzivatelDetailController.php:200
+#: inc/core/frontend_controllers/uzivatelDetailController.php:277
+#: inc/core/frontend_controllers/uzivatelDetailController.php:315
+msgid "Některá pole nebyla vyplněna"
+msgstr "Niektóre pola pozostały puste"
+
+#: inc/core/frontend_controllers/inzeratDetailController.php:29
+#: inc/core/frontend_controllers/inzeratDetailController.php:31
+#: inc/core/frontend_controllers/inzeratDetailController.php:36
+#: inc/core/frontend_controllers/inzeratDetailController.php:48
+#, fuzzy
+#| msgid "Typ inzerátu"
+msgid "Inzerát"
+msgstr "Typ ogłoszenia"
+
+#: inc/core/frontend_controllers/inzeratDetailController.php:29
+msgid ""
+"Pozor tento inzerát je neaktivní. Buď čeká na schválení administrátorem a "
+"nebo jste ho deaktivovali. Tento inzerát vidíte pouze vy."
+msgstr ""
+
+#: inc/core/frontend_controllers/inzeratDetailController.php:31
+#: inc/core/frontend_controllers/inzeratDetailController.php:36
+#, fuzzy
+#| msgid "Inzerát je aktivní"
+msgid "Inzerát není aktivní."
+msgstr "Reklama jest aktywna"
+
+#: inc/core/frontend_controllers/inzeratDetailController.php:48
+msgid "Zadaný inzerát neexistuje."
+msgstr ""
+
+#: inc/core/frontend_controllers/inzeratEditController.php:31
+#: inc/core/frontend_controllers/inzeratEditController.php:118
+#, fuzzy
+#| msgid "Vložení inzerátu"
+msgid "Vlastnictví inzerátu"
+msgstr "Dodanie ogłoszenia"
+
+#: inc/core/frontend_controllers/inzeratEditController.php:31
+#: inc/core/frontend_controllers/inzeratEditController.php:118
+#, fuzzy
+#| msgid "Náhled přidaného inzerátu"
+msgid "Nejste vlastníkem daného inzerátu"
+msgstr "Podgląd dodanego ogłoszenia"
+
+#: inc/core/frontend_controllers/inzeratEditController.php:36
+#: inc/core/frontend_controllers/inzeratEditController.php:123
+#, fuzzy
+#| msgid "Inzerát byl vytvořen"
+msgid "Inzerát / uživatel"
+msgstr "Ogłoszenie jest aktywna"
+
+#: inc/core/frontend_controllers/inzeratEditController.php:36
+#: inc/core/frontend_controllers/inzeratEditController.php:123
+msgid "Inzerát nebo uživatel nebyli nalezeni"
+msgstr ""
+
+#: inc/core/frontend_controllers/inzeratEditController.php:41
+#: inc/core/frontend_controllers/loginController.php:45
+#: inc/core/frontend_views/loginView.php:16 templates/header-main.php:145
 msgid "Přihlášení"
 msgstr "Zaloguj się"
 
-#: inc/core/frontend_controllers/loginController.php:44
+#: inc/core/frontend_controllers/inzeratEditController.php:41
+#: inc/core/frontend_controllers/inzeratEditController.php:128
+msgid "Nejste přihlášení do systému"
+msgstr ""
+
+#: inc/core/frontend_controllers/inzeratEditController.php:113
+msgid "Geocoding"
+msgstr ""
+
+#: inc/core/frontend_controllers/inzeratEditController.php:113
+msgid "Geokódování adresy se nepodařilo, byli zachovány staré souřadnice"
+msgstr ""
+
+#: inc/core/frontend_controllers/loginController.php:45
 msgid "Přihlášení proběhlo úspěšně, probíhá přesměrování na vytváření inzerátu"
 msgstr "Logowanie powiodło się, przekierowano do tworzenia ogłoszenia"
 
-#: inc/core/frontend_controllers/loginController.php:59
-#: inc/core/frontend_controllers/loginController.php:62
-#: inc/core/frontend_controllers/loginController.php:135
-#: inc/core/frontend_controllers/loginController.php:229
+#: inc/core/frontend_controllers/loginController.php:60
+#: inc/core/frontend_controllers/loginController.php:63
+#: inc/core/frontend_controllers/loginController.php:66
+#: inc/core/frontend_controllers/loginController.php:139
+#: inc/core/frontend_controllers/loginController.php:233
 #: inc/core/frontend_controllers/pridatInzeratController.php:103
 #: inc/core/frontend_controllers/pridatInzeratController.php:108
+#: inc/core/frontend_controllers/uzivatelDetailController.php:37
+#: inc/core/frontend_controllers/uzivatelDetailController.php:116
+#: inc/core/frontend_controllers/uzivatelDetailController.php:151
+#: inc/core/frontend_controllers/uzivatelDetailController.php:194
+#: inc/core/frontend_controllers/uzivatelDetailController.php:235
+#: inc/core/frontend_controllers/uzivatelDetailController.php:244
+#: inc/core/frontend_controllers/uzivatelDetailController.php:271
+#: inc/core/frontend_controllers/uzivatelDetailController.php:309
 msgid "Uživatel"
 msgstr "Użytkownik"
 
-#: inc/core/frontend_controllers/loginController.php:59
+#: inc/core/frontend_controllers/loginController.php:60
 #, fuzzy
 #| msgid "Zapomenuté heslo?"
 msgid "Špatné heslo"
 msgstr "Nie pamiętasz hasła?"
 
-#: inc/core/frontend_controllers/loginController.php:62
+#: inc/core/frontend_controllers/loginController.php:63
+msgid ""
+"Uživatel není ověřen, prosím nejdříve ověřte uživatele pomocí emailové "
+"adresy."
+msgstr ""
+
+#: inc/core/frontend_controllers/loginController.php:66
 #, fuzzy
 #| msgid "Uživatel"
 msgid "Tento uživatel neexistuje"
 msgstr "Użytkownik"
 
-#: inc/core/frontend_controllers/loginController.php:153
-#: inc/core/frontend_controllers/loginController.php:159
-#: inc/core/frontend_controllers/loginController.php:162
-#: inc/core/frontend_views/loginView.php:21 templates/header-main.php:60
-#: templates/header-main.php:152
+#: inc/core/frontend_controllers/loginController.php:157
+#: inc/core/frontend_controllers/loginController.php:163
+#: inc/core/frontend_controllers/loginController.php:166
+#: inc/core/frontend_views/loginView.php:21 templates/header-main.php:146
 msgid "Registrace"
 msgstr "Rejestracja"
 
-#: inc/core/frontend_controllers/loginController.php:153
+#: inc/core/frontend_controllers/loginController.php:157
 msgid "Registrace proběhla úspěšně. Budete přesměrováni"
 msgstr "Rejestracja zakończyła się powodzeniem. Zostaniesz przekierowany"
 
-#: inc/core/frontend_controllers/loginController.php:159
+#: inc/core/frontend_controllers/loginController.php:163
 msgid "Nastala chyba při vytváření uživatele. Kontaktujte prosím podporu"
 msgstr ""
 "Wystąpił błąd podczas tworzenia użytkownika. Skontaktuj się z pomocą "
 "techniczną"
 
-#: inc/core/frontend_controllers/loginController.php:162
+#: inc/core/frontend_controllers/loginController.php:166
 msgid "Snažíte se o něco špatného. Budete reportováni."
 msgstr "Gdzieś popełniłeś błąd."
 
-#: inc/core/frontend_controllers/loginController.php:167
+#: inc/core/frontend_controllers/loginController.php:171
 msgid "Google"
 msgstr "Google"
 
-#: inc/core/frontend_controllers/loginController.php:167
+#: inc/core/frontend_controllers/loginController.php:171
 msgid ""
 "Došlo k chybě v registraci. Některá pole převzatá od systému Google "
 "nesplňují požadavky systému. Prosím proveďte manuální registraci"
@@ -470,51 +600,108 @@ msgstr ""
 "Wystąpił błąd rejestracji. Niektóre pola pobrane z Google nie spełniają "
 "wymagań systemowych. Zarejestruj się ręcznie"
 
-#: inc/core/frontend_controllers/loginController.php:175
+#: inc/core/frontend_controllers/loginController.php:179
 #, fuzzy
 #| msgid "Přihlášení"
 msgid "Odhlášení"
 msgstr "Zaloguj się"
 
-#: inc/core/frontend_controllers/loginController.php:175
+#: inc/core/frontend_controllers/loginController.php:179
 msgid "Úspěšně jsme Vás odhlásili"
 msgstr "Wylogowaliśmy Cię pomyślnie"
 
-#: inc/core/frontend_controllers/loginController.php:176
+#: inc/core/frontend_controllers/loginController.php:180
 #: inc/core/utils/Tools.php:246
 msgid "Probíhá přesměrování"
 msgstr "Przekierowanie"
 
-#: inc/core/frontend_controllers/loginController.php:176
+#: inc/core/frontend_controllers/loginController.php:180
 msgid ""
 "Po úspěšném odhlášení Vás přesměrováváme na <strong>úvodní stránku</strong>"
 msgstr ""
 
-#: inc/core/frontend_controllers/loginController.php:237
+#: inc/core/frontend_controllers/loginController.php:241
 msgid "Potvrzení emailové adresy"
 msgstr ""
 
-#: inc/core/frontend_controllers/loginController.php:299
-#: inc/core/frontend_controllers/loginController.php:315
-#: inc/core/frontend_controllers/loginController.php:321
-#: inc/core/frontend_controllers/loginController.php:326
+#: inc/core/frontend_controllers/loginController.php:303
+#: inc/core/frontend_controllers/loginController.php:320
+#: inc/core/frontend_controllers/loginController.php:329
+#: inc/core/frontend_controllers/loginController.php:334
 msgid "Ověření"
 msgstr "Weryfikacja"
 
-#: inc/core/frontend_controllers/loginController.php:299
+#: inc/core/frontend_controllers/loginController.php:303
 msgid "Tento uživatel byl již ověřen."
 msgstr ""
 
 #: inc/core/frontend_controllers/loginController.php:315
+msgid "Vítejte"
+msgstr ""
+
+#: inc/core/frontend_controllers/loginController.php:320
 msgid "Uživatel byl ověřen."
 msgstr "Użytkownik został uwierzytelniony."
 
-#: inc/core/frontend_controllers/loginController.php:321
+#: inc/core/frontend_controllers/loginController.php:329
 msgid "Došlo k chybě! Snažíte se o něco špatného. Budete reportováni."
 msgstr "Wystąpił błąd!"
 
-#: inc/core/frontend_controllers/loginController.php:326
+#: inc/core/frontend_controllers/loginController.php:334
 msgid "Zadaný uživatel v systému buď nefiguruje nebo je duplikátem."
+msgstr ""
+
+#: inc/core/frontend_controllers/objednavkaController.php:12
+#: inc/core/frontend_controllers/objednavkaController.php:120
+msgid "Uživatel není přihlášený. Pro nákup kreditů se nejprve přihlašte"
+msgstr ""
+
+#: inc/core/frontend_controllers/objednavkaController.php:33
+msgid ""
+"Nákupem kreditů nebude služba aktivována, po nákupu kreditů prosím službu "
+"opět stejným postupem aktivujte za již nakoupené kredity"
+msgstr ""
+
+#: inc/core/frontend_controllers/objednavkaController.php:74
+msgid "Služba"
+msgstr ""
+
+#: inc/core/frontend_controllers/objednavkaController.php:74
+#, fuzzy
+#| msgid "Uživatel"
+msgid "Tato služba v systému neexistuje."
+msgstr "Użytkownik"
+
+#: inc/core/frontend_controllers/objednavkaController.php:95
+msgid "Potvrzení"
+msgstr ""
+
+#: inc/core/frontend_controllers/objednavkaController.php:95
+msgid "Potvrzujeme objednávku - přesměrováváme Vás na platební bránu"
+msgstr ""
+
+#: inc/core/frontend_controllers/objednavkaController.php:96
+msgid "Potvrzujeme Vaši objednávku, přesměrováváme Vás na platební bránu"
+msgstr ""
+
+#: inc/core/frontend_controllers/objednavkaController.php:99
+msgid "Objednávku se nepodařilo vytvořit - kontaktujte administrátora"
+msgstr ""
+
+#: inc/core/frontend_controllers/objednavkaController.php:105
+msgid "Množství kreditů"
+msgstr ""
+
+#: inc/core/frontend_controllers/objednavkaController.php:105
+msgid "Toto množství kreditů neprodáváme"
+msgstr ""
+
+#: inc/core/frontend_controllers/objednavkaController.php:110
+msgid "Platební metoda"
+msgstr ""
+
+#: inc/core/frontend_controllers/objednavkaController.php:110
+msgid "Tuto platební metodu systém nepodporuje"
 msgstr ""
 
 #: inc/core/frontend_controllers/pridatInzeratController.php:56
@@ -548,9 +735,83 @@ msgstr "Użytkownik nie jest zalogowany lub nie masz wystarczających uprawnień
 msgid "Pole"
 msgstr "Input"
 
-#: inc/core/frontend_controllers/pridatInzeratController.php:113
-msgid "Některá pole nebyla vyplněna"
-msgstr "Niektóre pola pozostały puste"
+#: inc/core/frontend_controllers/uzivatelDetailController.php:37
+#, fuzzy
+#| msgid "Uživatel"
+msgid "Zadaný uživatel neexistuje"
+msgstr "Użytkownik"
+
+#: inc/core/frontend_controllers/uzivatelDetailController.php:105
+msgid "Zpráva z kontaktního formuláře"
+msgstr ""
+
+#: inc/core/frontend_controllers/uzivatelDetailController.php:111
+#: inc/core/frontend_views/loginView.php:36
+#: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:57
+#: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:58
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:92
+#: inc/core/frontend_views/uzivatelDetailView.php:65
+#: inc/core/frontend_views/uzivatelDetailView.php:157
+#: templates/page-profil.php:58
+msgid "Email"
+msgstr "E-mail"
+
+#: inc/core/frontend_controllers/uzivatelDetailController.php:111
+msgid "Email se nepodařilo odeslat. Kontaktujte prosím administrátora."
+msgstr ""
+
+#: inc/core/frontend_controllers/uzivatelDetailController.php:116
+msgid "Uživatel, kterému má být doručena zpráva, nebyl nalezen"
+msgstr ""
+
+#: inc/core/frontend_controllers/uzivatelDetailController.php:151
+#: inc/core/frontend_controllers/uzivatelDetailController.php:194
+#: inc/core/frontend_controllers/uzivatelDetailController.php:271
+#: inc/core/frontend_controllers/uzivatelDetailController.php:309
+#, fuzzy
+#| msgid "Uživatel není přihlášen nebo nemáte dostatečná oprávnění"
+msgid "Zadaný uživatel neexistuje nebo nemáte oprávnění"
+msgstr "Użytkownik nie jest zalogowany lub nie masz wystarczających uprawnień"
+
+#: inc/core/frontend_controllers/uzivatelDetailController.php:188
+#: inc/core/frontend_views/loginView.php:64
+#: inc/core/frontend_views/loginView.php:105
+msgid "Heslo"
+msgstr "Hasło"
+
+#: inc/core/frontend_controllers/uzivatelDetailController.php:188
+msgid "Heslo bylo úspěšně změněno"
+msgstr ""
+
+#: inc/core/frontend_controllers/uzivatelDetailController.php:190
+msgid "Heslo bylo změněno"
+msgstr ""
+
+#: inc/core/frontend_controllers/uzivatelDetailController.php:190
+msgid "Právě Vás přesměrováváme zpět do Vašeho profilu"
+msgstr ""
+
+#: inc/core/frontend_controllers/uzivatelDetailController.php:235
+msgid "Uživatel s tímto emailem v systému již existuje"
+msgstr ""
+
+#: inc/core/frontend_controllers/uzivatelDetailController.php:244
+msgid "Uživatelé s tímto emailem v systému již existují"
+msgstr ""
+
+#: inc/core/frontend_controllers/uzivatelDetailController.php:264
+msgid "Úspěšně změněno"
+msgstr ""
+
+#: inc/core/frontend_controllers/uzivatelDetailController.php:264
+#, fuzzy
+#| msgid "Uživatel byl ověřen."
+msgid "Uživatel byl úspěšně změněn"
+msgstr "Użytkownik został uwierzytelniony."
+
+#: inc/core/frontend_controllers/uzivatelDetailController.php:305
+msgid "Byl jste úspěšně odhlášení, probíhá přesměrování"
+msgstr ""
 
 #: inc/core/frontend_views/confirmPaymentView.php:5
 msgid "Objednávka byla zaplacena"
@@ -639,7 +900,6 @@ msgstr ""
 #: inc/core/frontend_views/inzeratDetailView_zaloha.php:110
 #: inc/core/frontend_views/inzeratEditView.php:156
 #: inc/core/frontend_views/pridatInzeratView.php:16
-#: inc/core/frontend_views/pridatInzeratView.php:214
 msgid "Dispozice"
 msgstr "Dyspozycja"
 
@@ -657,7 +917,6 @@ msgstr "Powierzchnia podłogowa"
 #: inc/core/frontend_views/inzeratDetailView.php:240
 #: inc/core/frontend_views/inzeratDetailView_zaloha.php:122
 #: inc/core/frontend_views/pridatInzeratView.php:27
-#: inc/core/frontend_views/pridatInzeratView.php:264
 msgid "Cena"
 msgstr "Cena"
 
@@ -756,7 +1015,6 @@ msgstr "Wartość energetyczna"
 #: inc/core/frontend_views/inzeratDetailView.php:276
 #: inc/core/frontend_views/inzeratDetailView_zaloha.php:158
 #: inc/core/frontend_views/pridatInzeratView.php:33
-#: inc/core/frontend_views/pridatInzeratView.php:311
 msgid "Vybavenost"
 msgstr "Umeblowanie"
 
@@ -764,7 +1022,6 @@ msgstr "Umeblowanie"
 #: inc/core/frontend_views/inzeratDetailView.php:288
 #: inc/core/frontend_views/inzeratDetailView_zaloha.php:170
 #: inc/core/frontend_views/pridatInzeratView.php:35
-#: inc/core/frontend_views/pridatInzeratView.php:338
 msgid "Terasa"
 msgstr "Taras"
 
@@ -772,7 +1029,6 @@ msgstr "Taras"
 #: inc/core/frontend_views/inzeratDetailView.php:292
 #: inc/core/frontend_views/inzeratDetailView_zaloha.php:174
 #: inc/core/frontend_views/pridatInzeratView.php:36
-#: inc/core/frontend_views/pridatInzeratView.php:343
 msgid "Výtah"
 msgstr "Winda"
 
@@ -783,7 +1039,6 @@ msgstr "Winda"
 #: inc/core/frontend_views/inzeratDetailView_zaloha.php:178
 #: inc/core/frontend_views/inzeratDetailView_zaloha.php:188
 #: inc/core/frontend_views/pridatInzeratView.php:38
-#: inc/core/frontend_views/pridatInzeratView.php:353
 msgid "Garáž"
 msgstr "Garaż"
 
@@ -809,7 +1064,6 @@ msgstr ""
 
 #: inc/core/frontend_views/inzeratDetailView_zaloha.php:78
 #: inc/core/frontend_views/inzeratEditView.php:172
-#: inc/core/frontend_views/pridatInzeratView_zaloha.php:188
 msgid "Cena nemovitosti"
 msgstr ""
 
@@ -831,13 +1085,10 @@ msgstr ""
 
 #: inc/core/frontend_views/inzeratEditView.php:20
 #: inc/core/frontend_views/pridatInzeratView.php:14
-#: inc/core/frontend_views/pridatInzeratView.php:160
-#: inc/core/frontend_views/pridatInzeratView_zaloha.php:46
 msgid "Typ inzerátu"
 msgstr "Typ ogłoszenia"
 
 #: inc/core/frontend_views/inzeratEditView.php:55
-#: inc/core/frontend_views/pridatInzeratView_zaloha.php:81
 msgid "Typ Nemovitosti"
 msgstr "Typ nieruchomości"
 
@@ -927,24 +1178,14 @@ msgid ""
 "přesuneme hned na vytváření inzerátu."
 msgstr "Musisz być zalogowany lub zarejestrowany, aby utworzyć reklamę."
 
-#: inc/core/frontend_views/loginView.php:36
-#: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:57
-#: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:58
-#: inc/core/frontend_views/uzivatelDetailPrivateView.php:92
-#: inc/core/frontend_views/uzivatelDetailView.php:65
-#: inc/core/frontend_views/uzivatelDetailView.php:157
-#: templates/page-profil.php:58
-msgid "Email"
-msgstr "E-mail"
-
 #: inc/core/frontend_views/loginView.php:38
-#: inc/core/frontend_views/loginView.php:95
+#: inc/core/frontend_views/loginView.php:101
 #: inc/core/frontend_views/uzivatelDetailView.php:159
 msgid "Email-syntax"
 msgstr "E-mail"
 
 #: inc/core/frontend_views/loginView.php:43
-#: inc/core/frontend_views/loginView.php:142
+#: inc/core/frontend_views/loginView.php:148
 #: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:50
 #: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:51
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:95
@@ -954,13 +1195,13 @@ msgstr "E-mail"
 msgid "Telefon"
 msgstr ""
 
-#: inc/core/frontend_views/loginView.php:44
-#: inc/core/frontend_views/loginView.php:143
+#: inc/core/frontend_views/loginView.php:45
+#: inc/core/frontend_views/loginView.php:149
 #: inc/core/frontend_views/uzivatelDetailView.php:153
 msgid "Telefon-syntax"
 msgstr "Telefon"
 
-#: inc/core/frontend_views/loginView.php:48
+#: inc/core/frontend_views/loginView.php:50
 #: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:26
 #: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:27
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:86
@@ -970,11 +1211,11 @@ msgstr "Telefon"
 msgid "Jméno"
 msgstr "Imię"
 
-#: inc/core/frontend_views/loginView.php:49
+#: inc/core/frontend_views/loginView.php:52
 msgid "Jméno-syntax"
 msgstr "Imię"
 
-#: inc/core/frontend_views/loginView.php:53
+#: inc/core/frontend_views/loginView.php:57
 #: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:30
 #: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:31
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:89
@@ -984,67 +1225,62 @@ msgstr "Imię"
 msgid "Příjmení"
 msgstr "Nazwisko"
 
-#: inc/core/frontend_views/loginView.php:54
+#: inc/core/frontend_views/loginView.php:59
 msgid "Prijmeni-syntax"
 msgstr "Nazwisko"
 
-#: inc/core/frontend_views/loginView.php:58
-#: inc/core/frontend_views/loginView.php:99
-msgid "Heslo"
-msgstr "Hasło"
-
-#: inc/core/frontend_views/loginView.php:64
+#: inc/core/frontend_views/loginView.php:70
 msgid "Zopakovat heslo"
 msgstr "Powtórz hasło"
 
-#: inc/core/frontend_views/loginView.php:70
-#: inc/core/frontend_views/loginView.php:146
+#: inc/core/frontend_views/loginView.php:76
+#: inc/core/frontend_views/loginView.php:152
 msgid "Stisknutím tlačítka “Registrovat” vyjadřujete souhlas s "
 msgstr "Naciskając przycisk „Zarejestruj się”, wyrażasz zgodę na "
 
-#: inc/core/frontend_views/loginView.php:70
-#: inc/core/frontend_views/loginView.php:146
+#: inc/core/frontend_views/loginView.php:76
+#: inc/core/frontend_views/loginView.php:152
 msgid "Obchodními podmínkami"
 msgstr "Warunki"
 
-#: inc/core/frontend_views/loginView.php:70
-#: inc/core/frontend_views/loginView.php:146
+#: inc/core/frontend_views/loginView.php:76
+#: inc/core/frontend_views/loginView.php:152
 msgid "Zpracováním osobních údajů"
 msgstr "Przetwarzanie danych osobowych"
 
-#: inc/core/frontend_views/loginView.php:74
+#: inc/core/frontend_views/loginView.php:80
 msgid "Registrovat"
 msgstr "Rejestracja"
 
-#: inc/core/frontend_views/loginView.php:94
+#: inc/core/frontend_views/loginView.php:100
 msgid "Přihlašovací email"
 msgstr "E-mail logowania"
 
-#: inc/core/frontend_views/loginView.php:102
+#: inc/core/frontend_views/loginView.php:108
 msgid "Zapomenuté heslo?"
 msgstr "Nie pamiętasz hasła?"
 
-#: inc/core/frontend_views/loginView.php:105
+#: inc/core/frontend_views/loginView.php:111
 msgid "Zůstat přihlášen"
 msgstr "Pozostań zalogowany"
 
-#: inc/core/frontend_views/loginView.php:109
+#: inc/core/frontend_views/loginView.php:115
 msgid "Přihlásit se"
 msgstr "Zaloguj się"
 
-#: inc/core/frontend_views/loginView.php:111
+#: inc/core/frontend_views/loginView.php:117
 msgid "Nemáte ešte u nás účet?"
 msgstr "Nie masz jeszcze konta?"
 
-#: inc/core/frontend_views/loginView.php:111
+#: inc/core/frontend_views/loginView.php:117
 msgid "Zaregistrujte sa"
 msgstr "Zarejestruj się"
 
-#: inc/core/frontend_views/loginView.php:127
+#: inc/core/frontend_views/loginView.php:133
 msgid "Doplnění údajů"
 msgstr "Dodanie danych"
 
-#: inc/core/frontend_views/loginView.php:129
+#: inc/core/frontend_views/loginView.php:135
 msgid ""
 "Děkujeme za registraci prostřednictvím Google. Dokončete registraci "
 "doplněním zbylých údajů. Děkujeme"
@@ -1052,7 +1288,7 @@ msgstr ""
 "Dziękujemy za rejestrację za pośrednictwem Google. Dokończ rejestrację, "
 "wypełniając pozostałe dane. Dziękuję"
 
-#: inc/core/frontend_views/loginView.php:150
+#: inc/core/frontend_views/loginView.php:156
 msgid "Potvrdit"
 msgstr "Potwierdź"
 
@@ -1128,20 +1364,14 @@ msgid "Toto pole je povinné"
 msgstr "To pole jest wymagane"
 
 #: inc/core/frontend_views/pridatInzeratView.php:9
-#: inc/core/frontend_views/pridatInzeratView.php:129
-#: inc/core/frontend_views/pridatInzeratView_zaloha.php:17
 msgid "1. Základní informace"
 msgstr "1. Podstawowe informacje"
 
 #: inc/core/frontend_views/pridatInzeratView.php:10
-#: inc/core/frontend_views/pridatInzeratView.php:135
-#: inc/core/frontend_views/pridatInzeratView_zaloha.php:23
 msgid "2. Doplňující informace"
 msgstr "2. Dodatkowe informacje"
 
 #: inc/core/frontend_views/pridatInzeratView.php:11
-#: inc/core/frontend_views/pridatInzeratView.php:142
-#: inc/core/frontend_views/pridatInzeratView_zaloha.php:30
 msgid "3. Fotografie"
 msgstr "3. Zdjęcia"
 
@@ -1154,19 +1384,14 @@ msgid "Vložení inzerátu"
 msgstr "Dodanie ogłoszenia"
 
 #: inc/core/frontend_views/pridatInzeratView.php:15
-#: inc/core/frontend_views/pridatInzeratView.php:186
 msgid "Typ nemovitosti"
 msgstr "Typ nieruchomości"
 
 #: inc/core/frontend_views/pridatInzeratView.php:17
-#: inc/core/frontend_views/pridatInzeratView.php:289
-#: inc/core/frontend_views/pridatInzeratView.php:548
-#: inc/core/frontend_views/pridatInzeratView.php:590
 msgid "Pokračovat"
 msgstr "Kontynuuj"
 
 #: inc/core/frontend_views/pridatInzeratView.php:18
-#: inc/core/frontend_views/pridatInzeratView.php:232
 msgid "Rozloha"
 msgstr "Powierzchnia"
 
@@ -1179,7 +1404,6 @@ msgid "Plocha pozemku"
 msgstr "Powierzchnia działki"
 
 #: inc/core/frontend_views/pridatInzeratView.php:22
-#: inc/core/frontend_views/pridatInzeratView.php:248
 msgid "Poloha"
 msgstr "Lokalizacja"
 
@@ -1200,32 +1424,26 @@ msgid "měsíc"
 msgstr "miesiąc"
 
 #: inc/core/frontend_views/pridatInzeratView.php:32
-#: inc/core/frontend_views/pridatInzeratView.php:300
 msgid "K dispozici od"
 msgstr "Dostępny od"
 
 #: inc/core/frontend_views/pridatInzeratView.php:34
-#: inc/core/frontend_views/pridatInzeratView.php:333
 msgid "Vybavení"
 msgstr "Wyposażenie"
 
 #: inc/core/frontend_views/pridatInzeratView.php:37
-#: inc/core/frontend_views/pridatInzeratView.php:348
 msgid "Parkování"
 msgstr "Parking"
 
 #: inc/core/frontend_views/pridatInzeratView.php:39
-#: inc/core/frontend_views/pridatInzeratView.php:358
 msgid "Balkon"
 msgstr "Balkon"
 
 #: inc/core/frontend_views/pridatInzeratView.php:40
-#: inc/core/frontend_views/pridatInzeratView.php:386
 msgid "Další vybavení"
 msgstr "Pozostałe wyposażenie"
 
 #: inc/core/frontend_views/pridatInzeratView.php:41
-#: inc/core/frontend_views/pridatInzeratView.php:398
 msgid "Poschodí"
 msgstr "Piętro"
 
@@ -1234,27 +1452,22 @@ msgid "z"
 msgstr "z"
 
 #: inc/core/frontend_views/pridatInzeratView.php:43
-#: inc/core/frontend_views/pridatInzeratView.php:444
 msgid "Stav objektu"
 msgstr "Stan obiektu"
 
 #: inc/core/frontend_views/pridatInzeratView.php:44
-#: inc/core/frontend_views/pridatInzeratView.php:466
 msgid "Vlastnictví"
 msgstr "Własność"
 
 #: inc/core/frontend_views/pridatInzeratView.php:45
-#: inc/core/frontend_views/pridatInzeratView.php:480
 msgid "Typ stavby"
 msgstr "Rodzaj zabudowy"
 
 #: inc/core/frontend_views/pridatInzeratView.php:46
-#: inc/core/frontend_views/pridatInzeratView.php:494
 msgid "Energetická hodnota"
 msgstr "Wartość energetyczna"
 
 #: inc/core/frontend_views/pridatInzeratView.php:47
-#: inc/core/frontend_views/pridatInzeratView.php:508
 msgid "Byt je vhodný pro"
 msgstr "Mieszkanie jest odpowiednie dla"
 
@@ -1263,43 +1476,34 @@ msgid "Např. mladý pár"
 msgstr "Np. młodej pary"
 
 #: inc/core/frontend_views/pridatInzeratView.php:49
-#: inc/core/frontend_views/pridatInzeratView.php:520
 msgid "Okolí nemovitosti"
 msgstr "Okolica nieruchomości"
 
 #: inc/core/frontend_views/pridatInzeratView.php:50
-#: inc/core/frontend_views/pridatInzeratView.php:524
 msgid "Popište, co se nachází v okolí nemovitosti..."
 msgstr "Opisz, co znajduje się w okolicy nieruchomości."
 
 #: inc/core/frontend_views/pridatInzeratView.php:51
-#: inc/core/frontend_views/pridatInzeratView.php:532
 msgid "Doplňující popis"
 msgstr "Opis uzupełniający"
 
 #: inc/core/frontend_views/pridatInzeratView.php:52
-#: inc/core/frontend_views/pridatInzeratView.php:536
 msgid "Je ještě něco, co byste chtěli doplnit k inzerátu?"
 msgstr "Czy jest jeszcze coś, co chciałbyś dodać do ogłoszenia?"
 
 #: inc/core/frontend_views/pridatInzeratView.php:53
-#: inc/core/frontend_views/pridatInzeratView.php:545
-#: inc/core/frontend_views/pridatInzeratView.php:587
 msgid "Zpět"
 msgstr "Wstecz"
 
 #: inc/core/frontend_views/pridatInzeratView.php:54
-#: inc/core/frontend_views/pridatInzeratView.php:559
 msgid "Fotografie"
 msgstr "Zdjęcia"
 
 #: inc/core/frontend_views/pridatInzeratView.php:55
-#: inc/core/frontend_views/pridatInzeratView.php:570
 msgid "Vyberte náhledový obrázek"
 msgstr "Wybierz obraz poglądowy"
 
 #: inc/core/frontend_views/pridatInzeratView.php:56
-#: inc/core/frontend_views/pridatInzeratView.php:601
 msgid "Náhled přidaného inzerátu"
 msgstr "Podgląd dodanego ogłoszenia"
 
@@ -1378,27 +1582,6 @@ msgstr " Przeglądaj"
 #: inc/core/frontend_views/pridatInzeratView.php:76
 msgid "Nahrajte nový obrázek (maximálně 10 v jednu chvíli)"
 msgstr "Prześlij nowy obraz (maksymalnie 10 na raz)"
-
-#: inc/core/frontend_views/pridatInzeratView.php:148
-#: inc/core/frontend_views/pridatInzeratView_zaloha.php:36
-msgid "4. Sumarizace"
-msgstr "4. Podsumowanie"
-
-#: inc/core/frontend_views/pridatInzeratView.php:363
-msgid "Pivnice"
-msgstr "Bar"
-
-#: inc/core/frontend_views/pridatInzeratView.php:368
-msgid "Lednička"
-msgstr "Lodówka"
-
-#: inc/core/frontend_views/pridatInzeratView.php:373
-msgid "Pračka"
-msgstr "Pralka"
-
-#: inc/core/frontend_views/pridatInzeratView.php:379
-msgid "Myčka"
-msgstr "Zmywarka"
 
 #: inc/core/frontend_views/registerRequestConfirmationView.php:1
 msgid "Účet byl založen. Prosím aktivujte ho."
@@ -1583,7 +1766,7 @@ msgid ""
 "makléři."
 msgstr ""
 
-#: inc/core/frontend_views/vypisMapaView.php:32 templates/header-main.php:122
+#: inc/core/frontend_views/vypisMapaView.php:32 templates/header-main.php:116
 msgid "Přidat inzerát"
 msgstr "Dodaj ogłoszenia"
 
@@ -1603,35 +1786,35 @@ msgstr ""
 msgid "Můj profil"
 msgstr "Moje konto"
 
-#: templates/header-main.php:48 templates/header-main.php:139
+#: templates/header-main.php:48 templates/header-main.php:133
 msgid "Odhlásit se"
 msgstr "Wyloguj się"
 
-#: templates/header-main.php:123
+#: templates/header-main.php:117
 #, fuzzy
 #| msgid "Titulek inzerátu"
 msgid "Hledat inzerát"
 msgstr "Tytuł ogłoszenia"
 
-#: templates/header-main.php:127
+#: templates/header-main.php:121
 msgid "Mapa"
 msgstr ""
 
-#: templates/header-main.php:128
+#: templates/header-main.php:122
 #, fuzzy
 #| msgid "Typ inzerátu"
 msgid "Výpis inzerátů"
 msgstr "Typ ogłoszenia"
 
-#: templates/header-main.php:129
+#: templates/header-main.php:123
 msgid "Ceník"
 msgstr ""
 
-#: templates/header-main.php:130
+#: templates/header-main.php:124
 msgid "Jak to funguje"
 msgstr ""
 
-#: templates/header-main.php:131
+#: templates/header-main.php:125
 msgid "Služby"
 msgstr ""
 
@@ -1868,6 +2051,21 @@ msgstr ""
 #: templates/page-slider.php:25
 msgid "Vyhledávání na mapě"
 msgstr ""
+
+#~ msgid "4. Sumarizace"
+#~ msgstr "4. Podsumowanie"
+
+#~ msgid "Pivnice"
+#~ msgstr "Bar"
+
+#~ msgid "Lednička"
+#~ msgstr "Lodówka"
+
+#~ msgid "Pračka"
+#~ msgstr "Pralka"
+
+#~ msgid "Myčka"
+#~ msgstr "Zmywarka"
 
 #~ msgid "Jste:"
 #~ msgstr "Jesteś:"

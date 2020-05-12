@@ -36,13 +36,13 @@ class hlidacipesController extends frontendController {
 					$this->requestData['pes'] = $pes;
 
 				}else{
-					frontendError::addMessage("Hlídací pes", ERROR, "Tento hlídací pes Vám nepatří.");
+					frontendError::addMessage(__("Hlídací pes","realsys"), ERROR, __("Tento hlídací pes Vám nepatří.","realsys"));
 					$this->setView("error");
 					return false;
 				}
 			}
 		}else{
-			frontendError::addMessage("Pole", ERROR, "Některá pole nebyla vyplněna");
+			frontendError::addMessage(__("Povinná pole","realsys"), ERROR, __("Některá pole nebyla vyplněna","realsys"));
 			$this->setView("error");
 			return false;
 		}

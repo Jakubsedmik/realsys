@@ -9,7 +9,7 @@ class objednavkaController extends frontendController {
 
 	public function action() {
 		if(uzivatelClass::getUserLoggedId() == false){
-			frontendError::addMessage("Uživatel", ERROR, "Uživatel není přihlášený. Pro nákup kreditů se nejprve přihlašte");
+			frontendError::addMessage(__("Autorizace","realsys"), ERROR, __("Uživatel není přihlášený. Pro nákup kreditů se nejprve přihlašte","realsys"));
 			$this->setView("error");
 			return false;
 		}
@@ -30,7 +30,7 @@ class objednavkaController extends frontendController {
 					'ammount' => $service['price'],
 					'price' => $service['price'] * ALONE_CREDIT_PRICE,
 					'name' => $service['name'],
-					'message' => 'Nákupem kreditů nebude služba aktivována, po nákupu kreditů prosím službu opět stejným postupem aktivujte za již nakoupené kredity'
+					'message' => __('Nákupem kreditů nebude služba aktivována, po nákupu kreditů prosím službu opět stejným postupem aktivujte za již nakoupené kredity',"realsys")
 				);
 				$this->workData['customService'] = $customService;
 			}
@@ -71,7 +71,7 @@ class objednavkaController extends frontendController {
 								$serviceOrder = $service;
 							}
 						}else{
-							frontendError::addMessage("Služba", ERROR, "Tato služba v systému neexistuje.");
+							frontendError::addMessage(__("Služba","realsys"), ERROR, __("Tato služba v systému neexistuje.","realsys"));
 							$this->setView("error");
 							return false;
 						}
@@ -92,31 +92,32 @@ class objednavkaController extends frontendController {
 							"db_stav" => 0
 						));
 						if($objednavka){
-							Tools::jsRedirect(Tools::getFERoute("gopay",$objednavka->getId(),"payment"), 1500, "Potvrzení", "Potvrzujeme objednávku - přesměrováváme Vás na platební bránu");
-							frontendError::addMessage("Objednávka", SUCCESS, "Potvrzujeme Vaši objednávku, přesměrováváme Vás na platební bránu");
+							Tools::jsRedirect(Tools::getFERoute("gopay",$objednavka->getId(),"payment"), 1500, __("Potvrzení","realsys"), __("Potvrzujeme objednávku - přesměrováváme Vás na platební bránu","realsys"));
+							frontendError::addMessage(__("Objednávka","realsys"), SUCCESS, __("Potvrzujeme Vaši objednávku, přesměrováváme Vás na platební bránu","realsys"));
 							return true;
 						}else{
-							frontendError::addMessage("Objednávka", ERROR, "Objednávku se nepodařilo vytvořit - kontaktujte administrátora");
+							frontendError::addMessage(__("Objednávka","realsys"), ERROR, __("Objednávku se nepodařilo vytvořit - kontaktujte administrátora","realsys"));
 							$this->setView("error");
 							return false;
 						}
 
 					}else{
-						frontendError::addMessage("Množství kreditů", ERROR, "Toto množství kreditů neprodáváme");
+						frontendError::addMessage(__("Množství kreditů","realsys"), ERROR, __("Toto množství kreditů neprodáváme","realsys"));
 						$this->setView("error");
 						return false;
 					}
 				}else{
-					frontendError::addMessage("Platební metoda", ERROR, "Tuto platební metodu systém nepodporuje");
+					frontendError::addMessage(__("Platební metoda","realsys"), ERROR, __("Tuto platební metodu systém nepodporuje","realsys"));
 					$this->setView("error");
 					return false;
 				}
 			}else{
-				frontendError::addMessage("Pole", "Požadovaná pole nebyla vyplněna");
+				frontendError::addMessage(__("Povinná pole","realsys"), ERROR, __("Některá pole nebyla vyplněna","realsys"));
+				$this->setView("error");
 				return false;
 			}
 		}else{
-			frontendError::addMessage("Uživatel", ERROR, "Uživatel není přihlášený. Pro nákup kreditů se nejprve přihlašte");
+			frontendError::addMessage(__("Autorizace","realsys"), ERROR, __("Uživatel není přihlášený. Pro nákup kreditů se nejprve přihlašte","realsys"));
 			$this->setView("error");
 			return false;
 		}

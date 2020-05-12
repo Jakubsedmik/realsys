@@ -28,22 +28,22 @@ class inzeratEditController extends frontendController {
 						$this->requestData['uzivatel'] = $uzivatel;
 						return true;
 					}else{
-						frontendError::addMessage("Vlastnictví inzerátu", ERROR, "Nejste vlastníkem daného inzerátu");
+						frontendError::addMessage(__("Vlastnictví inzerátu","realys"), ERROR, __("Nejste vlastníkem daného inzerátu","realsys"));
 						$this->setView("error");
 						return false;
 					}
 				}else{
-					frontendError::addMessage("Inzerát / uživatel", ERROR, "Inzerát nebo uživatel nebyli nalezeni");
+					frontendError::addMessage(__("Inzerát / uživatel","realsys"), ERROR, __("Inzerát nebo uživatel nebyli nalezeni","realsys"));
 					$this->setView("error");
 					return false;
 				}
 			}else{
-				frontendError::addMessage("Přihlášení", ERROR, "Nejste přihlášení do systému");
+				frontendError::addMessage(__("Přihlášení","realsys"), ERROR, __("Nejste přihlášení do systému","realsys"));
 				$this->setView("error");
 				return false;
 			}
 		}else{
-			frontendError::addMessage("Pole", ERROR, "Některá pole nebyla vyplněna");
+			frontendError::addMessage(__("Povinná pole","realsys"), ERROR, __("Některá pole nebyla vyplněna","realsys"));
 			$this->setView("error");
 			return false;
 		}
@@ -110,27 +110,27 @@ class inzeratEditController extends frontendController {
 								$inzerat->db_lat = $lat;
 								$inzerat->db_lng = $lng;
 							}else{
-								frontendError::addMessage("Geocoding", ERROR, "Geokódování adresy se nepodařilo, byli zachovány staré souřadnice");
+								frontendError::addMessage(__("Geocoding","realsys"), ERROR, __("Geokódování adresy se nepodařilo, byli zachovány staré souřadnice","realsys"));
 							}
 						}
 
 					}else{
-						frontendError::addMessage("Vlastnictví inzerátu", ERROR, "Nejste vlastníkem daného inzerátu");
+						frontendError::addMessage(__("Vlastnictví inzerátu","realsys"), ERROR, __("Nejste vlastníkem daného inzerátu","realsys"));
 						$this->setView("error");
 						return false;
 					}
 				}else{
-					frontendError::addMessage("Inzerát / uživatel", ERROR, "Inzerát nebo uživatel nebyli nalezeni");
+					frontendError::addMessage(__("Inzerát / uživatel","realsys"), ERROR, __("Inzerát nebo uživatel nebyli nalezeni","realsys"));
 					$this->setView("error");
 					return false;
 				}
 			}else{
-				frontendError::addMessage("Přihlášení", ERROR, "Nejste přihlášení do systému");
+				frontendError::addMessage(__("Autorizace","realsys"), ERROR, __("Nejste přihlášení do systému","realsys"));
 				$this->setView("error");
 				return false;
 			}
 		}else{
-			frontendError::addMessage("Pole", ERROR, "Některá pole nebyla vyplněna");
+			frontendError::addMessage(__("Povinná pole","realsys"), ERROR, __("Některá pole nebyla vyplněna","realsys"));
 			$this->setView("error");
 			return false;
 		}

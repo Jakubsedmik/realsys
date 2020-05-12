@@ -26,14 +26,14 @@ class inzeratDetailController extends frontendController{
 					if(uzivatelClass::getUserLoggedId() !== false){
 						$uzivatel = assetsFactory::getEntity("uzivatelClass", uzivatelClass::getUserLoggedId());
 						$this->requestData['aktivni'] = false;
-						frontendError::addMessage("Inzerát",WARNING, "Pozor tento inzerát je neaktivní. Buď čeká na schválení administrátorem a nebo jste ho deaktivovali. Tento inzerát vidíte pouze vy.");
+						frontendError::addMessage(__("Inzerát","realsys"),WARNING, __("Pozor tento inzerát je neaktivní. Buď čeká na schválení administrátorem a nebo jste ho deaktivovali. Tento inzerát vidíte pouze vy.","realsys"));
 						if($uzivatel && $uzivatel->getId() != $inzerat->db_uzivatel_id){
-							frontendError::addMessage("Inzerát", ERROR, "Inzerát není aktivní.");
+							frontendError::addMessage(__("Inzerát","realsys"), ERROR, __("Inzerát není aktivní.","realsys"));
 							$this->setView("error");
 							return false;
 						}
 					}else{
-						frontendError::addMessage("Inzerát", ERROR, "Inzerát není aktivní.");
+						frontendError::addMessage(__("Inzerát","realys"), ERROR, __("Inzerát není aktivní.","realsys"));
 						$this->setView("error");
 						return false;
 					}
@@ -45,12 +45,13 @@ class inzeratDetailController extends frontendController{
 				$this->performView();
 			}else{
 				trigger_error("Tento inzerát neexistuje.");
-				frontendError::addMessage("Inzerát", ERROR, "zadaný inzerát neexistuje.");
+				frontendError::addMessage(__("Inzerát","realsys"), ERROR, __("Zadaný inzerát neexistuje.","realsys"));
 				$this->setView("error");
 			}
 
 
 		}else{
+			frontendError::addMessage(__("Povinná pole","realsys"), ERROR, __("Některá pole nebyla vyplněna","realsys"));
 			trigger_error("Došlo k chybě ve validaci parametrů :: action|inzeratDetailController");
 			$this->setView("error");
 		}

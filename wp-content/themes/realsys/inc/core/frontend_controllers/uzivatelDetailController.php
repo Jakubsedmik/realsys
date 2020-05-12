@@ -34,19 +34,17 @@ class uzivatelDetailController extends frontendController {
 			}else{
 
 				trigger_error("Tento uživatel neexistuje");
-				frontendError::addMessage("id", ERROR, "zadaný uživatel neexistuje");
+				frontendError::addMessage(__("Uživatel","realsys"), ERROR, __("Zadaný uživatel neexistuje", "realsys"));
 				$this->setView("error");
 			}
 
 
 		}else{
 			trigger_error("Došlo k chybě ve validaci parametrů :: action|uzivatelDetailController");
+			frontendError::addMessage(__("Povinná pole","realsys"), ERROR, __("Některá pole nebyla vyplněna","realsys"));
 			$this->setView("error");
 		}
 
-		//$transactionFactory = new transactionFactory(uzivatelClass::getUserLoggedObject(), uzivatelClass::getUserLoggedObject());
-		//$response = $transactionFactory->requestService(SLUZBA_TOPOVANI_INZERATU);
-		//globalUtils::writeDebug($response);
 		$this->performView();
 
 	}
@@ -104,19 +102,25 @@ class uzivatelDetailController extends frontendController {
 					'zprava' => $zprava
 				);
 
-				$result = Tools::sendMail($delivering_email, "Zpráva z kontaktního formuláře", "message", $data);
+				$result = Tools::sendMail($delivering_email, __("Zpráva z kontaktního formuláře","realsys"), "message", $data);
 				if($result){
 					$routeBack = Tools::getFERoute("uzivatelClass",$uzivatel_id);
 					$this->requestData['link'] = $routeBack;
 					$this->setView("messageSent");
 				}else{
+					frontendError::addMessage(__("Email","realsys"), ERROR, __("Email se nepodařilo odeslat. Kontaktujte prosím administrátora.","realsys"));
 					$this->setView("error");
+					return false;
 				}
 			}else{
+				frontendError::addMessage(__("Uživatel","realsys"), ERROR, __("Uživatel, kterému má být doručena zpráva, nebyl nalezen","realsys"));
 				$this->setView("error");
+				return false;
 			}
 		}else{
+			frontendError::addMessage(__("Povinná pole","realsys"), ERROR, __("Některá pole nebyla vyplněna","realsys"));
 			$this->setView("error");
+			return false;
 		}
 
 	}
@@ -144,12 +148,13 @@ class uzivatelDetailController extends frontendController {
 
 			}else{
 				trigger_error("Tento uživatel neexistuje nebo nemáte oprávnění");
-				frontendError::addMessage("id", ERROR, "Zadaný uživatel neexistuje nebo nemáte oprávnění");
+				frontendError::addMessage(__("Uživatel","realsys"), ERROR, __("Zadaný uživatel neexistuje nebo nemáte oprávnění","realsys"));
 				$this->setView("notFound");
 			}
 
 		}else{
 			trigger_error("Došlo k chybě ve validaci parametrů :: action|uzivatelDetailController");
+			frontendError::addMessage(__("Povinná pole","realsys"), ERROR, __("Některá pole nebyla vyplněna","realsys"));
 			$this->setView("error");
 		}
 
@@ -180,19 +185,19 @@ class uzivatelDetailController extends frontendController {
 				$uzivatel->storePassword($new_password);
 				$this->workData['uzivatel'] = $uzivatel;
 
-				frontendError::addMessage("Heslo",SUCCESS, "Heslo bylo úspěšně změněno");
+				frontendError::addMessage(__("Heslo","realsys"),SUCCESS, __("Heslo bylo úspěšně změněno","realsys"));
 				$this->setView("uzivatelDetailPrivateEdit");
-
-				Tools::jsRedirect(Tools::getFERoute("uzivatelClass",$id, "detail"),1000,"Heslo bylo změněno","Právě Vás přesměrováváme zpět do Vašeho profilu");
+				Tools::jsRedirect(Tools::getFERoute("uzivatelClass",$id, "detail"),1000,__("Heslo bylo změněno","realsys"),__("Právě Vás přesměrováváme zpět do Vašeho profilu","realsys"));
 
 			}else{
 				trigger_error("Tento uživatel neexistuje nebo nemáte oprávnění");
-				frontendError::addMessage("id", ERROR, "Zadaný uživatel neexistuje nebo nemáte oprávnění");
+				frontendError::addMessage(__("Uživatel","realsys"), ERROR, __("Zadaný uživatel neexistuje nebo nemáte oprávnění","realsys"));
 				$this->setView("notFound");
 			}
 
 		}else{
 			trigger_error("Došlo k chybě ve validaci parametrů :: action|uzivatelDetailController");
+			frontendError::addMessage(__("Povinná pole","realsys"), ERROR, __("Některá pole nebyla vyplněna","realsys"));
 			$this->setView("error");
 		}
 
@@ -227,7 +232,7 @@ class uzivatelDetailController extends frontendController {
 				if(count($users) == 1 ){
 					$first_user = array_shift($users);
 					if($first_user->getId() != $uzivatel->getId()){
-						frontendError::addMessage("Uživatel",ERROR,"Uživatel s tímto emailem v systému již existuje");
+						frontendError::addMessage(__("Uživatel","realsys"),ERROR,__("Uživatel s tímto emailem v systému již existuje","realsys"));
 						$this->setView("error");
 						$this->performView();
 						return false;
@@ -236,7 +241,7 @@ class uzivatelDetailController extends frontendController {
 						$this->requestData['db_email'] = $email;
 					}
 				}elseif (count($users) > 1){
-					frontendError::addMessage("Uživatel",ERROR,"Uživatelé s tímto emailem v systému již existují");
+					frontendError::addMessage(__("Uživatel","realsys"),ERROR,__("Uživatelé s tímto emailem v systému již existují","realsys"));
 					$this->setView("error");
 					$this->performView();
 					return false;
@@ -256,19 +261,20 @@ class uzivatelDetailController extends frontendController {
 				);
 
 				if($response){
-					Tools::jsRedirect(Tools::getFERoute("uzivatelClass",$id, "detail"),1000, "Úspěšně změněno", "Uživatel byl úspěšně změněn");
+					Tools::jsRedirect(Tools::getFERoute("uzivatelClass",$id, "detail"),1000, __("Úspěšně změněno","realsys"), __("Uživatel byl úspěšně změněn","realsys"));
 				}
 				$this->setView("uzivatelDetailPrivateEdit");
 				$this->workData['uzivatel'] = $uzivatel;
 
 			}else{
 				trigger_error("Tento uživatel neexistuje nebo nemáte oprávnění");
-				frontendError::addMessage("id", ERROR, "Zadaný uživatel neexistuje nebo nemáte oprávnění");
+				frontendError::addMessage(__("Uživatel","realsys"), ERROR, __("Zadaný uživatel neexistuje nebo nemáte oprávnění","realsys"));
 				$this->setView("notFound");
 			}
 
 		}else{
 			trigger_error("Došlo k chybě ve validaci parametrů :: action|uzivatelDetailController");
+			frontendError::addMessage(__("Povinná pole","realsys"), ERROR, __("Některá pole nebyla vyplněna","realsys"));
 			$this->setView("error");
 		}
 
@@ -296,16 +302,17 @@ class uzivatelDetailController extends frontendController {
 				$uzivatel->logOut();
 				$this->setView("uzivatelDetailPrivate");
 				$this->performView();
-				Tools::jsRedirect(home_url(), "500","Úspěch","Byl jste úspěšně odhlášení, probíhá přesměrování");
+				Tools::jsRedirect(home_url(), "500",__("Úspěch","realsys"),__("Byl jste úspěšně odhlášení, probíhá přesměrování","realsys"));
 
 			}else{
 				trigger_error("Tento uživatel neexistuje nebo nemáte oprávnění");
-				frontendError::addMessage("id", ERROR, "Zadaný uživatel neexistuje nebo nemáte oprávnění");
+				frontendError::addMessage(__("Uživatel","realsys"), ERROR, __("Zadaný uživatel neexistuje nebo nemáte oprávnění","realsys"));
 				$this->setView("notFound");
 			}
 
 		}else{
 			trigger_error("Došlo k chybě ve validaci parametrů :: action|uzivatelDetailController");
+			frontendError::addMessage(__("Povinná pole","realsys"), ERROR, __("Některá pole nebyla vyplněna","realsys"));
 			$this->setView("error");
 		}
 
