@@ -15,7 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.3.1\n"
 
 #: 404.php:8
 msgid "404 - STRANA NENALEZENA"
@@ -139,21 +139,21 @@ msgstr ""
 
 #: inc/core/configuration/configuration.php:513
 msgid "Heslo musí být vyplněno"
-msgstr ""
+msgstr "Hasło musi być wypełnione"
 
 #: inc/core/configuration/configuration.php:516
 msgid "Prosím potvrďte heslo"
-msgstr ""
+msgstr "Prosimy o potwierdzenie hasła"
 
 #: inc/core/configuration/configuration.php:519
 #: inc/core/frontend_controllers/loginController.php:139
 #: inc/core/frontend_controllers/loginController.php:233
 msgid "Uživatel s touto emailovou adresou již existuje"
-msgstr ""
+msgstr "Użytkownik o podanym adresie e-mailowam już istnieje"
 
 #: inc/core/configuration/configuration.php:524
 msgid "Toto pole je povinné."
-msgstr ""
+msgstr "To pole jest obowiązkowe."
 
 #: inc/core/configuration/configuration.php:525
 msgid "Zadejte platnou emailovou adresu."
@@ -412,7 +412,7 @@ msgstr ""
 #: inc/core/frontend_controllers/gopayController.php:83
 #: inc/core/frontend_controllers/gopayController.php:137
 msgid "Některá povinná pole nebyla vyplněna"
-msgstr ""
+msgstr "Niektóre pola obowiązkowe nie zostaly wypełnione"
 
 #: inc/core/frontend_controllers/gopayController.php:118
 #: inc/core/frontend_controllers/uzivatelDetailController.php:305
@@ -1585,15 +1585,15 @@ msgstr "Prześlij nowy obraz (maksymalnie 10 na raz)"
 
 #: inc/core/frontend_views/registerRequestConfirmationView.php:1
 msgid "Účet byl založen. Prosím aktivujte ho."
-msgstr ""
+msgstr "Konto zostało założone. Prosimy o jego aktywację."
 
 #: inc/core/frontend_views/registerRequestConfirmationView.php:2
 msgid "Zkontrolujte vaši emailovu schránku a potvrďte emailovou adresu."
-msgstr ""
+msgstr "Sprawdź swoją skrzynkę e-mailową i potwierdź adres e-mail."
 
 #: inc/core/frontend_views/userConfirmedView.php:1
 msgid "Uživatel byl ověřen"
-msgstr ""
+msgstr "Użytkownik został zweryfikowany"
 
 #: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:11
 msgid "Hlavní informace"
@@ -1611,15 +1611,15 @@ msgstr ""
 #: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:74
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:65
 msgid "Nastavte si dostatečně silné heslo k vašemu účtu."
-msgstr ""
+msgstr "Ustaw dostatecznie mocne hasło dla swojego konta."
 
 #: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:82
 msgid "Nové heslo"
-msgstr ""
+msgstr "Nowe hasło"
 
 #: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:88
 msgid "Potvrďte heslo"
-msgstr ""
+msgstr "Potwierdź hasło"
 
 #: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:94
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:66
@@ -1658,7 +1658,7 @@ msgstr ""
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:104
 #: inc/core/frontend_views/uzivatelDetailView.php:77
 msgid "Aktivní"
-msgstr ""
+msgstr "Aktywne"
 
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:107
 #: inc/core/frontend_views/uzivatelDetailView.php:80

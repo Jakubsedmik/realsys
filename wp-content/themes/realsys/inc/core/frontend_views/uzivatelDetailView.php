@@ -10,6 +10,17 @@
 ?>
 
 
+
+
+
+
+
+
+
+
+
+
+
 <?php invisibleRecaptchaClass::generateRecaptchaListeners(); ?>
 <section>
 	<div class="profileInfo-con">
