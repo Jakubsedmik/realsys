@@ -68,6 +68,9 @@
         $('footer .rn_widget_3').click(function(){
             $('footer .rn_widget_menu_3').toggle();
         });
+        /*$('.rozsirene-button').click(function(){
+            $('.rozsirene-hledani').toggle();
+        })*/
         /*end jquery*/
         })
         </script>
@@ -91,8 +94,10 @@
         });
 
         });
-
         </script>
+        <!-- TODO RANGE INPUTY -->
+        <script type="text/javascript" src="/realsys/wp-content/themes/realsys/assets/js/js_frontend/src/jcf/jcf.range.js"></script>
+        
         <div class="prihlaseni-wrapper">
             <button type="button" class="btn btn-primary mb-md-5" id="myInput" data-toggle="modal" data-target="#prihlaseni">
                 Launch demo modal
