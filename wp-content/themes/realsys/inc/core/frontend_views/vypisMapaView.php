@@ -25,11 +25,11 @@
 <div class="map-vyhl-wrap">
     <section class="map-vyhl row">
         <div class="col-md-6 col-xl-7 mapa-wrap">
-            <div class="fixed-mapa">
+            <div class="fixed-mapa" style="height: 100%;">
                 <iframe
                         src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d81932.2129070209!2d14.330994408203084!3d50.07914092730669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2scz!4v1588522507808!5m2!1sen!2scz"
                         width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen=""
-                        aria-hidden="false" tabindex="0"></iframe>
+                        aria-hidden="false" tabindex="0" style="height: 100%;"></iframe>
             </div>
 
         </div>
@@ -337,16 +337,14 @@
                 </div>
 
 
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center map-paging">
                 <div class="section-paging">
-                    <!---->
                     <ul class="paging">
                         <li class="active">1</li>
                         <li class="">2</li>
                     </ul>
-                    <a class="sub">...</a>
+                    <a class="sub">Další</a>
                 </div>
-
             </div>
 
 

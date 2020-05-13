@@ -284,7 +284,7 @@
             </div>
         </div>
 
-        <div class="col-lg-4 col-md-6 col-sm-12 nemovitost">
+        <div class="col-lg-4 col-md-6 col-sm-12 nemovitost nemovitost-top">
             <div class="nemovitost-wrapper">
                 <div class="nemovitost-image"
                      style="background-image: url(&quot;http://szukajdom.eu/wp-content/uploads/system_data/default_4f22e7f1fd7e65913d121129888cb4d9.jpg&quot;);">
@@ -315,7 +315,7 @@
         </div>
 
 
-        <div class="col-lg-4 col-md-6 col-sm-12 nemovitost">
+        <div class="col-lg-4 col-md-6 col-sm-12 nemovitost nemovitost-top">
             <div class="nemovitost-wrapper">
                 <div class="nemovitost-image"
                      style="background-image: url(&quot;http://szukajdom.eu/wp-content/uploads/system_data/default_4f22e7f1fd7e65913d121129888cb4d9.jpg&quot;);">
