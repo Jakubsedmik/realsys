@@ -18,6 +18,7 @@
 
 
 <section class="profil">
+<?php echo frontendError::getBackendErrors(); ?>
 	<div class="wrapper">
 		<div class="row">
 			<div class="col-lg-3">
