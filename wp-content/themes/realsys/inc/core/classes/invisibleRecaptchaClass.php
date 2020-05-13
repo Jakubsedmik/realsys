@@ -3,10 +3,20 @@
 
 class invisibleRecaptchaClass
 {
+    /*
+     * Třída funguje ve static módu, tedy není třeba konstruktoru.
+     */
+
+    /*
+     * Natáhne integrační data z globálně přístupných konstant
+     */
     protected static $secret = RECAPTCHA;
     protected static $site_key = RECAPTCHA_SITEKEY;
     protected static $url = "https://www.google.com/recaptcha/api/siteverify";
 
+    /*
+     * Ověří zdali recaptcha hash je platný oproti google services (vytváří HTTP request, který ověřuje)
+     */
     public static function verifyRecaptcha($recaptcha_hash){
 
 		// Curl Request
@@ -42,6 +52,9 @@ class invisibleRecaptchaClass
 
     }
 
+    /*
+     * Ověří platnost recaptchi v controlleru, jedná se pouze o rozšíření funkce verifyRecaptcha pro usecase uvnitř systému, mimo systém nemá význam (rozšířený context)
+     */
     public static function verifyRecaptchaOnController($controller){
 	    if(Tools::checkPresenceOfParam("g-recaptcha-response", $controller->requestData)){
 		    $token = $controller->requestData['g-recaptcha-response'];
@@ -55,6 +68,11 @@ class invisibleRecaptchaClass
         return false;
     }
 
+
+    /*
+     * Funkce která řídí formulář. Každý form, který má třídu js-recaptchaForm a uvnitř něj tlačítko button pro submit je ošetřen recaptchou a zasílá na
+     * server onen scroing, který je třeba ověřit proti Google metodou verifyRecaptcha
+     */
     public static function generateRecaptchaListeners(){
     	?>
 		    <script src="https://www.google.com/recaptcha/api.js?onload=recaptchaScriptReady&render=explicit" async defer></script>
