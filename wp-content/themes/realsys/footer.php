@@ -71,6 +71,10 @@
         /*$('.rozsirene-button').click(function(){
             $('.rozsirene-hledani').toggle();
         })*/
+        $('.show-user-edit').click(function(){
+            $('.profil-form').toggle();
+            $('.profil-view').toggle();
+        })
         /*end jquery*/
         })
         </script>
@@ -97,7 +101,30 @@
         </script>
         <!-- TODO RANGE INPUTY -->
         <script type="text/javascript" src="/realsys/wp-content/themes/realsys/assets/js/js_frontend/src/jcf/jcf.range.js"></script>
-        
+
+        <script>
+        /* TODO TABY V PROFILU */
+        $(document).ready(function() {
+
+        $('.profil li a:not(:first)').addClass('inactive');
+        $('.tab-sl-content').hide();
+        $('.tab-sl-content:first').show();
+
+        $('.profil li a').click(function(){
+            var t = $(this).attr('id');
+          if($(this).hasClass('inactive')){ //this is the start of our condition
+            $('.profil li a').addClass('inactive');
+            $(this).removeClass('inactive');
+
+            $('.tab-sl-content').hide();
+            $('#'+ t + 'C').fadeIn('slow');
+         }
+        });
+
+        });
+        </script>
+
+
         <div class="prihlaseni-wrapper">
             <button type="button" class="btn btn-primary mb-md-5" id="myInput" data-toggle="modal" data-target="#prihlaseni">
                 Launch demo modal

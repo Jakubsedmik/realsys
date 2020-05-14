@@ -76,7 +76,7 @@
 
 						<div class="col-sm">
 							<div class="change-pass-form">
-								<form class="js-validate-form" method="post"">
+								<form class="js-validate-form" method="post">
 									<div class="row">
 										<div class="col-sm">
 											<label><?php _e( "Nové heslo", "realsys" );?></label>

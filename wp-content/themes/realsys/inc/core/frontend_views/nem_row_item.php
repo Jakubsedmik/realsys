@@ -39,20 +39,7 @@
 					<h4 class="price"><?php echo Tools::convertCurrency($item->db_cena); ?></h4>
 				</div>
 
-				<div class="col-sm-3 nemovitost-ranks">
-					<table class="rank-table">
-						<tbody>
-						<tr>
-							<th><?php _e( "Město", "realsys" ); ?></th><td><?php echo $item->db_mesto; ?></td>
-						</tr>
-						<tr>
-							<th><?php _e( "Podlahová plocha", "realsys" ); ?></th><td><?php echo $item->db_podlahova_plocha; ?> m<sup>2</sup></td>
-						</tr>
-						</tbody>
-					</table>
-				</div>
-
-				<div class="col-sm-2 nemovitost-activate">
+				<div class="col-sm-3 nemovitost-activate">
                     <?php
                         $activators_style = '';
                         $deactivators_style = '';
