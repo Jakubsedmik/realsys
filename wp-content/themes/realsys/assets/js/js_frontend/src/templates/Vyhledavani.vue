@@ -1,246 +1,87 @@
 <template>
-    <section v-if="false">
-        <div class="top-nemovitosti">
-            <div class="wrapper">
-                <div class="row">
-                    <div class="col-sm filtr-blok">
-                        <div class="bg-filtr one"></div>
-
-                        <div class="filtr-single" v-for="(filter, index) in filters_first" v-bind:key="index">
-                            <label>{{filter.name}}
-                                <select :name="index" v-model="search_data[index]" v-on:change="searchResults">
-                                    <option
-                                            v-bind:value="key"
-                                            v-for="(value, key) in filter.values">
-                                        {{value}}
-                                    </option>
-                                </select>
-                            </label>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm filtr-blok">
-                        <div class="bg-filtr two"></div>
-
-                        <div class="filtr-single" v-for="(filter, index) in filters_second" v-bind:key="index">
-                            <label>{{filter.name}}
-                                <select :name="index" v-model="search_data[index]" v-on:change="searchResults">
-                                    <option
-                                            v-bind:value="key"
-                                            v-for="(value, key) in filter.values"
-                                            >
-                                        {{value}}
-                                    </option>
-                                </select>
-                            </label>
-                        </div>
-
-                    </div>
-                </div>
-
-                <Filterfield v-bind:filterData="this.filters.db_checkbox" filterName="db_checkbox"></Filterfield>
-
-                <Hlidacipes
-                        v-bind:search_data="this.search_data"
-                        v-bind:user_logged="this.user_logged"
-                        v-bind:home_url="this.home_url"
-                        v-bind:login_link="this.login_link"
-                        v-bind:payment_link="this.payment_link"
-                        v-bind:service="this.service"
-                        v-bind:currency="this.currency"
-                        v-bind:ajax_url="this.ajax_url"
-                        v-bind:assets_path="this.assets_path"
-                ></Hlidacipes>
-
-            </div>
-        </div>
-    </section>
-
-    <div class="wrapper" v-else>
-
+    <div :class="{wrapper: !this.map_layout}">
 
         <Filterfield v-bind:filterData="this.filters.db_typ_inzeratu" filterName="db_typ_inzeratu"></Filterfield>
 
-
-
         <div class="vyhl-box bez-mapy light-blue-bg rounded-b shadow-sm p-20 mb-5">
-            <form action="">
-                <div class="vyhl-filtery">
+            <div class="vyhl-filtery">
 
-                    <div class="filtr-row d-flex mb-4">
-                        <div class="customSel-wrapper input-wlabel">
-                            <label>Typ nemovitosti</label>
-                            <select name="db_typ_nemovitosti">
-                                <option value="5">Prodej</option>
-                                <option value="4">Pronájem</option>
-                                <option value="3">Spolubydlení</option>
-                                <option value="2">Pozemky</option>
-                                <option value="1">Komerční nemovitosti</option>
-                                <option value="-1" selected="">-- Bez filtru --</option>
-                            </select>
-                        </div>
-
-                        <div class="customSel-wrapper input-wlabel">
-                            <label>Dispozice</label>
-                            <select name="db_typ_nemovitosti">
-                                <option value="5">1+KK</option>
-                                <option value="4">1+1</option>
-                                <option value="-1" selected="">-- Bez filtru --</option>
-                            </select>
-                        </div>
-
-                        <div class="customSel-wrapper input-wlabel">
-                            <label>Lokalita
-                                <input type="text" name="db_mesto" placeholder="Lokalita">
-                            </label>
-                        </div>
+                <div class="filtr-row d-flex mb-4">
+                    <div class="customSel-wrapper input-wlabel">
+                        <Filterfield v-bind:filterData="this.filters.db_typ_stavby" filterName="db_typ_stavby"></Filterfield>
                     </div>
 
-                    <div class="range-cena mb-4">
-                        <span class="range-nazev">Cena</span>
-                        <div class="input-wlabel">
-                            <label class="d-flex justify-content-between range-label"><span
-                                    class="range-cena-od">0 Kč</span><span class="range-cena-do">3 000 000
-                    Kč</span></label>
-                            <input value="20,80" type="range" multiple>
-                        </div>
+                    <div class="customSel-wrapper input-wlabel">
+                        <Filterfield v-bind:filterData="this.filters.db_pocet_mistnosti" filterName="db_pocet_mistnosti"></Filterfield>
                     </div>
 
-                    <transition name="slide">
-                        <div class="rozsirene-hledani" v-show="advanced">
-
-                            <div class="range-cena mb-4">
-                                <span class="range-nazev">Velikost</span>
-                                <div class="input-wlabel">
-                                    <label class="d-flex justify-content-between range-label"><span
-                                            class="range-cena-od">0 m2</span><span class="range-cena-do">1000 m2
-                        </span></label>
-                                    <input value="20,80" type="range" multiple>
-                                </div>
-                            </div>
-
-                            <div class="vyhl-darum-prid">
-                                <label>Dátum pridania inzerátu</label>
-
-                                <div class="customSel-wrapper ">
-                                    <select name="db_typ_nemovitosti">
-                                        <option value="5">Prodej</option>
-                                        <option value="4">Pronájem</option>
-                                        <option value="3">Spolubydlení</option>
-                                        <option value="2">Pozemky</option>
-                                        <option value="1">Komerční nemovitosti</option>
-                                        <option value="-1" selected="">-- Bez filtru --</option>
-                                    </select>
-                                </div>
-                            </div>
-
-
-                            <div class="vyhl-vyb-wrap">
-                                <div class="vyhl-radio-label">
-                                    <label>Vybavenosť</label>
-                                </div>
-
-                                <div class="vyhl-vyb-colwrap">
-
-
-                                    <div class="vyhl-radios">
-
-                                        <div class="row selects ico-smaller">
-                                            <div class="col">
-                                                <div class="single-input">
-                                                    <label class="form-field">
-                                                        <span class="sel-input-name">Vybavený</span>
-                                                        <input type="radio" name="db_typ_stavby" value="Vybavený">
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="single-input">
-                                                    <label class="form-field">
-                                                        <span class="sel-input-name">Čiastočne</span>
-                                                        <input type="radio" name="db_typ_stavby" value="Čiastočne">
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="single-input">
-                                                    <label class="form-field">
-                                                        <span class="sel-input-name">Nevybavený</span>
-                                                        <input type="radio" name="db_typ_stavby" value="Nevybavený">
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="vyhl-sep"></div>
-
-
-                                    <div class="checks">
-                                        <label class="check-wrap">
-                                            <input id="zeroValue" type="hidden" value="0" name="">
-                                            <input type="checkbox" name="db_terasa" value="1">
-                                            <span class="sel-input-name">Umývačka</span>
-                                        </label>
-                                        <label class="check-wrap">
-                                            <input id="zeroValue" type="hidden" value="0" name="">
-                                            <input type="checkbox" name="db_terasa" value="1">
-                                            <span class="sel-input-name">Práčka</span>
-                                        </label>
-                                        <label class="check-wrap">
-                                            <input id="zeroValue" type="hidden" value="0" name="">
-                                            <input type="checkbox" name="db_terasa" value="1">
-                                            <span class="sel-input-name">Chladnička</span>
-                                        </label>
-                                        <label class="check-wrap">
-                                            <input id="zeroValue" type="hidden" value="0" name="">
-                                            <input type="checkbox" name="db_terasa" value="1">
-                                            <span class="sel-input-name">Pivnica</span>
-                                        </label>
-                                        <label class="check-wrap">
-                                            <input id="zeroValue" type="hidden" value="0" name="">
-                                            <input type="checkbox" name="db_terasa" value="1">
-                                            <span class="sel-input-name">Balkón</span>
-                                        </label>
-                                        <label class="check-wrap">
-                                            <input id="zeroValue" type="hidden" value="0" name="">
-                                            <input type="checkbox" name="db_terasa" value="1">
-                                            <span class="sel-input-name">Terasa</span>
-                                        </label>
-                                        <label class="check-wrap">
-                                            <input id="zeroValue" type="hidden" value="0" name="">
-                                            <input type="checkbox" name="db_terasa" value="1">
-                                            <span class="sel-input-name">Garáž</span>
-                                        </label>
-                                        <label class="check-wrap">
-                                            <input id="zeroValue" type="hidden" value="0" name="">
-                                            <input type="checkbox" name="db_terasa" value="1">
-                                            <span class="sel-input-name">Parkovanie</span>
-                                        </label>
-                                        <label class="check-wrap">
-                                            <input id="zeroValue" type="hidden" value="0" name="">
-                                            <input type="checkbox" name="db_terasa" value="1">
-                                            <span class="sel-input-name">Výťah</span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div><!-- KONEC ROZSIRENEHO HLEDANI -->
-                    </transition>
-
-                    <div class="vyhl-submit d-flex align-items-center justify-content-center  mb-3">
-                        <a class="btn mx-2 rozsirene-button" @click="switchSearch">
-                            <span v-if="!advanced">Rozšířené vyhledávání</span>
-                            <span v-else>Zjednodušené vyhledávání</span>
-                        </a>
+                    <div class="customSel-wrapper input-wlabel">
+                        <Filterfield v-bind:filterData="this.filters.db_lokalita" filterName="db_lokalita"></Filterfield>
                     </div>
-
                 </div>
-            </form>
+
+                <div class="range-cena mb-4">
+                    <Filterfield v-bind:filterData="this.filters.db_cena" filterName="db_cena"></Filterfield>
+                </div>
+
+                <transition name="slide">
+                    <div class="rozsirene-hledani" v-show="advanced">
+
+                        <div class="range-cena mb-4">
+                            <Filterfield v-bind:filterData="this.filters.db_podlahova_plocha" filterName="db_podlahova_plocha"></Filterfield>
+                        </div>
+
+                        <div class="vyhl-darum-prid">
+                            <Filterfield v-bind:filterData="this.filters.db_datum_zalozeni" filterName="db_datum_zalozeni"></Filterfield>
+                        </div>
+
+
+                        <Filterfield v-bind:filterData="this.filters.db_vybavenost" filterName="db_vybavenost"></Filterfield>
+
+                        <div class="vyhl-sep"></div>
+
+                        <div class="vyhl-vyb-wrap">
+
+                            <div class="vyhl-vyb-colwrap">
+
+                                <div class="checks">
+
+                                    <Filterfield v-bind:filterData="this.filters.db_balkon" filterName="db_balkon"></Filterfield>
+                                    <Filterfield v-bind:filterData="this.filters.db_terasa" filterName="db_terasa"></Filterfield>
+                                    <Filterfield v-bind:filterData="this.filters.db_garaz" filterName="db_garaz"></Filterfield>
+                                    <Filterfield v-bind:filterData="this.filters.db_parkovaci_misto" filterName="db_parkovaci_misto"></Filterfield>
+                                    <Filterfield v-bind:filterData="this.filters.db_vytah" filterName="db_vytah"></Filterfield>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div><!-- KONEC ROZSIRENEHO HLEDANI -->
+                </transition>
+
+                <div class="vyhl-submit d-flex align-items-center justify-content-center  mb-3">
+                    <a class="btn mx-2 rozsirene-button" @click="switchSearch">
+                        <span v-if="!advanced">{{translations.rozsireneVyhledavani}}</span>
+                        <span v-else>{{translations.zjednoduseneVyhledavani}}</span>
+                    </a>
+                </div>
+
+            </div>
         </div>
+
+        <Hlidacipes
+                v-bind:search_data="this.search_data"
+                v-bind:user_logged="this.user_logged"
+                v-bind:home_url="this.home_url"
+                v-bind:login_link="this.login_link"
+                v-bind:payment_link="this.payment_link"
+                v-bind:service="this.service"
+                v-bind:currency="this.currency"
+                v-bind:ajax_url="this.ajax_url"
+                v-bind:assets_path="this.assets_path"
+        ></Hlidacipes>
+
     </div>
 </template>
 
@@ -252,10 +93,11 @@
     export default {
         name: "Vyhledavani",
         props: [
-            'filters', 'filterpreset', 'user_logged', 'home_url', 'login_link', 'payment_link', 'service', 'currency', 'ajax_url', 'assets_path'
+            'filters', 'filterpreset', 'user_logged', 'home_url', 'login_link', 'payment_link', 'service', 'currency', 'ajax_url', 'assets_path', 'translations', 'map_layout'
         ],
         components: { Filterfield, Hlidacipes },
         created() {
+
             if(Object.entries(this.filterpreset).length > 0){
                 this.search_data = this.filterpreset;
                 this.$nextTick(function () {
@@ -263,8 +105,11 @@
                 });
             }
 
+            var _this = this;
             this.$root.$on("fieldChanged", function (fieldValues) {
-                console.log(fieldValues);
+                var entryName = fieldValues.name;
+                _this.search_data[entryName] = fieldValues;
+                _this.searchResults();
             });
 
         },
@@ -300,22 +145,11 @@
         },
         methods: {
             searchResults: function (e) {
-                var str = "";
-                var searchData = this.search_data;
-                for(var i in searchData){
-                    if (str != "") {
-                        str += "&";
-                    }
-                    str += i + "=" + encodeURIComponent(searchData[i]);
-                }
-
-                this.$root.$emit("searchFor", str);
+                this.$root.$emit("searchFor", this.search_data);
             },
+
             switchSearch: function () {
                 this.advanced = !this.advanced;
-            },
-            tabClass: function () {
-
             }
         }
     }

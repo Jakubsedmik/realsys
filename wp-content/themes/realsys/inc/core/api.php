@@ -449,11 +449,14 @@ function getInzeraty(){
 	error_reporting(0);
 	ini_set('display_errors', 'Off');
 
+	$request_body = file_get_contents('php://input');
+	$data = json_decode($request_body, true);
+
 	$response = new stdClass();
 
-	if(Tools::checkPresenceOfParam("sortBy", $_GET) && Tools::checkPresenceOfParam("getAll", $_GET)){
+	if(Tools::checkPresenceOfParam("sortBy", $data) && Tools::checkPresenceOfParam("getAll", $data)){
 
-		$sorting = $_GET['sortBy'];
+		$sorting = $data['sortBy'];
 		$sorting = explode(":", $sorting);
 		$sortBy = $sorting[0];
 		$sortDirection = $sorting[1];
@@ -487,27 +490,39 @@ function getInzeraty(){
 		$response->appData = new stdClass();
 		$response->appData->inzeraty = $inzeraty;
 		$response->appData->currency = CURRENCY;
-	}elseif (Tools::checkPresenceOfParam("countPage",$_GET) && Tools::checkPresenceOfParam("page", $_GET) && Tools::checkPresenceOfParam("sortBy", $_GET)){
+	}elseif (Tools::checkPresenceOfParam("countPage",$data) && Tools::checkPresenceOfParam("page", $data) && Tools::checkPresenceOfParam("sortBy", $data)){
 
-		$sorting = $_GET['sortBy'];
+		$sorting = $data['sortBy'];
 		$sorting = explode(":", $sorting);
 		$sortBy = $sorting[0];
 		$sortDirection = $sorting[1];
 		$sortBy = str_replace("db_", "", $sortBy);
-		$bufferSize = $_GET['countPage'];
-		$page = $_GET['page'];
+		$bufferSize = $data['countPage'];
+		$page = $data['page'];
 
 		$offset = $bufferSize * ($page-1);
 
 		global $filter_parameters;
 		$filter_arr = array();
+		$search_arr = $data['search'];
 		foreach ($filter_parameters as $key => $value){
-			if(Tools::checkPresenceOfParam($key, $_GET)){
-				$wanted_value = $_GET[$key];
-				if($wanted_value != -1){
-					$column = str_replace("db_","",$key);
-					$filter = new filterClass($column, "=", "'" . $wanted_value . "'");
-					$filter_arr[] = $filter;
+			if(Tools::checkPresenceOfParam($key, $search_arr)){
+				$search_item = $search_arr[$key];
+				if(is_array($search_item['value'])){
+					for ($i= 0; $i < count($search_item['value']); $i++){
+						$operator = $search_item['operator'][$i];
+						$deserved_value = $search_item['value'][$i];
+						$column = str_replace("db_","",$key);
+						$filter = new filterClass($column, $operator, "'" . $deserved_value . "'");
+						$filter_arr[] = $filter;
+					}
+				}else{
+					$wanted_value = $search_item['value'];
+					if($wanted_value != -1){
+						$column = str_replace("db_","",$key);
+						$filter = new filterClass($column, $search_item['operator'], "'" . $wanted_value . "'");
+						$filter_arr[] = $filter;
+					}
 				}
 			}
 		}

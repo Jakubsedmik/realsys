@@ -11,6 +11,8 @@
                 v-bind:currency="this.appData.currency"
                 v-bind:ajax_url="this.ajax_url"
                 v-bind:assets_path="this.assetspath"
+                v-bind:translations="this.translations"
+                v-bind:map_layout="false"
         ></Vyhledavani>
         <section>
             <div class="wrapper">
@@ -67,7 +69,7 @@
                 page: 1,
                 isLoading: true,
                 sortBy: Filtr.data().currentSort,
-                searchQuery: ""
+                searchJson: {}
             }
         },
         props : {
@@ -88,7 +90,7 @@
             },
             bufferSize: {
                 type: Number,
-                default: 8
+                default: 9
             },
             apiurl:{
                 type: String,
@@ -162,7 +164,9 @@
                         pouzijteKVyhledavaniMapu: "Použijte k vyhledávání mapu",
                         najitNaMape: "Najít na mapě",
                         dalsi: "Další",
-                        predchozi: "Předchozí"
+                        predchozi: "Předchozí",
+                        rozsireneVyhledavani: 'Rozšířené vyhledávání',
+                        zjednoduseneVyhledavani: 'Zjednodušené vyhledávání'
                     }
                 }
             }
@@ -187,24 +191,27 @@
             });
 
             this.$root.$on("searchFor", function (searchFor) {
-                _this.searchQuery = searchFor;
+                _this.searchJson = searchFor;
                 _this.fetchData();
             });
         },
         methods: {
-            metoda1: function () {
-                this.$root.$emit("test");
-            },
             fetchData: function(){
                 this.isLoading = true;
                 var _this = this;
-                var getUrl = this.apiurl + "&countPage=" + this.bufferSize + "&page=" + this.page + "&sortBy=" + this.sortBy;
-                if(this.searchQuery.length > 0){
-                    getUrl += "&" + this.searchQuery;
-                }
+
+
+                var request = {
+                    countPage: this.bufferSize,
+                    page: this.page,
+                    sortBy: this.sortBy,
+                    search: this.searchJson
+                };
+
+
 
                 setTimeout(function () {
-                    Axios.get(getUrl).then(function (response) {
+                    Axios.post(_this.apiurl, request).then(function (response) {
                         if (response)
                             if(typeof response.data == "object"){
                                 _this.appData = response.data.appData;

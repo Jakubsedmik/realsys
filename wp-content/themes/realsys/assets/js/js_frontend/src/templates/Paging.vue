@@ -38,14 +38,17 @@
         },
         methods: {
             changePage: function (page) {
+                $("html, body").animate({ scrollTop: 0 }, "slow");
                 this.$root.$emit("changePage", page);
             },
             nextPage: function () {
                 var currentPage = this.page + 1;
+                $("html, body").animate({ scrollTop: 0 }, "slow");
                 this.$root.$emit("changePage", currentPage);
             },
             previousPage: function () {
                 var currentPage = this.page - 1;
+                $("html, body").animate({ scrollTop: 0 }, "slow");
                 this.$root.$emit("changePage", currentPage);
             }
         }

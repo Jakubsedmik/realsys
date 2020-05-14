@@ -23,8 +23,12 @@ class vypisController extends frontendController {
 		global $filter_parameters;
 		foreach ($filter_parameters as $key => $value){
 			$key_new = str_replace("db_","", $key);
-			if($value['type'] == "select" || $value['type'] == "customswitcher"){
-				$filter_parameters[$key]['values'] = globalUtils::getValuesForFilter("inzeratClass", $key_new, "-- Bez filtru --");
+			if($value['type'] == "select"){
+				if(is_array($value['values']) && count($value['values'])==0){
+					$filter_parameters[$key]['values'] = globalUtils::getValuesForFilter("inzeratClass", $key_new, "-- Bez filtru --");
+				}
+			}elseif ($value['type'] == "customswitcher" || $value['type'] == 'option'){
+				$filter_parameters[$key]['values'] = globalUtils::getValuesForFilter("inzeratClass", $key_new, false);
 			}
 		}
 
