@@ -1,26 +1,16 @@
 <template>
+
     <div :class="getInzeratClass" @mouseover="highlightItem()" @mouseleave="unhighlightItem()">
         <div class="nemovitost-wrapper">
             <div class="nemovitost-image" :style="getFrontImage"></div>
             <div class="nemovitost-text">
-                <div class="topInzerat" v-if="inzerat.db_top == 1">Top</div>
+                <div class="topInzerat" v-if="inzerat.db_top == 1">{{translations.top}}</div>
                 <h3 v-html="getSpecialName"></h3>
-
-
                 <p>{{getDescription}}</p>
-                <div class="metaInfo-bar">
-                    <div class="infoIco location">
-                        <img :src="this.assetsPath + 'ikony/location.png'" alt=""/><span class="metaTxt">{{inzerat.db_mesto}}</span>
-                    </div>
-                    <div class="infoIco size">
-                        <img :src="this.assetsPath + 'ikony/size.png'" alt=""/><span class="metaTxt" v-html="getAerial"></span>
-                    </div>
-                </div>
-
-                <div class="price-bar">
-                    <h4 class="price">{{formatMoney}} </h4>
-                    <a class="btn more" :href="this.inzerat.link">Více info</a>
-                </div>
+            </div>
+            <div class="price-bar">
+                <h4 class="price">{{formatMoney}}</h4>
+                <a :href="this.inzerat.link" class="btn more">{{translations.detailInzeratu}}</a>
             </div>
         </div>
     </div>
@@ -47,7 +37,10 @@
             },
             "proportion" : {
                 type: [String, Number],
-                default: 3
+                default: 4
+            },
+            "translations" : {
+                type: Object
             }
         },
         data: function () {
@@ -95,10 +88,12 @@
                 return frontImageUrl;
             },
             getInzeratClass: function () {
-                var class_name = "col-sm-" + this.proportion;
+                var class_name = "col-lg-" + this.proportion;
                 var classObj = new Object;
                 classObj[class_name] = true;
                 classObj['nemovitost'] = true;
+                classObj['col-md-6'] = true;
+                classObj['col-md-12'] = true;
                 if(this.inzerat.db_top == 1){
                     classObj['nemovitost-top'] = true;
                 }

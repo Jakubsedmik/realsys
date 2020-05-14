@@ -34,7 +34,7 @@
         </a>
     </div>
 
-
+    <!--
     <div class="vyhl-box bez-mapy light-blue-bg rounded-b shadow-sm p-20 mb-5">
         <form action="">
             <div class="vyhl-filtery">
@@ -196,7 +196,7 @@
                         </div>
                     </div>
 
-                </div><!-- KONEC ROZSIRENEHO HLEDANI -->
+                </div>
 
 
                 <div class="vyhl-submit d-flex align-items-center justify-content-center  mb-3">
@@ -208,6 +208,7 @@
         </form>
     </div>
 
+    
     <div class="vyhl-razeni d-flex justify-content-end mb-4">
         <div class="customSel-wrapper d-flex align-items-center">
             <label class="w-auto mr-3">Zoradiť od:</label>
@@ -350,4 +351,5 @@
 
 
     </div>
+    -->
 </div>

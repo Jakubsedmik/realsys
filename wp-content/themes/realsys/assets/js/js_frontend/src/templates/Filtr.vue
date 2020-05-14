@@ -1,21 +1,18 @@
 <template>
-    <div class="filtr-lista">
-        <div class="row underline">
-            <div :class="classList()">
-                <div class="section-title-special">
-                    <h3>Výsledky vyhledávání</h3>
-                </div>
-            </div>
-            <div :class="classList('right')">
-                <strong>Řadit dle:</strong>
-                <select @change="changeSorting()" ref="sorting" v-model="currentSort">
-                    <option value="db_datum_zalozeni:DESC">Nejnovější</option>
-                    <option value="db_cena:ASC">Nejlevnější</option>
-                </select>
-            </div>
-            <div class="col-sm-6 right" v-if="design=='complex'">
-                <strong>Nalezených inzerátů:</strong> {{inzeratyCount}}
-            </div>
+
+    <div class="vyhl-razeni d-flex justify-content-end mb-4">
+
+        <div class="d-flex align-items-center mr-auto">
+            <strong>{{translations.nalezenychInzeratu}} </strong> {{inzeratyCount}}
+        </div>
+
+        <div class="customSel-wrapper d-flex align-items-center">
+            <label class="w-auto mr-3">{{translations.raditDle}}</label>
+            <select @change="changeSorting()" ref="sorting" v-model="currentSort">
+                <option value="db_datum_zalozeni:DESC">{{translations.nejnovejsi}}</option>
+                <option value="db_cena:ASC">{{translations.nejlevnejsi}}</option>
+            </select>
+
         </div>
     </div>
 
@@ -31,6 +28,9 @@
             'design':{
                 type: String,
                 default: "complex"
+            },
+            translations: {
+                type: Object
             }
         },
         data: function () {

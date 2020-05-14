@@ -234,6 +234,7 @@
                 </div>
             </div>
 
+
             <div class="row nemovitosti-row mapa-nemovitost-row">
 
                 <div class="col-lg-6 col-sm-12 nemovitost">

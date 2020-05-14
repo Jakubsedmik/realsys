@@ -728,6 +728,11 @@ $filter_parameters = array(
 		'type' => 'select',
 		'values' => array()
 	),
+	'db_typ_inzeratu' => array(
+		'name' => 'Typ inzerátu',
+		'type' => 'customswitcher',
+		'values' => array()
+	),
 	'db_typ_vlastnictvi' => array(
 		'name' => 'Typ vlastnictví',
 		'type' => 'select',

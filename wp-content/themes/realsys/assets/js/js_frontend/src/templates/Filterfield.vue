@@ -31,6 +31,13 @@
             {{filterData.name}}<input type="checkbox" v-model="fieldValue" v-on:change="fireChange">
         </label>
 
+        <div class="vyhl-tabs" v-else-if="filterData.type == 'customswitcher'">
+            <label class="vyhl-tab" :class="{'active': key == fieldValue}" v-for="(value, key) in filterData.values" v-bind:for="key">
+                <div class="tab-bullet"></div>{{value}}
+                <input v-bind:name="filterName" v-bind:id="key" type="radio" v-model="fieldValue" v-bind:value="key" v-on:change="fireChange" style="display: none" class="jcf-ignore">
+            </label>
+        </div>
+
 </template>
 
 <script>

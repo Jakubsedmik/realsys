@@ -13,37 +13,35 @@
                 v-bind:assets_path="this.assetspath"
         ></Vyhledavani>
         <section>
-            <div class="top-nemovitosti">
-                <div class="wrapper">
+            <div class="wrapper">
 
-                    <Filtr v-bind:inzeratyCount="this.appData.totalRecordsCount">
-                    </Filtr>
+                <Filtr v-bind:inzeratyCount="this.appData.totalRecordsCount" v-bind:translations="translations"></Filtr>
 
 
-                    <div :class="{row: true, isLoading: this.isLoading}">
-                        <Inzerat
-                                v-for="inzerat in this.inzeraty"
-                                v-bind:key="inzerat.db_id"
-                                v-bind:inzeratData="inzerat"
-                                v-bind:currency="appData.currency"
-                                v-bind:assetsPath="assetspath"
-                                v-bind:home_url="home_url">
-                        </Inzerat>
-
-                    </div>
-
-                    <Paging
-                        v-bind:page="this.page"
-                        v-bind:totalRecordsCount="this.appData.totalRecordsCount"
-                        v-bind:inzeratyCount="this.bufferSize"
-                    ></Paging>
-
-                    <div class="show-on-map">
-                        <h3>Použijte k vyhledávání mapu</h3>
-                        <div class="btn" @click="metoda1">Najít na mapě</div>
-                    </div>
-
+                <div :class="{row: true, 'nemovitosti-row' : true, isLoading: this.isLoading}">
+                    <Inzerat
+                            v-for="inzerat in this.inzeraty"
+                            v-bind:key="inzerat.db_id"
+                            v-bind:inzeratData="inzerat"
+                            v-bind:currency="appData.currency"
+                            v-bind:assetsPath="assetspath"
+                            v-bind:home_url="home_url"
+                            v-bind:translations="translations">
+                    </Inzerat>
                 </div>
+
+                <Paging
+                    v-bind:page="this.page"
+                    v-bind:totalRecordsCount="this.appData.totalRecordsCount"
+                    v-bind:inzeratyCount="this.bufferSize"
+                    v-bind:translations="translations"
+                ></Paging>
+
+                <div class="show-on-map">
+                    <h3>{{translations.pouzijteKVyhledavaniMapu}}</h3>
+                    <div class="btn">{{translations.najitNaMape}}</div>
+                </div>
+
             </div>
         </section>
     </div>
@@ -150,6 +148,23 @@
             },
             ajax_url:{
                 type: String
+            },
+            translations: {
+                type: Object,
+                default: function () {
+                    return {
+                        detailInzeratu: "Detail inzerátu",
+                        top: "Top",
+                        raditDle: "Řadit dle",
+                        nejnovejsi: "Nejnovější",
+                        nejlevnejsi: "Nejlevnější",
+                        nalezenychInzeratu: "Nalezených inzerátů:",
+                        pouzijteKVyhledavaniMapu: "Použijte k vyhledávání mapu",
+                        najitNaMape: "Najít na mapě",
+                        dalsi: "Další",
+                        predchozi: "Předchozí"
+                    }
+                }
             }
         },
         components: { Filtr, Inzerat, Paging, Vyhledavani },
