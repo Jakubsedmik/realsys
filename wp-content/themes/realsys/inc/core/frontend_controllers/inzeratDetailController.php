@@ -22,7 +22,7 @@ class inzeratDetailController extends frontendController{
 			$inzerat = assetsFactory::getEntity("inzeratClass", $id);
 			if($inzerat){
 
-				if($inzerat->db_stav_inzeratu == 0){
+				if($inzerat->db_stav_inzeratu == 0 || $inzerat->db_stav_inzeratu == 2){
 					if(uzivatelClass::getUserLoggedId() !== false){
 						$uzivatel = assetsFactory::getEntity("uzivatelClass", uzivatelClass::getUserLoggedId());
 						$this->requestData['aktivni'] = false;

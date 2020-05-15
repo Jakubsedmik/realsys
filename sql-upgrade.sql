@@ -5,3 +5,5 @@ INSERT INTO `realsys`.`s7_ciselnik` (`domain`, `property`, `value`, `translation
 INSERT INTO `realsys`.`s7_ciselnik` (`domain`, `property`, `value`, `translation`, `datum_zalozeni`, `datum_upravy`) VALUES ('inzeratClass', 'typ_stavby', '7', 'Chata/Chalupa', '1582996513', '1582996513');
 
 INSERT INTO `realsys`.`s7_ciselnik` (`domain`, `property`, `value`, `translation`, `datum_zalozeni`, `datum_upravy`) VALUES ('inzeratClass', 'typ_inzeratu', '3', 'Spolubydlení', '1582996513', '1582996513');
+
+INSERT INTO `realsys`.`s7_ciselnik` (`domain`, `property`, `value`, `translation`, `datum_zalozeni`, `datum_upravy`) VALUES ('inzeratClass', 'stav_inzeratu', '2', 'Čeká na schválení', '0', '0');

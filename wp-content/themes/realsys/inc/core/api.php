@@ -672,9 +672,14 @@ function changeInzeratStatus(){
 			$inzerat = assetsFactory::getEntity("inzeratClass", $inzerat_id);
 			if($inzerat && $inzerat->db_uzivatel_id == $uzivatel_id){
 				if($inzerat_status == 0 || $inzerat_status == 1){
-					$inzerat->db_stav_inzeratu = $inzerat_status;
-					$response->status = 1;
-					$response->message = __("Úspěšná změna stavu inzerátu","realsys");
+					if($inzerat->db_stav_inzeratu !== 2){
+						$inzerat->db_stav_inzeratu = $inzerat_status;
+						$response->status = 1;
+						$response->message = __("Úspěšná změna stavu inzerátu","realsys");
+					}else{
+						$response->status = 0;
+						$response->message = __("Inzerát není ještě schválený. Nelze ho nyní aktivovat.","realsys");
+					}
 				}else{
 					$response->status = 0;
 					$response->message = __("Nepřípustné hodnoty stavu inzerátu","realsys");

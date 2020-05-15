@@ -44,10 +44,13 @@
                     <?php
                         $activators_style = '';
                         $deactivators_style = '';
-                        if($item->db_stav_inzeratu < 1) {
+                        if($item->db_stav_inzeratu == 0 ) {
 	                        $deactivators_style = 'display: none;';
+                        }else if($item->db_stav_inzeratu == 1){
+	                        $activators_style = 'display: none;';
                         }else{
 	                        $activators_style = 'display: none;';
+	                        $deactivators_style = 'display: none;';
                         }
                     ?>
 
@@ -76,6 +79,13 @@
                         </a>
                         <span class="activate-txt"><?php _e( "Inzerát je aktivní", "realsys" ); ?></span>
 					</span>
+
+                    <?php if($item->db_stav_inzeratu == 2): ?>
+                        <span>
+                            <span class="activate-text"><?php _e( "Inzerát čeká na schválení", "realsys" ); ?></span>
+                        </span>
+                    <?php endif; ?>
+
 				</div>
 
 				<div class="col-sm-2 nemovitost-topovani">

@@ -135,8 +135,9 @@ class hlidacipesClass extends zakladniKamenClass {
 		$filters_to_save = array();
 		if(is_array($filtr_arr)){
 			foreach ($filtr_arr as $key => $value){
-				$new_key = str_replace("db_","",$key);
-				$filters_to_save[] = new filterClass($new_key, "=", $value);
+				$name = $value['name'];
+				$new_key = str_replace("db_","",$name);
+				$filters_to_save[] = new filterClass($new_key, $value["operator"], "'" . $value['value'] . "'");
 			}
 		}
 		$this->db_nastaveni_filtru = $filters_to_save;

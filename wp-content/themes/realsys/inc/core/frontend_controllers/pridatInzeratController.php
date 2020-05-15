@@ -35,7 +35,7 @@ class pridatInzeratController extends frontendController {
 				$uzivatel_id = $this->requestData['uzivatelid'];
 				$uzivatel = assetsFactory::getEntity("uzivatelClass", $uzivatel_id);
 				$this->requestData['db_typ_nemovitosti'] = 5;
-				$this->requestData['db_stav_inzeratu'] = 0;
+				$this->requestData['db_stav_inzeratu'] = 2;
 				$this->requestData['db_top'] = 0;
 
 				$obrazky = $this->requestData['db_inzerat_obrazky'];
