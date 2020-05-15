@@ -19,7 +19,7 @@ $obrazky   = array_filter( $obrazky, function ( $val ) use ( &$front_obr ) {
 <section>
     <div class="wrapper">
         <div class="slider-content">
-            <a href="#" class="back-to-page"><span
+            <a href="/vypis/" class="back-to-page"><span
                         class="icon-arrow rotate"></span><span><?php _e( "Zpět na výpis", "realsys" ); ?></span></a>
         </div>
     </div>

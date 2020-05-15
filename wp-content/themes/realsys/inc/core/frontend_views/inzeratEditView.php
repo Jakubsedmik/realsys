@@ -3,7 +3,7 @@
     $uzivatel = $this->requestData['uzivatel'];
 ?>
 
-<section>
+<section class="editace-inzeratu">
 
     <div class="add-inz-con">
         <div class="wrapper">
