@@ -9,32 +9,18 @@
 
             :filters="<?php echo $this->requestData['filter']; ?>"
             :filterpreset="<?php echo $this->requestData['filterPreset']; ?>"
-            :user_logged="<?php echo ( uzivatelClass::getUserLoggedId() ) ? uzivatelClass::getUserLoggedId() : "false"; ?>"
-            :service="<?php global $cenik_sluzeb;
-			echo Tools::prepareJsonToOutputHtmlAttr( $cenik_sluzeb[0] ); ?>"
+            :user_logged="<?php echo ( uzivatelClass::getUserLoggedId() ) ? uzivatelClass::getUserLoggedId() : false; ?>"
+            :service="<?php global $cenik_sluzeb; echo Tools::prepareJsonToOutputHtmlAttr( $cenik_sluzeb[0] ); ?>"
+            v-cloak
     >
     </Vypis>
 </div>
 
-<!-- TODO NOVÁ VERZE -->s
+<!-- TODO NOVÁ VERZE -->
 
 <div class="wrapper">
-    <div class="vyhl-tabs">
-        <a href="#" class="vyhl-tab active">
-            <div class="tab-bullet"></div>
-            Prenájom
-        </a>
-        <a href="#" class="vyhl-tab">
-            <div class="tab-bullet"></div>
-            Predaj
-        </a>
-        <a href="#" class="vyhl-tab">
-            <div class="tab-bullet"></div>
-            Spolubývanie
-        </a>
-    </div>
 
-
+    <!--
     <div class="vyhl-box bez-mapy light-blue-bg rounded-b shadow-sm p-20 mb-5">
         <form action="">
             <div class="vyhl-filtery">
@@ -196,7 +182,7 @@
                         </div>
                     </div>
 
-                </div><!-- KONEC ROZSIRENEHO HLEDANI -->
+                </div>
 
 
                 <div class="vyhl-submit d-flex align-items-center justify-content-center  mb-3">
@@ -208,6 +194,7 @@
         </form>
     </div>
 
+    
     <div class="vyhl-razeni d-flex justify-content-end mb-4">
         <div class="customSel-wrapper d-flex align-items-center">
             <label class="w-auto mr-3">Zoradiť od:</label>
@@ -350,4 +337,5 @@
 
 
     </div>
+    -->
 </div>

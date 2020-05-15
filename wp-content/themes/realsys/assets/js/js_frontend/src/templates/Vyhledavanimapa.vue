@@ -1,5 +1,57 @@
 <template>
-    <section>
+
+    <div class="map-vyhl-wrap" v-if="true">
+        <section class="map-vyhl row">
+            <div class="col-md-6 col-xl-7 mapa-wrap">
+                <div class="map fixed-mapa" id="map"></div>
+            </div>
+
+            <div class="col-md-6 col-xl-5 vyhl-wrap p-20">
+
+                <Vyhledavani
+                        v-bind:filters="this.filters"
+                        v-bind:filterpreset="this.filterpreset"
+                        v-bind:user_logged="this.user_logged"
+                        v-bind:home_url="this.home_url"
+                        v-bind:login_link="this.login_link"
+                        v-bind:payment_link="this.payment_link"
+                        v-bind:service="this.service"
+                        v-bind:currency="this.appData.currency"
+                        v-bind:ajax_url="this.ajax_url"
+                        v-bind:assets_path="this.assetspath"
+                        v-bind:translations="this.translations"
+                        v-bind:map_layout="true"
+                ></Vyhledavani>
+
+                <Filtr v-bind:inzeratyCount="this.appData.totalRecordsCount" v-bind:translations="translations"></Filtr>
+
+                <div :class="{row: true, isLoading: this.isLoading, 'nemovitosti-row': true, 'mapa-nemovitost-row': true}">
+
+                    <Inzerat
+                            v-for="inzerat in this.inzeraty"
+                            v-bind:key="inzerat.db_id"
+                            v-bind:inzeratData="inzerat"
+                            v-bind:currency="appData.currency"
+                            v-bind:assetsPath="assetspath"
+                            v-bind:translations="translations"
+                            proportion="6">
+                    </Inzerat>
+
+                    <Paging
+                            v-bind:page="this.page"
+                            v-bind:totalRecordsCount="this.filteredResults.length"
+                            v-bind:inzeratyCount="this.bufferSize"
+                            v-bind:translations="this.translations"
+                    ></Paging>
+
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+
+    <section v-else>
         <div class="vypis-mapa">
             <div class="wrapper">
 
@@ -33,6 +85,7 @@
                                 v-bind:page="this.page"
                                 v-bind:totalRecordsCount="this.filteredResults.length"
                                 v-bind:inzeratyCount="this.bufferSize"
+                                v-bind:translations="this.translations"
                         ></Paging>
 
                     </div>
@@ -51,6 +104,7 @@
     import Axios from "axios";
     import VueAxios from 'vue-axios';
     import {debounce} from 'lodash';
+    import Vyhledavani from "./Vyhledavani.vue";
 
     export default {
         name: "Vyhledavanimapa",
@@ -67,7 +121,8 @@
                 map: null,
                 mapMarkers: {},
                 filteredResults: [],
-                markerClusterer: null
+                markerClusterer: null,
+                searchJson: {}
             }
         },
         props : {
@@ -80,7 +135,7 @@
             },
             bufferSize: {
                 type: Number,
-                default: 4
+                default: 8
             },
             apiurl:{
                 type: String,
@@ -90,8 +145,49 @@
                 type: String,
                 default: 'http://localhost/realsys'
             },
+            translations: {
+                type: Object,
+                default: function () {
+                    return {
+                        detailInzeratu: "Detail inzerátu",
+                        top: "Top",
+                        raditDle: "Řadit dle",
+                        nejnovejsi: "Nejnovější",
+                        nejlevnejsi: "Nejlevnější",
+                        nalezenychInzeratu: "Nalezených inzerátů:",
+                        pouzijteKVyhledavaniMapu: "Použijte k vyhledávání mapu",
+                        najitNaMape: "Najít na mapě",
+                        dalsi: "Další",
+                        predchozi: "Předchozí",
+                        rozsireneVyhledavani: 'Rozšířené vyhledávání',
+                        zjednoduseneVyhledavani: 'Zjednodušené vyhledávání'
+                    }
+                }
+            },
+            filters: {
+                type: Object
+            },
+            filterpreset: {
+                type: Array,
+                default: null
+            },
+            payment_link: {
+                type: String
+            },
+            login_link: {
+                type: String
+            },
+            user_logged: {
+                type: [Boolean, Number]
+            },
+            service: {
+                type: Object
+            },
+            ajax_url: {
+                type: String
+            }
         },
-        components: { Filtr, Inzerat, Paging},
+        components: { Filtr, Inzerat, Paging, Vyhledavani},
         async mounted() {
             // start map
             try {
@@ -125,6 +221,11 @@
             this.$root.$on("unhighlightItem", function (itemId) {
                 let marker = _this.mapMarkers[itemId];
                 marker.setAnimation(null);
+            });
+
+            this.$root.$on("searchFor", function (searchFor) {
+                _this.searchJson = searchFor;
+                _this.fetchData();
             });
 
             this.$root.$on("dataLoaded", function () {
@@ -187,10 +288,16 @@
             fetchData: function(){
                 this.isLoading = true;
                 var _this = this;
-                var getUrl = this.apiurl + "&getAll=1" + "&sortBy=" + this.sortBy;
+
+
+                var request = {
+                    getAll: 1,
+                    sortBy: this.sortBy,
+                    search: this.searchJson
+                };
 
                 setTimeout(function () {
-                    Axios.get(getUrl).then(function (response) {
+                    Axios.post(_this.apiurl, request).then(function (response) {
                         if (response)
                             if(typeof response.data == "object"){
                                 _this.appData = response.data.appData;

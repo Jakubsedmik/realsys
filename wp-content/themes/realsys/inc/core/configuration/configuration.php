@@ -720,55 +720,107 @@ define("DATE_FORMAT", "d.m.Y");
 define("WATERMARK", __DIR__ . "/../../../assets/images/images_backend/watermark.png");
 define("WATERMARK_RESIZE_FACTOR", 1);
 
+$dispozice_options = array(
+	__("1+KK", "realsys") => __("1+KK", "realsys"),
+	__("1+1", "realsys") => __("1+1", "realsys"),
+	__("2+1", "realsys") => __("2+1", "realsys"),
+	__("3+1", "realsys") => __("3+1", "realsys"),
+	__("4+1", "realsys") => __("4+1", "realsys"),
+	__("5+1", "realsys") => __("5+1", "realsys")
+);
+
 
 // FILTER PARAMETERS
+
+$before24 = time() - 24*60*60;
+$before_month = time() - 30*24*60*60;
+$before_three_month = time() - 3*30*24*60*60;
+$dispozice_filter_options = $dispozice_options;
+$dispozice_filter_options[-1] = "--Bez filtru--";
+
 $filter_parameters = array(
-	'db_typ_nemovitosti' => array(
-		'name' => 'Typ nemovitosti',
-		'type' => 'select',
-		'values' => array()
-	),
-	'db_typ_vlastnictvi' => array(
-		'name' => 'Typ vlastnictví',
-		'type' => 'select',
+	'db_typ_inzeratu' => array(
+		'name' => 'Typ inzerátu',
+		'type' => 'customswitcher',
 		'values' => array()
 	),
 	'db_typ_stavby' => array(
-		'name' => 'Typ stavby',
+		'name' => "Typ stavby",
 		'type' => 'select',
 		'values' => array()
 	),
-	'db_stav_objektu' => array(
-		'name' => 'Stav objektu',
-		'type' => 'select',
+	'db_vybavenost' => array(
+		'name' => 'Vybavenost',
+		'type' => 'option',
 		'values' => array()
-
-	),
-	'db_penb' => array(
-		'name' => 'PENB',
-		'type' => 'select',
-		'values' => array()
-	),
-	/*'db_cena' => array(
-		'name' => 'Cena',
-		'type' => 'slider',
-		'values' => array(0,100)
 	),
 	'db_lokalita' => array(
-		'name' => "Lokalita",
+		'name' => 'Lokalita',
 		'type' => 'text',
 		'values' => false
 	),
-	'db_neco' => array(
-		'name' => "Něco",
-		'type' => 'option',
-		'values' => array( 0 => "Ano", 1 => "Ne", 2 => "Třeba" )
+	'db_cena' => array(
+		'name' => 'Cena',
+		'type' => 'slider',
+		'values' => array(0,3000000)
 	),
-	'db_checkbox' => array(
-		'name' => "Checkbox",
+	'db_pocet_mistnosti' => array(
+		'name' => 'Dispozice',
+		'type' => 'select',
+		'values' => $dispozice_filter_options
+	),
+	'db_podlahova_plocha' => array(
+		'name' => 'Velikost',
+		'type' => 'slider',
+		'values' => array(0,255)
+	),
+	'db_datum_zalozeni' => array(
+		'name' => "Datum přidání inzerátu",
+		'type' => 'select-special',
+		'values' => array(
+			$before24 => array(
+				'label' => 'Méně jak 24h',
+				'operator' => '>'
+			),
+			$before_month => array(
+				'label' => 'Méně jak 1 měsíc',
+				'operator' => '>'
+			),
+			$before_three_month => array(
+				'label' => 'Méně jak 3 měsíce',
+				'operator' => '>'
+			),
+			-1 => array(
+				'label' => '--Bez filtru--',
+				'operator' => '='
+			)
+		)
+	),
+	'db_balkon' => array(
+		'name' => "Balkón",
 		'type' => "checkbox",
 		'values' => false
-	)*/
+	),
+	'db_garaz' => array(
+		'name' => "Garáž",
+		'type' => "checkbox",
+		'values' => false
+	),
+	'db_vytah' => array(
+		'name' => "Výtah",
+		'type' => "checkbox",
+		'values' => false
+	),
+	'db_terasa' => array(
+		'name' => "Terasa",
+		'type' => "checkbox",
+		'values' => false
+	),
+	'db_parkovaci_misto' => array(
+		'name' => "Parkování",
+		'type' => "checkbox",
+		'values' => false
+	)
 );
 
 // FILTER HP PARAMETERS
@@ -853,13 +905,4 @@ $celkem_podlazi_options = array(
 	13 => __("třinácti", "realsys"),
 	14 => __("čtrnácti", "realsys"),
 	15 => __("patnácti", "realsys"),
-);
-
-$dispozice_options = array(
-	__("1+KK", "realsys"),
-	__("1+1", "realsys"),
-	__("2+1", "realsys"),
-	__("3+1", "realsys"),
-	__("4+1", "realsys"),
-	__("5+1", "realsys")
 );

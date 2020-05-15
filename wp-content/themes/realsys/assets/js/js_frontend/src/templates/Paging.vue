@@ -1,16 +1,18 @@
 <template>
-    <div class="section-paging">
-        <a class="btn sub" @click="previousPage()" v-if="page > 1">Předchozí</a>
-        <ul class="paging">
-            <li
-                    v-for="index in totalPages"
-                    :class="{active: (page == index)}"
-                    @click="changePage(index)"
-            >
-                {{index}}
-            </li>
-        </ul>
-        <a class="btn sub" @click="nextPage()" v-if="page < this.totalPages.length">Další</a>
+    <div class="d-flex justify-content-center map-paging">
+        <div class="section-paging">
+            <a class="sub" @click="previousPage()" v-if="page > 1">{{translations.predchozi}}</a>
+            <ul class="paging">
+                <li
+                        v-for="index in totalPages"
+                        :class="{active: (page == index)}"
+                        @click="changePage(index)"
+                >
+                    {{index}}
+                </li>
+            </ul>
+            <a class="sub" @click="nextPage()" v-if="page < this.totalPages.length">{{translations.dalsi}}</a>
+        </div>
     </div>
 </template>
 
@@ -20,7 +22,8 @@
         props: [
             'page',
             'inzeratyCount',
-            'totalRecordsCount'
+            'totalRecordsCount',
+            'translations'
         ],
         computed: {
             totalPages: function () {
@@ -35,14 +38,17 @@
         },
         methods: {
             changePage: function (page) {
+                $("html, body").animate({ scrollTop: 0 }, "slow");
                 this.$root.$emit("changePage", page);
             },
             nextPage: function () {
                 var currentPage = this.page + 1;
+                $("html, body").animate({ scrollTop: 0 }, "slow");
                 this.$root.$emit("changePage", currentPage);
             },
             previousPage: function () {
                 var currentPage = this.page - 1;
+                $("html, body").animate({ scrollTop: 0 }, "slow");
                 this.$root.$emit("changePage", currentPage);
             }
         }

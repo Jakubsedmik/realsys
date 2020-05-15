@@ -16,13 +16,23 @@
             assetspath="<?php echo FRONTEND_IMAGES_PATH; ?>"
             apiurl="<?php echo AJAXURL . "?action=getInzeraty"; ?>"
             home_url="<?php echo home_url(); ?>"
+            login_link="<?php echo Tools::getFERoute( "uzivatelClass", false, "login" ); ?>"
+            payment_link="<?php echo Tools::getFERoute( "objednavkaClass" ); ?>"
+            ajax_url="<?php echo AJAXURL; ?>"
+
+            :filters="<?php echo $this->requestData['filter']; ?>"
+            :filterpreset="<?php echo $this->requestData['filterPreset']; ?>"
+            :user_logged="<?php echo ( uzivatelClass::getUserLoggedId() ) ? uzivatelClass::getUserLoggedId() : false; ?>"
+            :service="<?php global $cenik_sluzeb; echo Tools::prepareJsonToOutputHtmlAttr( $cenik_sluzeb[0] ); ?>"
+
+            v-cloak
     ></VyhledavaniMapa>
 </div>
 
 
 <!-- TODO MAPA VYPIS -->
 
-<div class="map-vyhl-wrap">
+<div class="map-vyhl-wrap" style="display: none">
     <section class="map-vyhl row">
         <div class="col-md-6 col-xl-7 mapa-wrap">
             <div class="fixed-mapa" style="height: 100%;">
@@ -233,6 +243,7 @@
                     </select>
                 </div>
             </div>
+
 
             <div class="row nemovitosti-row mapa-nemovitost-row">
 
