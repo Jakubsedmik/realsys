@@ -445,6 +445,8 @@ function getInzeraty(){
 	$request_body = file_get_contents('php://input');
 	$data = json_decode($request_body, true);
 
+
+
 	/* SETTING RESPONSE OBJECT */
 	$response = new stdClass();
 
@@ -477,19 +479,11 @@ function getInzeraty(){
 		global $filter_parameters;
 		$search_arr = $data['search'];
 
-		foreach ($filter_parameters as $key => $value){
+		foreach ($search_arr as $key => $value){
 
-			$thisSearchAllowed = false;
-			$allowedIndex = -1;
-			foreach ($search_arr as $key1 => $value1){
-				if(Tools::checkPresenceOfParam($value1['name'], $filter_parameters)){
-					$thisSearchAllowed = true;
-					$allowedIndex = $key1;
-				}
-			}
+			if(Tools::checkPresenceOfParam($value['name'], $filter_parameters)){
 
-			if($thisSearchAllowed !== false){
-				$search_item = $search_arr[$allowedIndex];
+				$search_item = $value;
 				if(is_array($search_item['value'])){
 					for ($i= 0; $i < count($search_item['value']); $i++){
 						$operator = $search_item['operator'][$i];
@@ -499,6 +493,7 @@ function getInzeraty(){
 						$filter_arr[] = $filter;
 					}
 				}else{
+
 					$wanted_value = $search_item['value'];
 					if($wanted_value != -1){
 						$column = str_replace("db_","",$search_item['name']);
@@ -520,6 +515,8 @@ function getInzeraty(){
 		false,
 		"ORDER BY $sortBy " . $sortDirection
 	);
+
+
 
 	$i = 0;
 	$ordered_list = array();

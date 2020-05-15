@@ -17,6 +17,7 @@ class vypisController extends frontendController {
 				$vue_preset_filters[$key] = $this->requestData[$key];
 			}
 		}
+
 		$this->requestData['filterPreset'] = Tools::prepareJsonToOutputHtmlAttr($vue_preset_filters);
 
 		// PREPARE FILTERS FOR VUE
