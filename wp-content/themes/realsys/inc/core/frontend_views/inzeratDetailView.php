@@ -176,7 +176,7 @@ $obrazky   = array_filter( $obrazky, function ( $val ) use ( &$front_obr ) {
                                                     </tr>
 																										<tr>
                                                         <th><?php _e( "Datum přidání", "realsys" ); ?>:</th>
-                                                        <td><!-- TODO DATUM PŘIDÁNÍ INZERÁTU --></td>
+                                                        <td><?php echo Tools::formatTime($inzerat->db_datum_zalozeni); ?></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>

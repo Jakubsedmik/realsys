@@ -20,7 +20,7 @@
                                 foreach ($cenik as $key => $value) :
                             ?>
                                 <label>
-                                    <input type="radio" name="credits" value="<?php echo $key; ?>" required>
+                                    <input type="radio" name="credits" value="<?php echo $key; ?>" required class="jcf-ignore">
                                     <div class="credits-div">
                                         <div class="credits-amount">
                                             <img src="<?php echo FRONTEND_IMAGES_PATH; ?>/ikony/kredity_<?php echo $i; $i++; ?>.png">
@@ -34,7 +34,7 @@
                             <?php endforeach; ?>
                             <?php if(isset($this->workData['customService'])): $customService = $this->workData['customService']; ?>
                                 <label>
-                                    <input type="radio" name="credits" value="<?php echo $customService['ammount']; ?>" required>
+                                    <input type="radio" name="credits" value="<?php echo $customService['ammount']; ?>" required class="jcf-ignore">
                                     <div class="credits-div">
                                         <div class="credits-amount">
                                             <img src="<?php echo FRONTEND_IMAGES_PATH; ?>/ikony/kredity_1.png">
@@ -54,7 +54,7 @@
 	                            <?php _e("Výběr platby", "realsys"); ?>
                             </h3>
                             <label>
-                                <input type="radio" name="payment" value="visa" required>
+                                <input type="radio" name="payment" value="visa" required class="jcf-ignore">
                                 <div class="credits-div">
                                     <div class="credits-amount">
                                         <img src="<?php echo FRONTEND_IMAGES_PATH; ?>/ikony/mc.png">

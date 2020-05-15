@@ -341,4 +341,156 @@ class loginController extends frontendController {
 		}
 
 	}
+
+	public function requestResetPassword(){
+		$this->setView("requestResetPassword");
+	}
+
+	public function resetPasswordFinish(){
+
+		if(uzivatelClass::getUserLoggedId() == false){
+
+			$result = Tools::postChecker(
+				$this->requestData,
+				array(
+					'email' => array(
+						"required" => true,
+						"type" => EMAIL
+					),
+					"hash" => array(
+						"required" => true,
+						"type" => STRING255
+					)
+				),
+				true
+			);
+
+			if($result){
+				$email = $this->requestData['email'];
+				$hash = $this->requestData['hash'];
+
+				$uzivatel = assetsFactory::getAllEntity(
+					"uzivatelClass",
+					array(
+						new filterClass(
+							"email",
+							"=",
+							"'" . $email . "'"
+						)
+					)
+				);
+
+
+				if(is_array($uzivatel) && count($uzivatel) == 1){
+					$uzivatel = array_shift($uzivatel);
+
+
+					if($hash === $uzivatel->db_hash){
+
+						if(Tools::checkPresenceOfParam("db_heslo", $this->requestData)){
+
+							$heslo = $this->requestData['db_heslo'];
+							$uzivatel->storePassword($heslo);
+							$uzivatel->db_hash = "";
+
+							$this->setView("resetPasswordFinish");
+							frontendError::addMessage(__("Uživatel","realsys"),SUCCESS, __("Heslo bylo změněno","realsys"));
+							Tools::jsRedirect(Tools::getFERoute("uzivatelClass",false, "login"),1500);
+							return true;
+
+						}else{
+							$this->setView("resetPasswordFinish");
+							return true;
+						}
+					}else{
+						frontendError::addMessage(__("Hash","realsys"),ERROR, __("Nesprávný hash, snažíte se o něco špatného, budete reportováni","realsys"));
+						$this->setView("error");
+						return false;
+					}
+				}else{
+
+					frontendError::addMessage(__("Uživatel","realsys"),ERROR, __("Zadaný uživatel v systému neexistuje.","realsys"));
+					$this->setView("error");
+					return false;
+				}
+			}else{
+				frontendError::addMessage(__("Povinná pole","realsys"),ERROR, __("Některá pole nebyla vyplněna","realsys"));
+				$this->setView("error");
+				return false;
+			}
+		}else{
+
+			frontendError::addMessage(__("Uživatel","realsys"),ERROR, __("Pokud jste přihlášený nemůžete žádat o reset hesla","realsys"));
+			$this->setView("error");
+			return false;
+		}
+	}
+
+	public function resetPassword(){
+		globalUtils::writeDebug($this->requestData);
+
+		if(uzivatelClass::getUserLoggedId() == false){
+
+
+			$result = Tools::postChecker(
+				$this->requestData,
+				array(
+					'db_email_nocheck' => array(
+						"required" => true,
+						"type" => EMAIL
+					)
+				),
+				true
+			);
+
+			if($result){
+
+				$email = $this->requestData['db_email_nocheck'];
+				$filter_arr = array(
+					new filterClass("email","=","'" . $email . "'")
+				);
+
+				$uzivatel = assetsFactory::getAllEntity("uzivatelClass", $filter_arr);
+				globalUtils::writeDebug($uzivatel);
+
+				if(is_array($uzivatel) && count($uzivatel) == 1){
+					$uzivatel = array_shift($uzivatel);
+					if($uzivatel->db_stav == 1){
+
+						$hash_to_send = hash("md5",$uzivatel->db_email . $uzivatel->db_telefon . $uzivatel->db_prijmeni . "salting");
+						$uzivatel->db_hash = $hash_to_send;
+
+						$link = home_url() . "/login/?action=resetPasswordFinish&hash=" . $hash_to_send . "&email=" . $email;
+
+						$data = array(
+							'link' => $link,
+							'jmeno' => $uzivatel->db_jmeno,
+							'prijmeni' => $uzivatel->db_prijmeni
+						);
+
+						Tools::sendMail( $email, "Resetování hesla", "resetPassword", $data );
+						$this->setView("resetPassword");
+
+					}else{
+						frontendError::addMessage(__("Uživatel","realsys"),ERROR, __("Zadaný uživatel není v systému potvrzený","realsys"));
+						$this->setView("requestResetPassword");
+						return false;
+					}
+				}else{
+					frontendError::addMessage(__("Uživatel","realsys"),ERROR, __("Zadaný uživatel v systému neexistuje","realsys"));
+					$this->setView("requestResetPassword");
+					return false;
+				}
+
+			}else{
+				frontendError::addMessage(__("Reset hesla","realsys"),ERROR, __("Nebyla zadaná emailová adresa.","realsys"));
+				$this->setView("requestResetPassword");
+				return false;
+			}
+		}else{
+			frontendError::addMessage(__("Uživatel","realsys"),ERROR, __("Pokud jste přihlášený nemůžete žádat o reset hesla","realsys"));
+			$this->setView("requestResetPassword");
+			return false;
+		}
+	}
 }

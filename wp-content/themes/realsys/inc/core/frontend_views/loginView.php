@@ -115,7 +115,7 @@
 									<button type="submit" class="btn submit-btn"><?php echo _e("Přihlásit se", "realsys"); ?></button>
 									<div class="g-signin2" data-onsuccess="onSignIn"></div>
 									<p class="ucet-nemam"><?php echo __("Nemáte ešte u nás účet?", "realsys"); ?> <a href="#"><?php echo __("Zaregistrujte sa", "realsys"); ?></a></p>
-
+                                    <p class="ucet-nemam"><?php echo __("Nepamatujete si heslo?", "realsys"); ?> <a href="<?php echo Tools::getFERoute("uzivatelClass",false, "resetpwd"); ?>"><?php echo __("Obnovit heslo", "realsys"); ?></a></p>
 
 								</div>
 							</form>

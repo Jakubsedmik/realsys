@@ -16,10 +16,10 @@ class objednavkaController extends frontendController {
 
 		$result = Tools::postChecker($this->requestData, array(
 			'serviceOrder' => array(
-				'required' => true,
+				'required' => false,
 				'type' => NUMBER
 			)
-		), true);
+		), true) && Tools::checkPresenceOfParam("serviceOrder",$this->requestData);
 
 		if($result){
 			global $cenik_sluzeb;

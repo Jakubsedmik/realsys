@@ -357,12 +357,12 @@ class Tools {
                     if(is_callable($callbackSuccess)){
 	                    call_user_func($callbackSuccess,$entity, $source);
                     }
-                    frontendError::addMessage("Úspěch", SUCCESS, "Úspěšně uloženo");
+                    frontendError::addMessage(__("Úspěch", "realsys"), SUCCESS, __("Úspěšně uloženo","realsys"));
                     return true;
 
                 }else{
                     trigger_error("formProcessor::ID není dostupné");
-                    frontendError::addMessage("id", ERROR, "Došlo k chybě!");
+                    frontendError::addMessage("ID", ERROR, __("Došlo k chybě!","realsys"));
 	                if(is_object($callbackFail) || function_exists($callbackFail)){
 		                $callbackFail($source);
                     }
@@ -375,7 +375,7 @@ class Tools {
 	            if(is_callable($callbackSuccess)){
 		            call_user_func($callbackSuccess,$entity, $source);
 	            }
-	            frontendError::addMessage("Úspěch", SUCCESS, "Úspěšně vytvořeno");
+	            frontendError::addMessage(__("Úspěch", "realsys"), SUCCESS, __("Úspěšně vytvořeno","realsys"));
                 return true;
 
             }
@@ -759,13 +759,13 @@ class Tools {
 			    }
 			    return $email;
             }else{
-		        frontendError::addMessage("Email",ERROR, "Z technických důvodů se nepodařilo zprávu odeslat - kontaktujte administrátora");
+		        frontendError::addMessage(__("Email","realsys"),ERROR, __("Z technických důvodů se nepodařilo zprávu odeslat - kontaktujte administrátora","realsys"));
 		        trigger_error("Email template not found :: serveTemplate");
 		        return false;
             }
 		}
 		else {
-			frontendError::addMessage("Email",ERROR, "Z technických důvodů se nepodařilo zprávu odeslat - kontaktujte administrátora");
+			frontendError::addMessage(__("Email","realsys"),ERROR, __("Z technických důvodů se nepodařilo zprávu odeslat - kontaktujte administrátora","realsys"));
 			trigger_error("bad serve email params at :: serverTemplate");
 			return false;
 		}
@@ -796,7 +796,7 @@ class Tools {
 		    }
 		    return true;
         }else{
-		    frontendError::addMessage("Email",ERROR, "Z technických důvodů se nepodařilo zprávu odeslat - kontaktujte administrátora");
+		    frontendError::addMessage(__("Email","realsys"),ERROR, __("Z technických důvodů se nepodařilo zprávu odeslat - kontaktujte administrátora","realsys"));
 	        trigger_error("Failed to send mail :: mising some parameters");
 	        return false;
         }

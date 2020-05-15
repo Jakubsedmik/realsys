@@ -36,7 +36,7 @@
                             ?>
                             <div class="col-sm-3">
                                 <label>
-                                    <input type="radio" name="db_typ_inzeratu" value="<?php echo $value->db_value?>" <?php echo ($value->db_value == $inzerat->db_typ_inzeratu ? 'checked' : '' ); ?>>
+                                    <input class="jcf-ignore" type="radio" name="db_typ_inzeratu" value="<?php echo $value->db_value?>" <?php echo ($value->db_value == $inzerat->db_typ_inzeratu ? 'checked' : '' ); ?>>
                                     <div class="type-inz-div">
                                         <div class="type-inz">
                                             <i class="<?php echo $icons[$value->db_value]; ?> ico"></i><span class="sel-input-name"><?php echo $value->db_translation?></span>
@@ -74,7 +74,7 @@
 
                             <div class="col-sm">
                                 <label>
-                                    <input type="radio" name="db_typ_stavby" value="<?php echo $value->db_value; ?>" <?php echo ($value->db_value == $inzerat->db_typ_stavby ? 'checked' : '' ); ?>>
+                                    <input class="jcf-ignore" type="radio" name="db_typ_stavby" value="<?php echo $value->db_value; ?>" <?php echo ($value->db_value == $inzerat->db_typ_stavby ? 'checked' : '' ); ?>>
                                     <div class="type-nem-div">
                                         <div class="type-nem">
                                             <i class="ico <?php echo $icons[$value->db_value]; ?>"></i><span class="sel-input-name"><?php echo $value->db_translation; ?></span>
@@ -173,6 +173,33 @@
                             <div class="currency-input">
                                 <div class="form-field">
                                     <input type="number" placeholder="100 000" step="1000" value="<?php echo $inzerat->dejData("db_cena"); ?>" name="db_cena">
+                                </div>
+                                <span class="currency"><?php echo CURRENCY; ?></span>
+                            </div>
+                        </div>
+                        <div class="form-row price-input">
+                            <label><?php _e( "Cena nájmu", "realsys" ); ?></label>
+                            <div class="currency-input">
+                                <div class="form-field">
+                                    <input type="number" placeholder="100 000" step="1000" value="<?php echo $inzerat->dejData("db_cena_najem"); ?>" name="db_cena_najem">
+                                </div>
+                                <span class="currency"><?php echo CURRENCY; ?></span>
+                            </div>
+                        </div>
+                        <div class="form-row price-input">
+                            <label><?php _e( "Kauce", "realsys" ); ?></label>
+                            <div class="currency-input">
+                                <div class="form-field">
+                                    <input type="number" placeholder="100 000" step="1000" value="<?php echo $inzerat->dejData("db_kauce"); ?>" name="db_kauce">
+                                </div>
+                                <span class="currency"><?php echo CURRENCY; ?></span>
+                            </div>
+                        </div>
+                        <div class="form-row price-input">
+                            <label><?php _e( "Poplatky", "realsys" ); ?></label>
+                            <div class="currency-input">
+                                <div class="form-field">
+                                    <input type="number" placeholder="100 000" step="1000" value="<?php echo $inzerat->dejData("db_poplatky"); ?>" name="db_poplatky">
                                 </div>
                                 <span class="currency"><?php echo CURRENCY; ?></span>
                             </div>

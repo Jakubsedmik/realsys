@@ -9,10 +9,6 @@ $api_actions = array(
 		'callback' => 'getElements',
 		'private' => true
 	),
-	'getElement' => array(
-		'callback' => 'getElement',
-		'private' => true
-	),
 	'upload' => array(
 		'callback' => 'uploadFile',
 		'private' => true
@@ -92,7 +88,7 @@ foreach ($api_actions as $key => $value){
 				add_action("wp_ajax_nopriv_" . $key, $value['callback']);
 			}
 		}else{
-			trigger_error("Api.php :: zadaný callback neexistuje");
+			trigger_error("Api.php :: zadaný callback neexistuje: " . $value['callback']);
 		}
 	}else{
 		if(function_exists($value)){
@@ -120,23 +116,19 @@ function removeElement (){
 		$result = assetsFactory::removeEntity($model, $id);
 		if($result){
 			$response->status = 1;
-			$response->message = "Objekt byl odebrán";
+			$response->message = __("Objekt byl odebrán","realsys");
 		}else{
 			$response->status = 0;
-			$response->message = "Nepodařilo se odebrat";
+			$response->message = __("Nepodařilo se odebrat","realsys");
 		}
 	}else{
 		$response->status = 0;
-		$response->message = "Chybějící vstupní data";
+		$response->message = __("Chybějící vstupní data","realsys");
 	}
 
 
 	wp_send_json($response);
 	die();
-}
-
-function getElement (){
-
 }
 
 
@@ -200,14 +192,14 @@ function getElements (){
 	if(is_array($result) && count($result) > 0){
 		$response = new stdClass();
 		$response->status = 0;
-		$response->message = "Některé parametry nebyli vyplněny";
+		$response->message = __("Některé parametry nebyli vyplněny","realsys");
 		$response->description = $result;
 		wp_send_json($response);
 		die();
 	}elseif (!is_array($result)){
 		$response = new stdClass();
 		$response->status = 0;
-		$response->message = "Nastala interní chyba";
+		$response->message = __("Nastala interní chyba","realsys");
 		wp_send_json($response);
 		die();
 	}
@@ -266,7 +258,7 @@ function getElements (){
 		$response->prekladHlavicek = $dictionary;
 		$response->totalRecords = $count;
 		$response->status = 1;
-		$response->message = "Výsledky byli vráceny";
+		$response->message = __("Výsledky byli vráceny","realsys");
 		wp_send_json($response);
 		die();
 
@@ -274,7 +266,7 @@ function getElements (){
 	}else{
 		$response = new stdClass();
 		$response->status = 0;
-		$response->message = "Tento model v systému neexistuje";
+		$response->message = __("Tento model v systému neexistuje","realsys");
 		wp_send_json($response);
 		die();
 	}
@@ -319,10 +311,10 @@ function setObrazkyParam(){
 		$obrazek->$param = $new_value;
 
 		$response->status = 1;
-		$response->message = "Uloženo";
+		$response->message = __("Uloženo","realsys");
 	}else{
 		$response->status = 0;
-		$response->message = "Chybějící parametry";
+		$response->message = __("Chybějící parametry","realsys");
 	}
 	wp_send_json($response);
 	die();
@@ -336,14 +328,14 @@ function removeObrazek(){
 		$result = assetsFactory::removeEntity("obrazekClass",$id);
 		if($result){
 			$response->status = 1;
-			$response->message = "Smazáno";
+			$response->message = __("Smazáno","realsys");
 		}else{
 			$response->status = 0;
-			$response->message = "Došlo k chybě při mazání";
+			$response->message = __("Došlo k chybě při mazání","realsys");
 		}
 	}else{
 		$response->status = 0;
-		$response->message = "Chybějící parametry";
+		$response->message = __("Chybějící parametry","realsys");
 	}
 	wp_send_json($response);
 	die();
@@ -388,7 +380,7 @@ function googleVerification(){
 		);
 		if(is_array($uzivatel) && count($uzivatel) == 0){
 			$response->status = 1;
-			$response->message = "Uživatel neexistuje";
+			$response->message = __("Uživatel neexistuje","realsys");
 		}else{
 
 			$verificationArray = array(
@@ -400,7 +392,7 @@ function googleVerification(){
 			if($payload){
 
 				$response->status = 0;
-				$response->message = "Tento uživatel již existuje";
+				$response->message = __("Tento uživatel již existuje","realsys");
 				$uzivatel = array_shift($uzivatel);
 				$uzivatel->logIn();
 
@@ -414,13 +406,13 @@ function googleVerification(){
 				$response->actionHtml = $ob;
 			}else{
 				$response->status = -2;
-				$response->message = "Systém - chyba, pokoušíte se o něco nekalého";
+				$response->message = __("Systém - chyba, pokoušíte se o něco nekalého","realsys");
 			}
 
 		}
 	}else{
 		$response->status = -1;
-		$response->message = "Došlo k technické chybě - chybějící parametry";
+		$response->message = __("Došlo k technické chybě - chybějící parametry","realsys");
 	}
 	wp_send_json($response);
 	die();
@@ -585,19 +577,19 @@ function changeUserAvatar() {
 			}else{
 				$response = new stdClass();
 				$response->status = 0;
-				$response->message = "Uživatel neexistuje nebo není zalogován";
+				$response->message = __("Uživatel neexistuje nebo není zalogován","realsys");
 			}
 		}else{
 			$response = new stdClass();
 			$response->status = 0;
-			$response->message = "Nastala chyba!";
+			$response->message = __("Nastala chyba!","realsys");
 		}
 
 
 	}else{
 		$response = new stdClass();
 		$response->status = 0;
-		$response->message = "Některé parametry nebyli specifikovány";
+		$response->message =__("Některé parametry nebyli specifikovány","realsys");
 	}
 
 	wp_send_json($response);
@@ -629,22 +621,22 @@ function removeInzerat(){
 				$result = assetsFactory::removeEntity("inzeratClass", $inzerat_id);
 				if($result){
 					$response->status = 1;
-					$response->message = "Úspěšně smazáno";
+					$response->message = __("Úspěšně smazáno","realsys");
 				}else{
 					$response->status = 0;
-					$response->message = "Smazání se nevydařilo";
+					$response->message = __("Smazání se nevydařilo","realsys");
 				}
 			}else{
 				$response->status = 0;
-				$response->message = "Inzerát není ve vlastnictví uživatele.";
+				$response->message = __("Inzerát není ve vlastnictví uživatele.","realsys");
 			}
 		}else{
 			$response->status = 0;
-			$response->message = "Uživatel není přihlášen";
+			$response->message = __("Uživatel není přihlášen","realsys");
 		}
 	}else{
 		$response->status = 0;
-		$response->message = "Některé parametry nebyli specifikovány";
+		$response->message = __("Některé parametry nebyli specifikovány","realsys");
 	}
 
 	wp_send_json($response);
@@ -682,23 +674,23 @@ function changeInzeratStatus(){
 				if($inzerat_status == 0 || $inzerat_status == 1){
 					$inzerat->db_stav_inzeratu = $inzerat_status;
 					$response->status = 1;
-					$response->message = "Úspěšná změna stavu inzerátu";
+					$response->message = __("Úspěšná změna stavu inzerátu","realsys");
 				}else{
 					$response->status = 0;
-					$response->message = "Nepřípustné hodnoty stavu inzerátu";
+					$response->message = __("Nepřípustné hodnoty stavu inzerátu","realsys");
 				}
 
 			}else{
 				$response->status = 0;
-				$response->message = "Inzerát není ve vlastnictví uživatele";
+				$response->message = __("Inzerát není ve vlastnictví uživatele","realsys");
 			}
 		}else{
 			$response->status = 0;
-			$response->message = "Uživatel není přihlášen";
+			$response->message = __("Uživatel není přihlášen","realsys");
 		}
 	}else{
 		$response->status = 0;
-		$response->message = "Některé parametry nebyli specifikovány";
+		$response->message = __("Některé parametry nebyli specifikovány","realsys");
 	}
 
 	wp_send_json($response);
@@ -737,19 +729,19 @@ function createInzeratImages(){
 			}else{
 				$response = new stdClass();
 				$response->status = 0;
-				$response->message = "Uživatel neexistuje nebo není zalogován";
+				$response->message = __("Uživatel neexistuje nebo není zalogován","realsys");
 			}
 		}else{
 			$response = new stdClass();
 			$response->status = 0;
-			$response->message = "Nastala chyba!";
+			$response->message = __("Nastala chyba!","realsys");
 		}
 
 
 	}else{
 		$response = new stdClass();
 		$response->status = 0;
-		$response->message = "Některé parametry nebyli specifikovány";
+		$response->message = __("Některé parametry nebyli specifikovány","realsys");
 	}
 
 	wp_send_json($response);
@@ -781,22 +773,22 @@ function removePes(){
 				$result = assetsFactory::removeEntity("hlidacipesClass", $pes_id);
 				if($result){
 					$response->status = 1;
-					$response->message = "Úspěšně smazáno";
+					$response->message = __("Úspěšně smazáno","realsys");
 				}else{
 					$response->status = 0;
-					$response->message = "Smazání se nevydařilo";
+					$response->message = __("Smazání se nevydařilo","realsys");
 				}
 			}else{
 				$response->status = 0;
-				$response->message = "Inzerát není ve vlastnictví uživatele.";
+				$response->message = __("Inzerát není ve vlastnictví uživatele.","realsys");
 			}
 		}else{
 			$response->status = 0;
-			$response->message = "Uživatel není přihlášen";
+			$response->message = __("Uživatel není přihlášen","realsys");
 		}
 	}else{
 		$response->status = 0;
-		$response->message = "Některé parametry nebyli specifikovány";
+		$response->message = __("Některé parametry nebyli specifikovány","realsys");
 	}
 
 	wp_send_json($response);
@@ -859,26 +851,26 @@ function createWatchdog(){
 
 								if($hlidacipes){
 									$response->status = 1;
-									$response->message = "Hlídací pes úspěšně vytvořen";
+									$response->message = __("Hlídací pes úspěšně vytvořen","realsys");
 								}else{
 									$response->status = 0;
-									$response->message = "Hlídací pes se nepodařil vytvořit";
+									$response->message = __("Hlídací pes se nepodařil vytvořit","realsys");
 								}
 							}else{
 								$response->status = 0;
-								$response->message = "Nevalidní transakce";
+								$response->message = __("Nevalidní transakce","realsys");
 							}
 						}else{
 							$response->status = 0;
-							$response->message = "Neplatná transakce";
+							$response->message = __("Neplatná transakce","realsys");
 						}
 					}else{
 						$response->status = 0;
-						$response->message = "Neexistující transakce";
+						$response->message = __("Neexistující transakce","realsys");
 					}
 				}else{
 					$response->status = 0;
-					$response->message = "Hlídací pes nebyl vytvořen, protože nebyla doložena platná transakce.";
+					$response->message = __("Hlídací pes nebyl vytvořen, protože nebyla doložena platná transakce.","realsys");
 				}
 
 			}else{
@@ -886,19 +878,19 @@ function createWatchdog(){
 				
 				if($hlidacipes){
 					$response->status = 1;
-					$response->message = "Hlídací pes úspěšně vytvořen";
+					$response->message = __("Hlídací pes úspěšně vytvořen","realsys");
 				}else{
 					$response->status = 0;
-					$response->message = "Hlídací pes se nepodařil vytvořit";
+					$response->message = __("Hlídací pes se nepodařil vytvořit","realsys");
 				}
 			}
 		}else{
 			$response->status = 0;
-			$response->message = "Hlídací pes se nevytvořil. Nejste přihlášen.";
+			$response->message = __("Hlídací pes se nevytvořil. Nejste přihlášen.","realsys");
 		}
 	}else{
 		$response->status = 0;
-		$response->message = "Nebyli zadány všechny parametry";
+		$response->message = __("Nebyli zadány všechny parametry","realsys");
 	}
 
 	wp_send_json($response);
@@ -931,26 +923,26 @@ function checkUserCredits(){
 
 					if($price <= $billance){
 						$response->status = 1;
-						$response->message = "Uživatel má dostatek kreditů";
+						$response->message = __("Uživatel má dostatek kreditů","realsys");
 					}else{
 						$response->status = 0;
-						$response->message = "Uživatel nemá dostatek kreditů - stav kreditů: " . $billance . ", Požadované množství: " . $price;
+						$response->message = __("Uživatel nemá dostatek kreditů - stav kreditů:","realsys") . " " . $billance . ", " . __("Požadované množství:","realsys") . " " . $price;
 					}
 				}else{
 					$response->status = -1;
-					$response->message = "Tato služba neexistuje";
+					$response->message = __("Tato služba neexistuje","realsys");
 				}
 			}else{
 				$response->status = -2;
-				$response->message = "Neexistující uživatel";
+				$response->message = __("Neexistující uživatel","realsys");
 			}
 		}else{
 			$response->status = -3;
-			$response->message = "Uživatel není přihlášen";
+			$response->message = __("Uživatel není přihlášen","realsys");
 		}
 	}else{
 		$response->status = -4;
-		$response->message = "Povinná pole nebyla vyplněna.";
+		$response->message = __("Povinná pole nebyla vyplněna.","realsys");
 	}
 
 	wp_send_json($response);
@@ -1006,11 +998,11 @@ function payForService(){
 							$response = $factory->requestService($serviceid);
 						}else{
 							$response->status = -8;
-							$response->message = "Zadaná entita nebyla nalezena.";
+							$response->message = __("Zadaná entita nebyla nalezena.","realsys");
 						}
 					}else{
 						$response->status = -1;
-						$response->message = "Při objednání služby tohoto typu je třeba poskytnou informace o entitě a její ID";
+						$response->message = __("Při objednání služby tohoto typu je třeba poskytnou informace o entitě a její ID","realsys");
 					}
 				}else{
 					$factory = new transactionFactory($user);
@@ -1018,15 +1010,15 @@ function payForService(){
 				}
 			}else{
 				$response->status = -2;
-				$response->message = "Neexistující uživatel";
+				$response->message = __("Neexistující uživatel","realsys");
 			}
 		}else{
 			$response->status = -3;
-			$response->message = "Uživatel není přihlášen";
+			$response->message = __("Uživatel není přihlášen","realsys");
 		}
 	}else{
 		$response->status = -4;
-		$response->message = "Povinná pole nebyla vyplněna.";
+		$response->message = __("Povinná pole nebyla vyplněna.","realsys");
 	}
 
 	wp_send_json($response);
@@ -1084,35 +1076,35 @@ function payForContact(){
 								$response->telefon = $uzivatel->db_telefon;
 								$response->email = $uzivatel->db_email;
 								$response->uzivatel_url = Tools::getFERoute("uzivatelClass",$uzivatel->getId(),"detail");
-								$response->message = "Kontakt úspěšně získán";
+								$response->message = __("Kontakt úspěšně získán","realsys");
 							}else{
 								$response->status = 0;
-								$response->message = "Kontakt se nepodařilo získat. Neplatný uživatel.";
+								$response->message = __("Kontakt se nepodařilo získat. Neplatný uživatel.","realsys");
 							}
 						}else{
 							$response->status = 0;
-							$response->message = "Kontakt se nepodařilo získat. Neplatný inzerát.";
+							$response->message = __("Kontakt se nepodařilo získat. Neplatný inzerát.","realsys");
 						}
 					}else{
 						$response->status = 0;
-						$response->message = "Nevalidní transakce";
+						$response->message = __("Nevalidní transakce","realsys");
 					}
 				}else{
 					$response->status = 0;
-					$response->message = "Neplatná transakce";
+					$response->message = __("Neplatná transakce","realsys");
 				}
 			}else{
 				$response->status = 0;
-				$response->message = "Neexistující transakce";
+				$response->message = __("Neexistující transakce","realsys");
 			}
 
 		}else{
 			$response->status = 0;
-			$response->message = "Kontakt nebyl získán. Nejste přihlášen.";
+			$response->message = __("Kontakt nebyl získán. Nejste přihlášen.","realsys");
 		}
 	}else{
 		$response->status = 0;
-		$response->message = "Nebyli zadány všechny parametry";
+		$response->message = __("Nebyli zadány všechny parametry","realsys");
 	}
 
 	wp_send_json($response);

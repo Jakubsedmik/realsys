@@ -63,7 +63,7 @@ class invisibleRecaptchaClass
 		    }
 	    }
 
-        frontendError::addMessage("Ověření", ERROR, "Ověření uživatele bylo neúspěšné");
+        frontendError::addMessage(__("Ověření","realsys"), ERROR, __("Ověření uživatele bylo neúspěšné","realsys"));
         $controller->setView("error");
         return false;
     }

@@ -90,7 +90,10 @@ class inzeratEditController extends frontendController {
 								"db_mesto",
 								"db_psc",
 								"db_cp",
-								"db_cena"
+								"db_cena",
+								"db_cena_najem",
+								"db_kauce",
+								"db_poplatky"
 							),
 							$this->requestData,
 							'inzeratClass',

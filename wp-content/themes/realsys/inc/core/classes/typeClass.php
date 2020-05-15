@@ -19,17 +19,18 @@ class typeClass implements JsonSerializable {
 
 	public function isValid() {
 		if ( $this->required ) {
+
 			if ( $this->value !== null ) {
 				return $this->typeValidator();
 			} else {
-				$response = "Pole " . globalUtils::translate( $this->key ) . " není přítomno.";
+				$response = __("Pole","realsys") . " " . globalUtils::translate( $this->key ) . " " . __("není přítomno.","realsys");
 				frontendError::addMessage( $this->key, ERROR, $response, $this );
 				$this->message = $response;
 
 				return false;
 			}
 		} else {
-			if ( $this->value == null ) {
+			if ( $this->value == null || strlen($this->value)==0 ) {
 				$this->status = true;
 
 				return true;
@@ -47,14 +48,14 @@ class typeClass implements JsonSerializable {
 			/* NUMERIC FILTERS */
 			case 'int':
 				if ( ! $this->isInteger($this->value) ) {
-					$response = "Pole " . globalUtils::translate( $this->key ) . " není platné číslo.";
+					$response = __("Pole","realsys") . " " . globalUtils::translate( $this->key ) . " " . __("není platné číslo.","realsys");
 					$status   = false;
 					frontendError::addMessage( $this->key, ERROR, $response, $this );
 				}
 				break;
 			case "bool" :
 				if ( ! is_bool( $this->value ) && ! ( $this->value == 1 || $this->value == 0 ) ) {
-					$response = "Pole " . globalUtils::translate( $this->key ) . " není platná logická hodnota.";
+					$response = __("Pole","realsys") . " " . globalUtils::translate( $this->key ) . " " . __("není platná logická hodnota.","realsys");
 					$status   = false;
 					frontendError::addMessage( $this->key, ERROR, $response, $this );
 				}
@@ -63,7 +64,7 @@ class typeClass implements JsonSerializable {
 				if ( $this->isFloat($this->value)) {
 					break;
 				}else{
-					$response = "Pole " . globalUtils::translate( $this->key ) . " není platné desetinné číslo.";
+					$response = __("Pole","realsys") . " " . globalUtils::translate( $this->key ) . " " . __("není platné desetinné číslo.","realsys");
 					$status   = false;
 					frontendError::addMessage( $this->key, ERROR, $response, $this );
 				}
@@ -74,7 +75,7 @@ class typeClass implements JsonSerializable {
 				if ( is_string( $this->value ) && strlen( $this->value ) < 64 && strlen($this->value) > 0 ) {
 					break;
 				} else {
-					$response = "Pole " . globalUtils::translate( $this->key ) . " není řetězec o délce 63 znaků.";
+					$response = __("Pole","realsys") . " " . globalUtils::translate( $this->key ) . " " . __("není řetězec o délce 63 znaků.","realsys");
 					$status   = false;
 					frontendError::addMessage( $this->key, ERROR, $response, $this );
 					break;
@@ -83,7 +84,7 @@ class typeClass implements JsonSerializable {
 				if ( is_string( $this->value ) && strlen( $this->value ) < 256 && strlen($this->value) > 0 ) {
 					break;
 				} else {
-					$response = "Pole " . globalUtils::translate( $this->key ) . " není řetězec o délce 255 znaků.";
+					$response = __("Pole","realsys") . " " . globalUtils::translate( $this->key ) . " " . __("není řetězec o délce 255 znaků.","realsys");
 					$status   = false;
 					frontendError::addMessage( $this->key, ERROR, $response, $this );
 					break;
@@ -92,14 +93,14 @@ class typeClass implements JsonSerializable {
 				if ( is_string( $this->value ) && strlen( $this->value ) < 512 && strlen($this->value) > 0 ) {
 					break;
 				} else {
-					$response = "Pole " . globalUtils::translate( $this->key ) . " není řetězec o délce 511 znaků.";
+					$response = __("Pole","realsys") . " " . globalUtils::translate( $this->key ) . " " . __("není řetězec o délce 511 znaků.","realsys");
 					$status   = false;
 					frontendError::addMessage( $this->key, ERROR, $response, $this );
 					break;
 				}
 			case 'str':
 				if ( ! is_string( $this->value ) || strlen( $this->value ) == 0 ) {
-					$response = "Pole " . globalUtils::translate( $this->key ) . " není platný řetězec.";
+					$response = __("Pole","realsys") . " " . globalUtils::translate( $this->key ) . " " . __("není platný řetězec.", "realsys");
 					$status   = false;
 					frontendError::addMessage( $this->key, ERROR, $response, $this );
 				}
@@ -113,28 +114,28 @@ class typeClass implements JsonSerializable {
 				$custom_date = $this->value;
 				$custom_date = str_replace( ".", "-", $custom_date );
 				if ( strtotime( $custom_date ) === false ) {
-					$response = "Pole " . globalUtils::translate( $this->key ) . " není platné datum.";
+					$response = __("Pole","realsys") . " " . globalUtils::translate( $this->key ) . " " . __("není platné datum.","realsys");
 					$status   = false;
 					frontendError::addMessage( $this->key, ERROR, $response, $this );
 				}
 				break;
 			case 'tel':
 				if ( ! preg_match( REGEX_TELEPHONE, $this->value ) ) {
-					$response = "Pole " . globalUtils::translate( $this->key ) . " není ve správném formátu.";
+					$response = __("Pole","realsys") . " " . globalUtils::translate( $this->key ) . " " . __("není ve správném formátu.","realsys");
 					$status   = false;
 					frontendError::addMessage( $this->key, ERROR, $response, $this );
 				}
 				break;
 			case 'url' :
 				if ( ! Tools::isValidUrl( $this->value ) ) {
-					$response = "Pole " . globalUtils::translate( $this->key ) . " není platná URL.";
+					$response = __("Pole","realsys") . " " . globalUtils::translate( $this->key ) . " " . __("není platná URL.","realsys");
 					$status   = false;
 					frontendError::addMessage( $this->key, ERROR, $response, $this );
 				}
 				break;
 			case "time" :
 				if ( ! preg_match( REGEX_TIME, $this->value ) ) {
-					$response = "Pole " . globalUtils::translate( $this->key ) . " není typu čas.";
+					$response = __("Pole","realsys") . " " . globalUtils::translate( $this->key ) . " " . __("není typu čas.","realsys");
 					$status   = false;
 					frontendError::addMessage( $this->key, ERROR, $response, $this );
 				}
@@ -144,14 +145,14 @@ class typeClass implements JsonSerializable {
 					if(strpos($this->value,"localhost") !== false){
 						break;
 					}
-					$response = "Pole " . globalUtils::translate( $this->key ) . " není typu email.";
+					$response = __("Pole","realsys") . " " . globalUtils::translate( $this->key ) . " " . __("není typu email.","realsys");
 					$status   = false;
 					frontendError::addMessage( $this->key, ERROR, $response, $this );
 				}
 				break;
 			case "array" :
 				if ( ! is_array( $this->value ) ) {
-					$response = "Pole " . globalUtils::translate( $this->key ) . " není typu pole.";
+					$response = __("Pole","realsys") . " " . globalUtils::translate( $this->key ) . " " . __("není typu pole.","realsys");
 					$status   = false;
 					frontendError::addMessage( $this->key, ERROR, $response, $this );
 				}
@@ -160,7 +161,7 @@ class typeClass implements JsonSerializable {
 				if ( $this->isPrice( $this->value ) ) {
 					break;
 				} else {
-					$response = "Pole " . globalUtils::translate( $this->key ) . " není platná cena.";
+					$response = __("Pole","realsys") . " " . globalUtils::translate( $this->key ) . " " . __("není platná cena.","realsys");
 					$status   = false;
 					frontendError::addMessage( $this->key, ERROR, $response, $this );
 					break;
@@ -169,7 +170,7 @@ class typeClass implements JsonSerializable {
 				if ( $this->isPriceZero( $this->value ) ) {
 					break;
 				} else {
-					$response = "Pole " . globalUtils::translate( $this->key ) . " není platná cena.";
+					$response = __("Pole","realsys") . " " . globalUtils::translate( $this->key ) . " " . __("není platná cena.","realsys");
 					$status   = false;
 					frontendError::addMessage( $this->key, ERROR, $response, $this );
 					break;
@@ -178,7 +179,7 @@ class typeClass implements JsonSerializable {
 				if ( $this->isTimestamp( $this->value ) ) {
 					break;
 				} else {
-					$response = "Pole " . globalUtils::translate( $this->key ) . " není platný časový údaj.";
+					$response = __("Pole","realsys") . " " . globalUtils::translate( $this->key ) . " " . __("není platný časový údaj.","realsys");
 					$status   = false;
 					frontendError::addMessage( $this->key, ERROR, $response, $this );
 					break;
@@ -187,13 +188,13 @@ class typeClass implements JsonSerializable {
 				if ( $this->isForeignKey( $this->value ) ) {
 					break;
 				} else {
-					$response = "Pole " . globalUtils::translate( $this->key ) . " není platný cizí klíč.";
+					$response = __("Pole","realsys") . " " . globalUtils::translate( $this->key ) . " " . __("není platný cizí klíč.","realsys");
 					$status   = false;
 					frontendError::addMessage( $this->key, ERROR, $response, $this );
 				}
 			case 'url_rel' :
 				if ( ! preg_match( REGEX_URL_RELATIVE, $this->value ) ) {
-					$response = "Pole " . globalUtils::translate( $this->key ) . " není platná relativní cesta.";
+					$response = __("Pole","realsys") . " " . globalUtils::translate( $this->key ) . " " . __("není platná relativní cesta.","realsys");
 					$status   = false;
 					frontendError::addMessage( $this->key, ERROR, $response, $this );
 				}
