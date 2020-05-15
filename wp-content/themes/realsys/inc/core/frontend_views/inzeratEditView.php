@@ -15,7 +15,7 @@
             </div>
 
             <form method="post" class="js-validate-form">
-                <section id="First" class="inz-form-sec inz-sec-1">
+                <section id="First" class="inz-form-sec inz-sec-1 rounded-b shadow-big tabcontent">
                     <div class="inz-box">
                         <h3><?php echo _e( "Typ inzerátu", "realsys" ); ?></h3>
 
@@ -36,12 +36,8 @@
                             ?>
                             <div class="col-sm-3">
                                 <label>
-                                    <input class="jcf-ignore" type="radio" name="db_typ_inzeratu" value="<?php echo $value->db_value?>" <?php echo ($value->db_value == $inzerat->db_typ_inzeratu ? 'checked' : '' ); ?>>
-                                    <div class="type-inz-div">
-                                        <div class="type-inz">
-                                            <i class="<?php echo $icons[$value->db_value]; ?> ico"></i><span class="sel-input-name"><?php echo $value->db_translation?></span>
-                                        </div>
-                                    </div>
+                                    <input type="radio" name="db_typ_inzeratu" value="<?php echo $value->db_value?>" <?php echo ($value->db_value == $inzerat->db_typ_inzeratu ? 'checked' : '' ); ?>>
+                                    <span class="sel-input-name"><?php echo $value->db_translation?></span>
                                 </label>
                             </div>
                             <?php
@@ -72,14 +68,10 @@
 	                            foreach ($dials as $key => $value) :
 	                        ?>
 
-                            <div class="col-sm">
-                                <label>
-                                    <input class="jcf-ignore" type="radio" name="db_typ_stavby" value="<?php echo $value->db_value; ?>" <?php echo ($value->db_value == $inzerat->db_typ_stavby ? 'checked' : '' ); ?>>
-                                    <div class="type-nem-div">
-                                        <div class="type-nem">
-                                            <i class="ico <?php echo $icons[$value->db_value]; ?>"></i><span class="sel-input-name"><?php echo $value->db_translation; ?></span>
-                                        </div>
-                                    </div>
+                            <div class="single-input">
+                                <label class="form-field">
+                                    <input type="radio" name="db_typ_stavby" value="<?php echo $value->db_value; ?>" <?php echo ($value->db_value == $inzerat->db_typ_stavby ? 'checked' : '' ); ?>>
+                                    <span class="sel-input-name"><?php echo $value->db_translation; ?></span>
                                 </label>
                             </div>
                             <?php
@@ -94,75 +86,64 @@
                         <div class="col-sm bigger-label">
                             <div class="inz-box align-left">
 
-                                <div class="form-row">
-                                    <div class="form-field">
-                                        <label><?php _e( "Ulice", "realsys" ); ?></label>
-                                        <input type="text" placeholder="<?php _e("Např. Jiráskova","realsys"); ?>" name="db_ulice" value="<?php echo $inzerat->dejData("db_ulice"); ?>">
-                                    </div>
+
+                                <div class="input-content">
+                                        <label class="form-field"><span class="sel-input-name"><?php _e( "Ulice", "realsys" ); ?></span>
+                                          <input class="input-outline" type="text" placeholder="<?php _e("Např. Jiráskova","realsys"); ?>" name="db_ulice" value="<?php echo $inzerat->dejData("db_ulice"); ?>">
+                                        </label>
+
+                                        <label class="form-field"><span class="sel-input-name"><?php _e( "Číslo popisné", "realsys" ); ?></span>
+                                          <input class="input-outline" type="text" placeholder="<?php _e("Např. 15/225","realsys"); ?>" name="db_cp" value="<?php echo $inzerat->dejData("db_cp"); ?>">
+                                        </label>
+
+                                        <label class="form-field"><span class="sel-input-name"><?php _e( "Město", "realsys" ); ?></span>
+                                          <input class="input-outline" type="text" placeholder="<?php _e("Např. Chomutov","realsys"); ?>" name="db_mesto" value="<?php echo $inzerat->dejData("db_mesto"); ?>">
+                                        </label>
+
+                                        <label class="form-field"><span class="sel-input-name"><?php _e( "PSČ", "realsys" ); ?></span>
+                                          <input class="input-outline" type="text" placeholder="<?php _e("Např. 225 14","realsys"); ?>" name="db_psc" value="<?php echo $inzerat->dejData("db_psc"); ?>">
+                                        </label>
+
+                                        <label class="form-field"><span class="sel-input-name"><?php _e( "Městská část", "realsys" ); ?></span>
+                                          <input class="input-outline" type="text" placeholder="<?php _e("Např. Chomutov - sever","realsys"); ?>" name="db_mestska_cast" value="<?php echo $inzerat->dejData("db_mestska_cast"); ?>">
+                                        </label>
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-field">
-                                        <label><?php _e( "Číslo popisné", "realsys" ); ?></label>
-                                        <input type="text" placeholder="<?php _e("Např. 15/225","realsys"); ?>" name="db_cp" value="<?php echo $inzerat->dejData("db_cp"); ?>">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-field">
-                                        <label><?php _e( "Město", "realsys" ); ?></label>
-                                        <input type="text" placeholder="<?php _e("Např. Chomutov","realsys"); ?>" name="db_mesto" value="<?php echo $inzerat->dejData("db_mesto"); ?>">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-field">
-                                        <label><?php _e( "PSČ", "realsys" ); ?></label>
-                                        <input type="text" placeholder="<?php _e("Např. 225 14","realsys"); ?>" name="db_psc" value="<?php echo $inzerat->dejData("db_psc"); ?>">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-field">
-                                        <label><?php _e( "Městská část", "realsys" ); ?></label>
-                                        <input type="text" placeholder="<?php _e("Např. Chomutov - sever","realsys"); ?>" name="db_mestska_cast" value="<?php echo $inzerat->dejData("db_mestska_cast"); ?>">
-                                    </div>
-                                </div>
+
+
                             </div>
                         </div>
-
-                        <div class="col-sm col-spacer"></div>
+                      </div>
+                      <div class="row">
 
                         <div class="col-sm nazev-popis">
                             <div class="inz-box align-left">
-                                <h3><?php _e( "Název a popis", "realsys" ); ?></h3>
 
-                                <div class="form-row">
-                                    <div class="form-field">
-                                        <label><?php _e( "Podlahová plocha (v m2)", "realsys" ); ?></label>
-                                        <input type="number" placeholder="<?php _e("Např. 225","realsys"); ?>" value="<?php echo $inzerat->dejData("db_podlahova_plocha"); ?>" name="db_podlahova_plocha">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-field">
-                                        <label><?php _e( "Pozemková plocha (v m2)", "realsys" ); ?></label>
-                                        <input type="number" placeholder="<?php _e("Např. 225","realsys"); ?>" value="<?php echo $inzerat->dejData("db_pozemkova_plocha"); ?>" name="db_pozemkova_plocha">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-field">
-                                        <label><?php _e( "Titulek", "realsys" ); ?></label>
-                                        <input type="text" placeholder="<?php _e("Např. Velký moderní dům v Jiráskově","realsys"); ?>" value="<?php echo $inzerat->dejData("db_titulek"); ?>" name="db_titulek">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-field">
-                                        <label><?php _e( "Dispozice", "realsys" ); ?></label>
-                                        <input type="text" placeholder="<?php _e("Např. 2+kk","realsys"); ?>" value="<?php echo $inzerat->dejData("db_pocet_mistnosti"); ?>" name="db_pocet_mistnosti">
-                                    </div>
-                                </div>
-                                <div class="form-row form-message">
-                                    <div class="form-field">
-                                        <label><?php _e( "Popis", "realsys" ); ?></label>
-                                        <textarea placeholder="<?php _e("Např. Prodávám tento krásný dům...","realsys"); ?>" name="db_popis"><?php echo $inzerat->dejData("db_popis"); ?></textarea>
-                                    </div>
-                                </div>
+                            <div class="input-content">
+
+                                        <label class="form-field"><span class="sel-input-name"><span class="sel-input-name"><?php _e( "Podlahová plocha (v m2)", "realsys" ); ?></span>
+                                        <input class="input-outline" type="number" placeholder="<?php _e("Např. 225","realsys"); ?>" value="<?php echo $inzerat->dejData("db_podlahova_plocha"); ?>" name="db_podlahova_plocha">
+                                        </label>
+
+                                        <label class="form-field"><span class="sel-input-name"><?php _e( "Pozemková plocha (v m2)", "realsys" ); ?></span>
+                                        <input class="input-outline" type="number" placeholder="<?php _e("Např. 225","realsys"); ?>" value="<?php echo $inzerat->dejData("db_pozemkova_plocha"); ?>" name="db_pozemkova_plocha">
+                                        </label>
+
+                                        <label class="form-field"><span class="sel-input-name"><?php _e( "Titulek", "realsys" ); ?></span>
+                                        <input class="input-outline" type="text" placeholder="<?php _e("Např. Velký moderní dům v Jiráskově","realsys"); ?>" value="<?php echo $inzerat->dejData("db_titulek"); ?>" name="db_titulek">
+                                        </label>
+
+                                        <label class="form-field"><span class="sel-input-name"><?php _e( "Dispozice", "realsys" ); ?></span>
+                                        <input class="input-outline" type="text" placeholder="<?php _e("Např. 2+kk","realsys"); ?>" value="<?php echo $inzerat->dejData("db_pocet_mistnosti"); ?>" name="db_pocet_mistnosti">
+                                        </label>
+
+                                        <label class="form-field"><span class="sel-input-name"><?php _e( "Popis", "realsys" ); ?></span>
+                                        <textarea class="input-outline" placeholder="<?php _e("Např. Prodávám tento krásný dům...","realsys"); ?>" name="db_popis"><?php echo $inzerat->dejData("db_popis"); ?></textarea>
+                                        </label>
+
+                            </div>
+
+
+
                             </div>
                         </div>
                     </div>
@@ -172,7 +153,7 @@
                             <label><?php _e( "Cena nemovitosti", "realsys" ); ?></label>
                             <div class="currency-input">
                                 <div class="form-field">
-                                    <input type="number" placeholder="100 000" step="1000" value="<?php echo $inzerat->dejData("db_cena"); ?>" name="db_cena">
+                                    <input class="input-outline" type="number" placeholder="100 000" step="1000" value="<?php echo $inzerat->dejData("db_cena"); ?>" name="db_cena">
                                 </div>
                                 <span class="currency"><?php echo CURRENCY; ?></span>
                             </div>
@@ -181,7 +162,7 @@
                             <label><?php _e( "Cena nájmu", "realsys" ); ?></label>
                             <div class="currency-input">
                                 <div class="form-field">
-                                    <input type="number" placeholder="100 000" step="1000" value="<?php echo $inzerat->dejData("db_cena_najem"); ?>" name="db_cena_najem">
+                                    <input class="input-outline" type="number" placeholder="100 000" step="1000" value="<?php echo $inzerat->dejData("db_cena_najem"); ?>" name="db_cena_najem">
                                 </div>
                                 <span class="currency"><?php echo CURRENCY; ?></span>
                             </div>
@@ -190,7 +171,7 @@
                             <label><?php _e( "Kauce", "realsys" ); ?></label>
                             <div class="currency-input">
                                 <div class="form-field">
-                                    <input type="number" placeholder="100 000" step="1000" value="<?php echo $inzerat->dejData("db_kauce"); ?>" name="db_kauce">
+                                    <input class="input-outline" type="number" placeholder="100 000" step="1000" value="<?php echo $inzerat->dejData("db_kauce"); ?>" name="db_kauce">
                                 </div>
                                 <span class="currency"><?php echo CURRENCY; ?></span>
                             </div>
@@ -199,7 +180,7 @@
                             <label><?php _e( "Poplatky", "realsys" ); ?></label>
                             <div class="currency-input">
                                 <div class="form-field">
-                                    <input type="number" placeholder="100 000" step="1000" value="<?php echo $inzerat->dejData("db_poplatky"); ?>" name="db_poplatky">
+                                    <input class="input-outline" type="number" placeholder="100 000" step="1000" value="<?php echo $inzerat->dejData("db_poplatky"); ?>" name="db_poplatky">
                                 </div>
                                 <span class="currency"><?php echo CURRENCY; ?></span>
                             </div>
