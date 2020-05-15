@@ -8,13 +8,9 @@
     }, ARRAY_FILTER_USE_BOTH);
 	if(!is_array($inzeraty)) $inzeraty = array();
 
+	$transakce = $uzivatel->subobjects['transakceClass'];
+    $objednavky = $uzivatel->subobjects['objednavkaClass'];
 ?>
-
-
-
-
-
-
 
 
 <section class="profil">
@@ -25,7 +21,7 @@
 				<div class="profile-main-info text-center rounded-b shadow-sm p-20">
 					<div class="profile-img-wrap" style="background-image: url(<?php echo $uzivatel->db_avatar; ?>)"></div>
 					<h2 class="sz-tit mb-2"><?php echo $uzivatel->getFullName(); ?></h2>
-					<p class="prof-kvalita"><?php echo __("Kvalita profilu ", "realsys"); ?><span class="prof-kvalit-value">100%</span></p>
+					<p class="prof-kvalita"><?php _e("Kvalita profilu ", "realsys"); ?><span class="prof-kvalit-value">100%</span></p>
 
 				</div>
 				<div class="profile-menu-wrap">
@@ -35,7 +31,7 @@
 							<li><a id="tab2" class="profile-menu-link"><?php echo __("Moje peněženka", "realsys"); ?></a></li>
 							<li><a id="tab3" class="profile-menu-link"><?php echo __("Moje inzeráty", "realsys"); ?></a></li>
 							<li><a id="tab4" class="profile-menu-link"><?php echo __("Hlídací psi", "realsys"); ?></a></li>
-							<li><a href="<?php echo Tools::getFERoute("uzivatelClass", UzivatelClass::getUserLoggedId(), "detail", "logOut"); ?>" class="profile-menu-link"><?php echo __("Odhlásit se", "realsys"); ?></a></li>
+							<li><a href="<?php echo Tools::getFERoute("uzivatelClass", UzivatelClass::getUserLoggedId(), "detail", "logOut"); ?>" class="profile-menu-link"><?php _e("Odhlásit se", "realsys"); ?></a></li>
 						</ul>
 					</nav>
 				</div>
@@ -43,45 +39,45 @@
 			</div>
 			<div class="col-lg-9">
 				<div class="content-wrap rounded-b shadow-sm p-20 tab-sl-content" id="tab1C">
-					<h1 class="sz-tit text-center mb-3 mt-3"><?php echo _e("Můj profil ", "realsys"); ?></h1>
+					<h1 class="sz-tit text-center mb-3 mt-3"><?php _e("Můj profil ", "realsys"); ?></h1>
 
 					<!-- start profil view -->
 					<div class="profil-view profil-main-content">
 						<div class="row">
 							<div class="col-sm-3 profil-form-desc">
-								<span class="input-desc sz-tip-desc"><?php echo _e("Szukamdom Tip:", "realsys"); ?></span>
+								<span class="input-desc sz-tip-desc"><?php _e("Szukamdom Tip:", "realsys"); ?></span>
 							</div>
 							<div class="col-sm-9 profil-form-content">
-								<p class="sz-tip-txt"><?php echo _e("Čím viac informácii o sebe vyplníte, tým väčšia zaujímavejší je Váš profil pre tých, s ktorými ste v kontakte.", "realsys"); ?></p>
+								<p class="sz-tip-txt"><?php _e("Čím více informací o sobě vyplníte, tím získáte lepší skóre.", "realsys"); ?></p>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="col-sm-3 profil-form-desc">
-								<span class="input-desc"><?php echo _e("Základní údaje:", "realsys"); ?></span>
+								<span class="input-desc"><?php _e("Základní údaje:", "realsys"); ?></span>
 							</div>
 							<div class="col-sm-9 profil-form-content">
 								<div class="row">
-									<div class="col-sm-6 correct"><?php echo _e("Jméno:", "realsys"); ?> <span class="profil-val"><?php echo $uzivatel->getFullName(); ?></span></div>
+									<div class="col-sm-6 correct"><?php _e("Jméno:", "realsys"); ?> <span class="profil-val"><?php echo $uzivatel->getFullName(); ?></span></div>
 								</div>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="col-sm-3 profil-form-desc">
-								<span class="input-desc"><?php echo _e("Další informace:", "realsys"); ?></span>
+								<span class="input-desc"><?php _e("Další informace:", "realsys"); ?></span>
 							</div>
 							<div class="col-sm-9 profil-form-content">
 								<div class="row">
-									<div class="col-sm-6 correct"><?php echo __("E-mail:", "realsys"); ?> <span class="profil-val"><?php echo $uzivatel->db_email; ?></span></div>
-									<div class="col-sm-6 correct"><?php echo __("Telefon:", "realsys"); ?> <span class="profil-val"><?php echo Tools::formatPhone($uzivatel->db_telefon); ?></span></div>
+									<div class="col-sm-6 correct"><?php _e("E-mail:", "realsys"); ?> <span class="profil-val"><?php echo $uzivatel->db_email; ?></span></div>
+									<div class="col-sm-6 correct"><?php _e("Telefon:", "realsys"); ?> <span class="profil-val"><?php echo Tools::formatPhone($uzivatel->db_telefon); ?></span></div>
 								</div>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="col-sm-3 profil-form-desc">
-								<span class="input-desc"><?php echo _e("Krátke bio:", "realsys"); ?></span>
+								<span class="input-desc"><?php _e("Krátke bio:", "realsys"); ?></span>
 							</div>
 							<div class="col-sm-9 profil-form-content">
 								<div class="row">
@@ -92,7 +88,7 @@
 
 						<div class="line-separator"></div>
 						<div class="d-flex justify-content-center mb-5">
-							<a class="btn show-user-edit"><?php echo _e("Upravit profil", "realsys"); ?></a>
+							<a class="btn show-user-edit"><?php _e("Upravit profil", "realsys"); ?></a>
 						</div>
 
 					</div>
@@ -103,10 +99,10 @@
 						<form class="js-validate-form" method="post">
 							<div class="row">
 								<div class="col-sm-3 profil-form-desc">
-									<span class="input-desc sz-tip-desc"><?php echo _e("Szukamdom Tip:", "realsys"); ?></span>
+									<span class="input-desc sz-tip-desc"><?php _e("Szukamdom Tip:", "realsys"); ?></span>
 								</div>
 								<div class="col-sm-9 profil-form-content">
-									<p class="sz-tip-txt"><?php echo _e("Čím viac informácii o sebe vyplníte, tým väčšia zaujímavejší je Váš profil pre tých, s ktorými ste v kontakte.", "realsys"); ?></p>
+									<p class="sz-tip-txt"><?php _e("Čím více informací o sobě vyplníte, tím získáte lepší skóre.", "realsys"); ?></p>
 								</div>
 							</div>
 
@@ -121,35 +117,35 @@
 
 							<div class="row">
 								<div class="col-sm-3 profil-form-desc">
-									<span class="input-desc"><?php echo _e("Základné údaje:", "realsys"); ?></span>
+									<span class="input-desc"><?php _e("Základné údaje:", "realsys"); ?></span>
 								</div>
 								<div class="col-sm-9 profil-form-content">
 									<div class="row">
-										<div class="col-sm-6 correct"><input class="input-outline" value="<?php echo $uzivatel->dejData('db_jmeno'); ?>" name="db_jmeno" type="text" placeholder="<?php echo _e("Jméno", "realsys"); ?>"></div>
-										<div class="col-sm-6 correct"><input class="input-outline" value="<?php echo $uzivatel->dejData('db_prijmeni'); ?>" name="db_prijmeni" type="text" placeholder="<?php echo _e("Příjmení", "realsys"); ?>"></div>
+										<div class="col-sm-6 correct"><input class="input-outline" value="<?php echo $uzivatel->dejData('db_jmeno'); ?>" name="db_jmeno" type="text" placeholder="<?php _e("Jméno", "realsys"); ?>"></div>
+										<div class="col-sm-6 correct"><input class="input-outline" value="<?php echo $uzivatel->dejData('db_prijmeni'); ?>" name="db_prijmeni" type="text" placeholder="<?php _e("Příjmení", "realsys"); ?>"></div>
 									</div>
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="col-sm-3 profil-form-desc">
-									<span class="input-desc"><?php echo _e("Základné údaje:", "realsys"); ?></span>
+									<span class="input-desc"><?php _e("Základné údaje:", "realsys"); ?></span>
 								</div>
 								<div class="col-sm-9 profil-form-content">
 									<div class="row">
-										<div class="col-sm-6 correct"><input class="input-outline" value="<?php echo $uzivatel->dejData('db_email'); ?>" name="db_email_nocheck" placeholder="<?php echo _e("Email", "realsys"); ?>"></div>
-										<div class="col-sm-6 correct"><input class="input-outline" value="<?php echo $uzivatel->dejData('db_telefon'); ?>" name="db_telefon" type="tel" placeholder="<?php echo _e("Telefon", "realsys"); ?>"></div>
+										<div class="col-sm-6 correct"><input class="input-outline" value="<?php echo $uzivatel->dejData('db_email'); ?>" name="db_email_nocheck" placeholder="<?php _e("Email", "realsys"); ?>"></div>
+										<div class="col-sm-6 correct"><input class="input-outline" value="<?php echo $uzivatel->dejData('db_telefon'); ?>" name="db_telefon" type="tel" placeholder="<?php _e("Telefon", "realsys"); ?>"></div>
 									</div>
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="col-sm-3 profil-form-desc">
-									<span class="input-desc"><?php echo _e("Krátke bio:", "realsys"); ?></span>
+									<span class="input-desc"><?php _e("Krátke bio:", "realsys"); ?></span>
 								</div>
 								<div class="col-sm-9 profil-form-content">
 									<div class="row">
-										<div class="col correct"><textarea class="input-outline" name="db_popis" placeholder="<?php echo _e("Krátke bio", "realsys"); ?>"><?php echo $uzivatel->dejData('db_popis'); ?></textarea> </div>
+										<div class="col correct"><textarea class="input-outline" name="db_popis" placeholder="<?php _e("Krátke bio", "realsys"); ?>"><?php echo $uzivatel->dejData('db_popis'); ?></textarea> </div>
 									</div>
 								</div>
 							</div>
@@ -162,70 +158,75 @@
 				</div>
 
 				<div class="content-wrap rounded-b shadow-sm p-20 tab-sl-content" id="tab2C">
-					<h1 class="sz-tit text-center mb-4 mt-3"><?php echo _e("Moje peněženka", "realsys"); ?></h1>
-					<p class="text-center mb-sm-5"><span class="sz-tip-desc"><?php echo _e("Szukamdom Tip:", "realsys"); ?> </span><?php echo _e("Kredity môžete používať ako platitdlo za služby. Nevyužité kredity Vám vrátime naspäť.", "realsys"); ?> </p>
+					<h1 class="sz-tit text-center mb-4 mt-3"><?php _e("Moje peněženka", "realsys"); ?></h1>
+					<p class="text-center mb-sm-5"><span class="sz-tip-desc"><?php _e("Szukamdom Tip:", "realsys"); ?> </span><?php _e("Kredity můžete používat jako platidlo za služby. Nevyužité kredity Vám vrátíme zpět.", "realsys"); ?> </p>
 
 
 
 					<div class="kredity-box light-blue-bg rounded-b p-20">
 						<div class="kred-wrap">
-							<h3 class="kred-big"><span class="kred-value"><?php echo $uzivatel->getUserBillance(); ?></span> <?php echo _e("Kreditov", "realsys"); ?></h3>
+							<h3 class="kred-big"><span class="kred-value"><?php echo $uzivatel->getUserBillance(); ?></span> <?php _e("Kreditov", "realsys"); ?></h3>
 							<div class="kred-btns">
-								<a href="#" class="btn btn-big mb-2"><?php echo _e("Dobít kredity", "realsys"); ?></a>
-								<a style="display:none;" href="#" class="u-link"><?php echo _e("Získať kredity zdarma", "realsys"); ?></a>
+								<a href="<?php echo Tools::getFERoute("objednavkaClass",false, "detail"); ?>" class="btn btn-big mb-2"><?php _e("Dobít kredity", "realsys"); ?></a>
+								<a style="display:none;" href="#" class="u-link"><?php _e("Získat kredity zdarma", "realsys"); ?></a>
 							</div>
 						</div>
 					</div>
-					<h2 class="sz-tit text-center mb-4 mt-5"><?php echo _e("Historie transakcí", "realsys"); ?></h2>
+					<h2 class="sz-tit text-center mb-4 mt-5"><?php _e("Historie transakcí", "realsys"); ?></h2>
 					<div class="table-transakce mb-4 table-wrap">
 						<table class="sz-table">
 							<thead>
 								<tr>
-									<th>Dátum</th>
-									<th>Položka</th>
-									<th>Čiastka</th>
-									<th>Poznámka</th>
+									<th><?php _e("Datum", "realsys"); ?></th>
+									<th><?php _e("Položka", "realsys"); ?></th>
+									<th><?php _e("Množství kreditů", "realsys"); ?></th>
+									<th><?php _e("Zaúčtováno", "realsys"); ?></th>
 								</tr>
 							</thead>
 							<tbody>
+                                <?php foreach ($transakce as $key => $value) :?>
 								<tr>
-									<td>19.03.2020</td>
-									<td>Dobitie 182 kreditov</td>
-									<td class="price">200 PLN</td>
-									<td><a href="#">Doklad</a></td>
+									<td><?php echo Tools::formatTime($value->dejData("db_datum_zalozeni")); ?></td>
+									<td><?php echo $value->dejData("db_nazev_sluzby"); ?></td>
+									<td class="price"><?php echo $value->dejData("db_mnozstvi"); ?></td>
+									<td><?php echo $value->dejData("db_accept") ? __("Ano","realsys") : __("Ne", "realsys"); ?></td>
 								</tr>
-								<tr>
-									<td>19.03.2020</td>
-									<td>Platba za kontakt - <a href="#">inzerát č. 12345</a></td>
-									<td class="kredit">1 Kredit</td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>19.03.2020</td>
-									<td>Platba za službu - <a href="#">Lepšia zmluva pohľ. 12345</a></td>
-									<td class="price">82 PLN</td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>19.03.2020</td>
-									<td>Dobitie 30 kreditov</td>
-									<td class="price">30 PLN</td>
-									<td><a href="#">Doklad</a></td>
-								</tr>
-								<tr>
-									<td>19.03.2020</td>
-									<td>Platba za kontakt - <a href="#">inzerát č. 12345</a></td>
-									<td class="kredit">1 Kredit</td>
-									<td></td>
-								</tr>
+                                <?php endforeach; ?>
+
 							</tbody>
 						</table>
 					</div>
 
+                    <h2 class="sz-tit text-center mb-4 mt-5"><?php _e("Historie objednávek", "realsys"); ?></h2>
+                    <div class="table-transakce mb-4 table-wrap">
+                        <table class="sz-table">
+                            <thead>
+                            <tr>
+                                <th><?php _e("Datum", "realsys"); ?></th>
+                                <th><?php _e("Množství", "realsys"); ?></th>
+                                <th><?php _e("Cena", "realsys"); ?></th>
+                                <th><?php _e("Zaplaceno", "realsys"); ?></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <?php foreach ($objednavky as $key => $value) :?>
+	                            <tr>
+		                            <td><?php echo Tools::formatTime($value->dejData("db_datum_zalozeni")); ?></td>
+		                            <td><?php echo $value->dejData("db_mnozstvi"); ?></td>
+		                            <td class="price"><?php echo Tools::convertCurrency($value->dejData("db_cena")); ?></td>
+		                            <td><?php echo $value->dejData("db_stav") ? __("Ano","realsys") : __("Ne", "realsys"); ?></td>
+	                            </tr>
+                            <?php endforeach; ?>
+
+                            </tbody>
+                        </table>
+                    </div>
+
 				</div>
 
 				<div class="content-wrap rounded-b shadow-sm p-20 tab-sl-content" id="tab3C">
-					<h1 class="sz-tit text-center mb-4 mt-3"><?php echo _e("Moje inzeráty", "realsys"); ?></h1>
+					<h1 class="sz-tit text-center mb-4 mt-3"><?php _e("Moje inzeráty", "realsys"); ?></h1>
 					<?php if(count($inzeraty)>0) : ?>
 						<section>
 							<div class="top-nemovitosti">
@@ -266,7 +267,7 @@
 				</div>
 
 				<div class="content-wrap rounded-b shadow-sm p-20 tab-sl-content" id="tab4C">
-					<h1 class="sz-tit text-center mb-4 mt-3"><?php echo _e("Moji hlídací psi", "realsys"); ?></h1>
+					<h1 class="sz-tit text-center mb-4 mt-3"><?php _e("Moji hlídací psi", "realsys"); ?></h1>
 
 					<?php if(count($hlidaci_psi) > 0) : ?>
 					    <section class="js-watchdogwrapper">

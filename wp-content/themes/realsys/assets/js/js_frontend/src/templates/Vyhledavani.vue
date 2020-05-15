@@ -80,6 +80,7 @@
                 v-bind:currency="this.currency"
                 v-bind:ajax_url="this.ajax_url"
                 v-bind:assets_path="this.assets_path"
+                v-bind:translations="this.translations"
         ></Hlidacipes>
 
     </div>
@@ -108,39 +109,25 @@
             var _this = this;
             this.$root.$on("fieldChanged", function (fieldValues) {
                 var entryName = fieldValues.name;
-                _this.search_data[entryName] = fieldValues;
+
+                var found = false;
+                for (var index in _this.search_data){
+                    if(_this.search_data[index].name == entryName){
+                        _this.search_data[index] = fieldValues;
+                        found = true;
+                    }
+                }
+                if(!found){
+                    _this.search_data.push(fieldValues);
+                }
                 _this.searchResults();
             });
 
         },
         data: function(){
             return {
-                search_data: {},
+                search_data: [],
                 advanced: false
-            }
-        },
-        computed: {
-            filters_first : function () {
-                var result = {};
-                var loops = 0;
-                for(var index in this.filters){
-                    if(loops<3){
-                        result[index] = this.filters[index];
-                    }
-                    loops++;
-                }
-                return result;
-            },
-            filters_second: function () {
-                var result = {};
-                var loops = 0;
-                for(var index in this.filters){
-                    if(loops>=3){
-                        result[index] = this.filters[index];
-                    }
-                    loops++;
-                }
-                return result;
             }
         },
         methods: {

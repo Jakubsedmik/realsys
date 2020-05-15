@@ -449,77 +449,67 @@ function getInzeraty(){
 	error_reporting(0);
 	ini_set('display_errors', 'Off');
 
+	/* GETTING REQUEST DATA */
 	$request_body = file_get_contents('php://input');
 	$data = json_decode($request_body, true);
 
+	/* SETTING RESPONSE OBJECT */
 	$response = new stdClass();
 
-	if(Tools::checkPresenceOfParam("sortBy", $data) && Tools::checkPresenceOfParam("getAll", $data)){
 
+	/* SETTING UP ORDERING */
+	$orderBy = "ORDER BY id DESC";
+	if(Tools::checkPresenceOfParam("sortBy", $data)){
 		$sorting = $data['sortBy'];
 		$sorting = explode(":", $sorting);
 		$sortBy = $sorting[0];
 		$sortDirection = $sorting[1];
 		$sortBy = str_replace("db_", "", $sortBy);
+		$orderBy = "ORDER BY $sortBy " . $sortDirection;
+	}
 
-		$inzeraty = assetsFactory::getAllEntity(
-			"inzeratClass",
-			array(
-				new filterClass("stav_inzeratu", "=", 1)
-			),
-			false,
-			false,
-			false,
-			"ORDER BY $sortBy " . $sortDirection
-		);
-
-		$i = 0;
-		$ordered_list = array();
-		foreach ($inzeraty as $key => $val){
-			$val->ignoreInterface();
-			$val->writeDials();
-			$val->getSubobject("obrazek");
-			$val->setForceNotUpdate();
-			$val->link = Tools::getFERoute("inzeratClass", $val->getId());
-			$val->order = $i;
-			$ordered_list[] = $val;
-			$i++;
-		}
-
-		$response->status = 1;
-		$response->appData = new stdClass();
-		$response->appData->inzeraty = $inzeraty;
-		$response->appData->currency = CURRENCY;
-	}elseif (Tools::checkPresenceOfParam("countPage",$data) && Tools::checkPresenceOfParam("page", $data) && Tools::checkPresenceOfParam("sortBy", $data)){
-
-		$sorting = $data['sortBy'];
-		$sorting = explode(":", $sorting);
-		$sortBy = $sorting[0];
-		$sortDirection = $sorting[1];
-		$sortBy = str_replace("db_", "", $sortBy);
+	/*SETTING UP PAGGING */
+	$bufferSize = false;
+	$offset = false;
+	if(Tools::checkPresenceOfParam("countPage", $data) && Tools::checkPresenceOfParam("page", $data)){
 		$bufferSize = $data['countPage'];
 		$page = $data['page'];
-
 		$offset = $bufferSize * ($page-1);
+	}
 
+
+	/* SETTING UP SEARCH */
+	$filter_arr = array();
+	$filter_arr[] = new filterClass("stav_inzeratu","=",1);
+	if(Tools::checkPresenceOfParam("search", $data)){
 		global $filter_parameters;
-		$filter_arr = array();
 		$search_arr = $data['search'];
+
 		foreach ($filter_parameters as $key => $value){
-			if(Tools::checkPresenceOfParam($key, $search_arr)){
-				$search_item = $search_arr[$key];
+
+			$thisSearchAllowed = false;
+			$allowedIndex = -1;
+			foreach ($search_arr as $key1 => $value1){
+				if(Tools::checkPresenceOfParam($value1['name'], $filter_parameters)){
+					$thisSearchAllowed = true;
+					$allowedIndex = $key1;
+				}
+			}
+
+			if($thisSearchAllowed !== false){
+				$search_item = $search_arr[$allowedIndex];
 				if(is_array($search_item['value'])){
 					for ($i= 0; $i < count($search_item['value']); $i++){
 						$operator = $search_item['operator'][$i];
 						$deserved_value = $search_item['value'][$i];
-						$column = str_replace("db_","",$key);
+						$column = str_replace("db_","",$search_item['name']);
 						$filter = new filterClass($column, $operator, "'" . $deserved_value . "'");
 						$filter_arr[] = $filter;
 					}
 				}else{
 					$wanted_value = $search_item['value'];
 					if($wanted_value != -1){
-						$column = str_replace("db_","",$key);
+						$column = str_replace("db_","",$search_item['name']);
 						$filter = new filterClass($column, $search_item['operator'], "'" . $wanted_value . "'");
 						$filter_arr[] = $filter;
 					}
@@ -527,42 +517,37 @@ function getInzeraty(){
 			}
 		}
 
-		$filter_arr[] = new filterClass("stav_inzeratu","=",1);
-
-		$inzeraty = assetsFactory::getAllEntity(
-			"inzeratClass",
-			$filter_arr,
-			$offset,
-			$bufferSize,
-			false,
-			"ORDER BY $sortBy " . $sortDirection
-		);
-
-		$i = 0;
-		$ordered_list = array();
-		foreach ($inzeraty as $key => $val){
-			$val->ignoreInterface();
-			$val->writeDials();
-			$val->getSubobject("obrazek");
-			$val->setForceNotUpdate();
-			$val->link = Tools::getFERoute("inzeratClass", $val->getId());
-			$val->order = $i;
-			$ordered_list[] = $val;
-			$i++;
-		}
-
-
-		$response->status = 1;
-		$response->appData = new stdClass();
-		$response->appData->inzeraty = $inzeraty;
-		$response->appData->currency = CURRENCY;
-		$response->appData->totalRecordsCount = assetsFactory::getAllEntityCount("inzeratClass", $filter_arr);
-
-	}else{
-		$response->status = 0;
-		$response->message = "Některé parametry nebyli specifikovány";
 	}
 
+	/* DATA MINIG */
+	$inzeraty = assetsFactory::getAllEntity(
+		"inzeratClass",
+		$filter_arr,
+		$offset,
+		$bufferSize,
+		false,
+		"ORDER BY $sortBy " . $sortDirection
+	);
+
+	$i = 0;
+	$ordered_list = array();
+	foreach ($inzeraty as $key => $val){
+		$val->ignoreInterface();
+		$val->writeDials();
+		$val->getSubobject("obrazek");
+		$val->setForceNotUpdate();
+		$val->link = Tools::getFERoute("inzeratClass", $val->getId());
+		$val->order = $i;
+		$ordered_list[] = $val;
+		$i++;
+	}
+
+	/* SENDING RESPONSE */
+	$response->status = 1;
+	$response->appData = new stdClass();
+	$response->appData->inzeraty = $inzeraty;
+	$response->appData->currency = CURRENCY;
+	$response->appData->totalRecordsCount = assetsFactory::getAllEntityCount("inzeratClass", $filter_arr);
 	wp_send_json($response);
 	die();
 }

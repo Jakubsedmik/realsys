@@ -1,4 +1,3 @@
-
 <?php
 	$item->loadRelatedObjects("obrazekClass");
 
@@ -8,6 +7,8 @@
 			$front_img = $value->db_url;
 		}
 	}
+
+	require_once (__DIR__ . "/../configuration/vue-translations.php");
 
 ?>
 <div class="row">
@@ -84,12 +85,13 @@
                             payment_link="<?php echo Tools::getFERoute("objednavkaClass"); ?>"
                             currency="<?php echo CURRENCY; ?>"
                             ajax_url="<?php echo AJAXURL; ?>"
-                            assets_path="<?php echo home_url() . ASSETS_PATH?>"
+                            assets_path="<?php echo FRONTEND_IMAGES_PATH; ?>"
                             entitytype="inzeratClass"
                             :already_bought="<?php echo $item->db_top; ?>"
                             :entityid="<?php echo $item->getId(); ?>"
                             :service="<?php global $cenik_sluzeb; echo Tools::prepareJsonToOutputHtmlAttr($cenik_sluzeb[1]); ?>"
-                            :is_user_logged="<?php echo uzivatelClass::getUserLoggedId();?>"
+                            :user_logged="<?php echo uzivatelClass::getUserLoggedId();?>"
+                            :translations="<?php echo Tools::prepareJsonToOutputHtmlAttr($servicebuy_translations); ?>"
 
 
                     ></Servicebuy>

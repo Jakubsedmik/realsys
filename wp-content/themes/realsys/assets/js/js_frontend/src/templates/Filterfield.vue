@@ -106,13 +106,18 @@
             return {
                 fieldValue: "",
                 min: 0,
-                max: 100
+                max: 100,
+                request: {
+                    name: "",
+                    value: "",
+                    operator: ""
+                }
             }
         },
         mounted() {
             if(this.filterData.type == "slider"){
                 this.min = this.filterData.values[0];
-                this.max = this.filterData.values[1]
+                this.max = this.filterData.values[1];
 
                 var basic = this.filterData.values.slice();
                 this.fieldValue = basic;
@@ -139,13 +144,11 @@
                     valueForFilter = this.fieldValue;
                 }
 
-                var response = {
-                    name: this.filterName,
-                    value: valueForFilter,
-                    operator: operator
-                };
+                this.request.name = this.filterName;
+                this.request.value = valueForFilter;
+                this.request.operator = operator;
 
-                this.$root.$emit("fieldChanged", response);
+                this.$root.$emit("fieldChanged", this.request);
             }
         }
     }

@@ -147,22 +147,6 @@
             },
             translations: {
                 type: Object,
-                default: function () {
-                    return {
-                        detailInzeratu: "Detail inzerátu",
-                        top: "Top",
-                        raditDle: "Řadit dle",
-                        nejnovejsi: "Nejnovější",
-                        nejlevnejsi: "Nejlevnější",
-                        nalezenychInzeratu: "Nalezených inzerátů:",
-                        pouzijteKVyhledavaniMapu: "Použijte k vyhledávání mapu",
-                        najitNaMape: "Najít na mapě",
-                        dalsi: "Další",
-                        predchozi: "Předchozí",
-                        rozsireneVyhledavani: 'Rozšířené vyhledávání',
-                        zjednoduseneVyhledavani: 'Zjednodušené vyhledávání'
-                    }
-                }
             },
             filters: {
                 type: Object
@@ -272,10 +256,10 @@
 
                 /* FIT SCREEN TO MARKERS BOUNDS */
                 map.fitBounds(bounds);
-
+                _this.filterResults();
 
                 /* CHANGE BOUDNS LISTENER */
-
+                google.maps.event.clearInstanceListeners(map);
                 map.addListener('bounds_changed', debounce(function () {
                     _this.filterResults();
                 },500));
@@ -296,22 +280,22 @@
                     search: this.searchJson
                 };
 
-                setTimeout(function () {
-                    Axios.post(_this.apiurl, request).then(function (response) {
-                        if (response)
-                            if(typeof response.data == "object"){
-                                _this.appData = response.data.appData;
-                                let count = Object.keys(response.data.appData.inzeraty).length;
-                                _this.appData.totalRecordsCount = count;
-                                _this.isLoading = false;
-                                _this.$root.$emit("dataLoaded");
-                            }else{
-                                console.error("Data is not type of Object");
-                            }
-                    }).catch(function (error) {
-                        console.error(error);
-                    });
-                }, 500);
+
+                Axios.post(_this.apiurl, request).then(function (response) {
+                    if (response)
+                        if(typeof response.data == "object"){
+                            _this.appData = response.data.appData;
+                            let count = Object.keys(response.data.appData.inzeraty).length;
+                            _this.appData.totalRecordsCount = count;
+                            _this.isLoading = false;
+                            _this.$root.$emit("dataLoaded");
+                        }else{
+                            console.error("Data is not type of Object");
+                        }
+                }).catch(function (error) {
+                    console.error(error);
+                });
+
             },
             filterResults: function(){
                 var _this = this;
@@ -393,7 +377,7 @@
         right: 0px;
         bottom: 0px;
         background-color: rgba(255,255,255,0.5);
-        background-position: center;
+        background-position: center 300px;
         background-size: unset;
         background-repeat: no-repeat;
         z-index: 99;

@@ -1,5 +1,5 @@
 <?php
-
+require_once (__DIR__ . "/../configuration/vue-translations.php");
 $inzerat   = $this->workData['inzerat'];
 $uzivatel  = $inzerat->subobjects['uzivatelClass'];
 $obrazky   = $inzerat->subobjects['obrazekClass'];
@@ -105,6 +105,8 @@ $obrazky   = array_filter( $obrazky, function ( $val ) use ( &$front_obr ) {
                                                 :user_logged="<?php echo (uzivatelClass::getUserLoggedId()) ? uzivatelClass::getUserLoggedId() : "false"; ?>"
                                                 :service="<?php global $cenik_sluzeb; echo Tools::prepareJsonToOutputHtmlAttr($cenik_sluzeb[2]); ?>"
                                                 :inzerat_id="<?php echo $inzerat->getId(); ?>"
+                                                :translations="<?php echo Tools::prepareJsonToOutputHtmlAttr(array_merge($zobrazkontakt_translations, $servicebuy_translations)); ?>"
+
                                                 home_url="<?php echo home_url(); ?>"
                                                 login_link="<?php echo Tools::getFERoute("uzivatelClass",false, "login"); ?>"
                                                 payment_link="<?php echo Tools::getFERoute("objednavkaClass"); ?>"

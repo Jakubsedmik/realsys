@@ -492,6 +492,12 @@ $frontend_general_rules = array(
 	),
 	'db_inzerat_obrazky[]' => array(
 		"required" => true
+	),
+	'credits' => array(
+		"required" => true
+	),
+	'payment' => array(
+		'required' => true
 	)
 );
 
@@ -834,7 +840,7 @@ $filter_hp_parameters = array(
 
 // CENIK TOPOVANI
 $cenik = array(
-	20 => 100,
+	20 => 15,
 	50 => 200,
 	100 => 500,
 	500 => 800

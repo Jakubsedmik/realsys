@@ -1,17 +1,18 @@
 <template>
     <div class="hlidaciPes">
         <button class="btn" @click="openPopup" v-if="allowWatchdog">
-            Nastavit hlídacího psa
+            {{translations.nastavitHlidacihoPsa}}
         </button>
 
         <Servicebuy
-                v-bind:is_user_logged="this.user_logged"
+                v-bind:user_logged="this.user_logged"
                 v-bind:service="this.service"
                 v-bind:payment_link="this.payment_link"
                 v-bind:login_link="this.login_link"
                 v-bind:ajax_url="this.ajax_url"
                 v-bind:currency="this.currency"
                 v-bind:assets_path="this.assets_path"
+                v-bind:translations="this.translations"
                 ref="servicebuy"
                 design="hidden"
         ></Servicebuy>
@@ -19,37 +20,37 @@
             <div v-if="this.popupOn" class="service-popup">
                 <div class="service-popup--inner">
                     <form ref="form" v-on:submit.prevent="submitWatchdog()" v-if="user_logged !== false && this.watchDogCreated == 0">
-                        <h2>Nastavení hlídacího psa</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis rhoncus, felis in consequat rutrum, purus quam vehicula metus, a semper purus odio ut sem. Pellentesque a ipsum ante. Ut sit amet ornare est.</p>
+                        <h2>{{translations.nastaveniHlidacihoPsa}}</h2>
+                        <p>{{translations.nastaveniHlidacihoPsaText}}</p>
                         <div>
                             <label>
-                                Název hlídacího psa
-                                <input type="text" v-model="formData.name" placeholder="Název hlídacího psa" required minlength="3">
+                                {{translations.nazevHlidacihoPsa}}
+                                <input type="text" v-model="formData.name" :placeholder="translations.nazevHlidacihoPsa" required minlength="3">
                             </label>
                         </div>
 
                         <div>
                             <label>
-                                Typ hlídacího psa
-                                Denně(placené) <input type="radio" name="watchdog-type" value="1" v-model="formData.type">
-                                Týdně <input type="radio" name="watchdog-type" value="0" v-model="formData.type">
+                                {{translations.typHlidacihoPsa}}
+                                {{translations.denne}}} <input type="radio" name="watchdog-type" value="1" v-model="formData.type">
+                                {{translations.tydne}} <input type="radio" name="watchdog-type" value="0" v-model="formData.type">
                             </label>
                         </div>
 
                         <div class="button-controls">
-                            <button type="submit">Uložit psa</button>
-                            <button type="button" @click="closePopup">Zrušit</button>
+                            <button type="submit">{{translations.ulozitPsa}}</button>
+                            <button type="button" @click="closePopup">{{translations.zrusit}}</button>
                         </div>
                     </form>
                     <div v-else-if="user_logged == false && this.watchDogCreated == 0">
-                        <h2>Přihlášení</h2>
-                        <p>Bohužel nejste přihlášen. Pro přidání psa nejdříve pokračujte na přihlášení a potom proveďte vyhledávání a přidání hlídacího psa</p>
-                        <a :href="home_url + '/login/'" class="btn">Přihlášení</a>
+                        <h2>{{translations.prihlaseni}}</h2>
+                        <p>{{translations.bohuzelNejstePrihlasenPes}}</p>
+                        <a :href="home_url + '/login/'" class="btn">{{translations.prihlaseni}}</a>
                     </div>
                     <div class="" v-else>
-                        <h2>Vytvoření hlídacího psa</h2>
-                        <p>Váš hlídací pes byl úspěšně vytvořen.</p>
-                        <a :href="this.home_url + '/uzivatel/'+ this.user_logged + '/'" class="btn">Podívejte se na své hlídací psi</a>
+                        <h2>{{translations.vytvoreniHlidacihoPsa}}</h2>
+                        <p>{{translations.vasHlidaciPesBylUspesneNastaven}}</p>
+                        <a :href="this.home_url + '/uzivatel/'+ this.user_logged + '/'" class="btn">{{translations.podivejteSeNaSveHlidaciPsi}}</a>
                     </div>
                 </div>
             </div>
@@ -64,7 +65,7 @@
 
     export default {
         name: "Hlidacipes",
-        props: ['search_data', 'ajax_url', 'user_logged', 'home_url', 'login_link', 'payment_link', 'is_user_logged', 'service', 'currency', 'assets_path'],
+        props: ['search_data', 'ajax_url', 'user_logged', 'home_url', 'login_link', 'payment_link', 'service', 'currency', 'assets_path',"translations"],
         components: { Servicebuy },
         data: function () {
             return {
@@ -93,7 +94,7 @@
                 if(Object.entries(this.search_data).length > 0){
                     this.popupOn = 1;
                 }else{
-                    alert("Nejdříve prosím nastavte filtr")
+                    alert(this.translations.nejdriveProsimNastavteFiltr);
                 }
             },
             closePopup(){
@@ -131,7 +132,13 @@
         },
         computed :{
             allowWatchdog: function () {
-                return Object.entries(this.search_data).length > 0;
+                for(let index in this.search_data){
+                    let item = this.search_data[index];
+                    if(item.value != -1){
+                        return true;
+                    }
+                }
+                return false;
             }
         }
     }

@@ -3,6 +3,7 @@ import Vypis from "./templates/Vypis.vue";
 import Vyhledavanimapa from "./templates/Vyhledavanimapa.vue";
 import Zobrazkontakt from "./templates/Zobrazkontakt.vue";
 import Pridatinzerat from "./templates/Pridatinzerat.vue";
+import Servicebuy from "./templates/Servicebuy.vue";
 import Vuelidate from 'vuelidate';
 
 Vue.use(Vuelidate);
@@ -17,7 +18,7 @@ if(app.length > 0){
             test: "tetss"
         },
         components :{
-            Vypis, Vyhledavanimapa, Zobrazkontakt, Pridatinzerat
+            Vypis, Vyhledavanimapa, Zobrazkontakt, Pridatinzerat, Servicebuy
         },
         mounted() {
 

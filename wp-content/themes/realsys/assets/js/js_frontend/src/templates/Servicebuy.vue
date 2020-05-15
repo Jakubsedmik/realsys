@@ -1,40 +1,40 @@
 <template>
     <div :class="{serviceBuy: true, serviceLoading: this.loading}">
-        <div class="userLogged" v-if="this.is_user_logged">
+        <div class="userLogged" v-if="this.user_logged">
             <div class="serviceControls" v-if="design=='interactive'">
                 <h2>{{service.name}} - {{service.price}} {{currency}}</h2>
-                <button v-on:click="checkCredits()" class="btn">Koupit službu</button>
+                <button v-on:click="checkCredits()" class="btn">{{translations.koupitSluzbu}}</button>
             </div>
             <transition name="bounce">
 
                 <div class="serviceBuyPopup servicePopup" v-if="this.openServiceBuyPopup && !this.loading">
                     <div class="innerPopup" v-click-outside="closePopup">
-                        <h2>Máte dostatek kreditů</h2>
-                        <p>Můžete pokračovat v nákupu služby</p>
+                        <h2>{{translations.mateDostatekKreditu}}</h2>
+                        <p>{{translations.muzetePokracovatVNakupuSluzby}}</p>
                         <div class="serviceSpecs">
                             <h3>{{service.name}}</h3>
-                            <p>Cena: {{service.price}} {{service.currency}}</p>
+                            <p>{{translations.cena}} {{service.price}} {{service.currency}}</p>
                         </div>
 
-                        <button class="btn" v-on:click="proceedBuy()">Nakoupit službu</button>
+                        <button class="btn" v-on:click="proceedBuy()">{{translations.nakoupitSluzbu}}</button>
                     </div>
                 </div>
 
                 <div class="creditsBuyPopup servicePopup" v-if="this.openCreditsBuyPopup && !this.loading" >
                     <div class="innerPopup" v-click-outside="closePopup">
-                        <h2>Nemáte dostatek kreditů</h2>
+                        <h2>{{translations.nemateDostatekKreditu}}</h2>
                         <p>{{creditStatus}}</p>
-                        <p>Nejdříve pokračujte nákupem kreditů</p>
+                        <p>{{translations.nejdrivePokracujteNakupemKreditu}}</p>
 
-                        <a :href="this.payment_link + '?serviceOrder=' + this.service.id" class="btn">Nakoupit kredity</a>
+                        <a :href="this.payment_link + '?serviceOrder=' + this.service.id" class="btn">{{translations.nakoupitKredity}}</a>
                     </div>
                 </div>
 
                 <div class="serviceRealizationPopup servicePopup" v-if="this.openFinishPopup && !this.loading" >
                     <div class="innerPopup" v-click-outside="closePopup">
-                        <h2>Služba byla zaplacena a nastavena</h2>
-                        <p>Služba byla zaplacena a nastavena. Děkujeme</p>
-                        <button class="btn" v-on:click="closePopup">Zavřít</button>
+                        <h2>{{translations.sluzbaBylaZaplacena}}</h2>
+                        <p>{{translations.dekujeme}}</p>
+                        <button class="btn" v-on:click="closePopup">{{translations.zavrit}}</button>
 
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                     <div class="innerPopup" v-click-outside="closePopup">
                         <h2>{{errorHeading}}</h2>
                         <p>{{errorMessage}}</p>
-                        <button class="btn" v-on:click="closePopup">Zavřít</button>
+                        <button class="btn" v-on:click="closePopup">{{translations.zavrit}}</button>
                     </div>
                 </div>
 
@@ -59,18 +59,18 @@
         <div class="topInzeratWrapper" v-if="design=='inzeratTop'">
             <button v-on:click="checkCredits()" class="btn ico-btn" v-if="already_bought==0">
                 <i class="fas fa-star"></i>
-                Topovat
+                {{translations.topovat}}
             </button>
             <div v-else>
-                Inzerát je již Topovaný
-                <div class="topInzerat">top</div>
+                {{translations.inzeratJeJizTopovany}}
+                <div class="topInzerat">{{translations.top}}</div>
             </div>
         </div>
 
-        <div v-if="design !== 'hidden' && is_user_logged==0" class="userNotLogged">
-            <h2>Nejste přihlášen</h2>
-            <p>Pro nákup této služby musíte být nejdříve přihlášen</p>
-            <a :href="this.login_link" class="btn">Přihlásit se</a>
+        <div v-if="design !== 'hidden' && user_logged==0" class="userNotLogged">
+            <h2>{{translations.nejstePrihlasen}}</h2>
+            <p>{{translations.proNakupTetoSluzbyMusiteBytPrihlasen}}</p>
+            <a :href="this.login_link" class="btn">{{translations.prihlasitSe}}</a>
         </div>
     </div>
 </template>
@@ -89,9 +89,9 @@
         },
         name: "Servicebuy",
         props: {
-            'is_user_logged' :{
+            'user_logged' :{
                 default: false,
-                type: Number
+                type: [Number, Boolean]
             },
             'login_link' : {
                 default: "/realsys/login/",
@@ -144,6 +144,10 @@
                 default: 0,
                 type: Number,
                 required: false
+            },
+            "translations" : {
+                type: Object,
+                required: true
             }
         },
         data: function () {
@@ -161,17 +165,21 @@
             }
         },
         mounted() {
+
+            this.loadingMessage = this.translations.nacitani;
+            this.creditStatus = this.translations.nedostatekKreditu;
+
             this.$root.$on("closeServicebuy", function () {
                 this.closePopup();
             });
         },
         methods: {
             checkCredits: function () {
-                if(this.is_user_logged != 0){
+                if(this.user_logged != 0){
 
                     var request = this.ajax_url + "?action=checkUserCredits&serviceid=" + this.service.id;
                     this.loading = true;
-                    this.loadingMessage = "Probíhá ověřování stavu kreditů";
+                    this.loadingMessage = this.translations.probihaOverovaniStavuKreditu;
                     var _this = this;
                     setTimeout(function () {
                         // 1. check množství kreditů
@@ -206,7 +214,7 @@
 
                 if(this.proceedAvailable){
                     this.loading = true;
-                    this.loadingMessage = "Probíhá platba za službu";
+                    this.loadingMessage = this.translations.probihaPlatbaZaSluzbu;
                     this.openCreditsBuyPopup = false;
                     this.openServiceBuyPopup = false;
 
@@ -260,7 +268,7 @@
             closePopup: function (event) {
                 var _this = this;
                 _this.loading = false;
-                _this.loadingMessage = "Načítání";
+                _this.loadingMessage = this.translations.nacitani;
 
                 if(_this.openServiceBuyPopup){
                     _this.openServiceBuyPopup = false;

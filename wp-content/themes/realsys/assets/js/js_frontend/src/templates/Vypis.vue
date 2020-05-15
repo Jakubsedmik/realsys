@@ -77,7 +77,7 @@
                 type: Object
             },
             user_logged: {
-                type: Number,
+                type: [Number, Boolean],
                 default: false
             },
             home_url:{
@@ -152,23 +152,7 @@
                 type: String
             },
             translations: {
-                type: Object,
-                default: function () {
-                    return {
-                        detailInzeratu: "Detail inzerátu",
-                        top: "Top",
-                        raditDle: "Řadit dle",
-                        nejnovejsi: "Nejnovější",
-                        nejlevnejsi: "Nejlevnější",
-                        nalezenychInzeratu: "Nalezených inzerátů:",
-                        pouzijteKVyhledavaniMapu: "Použijte k vyhledávání mapu",
-                        najitNaMape: "Najít na mapě",
-                        dalsi: "Další",
-                        predchozi: "Předchozí",
-                        rozsireneVyhledavani: 'Rozšířené vyhledávání',
-                        zjednoduseneVyhledavani: 'Zjednodušené vyhledávání'
-                    }
-                }
+                type: Object
             }
         },
         components: { Filtr, Inzerat, Paging, Vyhledavani },
@@ -257,7 +241,7 @@
         right: 0px;
         bottom: 0px;
         background-color: rgba(255,255,255,0.5);
-        background-position: center;
+        background-position: center 200px;
         background-size: unset;
         background-repeat: no-repeat;
         z-index: 99;

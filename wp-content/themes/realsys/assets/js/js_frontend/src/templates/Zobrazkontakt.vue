@@ -1,9 +1,9 @@
 <template>
     <div class="zobrazkontakt">
-        <button @click="openPopup" class="btn btn-small">Chcem bývať</button>
+        <button @click="openPopup" class="btn btn-small">{{translations.chciBydlet}}</button>
 
         <Servicebuy
-                v-bind:is_user_logged="this.user_logged"
+                v-bind:user_logged="this.user_logged"
                 v-bind:service="this.service"
                 v-bind:payment_link="this.payment_link"
                 v-bind:login_link="this.login_link"
@@ -12,6 +12,7 @@
                 v-bind:assets_path="this.assets_path"
                 v-bind:entityid="this.inzerat_id"
                 v-bind:entitytype="'inzeratClass'"
+                v-bind:translations="this.translations"
                 ref="servicebuy"
                 design="hidden"
         ></Servicebuy>
@@ -20,25 +21,25 @@
             <div v-if="this.popupOn" class="service-popup">
                 <div class="service-popup--inner">
                     <div v-if="user_logged !== false && this.contactAvailable == false">
-                        <h2>Zobrazení kontaktu</h2>
-                        <p>Zobrazení kontaktu stojí <strong>{{service.price}} kreditů</strong>. Pro zobrazení kontaktu klikněte na tlačítko zobrazit.</p>
-                        <button class="btn btn-small" @click="payForContact">Zobrazit a zaplatit za kontakt</button>
+                        <h2>{{translations.zobrazeniKontaktu}}</h2>
+                        <p>{{translations.zobrazeniKontaktuStoji}} <strong>{{service.price}} {{translations.kreditu}}</strong>. {{translations.proZobrazeniKontaktu}}</p>
+                        <button class="btn btn-small" @click.prevent="payForContact">{{translations.zobrazitAZaplatitZaKontakt}}</button>
                     </div>
                     <div v-else-if="user_logged == false && this.contactAvailable == false">
-                        <h2>Přihlášení</h2>
-                        <p>Bohužel nejste přihlášen. Pro zobrazení kontaktu musíte být nejprve přihlášen. Proveďte přihlášení následně vraťte zpět na inzerát a zobrazte si kontakt.</p>
-                        <a :href="home_url + '/login/'" class="btn">Přihlášení</a>
+                        <h2>{{translations.prihlaseni}}</h2>
+                        <p>{{translations.bohutelNejstePrihlasenKontakt}}</p>
+                        <a :href="login_link" class="btn">{{translations.prihlaseni}}</a>
                     </div>
                     <div class="" v-else>
-                        <h2>Zobrazení kontaktu</h2>
-                        <p>Váš kontakt na uživatele naleznete níže.</p>
+                        <h2>{{translations.zobrazeniKontaktu}}</h2>
+                        <p>{{translations.vasKontaktNaUzivatele}}</p>
                         <ul>
-                            <li>Jméno: {{jmeno}}</li>
-                            <li>Příjmení: {{prijmeni}}</li>
-                            <li>Telefon: <a :href="'tel:' + this.telefon">{{telefon}}</a></li>
-                            <li>Email: <a :href="'mailto:'+ this.email">{{email}}</a></li>
+                            <li>{{translations.jmeno}} {{jmeno}}</li>
+                            <li>{{translations.prijmeni}} {{prijmeni}}</li>
+                            <li>{{translations.telefon}} <a :href="'tel:' + this.telefon">{{telefon}}</a></li>
+                            <li>{{translations.email}} <a :href="'mailto:'+ this.email">{{email}}</a></li>
                         </ul>
-                        <a :href="this.uzivatel_url" class="btn">Zobrazit profil uživatele</a>
+                        <a :href="this.uzivatel_url" class="btn">{{translations.zobrazitProfilUzivatele}}</a>
                     </div>
                 </div>
             </div>
@@ -70,7 +71,7 @@
             }
         },
         props: [
-            'user_logged', 'service', 'payment_link', 'login_link', 'ajax_url', 'currency', 'assets_path', 'home_url', 'inzerat_id'
+            'user_logged', 'service', 'payment_link', 'login_link', 'ajax_url', 'currency', 'assets_path', 'home_url', 'inzerat_id', 'translations'
         ],
 
         methods: {
@@ -116,7 +117,6 @@
             this.$root.$on('paymentCompleted',function (postData) {
                 if(postData.hasOwnProperty("transactionid")){
                     _this.transactionId = postData.transactionid;
-                    console.log(postData);
                     _this.payForContact();
                 }
             });
