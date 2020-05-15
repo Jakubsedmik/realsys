@@ -2,8 +2,8 @@
 
 <?php
 	get_template_part("templates/page","phaseone");
-	get_template_part("templates/page","slider");
-	get_template_part("templates/page", "modal");
+	//get_template_part("templates/page","slider");
+	//get_template_part("templates/page", "modal");
 	//get_template_part("templates/page", "cta");
 	//get_template_part("templates/page", "elements");
 	//get_template_part("templates/page", "profil");
