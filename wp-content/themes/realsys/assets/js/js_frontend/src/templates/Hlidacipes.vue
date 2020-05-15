@@ -16,41 +16,61 @@
                 ref="servicebuy"
                 design="hidden"
         ></Servicebuy>
+
         <transition name="bounce">
             <div v-if="this.popupOn" class="service-popup">
-                <div class="service-popup--inner">
-                    <form ref="form" v-on:submit.prevent="submitWatchdog()" v-if="user_logged !== false && this.watchDogCreated == 0">
-                        <h2>{{translations.nastaveniHlidacihoPsa}}</h2>
-                        <p>{{translations.nastaveniHlidacihoPsaText}}</p>
-                        <div>
-                            <label>
-                                {{translations.nazevHlidacihoPsa}}
-                                <input type="text" v-model="formData.name" :placeholder="translations.nazevHlidacihoPsa" required minlength="3">
-                            </label>
-                        </div>
 
-                        <div>
-                            <label>
-                                {{translations.typHlidacihoPsa}}
-                                {{translations.denne}}} <input type="radio" name="watchdog-type" value="1" v-model="formData.type">
-                                {{translations.tydne}} <input type="radio" name="watchdog-type" value="0" v-model="formData.type">
-                            </label>
-                        </div>
+                <div class="kontk-maj-modal" tabindex="-1">
+                    <div class="modal-dialog">
 
-                        <div class="button-controls">
-                            <button type="submit">{{translations.ulozitPsa}}</button>
-                            <button type="button" @click="closePopup">{{translations.zrusit}}</button>
+                        <div class="modal-content light-blue-bg rounded-b shadow-big text-center">
+
+                            <div class="modal-header">
+                                <button type="button" class="close" @click="closePopup">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body" v-if="user_logged !== false && this.watchDogCreated == 0">
+                                <form ref="form" v-on:submit.prevent="submitWatchdog()" v-if="user_logged !== false && this.watchDogCreated == 0">
+
+                                    <h2 class="sz-tit">{{translations.nastaveniHlidacihoPsa}}</h2>
+                                    <img class="maj-img mb-sm-4 mb-3" :src="this.assets_path + '/avatar.png'" alt="">
+                                    <p class="mb-sm-5 mb-3">{{translations.nastaveniHlidacihoPsaText}}</p>
+                                    <div>
+                                        <label>
+                                            {{translations.nazevHlidacihoPsa}}
+                                            <input type="text" v-model="formData.name" :placeholder="translations.nazevHlidacihoPsa" required minlength="3">
+                                        </label>
+                                    </div>
+
+                                    <h4>{{translations.typHlidacihoPsa}}</h4>
+                                    <div>
+                                        <label>{{translations.denne}} <input type="radio" name="watchdog-type" value="1" v-model="formData.type"></label>
+                                        <label>{{translations.tydne}} <input type="radio" name="watchdog-type" value="0" v-model="formData.type"></label>
+                                    </div>
+
+                                    <div class="button-controls">
+                                        <button type="submit" class="btn mb-sm-5 mb-3">{{translations.ulozitPsa}}</button>
+                                        <button type="button" @click="closePopup" class="btn mb-sm-5 mb-3">{{translations.zrusit}}</button>
+                                    </div>
+
+                                </form>
+                            </div>
+
+                            <div class="modal-body" v-else-if="user_logged == false && this.watchDogCreated == 0">
+                                <h2 class="sz-tit">{{translations.prihlaseni}}</h2>
+                                <p class="mb-sm-5 mb-3">{{translations.bohuzelNejstePrihlasenPes}}</p>
+                                <a :href="home_url + '/login/'" class="btn mb-sm-5 mb-3">{{translations.prihlaseni}}</a>
+                            </div>
+
+                            <div class="modal-body" v-else>
+                                <h2 class="sz-tit">{{translations.vytvoreniHlidacihoPsa}}</h2>
+                                <p class="mb-sm-5 mb-3">{{translations.vasHlidaciPesBylUspesneNastaven}}</p>
+                                <a :href="this.home_url + '/uzivatel/'+ this.user_logged + '/'" class="btn mb-sm-5 mb-3">{{translations.podivejteSeNaSveHlidaciPsi}}</a>
+                            </div>
+
                         </div>
-                    </form>
-                    <div v-else-if="user_logged == false && this.watchDogCreated == 0">
-                        <h2>{{translations.prihlaseni}}</h2>
-                        <p>{{translations.bohuzelNejstePrihlasenPes}}</p>
-                        <a :href="home_url + '/login/'" class="btn">{{translations.prihlaseni}}</a>
-                    </div>
-                    <div class="" v-else>
-                        <h2>{{translations.vytvoreniHlidacihoPsa}}</h2>
-                        <p>{{translations.vasHlidaciPesBylUspesneNastaven}}</p>
-                        <a :href="this.home_url + '/uzivatel/'+ this.user_logged + '/'" class="btn">{{translations.podivejteSeNaSveHlidaciPsi}}</a>
                     </div>
                 </div>
             </div>

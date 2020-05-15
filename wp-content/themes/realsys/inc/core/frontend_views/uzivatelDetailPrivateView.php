@@ -20,6 +20,7 @@
 	<div class="wrapper">
 		<div class="row">
 			<div class="col-lg-3">
+
 				<div class="profile-main-info text-center rounded-b shadow-sm p-20">
 					<div class="profile-img-wrap" style="background-image: url(<?php echo $uzivatel->db_avatar; ?>)"></div>
 					<h2 class="sz-tit mb-2"><?php echo $uzivatel->getFullName(); ?></h2>

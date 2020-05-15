@@ -19,27 +19,45 @@
 
         <transition name="bounce">
             <div v-if="this.popupOn" class="service-popup">
-                <div class="service-popup--inner">
-                    <div v-if="user_logged !== false && this.contactAvailable == false">
-                        <h2>{{translations.zobrazeniKontaktu}}</h2>
-                        <p>{{translations.zobrazeniKontaktuStoji}} <strong>{{service.price}} {{translations.kreditu}}</strong>. {{translations.proZobrazeniKontaktu}}</p>
-                        <button class="btn btn-small" @click.prevent="payForContact">{{translations.zobrazitAZaplatitZaKontakt}}</button>
-                    </div>
-                    <div v-else-if="user_logged == false && this.contactAvailable == false">
-                        <h2>{{translations.prihlaseni}}</h2>
-                        <p>{{translations.bohutelNejstePrihlasenKontakt}}</p>
-                        <a :href="login_link" class="btn">{{translations.prihlaseni}}</a>
-                    </div>
-                    <div class="" v-else>
-                        <h2>{{translations.zobrazeniKontaktu}}</h2>
-                        <p>{{translations.vasKontaktNaUzivatele}}</p>
-                        <ul>
-                            <li>{{translations.jmeno}} {{jmeno}}</li>
-                            <li>{{translations.prijmeni}} {{prijmeni}}</li>
-                            <li>{{translations.telefon}} <a :href="'tel:' + this.telefon">{{telefon}}</a></li>
-                            <li>{{translations.email}} <a :href="'mailto:'+ this.email">{{email}}</a></li>
-                        </ul>
-                        <a :href="this.uzivatel_url" class="btn">{{translations.zobrazitProfilUzivatele}}</a>
+
+                <div class="kontk-maj-modal" tabindex="-1">
+                    <div class="modal-dialog">
+
+                        <div class="modal-content light-blue-bg rounded-b shadow-big text-center">
+
+                            <div class="modal-header">
+                                <button type="button" class="close" @click="closePopup">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body" v-if="user_logged !== false && this.contactAvailable == false">
+                                <h2 class="sz-tit">{{translations.zobrazeniKontaktu}}</h2>
+                                <img class="maj-img mb-sm-4 mb-3" :src="this.assets_path + '/avatar.png'" alt="">
+                                <h2 class="sz-tit">Filip Šeršík</h2>
+                                <p class="mb-sm-5 mb-3">{{translations.zobrazeniKontaktuStoji}} <strong>{{service.price}} {{translations.kreditu}}</strong>. {{translations.proZobrazeniKontaktu}}</p>
+                                <a class="btn mb-sm-5 mb-3" @click.prevent="payForContact">{{translations.zobrazitAZaplatitZaKontakt}}</a>
+                            </div>
+
+                            <div class="modal-body" v-else-if="user_logged == false && this.contactAvailable == false">
+                                <h2 class="sz-tit">{{translations.prihlaseni}}</h2>
+                                <img class="maj-img mb-sm-4 mb-3" :src="this.assets_path + '/avatar.png'" alt="">
+                                <p class="mb-sm-5 mb-3">{{translations.bohutelNejstePrihlasenKontakt}}</p>
+                                <a class="btn mb-sm-5 mb-3" :href="login_link">{{translations.prihlaseni}}</a>
+                            </div>
+
+                            <div class="modal-body" v-else>
+                                <h2 class="sz-tit">{{translations.zobrazeniKontaktu}}</h2>
+                                <img class="maj-img mb-sm-4 mb-3" :src="this.assets_path + '/avatar.png'" alt="">
+                                <h3>{{translations.vasKontaktNaUzivatele}}</h3>
+                                <h2 class="sz-tit mb-2">{{translations.jmeno}} {{jmeno}} {{prijmeni}}</h2>
+                                <p class="mb-2">{{translations.email}} <a :href="'mailto:'+ this.email">{{email}}</a></p>
+                                <p class="mb-sm-5 mb-3">{{translations.telefon}} <a :href="'tel:' + this.telefon">{{telefon}}</a></p>
+                                <a :href="this.uzivatel_url" class="btn">{{translations.zobrazitProfilUzivatele}}</a>
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
             </div>

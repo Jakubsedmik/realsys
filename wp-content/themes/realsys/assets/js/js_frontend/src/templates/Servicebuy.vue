@@ -6,53 +6,128 @@
                 <button v-on:click="checkCredits()" class="btn">{{translations.koupitSluzbu}}</button>
             </div>
             <transition name="bounce">
+                <div class="service-popup" v-if="this.openServiceBuyPopup && !this.loading">
 
-                <div class="serviceBuyPopup servicePopup" v-if="this.openServiceBuyPopup && !this.loading">
-                    <div class="innerPopup" v-click-outside="closePopup">
-                        <h2>{{translations.mateDostatekKreditu}}</h2>
-                        <p>{{translations.muzetePokracovatVNakupuSluzby}}</p>
-                        <div class="serviceSpecs">
-                            <h3>{{service.name}}</h3>
-                            <p>{{translations.cena}} {{service.price}} {{service.currency}}</p>
+                    <div class="kontk-maj-kredit-modal" v-click-outside="closePopup">
+                        <div class="modal-dialog">
+                            <div class="modal-content light-blue-bg rounded-b shadow-big text-center">
+                                <div class="modal-header">
+                                    <button type="button" class="close" @click="closePopup">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <h2 class="sz-tit">{{translations.mateDostatekKreditu}}</h2>
+                                    <p class="mb-4">{{translations.muzetePokracovatVNakupuSluzby}}</p>
+
+                                    <div class="serviceSpecs">
+                                        <h3>{{service.name}}</h3>
+                                        <p>{{translations.cena}} {{service.price}} {{service.currency}}</p>
+                                    </div>
+
+                                    <button class="btn mb-sm-5 mb-3" v-on:click="proceedBuy()">{{translations.nakoupitSluzbu}}</button>
+                                </div>
+
+                            </div>
                         </div>
-
-                        <button class="btn" v-on:click="proceedBuy()">{{translations.nakoupitSluzbu}}</button>
                     </div>
+
                 </div>
 
-                <div class="creditsBuyPopup servicePopup" v-if="this.openCreditsBuyPopup && !this.loading" >
-                    <div class="innerPopup" v-click-outside="closePopup">
-                        <h2>{{translations.nemateDostatekKreditu}}</h2>
-                        <p>{{creditStatus}}</p>
-                        <p>{{translations.nejdrivePokracujteNakupemKreditu}}</p>
+                <div class="service-popup" v-if="this.openCreditsBuyPopup && !this.loading">
 
-                        <a :href="this.payment_link + '?serviceOrder=' + this.service.id" class="btn">{{translations.nakoupitKredity}}</a>
+                    <div class="kontk-maj-kredit-modal" v-click-outside="closePopup">
+                        <div class="modal-dialog">
+                            <div class="modal-content light-blue-bg rounded-b shadow-big text-center">
+                                <div class="modal-header">
+                                    <button type="button" class="close" @click="closePopup">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <h2 class="sz-tit">{{translations.nemateDostatekKreditu}}</h2>
+                                    <p class="mb-4">{{creditStatus}}</p>
+                                    <p>{{translations.nejdrivePokracujteNakupemKreditu}}</p>
+
+                                    <a :href="this.payment_link + '?serviceOrder=' + this.service.id" class="btn">{{translations.nakoupitKredity}}</a>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
+
                 </div>
 
-                <div class="serviceRealizationPopup servicePopup" v-if="this.openFinishPopup && !this.loading" >
-                    <div class="innerPopup" v-click-outside="closePopup">
-                        <h2>{{translations.sluzbaBylaZaplacena}}</h2>
-                        <p>{{translations.dekujeme}}</p>
-                        <button class="btn" v-on:click="closePopup">{{translations.zavrit}}</button>
+                <div class="service-popup" v-if="this.openFinishPopup && !this.loading">
 
+                    <div class="kontk-maj-kredit-modal" v-click-outside="closePopup">
+                        <div class="modal-dialog">
+                            <div class="modal-content light-blue-bg rounded-b shadow-big text-center">
+                                <div class="modal-header">
+                                    <button type="button" class="close" @click="closePopup">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <h2 class="sz-tit">{{translations.sluzbaBylaZaplacena}}</h2>
+                                    <p class="mb-4">{{translations.dekujeme}}</p>
+                                    <button class="btn" v-on:click="closePopup">{{translations.zavrit}}</button>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
+
                 </div>
 
-                <div class="errorPopup servicePopup" v-if="this.openErrorPopup && !this.loading" >
-                    <div class="innerPopup" v-click-outside="closePopup">
-                        <h2>{{errorHeading}}</h2>
-                        <p>{{errorMessage}}</p>
-                        <button class="btn" v-on:click="closePopup">{{translations.zavrit}}</button>
+                <div class="service-popup" v-if="this.openErrorPopup && !this.loading">
+
+                    <div class="kontk-maj-kredit-modal" v-click-outside="closePopup">
+                        <div class="modal-dialog">
+                            <div class="modal-content light-blue-bg rounded-b shadow-big text-center">
+                                <div class="modal-header">
+                                    <button type="button" class="close" @click="closePopup">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <h2 class="sz-tit">{{errorHeading}}</h2>
+                                    <p class="mb-4">{{errorMessage}}</p>
+                                    <button class="btn" v-on:click="closePopup">{{translations.zavrit}}</button>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
+
                 </div>
 
-                <div class="loadingPopup servicePopup" v-if="this.loading">
-                    <div class="innerPopup" v-click-outside="closePopup">
-                        <h2>{{loadingMessage}}</h2>
-                        <img :src="this.assets_path + 'loading.gif'">
+                <div class="service-popup" v-if="this.loading">
+
+                    <div class="kontk-maj-kredit-modal" v-click-outside="closePopup">
+                        <div class="modal-dialog">
+                            <div class="modal-content light-blue-bg rounded-b shadow-big text-center">
+                                <div class="modal-header">
+                                    <button type="button" class="close" @click="closePopup">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <h2 class="sz-tit">{{loadingMessage}}</h2>
+                                    <img :src="this.assets_path + 'loading.gif'">
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
+
                 </div>
+
             </transition>
         </div>
 
@@ -299,31 +374,9 @@
 </script>
 
 <style scoped>
-    .servicePopup{
-        position: fixed;
-        top: 0px;
-        left: 0px;
-        right: 0px;
-        bottom: 0px;
-        background-color: rgba(255,255,255,0.8);
-        z-index: 999;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 
-    .servicePopup.loading{
-
-    }
-
-    .servicePopup .innerPopup{
-        min-height: 300px;
-        min-width: 900px;
-        text-align: center;
-        background-color: white;
-        padding: 20px;
-        border-radius: 15px;
-        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.13);
+    .service-popup{
+        z-index: 10000;
     }
 
     .bounce-enter-active {
