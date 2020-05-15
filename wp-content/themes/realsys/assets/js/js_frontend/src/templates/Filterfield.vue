@@ -100,6 +100,11 @@
             },
             filterName : {
                 type: String
+            },
+            preset: {
+                type: [String, Number],
+                required: false,
+                default: null
             }
         },
         data: function () {
@@ -121,6 +126,10 @@
 
                 var basic = this.filterData.values.slice();
                 this.fieldValue = basic;
+            }
+
+            if(this.preset != null){
+                this.fieldValue = this.preset;
             }
         },
         created() {

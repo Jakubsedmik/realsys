@@ -829,12 +829,12 @@ $filter_parameters = array(
 	)
 );
 
-// FILTER HP PARAMETERS
+// FILTER HP PARAMETERS - filtery pro HP
 $filter_hp_parameters = array(
-	'db_typ_nemovitosti',
-	'db_typ_vlastnictvi',
+	'db_typ_inzeratu',
+	'db_pocet_mistnosti',
 	'db_typ_stavby',
-	'db_stav_objektu'
+	'db_vybavenost'
 );
 
 

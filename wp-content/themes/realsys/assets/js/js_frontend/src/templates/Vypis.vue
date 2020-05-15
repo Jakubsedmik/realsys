@@ -136,7 +136,7 @@
                 }
             },
             filterpreset : {
-                type: Array,
+                type: [Array, Object],
                 default: null
             },
             login_link: {
