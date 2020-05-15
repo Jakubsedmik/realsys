@@ -118,11 +118,6 @@
 		                    $walker->walk(true);
 		                ?>
 
-										<div class="section-btn sides-align">
-											<a class="btn" href="<?php echo Tools::getFERoute("inzeratClass",false, "listing") ?>"><?php _e( "Všechny inzeráty", "realsys" );?></a>
-											<a class="btn" href="<?php echo Tools::getFERoute("inzeratClass",false, "add") ?>"><?php _e( "Vložit inzerát", "realsys" );?></a>
-										</div>
-
 									</div>
 								</div>
 							</div>

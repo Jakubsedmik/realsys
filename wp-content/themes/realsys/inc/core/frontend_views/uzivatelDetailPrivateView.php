@@ -156,6 +156,46 @@
 
 							<button type="submit" class="btn submit-btn auto-w" name="action" value="changeUserDetails"><?php _e( "Potvrdit změny", "realsys" ); ?></button>
 						</form>
+
+
+
+						<div class="security-hint-box">
+							<div class="security-hint-box-wrap">
+
+								<div class="row">
+									<div class="col-sm">
+										<h3><?php _e( "Zabezpečení účtu", "realsys" );?></h3>
+										<p><?php _e( "Nastavte si dostatečně silné heslo k vašemu účtu.", "realsys" );?></p>
+									</div>
+
+									<div class="col-sm">
+										<div class="change-pass-form">
+											<form class="js-validate-form" method="post">
+												<div class="row">
+													<div class="col-sm">
+														<label><?php _e( "Nové heslo", "realsys" );?></label>
+														<div class="form-field">
+															<input type="password" placeholder="*****" name="db_heslo" id="heslo">
+														</div>
+													</div>
+													<div class="col-sm">
+														<label><?php _e( "Potvrďte heslo", "realsys" );?></label>
+														<div class="form-field">
+															<input type="password" placeholder="*****" name="db_heslo2">
+														</div>
+													</div>
+												</div>
+												<button type="submit" class="btn submit-btn" name="action" value="changePassword"><?php _e( "Změnit heslo", "realsys" );?></button>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+
+
 					</div>
 					<!-- end profil form -->
 
@@ -169,10 +209,10 @@
 
 					<div class="kredity-box light-blue-bg rounded-b p-20">
 						<div class="kred-wrap">
-							<h3 class="kred-big"><span class="kred-value"><?php echo $uzivatel->getUserBillance(); ?></span> <?php echo _e("Kreditov", "realsys"); ?></h3>
+							<h3 class="kred-big"><span class="kred-value"><?php echo $uzivatel->getUserBillance(); ?></span> <?php echo _e("Kreditů", "realsys"); ?></h3>
 							<div class="kred-btns">
-								<a href="#" class="btn btn-big mb-2"><?php echo _e("Dobít kredity", "realsys"); ?></a>
-								<a style="display:none;" href="#" class="u-link"><?php echo _e("Získať kredity zdarma", "realsys"); ?></a>
+								<a href="<?php echo Tools::getFERoute("objednavkaClass",false, "detail"); ?>" class="btn btn-big mb-2"><?php echo _e("Dobít kredity", "realsys"); ?></a>
+								<a style="display:none;" href="#" class="u-link"><?php echo _e("Získat kredity zdarma", "realsys"); ?></a>
 							</div>
 						</div>
 					</div>
@@ -272,16 +312,19 @@
 					    <section class="js-watchdogwrapper">
 					        <div class="hlidaci_psi">
 					            <div class="wrapper">
-					                <div class="section-title sides-align">
-					                    <h2><?php _e( "Hlídací psi", "realsys" );?></h2>
-					                </div>
 					                <?php foreach ($hlidaci_psi as $key => $value) : ?>
-					                    <div class="hlidaciPes js-watchdog">
-					                        <h3><a href="<?php echo Tools::getFERoute("hlidacipesClass",$value->getId(), "detail"); ?>"><?php _e( "Název:", "realsys" );?> <?php echo $value->db_jmeno_psa; ?></a></h3>
-					                        <p><?php _e( "Poslední zobrazení:", "realsys" );?> <?php echo Tools::formatTime($value->db_posledni_zobrazeni);?> </p>
-					                        <div><?php _e( "Počet nových inzerátů:", "realsys" );?> <strong><?php echo $value->db_nove_inzeraty_pocet; ?></strong> <?php _e( "inzerátů", "realsys" );?></div>
-					                        <div><?php _e( "Je prémium:", "realsys" );?> <?php echo ($value->db_premium ==1) ?  "Ano" : "Ne"; ?> </div>
-					                        <a href="#" class="js-send-request" data-post-action="removeWatchdog" data-post-id="<?php echo $value->getId(); ?>" data-post-user-id="<?php echo $uzivatel->getId(); ?>" data-finish="removePes" data-confirm="1"><?php _e( "Odstranit psa", "realsys" );?></a>
+					                    <div class="hlidaciPes js-watchdog rounded-b shadow-sm p-20">
+																<div class="row">
+																	<div class="col-lg-6">
+						                        <h3><a href="<?php echo Tools::getFERoute("hlidacipesClass",$value->getId(), "detail"); ?>"><?php _e( "Název:", "realsys" );?> <?php echo $value->db_jmeno_psa; ?></a></h3>
+						                        <p><?php _e( "Poslední zobrazení:", "realsys" );?> <?php echo Tools::formatTime($value->db_posledni_zobrazeni);?> </p>
+						                        <p><?php _e( "Počet nových inzerátů:", "realsys" );?> <strong><?php echo $value->db_nove_inzeraty_pocet; ?></strong> <?php _e( "inzerátů", "realsys" );?></p>
+																	</div>
+																		<div class="col-lg-6">
+						                        <div class="premium-pes"><?php _e( "Je prémium:", "realsys" );?> <strong><?php echo ($value->db_premium ==1) ?  "Ano" : "Ne"; ?></strong> </div>
+						                        <a href="#" class="btn js-send-request" data-post-action="removeWatchdog" data-post-id="<?php echo $value->getId(); ?>" data-post-user-id="<?php echo $uzivatel->getId(); ?>" data-finish="removePes" data-confirm="1"><?php _e( "Odstranit psa", "realsys" );?></a>
+																	</div>
+																</div>
 					                    </div>
 					                <?php endforeach; ?>
 					            </div>
