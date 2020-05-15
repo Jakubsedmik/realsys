@@ -1,7 +1,9 @@
+<?php
 /*
 Template Name: CMS Template
 */
-<?php get_header() ?>
+get_header();
+?>
 
 <section>
 	<div class="cms-con">

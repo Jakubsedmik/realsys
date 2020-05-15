@@ -147,7 +147,8 @@ class loginController extends frontendController {
 					"db_email" => $this->requestData["email"],
 					"db_telefon" => $this->requestData["telefon"],
 					"db_gmid" => $this->requestData["gid"],
-					"db_avatar" => $this->requestData["image"]
+					"db_avatar" => $this->requestData["image"],
+					"db_stav" => 1
 				);
 
 

@@ -204,7 +204,7 @@ class hlidacipesClass extends zakladniKamenClass {
 	}
 
 	protected function zakladniHtmlVypis() {
-		// TODO: Implement zakladniHtmlVypis() method.
+
 	}
 
 	public function getTableName() {

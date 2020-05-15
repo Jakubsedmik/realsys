@@ -4,7 +4,7 @@
 class inzeratDetailController extends frontendController{
 
 	public function beforeHeadersAction() {
-		// TODO: Implement beforeHeadersAction() method.
+
 	}
 
 	public function action() {
