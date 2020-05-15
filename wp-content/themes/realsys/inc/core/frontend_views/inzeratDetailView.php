@@ -89,7 +89,7 @@ $obrazky   = array_filter( $obrazky, function ( $val ) use ( &$front_obr ) {
                                         </tr>
                                         <tr>
                                             <th><?php _e( "Podlaží", "realsys" ); ?>:</th>
-                                            <td><?php echo $inzerat->db_patro; ?> z <!-- TODO Z CELKEM PATER--></td>
+                                            <td><?php echo $inzerat->db_patro; ?> z <?php echo $inzerat->db_celkem_podlazi; ?></td>
                                         </tr>
                                         <tr>
                                             <th><?php _e( "Balkón", "realsys" ); ?>:</th>

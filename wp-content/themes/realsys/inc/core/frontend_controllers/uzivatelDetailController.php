@@ -4,7 +4,7 @@
 class uzivatelDetailController extends frontendController {
 
 	public function beforeHeadersAction() {
-		// TODO: Implement beforeHeadersAction() method.
+
 	}
 
 	public function action() {
@@ -186,8 +186,7 @@ class uzivatelDetailController extends frontendController {
 				$this->workData['uzivatel'] = $uzivatel;
 
 				frontendError::addMessage(__("Heslo","realsys"),SUCCESS, __("Heslo bylo úspěšně změněno","realsys"));
-				$this->setView("uzivatelDetailPrivateEdit");
-				Tools::jsRedirect(Tools::getFERoute("uzivatelClass",$id, "detail"),1000,__("Heslo bylo změněno","realsys"),__("Právě Vás přesměrováváme zpět do Vašeho profilu","realsys"));
+				$this->setView("uzivatelDetailPrivate");
 
 			}else{
 				trigger_error("Tento uživatel neexistuje nebo nemáte oprávnění");
@@ -261,10 +260,12 @@ class uzivatelDetailController extends frontendController {
 				);
 
 				if($response){
-					Tools::jsRedirect(Tools::getFERoute("uzivatelClass",$id, "detail"),1000, __("Úspěšně změněno","realsys"), __("Uživatel byl úspěšně změněn","realsys"));
+					$this->setView("uzivatelDetailPrivate");
+					$this->workData['uzivatel'] = $uzivatel;
+				}else{
+					$this->setView("error");
 				}
-				$this->setView("uzivatelDetailPrivateEdit");
-				$this->workData['uzivatel'] = $uzivatel;
+
 
 			}else{
 				trigger_error("Tento uživatel neexistuje nebo nemáte oprávnění");

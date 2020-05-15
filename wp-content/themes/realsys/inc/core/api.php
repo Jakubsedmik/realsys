@@ -827,7 +827,7 @@ function createWatchdog(){
 			$type = $data['type'];
 
 			if($type == 1 || $type == 2){
-				// TODO KREDITS CHECK
+
 				$result = Tools::postChecker($data, array(
 					"transactionId" => array(
 						"type" => NUMBER,

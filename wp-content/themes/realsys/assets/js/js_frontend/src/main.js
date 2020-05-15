@@ -720,6 +720,64 @@ $(function () {
 
 
 
+/* TOGGLE PATIČKY */
+jQuery(document).ready(function($){
+    $('footer div.col-sm:nth-child(2) h3').click(function(){
+        $('footer div.col-sm:nth-child(2) ul').toggle();
+    });
+
+    $('footer .rn_widget_2').click(function(){
+        $('footer .rn_widget_menu_2').toggle();
+    });
+
+    $('footer .rn_widget_3').click(function(){
+        $('footer .rn_widget_menu_3').toggle();
+    });
+
+    $('.show-user-edit').click(function(){
+        $('.profil-form').toggle();
+        $('.profil-view').toggle();
+    });
+});
+
+
+/* TABY SLUŽEB */
+$(document).ready(function() {
+
+    $('#tabs li:not(:first)').addClass('inactive');
+    $('.tab-sl-content').hide();
+    $('.tab-sl-content:first').show();
+
+    $('#tabs li').click(function(){
+        var t = $(this).attr('id');
+        if($(this).hasClass('inactive')){ //this is the start of our condition
+            $('#tabs li').addClass('inactive');
+            $(this).removeClass('inactive');
+
+            $('.tab-sl-content').hide();
+            $('#'+ t + 'C').fadeIn('slow');
+        }
+    });
+});
+
+/* TABY V PROFILU */
+$(document).ready(function() {
+    $('.profil li a:not(:first)').addClass('inactive');
+    $('.tab-sl-content').hide();
+    $('.tab-sl-content:first').show();
+
+    $('.profil li a').click(function(){
+        var t = $(this).attr('id');
+        if($(this).hasClass('inactive')){ //this is the start of our condition
+            $('.profil li a').addClass('inactive');
+            $(this).removeClass('inactive');
+
+            $('.tab-sl-content').hide();
+            $('#'+ t + 'C').fadeIn('slow');
+        }
+    });
+});
+
 
 
 

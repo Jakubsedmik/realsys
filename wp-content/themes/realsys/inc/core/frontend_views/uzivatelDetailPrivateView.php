@@ -3,9 +3,11 @@
 	$uzivatel = $this->workData['uzivatel'];
 	$inzeraty  = $uzivatel->subobjects['inzeratClass'];
 	$hlidaci_psi = $uzivatel->subobjects['hlidacipesClass'];
-	$aktivniInzeraty = array_filter($inzeraty, function ($element, $index){
-	    return $element->db_stav_inzeratu;
-    }, ARRAY_FILTER_USE_BOTH);
+	if($inzeraty !== null){
+		$aktivniInzeraty = array_filter($inzeraty, function ($element, $index){
+			return $element->db_stav_inzeratu;
+		}, ARRAY_FILTER_USE_BOTH);
+    }
 	if(!is_array($inzeraty)) $inzeraty = array();
 
 	$transakce = $uzivatel->subobjects['transakceClass'];
@@ -108,9 +110,10 @@
 
 							<div class="row top-info">
 								<div class="col-sm-12">
-									<a href="#" class="edit-icon js-changeImage"><i class="fas fa-pen"></i></a>
 
-									<div class="profile-img" style="background-image: url(<?php echo $uzivatel->dejData('db_avatar'); ?>)"></div>
+									<div class="profile-img" style="background-image: url(<?php echo $uzivatel->dejData('db_avatar'); ?>)">
+                                        <a class="edit-icon js-changeImage"><i class="fas fa-pen"></i></a>
+                                    </div>
 
 								</div>
 							</div>
@@ -164,6 +167,7 @@
 										<p><?php _e( "Nastavte si dostatečně silné heslo k vašemu účtu.", "realsys" );?></p>
 									</div>
 
+
 									<div class="col-sm">
 										<div class="change-pass-form">
 											<form class="js-validate-form" method="post">
@@ -185,6 +189,11 @@
 											</form>
 										</div>
 									</div>
+                                    <div class="col-sm-12">
+	                                    <?php if(strlen($uzivatel->db_gmid) > 0) : ?>
+                                            <i class="infobox"><?php _e("Jste egistrován skrze Google účet. Pro lepší manipulaci si můžete nastavit heslo a přihlašovat se skrze email uvedený v google účtu a vaše heslo. Současně s tím zůstává zachována možnost přihlášení skrze Google login", "realsys"); ?></i>
+	                                    <?php endif; ?>
+                                    </div>
 								</div>
 							</div>
 						</div>
