@@ -34,7 +34,6 @@
                             <div class="modal-body" v-if="user_logged !== false && this.contactAvailable == false">
                                 <h2 class="sz-tit">{{translations.zobrazeniKontaktu}}</h2>
                                 <img class="maj-img mb-sm-4 mb-3" :src="this.assets_path + '/avatar.png'" alt="">
-                                <h2 class="sz-tit">Filip Šeršík</h2>
                                 <p class="mb-sm-5 mb-3">{{translations.zobrazeniKontaktuStoji}} <strong>{{service.price}} {{translations.kreditu}}</strong>. {{translations.proZobrazeniKontaktu}}</p>
                                 <a class="btn mb-sm-5 mb-3" @click.prevent="payForContact">{{translations.zobrazitAZaplatitZaKontakt}}</a>
                             </div>
