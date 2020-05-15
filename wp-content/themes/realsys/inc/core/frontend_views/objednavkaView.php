@@ -24,7 +24,7 @@
                                     <div class="credits-div">
                                         <div class="credits-amount">
                                             <img src="<?php echo FRONTEND_IMAGES_PATH; ?>/ikony/kredity_<?php echo $i; $i++; ?>.png">
-                                            <strong><?php echo $key; ?></strong> <?php _e("Kreditů", "realsys"); ?>
+                                            <strong><?php echo $key; ?> </strong>&nbsp;<?php _e("Kreditů", "realsys"); ?>
                                         </div>
                                         <div class="credits-cost">
                                             <?php echo $value; ?> <?php echo CURRENCY; ?>
@@ -38,15 +38,15 @@
                                     <div class="credits-div">
                                         <div class="credits-amount">
                                             <img src="<?php echo FRONTEND_IMAGES_PATH; ?>/ikony/kredity_1.png">
-                                            <strong><?php echo $customService['ammount'] ?></strong> <?php _e("Kreditů", "realsys"); ?>
-                                            <strong><?php _e("Služba:", "realsys"); ?> <?php echo $customService['name'] ?></strong>
-                                            <p><?php echo $customService['message'] ?></p>
+                                            <strong><?php echo $customService['ammount'] ?></strong>&nbsp;<?php _e("Kreditů", "realsys"); ?>
+                                            <strong><?php _e("Služba:", "realsys"); ?>&nbsp;<?php echo $customService['name'] ?></strong>
                                         </div>
                                         <div class="credits-cost">
 				                            <?php echo $customService['price']; ?> <?php echo CURRENCY; ?>
                                         </div>
                                     </div>
                                 </label>
+                                <p class="sluzba-popis"><?php echo $customService['message'] ?></p>
                             <?php endif; ?>
                         </div>
                         <div class="col-md-12 col-last form-field">
