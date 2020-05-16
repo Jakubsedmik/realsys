@@ -568,38 +568,102 @@
                         },
                         db_pocet_mistnosti: {
                             required: [
-                                {db_typ_stavby: 2, db_typ_inzeratu: 2},
-                                {db_typ_stavby: 1, db_typ_inzeratu: 2},
+                                /* PRONÁJEM */
                                 {db_typ_stavby: 1, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 2, db_typ_inzeratu: 1},
-                            ],
-                            appear: [
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* PRODEJ */
+                                {db_typ_stavby: 7, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 2, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 1, db_typ_inzeratu: 2},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
+                            ],
+                            appear: [
+                                /* PRONÁJEM */
                                 {db_typ_stavby: 1, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 2, db_typ_inzeratu: 1}
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* PRODEJ */
+                                {db_typ_stavby: 7, db_typ_inzeratu: 2},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 2},
+                                {db_typ_stavby: 1, db_typ_inzeratu: 2},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
                             ],
                             type: Number
                         },
                         db_uzitkova_plocha: {
-                            required: true,
-                            appear: true,
+                            required: [
+                                /* PRONÁJEM */
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
+                            ],
+                            appear: [
+                                /* PRONÁJEM */
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
+                            ],
                             type: Number
                         },
                         db_pozemkova_plocha: {
                             required: [
+                                /* PRONÁJEM */
                                 {db_typ_stavby: 1, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 1, db_typ_inzeratu: 2}
+                                {db_typ_stavby: 3, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 4, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
                             ],
                             appear: [
+                                /* PRONÁJEM */
                                 {db_typ_stavby: 1, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 1, db_typ_inzeratu: 2}
+                                {db_typ_stavby: 3, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 4, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
                             ],
                             type: Number
                         },
                         db_podlahova_plocha: {
-                            required: true,
-                            appear: true,
+                            required: [
+                                /* PRONÁJEM */
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
+                            ],
+                            appear: [
+                                /* PRONÁJEM */
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
+                            ],
                             type: Number
                         },
                         db_mesto: {
@@ -640,34 +704,88 @@
                         },
                         db_cena_najem: {
                             required: [
+                                /* PRONÁJEM */
                                 {db_typ_stavby: 1, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 2, db_typ_inzeratu: 1}
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 3, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 4, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
                             ],
                             appear: [
+                                /* PRONÁJEM */
                                 {db_typ_stavby: 1, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 2, db_typ_inzeratu: 1}
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 3, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 4, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
                             ],
                             type: Number
                         },
                         db_kauce: {
                             required: [
+                                /* PRONÁJEM */
                                 {db_typ_stavby: 1, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 2, db_typ_inzeratu: 1}
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 3, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 4, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
                             ],
                             appear: [
+                                /* PRONÁJEM */
                                 {db_typ_stavby: 1, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 2, db_typ_inzeratu: 1}
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 3, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 4, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
                             ],
                             type: Number
                         },
                         db_poplatky: {
                             required: [
+                                /* PRONÁJEM */
                                 {db_typ_stavby: 1, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 2, db_typ_inzeratu: 1}
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 3, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 4, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
                             ],
                             appear: [
+                                /* PRONÁJEM */
                                 {db_typ_stavby: 1, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 2, db_typ_inzeratu: 1}
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 3, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 4, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
                             ],
                             type: Number
                         },
@@ -680,33 +798,153 @@
                             type: Date
                         },
                         db_vybavenost: {
-                            required: true,
-                            appear: true,
+                            required: [
+                                /* PRONÁJEM */
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
+                            ],
+                            appear: [
+                                /* PRONÁJEM */
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
+                            ],
                             type: Number
                         },
                         db_terasa: {
-                            required: false,
-                            appear: true,
+                            required: [
+                                // PRONÁJEM
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
+                            ],
+                            appear: [
+                                // PRONÁJEM
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
+                            ],
                             type: Boolean
                         },
                         db_vytah: {
-                            required: false,
-                            appear: true,
+                            required: [
+                                // PRONÁJEM
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
+                            ],
+                            appear: [
+                                // PRONÁJEM
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
+                            ],
                             type: Boolean
                         },
                         db_parkovaci_misto: {
-                            required: false,
-                            appear: true,
+                            required: [
+                                // PRONÁJEM
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
+                            ],
+                            appear: [
+                                // PRONÁJEM
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
+                            ],
                             type: Boolean
                         },
                         db_garaz: {
-                            required: false,
-                            appear: true,
+                            required: [
+                                // PRONÁJEM
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
+                            ],
+                            appear: [
+                                // PRONÁJEM
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
+                            ],
                             type: Boolean
                         },
                         db_balkon: {
-                            required: false,
-                            appear: true,
+                            required: [
+                                // PRONÁJEM
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
+                            ],
+                            appear: [
+                                // PRONÁJEM
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
+                            ],
                             type: Boolean
                         },
                         db_dalsi_vybaveni: {
@@ -716,29 +954,69 @@
                         },
                         db_patro: {
                             required: [
+                                // PRONÁJEM
                                 {db_typ_stavby: 2, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 2, db_typ_inzeratu: 2}
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
                             ],
                             appear: [
+                                // PRONÁJEM
                                 {db_typ_stavby: 2, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 2, db_typ_inzeratu: 2}
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
                             ],
                             type: Number
                         },
                         db_celkem_podlazi: {
                             required: [
+                                // PRONÁJEM
                                 {db_typ_stavby: 2, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 2, db_typ_inzeratu: 2}
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
                             ],
                             appear: [
+                                // PRONÁJEM
                                 {db_typ_stavby: 2, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 2, db_typ_inzeratu: 2}
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
                             ],
                             type: Number
                         },
                         db_stav_objektu: {
-                            required: true,
-                            appear: true,
+                            required: [
+                                /* PRONÁJEM */
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
+                            ],
+                            appear: [
+                                /* PRONÁJEM */
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
+                            ],
                             type: Number
                         },
                         db_typ_vlastnictvi: {
@@ -747,18 +1025,72 @@
                             type: Number
                         },
                         db_material: {
-                            required: true,
-                            appear: true,
+                            required: [
+                                /* PRONÁJEM */
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
+                            ],
+                            appear: [
+                                /* PRONÁJEM */
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
+                            ],
                             type: Number
                         },
                         db_penb: {
-                            required: true,
-                            appear: true,
+                            required: [
+                                /* PRONÁJEM */
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
+                            ],
+                            appear: [
+                                /* PRONÁJEM */
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
+                            ],
                             type: Number
                         },
                         db_vhodny_pro: {
-                            required: false,
-                            appear: true,
+                            required: [
+                                /* PRONÁJEM */
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
+                            ],
+                            appear: [
+                                /* PRONÁJEM */
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
+                            ],
                             type: String
                         },
                         db_popis: {
