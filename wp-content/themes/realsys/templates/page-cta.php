@@ -38,7 +38,7 @@
 						<img src="<?php echo FRONTEND_IMAGES_PATH; ?>/ikony/bulb.png" alt="">
 						<h3><?php echo _e("Ako to funguje", "realsys"); ?></h3>
 						<p><?php echo _e("Kto je Szukam Dom a prečo tento projekt vznikol.", "realsys"); ?></p>
-						<a href="#" class="btn"><?php echo _e("O nás", "realsys"); ?></a>
+						<a href="/jak-to-funguje-2/" class="btn"><?php echo _e("O nás", "realsys"); ?></a>
 					</div>
 				</div>
 
@@ -47,7 +47,7 @@
 						<img src="<?php echo FRONTEND_IMAGES_PATH; ?>/ikony/sluzby.png" alt="">
 						<h3><?php echo _e("Naše služby", "realsys"); ?></h3>
 						<p><?php echo _e("Všetko, čo dokáže realitný maklér dokážete aj vy - a za zlomok ceny. My Vám s tým vieme pomôcť.", "realsys"); ?></p>
-						<a href="#" class="btn"><?php echo _e("Naše služby", "realsys"); ?></a>
+						<a href="/stranka-sluzeb/" class="btn"><?php echo _e("Naše služby", "realsys"); ?></a>
 					</div>
 				</div>
 
@@ -56,7 +56,7 @@
 						<img src="<?php echo FRONTEND_IMAGES_PATH; ?>/ikony/blog.png" alt="">
 						<h3><?php echo _e("Blog", "realsys"); ?></h3>
 						<p><?php echo _e("Zameriavame sa na long-form obsah pre Vás, aby ste našli všetky užitočné informácie.", "realsys"); ?></p>
-						<a href="#" class="btn"><?php echo _e("Blog", "realsys"); ?></a>
+						<a href="http://blog.szukamdom.pl" class="btn"><?php echo _e("Blog", "realsys"); ?></a>
 					</div>
 				</div>
 

@@ -105,7 +105,7 @@
 
 
                     ></Servicebuy>
-					<a href="#" class="simple-link"><?php _e( "Jak to funguje?", "realsys" ); ?></a>
+					<a href="/jak-to-funguje-2/" class="simple-link"><?php _e( "Jak to funguje?", "realsys" ); ?></a>
 				</div>
 			</div>
 		</div>

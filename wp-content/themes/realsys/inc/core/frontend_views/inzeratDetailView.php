@@ -99,8 +99,8 @@ $obrazky   = array_filter( $obrazky, function ( $val ) use ( &$front_obr ) {
                                     </table>
 
                                     <div class="contact-bar-new app">
-                                        <a class="btn btn-outline btn-small"
-                                           href=""><?php echo _e( "Viac informacií", "realsys" ); ?></a>
+                                        <a class="btn btn-outline btn-small scroll-vice"
+                                           href="#vice"><?php echo _e( "Viac informacií", "realsys" ); ?></a>
                                         <Zobrazkontakt
                                                 :user_logged="<?php echo (uzivatelClass::getUserLoggedId()) ? uzivatelClass::getUserLoggedId() : "false"; ?>"
                                                 :service="<?php global $cenik_sluzeb; echo Tools::prepareJsonToOutputHtmlAttr($cenik_sluzeb[2]); ?>"
@@ -229,8 +229,22 @@ $obrazky   = array_filter( $obrazky, function ( $val ) use ( &$front_obr ) {
                                             </div>
                                         </div>
                                         <div class="text-center mt-5">
-                                            <a class="btn btn-small"
-                                               href=""><?php _e( "Mám záujem o túto ponuku", "realsys" ); ?></a>
+																					<div class="contact-bar-new app">
+			                                        <Zobrazkontakt
+			                                                :user_logged="<?php echo (uzivatelClass::getUserLoggedId()) ? uzivatelClass::getUserLoggedId() : "false"; ?>"
+			                                                :service="<?php global $cenik_sluzeb; echo Tools::prepareJsonToOutputHtmlAttr($cenik_sluzeb[2]); ?>"
+			                                                :inzerat_id="<?php echo $inzerat->getId(); ?>"
+			                                                :translations="<?php echo Tools::prepareJsonToOutputHtmlAttr(array_merge($zobrazkontakt_translations, $servicebuy_translations)); ?>"
+
+			                                                home_url="<?php echo home_url(); ?>"
+			                                                login_link="<?php echo Tools::getFERoute("uzivatelClass",false, "login"); ?>"
+			                                                payment_link="<?php echo Tools::getFERoute("objednavkaClass"); ?>"
+			                                                ajax_url="<?php echo AJAXURL; ?>"
+			                                                currency="<?php echo CURRENCY; ?>"
+			                                                assets_path="<?php echo FRONTEND_IMAGES_PATH; ?>"
+
+			                                        ></Zobrazkontakt>
+			                                    </div>
                                         </div>
                                     </div>
 
@@ -302,5 +316,3 @@ if ( count( $similar ) > 0 ) :
         </div>
     </section>
 <?php endif; ?>
-
-<?php get_template_part( "templates/page", "cta" ); ?>

@@ -21,6 +21,9 @@
 				<div class="profile-main-info text-center rounded-b shadow-sm p-20">
 					<div class="profile-img-wrap" style="background-image: url(<?php echo $uzivatel->db_avatar; ?>)"></div>
 					<h2 class="sz-tit mb-2"><?php echo $uzivatel->getFullName(); ?></h2>
+
+
+
 					<p class="prof-kvalita"><?php echo __("Kvalita profilu ", "realsys"); ?><span class="prof-kvalit-value">100%</span></p>
 
 				</div>

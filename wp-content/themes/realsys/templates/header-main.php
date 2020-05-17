@@ -34,7 +34,7 @@
                         <div class="user-login-block shadow-sm rounded light-blue-bg ">
                             <div class="user-info">
                                 <div class="user-info-wrap">
-                                    <div class="avatar"><img src="<?php echo FRONTEND_IMAGES_PATH; ?>/avatar.png" alt=""></div>
+                                    <div class="avatar"><img src="<?php echo $uzivatel->db_avatar; ?>" alt=""></div>
                                     <div>
                                         <h4 class="user-name"><?php echo $uzivatel->getFullName(); ?></h4>
                                         <span class="user-email"><?php echo $uzivatel->db_email; ?></span>

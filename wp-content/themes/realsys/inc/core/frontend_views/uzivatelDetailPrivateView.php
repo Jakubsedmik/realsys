@@ -24,8 +24,31 @@
 				<div class="profile-main-info text-center rounded-b shadow-sm p-20">
 					<div class="profile-img-wrap" style="background-image: url(<?php echo $uzivatel->db_avatar; ?>)"></div>
 					<h2 class="sz-tit mb-2"><?php echo $uzivatel->getFullName(); ?></h2>
-					<p class="prof-kvalita"><?php _e("Kvalita profilu ", "realsys"); ?><span class="prof-kvalit-value">100%</span></p>
+					<?php
+					$kvalita = 0;
+					$jmeno_kval = $uzivatel->getFullName();
+					$email_kval = $uzivatel->db_email;
+					$telefon_kval = Tools::formatPhone($uzivatel->db_telefon);
+					$avatar_kval = $uzivatel->db_avatar;
+					$bio_kval = $uzivatel->db_popis;
 
+					if ($jmeno_kval != "" OR $jmeno_kval != " ") {
+						$kvalita += 30;
+					}
+					if ($email_kval != "" OR $email_kval != " ") {
+						$kvalita += 20;
+					}
+					if ($telefon_kval != "" OR $telefon_kval != " ") {
+						$kvalita += 20;
+					}
+					if ($avatar_kval != "" OR $avatar_kval != " ") {
+						$kvalita += 20;
+					}
+					if ($bio_kval != "" OR $bio_kval != " " OR $bio_kval != null) {
+						$kvalita += 10;
+					}
+					?>
+<p class="prof-kvalita"><?php _e("Kvalita profilu ", "realsys"); ?><span class="prof-kvalit-value"><?php echo $kvalita; ?>%</span></p>
 				</div>
 				<div class="profile-menu-wrap">
 					<nav class="profile-menu">
