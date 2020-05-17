@@ -1,1 +1,8 @@
+# PRODUCTION
 gulp deploySettings && npx webpack --config ./deployTools/webpack.config.js && npx webpack --config ./deployTools/backend_webpack.config.js
+
+#DEV
+gulp devSettings && npx webpack --config ./deployTools/dev_webpack.config.js && npx webpack --config ./deployTools/backend_dev_webpack.config.js
+
+!! Nezapomen na DB Setup !!
+

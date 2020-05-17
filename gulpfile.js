@@ -125,6 +125,22 @@ function set_deploy_environment(){
         .pipe(gulp.dest(lessFiles_frontend, {overwrite: true}))
 }
 
+function set_dev_environment(){
+
+
+    return gulp.src(frontendLessPath)
+        .pipe(sourcemaps.init())
+        .pipe(less(
+            {
+                modifyVars: {
+                    '@productionurl': '"http://dev.szukamdom.pl"',
+                }
+            }
+            )
+        )
+        .pipe(gulp.dest(lessFiles_frontend, {overwrite: true}))
+}
+
 /*
  * Specify if tasks run in series or parallel using `gulp.series` and `gulp.parallel`
  */
@@ -136,6 +152,7 @@ var build = gulp.series(clean, gulp.parallel(frontend_styles, frontend_scripts, 
  * You can use CommonJS `exports` module notation to declare tasks
  */
 exports.deploySettings = set_deploy_environment;
+exports.devSettings = set_dev_environment;
 exports.clean = clean;
 exports.backend_scripts = backend_scripts;
 exports.backend_styles = backend_styles

@@ -19,7 +19,7 @@ require_once( __DIR__ . "/../configuration/vue-translations.php" );
             :user_logged="<?php echo ( uzivatelClass::getUserLoggedId() ) ? uzivatelClass::getUserLoggedId() : 'false'; ?>"
             :service="<?php global $cenik_sluzeb;
 			echo Tools::prepareJsonToOutputHtmlAttr( $cenik_sluzeb[0] ); ?>"
-            :translations="<?php echo Tools::prepareJsonToOutputHtmlAttr( $vypis_translations ); ?>"
+            :translations="<?php echo Tools::prepareJsonToOutputHtmlAttr( array_merge($vypis_translations, $watchdog_translations, $servicebuy_translations)); ?>"
 
             v-cloak
     ></VyhledavaniMapa>

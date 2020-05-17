@@ -1,17 +1,9 @@
-/*
-Změn to zatím zpět, ale pokud to tedy někdy budeš potřebovat, tak potom tady musí zůstat a ty si potom uděláš něco takového:
-lessc main.less main.css @path='199.155.155.111:8080' - tím při kompilaci podstrčíš tu proměnnou a pošleš tam nastavení serveru, syntaxe je asi trošku jiná
-ted nevim, ale jde to, počkej podivám se
-to je v pohodě, já to ted nepotřebuju, dělám jen z jednoho, klidně to fakt přehodím na local, hlavně at to funguje a můžem to ukázat // NOTE:
-jo dej to všechno na localhost jinak se z toho poserem, jo ono ti to asi funguje protože assets_path se bere z DB home_url() takže proto ti to funguje no, tak ale nedělej to :D OK :D nebudu
-a až to budeš mazat
-tak si dej pozor na ty vnitřky ještě - tzn profil editace apod. měl by sis to rozdělit aby sme to pak smazali až si to zase přepíšeš viz. toto:
-*/
 @import "jcf.css";
 @import "dmsans.css";
 @import "pridat-inzerat-style.css";
 @import "bootstrap.min.css";
 @import "fonts.css";
+@import "sourcesans.css";
 @import "flaticon.css";
 @import "popups.css";
 @import "validation.css";
@@ -458,7 +450,8 @@ a:hover {
 input[type=text],
 input[type=password],
 input[type=email],
-.select-wrapper {
+.select-wrapper,
+input[type=date] {
   width: 100%;
   background: #f5f5f5;
   border: none;
@@ -4257,7 +4250,7 @@ header {
   border-bottom-right-radius: 6px!important;
 }
 .form-field {
-  display: flex!important;
+  display: flex;
   flex-direction: row;
   align-items: center;
 }
@@ -4612,7 +4605,7 @@ header {
   border-bottom-right-radius: 6px!important;
 }
 .form-field {
-  display: flex!important;
+  display: flex;
   flex-direction: row;
   align-items: center;
 }

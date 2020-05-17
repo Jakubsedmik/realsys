@@ -61,7 +61,7 @@
 							<h2 class="sz-tit"><?php echo _e("Transakcia bola úspešná!", "realsys"); ?></h2>
 
 							<p class=""><?php echo _e("Na Váš účet sme pripísali", "realsys"); ?></p>
-							<h3 class="kredity-big">182</h2>
+							<h2 class="kredity-big">182</h2>
 								<p class="mb-sm-5 mb-3"><?php echo _e("Kreditov", "realsys"); ?></p>
 						</div>
 					</div>
