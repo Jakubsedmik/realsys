@@ -169,7 +169,7 @@ class gopayController extends frontendController {
 		$gopay = $this->gopay;
 		$response = $gopay->createPayment(array(
 			'payer' => array(
-				'default_payment_instrument' => PaymentInstrument::PREMIUM_SMS,
+				'default_payment_instrument' => PaymentInstrument::PAYMENT_CARD,
 				'allowed_payment_instruments' => array(PaymentInstrument::BANK_ACCOUNT, PaymentInstrument::PAYMENT_CARD, PaymentInstrument::PREMIUM_SMS),
 				'default_swift' => BankSwiftCode::FIO_BANKA,
 				'allowed_swifts' => array(BankSwiftCode::FIO_BANKA, BankSwiftCode::MBANK),
