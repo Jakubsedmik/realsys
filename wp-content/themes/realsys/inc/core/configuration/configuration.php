@@ -833,8 +833,7 @@ $filter_parameters = array(
 $filter_hp_parameters = array(
 	'db_typ_inzeratu',
 	'db_pocet_mistnosti',
-	'db_typ_stavby',
-	'db_vybavenost'
+	'db_typ_stavby'
 );
 
 

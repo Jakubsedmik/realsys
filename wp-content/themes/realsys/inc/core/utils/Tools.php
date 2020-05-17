@@ -947,7 +947,12 @@ class Tools {
 		foreach ($filter_hp_parameters as $key => $value){
 		    if(isset($filter_parameters[$value])){
 			    $key_new = str_replace("db_","", $value);
-		        $final_filter[$value]['values'] = globalUtils::getValuesForFilter("inzeratClass", $key_new, "-- Bez filtru --");
+			    if(is_array($filter_parameters[$value]['values']) && count($filter_parameters[$value]['values']) > 0){
+				    $final_filter[$value]['values'] = $filter_parameters[$value]['values'];
+                }else{
+				    $final_filter[$value]['values'] = globalUtils::getValuesForFilter("inzeratClass", $key_new, "-- Bez filtru --");
+                }
+
 			    $final_filter[$value]['name'] = $filter_parameters[$value]['name'];
             }
 		}
