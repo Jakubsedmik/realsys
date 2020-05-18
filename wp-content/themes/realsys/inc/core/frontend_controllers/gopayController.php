@@ -146,6 +146,55 @@ class gopayController extends frontendController {
 
 	}
 
+	public function quickOrder(){
+
+		$result = Tools::postChecker($this->requestData, array(
+			'serviceid' => array(
+				'required' => true,
+				'type' => NUMBER
+			),
+			'redirect' => array(
+				'required' => true,
+				'type' => URL
+			)
+		), true);
+
+		if($result){
+			global $cenik_sluzeb;
+
+			$serviceid = $this->requestData['serviceid'];
+			$callbackurl = $this->requestData['redirect'];
+
+			if(isset($cenik_sluzeb[$serviceid])){
+				$sluzba = $cenik_sluzeb[$serviceid];
+
+
+				$anonymni_objednavka = assetsFactory::createEntity("objednavkaClass",array(
+					"db_cena" => $sluzba['price'] * ALONE_CREDIT_PRICE,
+					"db_mnozstvi" => $sluzba['price'],
+					"db_stav" => 0,
+					"db_uzivatel_id" => 1
+				));
+
+				Tools::jsRedirect($this->quickPayment($anonymni_objednavka, $callbackurl));
+				$this->setView("quickOrder");
+				return true;
+
+			}else{
+				$this->setView("error");
+			}
+		}else{
+			$this->setView("error");
+		}
+		$this->setView("error");
+
+	}
+
+	public function confirmQuickPayment(){
+		echo "OK";
+		$this->setView("error");
+	}
+
 	protected function simpleOrderPayment($order, $user){
 		$contact = array(
 			'first_name' => $user->db_jmeno,
@@ -159,6 +208,16 @@ class gopayController extends frontendController {
 		);
 		$return_url = GOPAY_STANDARD_CALLBACK . "&orderid=" . $order->getId();
 		return $this->simplePayment($order->db_cena, $items, $order->getId(),$contact, $return_url ,"Platba za kredity v systému");
+	}
+
+	protected function quickPayment($order, $callbackurl){
+
+		$items = array(
+			array('name' => 'Objednávka kreditů', 'amount' => $order->db_cena * 100)
+		);
+
+		$return_url = GOPAY_QUICK_CALLBACK . "&orderid=" . $order->getId() . "&callbackurl=" . $callbackurl;
+		return $this->simplePayment($order->db_cena, $items, $order->getId(),null, $return_url ,"Platba za kredity v systému");
 	}
 
 	protected function simplePayment($ammount, $items, $order_number, $contact, $return_url, $order_description){

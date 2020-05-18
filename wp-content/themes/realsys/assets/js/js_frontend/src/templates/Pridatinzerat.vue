@@ -1427,7 +1427,6 @@
                             if(typeof appear == "boolean"){
                                 return appear;
                             }else{
-                                if(fieldName=="db_cena") debugger;
                                 return this.checkRules(appear);
                             }
                         }

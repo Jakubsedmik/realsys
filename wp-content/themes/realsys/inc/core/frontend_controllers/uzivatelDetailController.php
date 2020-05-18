@@ -27,6 +27,7 @@ class uzivatelDetailController extends frontendController {
 				$uzivatel->loadRelatedObjects();
 				$this->workData['uzivatel'] = $uzivatel;
 				if($uzivatel->isUserLoggedIn()){
+
 					$this->setView("uzivatelDetailPrivate");
 				}
 				$this->performView();
