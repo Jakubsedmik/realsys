@@ -52,12 +52,12 @@ abstract class frontendController {
      */
     public function registerRoute(){
     	global $routes;
-
-    	$routes_passed = array_filter($routes, function($value, $index){
-			if($value == get_class($this)){
+		$_this = $this;
+    	$routes_passed = array_filter($routes, function($value, $index) use ($_this){
+			if($value == get_class($_this)){
 				$current_url = $_SERVER["REQUEST_URI"];
 
-				if(preg_match('/' . $index . '/i', $current_url)){
+				if(preg_match('/^' . $index . '/i', $current_url)){
 					return true;
 				}
 			}

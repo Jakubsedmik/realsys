@@ -110,6 +110,7 @@ $obrazky   = array_filter( $obrazky, function ( $val ) use ( &$front_obr ) {
                                                 home_url="<?php echo home_url(); ?>"
                                                 login_link="<?php echo Tools::getFERoute("uzivatelClass",false, "login"); ?>"
                                                 payment_link="<?php echo Tools::getFERoute("objednavkaClass"); ?>"
+                                                quick_payment_link="<?php echo Tools::getFERoute("gopay", false, "quickpayment"); ?>"
                                                 ajax_url="<?php echo AJAXURL; ?>"
                                                 currency="<?php echo CURRENCY; ?>"
                                                 assets_path="<?php echo FRONTEND_IMAGES_PATH; ?>"

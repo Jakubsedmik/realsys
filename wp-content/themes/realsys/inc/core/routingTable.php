@@ -58,7 +58,8 @@ $routing_urls = array(
 	),
 	"gopay" => array(
 		"payment" => home_url() . '/gopay/?id=%d',
-		"confirmation" => home_url() . '/gopay/'
+		"confirmation" => home_url() . '/gopay/',
+		"quickpayment" => home_url() . "/gopay/?action=quickOrder"
 	),
 	"hlidacipesClass" => array(
 		"detail" => home_url() . "/hlidacipes/?id=%d",

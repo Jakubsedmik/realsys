@@ -192,6 +192,7 @@ class typeClass implements JsonSerializable {
 					$status   = false;
 					frontendError::addMessage( $this->key, ERROR, $response, $this );
 				}
+				break;
 			case 'url_rel' :
 				if ( ! preg_match( REGEX_URL_RELATIVE, $this->value ) ) {
 					$response = __("Pole","realsys") . " " . globalUtils::translate( $this->key ) . " " . __("není platná relativní cesta.","realsys");

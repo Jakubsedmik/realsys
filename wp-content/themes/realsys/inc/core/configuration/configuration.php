@@ -55,7 +55,7 @@ define( "REGEX_EMAIL", "/^(?!(?:(?:\x22?\x5C[\x00-\x7E]\x22?)|(?:\x22?[^\x5C\x22
 define( "REGEX_TELEPHONE", "/^(\+420)? ?[1-9][0-9]{2} ?[0-9]{3} ?[0-9]{3}$/" );
 define( "REGEX_TIME", '/^\d{1,2}:\d{1,2}$/m' );
 define( "REGEX_URL_ABSOLUTE", '%^(?:(?:https?|ftp)://)(?:\S+(?::\S*)?@|\d{1,3}(?:\.\d{1,3}){3}|(?:(?:[a-z\d\x{00a1}-\x{ffff}]+-?)*[a-z\d\x{00a1}-\x{ffff}]+)(?:\.(?:[a-z\d\x{00a1}-\x{ffff}]+-?)*[a-z\d\x{00a1}-\x{ffff}]+)*(?:\.[a-z\x{00a1}-\x{ffff}]{2,6}))(?::\d+)?(?:[^\s]*)?$%iu' );
-
+define( "REGEX_URL_RELATIVE", "");
 
 // DEFAULT CONTROLLER
 define( "DEFAULT_CONTROLLER", "home" );
@@ -597,6 +597,7 @@ $dictionary = array(
 define( "TEST_MODE", true );
 define( "GOPAY_INLINE", false);
 define ("GOPAY_STANDARD_CALLBACK", home_url() . "/gopay/?action=confirmPayment");
+define ("GOPAY_QUICK_CALLBACK", home_url() . "/gopay/?action=confirmQuickPayment");
 
 // MODEL / CONTROLLER  napojení
 $models = array(

@@ -378,10 +378,10 @@ $(document).ready(function () {
                     response = JSON.parse(response);
                     if(response.status == 1){
                         $(".js-uploadImageResult").text(response.message).show();
-
+                        console.log("OK");
                         setTimeout(function () {
                             popupsHandler.hideAll();
-                            $(".profile-img").css({'background-image': 'url(' + response.gallery_url + ')'});
+                            $(".js-profile-img").css({'background-image': 'url(' + response.gallery_url + ')'});
                             $(".js-uploadImageResult").hide()
                             $("body").trigger("remove-files");
                         }, 1500);
@@ -644,7 +644,7 @@ $(document).ready(function (e) {
 
 
     // PHOTO UPLOADER FOR INZERAT
-    FilePond.setOptions({
+    /*FilePond.setOptions({
         server: {
             url: serverData.ajaxUrl,
             method: 'POST',
@@ -689,7 +689,7 @@ $(document).ready(function (e) {
         labelTapToRetry: "Klepněte pro opakování",
         allowRevert: false
 
-    });
+    });*/
 
     var pondEl = $('.js-add-inzerat-photos input').get(0);
     const pond = FilePond.create( pondEl );
@@ -698,13 +698,13 @@ $(document).ready(function (e) {
         pond.removeFiles();
     });
 
-    $("body").on("click", ".js-choose-image", function (e) {
+    /*$("body").on("click", ".js-choose-image", function (e) {
         var idFront = $(this).attr("data-id");
         $(".js-loadedImages-wrapper .selected-image").removeClass("selected-image");
         $(this).addClass("selected-image");
 
         $("#obrazek_front").val(idFront);
-    });
+    });*/
 
 })
 

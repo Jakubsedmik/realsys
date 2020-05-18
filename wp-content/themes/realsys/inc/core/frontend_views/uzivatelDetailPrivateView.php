@@ -12,6 +12,9 @@
 
 	$transakce = $uzivatel->subobjects['transakceClass'];
     $objednavky = $uzivatel->subobjects['objednavkaClass'];
+
+
+
 ?>
 
 
@@ -22,33 +25,10 @@
 			<div class="col-lg-3">
 
 				<div class="profile-main-info text-center rounded-b shadow-sm p-20">
-					<div class="profile-img-wrap" style="background-image: url(<?php echo $uzivatel->db_avatar; ?>)"></div>
+					<div class="profile-img-wrap js-profile-img" style="background-image: url(<?php echo $uzivatel->db_avatar; ?>)"></div>
 					<h2 class="sz-tit mb-2"><?php echo $uzivatel->getFullName(); ?></h2>
-					<?php
-					$kvalita = 0;
-					$jmeno_kval = $uzivatel->getFullName();
-					$email_kval = $uzivatel->db_email;
-					$telefon_kval = Tools::formatPhone($uzivatel->db_telefon);
-					$avatar_kval = $uzivatel->db_avatar;
-					$bio_kval = $uzivatel->db_popis;
 
-					if ($jmeno_kval != "" OR $jmeno_kval != " ") {
-						$kvalita += 30;
-					}
-					if ($email_kval != "" OR $email_kval != " ") {
-						$kvalita += 20;
-					}
-					if ($telefon_kval != "" OR $telefon_kval != " ") {
-						$kvalita += 20;
-					}
-					if ($avatar_kval != "" OR $avatar_kval != " ") {
-						$kvalita += 20;
-					}
-					if ($bio_kval != "" OR $bio_kval != " " OR $bio_kval != null) {
-						$kvalita += 10;
-					}
-					?>
-<p class="prof-kvalita"><?php _e("Kvalita profilu ", "realsys"); ?><span class="prof-kvalit-value"><?php echo $kvalita; ?>%</span></p>
+                    <p class="prof-kvalita"><?php _e("Kvalita profilu ", "realsys"); ?><span class="prof-kvalit-value"><?php echo $uzivatel->profileQuality(); ?></span></p>
 				</div>
 				<div class="profile-menu-wrap">
 					<nav class="profile-menu">
@@ -135,7 +115,7 @@
 							<div class="row top-info">
 								<div class="col-sm-12">
 
-									<div class="profile-img" style="background-image: url(<?php echo $uzivatel->dejData('db_avatar'); ?>)">
+									<div class="profile-img js-profile-img" style="background-image: url(<?php echo $uzivatel->dejData('db_avatar'); ?>)">
                                         <a class="edit-icon js-changeImage"><i class="fas fa-pen"></i></a>
                                     </div>
 
@@ -160,7 +140,7 @@
 								</div>
 								<div class="col-sm-9 profil-form-content">
 									<div class="row">
-										<div class="col-sm-6 correct"><input class="input-outline" value="<?php echo $uzivatel->dejData('db_email'); ?>" name="db_email_nocheck" placeholder="<?php _e("Email", "realsys"); ?>"></div>
+										<div class="col-sm-6 correct"><input class="input-outline" value="<?php echo $uzivatel->dejData('db_email'); ?>" name="db_email_nocheck" type="email" placeholder="<?php _e("Email", "realsys"); ?>"></div>
 										<div class="col-sm-6 correct"><input class="input-outline" value="<?php echo $uzivatel->dejData('db_telefon'); ?>" name="db_telefon" type="tel" placeholder="<?php _e("Telefon", "realsys"); ?>"></div>
 									</div>
 								</div>

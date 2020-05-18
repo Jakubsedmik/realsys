@@ -149,5 +149,32 @@ class uzivatelClass extends zakladniKamenClass {
 		return $totalKredit;
 	}
 
+	public function profileQuality(){
+		$points = 0;
+		$total = 5;
+
+		if(strlen(trim($this->getFullName())) > 0){
+			$points++;
+		}
+
+		if(strlen(trim($this->db_email)) > 0){
+			$points++;
+		}
+
+		if(strlen(trim($this->db_telefon)) > 0){
+			$points++;
+		}
+
+		if(strlen(trim($this->db_avatar)) > 0){
+			$points++;
+		}
+
+		if(strlen(trim($this->db_popis)) > 0){
+			$points++;
+		}
+
+		return round(($points / $total) * 100,0) . " %";
+	}
+
 
 }

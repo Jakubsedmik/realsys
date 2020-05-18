@@ -43,6 +43,7 @@
                                 <img class="maj-img mb-sm-4 mb-3" :src="this.assets_path + '/avatar.png'" alt="">
                                 <p class="mb-sm-5 mb-3">{{translations.bohutelNejstePrihlasenKontakt}}</p>
                                 <a class="btn mb-sm-5 mb-3" :href="login_link">{{translations.prihlaseni}}</a>
+                                <a :href="quickOrderLink()" class="btn">Zaplatit za kontakt bez přihlášení</a>
                             </div>
 
                             <div class="modal-body" v-else>
@@ -88,7 +89,7 @@
             }
         },
         props: [
-            'user_logged', 'service', 'payment_link', 'login_link', 'ajax_url', 'currency', 'assets_path', 'home_url', 'inzerat_id', 'translations'
+            'user_logged', 'service', 'payment_link', 'login_link', 'ajax_url', 'currency', 'assets_path', 'home_url', 'inzerat_id', 'translations', 'quick_payment_link'
         ],
 
         methods: {
@@ -127,6 +128,9 @@
                         console.error(e);
                     });
                 }
+            },
+            quickOrderLink(){
+                return this.quick_payment_link + '&serviceid=' + this.service.id + '&redirect=' + encodeURI(window.location.href);
             }
         },
         mounted() {
