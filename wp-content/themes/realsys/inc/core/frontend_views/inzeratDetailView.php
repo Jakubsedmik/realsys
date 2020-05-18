@@ -14,6 +14,11 @@ $obrazky   = array_filter( $obrazky, function ( $val ) use ( &$front_obr ) {
 	return true;
 } );
 
+$transactionid = -1;
+if(Tools::checkPresenceOfParam("transactionid", $this->requestData)){
+     $transactionid = $this->requestData['transactionid'];
+}
+
 ?>
 
 <section>
@@ -106,6 +111,7 @@ $obrazky   = array_filter( $obrazky, function ( $val ) use ( &$front_obr ) {
                                                 :service="<?php global $cenik_sluzeb; echo Tools::prepareJsonToOutputHtmlAttr($cenik_sluzeb[2]); ?>"
                                                 :inzerat_id="<?php echo $inzerat->getId(); ?>"
                                                 :translations="<?php echo Tools::prepareJsonToOutputHtmlAttr(array_merge($zobrazkontakt_translations, $servicebuy_translations)); ?>"
+                                                :transaction_id="<?php echo $transactionid; ?>"
 
                                                 home_url="<?php echo home_url(); ?>"
                                                 login_link="<?php echo Tools::getFERoute("uzivatelClass",false, "login"); ?>"
@@ -236,6 +242,7 @@ $obrazky   = array_filter( $obrazky, function ( $val ) use ( &$front_obr ) {
 			                                                :service="<?php global $cenik_sluzeb; echo Tools::prepareJsonToOutputHtmlAttr($cenik_sluzeb[2]); ?>"
 			                                                :inzerat_id="<?php echo $inzerat->getId(); ?>"
 			                                                :translations="<?php echo Tools::prepareJsonToOutputHtmlAttr(array_merge($zobrazkontakt_translations, $servicebuy_translations)); ?>"
+                                                            :transaction_id="<?php echo $transactionid; ?>"
 
 			                                                home_url="<?php echo home_url(); ?>"
 			                                                login_link="<?php echo Tools::getFERoute("uzivatelClass",false, "login"); ?>"

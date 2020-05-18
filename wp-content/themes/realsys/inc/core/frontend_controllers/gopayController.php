@@ -176,7 +176,7 @@ class gopayController extends frontendController {
 					"db_uzivatel_id" => 1
 				));
 
-				Tools::jsRedirect($this->quickPayment($anonymni_objednavka, $callbackurl));
+				Tools::jsRedirect($this->quickPayment($anonymni_objednavka, $callbackurl,$serviceid));
 				$this->setView("quickOrder");
 				return true;
 
@@ -191,8 +191,85 @@ class gopayController extends frontendController {
 	}
 
 	public function confirmQuickPayment(){
-		echo "OK";
-		$this->setView("error");
+		$result = Tools::postChecker($this->requestData, array(
+			"callbackurl" => array(
+				'required' => true,
+				'type' => NUMBER
+			),
+			'orderid' => array(
+				'required' => true,
+				'type' => NUMBER
+			),
+			"id" => array(
+				"required" => true,
+				"type" => NUMBER
+			),
+			"serviceid" => array(
+				"required" => true,
+				"type" => NUMBER
+			)
+		), true);
+
+
+		if($result){
+			$gopay_id = $this->requestData['id'];
+			$status = $this->gopay->getStatus($gopay_id);
+
+			if(is_object($status) && $status->json["state"]=="PAID"){
+				$order_number = $status->json["order_number"];
+
+				$objednavka = assetsFactory::getEntity("objednavkaClass", $order_number);
+
+				if($objednavka){
+					$objednavka->db_hash = $gopay_id;
+					$objednavka->db_stav = 1;
+
+					frontendError::addMessage(__("Úspěch","realsys"), SUCCESS, __("Objednávka byla úspěšně zaplacena.","realsys"));
+
+					global $cenik_sluzeb;
+					$serviceid = $this->requestData['serviceid'];
+					$sluzba = $cenik_sluzeb[$serviceid];
+					if(!isset($service['requireEntity'])){
+
+						$transakce = assetsFactory::createEntity("transakceClass", array(
+							"id_odesilatel" => 1,
+							"id_prijemce" => -1,
+							"mnozstvi" => $sluzba['price'],
+							"nazev_sluzby" => $sluzba['name'],
+							'accept' => 0
+						));
+
+
+						$redirect = $this->requestData['callbackurl'] . "?transactionid=" .  $transakce->getId();
+
+						$_SESSION['transactionid'] = $transakce->getId();
+						Tools::jsRedirect($redirect);
+						$this->requestData['objednavka'] = $objednavka;
+						$this->setView("confirmSimplePayment");
+						return true;
+
+					}else{
+						$this->setView("error");
+						frontendError::addMessage( __("Objednávka", "realsys"), ERROR, __("Zjednodušená objednávka nefunguje s komplexními službami","realsys"));
+						return false;
+					}
+				}else{
+					frontendError::addMessage(__("Objednávka","realsys"),ERROR, __("Zadná objednávka v systému neexistuje a nemůže být zaplacena.","realsys"));
+					$this->setView("error");
+					return false;
+				}
+			}else{
+				frontendError::addMessage(__("Objednávka","realsys"),ERROR, __("Objednávka nebyla úspěšně zaplacena. Opakujte proces nebo kontaktujte administrátora","realsys"));
+				$this->requestData['orderid'] = $this->requestData['orderid'];
+				$this->setView("errorPayment");
+				return false;
+			}
+		}else{
+			frontendError::addMessage(__("Povinná pole","realsys"),ERROR, __("Některá povinná pole nebyla vyplněna","realsys"));
+			$this->setView("error");
+			return false;
+		}
+
 	}
 
 	protected function simpleOrderPayment($order, $user){
@@ -210,13 +287,13 @@ class gopayController extends frontendController {
 		return $this->simplePayment($order->db_cena, $items, $order->getId(),$contact, $return_url ,"Platba za kredity v systému");
 	}
 
-	protected function quickPayment($order, $callbackurl){
+	protected function quickPayment($order, $callbackurl, $serviceid){
 
 		$items = array(
 			array('name' => 'Objednávka kreditů', 'amount' => $order->db_cena * 100)
 		);
 
-		$return_url = GOPAY_QUICK_CALLBACK . "&orderid=" . $order->getId() . "&callbackurl=" . $callbackurl;
+		$return_url = GOPAY_QUICK_CALLBACK . "&orderid=" . $order->getId() . "&callbackurl=" . $callbackurl . "&serviceid=" . $serviceid;
 		return $this->simplePayment($order->db_cena, $items, $order->getId(),null, $return_url ,"Platba za kredity v systému");
 	}
 

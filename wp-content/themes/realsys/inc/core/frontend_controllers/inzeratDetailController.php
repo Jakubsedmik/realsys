@@ -4,7 +4,15 @@
 class inzeratDetailController extends frontendController{
 
 	public function beforeHeadersAction() {
-
+		if(Tools::checkPresenceOfParam("transactionid",$_GET)){
+			$transactionid = $_GET['transactionid'];
+			$transaction = assetsFactory::getEntity("transakceClass",$transactionid);
+			if($transaction){
+				if($transaction->db_accept ==1){
+					wp_redirect($_SERVER['REDIRECT_URL']);
+				}
+			}
+		}
 	}
 
 	public function action() {

@@ -89,7 +89,7 @@
             }
         },
         props: [
-            'user_logged', 'service', 'payment_link', 'login_link', 'ajax_url', 'currency', 'assets_path', 'home_url', 'inzerat_id', 'translations', 'quick_payment_link'
+            'user_logged', 'service', 'payment_link', 'login_link', 'ajax_url', 'currency', 'assets_path', 'home_url', 'inzerat_id', 'translations', 'quick_payment_link', 'transaction_id'
         ],
 
         methods: {
@@ -141,6 +141,12 @@
                     _this.payForContact();
                 }
             });
+
+            if(this.transaction_id > -1){
+                _this.openPopup();
+                this.transactionId = this.transaction_id;
+                _this.payForContact();
+            }
         },
     }
 </script>

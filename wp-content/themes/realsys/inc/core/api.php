@@ -1051,8 +1051,8 @@ function payForContact(){
 
 	if($result){
 		$user = uzivatelClass::getUserLoggedId();
-		if($user !== false){
-			$user = assetsFactory::getEntity("uzivatelClass",$user);
+		if($user !== false || (isset($_SESSION['transactionid']) && $_SESSION['transactionid']==$_POST['transactionid'])){
+
 
 			$transactionid = $_POST['transactionid'];
 			$entityid = $_POST['entityid'];
@@ -1061,8 +1061,9 @@ function payForContact(){
 
 			if($transaction){
 				if(!$transaction->isConfirmed()){
-					if($transaction->isRequestedByCurrentUser()){
+					if($transaction->isRequestedByCurrentUser() || (isset($_SESSION['transactionid']) && $_SESSION['transactionid']==$_POST['transactionid'])){
 
+						unset($_SESSION['transactionid']);
 						//account transaction
 						$transaction->db_accept = 1;
 						$transaction->aktualizovat();
