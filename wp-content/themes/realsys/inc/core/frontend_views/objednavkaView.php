@@ -2,6 +2,8 @@
     <div class="kredity-con">
         <div class="wrapper">
 	        <?php echo frontendError::getBackendErrors(); ?>
+          <button onclick="goBack()" class="back-to-page"><span class="icon-arrow rotate"></span><span><?php _e("Zpět", "realsys"); ?></span></button>
+
             <div class="section-title">
                 <h1 class="title"><?php _e("Kredity", "realsys"); ?></h1>
                 <p><?php _e("KredityPopis", "realsys"); ?></p>

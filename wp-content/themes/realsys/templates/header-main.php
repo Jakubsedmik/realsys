@@ -28,9 +28,20 @@
                 <?php if (uzivatelClass::getUserLoggedId() !== false) : ?>
                     <?php $uzivatel = assetsFactory::getEntity("uzivatelClass", uzivatelClass::getUserLoggedId()); ?>
                     <div class="user-logged">
-                        <a class="logged"><span class="icon-user ico"></span>
+
+
+                          <?php if(!$uzivatel->dejData("db_avatar")){ ?>
+                          <a class="logged">
+                            <span class="icon-user ico"></span>
                             <div class="mess-counter">2</div>
-                        </a>
+                          </a>
+                          <?php } else { ?>
+                          <a class="logged" href="<?php echo Tools::getFERoute("uzivatelClass", UzivatelClass::getUserLoggedId()) ?>">
+                            <span class="avatar icon-user ico" style="background-image:url(<?php echo $uzivatel->db_avatar; ?>);"></span>
+                          </a>
+                          <?php } ?>
+
+
                         <div class="user-login-block shadow-sm rounded light-blue-bg ">
                             <div class="user-info">
                                 <div class="user-info-wrap">
@@ -118,11 +129,11 @@
             </div>
             <div class="mob-menu-nav" style="display:none">
                 <ul>
-                    <li><a href="#"><?php _e("Mapa", "realsys"); ?></a></li>
-                    <li><a href="#"><?php _e("Výpis inzerátů", "realsys"); ?></a></li>
-                    <li><a href="#"><?php _e("Ceník", "realsys"); ?></a></li>
-                    <li><a href="#"><?php _e("Jak to funguje", "realsys"); ?></a></li>
-                    <li><a href="#"><?php _e("Služby", "realsys"); ?></a></li>
+                    <li><a href="/vypismapa/"><?php _e("Mapa", "realsys"); ?></a></li>
+                    <li><a href="/vypis/"><?php _e("Výpis inzerátů", "realsys"); ?></a></li>
+                    <li><a href="/cenik/"><?php _e("Ceník", "realsys"); ?></a></li>
+                    <li><a href="/jak-to-funguje-2/"><?php _e("Jak to funguje", "realsys"); ?></a></li>
+                    <li><a href="/stranka-sluzeb/"><?php _e("Služby", "realsys"); ?></a></li>
                 </ul>
             </div>
 
