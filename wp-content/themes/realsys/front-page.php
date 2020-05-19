@@ -38,7 +38,9 @@ if ( have_posts() ) {
 
 //$hlidacipes->obnovInzeraty();
 
-
+//$u = assetsFactory::getEntity("uzivatelClass",4);
+//$smssender = new smsClass("+420724855993");
+//$smssender->sendSMS("Ahoj PEJSKU");
 ?>
 
 <?php get_footer() ?>

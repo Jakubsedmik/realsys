@@ -53,6 +53,8 @@ function s7_scripts_styles() {
 		// JS
 		wp_enqueue_script("main_js", site_url() . ASSETS_PATH . "js/js_frontend/dist/main.min.js", array(), VERSION_LINKS, true);
 
+		// VUE - lepší být bokem
+		wp_enqueue_script("bundle_js", ASSETS_PATH . "/js/js_frontend/dist/bundle.js", array("main_js"), VERSION_LINKS, true);
 	}
 }
 
@@ -352,16 +354,19 @@ remove_action( 'wp_print_styles', 'print_emoji_styles' );
 
 
 
+/* ZMĚNA ODESÍLACÍHO MAILU WP */
 
 function change_my_from_address( $original_email_address ) {
 	return 'info@szukamdom.pl';
 }
 add_filter( 'wp_mail_from', 'change_my_from_address' );
 
-// Function to change sender name
 function change_my_sender_name( $original_email_from ) {
 	return 'Automat';
 }
 add_filter( 'wp_mail_from_name', 'change_my_sender_name' );
 
 
+/* DEAKTIVACE AKTUALIZACÍ */
+add_filter( 'auto_update_plugin', '__return_false' );
+add_filter( 'auto_update_theme', '__return_false' );

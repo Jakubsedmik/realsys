@@ -35,6 +35,9 @@ define( "ADMIN_BASE_URL", BASE_URL . "wp-admin/admin.php?page=" . PLUGIN_SLUG );
 define( "RECAPTCHA", "6Ld5jcwUAAAAAHkJW4PKS2g11BUtuxMV7XvP2aud" );
 define( "RECAPTCHA_SITEKEY", "6Ld5jcwUAAAAANHZpw5Xa4g-EgVPTOMfmGSSqZ4l" );
 
+// SMS MANAGER API KEY
+define("SMS_API_KEY", "ebf1c47065b933d486f76f27abb4cd997c4c4c7f");
+
 
 // ajax konstanty
 define( "AJAXURL", admin_url( "admin-ajax.php" ) );

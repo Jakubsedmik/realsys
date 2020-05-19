@@ -45,11 +45,13 @@ function adminHeaders($hook){
 		// JS
 		wp_enqueue_media();
 		wp_enqueue_script("all_js", $pluginUrl . "/assets/js/js_backend/dist/main.min.js", array(), VERSION_LINKS, true);
+
+		// VUE
 		wp_enqueue_script("bundle_js", $pluginUrl . "/assets/js/js_backend/dist/bundle.js", array(), VERSION_LINKS, true);
 
 	}else {
 		// Pokud jsme na developmentu tak natahujeme všecko zvlášť abychom nemuseli spouštět bundler
-		// bundler se pouští pouze v případě VUE.js a to vyustí v bundle_js, vue je zabaleno i v bundle.js
+		// bundler se pouští pouze v případě VUE.js a to vyustí v bundle_js, samotné vue je zabaleno i v bundle.js
 
 		// CSS
 		wp_enqueue_media();

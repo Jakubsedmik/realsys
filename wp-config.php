@@ -40,6 +40,9 @@ define( 'DB_COLLATE', '' );
 /** Přívlastek k URL, na produkci je třeba měnit */
 define( "BASE_URL", "/realsys/" );
 
+/** Deaktivace aktomatických aktualizací */
+define( 'WP_AUTO_UPDATE_CORE', false );
+
 /**#@+
  * Authentication Unique Keys and Salts.
  *

@@ -30,16 +30,16 @@
                     <div class="user-logged">
 
 
-                          <?php if(!$uzivatel->dejData("db_avatar")){ ?>
+                          <?php if(!$uzivatel->dejData("db_avatar")) : ?>
                           <a class="logged">
                             <span class="icon-user ico"></span>
                             <div class="mess-counter">2</div>
                           </a>
-                          <?php } else { ?>
+                          <?php else: ?>
                           <a class="logged" href="<?php echo Tools::getFERoute("uzivatelClass", UzivatelClass::getUserLoggedId()) ?>">
-                            <span class="avatar icon-user ico" style="background-image:url(<?php echo $uzivatel->db_avatar; ?>);"></span>
+                            <span class="avatar icon-user ico" style="background-image:url('<?php echo $uzivatel->db_avatar; ?>'');"></span>
                           </a>
-                          <?php } ?>
+                          <?php endif; ?>
 
 
                         <div class="user-login-block shadow-sm rounded light-blue-bg ">
