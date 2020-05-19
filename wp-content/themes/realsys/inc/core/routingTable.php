@@ -1,23 +1,22 @@
 <?php
-if(DEPLOYMENT){
-	$routes = array(
-		"url_regex" => "controller"
-	);
-}else {
-	$routes = array(
-		'\/realsys\/new\/' => "homeController",
-		'\/realsys\/inzerat\/' => "inzeratDetailController",
-		'\/realsys\/uzivatel\/' => "uzivatelDetailController",
-		"\/realsys\/login\/" => "loginController",
-		"\/realsys\/vypis\/" => "vypisController",
-		"\/realsys\/vypismapa\/" => "vypisMapaController",
-		"\/realsys\/gopay\/" => "gopayController",
-		"\/realsys\/objednavka\/" => "objednavkaController",
-		"\/realsys\/editace-inzeratu\/" => "inzeratEditController",
-		"\/realsys\/pridat-inzerat\/" => "pridatInzeratController",
-		"\/realsys\/hlidacipes\/" => "hlidacipesController",
-	);
-}
+
+
+$base_url_regex = str_replace("/", "\/", BASE_URL);
+
+$routes = array(
+	$base_url_regex . 'new\/' => "homeController",
+	$base_url_regex . 'inzerat\/' => "inzeratDetailController",
+	$base_url_regex . 'uzivatel\/' => "uzivatelDetailController",
+	$base_url_regex . "login\/" => "loginController",
+	$base_url_regex . "vypis\/" => "vypisController",
+	$base_url_regex . "vypismapa\/" => "vypisMapaController",
+	$base_url_regex . "gopay\/" => "gopayController",
+	$base_url_regex . "objednavka\/" => "objednavkaController",
+	$base_url_regex . "editace-inzeratu\/" => "inzeratEditController",
+	$base_url_regex . "pridat-inzerat\/" => "pridatInzeratController",
+	$base_url_regex . "hlidacipes\/" => "hlidacipesController",
+);
+
 
 
 /**

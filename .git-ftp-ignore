@@ -8,5 +8,4 @@ node_modules/*
 .idea
 wp-config.php
 .htaccess
-*/routingTable.php
 html/*

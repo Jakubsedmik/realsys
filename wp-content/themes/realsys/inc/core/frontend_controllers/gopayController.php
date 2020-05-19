@@ -176,17 +176,20 @@ class gopayController extends frontendController {
 					"db_uzivatel_id" => 1
 				));
 
-				Tools::jsRedirect($this->quickPayment($anonymni_objednavka, $callbackurl,$serviceid));
+				Tools::jsRedirect($this->quickPayment($anonymni_objednavka, $callbackurl,$serviceid),0);
 				$this->setView("quickOrder");
 				return true;
 
 			}else{
+				frontendError::addMessage(__("Služba", "realsys"), ERROR, __("Zadaná služba v systému neexistuje","realsys"));
 				$this->setView("error");
+				return false;
 			}
 		}else{
+			frontendError::addMessage(__("Povinná pole","realsys"),ERROR, __("Některá povinná pole nebyla vyplněna","realsys"));
 			$this->setView("error");
+			return false;
 		}
-		$this->setView("error");
 
 	}
 
@@ -243,7 +246,7 @@ class gopayController extends frontendController {
 						$redirect = $this->requestData['callbackurl'] . "?transactionid=" .  $transakce->getId();
 
 						$_SESSION['transactionid'] = $transakce->getId();
-						Tools::jsRedirect($redirect);
+						Tools::jsRedirect($redirect,0);
 						$this->requestData['objednavka'] = $objednavka;
 						$this->setView("confirmSimplePayment");
 						return true;

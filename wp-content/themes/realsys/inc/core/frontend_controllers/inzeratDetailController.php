@@ -9,7 +9,10 @@ class inzeratDetailController extends frontendController{
 			$transaction = assetsFactory::getEntity("transakceClass",$transactionid);
 			if($transaction){
 				if($transaction->db_accept ==1){
-					wp_redirect($_SERVER['REDIRECT_URL']);
+					$url = parse_url(Tools::getCurrentUrl());
+					unset($url['query']);
+					$url = Tools::build_url($url);
+					wp_redirect($url);
 				}
 			}
 		}
