@@ -46,15 +46,15 @@ class loginController extends frontendController {
 						Tools::jsRedirect(Tools::getFERoute("inzeratClass",false, "add"),1500);*/
 
 						if(Tools::checkPresenceOfParam("create",$this->requestData)){
-							frontendError::addMessage("Přihlášení", SUCCESS, "Přihlášení proběhlo úspěšně, probíhá přesměrování na vytváření inzerátu");
-							Tools::jsRedirect(Tools::getFERoute("inzeratClass",$uzivatel->getId(), "add"),1500,"Přesměrování na vytváření inzerátu");
+							frontendError::addMessage(__("Přihlášení","realsys"), SUCCESS, __("Přihlášení proběhlo úspěšně, probíhá přesměrování na vytváření inzerátu","realsys"));
+							Tools::jsRedirect(Tools::getFERoute("inzeratClass",$uzivatel->getId(), "add"),1500,__("Přesměrování na vytváření inzerátu","realsys"));
 						}elseif(Tools::checkPresenceOfParam("watchdog", $this->requestData)){
 							$watchdogid = $this->requestData['watchdog'];
-							frontendError::addMessage("Přihlášení", SUCCESS, "Přihlášení proběhlo úspěšně, probíhá přesměrování na výpis vašeho hlídacího psa.");
-							Tools::jsRedirect(Tools::getFERoute("hlidacipesClass", $watchdogid),1500,"Přesměrování na výpis hlídacího psa");
+							frontendError::addMessage(__("Přihlášení","realsys"), SUCCESS, __("Přihlášení proběhlo úspěšně, probíhá přesměrování na výpis vašeho hlídacího psa.","realsys"));
+							Tools::jsRedirect(Tools::getFERoute("hlidacipesClass", $watchdogid),1500, __("Přesměrování na výpis hlídacího psa","realsys"));
 						}else{
-							frontendError::addMessage("Přihlášení", SUCCESS, "Přihlášení proběhlo úspěšně, probíhá přesměrování na Váš profil.");
-							Tools::jsRedirect(Tools::getFERoute("uzivatelClass",$uzivatel->getId()),1500,"Přesměrování na Váš profil");
+							frontendError::addMessage(__("Přihlášení","realsys"), SUCCESS, __("Přihlášení proběhlo úspěšně, probíhá přesměrování na Váš profil.","realsys"));
+							Tools::jsRedirect(Tools::getFERoute("uzivatelClass",$uzivatel->getId()),1500, __("Přesměrování na Váš profil","realsys"));
 						}
 					}else{
 						frontendError::addMessage(__("Uživatel","realsys"),ERROR, __("Špatné heslo","realsys"));

@@ -1,7 +1,7 @@
 <div class="kotaktovat-majitele">
 	<div class="kont-maj-wrap text-center rounded-b">
 		<button class="close">X</button>
-		<h2><?php echo _e("Kontaktovať majiteľa", "realsys"); ?></h2>
+		<h2><?php _e("Kontaktovať majiteľa", "realsys"); ?></h2>
 		<img class="maj-img mb-sm-4 mb-3" src="<?php echo FRONTEND_IMAGES_PATH; ?>/ikony/kvalita.png" alt="">
 		<h2>Filip Šeršík</h2>
 		<p class="mb-sm-5 mb-3">Cena kontaktu je <strong>1 kredit</strong> Chcete kontaktovať majiteľa?</p>
@@ -395,7 +395,7 @@
 						<h2 class="sz-tit"><?php echo _e("Transakcia bola úspešná!", "realsys"); ?></h2>
 
 						<p class=""><?php echo _e("Na Váš účet sme pripísali", "realsys"); ?></p>
-						<h3 class="kredity-big">182</h2>
+						<h3 class="kredity-big">182</h3>
 							<p class="mb-sm-5 mb-3"><?php echo _e("Kreditov", "realsys"); ?></p>
 					</div>
 				</div>

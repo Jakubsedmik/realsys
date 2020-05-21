@@ -301,10 +301,11 @@ class uzivatelDetailController extends frontendController {
 
 				$uzivatel->writeDials();
 				$this->workData['uzivatel'] = $uzivatel;
-				$uzivatel->logOut();
+
 				$this->setView("uzivatelDetailPrivate");
 				$this->performView();
 				Tools::jsRedirect(home_url(), "500",__("Úspěch","realsys"),__("Byl jste úspěšně odhlášení, probíhá přesměrování","realsys"));
+				$uzivatel->logOut();
 
 			}else{
 				trigger_error("Tento uživatel neexistuje nebo nemáte oprávnění");

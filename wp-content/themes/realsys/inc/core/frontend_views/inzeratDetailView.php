@@ -1,9 +1,9 @@
 <?php
-require_once (__DIR__ . "/../configuration/vue-translations.php");
+require_once( __DIR__ . "/../configuration/vue-translations.php" );
 $inzerat   = $this->workData['inzerat'];
 $uzivatel  = $inzerat->subobjects['uzivatelClass'];
 $obrazky   = $inzerat->subobjects['obrazekClass'];
-$front_obr = "test";
+$front_obr = "";
 $obrazky   = array_filter( $obrazky, function ( $val ) use ( &$front_obr ) {
 	if ( $val->db_front == 1 ) {
 		$front_obr = $val;
@@ -14,9 +14,9 @@ $obrazky   = array_filter( $obrazky, function ( $val ) use ( &$front_obr ) {
 	return true;
 } );
 
-$transactionid = -1;
-if(Tools::checkPresenceOfParam("transactionid", $this->requestData)){
-     $transactionid = $this->requestData['transactionid'];
+$transactionid = - 1;
+if ( Tools::checkPresenceOfParam( "transactionid", $this->requestData ) ) {
+	$transactionid = $this->requestData['transactionid'];
 }
 
 ?>
@@ -24,8 +24,9 @@ if(Tools::checkPresenceOfParam("transactionid", $this->requestData)){
 <section>
     <div class="wrapper">
         <div class="slider-content">
-            <a href="/vypis/" class="back-to-page"><span
-                        class="icon-arrow rotate"></span><span><?php _e( "Zpět na výpis", "realsys" ); ?></span></a>
+            <a href="<?php echo Tools::getFERoute( "inzeratClass", false, "listing" ) ?>" class="back-to-page">
+                <span class="icon-arrow rotate"></span><span><?php _e( "Zpět na výpis", "realsys" ); ?></span>
+            </a>
         </div>
     </div>
 </section>
@@ -94,7 +95,8 @@ if(Tools::checkPresenceOfParam("transactionid", $this->requestData)){
                                         </tr>
                                         <tr>
                                             <th><?php _e( "Podlaží", "realsys" ); ?>:</th>
-                                            <td><?php echo $inzerat->db_patro; ?> z <?php echo $inzerat->db_celkem_podlazi; ?></td>
+                                            <td><?php echo $inzerat->db_patro; ?>
+                                                z <?php echo $inzerat->db_celkem_podlazi; ?></td>
                                         </tr>
                                         <tr>
                                             <th><?php _e( "Balkón", "realsys" ); ?>:</th>
@@ -107,16 +109,17 @@ if(Tools::checkPresenceOfParam("transactionid", $this->requestData)){
                                         <a class="btn btn-outline btn-small scroll-vice"
                                            href="#vice"><?php echo _e( "Viac informacií", "realsys" ); ?></a>
                                         <Zobrazkontakt
-                                                :user_logged="<?php echo (uzivatelClass::getUserLoggedId()) ? uzivatelClass::getUserLoggedId() : "false"; ?>"
-                                                :service="<?php global $cenik_sluzeb; echo Tools::prepareJsonToOutputHtmlAttr($cenik_sluzeb[2]); ?>"
+                                                :user_logged="<?php echo ( uzivatelClass::getUserLoggedId() ) ? uzivatelClass::getUserLoggedId() : "false"; ?>"
+                                                :service="<?php global $cenik_sluzeb;
+												echo Tools::prepareJsonToOutputHtmlAttr( $cenik_sluzeb[2] ); ?>"
                                                 :inzerat_id="<?php echo $inzerat->getId(); ?>"
-                                                :translations="<?php echo Tools::prepareJsonToOutputHtmlAttr(array_merge($zobrazkontakt_translations, $servicebuy_translations)); ?>"
+                                                :translations="<?php echo Tools::prepareJsonToOutputHtmlAttr( array_merge( $zobrazkontakt_translations, $servicebuy_translations ) ); ?>"
                                                 :transaction_id="<?php echo $transactionid; ?>"
 
                                                 home_url="<?php echo home_url(); ?>"
-                                                login_link="<?php echo Tools::getFERoute("uzivatelClass",false, "login"); ?>"
-                                                payment_link="<?php echo Tools::getFERoute("objednavkaClass"); ?>"
-                                                quick_payment_link="<?php echo Tools::getFERoute("gopay", false, "quickpayment"); ?>"
+                                                login_link="<?php echo Tools::getFERoute( "uzivatelClass", false, "login" ); ?>"
+                                                payment_link="<?php echo Tools::getFERoute( "objednavkaClass" ); ?>"
+                                                quick_payment_link="<?php echo Tools::getFERoute( "gopay", false, "quickpayment" ); ?>"
                                                 ajax_url="<?php echo AJAXURL; ?>"
                                                 currency="<?php echo CURRENCY; ?>"
                                                 assets_path="<?php echo FRONTEND_IMAGES_PATH; ?>"
@@ -181,9 +184,9 @@ if(Tools::checkPresenceOfParam("transactionid", $this->requestData)){
                                                         <th><?php _e( "Ulice", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->db_ulice . " " . $inzerat->db_cp; ?></td>
                                                     </tr>
-																										<tr>
+                                                    <tr>
                                                         <th><?php _e( "Datum přidání", "realsys" ); ?>:</th>
-                                                        <td><?php echo Tools::formatTime($inzerat->db_datum_zalozeni); ?></td>
+                                                        <td><?php echo Tools::formatTime( $inzerat->db_datum_zalozeni ); ?></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -191,76 +194,75 @@ if(Tools::checkPresenceOfParam("transactionid", $this->requestData)){
                                             <div class="col-sm-6">
                                                 <table class="basic-table th-row" style="border-collapse: initial;">
                                                     <tbody>
-																											<tr>
-	                                                        <th><?php _e( "Typ vlastnictví", "realsys" ); ?>:</th>
-	                                                        <td><?php echo $inzerat->db_typ_vlastnictvi; ?></td>
-	                                                    </tr>
-	                                                    <tr>
-	                                                        <th><?php _e( "Typ budovy", "realsys" ); ?>:</th>
-	                                                        <td><?php echo $inzerat->db_material; ?></td>
-	                                                    </tr>
-	                                                    <tr>
-	                                                        <th><?php _e( "PENB", "realsys" ); ?>:</th>
-	                                                        <td><?php echo $inzerat->db_penb; ?></td>
-	                                                    </tr>
-	                                                    <tr>
-	                                                        <th><?php _e( "Vybavenost", "realsys" ); ?>:</th>
-	                                                        <td><?php echo $inzerat->db_vybavenost; ?></td>
-	                                                    </tr>
-	                                                    <tr>
-	                                                        <th><?php _e( "Podlaží", "realsys" ); ?>:</th>
-	                                                        <td><?php echo $inzerat->db_patro; ?></td>
-	                                                    </tr>
-	                                                    <tr>
-	                                                        <th><?php _e( "Balkón", "realsys" ); ?>:</th>
-	                                                        <td><?php echo Tools::translateBinaryValue( $inzerat->db_balkon ); ?></td>
-	                                                    </tr>
-	                                                    <tr>
-	                                                        <th><?php _e( "Terasa", "realsys" ); ?>:</th>
-	                                                        <td><?php echo Tools::translateBinaryValue( $inzerat->db_terasa ); ?></td>
-	                                                    </tr>
-	                                                    <tr>
-	                                                        <th><?php _e( "Výtah", "realsys" ); ?>:</th>
-	                                                        <td><?php echo Tools::translateBinaryValue( $inzerat->db_vytah ); ?></td>
-	                                                    </tr>
-	                                                    <tr>
-	                                                        <th><?php _e( "Garáž", "realsys" ); ?>:</th>
-	                                                        <td><?php echo Tools::translateBinaryValue( $inzerat->db_garaz ); ?></td>
-	                                                    </tr>
-	                                                    <tr>
-	                                                        <th><?php _e( "Parkovací místo", "realsys" ); ?>:</th>
-	                                                        <td><?php echo Tools::translateBinaryValue( $inzerat->db_parkovaci_misto ); ?></td>
-	                                                    </tr>
+                                                    <tr>
+                                                        <th><?php _e( "Typ vlastnictví", "realsys" ); ?>:</th>
+                                                        <td><?php echo $inzerat->db_typ_vlastnictvi; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><?php _e( "Typ budovy", "realsys" ); ?>:</th>
+                                                        <td><?php echo $inzerat->db_material; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><?php _e( "PENB", "realsys" ); ?>:</th>
+                                                        <td><?php echo $inzerat->db_penb; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><?php _e( "Vybavenost", "realsys" ); ?>:</th>
+                                                        <td><?php echo $inzerat->db_vybavenost; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><?php _e( "Podlaží", "realsys" ); ?>:</th>
+                                                        <td><?php echo $inzerat->db_patro; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><?php _e( "Balkón", "realsys" ); ?>:</th>
+                                                        <td><?php echo Tools::translateBinaryValue( $inzerat->db_balkon ); ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><?php _e( "Terasa", "realsys" ); ?>:</th>
+                                                        <td><?php echo Tools::translateBinaryValue( $inzerat->db_terasa ); ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><?php _e( "Výtah", "realsys" ); ?>:</th>
+                                                        <td><?php echo Tools::translateBinaryValue( $inzerat->db_vytah ); ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><?php _e( "Garáž", "realsys" ); ?>:</th>
+                                                        <td><?php echo Tools::translateBinaryValue( $inzerat->db_garaz ); ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><?php _e( "Parkovací místo", "realsys" ); ?>:</th>
+                                                        <td><?php echo Tools::translateBinaryValue( $inzerat->db_parkovaci_misto ); ?></td>
+                                                    </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
                                         </div>
                                         <div class="text-center mt-5">
-																					<div class="contact-bar-new app">
-			                                        <Zobrazkontakt
-			                                                :user_logged="<?php echo (uzivatelClass::getUserLoggedId()) ? uzivatelClass::getUserLoggedId() : "false"; ?>"
-			                                                :service="<?php global $cenik_sluzeb; echo Tools::prepareJsonToOutputHtmlAttr($cenik_sluzeb[2]); ?>"
-			                                                :inzerat_id="<?php echo $inzerat->getId(); ?>"
-			                                                :translations="<?php echo Tools::prepareJsonToOutputHtmlAttr(array_merge($zobrazkontakt_translations, $servicebuy_translations)); ?>"
-                                                            :transaction_id="<?php echo $transactionid; ?>"
+                                            <div class="contact-bar-new app">
+                                                <Zobrazkontakt
+                                                        :user_logged="<?php echo ( uzivatelClass::getUserLoggedId() ) ? uzivatelClass::getUserLoggedId() : "false"; ?>"
+                                                        :service="<?php global $cenik_sluzeb;
+														echo Tools::prepareJsonToOutputHtmlAttr( $cenik_sluzeb[2] ); ?>"
+                                                        :inzerat_id="<?php echo $inzerat->getId(); ?>"
+                                                        :translations="<?php echo Tools::prepareJsonToOutputHtmlAttr( array_merge( $zobrazkontakt_translations, $servicebuy_translations ) ); ?>"
+                                                        :transaction_id="<?php echo $transactionid; ?>"
 
-			                                                home_url="<?php echo home_url(); ?>"
-			                                                login_link="<?php echo Tools::getFERoute("uzivatelClass",false, "login"); ?>"
-			                                                payment_link="<?php echo Tools::getFERoute("objednavkaClass"); ?>"
-			                                                ajax_url="<?php echo AJAXURL; ?>"
-			                                                currency="<?php echo CURRENCY; ?>"
-			                                                assets_path="<?php echo FRONTEND_IMAGES_PATH; ?>"
+                                                        home_url="<?php echo home_url(); ?>"
+                                                        login_link="<?php echo Tools::getFERoute( "uzivatelClass", false, "login" ); ?>"
+                                                        payment_link="<?php echo Tools::getFERoute( "objednavkaClass" ); ?>"
+                                                        ajax_url="<?php echo AJAXURL; ?>"
+                                                        currency="<?php echo CURRENCY; ?>"
+                                                        assets_path="<?php echo FRONTEND_IMAGES_PATH; ?>"
 
-			                                        ></Zobrazkontakt>
-			                                    </div>
+                                                ></Zobrazkontakt>
+                                            </div>
                                         </div>
                                     </div>
 
                                 </div>
                             </div>
                         </div>
-
-                        <!-- PŮVODNÍ MÍSTO PRO MAPU -->
 
                     </div>
 
@@ -299,7 +301,7 @@ if ( count( $similar ) > 0 ) :
         <div class="podobne-nemovitosti">
             <div class="wrapper">
                 <div class="section-title">
-                    <h2><?php _e("Podobné inzeráty","realsys"); ?></h2>
+                    <h2><?php _e( "Podobné inzeráty", "realsys" ); ?></h2>
                 </div>
 
 				<?php
