@@ -17,6 +17,7 @@
 </head>
 
 <body <?php body_class(); ?>>
+<?php get_template_part("chat"); ?>
 <?php wp_body_open(); ?>
 <div class="body-wrapper">
     <?php get_template_part("templates/header","main"); ?>
