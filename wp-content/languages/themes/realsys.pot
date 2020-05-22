@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Package Name\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-21 17:48+0200\n"
+"POT-Creation-Date: 2020-05-22 21:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -540,6 +540,104 @@ msgstr ""
 msgid "5+1"
 msgstr ""
 
+#: inc/core/configuration/configuration.php:764
+#: inc/core/configuration/vue-translations.php:85
+#: inc/core/frontend_views/inzeratEditView.php:20
+msgid "Typ inzerátu"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:769
+#: inc/core/configuration/vue-translations.php:116
+msgid "Typ stavby"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:774
+#: inc/core/configuration/vue-translations.php:104
+#: inc/core/frontend_views/inzeratDetailView.php:210
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:158
+msgid "Vybavenost"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:779
+msgid "Lokalita"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:784
+#: inc/core/configuration/vue-translations.php:98
+#: inc/core/frontend_views/inzeratDetailView.php:77
+#: inc/core/frontend_views/inzeratDetailView.php:164
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:122
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:291
+msgid "Cena"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:789
+#: inc/core/configuration/vue-translations.php:87
+#: inc/core/frontend_views/inzeratDetailView.php:69
+#: inc/core/frontend_views/inzeratDetailView.php:152
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:110
+#: inc/core/frontend_views/inzeratEditView.php:143
+msgid "Dispozice"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:794
+msgid "Velikost"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:799
+msgid "Datum přidání inzerátu"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:803
+msgid "Méně jak 24h"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:807
+msgid "Méně jak 1 měsíc"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:811
+msgid "Méně jak 3 měsíce"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:815
+msgid "--Bez filtru--"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:821
+#: inc/core/frontend_views/inzeratDetailView.php:102
+#: inc/core/frontend_views/inzeratDetailView.php:218
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:166
+msgid "Balkón"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:826
+#: inc/core/configuration/vue-translations.php:109
+#: inc/core/frontend_views/inzeratDetailView.php:230
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:178
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:188
+msgid "Garáž"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:831
+#: inc/core/configuration/vue-translations.php:107
+#: inc/core/frontend_views/inzeratDetailView.php:226
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:174
+msgid "Výtah"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:836
+#: inc/core/configuration/vue-translations.php:106
+#: inc/core/frontend_views/inzeratDetailView.php:222
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:170
+msgid "Terasa"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:841
+#: inc/core/configuration/vue-translations.php:108
+msgid "Parkování"
+msgstr ""
+
 #: inc/core/configuration/configuration.php:873
 #: inc/core/frontend_controllers/hlidacipesController.php:39
 msgid "Hlídací pes"
@@ -953,21 +1051,8 @@ msgstr ""
 msgid "Vložení inzerátu"
 msgstr ""
 
-#: inc/core/configuration/vue-translations.php:85
-#: inc/core/frontend_views/inzeratEditView.php:20
-msgid "Typ inzerátu"
-msgstr ""
-
 #: inc/core/configuration/vue-translations.php:86
 msgid "Typ nemovitosti"
-msgstr ""
-
-#: inc/core/configuration/vue-translations.php:87
-#: inc/core/frontend_views/inzeratDetailView.php:69
-#: inc/core/frontend_views/inzeratDetailView.php:152
-#: inc/core/frontend_views/inzeratDetailView_zaloha.php:110
-#: inc/core/frontend_views/inzeratEditView.php:143
-msgid "Dispozice"
 msgstr ""
 
 #: inc/core/configuration/vue-translations.php:88
@@ -1027,14 +1112,6 @@ msgstr ""
 msgid "PSČ"
 msgstr ""
 
-#: inc/core/configuration/vue-translations.php:98
-#: inc/core/frontend_views/inzeratDetailView.php:77
-#: inc/core/frontend_views/inzeratDetailView.php:164
-#: inc/core/frontend_views/inzeratDetailView_zaloha.php:122
-#: inc/core/frontend_views/uzivatelDetailPrivateView.php:291
-msgid "Cena"
-msgstr ""
-
 #: inc/core/configuration/vue-translations.php:99
 #: inc/core/frontend_views/inzeratEditView.php:169
 msgid "Cena nájmu"
@@ -1058,37 +1135,8 @@ msgstr ""
 msgid "K dispozici od"
 msgstr ""
 
-#: inc/core/configuration/vue-translations.php:104
-#: inc/core/frontend_views/inzeratDetailView.php:210
-#: inc/core/frontend_views/inzeratDetailView_zaloha.php:158
-msgid "Vybavenost"
-msgstr ""
-
 #: inc/core/configuration/vue-translations.php:105
 msgid "Vybavení"
-msgstr ""
-
-#: inc/core/configuration/vue-translations.php:106
-#: inc/core/frontend_views/inzeratDetailView.php:222
-#: inc/core/frontend_views/inzeratDetailView_zaloha.php:170
-msgid "Terasa"
-msgstr ""
-
-#: inc/core/configuration/vue-translations.php:107
-#: inc/core/frontend_views/inzeratDetailView.php:226
-#: inc/core/frontend_views/inzeratDetailView_zaloha.php:174
-msgid "Výtah"
-msgstr ""
-
-#: inc/core/configuration/vue-translations.php:108
-msgid "Parkování"
-msgstr ""
-
-#: inc/core/configuration/vue-translations.php:109
-#: inc/core/frontend_views/inzeratDetailView.php:230
-#: inc/core/frontend_views/inzeratDetailView_zaloha.php:178
-#: inc/core/frontend_views/inzeratDetailView_zaloha.php:188
-msgid "Garáž"
 msgstr ""
 
 #: inc/core/configuration/vue-translations.php:110
@@ -1113,10 +1161,6 @@ msgstr ""
 
 #: inc/core/configuration/vue-translations.php:115
 msgid "Vlastnictví"
-msgstr ""
-
-#: inc/core/configuration/vue-translations.php:116
-msgid "Typ stavby"
 msgstr ""
 
 #: inc/core/configuration/vue-translations.php:117
@@ -1825,12 +1869,6 @@ msgstr ""
 #: inc/core/frontend_views/inzeratDetailView.php:214
 #: inc/core/frontend_views/inzeratDetailView_zaloha.php:162
 msgid "Podlaží"
-msgstr ""
-
-#: inc/core/frontend_views/inzeratDetailView.php:102
-#: inc/core/frontend_views/inzeratDetailView.php:218
-#: inc/core/frontend_views/inzeratDetailView_zaloha.php:166
-msgid "Balkón"
 msgstr ""
 
 #: inc/core/frontend_views/inzeratDetailView.php:110
