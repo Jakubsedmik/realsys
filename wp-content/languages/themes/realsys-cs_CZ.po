@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Package Name\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-21 17:48+0200\n"
+"POT-Creation-Date: 2020-05-22 21:21+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -541,23 +541,123 @@ msgstr "1+aneks kuchenny"
 
 #: inc/core/configuration/configuration.php:746
 msgid "1+1"
-msgstr ""
+msgstr "1+1"
 
 #: inc/core/configuration/configuration.php:747
 msgid "2+1"
-msgstr ""
+msgstr "2+1"
 
 #: inc/core/configuration/configuration.php:748
 msgid "3+1"
-msgstr ""
+msgstr "3+1"
 
 #: inc/core/configuration/configuration.php:749
 msgid "4+1"
-msgstr ""
+msgstr "4+1"
 
 #: inc/core/configuration/configuration.php:750
 msgid "5+1"
-msgstr ""
+msgstr "5+1"
+
+#: inc/core/configuration/configuration.php:764
+#: inc/core/configuration/vue-translations.php:85
+#: inc/core/frontend_views/inzeratEditView.php:20
+msgid "Typ inzerátu"
+msgstr "Typ ogłoszenia"
+
+#: inc/core/configuration/configuration.php:769
+#: inc/core/configuration/vue-translations.php:116
+msgid "Typ stavby"
+msgstr "Rodzaj zabudowy"
+
+#: inc/core/configuration/configuration.php:774
+#: inc/core/configuration/vue-translations.php:104
+#: inc/core/frontend_views/inzeratDetailView.php:210
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:158
+msgid "Vybavenost"
+msgstr "Umeblowanie"
+
+#: inc/core/configuration/configuration.php:779
+msgid "Lokalita"
+msgstr "Lokalizacja"
+
+#: inc/core/configuration/configuration.php:784
+#: inc/core/configuration/vue-translations.php:98
+#: inc/core/frontend_views/inzeratDetailView.php:77
+#: inc/core/frontend_views/inzeratDetailView.php:164
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:122
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:291
+msgid "Cena"
+msgstr "Cena"
+
+#: inc/core/configuration/configuration.php:789
+#: inc/core/configuration/vue-translations.php:87
+#: inc/core/frontend_views/inzeratDetailView.php:69
+#: inc/core/frontend_views/inzeratDetailView.php:152
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:110
+#: inc/core/frontend_views/inzeratEditView.php:143
+msgid "Dispozice"
+msgstr "Dyspozycja"
+
+#: inc/core/configuration/configuration.php:794
+msgid "Velikost"
+msgstr "Rozmiar"
+
+#: inc/core/configuration/configuration.php:799
+#, fuzzy
+#| msgid "Datum přidání"
+msgid "Datum přidání inzerátu"
+msgstr "Data założenia"
+
+#: inc/core/configuration/configuration.php:803
+msgid "Méně jak 24h"
+msgstr "Mniej niż 24 godziny"
+
+#: inc/core/configuration/configuration.php:807
+msgid "Méně jak 1 měsíc"
+msgstr "Mniej niż 1 miesiąc"
+
+#: inc/core/configuration/configuration.php:811
+msgid "Méně jak 3 měsíce"
+msgstr "Mniej niż 3 miesiące"
+
+#: inc/core/configuration/configuration.php:815
+msgid "--Bez filtru--"
+msgstr "--Bez filtra--"
+
+#: inc/core/configuration/configuration.php:821
+#: inc/core/frontend_views/inzeratDetailView.php:102
+#: inc/core/frontend_views/inzeratDetailView.php:218
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:166
+msgid "Balkón"
+msgstr "Balkon"
+
+#: inc/core/configuration/configuration.php:826
+#: inc/core/configuration/vue-translations.php:109
+#: inc/core/frontend_views/inzeratDetailView.php:230
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:178
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:188
+msgid "Garáž"
+msgstr "Garaż"
+
+#: inc/core/configuration/configuration.php:831
+#: inc/core/configuration/vue-translations.php:107
+#: inc/core/frontend_views/inzeratDetailView.php:226
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:174
+msgid "Výtah"
+msgstr "Winda"
+
+#: inc/core/configuration/configuration.php:836
+#: inc/core/configuration/vue-translations.php:106
+#: inc/core/frontend_views/inzeratDetailView.php:222
+#: inc/core/frontend_views/inzeratDetailView_zaloha.php:170
+msgid "Terasa"
+msgstr "Taras"
+
+#: inc/core/configuration/configuration.php:841
+#: inc/core/configuration/vue-translations.php:108
+msgid "Parkování"
+msgstr "Parking"
 
 #: inc/core/configuration/configuration.php:873
 #: inc/core/frontend_controllers/hlidacipesController.php:39
@@ -985,22 +1085,9 @@ msgstr "4. Podsumowanie"
 msgid "Vložení inzerátu"
 msgstr "Dodanie ogłoszenia"
 
-#: inc/core/configuration/vue-translations.php:85
-#: inc/core/frontend_views/inzeratEditView.php:20
-msgid "Typ inzerátu"
-msgstr "Typ ogłoszenia"
-
 #: inc/core/configuration/vue-translations.php:86
 msgid "Typ nemovitosti"
 msgstr "Typ nieruchomości"
-
-#: inc/core/configuration/vue-translations.php:87
-#: inc/core/frontend_views/inzeratDetailView.php:69
-#: inc/core/frontend_views/inzeratDetailView.php:152
-#: inc/core/frontend_views/inzeratDetailView_zaloha.php:110
-#: inc/core/frontend_views/inzeratEditView.php:143
-msgid "Dispozice"
-msgstr "Dyspozycja"
 
 #: inc/core/configuration/vue-translations.php:88
 msgid "Pokračovat"
@@ -1058,14 +1145,6 @@ msgstr "Numer domu/lokalu"
 msgid "PSČ"
 msgstr "Kod pocztowy"
 
-#: inc/core/configuration/vue-translations.php:98
-#: inc/core/frontend_views/inzeratDetailView.php:77
-#: inc/core/frontend_views/inzeratDetailView.php:164
-#: inc/core/frontend_views/inzeratDetailView_zaloha.php:122
-#: inc/core/frontend_views/uzivatelDetailPrivateView.php:291
-msgid "Cena"
-msgstr "Cena"
-
 #: inc/core/configuration/vue-translations.php:99
 #: inc/core/frontend_views/inzeratEditView.php:169
 msgid "Cena nájmu"
@@ -1089,38 +1168,9 @@ msgstr "miesiąc"
 msgid "K dispozici od"
 msgstr "Dostępny od"
 
-#: inc/core/configuration/vue-translations.php:104
-#: inc/core/frontend_views/inzeratDetailView.php:210
-#: inc/core/frontend_views/inzeratDetailView_zaloha.php:158
-msgid "Vybavenost"
-msgstr "Umeblowanie"
-
 #: inc/core/configuration/vue-translations.php:105
 msgid "Vybavení"
 msgstr "Wyposażenie"
-
-#: inc/core/configuration/vue-translations.php:106
-#: inc/core/frontend_views/inzeratDetailView.php:222
-#: inc/core/frontend_views/inzeratDetailView_zaloha.php:170
-msgid "Terasa"
-msgstr "Taras"
-
-#: inc/core/configuration/vue-translations.php:107
-#: inc/core/frontend_views/inzeratDetailView.php:226
-#: inc/core/frontend_views/inzeratDetailView_zaloha.php:174
-msgid "Výtah"
-msgstr "Winda"
-
-#: inc/core/configuration/vue-translations.php:108
-msgid "Parkování"
-msgstr "Parking"
-
-#: inc/core/configuration/vue-translations.php:109
-#: inc/core/frontend_views/inzeratDetailView.php:230
-#: inc/core/frontend_views/inzeratDetailView_zaloha.php:178
-#: inc/core/frontend_views/inzeratDetailView_zaloha.php:188
-msgid "Garáž"
-msgstr "Garaż"
 
 #: inc/core/configuration/vue-translations.php:110
 msgid "Balkon"
@@ -1145,10 +1195,6 @@ msgstr "Stan obiektu"
 #: inc/core/configuration/vue-translations.php:115
 msgid "Vlastnictví"
 msgstr "Własność"
-
-#: inc/core/configuration/vue-translations.php:116
-msgid "Typ stavby"
-msgstr "Rodzaj zabudowy"
 
 #: inc/core/configuration/vue-translations.php:117
 msgid "Energetická hodnota"
@@ -1892,12 +1938,6 @@ msgstr "Nota cenowa"
 #: inc/core/frontend_views/inzeratDetailView_zaloha.php:162
 msgid "Podlaží"
 msgstr "Podłoga"
-
-#: inc/core/frontend_views/inzeratDetailView.php:102
-#: inc/core/frontend_views/inzeratDetailView.php:218
-#: inc/core/frontend_views/inzeratDetailView_zaloha.php:166
-msgid "Balkón"
-msgstr "Balkon"
 
 #: inc/core/frontend_views/inzeratDetailView.php:110
 msgid "Viac informacií"
