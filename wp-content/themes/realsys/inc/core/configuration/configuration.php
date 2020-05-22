@@ -761,84 +761,84 @@ $dispozice_filter_options[-1] = "--Bez filtru--";
 
 $filter_parameters = array(
 	'db_typ_inzeratu' => array(
-		'name' => 'Typ inzerátu',
+		'name' => __('Typ inzerátu',"realsys"),
 		'type' => 'customswitcher',
 		'values' => array()
 	),
 	'db_typ_stavby' => array(
-		'name' => "Typ stavby",
+		'name' => __("Typ stavby","realsys"),
 		'type' => 'select',
 		'values' => array()
 	),
 	'db_vybavenost' => array(
-		'name' => 'Vybavenost',
+		'name' => __('Vybavenost',"realsys"),
 		'type' => 'option',
 		'values' => array()
 	),
 	'db_lokalita' => array(
-		'name' => 'Lokalita',
+		'name' => __('Lokalita',"realsys"),
 		'type' => 'text',
 		'values' => false
 	),
 	'db_cena' => array(
-		'name' => 'Cena',
+		'name' => __('Cena',"realsys"),
 		'type' => 'slider',
 		'values' => array(0,3000000)
 	),
 	'db_pocet_mistnosti' => array(
-		'name' => 'Dispozice',
+		'name' => __('Dispozice',"realsys"),
 		'type' => 'select',
 		'values' => $dispozice_filter_options
 	),
 	'db_podlahova_plocha' => array(
-		'name' => 'Velikost',
+		'name' => __('Velikost',"realsys"),
 		'type' => 'slider',
 		'values' => array(0,255)
 	),
 	'db_datum_zalozeni' => array(
-		'name' => "Datum přidání inzerátu",
+		'name' => __("Datum přidání inzerátu","realsys"),
 		'type' => 'select-special',
 		'values' => array(
 			$before24 => array(
-				'label' => 'Méně jak 24h',
+				'label' => __('Méně jak 24h',"realsys"),
 				'operator' => '>'
 			),
 			$before_month => array(
-				'label' => 'Méně jak 1 měsíc',
+				'label' => __('Méně jak 1 měsíc',"realsys"),
 				'operator' => '>'
 			),
 			$before_three_month => array(
-				'label' => 'Méně jak 3 měsíce',
+				'label' => __('Méně jak 3 měsíce',"realsys"),
 				'operator' => '>'
 			),
 			-1 => array(
-				'label' => '--Bez filtru--',
+				'label' => __('--Bez filtru--',"realsys"),
 				'operator' => '='
 			)
 		)
 	),
 	'db_balkon' => array(
-		'name' => "Balkón",
+		'name' => __("Balkón","realsys"),
 		'type' => "checkbox",
 		'values' => false
 	),
 	'db_garaz' => array(
-		'name' => "Garáž",
+		'name' => __("Garáž","realsys"),
 		'type' => "checkbox",
 		'values' => false
 	),
 	'db_vytah' => array(
-		'name' => "Výtah",
+		'name' => __("Výtah","realsys"),
 		'type' => "checkbox",
 		'values' => false
 	),
 	'db_terasa' => array(
-		'name' => "Terasa",
+		'name' => __("Terasa","realsys"),
 		'type' => "checkbox",
 		'values' => false
 	),
 	'db_parkovaci_misto' => array(
-		'name' => "Parkování",
+		'name' => __("Parkování","realsys"),
 		'type' => "checkbox",
 		'values' => false
 	)
