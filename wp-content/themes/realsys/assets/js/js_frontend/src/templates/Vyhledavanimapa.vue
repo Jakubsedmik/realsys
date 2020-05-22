@@ -216,51 +216,52 @@
 
 
                 /* ESTABLISHING MAP */
-                var map;
-                if(_this.map == null){
-                     map = new google.maps.Map(document.getElementById('map'), {
+                if(_this.map == null) {
+                    _this.map = new google.maps.Map(document.getElementById('map'), {
                         center: {lat: 50.070352, lng: 14.444997},
                         zoom: 3,
                     });
-
-                    _this.map = map;
-                }else{
-                    map = _this.map;
                 }
 
                 _this.clearMapMarkers();
 
 
-                /* RENDERING */
-                var bounds = new google.maps.LatLngBounds();
-                for(var i in _this.appData.inzeraty){
+                if(Object.entries(_this.appData.inzeraty).length > 0){
+                    /* RENDERING */
+                    var bounds = new google.maps.LatLngBounds();
+                    for(var i in _this.appData.inzeraty){
 
-                    var inzerat = _this.appData.inzeraty[i];
-                    var latLng = {lat: parseFloat(inzerat.db_lat), lng: parseFloat(inzerat.db_lng)};
-                    var marker = new _this.google.maps.Marker({
-                        position: latLng,
-                        map: map,
-                        title: inzerat.db_titulek
-                    });
+                        var inzerat = _this.appData.inzeraty[i];
+                        var latLng = new google.maps.LatLng(parseFloat(inzerat.db_lat),parseFloat(inzerat.db_lng));
+                        var marker = new _this.google.maps.Marker({
+                            position: latLng,
+                            map: _this.map,
+                            title: inzerat.db_titulek
+                        });
 
-                    _this.mapMarkers[inzerat.db_id] = marker;
-                    bounds.extend(latLng);
+                        _this.mapMarkers[inzerat.db_id] = marker;
+                        bounds.extend(latLng);
+                    }
+
+                    if(_this.mapMarkers !== null){
+                        var markerCluster = new MarkerClusterer(
+                            _this.map,
+                            _this.mapMarkers,
+                            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
+                        );
+                        _this.markerClusterer = markerCluster;
+                    }
+
+                    /* FIT SCREEN TO MARKERS BOUNDS */
+                    _this.map.fitBounds(bounds);
                 }
 
-                var markerCluster = new MarkerClusterer(
-                    map,
-                    _this.mapMarkers,
-                    {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
-                );
-                _this.markerClusterer = markerCluster;
-
-                /* FIT SCREEN TO MARKERS BOUNDS */
-                map.fitBounds(bounds);
                 _this.filterResults();
 
+
                 /* CHANGE BOUDNS LISTENER */
-                google.maps.event.clearInstanceListeners(map);
-                map.addListener('bounds_changed', debounce(function () {
+                //google.maps.event.clearInstanceListeners(_this.map);
+                _this.map.addListener('bounds_changed', debounce(function () {
                     _this.filterResults();
                 },500));
             });

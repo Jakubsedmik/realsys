@@ -68,13 +68,13 @@ $(document).ready(function () {
         phone_number = phone_number.replace( /\s+/g, "" );
         var regexp = /^(\+420)? ?[1-9][0-9]{2} ?[0-9]{3} ?[0-9]{3}$/;
         return this.optional( element ) || regexp.test( phone_number );
-    }, "Toto číslo není validní." );
+    }, serverData.localizations.totoCisloNeniValidni );
 
     $.validator.addMethod( "zip", function( phone_number, element ) {
         phone_number = phone_number.replace( /\s+/g, "" );
         var regexp = /\d{3} ?\d{2}/;
         return this.optional( element ) || regexp.test( phone_number );
-    }, "Toto PSČ není validní. Formát 123 45." );
+    }, serverData.localizations.totoPscNeniVladini );
 
 
 
@@ -401,13 +401,13 @@ $(document).ready(function () {
         maxFiles: 1,
         allowMultiple: true,
         maxParallelUploads : 3,
-        labelIdle : "Nahrajte svůj obrázek",
-        labelFileLoading : "Načítání",
-        labelFileProcessing : "Uploadování",
-        labelFileProcessingComplete : "Úspěšně nahráno na server",
-        labelFileProcessingAborted: "Zrušeno",
-        labelTapToCancel: "Klepněte pro zrušení",
-        labelTapToRetry: "Klepněte pro opakování",
+        labelIdle : serverData.localizations.nahrajteSvujObrazek,
+        labelFileLoading : serverData.localizations.nacitani,
+        labelFileProcessing : serverData.localizations.uploadovani,
+        labelFileProcessingComplete : serverData.localizations.uspesneNahranoNaServer,
+        labelFileProcessingAborted: serverData.localizations.zruseno,
+        labelTapToCancel: serverData.localizations.klepneteProZruseni,
+        labelTapToRetry: serverData.localizations.klepneteProOpakovani,
         allowRevert: false
 
     });
@@ -777,6 +777,11 @@ $(document).ready(function() {
         }
     });
 });
+
+/* TODO TLAČÍTKO ZPĚT V OBJEDNÁVCE KREDITŮ */
+function goBack() {
+    window.history.back();
+}
 
 
 

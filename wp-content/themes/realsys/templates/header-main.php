@@ -3,43 +3,45 @@
         <div class="main-header">
             <div class="wrapper">
                 <div class="logo">
-                    <?php
-                    if (function_exists('the_custom_logo')) {
-                        the_custom_logo();
-                    }
-                    ?>
+					<?php
+					if ( function_exists( 'the_custom_logo' ) ) {
+						the_custom_logo();
+					}
+					?>
                 </div>
-                <?php if (has_nav_menu('cms_header_menu')) : ?>
+				<?php if ( has_nav_menu( 'cms_header_menu' ) ) : ?>
                     <nav class="menu">
-                        <?php
-                        $menu_args = array(
-                            'theme_location' => 'cms_header_menu',
-                            'walker' => new Realsys_menu(),
-                            'container' => ""
-                        );
-                        wp_nav_menu($menu_args);
-                        ?>
+						<?php
+						$menu_args = array(
+							'theme_location' => 'cms_header_menu',
+							'walker'         => new Realsys_menu(),
+							'container'      => ""
+						);
+						wp_nav_menu( $menu_args );
+						?>
                     </nav>
-                <?php endif; ?>
+				<?php endif; ?>
 
 
 
 
-                <?php if (uzivatelClass::getUserLoggedId() !== false) : ?>
-                    <?php $uzivatel = assetsFactory::getEntity("uzivatelClass", uzivatelClass::getUserLoggedId()); ?>
+				<?php if ( uzivatelClass::getUserLoggedId() !== false ) : ?>
+					<?php $uzivatel = assetsFactory::getEntity( "uzivatelClass", uzivatelClass::getUserLoggedId() ); ?>
                     <div class="user-logged">
 
 
-                          <?php if(!$uzivatel->dejData("db_avatar")) : ?>
-                          <a class="logged">
-                            <span class="icon-user ico"></span>
-                            <div class="mess-counter">2</div>
-                          </a>
-                          <?php else: ?>
-                          <a class="logged" href="<?php echo Tools::getFERoute("uzivatelClass", UzivatelClass::getUserLoggedId()) ?>">
-                            <span class="avatar icon-user ico" style="background-image:url('<?php echo $uzivatel->db_avatar; ?>'');"></span>
-                          </a>
-                          <?php endif; ?>
+						<?php if ( ! $uzivatel->dejData( "db_avatar" ) ) : ?>
+                            <a class="logged">
+                                <span class="icon-user ico"></span>
+                                <div class="mess-counter">2</div>
+                            </a>
+						<?php else: ?>
+                            <a class="logged"
+                               href="<?php echo Tools::getFERoute( "uzivatelClass", UzivatelClass::getUserLoggedId() ) ?>">
+                                <span class="avatar icon-user ico"
+                                      style="background-image:url('<?php echo $uzivatel->db_avatar; ?>'');"></span>
+                            </a>
+						<?php endif; ?>
 
 
                         <div class="user-login-block shadow-sm rounded light-blue-bg ">
@@ -51,25 +53,24 @@
                                         <span class="user-email"><?php echo $uzivatel->db_email; ?></span>
                                     </div>
                                 </div>
-                                <div class="user-credits"><span><?php echo _e("Moje kredity:", "realsys"); ?></span><span class="credits-num"><?php echo $uzivatel->getUserBillance(); ?></span></div>
+                                <div class="user-credits">
+                                    <span><?php echo _e( "Moje kredity:", "realsys" ); ?></span><span
+                                            class="credits-num"><?php echo $uzivatel->getUserBillance(); ?></span></div>
                             </div>
                             <div class="user-menu">
-                                <a href="<?php echo Tools::getFERoute("uzivatelClass", UzivatelClass::getUserLoggedId()) ?>"><?php _e("Můj profil", "realsys"); ?></a>
-                                <a href="<?php echo Tools::getFERoute("uzivatelClass", UzivatelClass::getUserLoggedId(), "detail", "editUser"); ?>"><?php _e("Upravit profil", "realsys"); ?></a>
-                                <a href="<?php echo Tools::getFERoute("uzivatelClass", UzivatelClass::getUserLoggedId(), "detail", "logOut"); ?>"><?php _e("Odhlásit se", "realsys"); ?></a>
+                                <a href="<?php echo Tools::getFERoute( "uzivatelClass", UzivatelClass::getUserLoggedId() ) ?>"><?php _e( "Můj profil", "realsys" ); ?></a>
+                                <a href="<?php echo Tools::getFERoute( "uzivatelClass", UzivatelClass::getUserLoggedId(), "detail", "editUser" ); ?>"><?php _e( "Upravit profil", "realsys" ); ?></a>
+                                <a href="<?php echo Tools::getFERoute( "uzivatelClass", UzivatelClass::getUserLoggedId(), "detail", "logOut" ); ?>"><?php _e( "Odhlásit se", "realsys" ); ?></a>
                             </div>
                         </div>
                     </div>
-                <?php else : ?>
+				<?php else : ?>
 
                     <div class="user-login">
-                      <a href="<?php echo home_url() . "/login/" ?>" class="logged"><span class="icon-user ico"></span></a>
-
+                        <a href="<?php echo Tools::getFERoute( "uzivatelClass", false, "login" ); ?>"
+                           class="logged"><span class="icon-user ico"></span></a>
                     </div>
-                <?php endif; ?>
-
-
-
+				<?php endif; ?>
 
 
             </div>
@@ -78,20 +79,20 @@
             <div class="wrapper">
 
                 <nav class="menu">
-                <?php if (has_nav_menu('category_header_menu')) :
+                <?php if ( has_nav_menu( 'category_header_menu' ) ) :
 
-                    $menu_args = array(
-                        'theme_location' => 'category_header_menu',
-                        'container' => ""
-                    );
-                    wp_nav_menu($menu_args);
+			$menu_args = array(
+				'theme_location' => 'category_header_menu',
+				'container'      => ""
+			);
+			wp_nav_menu( $menu_args );
 
-                else :
+		else :
 
-                    $ciselnik = assetsFactory::getAllDials("inzeratClass", "typ_nemovitosti"); ?>
+			$ciselnik = assetsFactory::getAllDials( "inzeratClass", "typ_nemovitosti" ); ?>
                         <ul id="menu-kategorie" class="menu">
 
-                            <?php foreach ($ciselnik as $key => $val) : ?>
+                            <?php foreach ( $ciselnik as $key => $val ) : ?>
                                 <li class="menu-item menu-item-type-custom menu-item-object-custom">
                                     <a href="#">
                                         <?php echo $val->db_translation; ?>
@@ -109,11 +110,11 @@
 
     <div class="mobile-menu">
         <div class="logo">
-            <?php
-            if (function_exists('the_custom_logo')) {
-                the_custom_logo();
-            }
-            ?>
+			<?php
+			if ( function_exists( 'the_custom_logo' ) ) {
+				the_custom_logo();
+			}
+			?>
         </div>
         <div id="nav-icon3" class="burger-menu-icon">
             <span></span>
@@ -124,39 +125,49 @@
 
         <div class="menu-wrap">
             <div class="mob-menu-btns">
-                <a href="<?php echo home_url() . "/pridat-inzerat/" ?>" class="btn"><?php _e("Přidat inzerát", "realsys"); ?></a>
-                <a href="#" class="btn" style="display:none"><?php _e("Hledat inzerát", "realsys"); ?></a>
+                <a href="<?php echo Tools::getFERoute( "inzeratClass", false, "add" ); ?>"
+                   class="btn"><?php _e( "Přidat inzerát", "realsys" ); ?></a>
+                <a href="#" class="btn" style="display:none"><?php _e( "Hledat inzerát", "realsys" ); ?></a>
             </div>
             <div class="mob-menu-nav" style="display:none">
-                <ul>
-                    <li><a href="/vypismapa/"><?php _e("Mapa", "realsys"); ?></a></li>
-                    <li><a href="/vypis/"><?php _e("Výpis inzerátů", "realsys"); ?></a></li>
-                    <li><a href="/cenik/"><?php _e("Ceník", "realsys"); ?></a></li>
-                    <li><a href="/jak-to-funguje-2/"><?php _e("Jak to funguje", "realsys"); ?></a></li>
-                    <li><a href="/stranka-sluzeb/"><?php _e("Služby", "realsys"); ?></a></li>
-                </ul>
+				<?php
+				$menu_args = array(
+					'theme_location' => 'cms_header_menu',
+					'walker'         => new Realsys_menu(),
+					'container'      => ""
+				);
+				wp_nav_menu( $menu_args );
+				?>
             </div>
 
             <div class="mob-user-wrap">
-                <?php if (uzivatelClass::getUserLoggedId() !== false) : ?>
-                <div class="mob-user">
-                    <ul class="mob-user-logout">
-                        <li><a href="<?php echo Tools::getFERoute("uzivatelClass", UzivatelClass::getUserLoggedId(), "detail", "logOut"); ?>"><?php _e("Odhlásit se", "realsys"); ?></a></li>
-                    </ul>
-                    <div class="mob-user-profile">
-                        <div class="mob-user-info">
-                            <h2><?php echo $uzivatel->getFullName(); ?></h2>
-                            <span class="profil-kvalita" style="display:none;">Kvalita profilu <span class="kvalita-data">100%</span></span>
+				<?php if ( uzivatelClass::getUserLoggedId() !== false ) : ?>
+                    <div class="mob-user">
+                        <ul class="mob-user-logout">
+                            <li>
+                                <a href="<?php echo Tools::getFERoute( "uzivatelClass", UzivatelClass::getUserLoggedId(), "detail", "logOut" ); ?>"><?php _e( "Odhlásit se", "realsys" ); ?></a>
+                            </li>
+                        </ul>
+                        <div class="mob-user-profile">
+                            <div class="mob-user-info">
+                                <h2><?php echo $uzivatel->getFullName(); ?></h2>
+                                <span class="profil-kvalita" style="display:none;">Kvalita profilu <span
+                                            class="kvalita-data">100%</span></span>
+                            </div>
+                            <div class="mob-user-avatar"
+                                 style="background-image: url(<?php echo FRONTEND_IMAGES_PATH; ?>/avatar.png)"></div>
                         </div>
-                        <div class="mob-user-avatar" style="background-image: url(<?php echo FRONTEND_IMAGES_PATH; ?>/avatar.png)"></div>
                     </div>
-                </div>
-                <?php else : ?>
-                  <ul class="mob-user-sign">
-                      <li><a href="<?php echo home_url() . "/login/" ?>"><?php _e("Přihlášení", "realsys"); ?></a></li>
-                      <li><a href="<?php echo home_url() . "/login/" ?>"><?php _e("Registrace", "realsys"); ?></a></li>
-                  </ul>
-                <?php endif; ?>
+				<?php else : ?>
+                    <ul class="mob-user-sign">
+                        <li>
+                            <a href="<?php echo Tools::getFERoute( "uzivatelClass", false, "login" ) ?>"><?php _e( "Přihlášení", "realsys" ); ?></a>
+                        </li>
+                        <li>
+                            <a href="<?php echo Tools::getFERoute( "uzivatelClass", false, "login" ) ?>"><?php _e( "Registrace", "realsys" ); ?></a>
+                        </li>
+                    </ul>
+				<?php endif; ?>
 
 
             </div>

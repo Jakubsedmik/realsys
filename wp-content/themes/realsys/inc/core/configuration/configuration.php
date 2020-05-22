@@ -706,7 +706,18 @@ $ajax_localization = array(
 	"ajaxUrl" => AJAXURL,
 	"rules" => $frontend_general_rules,
 	"messages" => $frontend_general_messages,
-	"common_messages" => $frontend_common_messages
+	"common_messages" => $frontend_common_messages,
+	"localizations" => array(
+		"totoCisloNeniValidni" => __("Toto číslo není validní.","realsys"),
+		"totoPscNeniValidni" => __("Toto PSČ není validní. Formát 123 45.","realsys"),
+		"nahrajteSvujObrazek" => __("Nahrajte svůj obrázek","realsys"),
+		"nacitani" => __("Načítání","realsys"),
+		"uploadovani" => __("Uploadování","realsys"),
+		"uspesneNahranoNaServer" => __("Úspěšně nahráno na server","realsys"),
+		"zruseno" => __("Zrušeno","realsys"),
+		"klepneteProZruseni" => __("Klepněte pro zrušení", "realsys"),
+		"klepneteProOpakovani" => __("Klepněte pro opakování", "realsys")
+	)
 );
 
 require_once __DIR__ . "/configuration_images.php";

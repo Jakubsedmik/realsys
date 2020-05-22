@@ -1,4 +1,5 @@
 <?php
+
     require_once (__DIR__ . "/../configuration/vue-translations.php");
     $options = new stdClass();
     global $celkem_podlazi_options, $patra_options, $dispozice_options;

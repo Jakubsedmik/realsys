@@ -9,3 +9,10 @@ node_modules/*
 wp-config.php
 .htaccess
 html/*
+deployTools
+DB
+webpack.config.js
+gulpfile.js
+backend_webpack.config.js
+package.json
+package-lock.json

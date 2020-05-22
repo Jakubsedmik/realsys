@@ -61,13 +61,6 @@
                 Launch demo modal
             </button>
 
-            <!-- TODO TLAČÍTKO ZPĚT V OBJEDNÁVCE KREDITŮ -->
-            <script>
-            function goBack() {
-              window.history.back();
-            }
-            </script>            
-
             <?php
                 get_template_part("templates/page", "login");
             ?>
