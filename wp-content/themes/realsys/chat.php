@@ -18,9 +18,9 @@
 
 <!-- Your Chat Plugin code -->
 <div class="fb-customerchat"
-     attribution=setup_tool
-     page_id="161842497209529"
+     attribution=install_email
+     page_id="110868517215305"
      theme_color="#FF951A"
-     logged_in_greeting="Dobrý den, jak Vám mohu pomoci?"
-     logged_out_greeting="Dobrý den, jak Vám mohu pomoci?">
+     logged_in_greeting="Dobrý den, jak Vám můžeme pomoci?"
+     logged_out_greeting="Dobrý den, jak Vám můžeme pomoci?">
 </div>
