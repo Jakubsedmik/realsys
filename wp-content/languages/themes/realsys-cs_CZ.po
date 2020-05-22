@@ -139,51 +139,47 @@ msgstr "Top Nieruchomości - załaduj kolejny tekst"
 
 #: inc/core/api.php:119
 msgid "Objekt byl odebrán"
-msgstr ""
+msgstr "Obiekt został usunięty"
 
 #: inc/core/api.php:122
 msgid "Nepodařilo se odebrat"
-msgstr ""
+msgstr "Nie udało się usunąć"
 
 #: inc/core/api.php:126
 msgid "Chybějící vstupní data"
-msgstr ""
+msgstr "Brak danych wejściowych"
 
 #: inc/core/api.php:195
-#, fuzzy
-#| msgid "Některá pole nebyla vyplněna"
 msgid "Některé parametry nebyli vyplněny"
 msgstr "Niektóre pola pozostały puste"
 
 #: inc/core/api.php:202
 msgid "Nastala interní chyba"
-msgstr ""
+msgstr "Wystąpił wewnętrzny błąd"
 
 #: inc/core/api.php:261
 msgid "Výsledky byli vráceny"
-msgstr ""
+msgstr "Wyniki zostały odzyskane"
 
 #: inc/core/api.php:269
-#, fuzzy
-#| msgid "Uživatel"
 msgid "Tento model v systému neexistuje"
-msgstr "Użytkownik"
+msgstr "Ten model nie istnieje w systemie"
 
 #: inc/core/api.php:314
 msgid "Uloženo"
-msgstr ""
+msgstr "Zapisano"
 
 #: inc/core/api.php:317 inc/core/api.php:338
 msgid "Chybějící parametry"
-msgstr ""
+msgstr "Brakujące parametry"
 
 #: inc/core/api.php:331
 msgid "Smazáno"
-msgstr ""
+msgstr "Usunięto"
 
 #: inc/core/api.php:334
 msgid "Došlo k chybě při mazání"
-msgstr ""
+msgstr "Wystąpił błąd podczas usuwania"
 
 #: inc/core/api.php:383
 #: inc/core/frontend_controllers/pridatInzeratController.php:103
@@ -191,18 +187,16 @@ msgid "Uživatel neexistuje"
 msgstr "Użytkownik nie istnieje"
 
 #: inc/core/api.php:395
-#, fuzzy
-#| msgid "Uživatel"
 msgid "Tento uživatel již existuje"
-msgstr "Użytkownik"
+msgstr "Ten użytkownik już istnieje"
 
 #: inc/core/api.php:409
 msgid "Systém - chyba, pokoušíte se o něco nekalého"
-msgstr ""
+msgstr "System - błąd, wykonujesz coś niewłaściwego"
 
 #: inc/core/api.php:415
 msgid "Došlo k technické chybě - chybějící parametry"
-msgstr ""
+msgstr "Wystąpił techniczny błąd - brakujące parametry"
 
 #: inc/core/api.php:577 inc/core/api.php:734
 #, fuzzy
@@ -212,12 +206,12 @@ msgstr "Użytkownik nie jest zalogowany lub nie masz wystarczających uprawnień
 
 #: inc/core/api.php:582 inc/core/api.php:739
 msgid "Nastala chyba!"
-msgstr ""
+msgstr "Wystąpił błąd!"
 
 #: inc/core/api.php:589 inc/core/api.php:636 inc/core/api.php:695
 #: inc/core/api.php:746 inc/core/api.php:793
 msgid "Některé parametry nebyli specifikovány"
-msgstr ""
+msgstr "Niektóre parametry nie zostały określone"
 
 #: inc/core/api.php:621 inc/core/api.php:778
 #, fuzzy
@@ -227,124 +221,119 @@ msgstr "Wylogowaliśmy Cię pomyślnie"
 
 #: inc/core/api.php:624 inc/core/api.php:781
 msgid "Smazání se nevydařilo"
-msgstr ""
+msgstr "Usunięcie nie powiodło się"
 
 #: inc/core/api.php:628 inc/core/api.php:785
-#, fuzzy
-#| msgid "Inzerát je aktivní"
 msgid "Inzerát není ve vlastnictví uživatele."
-msgstr "Reklama jest aktywna"
+msgstr "Reklama nie jest własnością użytkownika."
 
 #: inc/core/api.php:632 inc/core/api.php:691 inc/core/api.php:789
 #: inc/core/api.php:943 inc/core/api.php:1019
-#, fuzzy
-#| msgid "Zůstat přihlášen"
 msgid "Uživatel není přihlášen"
-msgstr "Pozostań zalogowany"
+msgstr "Użytkownik nie jest zalogowany"
 
 #: inc/core/api.php:675
 msgid "Úspěšná změna stavu inzerátu"
-msgstr ""
+msgstr "Pomyślna zmiana statusu ogłoszenia"
 
 #: inc/core/api.php:678
 msgid "Inzerát není ještě schválený. Nelze ho nyní aktivovat."
 msgstr ""
+"Ogłoszenie nie zostało jeszcze zatwierdzone. Obecnie nie można go aktywować."
 
 #: inc/core/api.php:682
 msgid "Nepřípustné hodnoty stavu inzerátu"
-msgstr ""
+msgstr "Nieprawidłowe wartości statusu ogłoszenia"
 
 #: inc/core/api.php:687
-#, fuzzy
-#| msgid "Inzerát je aktivní"
 msgid "Inzerát není ve vlastnictví uživatele"
-msgstr "Reklama jest aktywna"
+msgstr "Reklama nie jest własnością użytkownika"
 
 #: inc/core/api.php:856 inc/core/api.php:883
 msgid "Hlídací pes úspěšně vytvořen"
-msgstr ""
+msgstr "Pies stróżujący został pomyślnie utworzony"
 
 #: inc/core/api.php:859 inc/core/api.php:886
 msgid "Hlídací pes se nepodařil vytvořit"
-msgstr ""
+msgstr "Nie udało się utworzyć psa stróżującego"
 
 #: inc/core/api.php:863 inc/core/api.php:1092
 msgid "Nevalidní transakce"
-msgstr ""
+msgstr "Niepoprawna transakcja"
 
 #: inc/core/api.php:867 inc/core/api.php:1096
 msgid "Neplatná transakce"
-msgstr ""
+msgstr "Nieprawidłowa transakcja"
 
 #: inc/core/api.php:871 inc/core/api.php:1100
 msgid "Neexistující transakce"
-msgstr ""
+msgstr "Nieistniejąca transakcja"
 
 #: inc/core/api.php:875
 msgid "Hlídací pes nebyl vytvořen, protože nebyla doložena platná transakce."
 msgstr ""
+"Nie udało się utworzyć psa stróżującego, ponieważ nie dokonano odpowiedniej "
+"transakcji."
 
 #: inc/core/api.php:891
 msgid "Hlídací pes se nevytvořil. Nejste přihlášen."
-msgstr ""
+msgstr "Nie utworzono psa stróżującego. Nie jesteś zalogowany."
 
 #: inc/core/api.php:895 inc/core/api.php:1109
 msgid "Nebyli zadány všechny parametry"
-msgstr ""
+msgstr "Nie wszystkie parametry zostały określone"
 
 #: inc/core/api.php:928
 msgid "Uživatel má dostatek kreditů"
-msgstr ""
+msgstr "Użytkownik ma wystarczającą ilość kredytów"
 
 #: inc/core/api.php:931
 msgid "Uživatel nemá dostatek kreditů - stav kreditů:"
-msgstr ""
+msgstr "Użytkownik nie ma wystarczającej liczby kredytów - status kredytów:"
 
 #: inc/core/api.php:931
 msgid "Požadované množství:"
-msgstr ""
+msgstr "Wymagana ilość:"
 
 #: inc/core/api.php:935
-#, fuzzy
-#| msgid "Uživatel"
 msgid "Tato služba neexistuje"
-msgstr "Użytkownik"
+msgstr "Ta usługa nie istnieje"
 
 #: inc/core/api.php:939 inc/core/api.php:1015
 msgid "Neexistující uživatel"
-msgstr ""
+msgstr "Nieistniejący użytkownik"
 
 #: inc/core/api.php:947 inc/core/api.php:1023
-#, fuzzy
-#| msgid "Některá povinná pole nebyla vyplněna"
 msgid "Povinná pole nebyla vyplněna."
-msgstr "Niektóre pola obowiązkowe nie zostaly wypełnione"
+msgstr "Niektóre pola obowiązkowe nie zostaly wypełnione."
 
 #: inc/core/api.php:1003
 msgid "Zadaná entita nebyla nalezena."
-msgstr ""
+msgstr "Określona jednostka nie została znaleziona."
 
 #: inc/core/api.php:1007
 msgid ""
 "Při objednání služby tohoto typu je třeba poskytnou informace o entitě a "
 "její ID"
 msgstr ""
+"Przy zamawianiu tego typu usługi, konieczne jest podanie informacji o "
+"jednostce i jej identyfikatorze"
 
 #: inc/core/api.php:1081
 msgid "Kontakt úspěšně získán"
-msgstr ""
+msgstr "Kontakt został pomyślnie uzyskany"
 
 #: inc/core/api.php:1084
 msgid "Kontakt se nepodařilo získat. Neplatný uživatel."
-msgstr ""
+msgstr "Nie udało się nawiązać kontaktu. Nieprawidłowy użytkownik."
 
 #: inc/core/api.php:1088
 msgid "Kontakt se nepodařilo získat. Neplatný inzerát."
-msgstr ""
+msgstr "Nie udało się nawiązać kontaktu. Nieprawidłowe ogłoszenie."
 
 #: inc/core/api.php:1105
 msgid "Kontakt nebyl získán. Nejste přihlášen."
-msgstr ""
+msgstr "Kontakt nie został uzyskany. Nie jesteś zalogowany."
 
 #: inc/core/classes/invisibleRecaptchaClass.php:66
 #: inc/core/frontend_controllers/loginController.php:304
@@ -356,7 +345,7 @@ msgstr "Weryfikacja"
 
 #: inc/core/classes/invisibleRecaptchaClass.php:66
 msgid "Ověření uživatele bylo neúspěšné"
-msgstr ""
+msgstr "Weryfikacja użytkownika nie powiodła się"
 
 #: inc/core/classes/typeClass.php:26 inc/core/classes/typeClass.php:51
 #: inc/core/classes/typeClass.php:58 inc/core/classes/typeClass.php:67
@@ -374,85 +363,75 @@ msgstr "Input"
 
 #: inc/core/classes/typeClass.php:26
 msgid "není přítomno."
-msgstr ""
+msgstr "nie jest obecny."
 
 #: inc/core/classes/typeClass.php:51
-#, fuzzy
-#| msgid "Zadejte platné číslo."
 msgid "není platné číslo."
-msgstr "Proszę podać poprawny numer."
+msgstr "proszę podać poprawny numer."
 
 #: inc/core/classes/typeClass.php:58
-#, fuzzy
-#| msgid "Energetická hodnota"
 msgid "není platná logická hodnota."
-msgstr "Wartość energetyczna"
+msgstr "wartość energetyczna."
 
 #: inc/core/classes/typeClass.php:67
-#, fuzzy
-#| msgid "Zadejte platné číslo."
 msgid "není platné desetinné číslo."
-msgstr "Proszę podać poprawny numer."
+msgstr "proszę podać poprawny numer."
 
 #: inc/core/classes/typeClass.php:78
 msgid "není řetězec o délce 63 znaků."
-msgstr ""
+msgstr "nieprawidlłowy ciąg 63 znaków."
 
 #: inc/core/classes/typeClass.php:87
 msgid "není řetězec o délce 255 znaků."
-msgstr ""
+msgstr "nieprawidlłowy ciąg 255 znaków."
 
 #: inc/core/classes/typeClass.php:96
 msgid "není řetězec o délce 511 znaků."
-msgstr ""
+msgstr "nieprawidlłowy ciąg 511 znaków."
 
 #: inc/core/classes/typeClass.php:103
 msgid "není platný řetězec."
-msgstr ""
+msgstr "nieprawidlłowy ciąg."
 
 #: inc/core/classes/typeClass.php:117
-#, fuzzy
-#| msgid "Zadejte platné datum."
 msgid "není platné datum."
-msgstr "Podaj prawidłową datę."
+msgstr "podaj prawidłową datę."
 
 #: inc/core/classes/typeClass.php:124
 msgid "není ve správném formátu."
-msgstr ""
+msgstr "jest w nieprawidłowym formacie."
 
 #: inc/core/classes/typeClass.php:131
-#, fuzzy
-#| msgid "Zadejte platné URL."
 msgid "není platná URL."
-msgstr "Proszę podać poprawny adres URL."
+msgstr "proszę podać poprawny adres URL."
 
 #: inc/core/classes/typeClass.php:138
 msgid "není typu čas."
-msgstr ""
+msgstr "nieprawidłowy czas."
 
 #: inc/core/classes/typeClass.php:148
 msgid "není typu email."
-msgstr ""
+msgstr "nieprawidłowy email."
 
 #: inc/core/classes/typeClass.php:155
 msgid "není typu pole."
-msgstr ""
+msgstr "nieprawidłowe pole."
 
 #: inc/core/classes/typeClass.php:164 inc/core/classes/typeClass.php:173
 msgid "není platná cena."
-msgstr ""
+msgstr "nieprawidłowa cena."
 
 #: inc/core/classes/typeClass.php:182
 msgid "není platný časový údaj."
-msgstr ""
+msgstr "nieprawidłowe dane czasowe."
 
 #: inc/core/classes/typeClass.php:191
 msgid "není platný cizí klíč."
-msgstr ""
+msgstr "nieprawidlłowy klucz."
 
 #: inc/core/classes/typeClass.php:197
 msgid "není platná relativní cesta."
-msgstr ""
+msgstr "nieprawidlłowa względna ścieżka dostępu."
 
 #: inc/core/configuration/configuration.php:519
 msgid "Heslo musí být vyplněno"
@@ -539,15 +518,13 @@ msgid "Hlídací pes"
 msgstr ""
 
 #: inc/core/configuration/configuration.php:864
-#, fuzzy
-#| msgid "Typ inzerátu"
 msgid "Topování inzerátu."
-msgstr "Typ ogłoszenia"
+msgstr "Ogrzewanie reklam."
 
 #: inc/core/configuration/configuration.php:872
 #: inc/core/configuration/vue-translations.php:63
 msgid "Zobrazení kontaktu"
-msgstr ""
+msgstr "Wyświetl kontakt"
 
 #: inc/core/configuration/configuration.php:880
 msgid "1. patro"
@@ -683,91 +660,87 @@ msgstr "Promować"
 
 #: inc/core/configuration/vue-translations.php:6
 msgid "Řadit dle"
-msgstr ""
+msgstr "Sortuj według"
 
 #: inc/core/configuration/vue-translations.php:7
 msgid "Nejnovější"
-msgstr ""
+msgstr "Najnowsze"
 
 #: inc/core/configuration/vue-translations.php:8
 msgid "Nejlevnější"
-msgstr ""
+msgstr "Najtańsze"
 
 #: inc/core/configuration/vue-translations.php:9
-#, fuzzy
-#| msgid "Typ inzerátu"
 msgid "Nalezených inzerátů: "
-msgstr "Typ ogłoszenia"
+msgstr "Znaleziona ogłoszenia: "
 
 #: inc/core/configuration/vue-translations.php:10
 msgid "Použijte k vyhledávání mapu"
-msgstr ""
+msgstr "Użyj mapy do wyszukiwania"
 
 #: inc/core/configuration/vue-translations.php:11
 msgid "Najít na mapě"
-msgstr ""
+msgstr "Znajdź na mapie"
 
 #: inc/core/configuration/vue-translations.php:12
 msgid "Další"
-msgstr ""
+msgstr "Kolejny"
 
 #: inc/core/configuration/vue-translations.php:13
 msgid "Předchozí"
-msgstr ""
+msgstr "Poprzedni"
 
 #: inc/core/configuration/vue-translations.php:14
 msgid "Rozšířené vyhledávání"
-msgstr ""
+msgstr "Zaawansowane wyszukiwanie"
 
 #: inc/core/configuration/vue-translations.php:15
 msgid "Zjednodušené vyhledávání"
-msgstr ""
+msgstr "Uproszczone wyszukiwanie"
 
 #: inc/core/configuration/vue-translations.php:19
 msgid "Koupit službu"
-msgstr ""
+msgstr "Kup usługę"
 
 #: inc/core/configuration/vue-translations.php:20
 msgid "Máte dostatek kreditů"
-msgstr ""
+msgstr "Masz wystarczającą ilość kredytów"
 
 #: inc/core/configuration/vue-translations.php:21
 msgid "Můžete pokračovat v nákupu služby"
-msgstr ""
+msgstr "Możesz kontynuować w zakupie usługi"
 
 #: inc/core/configuration/vue-translations.php:22
-#, fuzzy
-#| msgid "Cena"
 msgid "Cena: "
-msgstr "Cena"
+msgstr "Cena: "
 
 #: inc/core/configuration/vue-translations.php:23
 msgid "Nakoupit službu"
-msgstr ""
+msgstr "Zakup usługę"
 
 #: inc/core/configuration/vue-translations.php:24
 msgid "Nemáte dostatek kreditů"
-msgstr ""
+msgstr "Masz niewystarczającą ilość kredytów"
 
 #: inc/core/configuration/vue-translations.php:25
 msgid "Nejdříve pokračujte nákupem kreditů"
-msgstr ""
+msgstr "Najpierw prosimy o zakup kredytów"
 
 #: inc/core/configuration/vue-translations.php:26
 msgid "Nakoupit kredity"
-msgstr ""
+msgstr "Kup kredyty"
 
 #: inc/core/configuration/vue-translations.php:27
 msgid "Služba byla zaplacena a nastavena"
-msgstr ""
+msgstr "Usługa została opłacona i skonfigurowana"
 
 #: inc/core/configuration/vue-translations.php:28
 msgid "Služba byla zaplacena a nastavena. Děkujeme"
-msgstr ""
+msgstr "Usługa została opłacona i skonfigurowana. Dziękujemy"
 
 #: inc/core/configuration/vue-translations.php:29
 msgid "Zavřít"
-msgstr ""
+msgstr "Zamknij"
 
 #: inc/core/configuration/vue-translations.php:30
 #: inc/core/configuration/vue-translations.php:133
@@ -782,7 +755,7 @@ msgstr "Reklama jest aktywna"
 
 #: inc/core/configuration/vue-translations.php:32
 msgid "top"
-msgstr ""
+msgstr "top"
 
 #: inc/core/configuration/vue-translations.php:33
 #, fuzzy
@@ -792,7 +765,7 @@ msgstr "Pozostań zalogowany"
 
 #: inc/core/configuration/vue-translations.php:34
 msgid "Pro nákup této služby musíte být nejdříve přihlášen"
-msgstr ""
+msgstr "Musisz być zalogowany, aby kupić tę usługę"
 
 #: inc/core/configuration/vue-translations.php:35
 #: inc/core/frontend_views/loginView.php:115
@@ -801,51 +774,52 @@ msgstr "Zaloguj się"
 
 #: inc/core/configuration/vue-translations.php:36
 msgid "Nedostatek kreditů"
-msgstr ""
+msgstr "Niedostatek kredytów"
 
 #: inc/core/configuration/vue-translations.php:37
 msgid "Načítání"
-msgstr ""
+msgstr "Ładowanie"
 
 #: inc/core/configuration/vue-translations.php:38
 msgid "Probíhá ověřování stavu kreditů"
-msgstr ""
+msgstr "Weryfikacja stanu kredytów w toku"
 
 #: inc/core/configuration/vue-translations.php:39
 msgid "Probíhá platba za službu"
-msgstr ""
+msgstr "Płatność za usługę w toku"
 
 #: inc/core/configuration/vue-translations.php:44
 msgid "Nastavit hlídacího psa"
-msgstr ""
+msgstr "Ustaw psa stróżującego"
 
 #: inc/core/configuration/vue-translations.php:45
 msgid "Nastavení hlídacího psa"
-msgstr ""
+msgstr "Ustawienia psa stróżującego"
 
 #: inc/core/configuration/vue-translations.php:46
 msgid "Test popisující nastavení hlídacího psa"
-msgstr ""
+msgstr "Test opisujący ustawienie psa stróżującego"
 
 #: inc/core/configuration/vue-translations.php:47
 msgid "Název hlídacího psa"
-msgstr ""
+msgstr "Nazwa psa stróżującego"
 
 #: inc/core/configuration/vue-translations.php:48
 msgid "Typ hlídacího psa"
-msgstr ""
+msgstr "Typ psa stróżującego"
 
 #: inc/core/configuration/vue-translations.php:49
 msgid "Denně(placené)"
-msgstr ""
+msgstr "Codziennie (płatne)"
 
 #: inc/core/configuration/vue-translations.php:50
 msgid "Týdně"
-msgstr ""
+msgstr "Tygodniowo"
 
 #: inc/core/configuration/vue-translations.php:51
+#, fuzzy
 msgid "Uložit psa"
-msgstr ""
+msgstr "Zapisz psa"
 
 #: inc/core/configuration/vue-translations.php:52
 #: inc/core/configuration/vue-translations.php:142
@@ -865,42 +839,44 @@ msgid ""
 "Bohužel nejste přihlášen. Pro přidání psa nejdříve pokračujte na přihlášení "
 "a potom proveďte vyhledávání a přidání hlídacího psa"
 msgstr ""
+"Niestety nie jesteś zalogowany. Aby dodać psa, najpierw zaloguj się, a "
+"następnie potwierdź wyszukiwanie i dodanie psa stróżującego"
 
 #: inc/core/configuration/vue-translations.php:55
 msgid "Vytvoření hlídacího psa"
-msgstr ""
+msgstr "Utworzenie psa stróżującego"
 
 #: inc/core/configuration/vue-translations.php:56
 msgid "Váš hlídací pes byl úspěšně vytvořen."
-msgstr ""
+msgstr "Twój pies stróżujący został pomyślnie utworzony."
 
 #: inc/core/configuration/vue-translations.php:57
 msgid "Podívejte se na své hlídací psi"
-msgstr ""
+msgstr "Przegladaj swoje psy stróżujące"
 
 #: inc/core/configuration/vue-translations.php:58
 msgid "Nejdříve prosím nastavte filtr"
-msgstr ""
+msgstr "Najpierw ustaw proszę filtr"
 
 #: inc/core/configuration/vue-translations.php:62
 msgid "Chci bydlet"
-msgstr ""
+msgstr "Chcę mieszkać"
 
 #: inc/core/configuration/vue-translations.php:64
 msgid "Zobrazení kontaktu stojí"
-msgstr ""
+msgstr "Wyświetlenie kosztuje"
 
 #: inc/core/configuration/vue-translations.php:65
 msgid "kreditů"
-msgstr ""
+msgstr "kredytów"
 
 #: inc/core/configuration/vue-translations.php:66
 msgid "Pro zobrazení kontaktu klikněte na tlačítko zobrazit."
-msgstr ""
+msgstr "Aby wyświetlić kontakt, kliknij przycisk wyświetlić."
 
 #: inc/core/configuration/vue-translations.php:67
 msgid "Zobrazit a zaplatit za kontakt"
-msgstr ""
+msgstr "Wyświetlić i zapłacić za kontakt"
 
 #: inc/core/configuration/vue-translations.php:69
 msgid ""
@@ -908,42 +884,36 @@ msgid ""
 "přihlášen. Proveďte přihlášení následně vraťte zpět na inzerát a zobrazte si "
 "kontakt."
 msgstr ""
+"Niestety nie jesteś zalogowany. Musisz być zalogowany, aby wyświetlić "
+"kontakt. Zaloguj się, a następnie wróć do ogłoszenia, aby wyświetlić kontakt."
 
 #: inc/core/configuration/vue-translations.php:70
 msgid "Váš kontakt na uživatele naleznete níže."
-msgstr ""
+msgstr "Kontakt do użytkownika znajdziesz poniżej."
 
 #: inc/core/configuration/vue-translations.php:71
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:64
 #: inc/core/frontend_views/uzivatelDetailView.php:58
-#, fuzzy
-#| msgid "Jméno"
 msgid "Jméno:"
-msgstr "Imię"
+msgstr "Imię:"
 
 #: inc/core/configuration/vue-translations.php:72
-#, fuzzy
-#| msgid "Příjmení"
 msgid "Příjmení:"
-msgstr "Nazwisko"
+msgstr "Nazwisko:"
 
 #: inc/core/configuration/vue-translations.php:73
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:76
 #: inc/core/frontend_views/uzivatelDetailView.php:70
-#, fuzzy
-#| msgid "Telefon-syntax"
 msgid "Telefon:"
-msgstr "Telefon"
+msgstr "Telefon:"
 
 #: inc/core/configuration/vue-translations.php:74
-#, fuzzy
-#| msgid "Email"
 msgid "Email:"
-msgstr "E-mail"
+msgstr "E-mail:"
 
 #: inc/core/configuration/vue-translations.php:75
 msgid "Zobrazit profil uživatele"
-msgstr ""
+msgstr "Wyświetl profil użytkownika"
 
 #: inc/core/configuration/vue-translations.php:79
 msgid "Toto pole je povinné"
@@ -1200,7 +1170,7 @@ msgstr "Wypróbuj promowanie"
 #: inc/core/configuration/vue-translations.php:132
 #: inc/core/frontend_views/nem_row_item.php:108
 msgid "Jak to funguje?"
-msgstr ""
+msgstr "Jak to działa?"
 
 #: inc/core/configuration/vue-translations.php:134
 msgid "Dokončit"
@@ -1461,6 +1431,7 @@ msgid ""
 "Uživatel není ověřen, prosím nejdříve ověřte uživatele pomocí emailové "
 "adresy."
 msgstr ""
+"Niezweryfikowany użytkownik, prosimy o weryfikację za pomocą adresu e-mail."
 
 #: inc/core/frontend_controllers/loginController.php:66
 msgid "Tento uživatel neexistuje"
@@ -1517,7 +1488,7 @@ msgstr "Przekierowanie"
 #: inc/core/frontend_controllers/loginController.php:181
 msgid ""
 "Po úspěšném odhlášení Vás přesměrováváme na <strong>úvodní stránku</strong>"
-msgstr ""
+msgstr "Po pomyślnym wylogowaniu przekierujemy Cię na stronę główną"
 
 #: inc/core/frontend_controllers/loginController.php:242
 msgid "Potvrzení emailové adresy"
@@ -1545,17 +1516,15 @@ msgstr "Podany Użytkownik nie figuruje w systemie lub jest duplikatem."
 
 #: inc/core/frontend_controllers/loginController.php:398
 msgid "Heslo bylo změněno"
-msgstr ""
+msgstr "Hasło zostało zmienione"
 
 #: inc/core/frontend_controllers/loginController.php:407
 msgid "Hash"
-msgstr ""
+msgstr "Hash"
 
 #: inc/core/frontend_controllers/loginController.php:407
-#, fuzzy
-#| msgid "Snažíte se o něco špatného. Budete reportováni."
 msgid "Nesprávný hash, snažíte se o něco špatného, budete reportováni"
-msgstr "Gdzieś popełniłeś błąd."
+msgstr "Gdzieś popełniłeś błąd"
 
 #: inc/core/frontend_controllers/loginController.php:413
 msgid "Zadaný uživatel v systému neexistuje."
@@ -1564,27 +1533,23 @@ msgstr "Użytkownik nie istnieje."
 #: inc/core/frontend_controllers/loginController.php:424
 #: inc/core/frontend_controllers/loginController.php:492
 msgid "Pokud jste přihlášený nemůžete žádat o reset hesla"
-msgstr ""
+msgstr "Dopóki jesteś zalogowany, nie możesz zresetować hasła"
 
 #: inc/core/frontend_controllers/loginController.php:476
-#, fuzzy
-#| msgid "Uživatel"
 msgid "Zadaný uživatel není v systému potvrzený"
-msgstr "Użytkownik"
+msgstr "Określony użytkownik nie został potwierdzony w systemie"
 
 #: inc/core/frontend_controllers/loginController.php:481
-#, fuzzy
-#| msgid "Uživatel"
 msgid "Zadaný uživatel v systému neexistuje"
-msgstr "Użytkownik"
+msgstr "Określony użytkownik nie istnieje w systemie"
 
 #: inc/core/frontend_controllers/loginController.php:487
 msgid "Reset hesla"
-msgstr ""
+msgstr "Reset hasła"
 
 #: inc/core/frontend_controllers/loginController.php:487
 msgid "Nebyla zadaná emailová adresa."
-msgstr ""
+msgstr "Nie podano adresu e-mail."
 
 #: inc/core/frontend_controllers/objednavkaController.php:12
 #: inc/core/frontend_controllers/objednavkaController.php:120
@@ -1602,10 +1567,8 @@ msgid "Služba"
 msgstr ""
 
 #: inc/core/frontend_controllers/objednavkaController.php:74
-#, fuzzy
-#| msgid "Uživatel"
 msgid "Tato služba v systému neexistuje."
-msgstr "Użytkownik"
+msgstr ""
 
 #: inc/core/frontend_controllers/objednavkaController.php:95
 msgid "Potvrzení"
