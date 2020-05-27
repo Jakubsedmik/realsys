@@ -590,8 +590,6 @@ msgid "Velikost"
 msgstr "Rozmiar"
 
 #: inc/core/configuration/configuration.php:799
-#, fuzzy
-#| msgid "Datum přidání"
 msgid "Datum přidání inzerátu"
 msgstr "Data założenia"
 
@@ -785,8 +783,6 @@ msgid "Detail inzerátu"
 msgstr "Szczegóły ogłoszenia"
 
 #: inc/core/configuration/vue-translations.php:5
-#, fuzzy
-#| msgid "Topovat"
 msgid "Top"
 msgstr "Promować"
 
@@ -880,20 +876,16 @@ msgid "Topovat"
 msgstr "Promować"
 
 #: inc/core/configuration/vue-translations.php:31
-#, fuzzy
-#| msgid "Inzerát je aktivní"
 msgid "Inzerát je již Topovaný"
-msgstr "Reklama jest aktywna"
+msgstr "Reklama jest już na szczycie"
 
 #: inc/core/configuration/vue-translations.php:32
 msgid "top"
 msgstr "top"
 
 #: inc/core/configuration/vue-translations.php:33
-#, fuzzy
-#| msgid "Zůstat přihlášen"
 msgid "Nejste přihlášen"
-msgstr "Pozostań zalogowany"
+msgstr "Nie jesteś zalogowany"
 
 #: inc/core/configuration/vue-translations.php:34
 msgid "Pro nákup této služby musíte být nejdříve přihlášen"
@@ -945,7 +937,6 @@ msgid "Týdně"
 msgstr "Tygodniowo"
 
 #: inc/core/configuration/vue-translations.php:51
-#, fuzzy
 msgid "Uložit psa"
 msgstr "Zapisz psa"
 
@@ -1412,8 +1403,6 @@ msgid "Služba"
 msgstr "Usługa"
 
 #: inc/core/frontend_controllers/gopayController.php:184
-#, fuzzy
-#| msgid "Zadaný uživatel v systému neexistuje"
 msgid "Zadaná služba v systému neexistuje"
 msgstr "Określony użytkownik nie istnieje w systemie"
 
@@ -1504,30 +1493,20 @@ msgid "Přihlášení proběhlo úspěšně, probíhá přesměrování na vytv�
 msgstr "Logowanie powiodło się, przekierowano do tworzenia ogłoszenia"
 
 #: inc/core/frontend_controllers/loginController.php:50
-#, fuzzy
-#| msgid "Děkujeme za vytvoření inzerátu."
 msgid "Přesměrování na vytváření inzerátu"
 msgstr "Dziękujemy za utworzenie ogłoszenia."
 
 #: inc/core/frontend_controllers/loginController.php:53
-#, fuzzy
-#| msgid ""
-#| "Přihlášení proběhlo úspěšně, probíhá přesměrování na vytváření inzerátu"
 msgid ""
 "Přihlášení proběhlo úspěšně, probíhá přesměrování na výpis vašeho hlídacího "
 "psa."
 msgstr "Logowanie powiodło się, przekierowano do tworzenia ogłoszenia"
 
 #: inc/core/frontend_controllers/loginController.php:54
-#, fuzzy
-#| msgid "Vytvoření hlídacího psa"
 msgid "Přesměrování na výpis hlídacího psa"
 msgstr "Utworzenie psa stróżującego"
 
 #: inc/core/frontend_controllers/loginController.php:56
-#, fuzzy
-#| msgid ""
-#| "Přihlášení proběhlo úspěšně, probíhá přesměrování na vytváření inzerátu"
 msgid "Přihlášení proběhlo úspěšně, probíhá přesměrování na Váš profil."
 msgstr "Logowanie powiodło się, przekierowano do tworzenia ogłoszenia"
 
@@ -1608,10 +1587,8 @@ msgstr ""
 "wymagań systemowych. Zarejestruj się ręcznie"
 
 #: inc/core/frontend_controllers/loginController.php:180
-#, fuzzy
-#| msgid "Přihlášení"
 msgid "Odhlášení"
-msgstr "Zaloguj się"
+msgstr "Wyloguj"
 
 #: inc/core/frontend_controllers/loginController.php:180
 msgid "Úspěšně jsme Vás odhlásili"
@@ -1845,10 +1822,8 @@ msgid "Objednávku potvrzujeme"
 msgstr "Potwierdzamy zamówienie"
 
 #: inc/core/frontend_views/confirmSimplePaymentView.php:5
-#, fuzzy
-#| msgid "Probíhá přesměrování"
 msgid "Probíhá přesměrování na realizaci služby"
-msgstr "Przekierowanie"
+msgstr "Przekierowanie do implementacji usługi"
 
 #: inc/core/frontend_views/errorPaymentView.php:5
 msgid "Došlo k chybě při úhradě objednávky"
@@ -2053,10 +2028,8 @@ msgid "Upravit"
 msgstr "Edytuj"
 
 #: inc/core/frontend_views/inzeratEditView.php:207
-#, fuzzy
-#| msgid "Titulek inzerátu"
 msgid "Zobrazit inzerát"
-msgstr "Tytuł ogłoszenia"
+msgstr "Zobacz ogłoszenie"
 
 #: inc/core/frontend_views/loginView.php:8
 msgid "Před vytvořením inzerátu se nejprve přihlašte"
@@ -2159,10 +2132,8 @@ msgid "Nepamatujete si heslo?"
 msgstr "Nie pamiętasz hasła?"
 
 #: inc/core/frontend_views/loginView.php:118
-#, fuzzy
-#| msgid "Nové heslo"
 msgid "Obnovit heslo"
-msgstr "Nowe hasło"
+msgstr "Zresetuj hasło"
 
 #: inc/core/frontend_views/loginView.php:133
 msgid "Doplnění údajů"
@@ -2550,17 +2521,13 @@ msgid "Odstranit psa"
 msgstr "Usuń psa"
 
 #: inc/core/frontend_views/uzivatelDetailView.php:33
-#, fuzzy
-#| msgid "Uživatel"
 msgid "Profil uživatele"
-msgstr "Użytkownik"
+msgstr "Profil użytkownika"
 
 #: inc/core/frontend_views/uzivatelDetailView.php:34
 #: inc/core/frontend_views/uzivatelDetailView.php:95
-#, fuzzy
-#| msgid "Inzerát byl vytvořen"
 msgid "Inzeráty uživatele"
-msgstr "Ogłoszenie jest aktywna"
+msgstr "Ogłoszenie użytkownika"
 
 #: inc/core/frontend_views/uzivatelDetailView.php:42
 msgid "Profil uživatele "
