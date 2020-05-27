@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Package Name\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-22 21:21+0200\n"
+"POT-Creation-Date: 2020-05-27 22:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -327,10 +327,10 @@ msgid "Kontakt nebyl získán. Nejste přihlášen."
 msgstr ""
 
 #: inc/core/classes/invisibleRecaptchaClass.php:66
-#: inc/core/frontend_controllers/loginController.php:304
-#: inc/core/frontend_controllers/loginController.php:324
-#: inc/core/frontend_controllers/loginController.php:330
-#: inc/core/frontend_controllers/loginController.php:335
+#: inc/core/frontend_controllers/loginController.php:303
+#: inc/core/frontend_controllers/loginController.php:323
+#: inc/core/frontend_controllers/loginController.php:329
+#: inc/core/frontend_controllers/loginController.php:334
 msgid "Ověření"
 msgstr ""
 
@@ -434,7 +434,7 @@ msgstr ""
 
 #: inc/core/configuration/configuration.php:528
 #: inc/core/frontend_controllers/loginController.php:139
-#: inc/core/frontend_controllers/loginController.php:234
+#: inc/core/frontend_controllers/loginController.php:233
 msgid "Uživatel s touto emailovou adresou již existuje"
 msgstr ""
 
@@ -540,6 +540,14 @@ msgstr ""
 msgid "5+1"
 msgstr ""
 
+#: inc/core/configuration/configuration.php:760
+#: inc/core/configuration/configuration.php:815
+#: inc/core/frontend_controllers/vypisController.php:29
+#: inc/core/frontend_controllers/vypisMapaController.php:27
+#: inc/core/utils/Tools.php:953
+msgid "--Bez filtru--"
+msgstr ""
+
 #: inc/core/configuration/configuration.php:764
 #: inc/core/configuration/vue-translations.php:85
 #: inc/core/frontend_views/inzeratEditView.php:20
@@ -598,10 +606,6 @@ msgstr ""
 
 #: inc/core/configuration/configuration.php:811
 msgid "Méně jak 3 měsíce"
-msgstr ""
-
-#: inc/core/configuration/configuration.php:815
-msgid "--Bez filtru--"
 msgstr ""
 
 #: inc/core/configuration/configuration.php:821
@@ -1341,7 +1345,7 @@ msgstr ""
 #: inc/core/frontend_controllers/inzeratDetailController.php:65
 #: inc/core/frontend_controllers/inzeratEditController.php:46
 #: inc/core/frontend_controllers/inzeratEditController.php:136
-#: inc/core/frontend_controllers/loginController.php:418
+#: inc/core/frontend_controllers/loginController.php:417
 #: inc/core/frontend_controllers/objednavkaController.php:115
 #: inc/core/frontend_controllers/uzivatelDetailController.php:45
 #: inc/core/frontend_controllers/uzivatelDetailController.php:122
@@ -1408,7 +1412,7 @@ msgstr ""
 #: inc/core/frontend_controllers/inzeratDetailController.php:65
 #: inc/core/frontend_controllers/inzeratEditController.php:46
 #: inc/core/frontend_controllers/inzeratEditController.php:136
-#: inc/core/frontend_controllers/loginController.php:418
+#: inc/core/frontend_controllers/loginController.php:417
 #: inc/core/frontend_controllers/objednavkaController.php:115
 #: inc/core/frontend_controllers/pridatInzeratController.php:113
 #: inc/core/frontend_controllers/uzivatelDetailController.php:45
@@ -1505,13 +1509,13 @@ msgstr ""
 #: inc/core/frontend_controllers/loginController.php:63
 #: inc/core/frontend_controllers/loginController.php:66
 #: inc/core/frontend_controllers/loginController.php:139
-#: inc/core/frontend_controllers/loginController.php:234
-#: inc/core/frontend_controllers/loginController.php:398
-#: inc/core/frontend_controllers/loginController.php:413
-#: inc/core/frontend_controllers/loginController.php:424
-#: inc/core/frontend_controllers/loginController.php:476
-#: inc/core/frontend_controllers/loginController.php:481
-#: inc/core/frontend_controllers/loginController.php:492
+#: inc/core/frontend_controllers/loginController.php:233
+#: inc/core/frontend_controllers/loginController.php:397
+#: inc/core/frontend_controllers/loginController.php:412
+#: inc/core/frontend_controllers/loginController.php:423
+#: inc/core/frontend_controllers/loginController.php:475
+#: inc/core/frontend_controllers/loginController.php:480
+#: inc/core/frontend_controllers/loginController.php:491
 #: inc/core/frontend_controllers/pridatInzeratController.php:103
 #: inc/core/frontend_controllers/pridatInzeratController.php:108
 #: inc/core/frontend_controllers/uzivatelDetailController.php:38
@@ -1586,64 +1590,64 @@ msgid ""
 "Po úspěšném odhlášení Vás přesměrováváme na <strong>úvodní stránku</strong>"
 msgstr ""
 
-#: inc/core/frontend_controllers/loginController.php:242
+#: inc/core/frontend_controllers/loginController.php:241
 msgid "Potvrzení emailové adresy"
 msgstr ""
 
-#: inc/core/frontend_controllers/loginController.php:304
+#: inc/core/frontend_controllers/loginController.php:303
 msgid "Tento uživatel byl již ověřen."
 msgstr ""
 
-#: inc/core/frontend_controllers/loginController.php:316
+#: inc/core/frontend_controllers/loginController.php:315
 msgid "Vítejte"
 msgstr ""
 
-#: inc/core/frontend_controllers/loginController.php:324
+#: inc/core/frontend_controllers/loginController.php:323
 msgid "Uživatel byl ověřen."
 msgstr ""
 
-#: inc/core/frontend_controllers/loginController.php:330
+#: inc/core/frontend_controllers/loginController.php:329
 msgid "Došlo k chybě! Snažíte se o něco špatného. Budete reportováni."
 msgstr ""
 
-#: inc/core/frontend_controllers/loginController.php:335
+#: inc/core/frontend_controllers/loginController.php:334
 msgid "Zadaný uživatel v systému buď nefiguruje nebo je duplikátem."
 msgstr ""
 
-#: inc/core/frontend_controllers/loginController.php:398
+#: inc/core/frontend_controllers/loginController.php:397
 msgid "Heslo bylo změněno"
 msgstr ""
 
-#: inc/core/frontend_controllers/loginController.php:407
+#: inc/core/frontend_controllers/loginController.php:406
 msgid "Hash"
 msgstr ""
 
-#: inc/core/frontend_controllers/loginController.php:407
+#: inc/core/frontend_controllers/loginController.php:406
 msgid "Nesprávný hash, snažíte se o něco špatného, budete reportováni"
 msgstr ""
 
-#: inc/core/frontend_controllers/loginController.php:413
+#: inc/core/frontend_controllers/loginController.php:412
 msgid "Zadaný uživatel v systému neexistuje."
 msgstr ""
 
-#: inc/core/frontend_controllers/loginController.php:424
-#: inc/core/frontend_controllers/loginController.php:492
+#: inc/core/frontend_controllers/loginController.php:423
+#: inc/core/frontend_controllers/loginController.php:491
 msgid "Pokud jste přihlášený nemůžete žádat o reset hesla"
 msgstr ""
 
-#: inc/core/frontend_controllers/loginController.php:476
+#: inc/core/frontend_controllers/loginController.php:475
 msgid "Zadaný uživatel není v systému potvrzený"
 msgstr ""
 
-#: inc/core/frontend_controllers/loginController.php:481
+#: inc/core/frontend_controllers/loginController.php:480
 msgid "Zadaný uživatel v systému neexistuje"
 msgstr ""
 
-#: inc/core/frontend_controllers/loginController.php:487
+#: inc/core/frontend_controllers/loginController.php:486
 msgid "Reset hesla"
 msgstr ""
 
-#: inc/core/frontend_controllers/loginController.php:487
+#: inc/core/frontend_controllers/loginController.php:486
 msgid "Nebyla zadaná emailová adresa."
 msgstr ""
 

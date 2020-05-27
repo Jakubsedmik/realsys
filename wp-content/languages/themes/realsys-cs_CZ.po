@@ -15,7 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #: 404.php:8
 msgid "404 - STRANA NENALEZENA"
@@ -2159,8 +2159,6 @@ msgid "Nepamatujete si heslo?"
 msgstr "Nie pamiętasz hasła?"
 
 #: inc/core/frontend_views/loginView.php:118
-#, fuzzy
-#| msgid "Nové heslo"
 msgid "Obnovit heslo"
 msgstr "Nowe hasło"
 
