@@ -199,8 +199,6 @@ msgid "Došlo k technické chybě - chybějící parametry"
 msgstr "Wystąpił techniczny błąd - brakujące parametry"
 
 #: inc/core/api.php:577 inc/core/api.php:734
-#, fuzzy
-#| msgid "Uživatel není přihlášen nebo nemáte dostatečná oprávnění"
 msgid "Uživatel neexistuje nebo není zalogován"
 msgstr "Użytkownik nie jest zalogowany lub nie masz wystarczających uprawnień"
 
@@ -214,8 +212,6 @@ msgid "Některé parametry nebyli specifikovány"
 msgstr "Niektóre parametry nie zostały określone"
 
 #: inc/core/api.php:621 inc/core/api.php:778
-#, fuzzy
-#| msgid "Úspěšně jsme Vás odhlásili"
 msgid "Úspěšně smazáno"
 msgstr "Wylogowaliśmy Cię pomyślnie"
 
@@ -506,32 +502,22 @@ msgid "Načítání"
 msgstr "Ładowanie"
 
 #: inc/core/configuration/configuration.php:715
-#, fuzzy
-#| msgid "Geokódování"
 msgid "Uploadování"
-msgstr "Geokodowanie"
+msgstr "Przesyłanie"
 
 #: inc/core/configuration/configuration.php:716
-#, fuzzy
-#| msgid "Úspěšně jsme Vás odhlásili"
 msgid "Úspěšně nahráno na server"
-msgstr "Wylogowaliśmy Cię pomyślnie"
+msgstr "Pomyślnie przesłano na serwer"
 
 #: inc/core/configuration/configuration.php:717
-#, fuzzy
-#| msgid "Zrušit"
 msgid "Zrušeno"
 msgstr "Anuluj"
 
 #: inc/core/configuration/configuration.php:718
-#, fuzzy
-#| msgid "Klikněte pro zrušení"
 msgid "Klepněte pro zrušení"
 msgstr "Kliknij, aby anulować"
 
 #: inc/core/configuration/configuration.php:719
-#, fuzzy
-#| msgid "Klikněte pro opakování"
 msgid "Klepněte pro opakování"
 msgstr "Kliknij, aby powtórzyć"
 
@@ -735,70 +721,68 @@ msgstr "15. piętro"
 
 #: inc/core/configuration/configuration.php:913
 msgid "jednoho"
-msgstr "jeden"
+msgstr "1 piętra"
 
 #: inc/core/configuration/configuration.php:914
 msgid "dvou"
-msgstr "dwa"
+msgstr "2 pięter"
 
 #: inc/core/configuration/configuration.php:915
 msgid "tří"
-msgstr "trzy"
+msgstr "3 pięter"
 
 #: inc/core/configuration/configuration.php:916
 msgid "čtyř"
-msgstr "cztery"
+msgstr "4 pięter"
 
 #: inc/core/configuration/configuration.php:917
 msgid "pěti"
-msgstr "pięć"
+msgstr "5 pięter"
 
 #: inc/core/configuration/configuration.php:918
 msgid "šesti"
-msgstr "sześć"
+msgstr "6 pięter"
 
 #: inc/core/configuration/configuration.php:919
 msgid "sedmi"
-msgstr "siedem"
+msgstr "7 pięter"
 
 #: inc/core/configuration/configuration.php:920
 msgid "osmi"
-msgstr "osiem"
+msgstr "8 pięter"
 
 #: inc/core/configuration/configuration.php:921
 msgid "devíti"
-msgstr "dziewięć"
+msgstr "9 pięter"
 
 #: inc/core/configuration/configuration.php:922
 msgid "deseti"
-msgstr "dziesięć"
+msgstr "10 pięter"
 
 #: inc/core/configuration/configuration.php:923
 msgid "jedenácti"
-msgstr "jedenaście"
+msgstr "11 pięter"
 
 #: inc/core/configuration/configuration.php:924
 msgid "dvanácti"
-msgstr "dwanaście"
+msgstr "12 pięter"
 
 #: inc/core/configuration/configuration.php:925
 msgid "třinácti"
-msgstr "trzynaście"
+msgstr "13 pięter"
 
 #: inc/core/configuration/configuration.php:926
 msgid "čtrnácti"
-msgstr "czternaście"
+msgstr "14 pięter"
 
 #: inc/core/configuration/configuration.php:927
 msgid "patnácti"
-msgstr "piętnaście"
+msgstr "15 pięter"
 
 #: inc/core/configuration/vue-translations.php:4
 #: inc/core/frontend_views/inzeratCreatedView.php:13
-#, fuzzy
-#| msgid "Titulek inzerátu"
 msgid "Detail inzerátu"
-msgstr "Tytuł ogłoszenia"
+msgstr "Szczegóły ogłoszenia"
 
 #: inc/core/configuration/vue-translations.php:5
 #, fuzzy
