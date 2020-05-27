@@ -21,6 +21,6 @@
      attribution=install_email
      page_id="110868517215305"
      theme_color="#FF951A"
-     logged_in_greeting="Dobrý den, jak Vám můžeme pomoci?!"
-     logged_out_greeting="Dobrý den, jak Vám můžeme pomoci!">
+     logged_in_greeting="Dobrý den, jak Vám můžeme pomoci?"
+     logged_out_greeting="Dobrý den, jak Vám můžeme pomoci?">
 </div>
