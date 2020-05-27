@@ -24,6 +24,7 @@
     $options->patro = $patra_options;
     $options->celkem_podlazi = $celkem_podlazi_options;
     $options->dispozice = $dispozice_options;
+
 ?>
 
 <section>

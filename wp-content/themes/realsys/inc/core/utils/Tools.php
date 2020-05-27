@@ -950,7 +950,7 @@ class Tools {
 			    if(is_array($filter_parameters[$value]['values']) && count($filter_parameters[$value]['values']) > 0){
 				    $final_filter[$value]['values'] = $filter_parameters[$value]['values'];
                 }else{
-				    $final_filter[$value]['values'] = globalUtils::getValuesForFilter("inzeratClass", $key_new, "-- Bez filtru --");
+				    $final_filter[$value]['values'] = globalUtils::getValuesForFilter("inzeratClass", $key_new, __("--Bez filtru--","realsys"));
                 }
 
 			    $final_filter[$value]['name'] = $filter_parameters[$value]['name'];

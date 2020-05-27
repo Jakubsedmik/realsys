@@ -1281,14 +1281,7 @@
                             type: Number
                         },
                         db_vhodny_pro: {
-                            required: [
-                                /* PRONÁJEM */
-                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
-
-                                /* SPOLUBYDLENÍ */
-                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
-                            ],
+                            required: false,
                             appear: [
                                 /* PRONÁJEM */
                                 {db_typ_stavby: 1, db_typ_inzeratu: 1},
@@ -1300,7 +1293,7 @@
                             type: String
                         },
                         db_popis: {
-                            required: true,
+                            required: false,
                             appear: true,
                             type: String
                         },

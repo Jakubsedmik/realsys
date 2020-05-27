@@ -191,7 +191,6 @@ class loginController extends frontendController {
 
 		if(!invisibleRecaptchaClass::verifyRecaptchaOnController($this)){return false;}
 
-		//globalUtils::writeDebug($this->requestData);
 
 		$result = Tools::postChecker(
 			$this->requestData,
@@ -428,7 +427,7 @@ class loginController extends frontendController {
 	}
 
 	public function resetPassword(){
-		globalUtils::writeDebug($this->requestData);
+
 
 		if(uzivatelClass::getUserLoggedId() == false){
 
@@ -452,7 +451,7 @@ class loginController extends frontendController {
 				);
 
 				$uzivatel = assetsFactory::getAllEntity("uzivatelClass", $filter_arr);
-				globalUtils::writeDebug($uzivatel);
+
 
 				if(is_array($uzivatel) && count($uzivatel) == 1){
 					$uzivatel = array_shift($uzivatel);
