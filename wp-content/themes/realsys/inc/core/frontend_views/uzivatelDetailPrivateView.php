@@ -361,7 +361,7 @@ $objednavky = $uzivatel->subobjects['objednavkaClass'];
                             <div class="hlidaci_psi">
                                 <div class="wrapper">
 									<?php foreach ( $hlidaci_psi as $key => $value ) : ?>
-                                        <div class="hlidaciPes js-watchdog rounded-b shadow-sm p-20">
+                                        <div class="hlidaciPes js-watchdog rounded-b p-20">
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <h3>
