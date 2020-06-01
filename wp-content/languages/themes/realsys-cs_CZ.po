@@ -1494,13 +1494,13 @@ msgstr "Logowanie powiodło się, przekierowano do tworzenia ogłoszenia"
 
 #: inc/core/frontend_controllers/loginController.php:50
 msgid "Přesměrování na vytváření inzerátu"
-msgstr "Dziękujemy za utworzenie ogłoszenia."
+msgstr "Przekieruj do tworzenia ogłoszenia"
 
 #: inc/core/frontend_controllers/loginController.php:53
 msgid ""
 "Přihlášení proběhlo úspěšně, probíhá přesměrování na výpis vašeho hlídacího "
 "psa."
-msgstr "Logowanie powiodło się, przekierowano do tworzenia ogłoszenia"
+msgstr "Logowanie powiodło się, przekierowano do psa stróżującyho."
 
 #: inc/core/frontend_controllers/loginController.php:54
 msgid "Přesměrování na výpis hlídacího psa"
@@ -1508,7 +1508,7 @@ msgstr "Utworzenie psa stróżującego"
 
 #: inc/core/frontend_controllers/loginController.php:56
 msgid "Přihlášení proběhlo úspěšně, probíhá přesměrování na Váš profil."
-msgstr "Logowanie powiodło się, przekierowano do tworzenia ogłoszenia"
+msgstr "Logowanie powiodło się, przekierowanie do twojego profilu."
 
 #: inc/core/frontend_controllers/loginController.php:57
 msgid "Přesměrování na Váš profil"
@@ -1872,7 +1872,7 @@ msgstr "Zobacz, jakie nowe oferty znalazł Twój pies stróżujący."
 
 #: inc/core/frontend_views/inzeratCreatedView.php:10
 msgid "Inzerát byl vytvořen"
-msgstr "Ogłoszenie jest aktywna"
+msgstr "Ogłoszenie jest aktywne"
 
 #: inc/core/frontend_views/inzeratCreatedView.php:11
 msgid ""
@@ -2171,7 +2171,7 @@ msgstr "Aktywuj"
 
 #: inc/core/frontend_views/nem_row_item.php:67
 msgid "Inzerát je neaktivní"
-msgstr "Reklama jest nieaktywna"
+msgstr "Ogłoszenie jest nieaktywne"
 
 #: inc/core/frontend_views/nem_row_item.php:78
 msgid "Deaktivovat"
@@ -2179,11 +2179,11 @@ msgstr "Dezaktywuj"
 
 #: inc/core/frontend_views/nem_row_item.php:80
 msgid "Inzerát je aktivní"
-msgstr "Reklama jest aktywna"
+msgstr "Ogłoszenie jest aktywne"
 
 #: inc/core/frontend_views/nem_row_item.php:85
 msgid "Inzerát čeká na schválení"
-msgstr "Reklama jest nieaktywna"
+msgstr "Ogłoszenie jest nieaktywne"
 
 #: inc/core/frontend_views/objednavkaView.php:8
 msgid "Kredity"
