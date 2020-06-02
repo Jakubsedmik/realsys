@@ -61,6 +61,15 @@
                 Launch demo modal
             </button>
 
+
+            <!-- TODO ZMĚNA PŘEDVOLBY TELEFONU -->
+            <script>
+            $('.profil-val').each(function() {
+              //console.log($(this).text());
+              var text = $(this).text().replace('(+420)', '(+48)');
+              $(this).text(text);
+            });
+            </script>
             <?php
                 get_template_part("templates/page", "login");
             ?>
