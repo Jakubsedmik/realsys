@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Package Name\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-22 21:21+0200\n"
+"POT-Creation-Date: 2020-06-03 19:53+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -15,7 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #: 404.php:8
 msgid "404 - STRANA NENALEZENA"
@@ -333,7 +333,7 @@ msgstr "Kontakt nie został uzyskany. Nie jesteś zalogowany."
 
 #: inc/core/classes/invisibleRecaptchaClass.php:66
 #: inc/core/frontend_controllers/loginController.php:304
-#: inc/core/frontend_controllers/loginController.php:324
+#: inc/core/frontend_controllers/loginController.php:321
 #: inc/core/frontend_controllers/loginController.php:330
 #: inc/core/frontend_controllers/loginController.php:335
 msgid "Ověření"
@@ -438,7 +438,7 @@ msgid "Prosím potvrďte heslo"
 msgstr "Prosimy o potwierdzenie hasła"
 
 #: inc/core/configuration/configuration.php:528
-#: inc/core/frontend_controllers/loginController.php:139
+#: inc/core/frontend_controllers/loginController.php:140
 #: inc/core/frontend_controllers/loginController.php:234
 msgid "Uživatel s touto emailovou adresou již existuje"
 msgstr "Użytkownik o podanym adresie e-mailowam już istnieje"
@@ -545,6 +545,14 @@ msgstr "4+1"
 msgid "5+1"
 msgstr "5+1"
 
+#: inc/core/configuration/configuration.php:760
+#: inc/core/configuration/configuration.php:815
+#: inc/core/frontend_controllers/vypisController.php:29
+#: inc/core/frontend_controllers/vypisMapaController.php:27
+#: inc/core/utils/Tools.php:953
+msgid "--Bez filtru--"
+msgstr "--Bez filtra--"
+
 #: inc/core/configuration/configuration.php:764
 #: inc/core/configuration/vue-translations.php:85
 #: inc/core/frontend_views/inzeratEditView.php:20
@@ -604,10 +612,6 @@ msgstr "Mniej niż 1 miesiąc"
 #: inc/core/configuration/configuration.php:811
 msgid "Méně jak 3 měsíce"
 msgstr "Mniej niż 3 miesiące"
-
-#: inc/core/configuration/configuration.php:815
-msgid "--Bez filtru--"
-msgstr "--Bez filtra--"
 
 #: inc/core/configuration/configuration.php:821
 #: inc/core/frontend_views/inzeratDetailView.php:102
@@ -778,7 +782,7 @@ msgid "patnácti"
 msgstr "15 pięter"
 
 #: inc/core/configuration/vue-translations.php:4
-#: inc/core/frontend_views/inzeratCreatedView.php:13
+#: inc/core/frontend_views/inzeratCreatedView.php:14
 msgid "Detail inzerátu"
 msgstr "Szczegóły ogłoszenia"
 
@@ -948,9 +952,7 @@ msgstr "Anuluj"
 #: inc/core/configuration/vue-translations.php:53
 #: inc/core/configuration/vue-translations.php:68
 #: inc/core/frontend_controllers/inzeratEditController.php:41
-#: inc/core/frontend_controllers/loginController.php:49
-#: inc/core/frontend_controllers/loginController.php:53
-#: inc/core/frontend_controllers/loginController.php:56
+#: inc/core/frontend_controllers/loginController.php:45
 #: inc/core/frontend_views/loginView.php:16 templates/header-main.php:164
 msgid "Přihlášení"
 msgstr "Zaloguj się"
@@ -1488,36 +1490,14 @@ msgid "Geokódování adresy se nepodařilo, byli zachovány staré souřadnice"
 msgstr ""
 "Geokodowanie adresu nie powiodło się, stare współrzędne zostały zachowane"
 
-#: inc/core/frontend_controllers/loginController.php:49
+#: inc/core/frontend_controllers/loginController.php:45
 msgid "Přihlášení proběhlo úspěšně, probíhá přesměrování na vytváření inzerátu"
 msgstr "Logowanie powiodło się, przekierowano do tworzenia ogłoszenia"
 
-#: inc/core/frontend_controllers/loginController.php:50
-msgid "Přesměrování na vytváření inzerátu"
-msgstr "Przekieruj do tworzenia ogłoszenia"
-
-#: inc/core/frontend_controllers/loginController.php:53
-msgid ""
-"Přihlášení proběhlo úspěšně, probíhá přesměrování na výpis vašeho hlídacího "
-"psa."
-msgstr "Logowanie powiodło się, przekierowano do psa stróżującyho."
-
-#: inc/core/frontend_controllers/loginController.php:54
-msgid "Přesměrování na výpis hlídacího psa"
-msgstr "Utworzenie psa stróżującego"
-
-#: inc/core/frontend_controllers/loginController.php:56
-msgid "Přihlášení proběhlo úspěšně, probíhá přesměrování na Váš profil."
-msgstr "Logowanie powiodło się, przekierowanie do twojego profilu."
-
-#: inc/core/frontend_controllers/loginController.php:57
-msgid "Přesměrování na Váš profil"
-msgstr "Przekieruj do swojego profilu"
-
-#: inc/core/frontend_controllers/loginController.php:60
-#: inc/core/frontend_controllers/loginController.php:63
-#: inc/core/frontend_controllers/loginController.php:66
-#: inc/core/frontend_controllers/loginController.php:139
+#: inc/core/frontend_controllers/loginController.php:61
+#: inc/core/frontend_controllers/loginController.php:64
+#: inc/core/frontend_controllers/loginController.php:67
+#: inc/core/frontend_controllers/loginController.php:140
 #: inc/core/frontend_controllers/loginController.php:234
 #: inc/core/frontend_controllers/loginController.php:398
 #: inc/core/frontend_controllers/loginController.php:413
@@ -1538,47 +1518,47 @@ msgstr "Przekieruj do swojego profilu"
 msgid "Uživatel"
 msgstr "Użytkownik"
 
-#: inc/core/frontend_controllers/loginController.php:60
+#: inc/core/frontend_controllers/loginController.php:61
 msgid "Špatné heslo"
 msgstr "Złe hasło. Nie pamiętasz hasła"
 
-#: inc/core/frontend_controllers/loginController.php:63
+#: inc/core/frontend_controllers/loginController.php:64
 msgid ""
 "Uživatel není ověřen, prosím nejdříve ověřte uživatele pomocí emailové "
 "adresy."
 msgstr ""
 "Niezweryfikowany użytkownik, prosimy o weryfikację za pomocą adresu e-mail."
 
-#: inc/core/frontend_controllers/loginController.php:66
+#: inc/core/frontend_controllers/loginController.php:67
 msgid "Tento uživatel neexistuje"
 msgstr "Ten użytkownik nie istnieje"
 
-#: inc/core/frontend_controllers/loginController.php:158
-#: inc/core/frontend_controllers/loginController.php:164
-#: inc/core/frontend_controllers/loginController.php:167
+#: inc/core/frontend_controllers/loginController.php:159
+#: inc/core/frontend_controllers/loginController.php:165
+#: inc/core/frontend_controllers/loginController.php:168
 #: inc/core/frontend_views/loginView.php:21 templates/header-main.php:167
 msgid "Registrace"
 msgstr "Rejestracja"
 
-#: inc/core/frontend_controllers/loginController.php:158
+#: inc/core/frontend_controllers/loginController.php:159
 msgid "Registrace proběhla úspěšně. Budete přesměrováni"
 msgstr "Rejestracja zakończyła się powodzeniem. Zostaniesz przekierowany"
 
-#: inc/core/frontend_controllers/loginController.php:164
+#: inc/core/frontend_controllers/loginController.php:165
 msgid "Nastala chyba při vytváření uživatele. Kontaktujte prosím podporu"
 msgstr ""
 "Wystąpił błąd podczas tworzenia użytkownika. Skontaktuj się z pomocą "
 "techniczną"
 
-#: inc/core/frontend_controllers/loginController.php:167
+#: inc/core/frontend_controllers/loginController.php:168
 msgid "Snažíte se o něco špatného. Budete reportováni."
 msgstr "Gdzieś popełniłeś błąd."
 
-#: inc/core/frontend_controllers/loginController.php:172
+#: inc/core/frontend_controllers/loginController.php:173
 msgid "Google"
 msgstr "Google"
 
-#: inc/core/frontend_controllers/loginController.php:172
+#: inc/core/frontend_controllers/loginController.php:173
 msgid ""
 "Došlo k chybě v registraci. Některá pole převzatá od systému Google "
 "nesplňují požadavky systému. Prosím proveďte manuální registraci"
@@ -1586,20 +1566,20 @@ msgstr ""
 "Wystąpił błąd rejestracji. Niektóre pola pobrane z Google nie spełniają "
 "wymagań systemowych. Zarejestruj się ręcznie"
 
-#: inc/core/frontend_controllers/loginController.php:180
+#: inc/core/frontend_controllers/loginController.php:181
 msgid "Odhlášení"
 msgstr "Wyloguj"
 
-#: inc/core/frontend_controllers/loginController.php:180
+#: inc/core/frontend_controllers/loginController.php:181
 msgid "Úspěšně jsme Vás odhlásili"
 msgstr "Wylogowaliśmy Cię pomyślnie"
 
-#: inc/core/frontend_controllers/loginController.php:181
+#: inc/core/frontend_controllers/loginController.php:182
 #: inc/core/utils/Tools.php:246
 msgid "Probíhá přesměrování"
 msgstr "Przekierowanie"
 
-#: inc/core/frontend_controllers/loginController.php:181
+#: inc/core/frontend_controllers/loginController.php:182
 msgid ""
 "Po úspěšném odhlášení Vás přesměrováváme na <strong>úvodní stránku</strong>"
 msgstr "Po pomyślnym wylogowaniu przekierujemy Cię na stronę główną"
@@ -1616,7 +1596,7 @@ msgstr "Ten Użytkownik został już zweryfikowany."
 msgid "Vítejte"
 msgstr "Witamy"
 
-#: inc/core/frontend_controllers/loginController.php:324
+#: inc/core/frontend_controllers/loginController.php:321
 msgid "Uživatel byl ověřen."
 msgstr "Użytkownik został uwierzytelniony."
 
@@ -1872,9 +1852,13 @@ msgstr "Zobacz, jakie nowe oferty znalazł Twój pies stróżujący."
 
 #: inc/core/frontend_views/inzeratCreatedView.php:10
 msgid "Inzerát byl vytvořen"
-msgstr "Ogłoszenie jest aktywne"
+msgstr "Ogłoszenie jest aktywna"
 
 #: inc/core/frontend_views/inzeratCreatedView.php:11
+msgid "Děkujeme za vytvoření inzerátu."
+msgstr "Dziękujemy za utworzenie ogłoszenia."
+
+#: inc/core/frontend_views/inzeratCreatedView.php:12
 msgid ""
 "Děkujeme za vytvoření inzerátu. Na inzerát budete přesměrováni. Nebo "
 "klikněte na tlačítko níže."
@@ -2171,7 +2155,7 @@ msgstr "Aktywuj"
 
 #: inc/core/frontend_views/nem_row_item.php:67
 msgid "Inzerát je neaktivní"
-msgstr "Ogłoszenie jest nieaktywne"
+msgstr "Reklama jest nieaktywna"
 
 #: inc/core/frontend_views/nem_row_item.php:78
 msgid "Deaktivovat"
@@ -2179,11 +2163,11 @@ msgstr "Dezaktywuj"
 
 #: inc/core/frontend_views/nem_row_item.php:80
 msgid "Inzerát je aktivní"
-msgstr "Ogłoszenie jest aktywne"
+msgstr "Reklama jest aktywna"
 
 #: inc/core/frontend_views/nem_row_item.php:85
 msgid "Inzerát čeká na schválení"
-msgstr "Ogłoszenie jest nieaktywne"
+msgstr "Reklama jest nieaktywna"
 
 #: inc/core/frontend_views/objednavkaView.php:8
 msgid "Kredity"
@@ -2815,6 +2799,20 @@ msgstr "Szukaj ogłoszenia"
 #: templates/page-slider.php:25
 msgid "Vyhledávání na mapě"
 msgstr "Wyszukiwanie na mapie"
+
+#~ msgid ""
+#~ "Přihlášení proběhlo úspěšně, probíhá přesměrování na výpis vašeho "
+#~ "hlídacího psa."
+#~ msgstr "Logowanie powiodło się, przekierowano do tworzenia ogłoszenia"
+
+#~ msgid "Přesměrování na výpis hlídacího psa"
+#~ msgstr "Utworzenie psa stróżującego"
+
+#~ msgid "Přihlášení proběhlo úspěšně, probíhá přesměrování na Váš profil."
+#~ msgstr "Logowanie powiodło się, przekierowano do tworzenia ogłoszenia"
+
+#~ msgid "Přesměrování na Váš profil"
+#~ msgstr "Przekieruj do swojego profilu"
 
 #~ msgid "Mám záujem o túto ponuku"
 #~ msgstr "Jestem zainteresowany tą ofertą"
