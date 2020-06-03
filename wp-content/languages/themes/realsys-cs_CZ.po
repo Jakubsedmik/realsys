@@ -15,7 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.3.1\n"
 
 #: 404.php:8
 msgid "404 - STRANA NENALEZENA"
@@ -523,27 +523,27 @@ msgstr "Kliknij, aby powtórzyć"
 
 #: inc/core/configuration/configuration.php:745
 msgid "1+KK"
-msgstr "1+aneks kuchenny"
+msgstr "1"
 
 #: inc/core/configuration/configuration.php:746
 msgid "1+1"
-msgstr "1+1"
+msgstr "2"
 
 #: inc/core/configuration/configuration.php:747
 msgid "2+1"
-msgstr "2+1"
+msgstr "3"
 
 #: inc/core/configuration/configuration.php:748
 msgid "3+1"
-msgstr "3+1"
+msgstr "4"
 
 #: inc/core/configuration/configuration.php:749
 msgid "4+1"
-msgstr "4+1"
+msgstr "5"
 
 #: inc/core/configuration/configuration.php:750
 msgid "5+1"
-msgstr "5+1"
+msgstr "6"
 
 #: inc/core/configuration/configuration.php:764
 #: inc/core/configuration/vue-translations.php:85
@@ -583,7 +583,7 @@ msgstr "Cena"
 #: inc/core/frontend_views/inzeratDetailView_zaloha.php:110
 #: inc/core/frontend_views/inzeratEditView.php:143
 msgid "Dispozice"
-msgstr "Dyspozycja"
+msgstr "Liczba pokoi"
 
 #: inc/core/configuration/configuration.php:794
 msgid "Velikost"
@@ -1494,13 +1494,15 @@ msgstr "Logowanie powiodło się, przekierowano do tworzenia ogłoszenia"
 
 #: inc/core/frontend_controllers/loginController.php:50
 msgid "Přesměrování na vytváření inzerátu"
-msgstr "Dziękujemy za utworzenie ogłoszenia."
+msgstr "Przekieruj do tworzenia ogłoszenia"
 
 #: inc/core/frontend_controllers/loginController.php:53
 msgid ""
 "Přihlášení proběhlo úspěšně, probíhá přesměrování na výpis vašeho hlídacího "
 "psa."
-msgstr "Logowanie powiodło się, przekierowano do tworzenia ogłoszenia"
+msgstr ""
+"Logowanie powiodło się, trwa przekierowanie do Twojej listy psov "
+"strožujacich."
 
 #: inc/core/frontend_controllers/loginController.php:54
 msgid "Přesměrování na výpis hlídacího psa"
@@ -1508,7 +1510,7 @@ msgstr "Utworzenie psa stróżującego"
 
 #: inc/core/frontend_controllers/loginController.php:56
 msgid "Přihlášení proběhlo úspěšně, probíhá přesměrování na Váš profil."
-msgstr "Logowanie powiodło się, przekierowano do tworzenia ogłoszenia"
+msgstr "Logowanie powiodło się, przekierowanie do twojego profilu."
 
 #: inc/core/frontend_controllers/loginController.php:57
 msgid "Přesměrování na Váš profil"
