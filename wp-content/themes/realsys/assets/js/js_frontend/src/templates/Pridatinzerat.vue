@@ -429,8 +429,9 @@
                         <div class="frontImage" :class="errorClass('part_third','db_obrazek_front')">
                             <h3>{{translations.vyberteNahledovyObrazek}}</h3>
                             <div class="row image-feed">
-                                <div class="col-sm-3 image-choose" :class="imageStyle(image)" v-for="image in this.modelData.part_third.db_inzerat_obrazky" @click="setFront(image.db_id)">
+                                <div class="col-sm-3 image-choose" :class="imageStyle(image)" v-for="(image,index) in this.modelData.part_third.db_inzerat_obrazky" @click="setFront(image.db_id)">
                                     <div class="image-choose-inside" :style="{backgroundImage: 'url(' + image.gallery_url + ')'}"></div>
+                                    <i class="fas fa-times removePhoto" @click.stop="removePhoto(index)"></i>
                                 </div>
                             </div>
                             <input type="hidden" v-model.trim="$v.modelData.part_third.db_obrazek_front.$model">
@@ -1557,6 +1558,18 @@
             setFront(id){
                 this.modelData.part_third.db_obrazek_front = id;
             },
+            removePhoto(index){
+                let arr = this.modelData.part_third.db_inzerat_obrazky;
+                for( var i = 0; i < arr.length; i++){
+                    if ( i === index) {
+                        if(arr[index].db_id == this.modelData.part_third.db_obrazek_front){
+                            this.modelData.part_third.db_obrazek_front = false;
+                        }
+                        arr.splice(i, 1);
+                    }
+
+                }
+            },
             imageStyle(image){
                 return {'selected-image' : image.db_id == this.modelData.part_third.db_obrazek_front}
             },
@@ -1825,5 +1838,17 @@
 
     .frontImage, .imagesLoader{
         position: relative;
+    }
+
+    .removePhoto{
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        background-color: #ff951a;
+        color: white;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        border-radius: 50%;
     }
 </style>
