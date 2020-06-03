@@ -308,13 +308,11 @@
                         <div class="inz-box" v-show="doesInputAppearRequire('db_typ_vlastnictvi')">
                             <div class="form-content">
                                 <h3>{{translations.vlastnictvi}}</h3>
-                                <div class="input-content">
-                                    <div class="form-field" :class="errorClass('part_second','db_typ_vlastnictvi')">
-                                        <select name="db_typ_vlastnictvi" v-model.trim="$v.modelData.part_second.db_typ_vlastnictvi.$model">
-                                            <option v-for="value in options.typ_vlastnictvi" :value="value.db_value.value">{{value.db_translation.value}}</option>
-                                        </select>
-                                        <div class="error" v-if="errorAppear('part_second','db_typ_vlastnictvi')">{{translations.poleJePovinne}}</div>
-                                    </div>
+                                <div class="input-content form-field" :class="errorClass('part_second','db_typ_vlastnictvi')">
+                                    <select name="db_typ_vlastnictvi" v-model.trim="$v.modelData.part_second.db_typ_vlastnictvi.$model">
+                                        <option v-for="value in options.typ_vlastnictvi" :value="value.db_value.value">{{value.db_translation.value}}</option>
+                                    </select>
+                                    <div class="error" v-if="errorAppear('part_second','db_typ_vlastnictvi')">{{translations.poleJePovinne}}</div>
                                 </div>
                             </div>
                         </div>
