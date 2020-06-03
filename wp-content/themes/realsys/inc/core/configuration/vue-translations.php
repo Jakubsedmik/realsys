@@ -144,5 +144,6 @@ $pridat_inzerat_translations = array(
 	"titulekInzeratu"=> __("Titulek inzerátu", "realsys"),
 	"mestskaCast"=> __("Městská část", "realsys"),
 	"prochazet" => __(" Procházet", "realsys"),
-	"nahrajteNovy" => __("Nahrajte nový obrázek (maximálně 10 v jednu chvíli)","realsys")
+	"nahrajteNovy" => __("Nahrajte nový obrázek (maximálně 10 v jednu chvíli)","realsys"),
+	"nevalidniPSC" => __("Toto PSČ je nevalidní. Zadávejte ve formátu 12-345", "realsys")
 );

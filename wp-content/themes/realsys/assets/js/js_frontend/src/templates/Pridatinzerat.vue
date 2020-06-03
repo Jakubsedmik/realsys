@@ -141,6 +141,7 @@
                                     <label class="form-field" v-show="doesInputAppearRequire('db_psc')" :class="errorClass('part_first','db_psc')">
                                         <input type="text" name="db_psc" class="input-outline" :placeholder="translations.psc" v-model.trim="$v.modelData.part_first.db_psc.$model">
                                         <div class="error" v-if="errorAppear('part_first','db_psc')">{{translations.poleJePovinne}}</div>
+                                        <div class="error" v-if="!this.$v.modelData['part_first']['db_psc'].validZip">{{translations.nevalidniPSC}}</div>
                                     </label>
                                     <!-- MESTSKA CAST -->
                                     <label class="form-field" v-show="doesInputAppearRequire('db_mestska_cast')" :class="errorClass('part_first','db_mestska_cast')">
@@ -536,6 +537,9 @@
     import vueFilePond from 'vue-filepond';
 
     const FilePond = vueFilePond();
+
+    var rege = RegExp(/^\d{2}-\d{3}$/gm);
+    const validZip = (value) => rege.test(value);
 
     export default {
         name: "Pridatinzerat",
@@ -1702,7 +1706,8 @@
                     db_psc: {
                         required: requiredIf(function () {
                             return this.doesInputAppearRequire("db_psc", true);
-                        })
+                        }),
+                        validZip
                     },
                     db_mestska_cast: {
                         required: requiredIf(function () {
