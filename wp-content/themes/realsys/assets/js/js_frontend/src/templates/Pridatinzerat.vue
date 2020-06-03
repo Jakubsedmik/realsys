@@ -141,6 +141,7 @@
                                     <label class="form-field" v-show="doesInputAppearRequire('db_psc')" :class="errorClass('part_first','db_psc')">
                                         <input type="text" name="db_psc" class="input-outline" :placeholder="translations.psc" v-model.trim="$v.modelData.part_first.db_psc.$model">
                                         <div class="error" v-if="errorAppear('part_first','db_psc')">{{translations.poleJePovinne}}</div>
+                                        <div class="error" v-if="!this.$v.modelData['part_first']['db_psc'].validZip">{{translations.nevalidniPSC}}</div>
                                     </label>
                                     <!-- MESTSKA CAST -->
                                     <label class="form-field" v-show="doesInputAppearRequire('db_mestska_cast')" :class="errorClass('part_first','db_mestska_cast')">
@@ -308,13 +309,11 @@
                         <div class="inz-box" v-show="doesInputAppearRequire('db_typ_vlastnictvi')">
                             <div class="form-content">
                                 <h3>{{translations.vlastnictvi}}</h3>
-                                <div class="input-content">
-                                    <div class="form-field" :class="errorClass('part_second','db_typ_vlastnictvi')">
-                                        <select name="db_typ_vlastnictvi" v-model.trim="$v.modelData.part_second.db_typ_vlastnictvi.$model">
-                                            <option v-for="value in options.typ_vlastnictvi" :value="value.db_value.value">{{value.db_translation.value}}</option>
-                                        </select>
-                                        <div class="error" v-if="errorAppear('part_second','db_typ_vlastnictvi')">{{translations.poleJePovinne}}</div>
-                                    </div>
+                                <div class="input-content form-field" :class="errorClass('part_second','db_typ_vlastnictvi')">
+                                    <select name="db_typ_vlastnictvi" v-model.trim="$v.modelData.part_second.db_typ_vlastnictvi.$model">
+                                        <option v-for="value in options.typ_vlastnictvi" :value="value.db_value.value">{{value.db_translation.value}}</option>
+                                    </select>
+                                    <div class="error" v-if="errorAppear('part_second','db_typ_vlastnictvi')">{{translations.poleJePovinne}}</div>
                                 </div>
                             </div>
                         </div>
@@ -429,8 +428,9 @@
                         <div class="frontImage" :class="errorClass('part_third','db_obrazek_front')">
                             <h3>{{translations.vyberteNahledovyObrazek}}</h3>
                             <div class="row image-feed">
-                                <div class="col-sm-3 image-choose" :class="imageStyle(image)" v-for="image in this.modelData.part_third.db_inzerat_obrazky" @click="setFront(image.db_id)">
+                                <div class="col-sm-3 image-choose" :class="imageStyle(image)" v-for="(image,index) in this.modelData.part_third.db_inzerat_obrazky" @click="setFront(image.db_id)">
                                     <div class="image-choose-inside" :style="{backgroundImage: 'url(' + image.gallery_url + ')'}"></div>
+                                    <i class="fas fa-times removePhoto" @click.stop="removePhoto(index)"></i>
                                 </div>
                             </div>
                             <input type="hidden" v-model.trim="$v.modelData.part_third.db_obrazek_front.$model">
@@ -537,6 +537,9 @@
     import vueFilePond from 'vue-filepond';
 
     const FilePond = vueFilePond();
+
+    var rege = RegExp(/^\d{2}-\d{3}$/gm);
+    const validZip = (value) => rege.test(value);
 
     export default {
         name: "Pridatinzerat",
@@ -1550,6 +1553,17 @@
             setFront(id){
                 this.modelData.part_third.db_obrazek_front = id;
             },
+            removePhoto(index){
+                let arr = this.modelData.part_third.db_inzerat_obrazky;
+                for( var i = 0; i < arr.length; i++){
+                    if ( i === index) {
+                        if(arr[index].db_id == this.modelData.part_third.db_obrazek_front){
+                            this.modelData.part_third.db_obrazek_front = false;
+                        }
+                        arr.splice(i, 1);
+                    }
+                }
+            },
             imageStyle(image){
                 return {'selected-image' : image.db_id == this.modelData.part_third.db_obrazek_front}
             },
@@ -1684,7 +1698,8 @@
                     db_psc: {
                         required: requiredIf(function () {
                             return this.doesInputAppearRequire("db_psc", true);
-                        })
+                        }),
+                        validZip
                     },
                     db_mestska_cast: {
                         required: requiredIf(function () {
@@ -1818,5 +1833,17 @@
 
     .frontImage, .imagesLoader{
         position: relative;
+    }
+
+    .removePhoto{
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        background-color: #ff951a;
+        color: white;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        border-radius: 50%;
     }
 </style>
