@@ -42,8 +42,8 @@ class loginController extends frontendController {
 					if($login_result){
 						$uzivatel->logIn();
 						/* TODO prozatímní redirect na přidání inzerátu, po spuštění musí být na profil */
-						/*frontendError::addMessage(__("Přihlášení","realsys"), SUCCESS, __("Přihlášení proběhlo úspěšně, probíhá přesměrování na vytváření inzerátu","realsys"));
-						Tools::jsRedirect(Tools::getFERoute("inzeratClass",false, "add"),1500);*/
+						frontendError::addMessage(__("Přihlášení","realsys"), SUCCESS, __("Přihlášení proběhlo úspěšně, probíhá přesměrování na vytváření inzerátu","realsys"));
+						Tools::jsRedirect(Tools::getFERoute("inzeratClass",false, "add"),1500);
 
 						/*
 						if(Tools::checkPresenceOfParam("create",$this->requestData)){
