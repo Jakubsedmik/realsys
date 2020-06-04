@@ -1094,7 +1094,7 @@
                             type: Boolean
                         },
                         db_dalsi_vybaveni: {
-                            required: true,
+                            required: false,
                             appear: true,
                             type: String
                         },
