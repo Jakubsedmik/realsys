@@ -1856,7 +1856,7 @@ msgstr "Zobacz, jakie nowe oferty znalazł Twój pies stróżujący."
 
 #: inc/core/frontend_views/inzeratCreatedView.php:10
 msgid "Inzerát byl vytvořen"
-msgstr "Ogłoszenie jest aktywna"
+msgstr "Ogłoszenie jest aktywne"
 
 #: inc/core/frontend_views/inzeratCreatedView.php:11
 msgid "Děkujeme za vytvoření inzerátu."
