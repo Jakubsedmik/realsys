@@ -408,6 +408,9 @@ class Tools {
 
         switch ($type){
             case "date" :
+                if(is_numeric($value)){
+                    return $value;
+                }
                 $timestamp = strtotime($value);
                 return $timestamp;
                 break;
@@ -868,18 +871,33 @@ class Tools {
 
 
     public static function getSelectBoxForDials($classname, $property, $currentValue, $label='Výběr', $id="vyber",$search_label='Vyhledávání'){
-        $allPossibleDials = assetsFactory::getAllDials($classname, $property);
-        $output = '<select id="' . $id . '" name="' . $id .'" class="mdb-select md-form mt-0" searchable="' . $search_label . '">';
-        $output .= '<option value="" disabled selected>' . $label . '</option>';
-        foreach ($allPossibleDials as $key => $value){
-            if($value->db_value == $currentValue) {
-	            $output .= '<option selected value="' . $value->db_value . '">' . $value->db_translation . '</option>';
-            }else{
-	            $output .= '<option value="' . $value->db_value . '">' . $value->db_translation . '</option>';
-            }
+	    $output = '<select id="' . $id . '" name="' . $id .'" class="mdb-select md-form mt-0" searchable="' . $search_label . '">';
+	    $output .= '<option value="" disabled selected>' . $label . '</option>';
+	    if(is_array($property)){
+	        $allPossibleDials = $property;
+
+		    foreach ($allPossibleDials as $key => $value){
+			    if($value == $currentValue) {
+				    $output .= '<option selected value="' . $value . '">' . $key . '</option>';
+			    }else{
+				    $output .= '<option value="' . $value . '">' . $key . '</option>';
+			    }
+		    }
+
+        }else{
+		    $allPossibleDials = assetsFactory::getAllDials($classname, $property);
+		    foreach ($allPossibleDials as $key => $value){
+			    if($value->db_value == $currentValue) {
+				    $output .= '<option selected value="' . $value->db_value . '">' . $value->db_translation . '</option>';
+			    }else{
+				    $output .= '<option value="' . $value->db_value . '">' . $value->db_translation . '</option>';
+			    }
+		    }
+
         }
-        $output .= '</select>';
-        return $output;
+	    $output .= '</select>';
+	    return $output;
+
     }
 
 

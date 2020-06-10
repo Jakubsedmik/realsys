@@ -34,4 +34,13 @@ class transakceClass extends zakladniKamenClass {
 		$userid = uzivatelClass::getUserLoggedId();
 		return $userid == $this->db_id_odesilatel;
 	}
+
+	public function getInterfaceTypes() {
+		return array(
+			"db_id" => "number",
+			"db_nazev_sluzby" => "string",
+			"db_mnozstvi" => "number",
+			"db_accept" => "boolean"
+		);
+	}
 }

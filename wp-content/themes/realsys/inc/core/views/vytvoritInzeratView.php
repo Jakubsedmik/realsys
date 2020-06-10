@@ -30,17 +30,48 @@
 					<label for="db_popis">Popisek</label>
 				</div>
 
-                <!--Cena-->
-                <div class="md-form">
-                    <input type="number" id="db_cena" name="db_cena" class="form-control" value="<?php echo $this->getPostData('db_cena'); ?>">
-                    <label for="db_cena">Cena</label>
-                </div>
 
-                <!--Cena poznámka-->
-                <div class="md-form">
-                    <input type="text" id="db_cena_poznamka" name="db_cena_poznamka" class="form-control" value="<?php echo $this->getPostData('db_cena_poznamka'); ?>">
-                    <label for="db_cena_poznamka">Poznámka k ceně</label>
-                </div>
+				<div class="form-row">
+
+					<!-- Cena -->
+					<div class="col">
+						<div class="md-form">
+							<input type="number" id="db_cena" name="db_cena" class="form-control" value="<?php echo $this->getPostData('db_cena'); ?>">
+							<label for="db_cena">Cena</label>
+						</div>
+					</div>
+
+					<!--Najem-->
+					<div class="col">
+						<div class="md-form">
+							<input type="number" id="db_cena_najem" name="db_cena_najem" class="form-control" value="<?php echo $this->getPostData('db_cena_najem'); ?>">
+							<label for="db_cena_najem">Nájem (pronájem)</label>
+						</div>
+					</div>
+
+					<!-- Poplatky -->
+					<div class="col">
+						<div class="md-form">
+							<input type="number" id="db_poplatky" name="db_poplatky" class="form-control" value="<?php echo $this->getPostData('db_poplatky'); ?>">
+							<label for="db_poplatky">Poplatky</label>
+						</div>
+					</div>
+
+					<!-- Kauce -->
+					<div class="col">
+						<div class="md-form">
+							<input type="number" id="db_kauce" name="db_kauce" class="form-control" value="<?php echo $this->getPostData('db_kauce'); ?>">
+							<label for="db_kauce">Kauce</label>
+						</div>
+					</div>
+				</div>
+
+
+				<!--Cena poznámka-->
+				<div class="md-form">
+					<input type="text" id="db_cena_poznamka" name="db_cena_poznamka" class="form-control" value="<?php echo $this->getPostData('db_cena_poznamka'); ?>">
+					<label for="db_cena_poznamka">Poznámka k ceně</label>
+				</div>
 
 
 				<!-- Typ nemovitosti -->
@@ -78,8 +109,11 @@
 					<div class="col">
 						<!-- Počet místností -->
 						<div class="md-form">
-							<input type="text" id="pocet_mistnosti" name="db_pocet_mistnosti" class="form-control" value="<?php echo $this->getPostData('db_pocet_mistnosti'); ?>" min="1">
-							<label for="pocet_mistnosti">Počet místností</label>
+							<div class="md-form">
+								<?php
+								global $dispozice_options;
+								echo Tools::getSelectBoxForDials('inzeratClass', $dispozice_options , $this->getPostData('db_pocet_mistnosti'),'Počet místností','db_pocet_mistnosti'); ?>
+							</div>
 						</div>
 					</div>
 					<div class="col">
@@ -89,6 +123,14 @@
 							<label for="db_patro">Patro</label>
 						</div>
 					</div>
+					<div class="col">
+						<!-- Celkem podlaží -->
+						<div class="md-form">
+							<input type="number" id="db_celkem_podlazi" name="db_celkem_podlazi" class="form-control" value="<?php echo $this->getPostData('db_celkem_podlazi'); ?>" min="0">
+							<label for="db_celkem_podlazi">Celkem podlaží</label>
+						</div>
+					</div>
+
 				</div>
 
 				<!-- Garáž a balkon -->
@@ -114,6 +156,19 @@
                     </div>
 				</div>
 
+				<!-- Další vybavení -->
+				<div class="md-form">
+					<textarea id="db_dalsi_vybaveni" name="db_dalsi_vybaveni" class="md-textarea form-control"><?php echo $this->getPostData('db_dalsi_vybaveni'); ?></textarea>
+					<label for="db_dalsi_vybaveni">Další vybavení</label>
+				</div>
+
+				<!-- Vhodny pro -->
+				<div class="md-form">
+					<input type="text" id="db_vhodny_pro" name="db_vhodny_pro" class="form-control" value="<?php echo $this->getPostData('db_vhodny_pro'); ?>">
+					<label for="db_vhodny_pro">Vhodný pro</label>
+				</div>
+
+
 				<!-- Stav objektu -->
 				<div class="md-form mt-2">
 					<?php echo Tools::getSelectBoxForDials('inzeratClass', 'stav_objektu', $this->getPostData('db_stav_objektu'),'Stav objektu','db_stav_objektu'); ?>
@@ -134,16 +189,34 @@
 					<?php echo Tools::getSelectBoxForDials('inzeratClass', 'material', $this->getPostData('db_material'),'Materiál','db_material'); ?>
                 </div>
 
-				<!-- Podlahová plocha -->
-				<div class="md-form">
-					<input type="number" id="db_podlahova_plocha" name="db_podlahova_plocha" class="form-control" min="10" value="<?php echo $this->getPostData('db_podlahova_plocha'); ?>">
-					<label for="db_podlahova_plocha">Podlahová plocha</label>
-				</div>
 
-				<!-- Pozemková plocha -->
-				<div class="md-form">
-					<input type="number" id="db_pozemkova_plocha" name="db_pozemkova_plocha" class="form-control" min="10" value="<?php echo $this->getPostData('db_pozemkova_plocha'); ?>">
-					<label for="db_pozemkova_plocha">Pozemková plocha</label>
+
+
+
+				<div class="form-row">
+					<div class="col">
+						<!-- Podlahová plocha -->
+						<div class="md-form">
+							<input type="number" id="db_podlahova_plocha" name="db_podlahova_plocha" class="form-control" min="10" value="<?php echo $this->getPostData('db_podlahova_plocha'); ?>">
+							<label for="db_podlahova_plocha">Podlahová plocha</label>
+						</div>
+					</div>
+
+					<div class="col">
+						<!-- Pozemková plocha -->
+						<div class="md-form">
+							<input type="number" id="db_pozemkova_plocha" name="db_pozemkova_plocha" class="form-control" min="10" value="<?php echo $this->getPostData('db_pozemkova_plocha'); ?>">
+							<label for="db_pozemkova_plocha">Pozemková plocha</label>
+						</div>
+					</div>
+
+					<div class="col">
+						<!-- Užitková plocha -->
+						<div class="md-form">
+							<input type="number" id="db_uzitkova_plocha" name="db_uzitkova_plocha" class="form-control" min="10" value="<?php echo $this->getPostData('db_uzitkova_plocha'); ?>">
+							<label for="db_uzitkova_plocha">Užitková plocha</label>
+						</div>
+					</div>
 				</div>
 
 				<div class="form-row">
@@ -197,6 +270,15 @@
 				<div class="form-row">
 					<div class="col">
 						<?php echo Tools::switcher("Ano","Ne", "Top", 1, "db_top", $this->getPostData('db_top')); ?>
+					</div>
+					<div class="col">
+						<div class="md-form">
+							<?php
+								$mdbTime = Tools::getMdbNotationDate(time());
+							?>
+							<input placeholder="Vyberte datum" type="text" id="db_k_dispozici_od" name="k_dispozici_od" class="form-control datepicker" data-value="<?php echo $mdbTime; ?>">
+							<label for="db_k_dispozici_od">K dispozici od</label>
+						</div>
 					</div>
 				</div>
 

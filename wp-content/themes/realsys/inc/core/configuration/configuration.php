@@ -386,6 +386,32 @@ $field_rules = array(
 			'type'     => STRING511,
 			'required' => true
 		),
+	),
+	"transakceClass" => array(
+		"db_id" => array(
+			"type" => NUMBER,
+			"required" => false
+		),
+		'db_nazev_sluzby'      => array(
+			'type'     => STRING255,
+			'required' => true
+		),
+		'db_id_odesilatel' => array(
+			'type' => FOREIGN_KEY,
+			'required' => true
+		),
+		'db_id_prijemce' => array(
+			'type' => NUMBER,
+			'required' => true
+		),
+		'db_mnozstvi' => array(
+			'type' => NUMBER,
+			'required' => true
+		),
+		'db_accept' => array(
+			'type' => BOOL,
+			'required' => true
+		),
 	)
 );
 
@@ -594,7 +620,9 @@ $dictionary = array(
 	'db_stav_inzeratu'   => 'Stav inzerátu',
 	'db_stav'            => 'Stav objednávky',
 	'db_hash'            => 'Hash platební brány',
-	'db_uzivatel_id'     => 'Id uživatele'
+	'db_uzivatel_id'     => 'Id uživatele',
+	'db_nazev_sluzby' => "Název služby",
+	'db_accept' => "Zaúčtováno"
 );
 
 
@@ -624,6 +652,9 @@ $models = array(
 	),
 	"grafy"           => array(
 		"backendController" => "graf"
+	),
+	"transakceClass" => array(
+		"backendController" => "transakce"
 	)
 );
 
