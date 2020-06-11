@@ -780,7 +780,8 @@ $dispozice_options = array(
 	__("2+1", "realsys") => __("2+1", "realsys"),
 	__("3+1", "realsys") => __("3+1", "realsys"),
 	__("4+1", "realsys") => __("4+1", "realsys"),
-	__("5+1", "realsys") => __("5+1", "realsys")
+	__("5+1", "realsys") => __("5+1", "realsys"),
+	__("Více než 6", "realsys") => __("Více než 6", "realsys"),
 );
 
 
