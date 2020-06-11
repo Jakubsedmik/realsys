@@ -9,7 +9,7 @@
 	</div>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-6">
+			<div class="col-sm-4">
 				<div class="p-2 bg-secondary">
 					<h4 class="text-white text-center">Hodnota objednávek za posledních 30 dní</h4>
 				</div>
@@ -18,12 +18,21 @@
 				?>
 
 			</div>
-			<div class="col-sm-6">
+			<div class="col-sm-4">
 				<div class="p-2 bg-primary">
 					<h4 class="text-white text-center">Počet objednávek za posledních 30 dní</h4>
 				</div>
 				<?php
 				echo $this->getGraph("pocet_obj", "Počet objednávek", "objednavkaClass", time() - 24 * 60 * 60 * 30, time(),"d.m.Y", false,'line', 'rgba(66, 133, 244, 0.5)', '#4285f4', 2 );
+				?>
+
+			</div>
+			<div class="col-sm-4">
+				<div class="p-2 bg-info">
+					<h4 class="text-white text-center">Hodnota transakcí za posledních 30 dní</h4>
+				</div>
+				<?php
+				echo $this->getGraph("hodnota_transakc", "Hodnota  transakcí", "transakceClass", time() - 24 * 60 * 60 * 30, time(),"d.m.Y", "db_mnozstvi",'line', 'rgba(51, 181, 229, 0.5)', '#4285f4', 2 );
 				?>
 
 			</div>

@@ -9,7 +9,6 @@ class inzeratyController extends controller {
 
 	public function edit() {
 
-
 		if ( Tools::checkPresenceOfParam( "id", $this->requestData ) ) {
 			$id      = $this->requestData['id'];
 			$inzerat = assetsFactory::getEntity( 'inzeratClass', $id );
@@ -55,7 +54,15 @@ class inzeratyController extends controller {
 						"db_balkon",
 						"db_stav_inzeratu",
 						"db_cena",
-						"db_cena_poznamka"
+						"db_cena_poznamka",
+						"db_celkem_podlazi",
+						"db_uzitkova_plocha",
+						"db_cena_najem",
+						"db_poplatky",
+						"db_kauce",
+						"db_dalsi_vybaveni",
+						"db_k_dispozici_od",
+						"db_vhodny_pro"
 					),
 					$request_data,
 					'inzeratClass',
@@ -110,7 +117,15 @@ class inzeratyController extends controller {
 					"db_vybavenost",
 					"db_material",
 					'db_cena',
-					'db_cena_poznamka'
+					'db_cena_poznamka',
+					"db_celkem_podlazi",
+					"db_uzitkova_plocha",
+					"db_cena_najem",
+					"db_poplatky",
+					"db_kauce",
+					"db_dalsi_vybaveni",
+					"db_k_dispozici_od",
+					"db_vhodny_pro"
 				),
 				$request_data,
 				'inzeratClass',
