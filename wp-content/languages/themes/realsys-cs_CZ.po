@@ -650,7 +650,7 @@ msgstr "Stróżujący pies"
 
 #: inc/core/configuration/configuration.php:878
 msgid "Topování inzerátu."
-msgstr "Ogrzewanie reklam."
+msgstr "Wyróżnianie ogłoszenia."
 
 #: inc/core/configuration/configuration.php:886
 #: inc/core/configuration/vue-translations.php:63
@@ -981,7 +981,7 @@ msgstr "Najpierw ustaw proszę filtr"
 
 #: inc/core/configuration/vue-translations.php:62
 msgid "Chci bydlet"
-msgstr "Chcę mieszkać"
+msgstr "Chcę zamieszkać"
 
 #: inc/core/configuration/vue-translations.php:64
 msgid "Zobrazení kontaktu stojí"
@@ -1915,7 +1915,7 @@ msgstr "Powierzchnia działki"
 
 #: inc/core/frontend_views/inzeratDetailView.php:188
 msgid "Datum přidání"
-msgstr "Data założenia"
+msgstr "Ogłoszenie dodane"
 
 #: inc/core/frontend_views/inzeratDetailView.php:198
 #: inc/core/frontend_views/inzeratDetailView_zaloha.php:146

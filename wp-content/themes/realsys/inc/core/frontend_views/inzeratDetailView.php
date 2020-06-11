@@ -133,7 +133,7 @@ if ( Tools::checkPresenceOfParam( "transactionid", $this->requestData ) ) {
 
                         <div class="row">
                             <div class="col-sm-12">
-                                <div class="nem-detail-desc">
+                                <div class="nem-detail-desc" id="vice">
                                     <h3><?php echo $inzerat->getAerialName(); ?></h3>
                                     <p>
 										<?php echo $inzerat->dejData( "db_popis" ); ?>
