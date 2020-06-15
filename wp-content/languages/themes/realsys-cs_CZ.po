@@ -221,7 +221,7 @@ msgstr "Usunięcie nie powiodło się"
 
 #: inc/core/api.php:628 inc/core/api.php:785
 msgid "Inzerát není ve vlastnictví uživatele."
-msgstr "Reklama nie jest własnością użytkownika."
+msgstr "Ogłoszenie nie jest własnością użytkownika."
 
 #: inc/core/api.php:632 inc/core/api.php:691 inc/core/api.php:789
 #: inc/core/api.php:943 inc/core/api.php:1019
@@ -243,7 +243,7 @@ msgstr "Nieprawidłowe wartości statusu ogłoszenia"
 
 #: inc/core/api.php:687
 msgid "Inzerát není ve vlastnictví uživatele"
-msgstr "Reklama nie jest własnością użytkownika"
+msgstr "Ogłoszenie nie jest własnością użytkownika"
 
 #: inc/core/api.php:856 inc/core/api.php:883
 msgid "Hlídací pes úspěšně vytvořen"
@@ -877,7 +877,7 @@ msgstr "Promować"
 
 #: inc/core/configuration/vue-translations.php:31
 msgid "Inzerát je již Topovaný"
-msgstr "Reklama jest już na szczycie"
+msgstr "Ogłoszenie jest już na szczycie"
 
 #: inc/core/configuration/vue-translations.php:32
 msgid "top"
@@ -1435,44 +1435,44 @@ msgstr "Niektóre pola pozostały puste"
 #: inc/core/frontend_controllers/inzeratDetailController.php:47
 #: inc/core/frontend_controllers/inzeratDetailController.php:59
 msgid "Inzerát"
-msgstr "Oferta"
+msgstr "Ogłoszenie"
 
 #: inc/core/frontend_controllers/inzeratDetailController.php:40
 msgid ""
 "Pozor tento inzerát je neaktivní. Buď čeká na schválení administrátorem a "
 "nebo jste ho deaktivovali. Tento inzerát vidíte pouze vy."
 msgstr ""
-"Uwaga ta oferta jest nieaktywna. Czeka na akceptację Administratora lub ją "
-"wyłączyłeś. Tylko Ty możesz zobaczyć tą ofertę."
+"Uwaga ta ogłoszenia jest nieaktywna. Czeka na akceptację Administratora lub "
+"ją wyłączyłeś. Tylko Ty możesz zobaczyć tą ogłoszenie."
 
 #: inc/core/frontend_controllers/inzeratDetailController.php:42
 #: inc/core/frontend_controllers/inzeratDetailController.php:47
 msgid "Inzerát není aktivní."
-msgstr "Oferta nie jest aktywna."
+msgstr "Ogłoszenie nie jest aktywne."
 
 #: inc/core/frontend_controllers/inzeratDetailController.php:59
 msgid "Zadaný inzerát neexistuje."
-msgstr "Podana oferta nie istnieje."
+msgstr "Podane ogłoszenie nie istnieje."
 
 #: inc/core/frontend_controllers/inzeratEditController.php:31
 #: inc/core/frontend_controllers/inzeratEditController.php:121
 msgid "Vlastnictví inzerátu"
-msgstr "Własność oferty"
+msgstr "Własność ogłoszenia"
 
 #: inc/core/frontend_controllers/inzeratEditController.php:31
 #: inc/core/frontend_controllers/inzeratEditController.php:121
 msgid "Nejste vlastníkem daného inzerátu"
-msgstr "Nie jesteś właścicielem oferty"
+msgstr "Nie jesteś właścicielem ogłoszenia"
 
 #: inc/core/frontend_controllers/inzeratEditController.php:36
 #: inc/core/frontend_controllers/inzeratEditController.php:126
 msgid "Inzerát / uživatel"
-msgstr "Oferta / Użytkownik"
+msgstr "Ogłoszenia / Użytkownik"
 
 #: inc/core/frontend_controllers/inzeratEditController.php:36
 #: inc/core/frontend_controllers/inzeratEditController.php:126
 msgid "Inzerát nebo uživatel nebyli nalezeni"
-msgstr "Nie znaleziono oferty lub Użytkownika"
+msgstr "Nie znaleziono ogłoszenia lub Użytkownika"
 
 #: inc/core/frontend_controllers/inzeratEditController.php:41
 #: inc/core/frontend_controllers/inzeratEditController.php:131
@@ -1870,7 +1870,7 @@ msgstr "Nazwa:"
 
 #: inc/core/frontend_views/hlidacipesView.php:9
 msgid "Podívejte se jaké Vám hlídací pes pohlídal nové inzeráty."
-msgstr "Zobacz, jakie nowe oferty znalazł Twój pies stróżujący."
+msgstr "Zobacz, jakie nowe ogłoszenia znalazł Twój pies stróżujący."
 
 #: inc/core/frontend_views/inzeratCreatedView.php:10
 msgid "Inzerát byl vytvořen"
@@ -1881,8 +1881,8 @@ msgid ""
 "Děkujeme za vytvoření inzerátu. Na inzerát budete přesměrováni. Nebo "
 "klikněte na tlačítko níže."
 msgstr ""
-"Dziękujemy za utworzenie reklamy. Nastąpi przekierowanie do reklamy. Lub "
-"kliknij przycisk poniżej."
+"Dziękujemy za utworzenie ogłoszenia. Nastąpi przekierowanie do ogłoszenia. "
+"Lub kliknij przycisk poniżej."
 
 #: inc/core/frontend_views/inzeratDetailView.php:28
 msgid "Zpět na výpis"
@@ -1939,7 +1939,7 @@ msgstr "Parking"
 
 #: inc/core/frontend_views/inzeratDetailView.php:304
 msgid "Podobné inzeráty"
-msgstr "Podobne oferty"
+msgstr "Podobne ogłoszenia"
 
 #: inc/core/frontend_views/inzeratDetailView_zaloha.php:65
 msgid "Základní informace"
@@ -1964,7 +1964,7 @@ msgstr "Parametry nieruchomości"
 
 #: inc/core/frontend_views/inzeratEditView.php:14
 msgid "Editace inzerátu"
-msgstr "Edycja oferty"
+msgstr "Edycja ogłoszenia"
 
 #: inc/core/frontend_views/inzeratEditView.php:51
 msgid "Typ Nemovitosti"
@@ -2035,13 +2035,13 @@ msgstr "Zobacz ogłoszenie"
 
 #: inc/core/frontend_views/loginView.php:8
 msgid "Před vytvořením inzerátu se nejprve přihlašte"
-msgstr "Zaloguj się przed utworzeniem reklamy"
+msgstr "Zaloguj się przed utworzeniem ogłoszenia"
 
 #: inc/core/frontend_views/loginView.php:9
 msgid ""
 "Pro vytvoření inzerátu je třeba být přihlášen nebo registrován. Následně Vás "
 "přesuneme hned na vytváření inzerátu."
-msgstr "Musisz być zalogowany lub zarejestrowany, aby utworzyć reklamę."
+msgstr "Musisz być zalogowany lub zarejestrowany, aby utworzyć ogłoszenie."
 
 #: inc/core/frontend_views/loginView.php:36
 #: inc/core/frontend_views/loginView.php:101
@@ -2173,7 +2173,7 @@ msgstr "Aktywuj"
 
 #: inc/core/frontend_views/nem_row_item.php:67
 msgid "Inzerát je neaktivní"
-msgstr "Reklama jest nieaktywna"
+msgstr "Ogłoszenie jest nieaktywne"
 
 #: inc/core/frontend_views/nem_row_item.php:78
 msgid "Deaktivovat"
@@ -2181,11 +2181,11 @@ msgstr "Dezaktywuj"
 
 #: inc/core/frontend_views/nem_row_item.php:80
 msgid "Inzerát je aktivní"
-msgstr "Reklama jest aktywna"
+msgstr "Ogłoszenie jest aktywne"
 
 #: inc/core/frontend_views/nem_row_item.php:85
 msgid "Inzerát čeká na schválení"
-msgstr "Reklama jest nieaktywna"
+msgstr "Ogłoszenie jest nieaktywna"
 
 #: inc/core/frontend_views/objednavkaView.php:8
 msgid "Kredity"
@@ -2492,11 +2492,11 @@ msgstr "Nieruchomość Użytkownika"
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:346
 #: inc/core/frontend_views/uzivatelDetailView.php:105
 msgid "Vložit inzerát"
-msgstr "Dodaj ofertę"
+msgstr "Dodaj ogłoszenie"
 
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:344
 msgid "Všechny inzeráty"
-msgstr "Wszystkie oferty"
+msgstr "Wszystki ogłoszenia"
 
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:357
 msgid "Moji hlídací psi"
@@ -2508,11 +2508,11 @@ msgstr "Ostatni widok:"
 
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:371
 msgid "Počet nových inzerátů:"
-msgstr "Liczba nowych ofert:"
+msgstr "Liczba nowych ogłoszenie:"
 
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:372
 msgid "inzerátů"
-msgstr "oferty"
+msgstr "ogłoszenia"
 
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:376
 msgid "Je prémium:"
