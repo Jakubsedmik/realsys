@@ -25,7 +25,7 @@
 </section-->
 
 
-<section>
+<section class="front-lower-section">
     <div class="sluzby-sec">
         <div class="wrapper">
             <div class="sec-title text-center">
