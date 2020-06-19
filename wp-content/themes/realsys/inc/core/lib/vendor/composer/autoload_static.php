@@ -51,11 +51,20 @@ class ComposerStaticInitf968db9cb3c66fa2a280581952c8d626
         ),
     );
 
+    public static $classMap = array (
+        'Fakturoid\\Client' => __DIR__ . '/..' . '/fakturoid/fakturoid-php/lib/Fakturoid/Client.php',
+        'Fakturoid\\Exception' => __DIR__ . '/..' . '/fakturoid/fakturoid-php/lib/Fakturoid/Exception.php',
+        'Fakturoid\\Request' => __DIR__ . '/..' . '/fakturoid/fakturoid-php/lib/Fakturoid/Request.php',
+        'Fakturoid\\Requester' => __DIR__ . '/..' . '/fakturoid/fakturoid-php/lib/Fakturoid/Requester.php',
+        'Fakturoid\\Response' => __DIR__ . '/..' . '/fakturoid/fakturoid-php/lib/Fakturoid/Response.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitf968db9cb3c66fa2a280581952c8d626::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitf968db9cb3c66fa2a280581952c8d626::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitf968db9cb3c66fa2a280581952c8d626::$classMap;
 
         }, null, ClassLoader::class);
     }

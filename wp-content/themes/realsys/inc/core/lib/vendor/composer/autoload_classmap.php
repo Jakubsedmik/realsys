@@ -6,4 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Fakturoid\\Client' => $vendorDir . '/fakturoid/fakturoid-php/lib/Fakturoid/Client.php',
+    'Fakturoid\\Exception' => $vendorDir . '/fakturoid/fakturoid-php/lib/Fakturoid/Exception.php',
+    'Fakturoid\\Request' => $vendorDir . '/fakturoid/fakturoid-php/lib/Fakturoid/Request.php',
+    'Fakturoid\\Requester' => $vendorDir . '/fakturoid/fakturoid-php/lib/Fakturoid/Requester.php',
+    'Fakturoid\\Response' => $vendorDir . '/fakturoid/fakturoid-php/lib/Fakturoid/Response.php',
 );
