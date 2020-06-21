@@ -775,7 +775,7 @@ class Tools {
 	}
 
 
-	public static function sendMail($to, $subject="Realys", $template=false, $data=array(), $headers=''){
+	public static function sendMail($to, $subject="Realys", $template=false, $data=array(), $headers='', $attachment = array()){
 	    if(is_array($data) && $to && is_string($to)){
 		    if($template){
 			    $cargo = self::serveTemplate($template, $data);
@@ -793,7 +793,8 @@ class Tools {
 				    $to,
 				    $subject,
 				    $cargo,
-				    $headers
+				    $headers,
+				    $attachment
 			    );
 
 		    }

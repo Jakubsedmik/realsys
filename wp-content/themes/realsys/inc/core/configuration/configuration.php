@@ -761,6 +761,9 @@ $ajax_localization = array(
 
 require_once __DIR__ . "/configuration_images.php";
 
+define("INVOICES_PATH","uploads/invoices/");
+define("INVOICES_URL", home_url() . "/wp-content/uploads/invoices/");
+
 
 define( "FRONTEND_IMAGES_PATH", get_template_directory_uri() . "/assets/images/images_frontend/" );
 

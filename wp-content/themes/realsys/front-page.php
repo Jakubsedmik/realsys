@@ -3,7 +3,7 @@
 <?php
 	$fakturoid = new fakturoidClass();
 	$objednavka = assetsFactory::getEntity("objednavkaClass",1);
-	$fakturoid->sendInvoice($objednavka);
+	$fakturoid->createInvoiceForOrder($objednavka, true, true);
 	//$uzivatel = assetsFactory::getEntity("uzivatelClass",2);
 	//globalUtils::writeDebug($fakturoid->sendContact($uzivatel));
 
