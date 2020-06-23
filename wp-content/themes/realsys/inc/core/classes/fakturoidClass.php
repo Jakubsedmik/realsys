@@ -18,16 +18,16 @@ class fakturoidClass {
 	}
 
 	public function createInvoiceForOrder(objednavkaClass $order, $generateInvoice = true , $sendmail = false){
+
 		$invoice = $this->sendInvoice($order);
 		if(is_object($invoice)){
 
 			$invoiceId = $invoice->id;
 
 			if($generateInvoice){
+
 				sleep(2);
-				// tady pozor, při vytváření faktury ji hned nemáme v PDF, proto je třeba dát pozor a zvážit zdali nebudeme faktury nějakým způsobem dogenerovávat pomocí cronu
-				// protože ne vždy může dojít k jejich vytovření ihned a současně s tím musíme dát pak pozor abychom neposílali prázdné faktury v mailu
-				return $this->getAndSaveInvoicePDFForOrder($order, $sendmail);
+				return $this->getAndSaveInvoicePDFForOrder($order,false, $sendmail);
 			}
 
 		}else{
@@ -38,10 +38,10 @@ class fakturoidClass {
 	public function getAndSaveInvoicePDFForOrder(objednavkaClass $order, $invoice_id = false, $sendmail = false){
 
 		if($invoice_id && is_numeric($invoice_id)){
-			$link = $this->getAndSaveInvoicePDF($invoice_id);
-			// přidat do tabulky invoice link a přidat do modelu
 
+			$link = $this->getAndSaveInvoicePDF($invoice_id);
 			$order->db_invoice_link = $link;
+
 		}else{
 			// dej id objednávky
 			$id_order = $order->getId();
@@ -78,19 +78,25 @@ class fakturoidClass {
 			return false;
 		}
 
-		$data = $response->getBody();
-		$storePath = Tools::getPathTillFolder("wp-content", __DIR__) . INVOICES_PATH;
-		$filename = "invoice_{$invoiceId}.pdf";
-		$storePath_filename = $storePath . $filename;
-		file_put_contents( $storePath_filename , $data);
 
-		if($sendmail){
-			Tools::sendMail($mail, "Faktura","sendInvoice",array(), '',array(
-				$storePath_filename
-			));
+		$data = $response->getBody();
+		if(!is_null($data)){
+
+			$storePath = Tools::getPathTillFolder("wp-content", __DIR__) . INVOICES_PATH;
+			$filename = "invoice_{$invoiceId}.pdf";
+			$storePath_filename = $storePath . $filename;
+			file_put_contents( $storePath_filename , $data);
+
+			if($sendmail){
+
+				Tools::sendMail($mail, "Objednávka služby","sendInvoice",array(), '',array(
+					$storePath_filename
+				));
+			}
+			return INVOICES_URL . $filename;
 		}
 
-		return INVOICES_URL . $filename;
+
 	}
 
 
@@ -105,36 +111,60 @@ class fakturoidClass {
 			$uzivatel = $order->getSubobject("uzivatel");
 			$contact = $this->sendContact($uzivatel);
 
+			if($contact !== false){
 
-			$invoice_params = array(
-				"subject_id" => $contact->id,
-				"lines" => array(
-					"name" => "Platba za kredity",
-					"quantity" => $order->db_mnozstvi,
-					"unit_price" => $order->db_cena / $order->db_mnozstvi
-				),
-				"custom_id" => $order->getId()
-			);
+				$invoice_params = array(
+					"subject_id" => $contact->id,
+					"lines" => array(
+						"name" => "Platba za kredity",
+						"quantity" => $order->db_mnozstvi,
+						"unit_price" => $order->db_cena / $order->db_mnozstvi
+					),
+					"custom_id" => $order->getId(),
+					"paid" => true
+				);
 
-			try {
 
-				$invoice = $this->getInvoiceBasedOnId($order->getId());
+				try {
 
-				if($invoice === false){
-					$response = $this->client->createInvoice($invoice_params);
-					return $response->getBody();
-				}else{
+					$invoice = $this->getInvoiceBasedOnId($order->getId());
 
-					/* Spárování řádků, máme vždy pouze jeden */
-					$line_id = $invoice->lines[0]->id;
-					$invoice_params['lines']['id'] = $line_id;
+					if($invoice === false){
+						$response = $this->client->createInvoice($invoice_params);
+						$response = $response->getBody();
+						/*$this->client->fireInvoice($response->id, "pay",array(
+								"paid_at" => date("d.m.Y",time())
+							)
+						);*/
 
-					$response = $this->client->updateInvoice($invoice->id, $invoice_params);
-					return $response->getBody();
+						$order->db_invoice_id = $response->id;
+
+						return $response;
+					}else{
+
+						/* Spárování řádků, máme vždy pouze jeden */
+						$line_id = $invoice->lines[0]->id;
+						$invoice_params['lines']['id'] = $line_id;
+
+						$response = $this->client->updateInvoice($invoice->id, $invoice_params);
+						$order->db_invoice_id = $invoice->id;
+
+						$paid_at = $invoice->paid_at;
+						if(is_null($paid_at)){
+							$this->client->fireInvoice($invoice->id, "pay",array(
+								"paid_at" => date("d.m.Y",time())
+								)
+							);
+						}
+						return $response->getBody();
+					}
+
+				}catch (\Fakturoid\Exception $e){
+					trigger_error("Došlo k chybám při připojování do Fakturoidu :: sendInvoice : " . $e->getMessage());
+					return false;
 				}
-
-			}catch (\Fakturoid\Exception $e){
-				trigger_error("Došlo k chybám při připojování do Fakturoidu :: sendInvoice : " . $e->getMessage());
+			}else{
+				trigger_error("Uživatele se nepodařilo vytvořit a proto nelze vytvořit fakturu :: sendInvoice()");
 				return false;
 			}
 
@@ -183,17 +213,55 @@ class fakturoidClass {
 					$response = $response->getBody();
 					$response = array_shift($response);
 					return $response;
-
 				}
 
 			}catch (\Fakturoid\Exception $e){
 				trigger_error("Došlo k chybám při připojování do Fakturoidu :: sendContact " . $e->getMessage());
+
 			}
 
 		}else{
 			trigger_error("Parameter user není potomkem třídy uzivatelClass :: sendContact");
 		}
-
+		return false;
 	}
+
+
+	public function generateAllInvoicesPDF($sendmail = false){
+		$orders = assetsFactory::getAllEntity("objednavkaClass",
+			array(
+				new filterClass( "invoice_id","IS NOT","NULL"),
+				new filterClass("invoice_link", "IS", "NULL")
+			)
+		);
+
+		foreach ($orders as $key => $value){
+			$this->getAndSaveInvoicePDFForOrder($value,false, $sendmail);
+		}
+		// TODO pozor co když faktury neexistují prtože je smazali v adminu fakturoidu
+	}
+
+
+	public function generateAllInvoices($sendmail = false, $makepdf = false){
+		$orders = assetsFactory::getAllEntity("objednavkaClass",
+			array(
+				new filterClass( "stav","=","1"),
+				new filterClass("invoice_id", "IS", "NULL")
+			)
+		);
+
+		foreach ($orders as $key => $value){
+			$this->sendInvoice($value);
+		}
+	}
+
+	public function regenerateInvoiceFromOrder($order){
+		return $this->sendInvoice($order);
+	}
+
+	public function regenerateInvoicePDFFromOrder($order,$sendmail = false){
+		return $this->getAndSaveInvoicePDFForOrder($order,false, $sendmail);
+	}
+
 
 }

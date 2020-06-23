@@ -88,11 +88,11 @@ class inzeratClass extends zakladniKamenClass {
 	}
 
 	public function getAerial(){
-		return $this->db_podlahova_plocha . " m<sup>2</sup>";
+		return $this->db_podlahova_plocha . " m&sup2;";
 	}
 
 	public function getTotalAerial(){
-		return $this->db_pozemkova_plocha . " m<sup>2</sup>";
+		return $this->db_pozemkova_plocha . " m&sup2;";
 	}
 
 

@@ -77,7 +77,8 @@ add_action('init', 's7_rewrite_tag_rule', 10, 0);
 
 require_once ("crons.php");
 require_once ("backend.php");
-require_once ("api.php")
+require_once ("api.php");
+require_once ("shortcodes.php");
 
 
 

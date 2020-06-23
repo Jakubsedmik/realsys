@@ -800,7 +800,7 @@ $before24 = time() - 24*60*60;
 $before_month = time() - 30*24*60*60;
 $before_three_month = time() - 3*30*24*60*60;
 $dispozice_filter_options = $dispozice_options;
-$dispozice_filter_options[-1] = "--Bez filtru--";
+$dispozice_filter_options[-1] = __("--Bez filtru--","realsys");
 
 $filter_parameters = array(
 	'db_typ_inzeratu' => array(
