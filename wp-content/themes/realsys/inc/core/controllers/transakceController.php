@@ -35,7 +35,7 @@ class transakceController extends controller {
 
 	public function create(){
 
-		if(Tools::checkPresenceOfParam("vytvorit", $this->requestData)){
+		if(Tools::checkPresenceOfParam("ulozit", $this->requestData)){
 			$request_data = $this->requestData;
 			$response = Tools::formProcessor(
 				array("db_mnozstvi","db_nazev_sluzby","db_id_odesilatel", "db_id_prijemce", "db_accept"),
@@ -49,7 +49,7 @@ class transakceController extends controller {
 			}
 		}
 
-		$this->setView("vytvoritObjednavku");
+		$this->setView("vytvoritTransakci");
 		$this->performView();
 	}
 }

@@ -49,6 +49,12 @@ define("GOOGLE_ID", "169419171066-51n84mk31m3sdi47rtkj84tprnrppker.apps.googleus
 define("GOOGLE_API_KEY", "AIzaSyDU9RxWxpRRoy9R-wAILv5Owb7GaXHLVaw");
 define("GOOGLE_SERVER_API_KEY", "AIzaSyDLb5HxunZlhEtXHmELaNbd9XMajfkoQvc");
 
+// FAKTUROID Credentials
+define("FAKTUROID_SLUG", "szukamdomdev");
+define("FAKTUROID_MAIL", "sedmik@studioseven.cz");
+define("FAKTUROID_API_KEY", "0152b6409f5e3bd901c27826be6dd81dd57f796b");
+define("FAKTUROID_AGENT", "PHPlib <sedmik@studioseven.cz>");
+
 // CURRENCY
 define("CURRENCY", "PLN");
 define("CURRENCY_CODE", "PLN");

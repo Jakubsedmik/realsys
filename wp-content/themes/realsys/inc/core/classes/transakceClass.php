@@ -42,5 +42,7 @@ class transakceClass extends zakladniKamenClass {
 			"db_mnozstvi" => "number",
 			"db_accept" => "boolean"
 		);
+
 	}
+
 }

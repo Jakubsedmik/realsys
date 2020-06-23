@@ -1,6 +1,16 @@
 <?php get_header() ?>
 
 <?php
+	$fakturoid = new fakturoidClass();
+	$objednavka = assetsFactory::getEntity("objednavkaClass",1);
+	$fakturoid->sendInvoice($objednavka);
+	//$uzivatel = assetsFactory::getEntity("uzivatelClass",2);
+	//globalUtils::writeDebug($fakturoid->sendContact($uzivatel));
+
+
+?>
+
+<?php
 	//get_template_part("templates/page","phaseone");
 	get_template_part("templates/page","slider");
 	//get_template_part("templates/page", "modal");
@@ -23,3 +33,5 @@ if ( have_posts() ) {
 ?>
 
 <?php get_footer() ?>
+
+
