@@ -122,6 +122,7 @@ class assetsFactory {
 			}
 			$index++;
 		}
+
 		return $finalFilter;
 	}
 

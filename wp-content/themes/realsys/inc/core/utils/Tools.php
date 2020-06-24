@@ -775,7 +775,7 @@ class Tools {
 	}
 
 
-	public static function sendMail($to, $subject="Realys", $template=false, $data=array(), $headers=''){
+	public static function sendMail($to, $subject="Realys", $template=false, $data=array(), $headers='', $attachment = array()){
 	    if(is_array($data) && $to && is_string($to)){
 		    if($template){
 			    $cargo = self::serveTemplate($template, $data);
@@ -784,7 +784,8 @@ class Tools {
                         $to,
                         $subject,
                         $cargo,
-                        $headers
+                        $headers,
+                        $attachment
                     );
 			    }
 		    }else{
@@ -793,7 +794,8 @@ class Tools {
 				    $to,
 				    $subject,
 				    $cargo,
-				    $headers
+				    $headers,
+				    $attachment
 			    );
 
 		    }
@@ -968,7 +970,7 @@ class Tools {
 			    if(is_array($filter_parameters[$value]['values']) && count($filter_parameters[$value]['values']) > 0){
 				    $final_filter[$value]['values'] = $filter_parameters[$value]['values'];
                 }else{
-				    $final_filter[$value]['values'] = globalUtils::getValuesForFilter("inzeratClass", $key_new, "-- Bez filtru --");
+				    $final_filter[$value]['values'] = globalUtils::getValuesForFilter("inzeratClass", $key_new, __("-- Bez filtru --","realsys"));
                 }
 
 			    $final_filter[$value]['name'] = $filter_parameters[$value]['name'];

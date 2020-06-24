@@ -71,7 +71,7 @@ if ( Tools::checkPresenceOfParam( "transactionid", $this->requestData ) ) {
                                         </tr>
                                         <tr>
                                             <th><?php _e( "Podlahová plocha", "realsys" ); ?>:</th>
-                                            <td><?php echo $inzerat->getAerial(); ?></td>
+                                            <td><span><?php echo $inzerat->getAerial(); ?></span></td>
                                         </tr>
                                         <tr>
                                             <th><?php _e( "Cena", "realsys" ); ?>:</th>

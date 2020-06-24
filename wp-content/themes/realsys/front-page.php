@@ -1,9 +1,12 @@
 <?php get_header() ?>
 
 <?php
-	$fakturoid = new fakturoidClass();
-	$objednavka = assetsFactory::getEntity("objednavkaClass",1);
-	$fakturoid->sendInvoice($objednavka);
+	//$fakturoid = new fakturoidClass();
+	//$objednavka = assetsFactory::getEntity("objednavkaClass",1);
+	//$fakturoid->createInvoiceForOrder($objednavka, true, true);
+
+	//$fakturoid->generateAllInvoicesPDF();
+	//Tools::sendMail("newuser@localhost","Test",false, array("test","test"));
 	//$uzivatel = assetsFactory::getEntity("uzivatelClass",2);
 	//globalUtils::writeDebug($fakturoid->sendContact($uzivatel));
 
