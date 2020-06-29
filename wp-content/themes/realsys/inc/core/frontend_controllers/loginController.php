@@ -464,7 +464,8 @@ class loginController extends frontendController {
 						$data = array(
 							'link' => $link,
 							'jmeno' => $uzivatel->db_jmeno,
-							'prijmeni' => $uzivatel->db_prijmeni
+							'prijmeni' => $uzivatel->db_prijmeni,
+							'email' => $uzivatel->db_email
 						);
 
 						Tools::sendMail( $email, "Resetování hesla", "resetPassword", $data );
