@@ -129,6 +129,10 @@
 
             if(this.preset != null){
                 this.fieldValue = this.preset;
+            }else{
+                if(this.filterData.type == "select" || this.filterData.type == "select-special"){
+                    this.fieldValue = -1;
+                }
             }
         },
         created() {

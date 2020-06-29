@@ -66,13 +66,14 @@ $zobrazkontakt_translations = array(
 	"proZobrazeniKontaktu" => __("Pro zobrazení kontaktu klikněte na tlačítko zobrazit.", "realsys"),
 	"zobrazitAZaplatitZaKontakt" => __("Zobrazit a zaplatit za kontakt", "realsys"),
 	"prihlaseni" => __("Přihlášení", "realsys"),
-	"bohutelNejstePrihlasenKontakt" => __("Bohužel nejste přihlášen. Pro zobrazení kontaktu musíte být nejprve přihlášen. Proveďte přihlášení následně vraťte zpět na inzerát a zobrazte si kontakt.", "realsys"),
+	"bohuzelNejstePrihlasenKontakt" => __("Bohužel nejste přihlášen. Pro zobrazení kontaktu musíte být nejprve přihlášen. Proveďte přihlášení následně vraťte zpět na inzerát a zobrazte si kontakt.", "realsys"),
 	"vasKontaktNaUzivatele" => __("Váš kontakt na uživatele naleznete níže.", "realsys"),
 	"jmeno" => __("Jméno:", "realsys"),
 	"prijmeni" => __("Příjmení:", "realsys"),
 	"telefon" => __("Telefon:", "realsys"),
 	"email" => __("Email:", "realsys"),
-	"zobrazitProfilUzivatele" => __("Zobrazit profil uživatele", "realsys")
+	"zobrazitProfilUzivatele" => __("Zobrazit profil uživatele", "realsys"),
+	"zaplatitZaKontaktBezPrihlaseni" => __("Zaplatit za kontakt bez přihlášení", "realsys")
 );
 
 $pridat_inzerat_translations = array(

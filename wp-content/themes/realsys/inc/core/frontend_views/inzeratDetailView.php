@@ -31,7 +31,7 @@ if ( Tools::checkPresenceOfParam( "transactionid", $this->requestData ) ) {
     </div>
 </section>
 
-<section>
+<section class="app">
     <div class="detail-nemovitosti full-bg">
         <div class="wrapper">
 			<?php echo frontendError::getFrontendErrors(); ?>
@@ -60,7 +60,7 @@ if ( Tools::checkPresenceOfParam( "transactionid", $this->requestData ) ) {
                             </div>
                             <div class="col-sm-5">
                                 <div class="nemovitost-text rounded-b">
-                                    <h3 class="sz-tit"><?php echo $inzerat->getAerialName(); ?><?php echo $inzerat->db_titulek; ?></h3>
+                                    <h3 class="sz-tit"><?php echo $inzerat->getAerialName(); ?> <?php echo $inzerat->db_titulek; ?></h3>
 
 
                                     <table class="basic-table th-row" style="border-collapse: initial;">
@@ -105,9 +105,10 @@ if ( Tools::checkPresenceOfParam( "transactionid", $this->requestData ) ) {
                                         </tbody>
                                     </table>
 
-                                    <div class="contact-bar-new app">
+                                    <div class="contact-bar-new">
                                         <a class="btn btn-outline btn-small scroll-vice"
                                            href="#vice"><?php echo _e( "Viac informacií", "realsys" ); ?></a>
+
                                         <Zobrazkontakt
                                                 :user_logged="<?php echo ( uzivatelClass::getUserLoggedId() ) ? uzivatelClass::getUserLoggedId() : "false"; ?>"
                                                 :service="<?php global $cenik_sluzeb;
@@ -123,6 +124,8 @@ if ( Tools::checkPresenceOfParam( "transactionid", $this->requestData ) ) {
                                                 ajax_url="<?php echo AJAXURL; ?>"
                                                 currency="<?php echo CURRENCY; ?>"
                                                 assets_path="<?php echo FRONTEND_IMAGES_PATH; ?>"
+                                                user_name="<?php echo $uzivatel->getFullName(); ?>"
+                                                user_avatar="<?php echo $uzivatel->db_avatar; ?>"
 
                                         ></Zobrazkontakt>
                                     </div>
@@ -239,11 +242,11 @@ if ( Tools::checkPresenceOfParam( "transactionid", $this->requestData ) ) {
                                             </div>
                                         </div>
                                         <div class="text-center mt-5">
-                                            <div class="contact-bar-new app">
+                                            <div class="contact-bar-new">
                                                 <Zobrazkontakt
                                                         :user_logged="<?php echo ( uzivatelClass::getUserLoggedId() ) ? uzivatelClass::getUserLoggedId() : "false"; ?>"
                                                         :service="<?php global $cenik_sluzeb;
-														echo Tools::prepareJsonToOutputHtmlAttr( $cenik_sluzeb[2] ); ?>"
+			                                            echo Tools::prepareJsonToOutputHtmlAttr( $cenik_sluzeb[2] ); ?>"
                                                         :inzerat_id="<?php echo $inzerat->getId(); ?>"
                                                         :translations="<?php echo Tools::prepareJsonToOutputHtmlAttr( array_merge( $zobrazkontakt_translations, $servicebuy_translations ) ); ?>"
                                                         :transaction_id="<?php echo $transactionid; ?>"
@@ -251,9 +254,12 @@ if ( Tools::checkPresenceOfParam( "transactionid", $this->requestData ) ) {
                                                         home_url="<?php echo home_url(); ?>"
                                                         login_link="<?php echo Tools::getFERoute( "uzivatelClass", false, "login" ); ?>"
                                                         payment_link="<?php echo Tools::getFERoute( "objednavkaClass" ); ?>"
+                                                        quick_payment_link="<?php echo Tools::getFERoute( "gopay", false, "quickpayment" ); ?>"
                                                         ajax_url="<?php echo AJAXURL; ?>"
                                                         currency="<?php echo CURRENCY; ?>"
                                                         assets_path="<?php echo FRONTEND_IMAGES_PATH; ?>"
+                                                        user_name="<?php echo $uzivatel->getFullName(); ?>"
+                                                        user_avatar="<?php echo $uzivatel->db_avatar; ?>"
 
                                                 ></Zobrazkontakt>
                                             </div>

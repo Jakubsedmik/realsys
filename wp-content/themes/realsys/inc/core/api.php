@@ -902,6 +902,10 @@ function createWatchdog(){
 
 function checkUserCredits(){
 
+	// now shut down error reporting for a while
+	error_reporting(0);
+	ini_set('display_errors', 'Off');
+
 	$result = Tools::postChecker($_GET, array(
 		'serviceid' => array(
 			'type' => NUMBER,
@@ -1079,6 +1083,17 @@ function payForContact(){
 								$response->telefon = $uzivatel->db_telefon;
 								$response->email = $uzivatel->db_email;
 								$response->uzivatel_url = Tools::getFERoute("uzivatelClass",$uzivatel->getId(),"detail");
+
+								if($transaction->isRequestedByCurrentUser()){
+									$current_user = uzivatelClass::getUserLoggedObject();
+									Tools::sendMail( $current_user->db_email, "Zobrazení kontaktu","sendContact",array(
+										"jmeno" => $uzivatel->db_jmeno,
+										"prijmeni" => $uzivatel->db_prijmeni,
+										"telefon" => $uzivatel->db_telefon,
+										"email" => $uzivatel->db_email
+									));
+								}
+
 								$response->message = __("Kontakt úspěšně získán","realsys");
 							}else{
 								$response->status = 0;
