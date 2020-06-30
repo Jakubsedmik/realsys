@@ -33,27 +33,37 @@
 
                             <div class="modal-body" v-if="user_logged !== false && this.contactAvailable == false">
                                 <h2 class="sz-tit">{{translations.zobrazeniKontaktu}}</h2>
-                                <img class="maj-img mb-sm-4 mb-3" :src="this.assets_path + '/avatar.png'" alt="">
-                                <p class="mb-sm-5 mb-3">{{translations.zobrazeniKontaktuStoji}} <strong>{{service.price}} {{translations.kreditu}}</strong>. {{translations.proZobrazeniKontaktu}}</p>
-                                <a class="btn mb-sm-5 mb-3" @click.prevent="payForContact">{{translations.zobrazitAZaplatitZaKontakt}}</a>
+
+                                <img class="maj-img mb-sm-4 mb-3" v-if="user_avatar" :src="user_avatar" alt="">
+                                <h2 class="sz-tit" v-if="user_name">{{user_name}}</h2>
+
+                                <p class="mb-sm-4 mb-3">{{translations.zobrazeniKontaktuStoji}} <strong>{{service.price}} {{translations.kreditu}}</strong>. {{translations.proZobrazeniKontaktu}}</p>
+                                <a class="btn mb-sm-3 mb-3" @click.prevent="payForContact">{{translations.zobrazitAZaplatitZaKontakt}}</a>
                             </div>
 
                             <div class="modal-body" v-else-if="user_logged == false && this.contactAvailable == false">
-                                <h2 class="sz-tit">{{translations.prihlaseni}}</h2>
-                                <img class="maj-img mb-sm-4 mb-3" :src="this.assets_path + '/avatar.png'" alt="">
-                                <p class="mb-sm-5 mb-3">{{translations.bohutelNejstePrihlasenKontakt}}</p>
-                                <a class="btn mb-sm-5 mb-3" :href="login_link">{{translations.prihlaseni}}</a>
-                                <a :href="quickOrderLink()" class="btn">Zaplatit za kontakt bez přihlášení</a>
+                                <h2 class="sz-tit">{{translations.zobrazeniKontaktu}}</h2>
+
+                                <img class="maj-img mb-sm-4 mb-3" v-if="user_avatar" :src="user_avatar" alt="">
+                                <h2 class="sz-tit" v-if="user_name">{{user_name}}</h2>
+
+                                <p class="mb-sm-4 mb-3">{{translations.zobrazeniKontaktuStoji}} <strong>{{service.price}} {{translations.kreditu}}</strong>.</p>
+
+                                <p class="mb-sm-4 mb-3">{{translations.bohuzelNejstePrihlasenKontakt}}</p>
+
+
+                                <a class="btn mb-sm-3 mb-3" :href="login_link">{{translations.prihlaseni}}</a>
+                                <a :href="quickOrderLink()" class="btn mb-sm-3 mb-3">{{translations.zaplatitZaKontaktBezPrihlaseni}}</a>
                             </div>
 
                             <div class="modal-body" v-else>
                                 <h2 class="sz-tit">{{translations.zobrazeniKontaktu}}</h2>
-                                <img class="maj-img mb-sm-4 mb-3" :src="this.assets_path + '/avatar.png'" alt="">
-                                <h3>{{translations.vasKontaktNaUzivatele}}</h3>
+                                <img class="maj-img mb-sm-4 mb-3" v-if="user_avatar" :src="user_avatar" alt="">
+                                <p>{{translations.vasKontaktNaUzivatele}}</p>
                                 <h2 class="sz-tit mb-2">{{translations.jmeno}} {{jmeno}} {{prijmeni}}</h2>
                                 <p class="mb-2">{{translations.email}} <a :href="'mailto:'+ this.email">{{email}}</a></p>
-                                <p class="mb-sm-5 mb-3">{{translations.telefon}} <a :href="'tel:' + this.telefon">{{telefon}}</a></p>
-                                <a :href="this.uzivatel_url" class="btn">{{translations.zobrazitProfilUzivatele}}</a>
+                                <p class="mb-sm-4 mb-3">{{translations.telefon}} <a :href="'tel:' + this.telefon">{{telefon}}</a></p>
+                                <a :href="this.uzivatel_url" class="btn mb-sm-3 mb-3">{{translations.zobrazitProfilUzivatele}}</a>
                             </div>
 
                         </div>
@@ -89,7 +99,7 @@
             }
         },
         props: [
-            'user_logged', 'service', 'payment_link', 'login_link', 'ajax_url', 'currency', 'assets_path', 'home_url', 'inzerat_id', 'translations', 'quick_payment_link', 'transaction_id'
+            'user_logged', 'service', 'payment_link', 'login_link', 'ajax_url', 'currency', 'assets_path', 'home_url', 'inzerat_id', 'translations', 'quick_payment_link', 'transaction_id', 'user_avatar', 'user_name'
         ],
 
         methods: {
@@ -136,7 +146,7 @@
         mounted() {
             var _this = this;
             this.$root.$on('paymentCompleted',function (postData) {
-                if(postData.hasOwnProperty("transactionid")){
+                if(postData.hasOwnProperty("transactionid") && _this.popupOn){
                     _this.transactionId = postData.transactionid;
                     _this.payForContact();
                 }

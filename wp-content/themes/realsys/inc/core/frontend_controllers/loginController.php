@@ -191,7 +191,6 @@ class loginController extends frontendController {
 
 		if(!invisibleRecaptchaClass::verifyRecaptchaOnController($this)){return false;}
 
-		//globalUtils::writeDebug($this->requestData);
 
 		$result = Tools::postChecker(
 			$this->requestData,
@@ -428,7 +427,6 @@ class loginController extends frontendController {
 	}
 
 	public function resetPassword(){
-		globalUtils::writeDebug($this->requestData);
 
 		if(uzivatelClass::getUserLoggedId() == false){
 
@@ -452,7 +450,7 @@ class loginController extends frontendController {
 				);
 
 				$uzivatel = assetsFactory::getAllEntity("uzivatelClass", $filter_arr);
-				globalUtils::writeDebug($uzivatel);
+
 
 				if(is_array($uzivatel) && count($uzivatel) == 1){
 					$uzivatel = array_shift($uzivatel);
@@ -466,7 +464,8 @@ class loginController extends frontendController {
 						$data = array(
 							'link' => $link,
 							'jmeno' => $uzivatel->db_jmeno,
-							'prijmeni' => $uzivatel->db_prijmeni
+							'prijmeni' => $uzivatel->db_prijmeni,
+							'email' => $uzivatel->db_email
 						);
 
 						Tools::sendMail( $email, "Resetování hesla", "resetPassword", $data );
