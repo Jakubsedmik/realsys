@@ -13,6 +13,7 @@ class objednavkaClass extends zakladniKamenClass {
 	protected $db_stav;
 	protected $db_hash;
 	protected $db_invoice_link;
+	protected $db_invoice_id;
 
 	protected function zakladniVypis() {
 

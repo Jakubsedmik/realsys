@@ -194,6 +194,8 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
                     $objectProperty = "db_" . $key;
                     
                     // pokud je proměnná serializovaná musíme ji deserializovat
+	                //echo var_dump($value) . "<br>";
+	                //echo var_dump(maybe_unserialize($value)) . "<br>";
                     $this->$objectProperty = maybe_unserialize($value);
 
                 }
@@ -239,12 +241,13 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
      * magic set
      */
     public function __set($name, $value) {
-        if(isset($value) && isset($name)){
+    	if(isset($value) && isset($name)){
 	        if($this->valid) {
 		        $this->valid = $this->checkValidity( $name, $value );
 	        }
         	$this->$name = $value;
 	        if(!$this->forceNotUpdate){
+
                 return $this->aktualizovat();
 	        }
         }

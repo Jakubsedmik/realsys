@@ -1,10 +1,19 @@
 <?php
 
 
+/**
+ * Class fakturoidClass
+ */
 class fakturoidClass {
 
+	/**
+	 * @var \Fakturoid\Client
+	 */
 	protected $client;
 
+	/**
+	 * fakturoidClass constructor.
+	 */
 	public function __construct() {
 
 		try {
@@ -17,6 +26,13 @@ class fakturoidClass {
 		}
 	}
 
+	/**
+	 * @param objednavkaClass $order
+	 * @param bool $generateInvoice
+	 * @param bool $sendmail
+	 *
+	 * @return bool|string
+	 */
 	public function createInvoiceForOrder(objednavkaClass $order, $generateInvoice = true , $sendmail = false){
 
 		$invoice = $this->sendInvoice($order);
@@ -35,6 +51,13 @@ class fakturoidClass {
 		}
 	}
 
+	/**
+	 * @param objednavkaClass $order
+	 * @param bool $invoice_id
+	 * @param bool $sendmail
+	 *
+	 * @return bool|string
+	 */
 	public function getAndSaveInvoicePDFForOrder(objednavkaClass $order, $invoice_id = false, $sendmail = false){
 
 		if($invoice_id && is_numeric($invoice_id)){
@@ -59,14 +82,25 @@ class fakturoidClass {
 				return $invoice_link;
 
 			}else{
-				trigger_error("Zadaná faktura v systému nefiguruje :: getAndSaveInvoicePDFForOrder");
-				return false;
+
+				// pokud objednávku ve fakturoidu nenalezneme tak ji musíme vytvořit, faktura se dogeneruje a pošle v druhém kolem
+				return $this->createInvoiceForOrder($order,false, false);
+
 			}
 		}
 
 		return false;
 	}
 
+
+	/**
+	 *
+	 * @param $invoice
+	 * @param bool $sendmail
+	 * @param bool $mail
+	 *
+	 * @return bool|string
+	 */
 	public function getAndSaveInvoicePDF($invoice, $sendmail = false, $mail = false){
 		if(is_object($invoice)){
 			$invoiceId = $invoice->id;
@@ -100,9 +134,12 @@ class fakturoidClass {
 	}
 
 
-	/*
-	 * Odešle objednávku do systému fakturoid, pokud již existuje tak jí updatuje
-	 * pokud neexistuje kontakt tak ho vytvoří
+	/**
+	 * Vytvoří fakturu v systému fakturoid na základě order, pokud již existuje tak jí updatuje.
+	 * Pokud neexistuje kontakt tak ho založí, pokud existuje tak ho nechá být a vytváří pouze fakturu
+	 * @param objednavkaClass $order objednávka pro kterou chceme založit fakturu ve fakturoidu
+	 *
+	 * @return bool|\Fakturoid\Response|null
 	 */
 	public function sendInvoice(objednavkaClass $order){
 
@@ -175,6 +212,11 @@ class fakturoidClass {
 
 	}
 
+	/**
+	 * @param $order_id
+	 *
+	 * @return bool|mixed
+	 */
 	public function getInvoiceBasedOnId($order_id){
 		try {
 			$response = $this->client->getInvoices(array("custom_id" => $order_id));
@@ -191,7 +233,13 @@ class fakturoidClass {
 		}
 	}
 
-	public function sendContact($user){
+	/**
+	 * Pokusí se získat kontakt, pokud se ho nepodaří nalézt tak kontakt založí.
+	 *
+	 * @param uzivatelClass $user instance uživatele pro kterého chceme kontakt založit
+	 * @return bool|\Fakturoid\Response|mixed|null vrací fakturoidResponse body a nebo false
+	 */
+	public function sendContact(uzivatelClass $user){
 
 
 		if(get_class($user) == "uzivatelClass"){
@@ -217,7 +265,6 @@ class fakturoidClass {
 
 			}catch (\Fakturoid\Exception $e){
 				trigger_error("Došlo k chybám při připojování do Fakturoidu :: sendContact " . $e->getMessage());
-
 			}
 
 		}else{
@@ -226,7 +273,100 @@ class fakturoidClass {
 		return false;
 	}
 
+	/**
+	 * Smaže objednávku z fakturoidu pokud existuje
+	 * @param objednavkaClass $order objednávka kterou si přejeme smazat z fakturoidu
+	 *
+	 * @return bool true pokud byla smazána a nebo false pokud nebyla nalezenena nebo se nepodařila smazat
+	 */
+	public function removeInvoice(objednavkaClass $order){
+		if(get_class($order) == "objednavkaClass"){
 
+			try {
+
+				// dej id objednávky
+				$id_order = $order->getId();
+
+				// najdi si dle custom_id ve fakturoidu fakturu
+				$invoice = $this->getInvoiceBasedOnId($id_order);
+
+				// pokud invoice existuje tak pokračujeme
+				if($invoice !== false){
+
+					// smažeme invoice a pokud se povedlo vracíme true
+					$response = $this->client->deleteInvoice($invoice->id);
+					if($response->getStatusCode() == 204){
+						$order->db_invoice_id = -1;
+						$order->db_invoice_link = "";
+						return true;
+					}
+				}else{
+
+					// pokud objednávku ve fakturoidu nenalezneme tak neřešíme
+					trigger_error("Objednávka ke smazání nebyla ve fakturoidu nalezena :: removeInvoice");
+					return false;
+				}
+
+			}catch (\Fakturoid\Exception $e){
+				trigger_error("Došlo k chybám při připojování do Fakturoidu :: removeInvoice " . $e->getMessage());
+			}
+		}else{
+			trigger_error("Parameter order není potomkem třídy objednavkaClass :: removeInvoice");
+		}
+		return false;
+	}
+
+	/**
+	 * Metoda promaže adresář invoices na základě toho jaké objednávky máme v databázi.
+	 * Pokud existuje v souborovém systému faktura v PDF která nekoreluje se záznamem v databázi invoice_id / invoice_link
+	 * tak je smazána. Jedná se pouze o objednávky které mají invoice_link a invoice_id vyplněné
+	 */
+	public function clearUnusedPDFFiles(){
+		$all_active_orders = assetsFactory::getAllEntity(
+			"objednavkaClass",
+			array(
+				new filterClass("invoice_id","IS NOT","NULL"),
+				new filterClass("invoice_id", "!=", -1)
+			)
+		);
+
+
+		$invoices_path = Tools::getPathTillFolder("wp-content", __DIR__) . INVOICES_PATH;
+		$files = glob($invoices_path . "/*.pdf", GLOB_BRACE);
+		$files = array_map(function($value){
+			$re = '/invoice_(\d+)\.pdf/m';
+			$matches = "";
+			preg_match_all($re, $value, $matches, PREG_SET_ORDER, 0);
+			return array(
+				"invoice_id" => $matches[0][1],
+				"filename" => $value
+			);
+		}, $files);
+
+
+		$found = false;
+		foreach ($files as $file_k => $file_v){
+
+			foreach ($all_active_orders as $key => $value){
+				if($file_v['invoice_id'] == $value->db_invoice_id){
+					$found = true;
+				}
+			}
+
+			if(!$found){
+				unlink($file_v['filename']);
+				globalUtils::writeDebug("removing file: " . $file_v['filename']);
+			}
+
+			$found = false;
+		}
+
+	}
+
+
+	/**
+	 * @param bool $sendmail
+	 */
 	public function generateAllInvoicesPDF($sendmail = false){
 		$orders = assetsFactory::getAllEntity("objednavkaClass",
 			array(
@@ -236,12 +376,18 @@ class fakturoidClass {
 		);
 
 		foreach ($orders as $key => $value){
-			$this->getAndSaveInvoicePDFForOrder($value,false, $sendmail);
+			if($value->db_invoice_id != -1){
+				$this->getAndSaveInvoicePDFForOrder($value,false, $sendmail);
+			}
 		}
-		// TODO pozor co když faktury neexistují prtože je smazali v adminu fakturoidu
+		// TODO pozor co když faktury neexistují protože je smazali v adminu fakturoidu
 	}
 
 
+	/**
+	 * @param bool $sendmail
+	 * @param bool $makepdf
+	 */
 	public function generateAllInvoices($sendmail = false, $makepdf = false){
 		$orders = assetsFactory::getAllEntity("objednavkaClass",
 			array(
@@ -255,10 +401,21 @@ class fakturoidClass {
 		}
 	}
 
+	/**
+	 * @param $order
+	 *
+	 * @return bool|\Fakturoid\Response|null
+	 */
 	public function regenerateInvoiceFromOrder($order){
 		return $this->sendInvoice($order);
 	}
 
+	/**
+	 * @param $order
+	 * @param bool $sendmail
+	 *
+	 * @return bool|string
+	 */
 	public function regenerateInvoicePDFFromOrder($order,$sendmail = false){
 		return $this->getAndSaveInvoicePDFForOrder($order,false, $sendmail);
 	}

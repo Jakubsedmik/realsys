@@ -207,6 +207,10 @@ $field_rules = array(
 		'db_hash' => array(
 			'type' => STRING255,
 			'required' => false
+		),
+		'db_invoice_id' => array(
+			"type" => NUMBER,
+			'required' => false
 		)
 	),
 	"inzeratClass"    => array(
