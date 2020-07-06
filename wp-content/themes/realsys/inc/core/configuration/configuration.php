@@ -211,6 +211,10 @@ $field_rules = array(
 		'db_invoice_id' => array(
 			"type" => NUMBER,
 			'required' => false
+		),
+		'db_invoice_link' => array(
+			"type" => STRING511,
+			"required" => false
 		)
 	),
 	"inzeratClass"    => array(

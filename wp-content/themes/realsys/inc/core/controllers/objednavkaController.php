@@ -22,7 +22,15 @@ class objednavkaController extends controller {
 					array("db_id", "db_cena", "db_mnozstvi", "db_uzivatel_id", "db_datum_zalozeni", "db_stav"),
 					$request_data,
 					'objednavkaClass',
-					'edit'
+					'edit',
+					null,
+					function($objednavka, $source){
+						// nutnost aktualizovat ve fakturoidu, neaktualizujeme na metodu aktualizovat protože ta by se odpálila i na další dílčí edity objednávky
+						if($objednavka->db_stav == 1) {
+							$fakturoid = new fakturoidClass();
+							$fakturoid->regenerateInvoiceFromOrder( $objednavka );
+						}
+					}
 				);
 			}
 

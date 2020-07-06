@@ -351,8 +351,8 @@ class Tools {
                     if($entity){
                         foreach ($db_properties as $key => $value){
                             $entity->set_not_update($key, $value);
-                            $entity->aktualizovat();
                         }
+	                    $entity->aktualizovat();
                     }
                     if(is_callable($callbackSuccess)){
 	                    call_user_func($callbackSuccess,$entity, $source);

@@ -63,6 +63,28 @@
 					</div>
 				</div>
 
+
+				<?php
+					$invoice_id = $this->viewData['objednavka']->db_invoice_id;
+					$invoice_link = $this->viewData['objednavka']->db_invoice_link;
+				?>
+
+				<?php if($invoice_id !== -1 && $invoice_link !== '') : ?>
+					<div class="form-row">
+						<div class="col">
+							<div class="md-form">
+								<input placeholder="Vyberte datum" type="text" id="db_invoice_id" name="db_invoice_id" class="form-control" disabled value="<?php echo $invoice_id; ?>">
+								<label for="db_datum_upravy">Fakturoid ID</label>
+							</div>
+
+						</div>
+						<div class="col">
+							<div class="md-form">
+								<a href="<?php echo $invoice_link; ?>" target="_blank" class="btn btn-small btn-icon btn-amber"><i class="fas fa-file-invoice mr-2"></i> Faktura</a>
+							</div>
+						</div>
+					</div>
+				<?php endif; ?>
 				<!-- Sign up button -->
 				<button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" name="ulozit" value="1" type="submit">Upravit</button>
 
