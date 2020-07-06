@@ -3,9 +3,9 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const webpack = require("webpack");
 
 module.exports = {
-    entry: './wp-content/themes/realsys/assets/js/js_frontend/src/app.js',
+    entry: './wp-content/themes/realsys/assets/js/js_backend/src/app.js',
     output: {
-        path: path.resolve(__dirname, 'wp-content/themes/realsys/assets/js/js_frontend/dist'),
+        path: path.resolve(__dirname, 'wp-content/themes/realsys/assets/js/js_backend/dist'),
         filename: 'bundle.js'
     },
     mode: "development",

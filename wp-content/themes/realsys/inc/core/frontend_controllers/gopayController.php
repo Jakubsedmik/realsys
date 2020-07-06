@@ -176,6 +176,8 @@ class gopayController extends frontendController {
 					"db_uzivatel_id" => 1
 				));
 
+				// todo zde musime pro fakturoid vytvořit novou objednávku, navíc musíme přejímat ještě email a jméno, příjmení
+
 				Tools::jsRedirect($this->quickPayment($anonymni_objednavka, $callbackurl,$serviceid),0);
 				$this->setView("quickOrder");
 				return true;

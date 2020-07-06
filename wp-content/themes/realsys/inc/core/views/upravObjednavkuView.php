@@ -69,11 +69,12 @@
 					$invoice_link = $this->viewData['objednavka']->db_invoice_link;
 				?>
 
+                <p>Pro zregenrování faktury stačí tuto objednávku přepnout do stavu zaplacená a znovu uložit.</p>
 				<?php if($invoice_id !== -1 && $invoice_link !== '') : ?>
 					<div class="form-row">
 						<div class="col">
 							<div class="md-form">
-								<input placeholder="Vyberte datum" type="text" id="db_invoice_id" name="db_invoice_id" class="form-control" disabled value="<?php echo $invoice_id; ?>">
+								<input placeholder="Fakturoid ID" type="text" id="db_invoice_id" name="db_invoice_id" class="form-control" disabled value="<?php echo $invoice_id; ?>">
 								<label for="db_datum_upravy">Fakturoid ID</label>
 							</div>
 

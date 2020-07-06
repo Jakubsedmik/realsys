@@ -99,6 +99,7 @@ define( "PRICE", "price" ); // price only positive till 2 147 483 647 OK
 define( "PRICE_ZERO", "price_zero" ); // price only positive till 2 147 483 647, including zero
 define( "TIMESTAMP", "timestamp" ); // valid timestamp OK
 define( "PHPARRAY", "array" ); // valid PHP array
+define("PDF_URL", "pdf_url"); // valid PDF URL
 
 define( "DATE", "date" ); // DEPRECATED
 define( "TIME", "time" ); // DEPRECATED
@@ -213,7 +214,7 @@ $field_rules = array(
 			'required' => false
 		),
 		'db_invoice_link' => array(
-			"type" => STRING511,
+			"type" => PDF_URL,
 			"required" => false
 		)
 	),
@@ -636,7 +637,9 @@ $dictionary = array(
 	'db_hash'            => 'Hash platební brány',
 	'db_uzivatel_id'     => 'Id uživatele',
 	'db_nazev_sluzby' => "Název služby",
-	'db_accept' => "Zaúčtováno"
+	'db_accept' => "Zaúčtováno",
+	'db_invoice_link' => "Faktura",
+	'db_invoice_id' => "Fakturoid ID"
 );
 
 
