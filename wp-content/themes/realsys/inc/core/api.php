@@ -33,6 +33,10 @@ $api_actions = array(
 		'callback' => 'checkUserExists',
 		'private' => false
 	),
+	'checkUserExistsAdvanced' => array(
+		'callback' => 'checkUserExistsAdvanced',
+		'private' => false
+	),
 	'getInzeraty' => array(
 		'callback' => 'getInzeraty',
 		'private' => false
@@ -431,6 +435,42 @@ function checkUserExists(){
 		}
 	}
 	wp_send_json(true);
+	die();
+}
+
+function checkUserExistsAdvanced(){
+	$response = new stdClass();
+
+	if(Tools::checkPresenceOfParam("db_email", $_GET)){
+		$email = $_GET['db_email'];
+		$user_exists = assetsFactory::getAllEntity("uzivatelClass",array(new filterClass("email", "=", "'" . $email . "'")));
+
+		if($user_exists && is_array($user_exists) && count($user_exists) > 0){
+
+			$user_exists = array_shift($user_exists);
+			if($user_exists->db_anonymous == 1){
+				$response->status = 1;
+				$response->message = "Zadaný uživatel je v systému jako anonymní";
+				wp_send_json($response);
+				die();
+			}
+
+			$response->status = 2;
+			$response->message = "Zadaný uživatel je v systému řádně registrovaný";
+			wp_send_json($response);
+			die();
+		}
+
+	}else{
+		$response->status = -1;
+		$response->message = "Chybějící parametry kontroly.";
+		wp_send_json($response);
+		die();
+	}
+
+	$response->status = 0;
+	$response->message = "Zadaný uživatel v systému zcela nefiguruje";
+	wp_send_json($response);
 	die();
 }
 

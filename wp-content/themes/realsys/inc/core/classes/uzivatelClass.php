@@ -8,6 +8,7 @@ class uzivatelClass extends zakladniKamenClass {
 	protected $db_prijmeni;
 	protected $db_email;
 	protected $db_telefon;
+	protected $db_anonymous;
 
 	protected $db_fbid;
 	protected $db_gmid;
