@@ -115,6 +115,9 @@ class gopayController extends frontendController {
 						$objednavka->db_hash = $gopay_id;
 						$objednavka->db_stav = 1;
 
+						$fakturoid = new fakturoidClass();
+						$fakturoid->createInvoiceForOrder($objednavka,true, true);
+
 						frontendError::addMessage(__("Úspěch","realsys"), SUCCESS, __("Objednávka byla úspěšně zaplacena.","realsys"));
 						$this->requestData['uzivatel'] = $uzivatel;
 						$this->requestData['objednavka'] = $objednavka;
@@ -156,6 +159,10 @@ class gopayController extends frontendController {
 			'redirect' => array(
 				'required' => true,
 				'type' => URL
+			),
+			'db_email' => array(
+				'required' => true,
+				'type' => EMAIL
 			)
 		), true);
 
@@ -164,22 +171,80 @@ class gopayController extends frontendController {
 
 			$serviceid = $this->requestData['serviceid'];
 			$callbackurl = $this->requestData['redirect'];
+			$email = $this->requestData['db_email'];
+			$response = uzivatelClass::isUserAnonymous($email);
 
 			if(isset($cenik_sluzeb[$serviceid])){
-				$sluzba = $cenik_sluzeb[$serviceid];
 
+				$sluzba = $cenik_sluzeb[$serviceid];
+				$uzivatel = false;
+
+				if($response->status == 0){
+					$result = false;
+					$result = Tools::postChecker($this->requestData, array(
+						'db_jmeno' => array(
+							'required' => true,
+							'type' => STRING255
+						),
+						'db_prijmeni' => array(
+							'required' => true,
+							'type' => STRING255
+						)
+					), true);
+
+					if($result){
+
+						$uzivatel = assetsFactory::createEntity("uzivatelClass",array(
+							'db_jmeno' => $this->requestData['db_jmeno'],
+							'db_prijmeni' => $this->requestData['db_prijmeni'],
+							'db_email' => $this->requestData['db_email'],
+							'db_telefon' => '777 888 999',
+							'db_anonymous' => true
+						));
+
+						if(!$uzivatel){
+							frontendError::addMessage("Uživatel",ERROR, "Anonymního uživatele se bohužel nepodařilo vytvořit");
+							return false;
+						}
+
+					}else{
+						frontendError::addMessage("Jméno a příjmení", ERROR, "Chybějící pole jméno a příjmení");
+						return false;
+					}
+
+				}elseif ($response->status == 1){
+
+					$uzivatel = assetsFactory::getAllEntity("uzivatelClass",array(new filterClass("email","=","'" . $email . "'")));
+
+					if(is_array($uzivatel) && count($uzivatel) > 0){
+						$uzivatel = array_shift($uzivatel);
+					}else{
+						frontendError::addMessage("Uživatel", ERROR, "Anonymního uživatele se bohužel nepodařilo nalézt");
+						return false;
+					}
+
+				}elseif ($response->status == 2){
+					frontendError::addMessage("Email", ERROR, "Uživatel s tímto emailem je v systému řádně registrovaný. Nelze provést anonymní objednávku.");
+					return false;
+				}
+
+
+				if(is_object($uzivatel)){
+					$uzivatel = $uzivatel->getId();
+				}else{
+					$uzivatel = 1;
+				}
 
 				$anonymni_objednavka = assetsFactory::createEntity("objednavkaClass",array(
 					"db_cena" => $sluzba['price'] * ALONE_CREDIT_PRICE,
 					"db_mnozstvi" => $sluzba['price'],
 					"db_stav" => 0,
-					"db_uzivatel_id" => 1
+					"db_uzivatel_id" => $uzivatel
 				));
 
-				// todo zde musime pro fakturoid vytvořit novou objednávku, navíc musíme přejímat ještě email a jméno, příjmení
-				// todo pokud je vyplněný email tak nejdříve zkontrolujeme zdali existuje anonym s emailem pokud ne tak je třeba ještě mít povinné jméno a příjmení
-				// todo po zaplacení objednávky se musí poslat email s fakturou
 
+
+				// todo zde nepoužívat quick payment použít klasciký protože máme k dispozici objednávku i uživatele
 				Tools::jsRedirect($this->quickPayment($anonymni_objednavka, $callbackurl,$serviceid),0);
 				$this->setView("quickOrder");
 				return true;
@@ -231,6 +296,9 @@ class gopayController extends frontendController {
 					$objednavka->db_hash = $gopay_id;
 					$objednavka->db_stav = 1;
 
+					$fakturoid = new fakturoidClass();
+					$fakturoid->createInvoiceForOrder($objednavka,true, true);
+
 					frontendError::addMessage(__("Úspěch","realsys"), SUCCESS, __("Objednávka byla úspěšně zaplacena.","realsys"));
 
 					global $cenik_sluzeb;
@@ -239,7 +307,7 @@ class gopayController extends frontendController {
 					if(!isset($service['requireEntity'])){
 
 						$transakce = assetsFactory::createEntity("transakceClass", array(
-							"id_odesilatel" => 1,
+							"id_odesilatel" => $objednavka->db_uzivatel_id,
 							"id_prijemce" => -1,
 							"mnozstvi" => $sluzba['price'],
 							"nazev_sluzby" => $sluzba['name'],

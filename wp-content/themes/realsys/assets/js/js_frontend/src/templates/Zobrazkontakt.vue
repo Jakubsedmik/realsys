@@ -167,6 +167,7 @@
 
                             _this.contactAvailable = true;
                         }else{
+                            // todo, tady se může stát že jsou dvě komponenty v systému a obě dvě obdrží paymentCompleted, chtělo by to nějakou statickou proměnnou
                             alert("Došlo k chybě v systému: " + response.data.message);
                         }
                     }).catch(function (e) {
@@ -205,7 +206,7 @@
                                 switch (response.data.status) {
                                     case 0: _this.doesRequireName = true; break;
                                     case -1: alert("Systémová chyba:" . response.data.message); break;
-                                    case 1: this.$refs['anonymousRegForm'].submit(); break;
+                                    case 1: _this.$refs['anonymousRegForm'].submit(); break;
                                     case 2: _this.backToLogin(); break;
                                     default: alert("Došlo k systémové chybě, kontaktujte administrátora");
                                 }

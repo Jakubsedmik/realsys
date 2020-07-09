@@ -177,5 +177,30 @@ class uzivatelClass extends zakladniKamenClass {
 		return round(($points / $total) * 100,0) . " %";
 	}
 
+	public static function isUserAnonymous($email){
+
+		$user_exists = assetsFactory::getAllEntity("uzivatelClass",array(new filterClass("email", "=", "'" . $email . "'")));
+		$response = new stdClass();
+
+		if($user_exists && is_array($user_exists) && count($user_exists) > 0){
+
+			$user_exists = array_shift($user_exists);
+			if($user_exists->db_anonymous == 1){
+				$response->status = 1;
+				$response->message = "Zadaný uživatel je v systému jako anonymní";
+				return $response;
+			}
+
+			$response->status = 2;
+			$response->message = "Zadaný uživatel je v systému řádně registrovaný";
+			return $response;
+
+		}else{
+			$response->status = 0;
+			$response->message = "Zadaný uživatel v systému zcela nefiguruje";
+			return $response;
+		}
+	}
+
 
 }

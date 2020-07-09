@@ -92,7 +92,6 @@ class objednavkaController extends frontendController {
 							"db_stav" => 0
 						));
 
-						// todo zde po objednávce vytvořit fakturu
 
 						if($objednavka){
 							Tools::jsRedirect(Tools::getFERoute("gopay",$objednavka->getId(),"payment"), 1500, __("Potvrzení","realsys"), __("Potvrzujeme objednávku - přesměrováváme Vás na platební bránu","realsys"));
