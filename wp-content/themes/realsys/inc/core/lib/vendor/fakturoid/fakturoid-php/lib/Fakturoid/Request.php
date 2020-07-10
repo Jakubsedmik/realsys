@@ -4,6 +4,8 @@ namespace Fakturoid;
 
 class Request
 {
+
+	
     private $url;
     private $method;
     private $body;
