@@ -117,6 +117,11 @@
 			</form>
 			<!-- Form -->
 
+			<form action="<?php Tools::getCurrentUrl(); ?>" method="POST" class="mt-3">
+				<button class="btn btn-outline-deep-orange btn-block mb-3" type="submit" name="action" value="rewriteFakturoidData">Aktualizovat data ve fakturoidu</button>
+				<p class="text-center">Pokud jste aktualizovali uživatele a přejete si ho aktualizovat také ve fakturoidu, je třeba počítat s tím že všechny nově stažené faktury budou již s tímto aktualizovaný kontaktem i zpětně.</p>
+			</form>
+
 		</div>
         <div class="p-3 text-center border-top">
             <h3>Inzeráty uživatele</h3>

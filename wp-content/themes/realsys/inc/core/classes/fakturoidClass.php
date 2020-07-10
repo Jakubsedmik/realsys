@@ -302,7 +302,7 @@ class fakturoidClass {
 	 * @param uzivatelClass $user instance uživatele pro kterého chceme kontakt založit
 	 * @return bool|\Fakturoid\Response|mixed|null vrací fakturoidResponse body a nebo false
 	 */
-	protected function sendContact(uzivatelClass $user){
+	public function sendContact(uzivatelClass $user, $update = false){
 
 
 		if(get_class($user) == "uzivatelClass"){
@@ -326,10 +326,18 @@ class fakturoidClass {
 
 				}else{
 
+
 					//pokud kontakt existuje tak ho vrátí, pouze první
-					$response = $response->getBody();
-					$response = array_shift($response);
-					return $response;
+					if($update == false){
+						$response = $response->getBody();
+						$response = array_shift($response);
+						return $response;
+					}else{
+						$response = $response->getBody();
+						$response = array_shift($response);
+						$response = $this->client->updateSubject($response->id, $user_array);
+						return $response;
+					}
 				}
 
 			}catch (\Fakturoid\Exception $e){

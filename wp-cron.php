@@ -47,6 +47,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 		runPremiumWatchdogCron();
 	}
 
+	if(isset($_GET['start_generate_invoices'])){
+		runInvoices();
+	}
+
+	if(isset($_GET['start_generate_invoices_pdf'])){
+		runInvoicesPDF();
+	}
+
 }
 
 /**
