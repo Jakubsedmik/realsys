@@ -784,6 +784,16 @@ function goBack() {
 }
 
 
+/* TRANSFER CLICK FROM ONE BUTT TO ANOTHER */
+
+$(document).ready(function () {
+    $(".js-transfer-from-click").click(function (e) {
+        e.preventDefault();
+        $(".js-transfer-to-click").click();
+    })
+});
+
+
 
 
 

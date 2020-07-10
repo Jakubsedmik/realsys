@@ -99,7 +99,7 @@ define( "PRICE", "price" ); // price only positive till 2 147 483 647 OK
 define( "PRICE_ZERO", "price_zero" ); // price only positive till 2 147 483 647, including zero
 define( "TIMESTAMP", "timestamp" ); // valid timestamp OK
 define( "PHPARRAY", "array" ); // valid PHP array
-define("PDF_URL", "pdf_url"); // valid PDF URL
+define( "PDF_URL", "pdf_url"); // valid PDF URL
 
 define( "DATE", "date" ); // DEPRECATED
 define( "TIME", "time" ); // DEPRECATED

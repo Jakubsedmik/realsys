@@ -8,6 +8,8 @@ class uzivatelController extends controller {
 	}
 
 	public function edit(){
+		
+		//  todo při editaci uživatele by se měl změnit kontakt v fakturoidu, respektive tato aktualizace by se měla provádět na tlačítko
 
 		if(Tools::checkPresenceOfParam("id",$this->requestData)){
 			$id = $this->requestData['id'];

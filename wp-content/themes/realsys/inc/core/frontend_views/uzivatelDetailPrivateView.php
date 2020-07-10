@@ -286,20 +286,30 @@ $objednavky = $uzivatel->subobjects['objednavkaClass'];
                         <table class="sz-table">
                             <thead>
                             <tr>
+                                <th><?php _e( "ID", "realsys" ); ?></th>
                                 <th><?php _e( "Datum", "realsys" ); ?></th>
                                 <th><?php _e( "Množství", "realsys" ); ?></th>
                                 <th><?php _e( "Cena", "realsys" ); ?></th>
                                 <th><?php _e( "Zaplaceno", "realsys" ); ?></th>
+                                <th><?php _e( "Faktura", "realsys" ); ?></th>
                             </tr>
                             </thead>
                             <tbody>
 
 							<?php foreach ( $objednavky as $key => $value ) : ?>
                                 <tr>
+                                    <td><?php echo $value->getId(); ?></td>
                                     <td><?php echo Tools::formatTime( $value->dejData( "db_datum_zalozeni" ) ); ?></td>
                                     <td><?php echo $value->dejData( "db_mnozstvi" ); ?></td>
                                     <td class="price"><?php echo Tools::convertCurrency( $value->dejData( "db_cena" ) ); ?></td>
                                     <td><?php echo $value->dejData( "db_stav" ) ? __( "Ano", "realsys" ) : __( "Ne", "realsys" ); ?></td>
+                                    <td>
+                                        <?php if($value->isThereInvoice()) : ?>
+                                            <a href="<?php echo $value->db_invoice_link; ?>" target="_blank" download><i class="fas fa-download"></i></a>
+                                        <?php else: ?>
+                                            <span>Není</span>
+                                        <?php endif; ?>
+                                    </td>
                                 </tr>
 							<?php endforeach; ?>
 

@@ -243,25 +243,7 @@ if ( Tools::checkPresenceOfParam( "transactionid", $this->requestData ) ) {
                                         </div>
                                         <div class="text-center mt-5">
                                             <div class="contact-bar-new">
-                                                <Zobrazkontakt
-                                                        :user_logged="<?php echo ( uzivatelClass::getUserLoggedId() ) ? uzivatelClass::getUserLoggedId() : "false"; ?>"
-                                                        :service="<?php global $cenik_sluzeb;
-			                                            echo Tools::prepareJsonToOutputHtmlAttr( $cenik_sluzeb[2] ); ?>"
-                                                        :inzerat_id="<?php echo $inzerat->getId(); ?>"
-                                                        :translations="<?php echo Tools::prepareJsonToOutputHtmlAttr( array_merge( $zobrazkontakt_translations, $servicebuy_translations ) ); ?>"
-                                                        :transaction_id="<?php echo $transactionid; ?>"
-
-                                                        home_url="<?php echo home_url(); ?>"
-                                                        login_link="<?php echo Tools::getFERoute( "uzivatelClass", false, "login" ); ?>"
-                                                        payment_link="<?php echo Tools::getFERoute( "objednavkaClass" ); ?>"
-                                                        quick_payment_link="<?php echo Tools::getFERoute( "gopay", false, "quickpayment" ); ?>"
-                                                        ajax_url="<?php echo AJAXURL; ?>"
-                                                        currency="<?php echo CURRENCY; ?>"
-                                                        assets_path="<?php echo FRONTEND_IMAGES_PATH; ?>"
-                                                        user_name="<?php echo $uzivatel->getFullName(); ?>"
-                                                        user_avatar="<?php echo $uzivatel->db_avatar; ?>"
-
-                                                ></Zobrazkontakt>
+                                                <button class="btn btn-small js-transfer-from-click">Chci bydlet</button>
                                             </div>
                                         </div>
                                     </div>

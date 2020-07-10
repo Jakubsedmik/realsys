@@ -1,6 +1,6 @@
 <template>
     <div class="zobrazkontakt">
-        <button @click="openPopup" class="btn btn-small">{{translations.chciBydlet}}</button>
+        <button @click="openPopup" class="btn btn-small js-transfer-to-click">{{translations.chciBydlet}}</button>
 
         <Servicebuy
                 v-bind:user_logged="this.user_logged"
@@ -166,8 +166,8 @@
                             _this.uzivatel_url = response.data.uzivatel_url;
 
                             _this.contactAvailable = true;
+
                         }else{
-                            // todo, tady se může stát že jsou dvě komponenty v systému a obě dvě obdrží paymentCompleted, chtělo by to nějakou statickou proměnnou
                             alert("Došlo k chybě v systému: " + response.data.message);
                         }
                     }).catch(function (e) {

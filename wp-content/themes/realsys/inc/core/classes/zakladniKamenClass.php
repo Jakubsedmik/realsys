@@ -120,7 +120,6 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
         }elseif ($result === 0) {
             return true;
         }else {
-            print_r($result);
             trigger_error("Něco se pokazilo při změně objektu :: aktualizovat");
             return false;
         }
@@ -227,12 +226,15 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
                 $db_properties[$newkey] = $newvalue; 
             }
         }
-        foreach ($this->maskProperties as $key => $value) {
-            if(isset($db_properties[$value])){
-                unset($db_properties[$value]);
-            }
+
+
+        if(!is_null($this->maskProperties)){
+	        foreach ($this->maskProperties as $key => $value) {
+	            if(isset($db_properties[$value])){
+	                unset($db_properties[$value]);
+	            }
+	        }
         }
-        
         return $db_properties;
     }
 

@@ -113,11 +113,17 @@ foreach ($api_actions as $key => $value){
 
 
 function removeElement (){
+
+	// now shut down error reporting for a while
+	error_reporting(0);
+	ini_set('display_errors', 'Off');
+
 	$response = new stdClass();
 	if(Tools::checkPresenceOfParam("model", $_GET) && Tools::checkPresenceOfParam("id", $_GET)){
 		$model = $_GET['model'];
 		$id = $_GET['id'];
 		$result = assetsFactory::removeEntity($model, $id);
+
 		if($result){
 			$response->status = 1;
 			$response->message = __("Objekt byl odebrán","realsys");

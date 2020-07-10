@@ -230,22 +230,20 @@ class gopayController extends frontendController {
 
 
 				if(is_object($uzivatel)){
-					$uzivatel = $uzivatel->getId();
+					$uzivatel_id = $uzivatel->getId();
 				}else{
-					$uzivatel = 1;
+					$uzivatel_id = 1;
 				}
 
 				$anonymni_objednavka = assetsFactory::createEntity("objednavkaClass",array(
 					"db_cena" => $sluzba['price'] * ALONE_CREDIT_PRICE,
 					"db_mnozstvi" => $sluzba['price'],
 					"db_stav" => 0,
-					"db_uzivatel_id" => $uzivatel
+					"db_uzivatel_id" => $uzivatel_id
 				));
 
 
-
-				// todo zde nepoužívat quick payment použít klasciký protože máme k dispozici objednávku i uživatele
-				Tools::jsRedirect($this->quickPayment($anonymni_objednavka, $callbackurl,$serviceid),0);
+				Tools::jsRedirect($this->quickPayment($anonymni_objednavka, $callbackurl,$serviceid, $uzivatel),0);
 				$this->setView("quickOrder");
 				return true;
 
@@ -362,14 +360,20 @@ class gopayController extends frontendController {
 		return $this->simplePayment($order->db_cena, $items, $order->getId(),$contact, $return_url ,"Platba za kredity v systému");
 	}
 
-	protected function quickPayment($order, $callbackurl, $serviceid){
+	protected function quickPayment($order, $callbackurl, $serviceid, $user){
+
+		$contact = array(
+			'first_name' => $user->db_jmeno,
+			'last_name' => $user->db_prijmeni,
+			'email' => $user->db_email
+		);
 
 		$items = array(
 			array('name' => 'Objednávka kreditů', 'amount' => $order->db_cena * 100)
 		);
 
 		$return_url = GOPAY_QUICK_CALLBACK . "&orderid=" . $order->getId() . "&callbackurl=" . $callbackurl . "&serviceid=" . $serviceid;
-		return $this->simplePayment($order->db_cena, $items, $order->getId(),null, $return_url ,"Platba za kredity v systému");
+		return $this->simplePayment($order->db_cena, $items, $order->getId(),$contact, $return_url ,"Platba za kredity v systému");
 	}
 
 	protected function simplePayment($ammount, $items, $order_number, $contact, $return_url, $order_description){

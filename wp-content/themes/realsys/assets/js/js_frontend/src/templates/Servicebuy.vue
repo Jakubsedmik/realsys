@@ -304,37 +304,40 @@
                         }
                     }
 
+
+
                     setTimeout(function () {
                         Axios.get(request).then(function (response) {
                             _this.loading = false;
-                            if(response.data.status > 0){
+                            if (response.data.status > 0) {
 
-                                if(response.data.hasOwnProperty("behavior")){
+                                if (response.data.hasOwnProperty("behavior")) {
                                     var behavior = response.data.behavior.split(",");
                                     _this.already_bought = 1;
 
-                                    if(behavior.includes("close")){
+                                    if (behavior.includes("close")) {
                                         _this.closePopup()
                                     }
 
-                                    if(behavior.includes("finish")){
+                                    if (behavior.includes("finish")) {
                                         _this.openFinishPopup = true;
                                     }
 
-                                    if(behavior.includes("announce")){
+                                    if (behavior.includes("announce")) {
                                         _this.$root.$emit("paymentCompleted", response.data);
                                     }
-                                }else{
+                                } else {
                                     _this.openFinishPopup = true;
                                 }
 
-                            }else{
-                                _this.showError("Došlo k chybám",response.data.message);
+                            } else {
+                                _this.showError("Došlo k chybám", response.data.message);
                             }
                         }).catch(function (error) {
                             console.error(error);
                         });
                     }, 1000);
+
 
                 }else{
                     this.showError("Chyba", "Pokoušíte se o něco nesprávného");

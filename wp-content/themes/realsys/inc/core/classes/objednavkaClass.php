@@ -28,9 +28,9 @@ class objednavkaClass extends zakladniKamenClass {
 	}
 
 	public function smazat() {
-		parent::smazat();
 		$fakturoid = new fakturoidClass();
 		$fakturoid->removeInvoice($this);
+		return parent::smazat();
 	}
 
 
@@ -44,5 +44,9 @@ class objednavkaClass extends zakladniKamenClass {
 
 	public function getTableName() {
 		return "s7_objednavka";
+	}
+
+	public function isThereInvoice(){
+		return strlen($this->db_invoice_link) > 0 && $this->db_invoice_id != -1;
 	}
 }

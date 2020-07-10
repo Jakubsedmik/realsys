@@ -462,14 +462,14 @@ class fakturoidClass {
 	public function generateAllInvoicesPDF($sendmail = false){
 		$orders = assetsFactory::getAllEntity("objednavkaClass",
 			array(
-				new filterClass( "invoice_id","IS NOT","NULL"),
-				new filterClass("invoice_link", "IS", "NULL")
+				new filterClass( "invoice_id","IS NOT","NULL")
 			)
 		);
 
+
 		foreach ($orders as $key => $value){
 			// tady musíme vyloučit také ty s db_invoice_id -1 protože to jsou ty u kterých jsme smazali ve fakturoidu záznam
-			if($value->db_invoice_id != -1){
+			if($value->db_invoice_id != -1 && ($value->db_invoice_link == NULL || strlen($value->db_invoice_link) == 0)){
 				$this->getAndSaveInvoicePDFForOrder($value,false, $sendmail);
 			}
 		}
@@ -484,13 +484,15 @@ class fakturoidClass {
 	public function generateAllInvoices($sendmail = false, $makepdf = false){
 		$orders = assetsFactory::getAllEntity("objednavkaClass",
 			array(
-				new filterClass( "stav","=","1"),
-				new filterClass("invoice_id", "IS", "NULL")
+				new filterClass( "stav","=","1")
 			)
 		);
 
+
 		foreach ($orders as $key => $value){
-			$this->createInvoiceForOrder($value, $makepdf, $sendmail );
+			if($value->db_invoice_id == NULL || $value->db_invoice_id == -1){
+				$this->createInvoiceForOrder($value, $makepdf, $sendmail );
+			}
 		}
 	}
 
