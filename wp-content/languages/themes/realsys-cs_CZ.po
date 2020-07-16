@@ -1004,7 +1004,7 @@ msgstr "Aby wyświetlić kontakt, kliknij przycisk wyświetlić."
 
 #: inc/core/configuration/vue-translations.php:67
 msgid "Zobrazit a zaplatit za kontakt"
-msgstr "Wyświetlić i zapłacić za kontakt"
+msgstr "Wyświetl i zapłać za kontakt"
 
 #: inc/core/configuration/vue-translations.php:69
 msgid ""
@@ -1457,7 +1457,7 @@ msgid ""
 "Pozor tento inzerát je neaktivní. Buď čeká na schválení administrátorem a "
 "nebo jste ho deaktivovali. Tento inzerát vidíte pouze vy."
 msgstr ""
-"Uwaga ta ogłoszenia jest nieaktywna. Czeka na akceptację Administratora lub "
+"Uwaga to ogłoszenie jest nieaktywne. Czeka na akceptację Administratora lub "
 "ją wyłączyłeś. Tylko Ty możesz zobaczyć tą ogłoszenie."
 
 #: inc/core/frontend_controllers/inzeratDetailController.php:42
