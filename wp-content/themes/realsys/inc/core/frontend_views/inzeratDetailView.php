@@ -31,11 +31,11 @@ if ( Tools::checkPresenceOfParam( "transactionid", $this->requestData ) ) {
     </div>
 </section>
 
-<section class="app">
+<section class="">
     <div class="detail-nemovitosti full-bg">
         <div class="wrapper">
 			<?php echo frontendError::getFrontendErrors(); ?>
-            <div class="row">
+            <div class="row app">
                 <div class="col-sm nemovitost-detail">
                     <div class="nemovitost-wrapper">
                         <div class="row">
