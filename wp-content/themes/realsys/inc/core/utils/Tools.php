@@ -974,11 +974,28 @@ class Tools {
                 }
 
 			    $final_filter[$value]['name'] = $filter_parameters[$value]['name'];
+			    $final_filter[$value]['class'] = $filter_parameters[$value]['class'];
+			    $final_filter[$value]['type'] = $filter_parameters[$value]['type'];
             }
 		}
 
 		foreach ($final_filter as $key => $val){
+		    if($val['type'] == 'text') :
 		    ?>
+            <div class="customSel-wrapper">
+                <label><?php echo $val['name']; ?></label>
+                <input type="text" name="<?php echo $key; ?>" placeholder="<?php echo $val['name']; ?>" class="<?php echo (isset($val['class'])) ? $val['class'] : ''; ?>">
+            </div>
+		    <?php elseif($val['type'] == 'map-search'): ?>
+                <div class="customSel-wrapper">
+                    <label><?php echo $val['name']; ?></label>
+                    <input type="text" name="<?php echo $key; ?>" placeholder="<?php echo $val['name']; ?>" class="<?php echo (isset($val['class'])) ? $val['class'] : ''; ?>">
+                    <input type="hidden" name="db_lat" class="js-autocomplete-lat">
+                    <input type="hidden" name="db_lng" class="js-autocomplete-lng">
+                </div>
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDU9RxWxpRRoy9R-wAILv5Owb7GaXHLVaw&libraries=places&callback=initAutocomplete"
+                        async defer></script>
+            <?php else: ?>
             <div class="customSel-wrapper">
                 <label><?php echo $val['name']; ?></label>
                 <select name="<?php echo $key; ?>" class="select-hidden">
@@ -988,6 +1005,7 @@ class Tools {
                 </select>
             </div>
             <?php
+            endif;
         }
 
     }

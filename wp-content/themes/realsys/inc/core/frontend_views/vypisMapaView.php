@@ -3,6 +3,8 @@ require_once( __DIR__ . "/../configuration/vue-translations.php" );
 ?>
 
 <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDU9RxWxpRRoy9R-wAILv5Owb7GaXHLVaw&libraries=places"
+        async defer></script>
 
 <div class="app">
     <VyhledavaniMapa

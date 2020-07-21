@@ -831,8 +831,9 @@ $filter_parameters = array(
 	),
 	'db_lokalita' => array(
 		'name' => __('Lokalita',"realsys"),
-		'type' => 'text',
-		'values' => false
+		'type' => 'map-search',
+		'values' => false,
+		'class' => "js-autocomplete"
 	),
 	'db_cena' => array(
 		'name' => __('Cena',"realsys"),
@@ -902,7 +903,8 @@ $filter_parameters = array(
 $filter_hp_parameters = array(
 	'db_typ_inzeratu',
 	'db_pocet_mistnosti',
-	'db_typ_stavby'
+	'db_typ_stavby',
+	'db_lokalita'
 );
 
 

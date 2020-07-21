@@ -506,6 +506,7 @@ function getInzeraty(){
 		global $filter_parameters;
 		$search_arr = $data['search'];
 
+
 		foreach ($search_arr as $key => $value){
 
 			if(Tools::checkPresenceOfParam($value['name'], $filter_parameters)){
@@ -519,6 +520,8 @@ function getInzeraty(){
 						$filter = new filterClass($column, $operator, "'" . $deserved_value . "'");
 						$filter_arr[] = $filter;
 					}
+				}elseif ($filter_parameters[$search_item['name']]['type'] == 'map-search'){
+					continue;
 				}else{
 
 					$wanted_value = $search_item['value'];
@@ -529,6 +532,18 @@ function getInzeraty(){
 					}
 				}
 			}
+
+			/* FILTROVÁNÍ DLE LAT A LNG RADIUS */
+			if($value['name'] == 'db_lng' || $value['name'] == 'db_lat'){
+				$value_loc_min = floatval($value['value']) - RADIUS;
+				$value_loc_max = floatval($value['value']) + RADIUS;
+				$column = str_replace("db_","",$value['name']);
+				$filter = new filterClass($column, '<', $value_loc_max);
+				$filter_arr[] = $filter;
+				$filter = new filterClass($column, '>', $value_loc_min);
+				$filter_arr[] = $filter;
+			}
+
 		}
 
 	}

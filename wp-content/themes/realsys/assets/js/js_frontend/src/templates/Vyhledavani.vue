@@ -94,7 +94,7 @@
     export default {
         name: "Vyhledavani",
         props: [
-            'filters', 'filterpreset', 'user_logged', 'home_url', 'login_link', 'payment_link', 'service', 'currency', 'ajax_url', 'assets_path', 'translations', 'map_layout'
+            'filters', 'filterpreset', 'user_logged', 'home_url', 'login_link', 'payment_link', 'service', 'currency', 'ajax_url', 'assets_path', 'translations', 'map_layout', 'location'
         ],
         components: { Filterfield, Hlidacipes },
         created() {
@@ -105,7 +105,23 @@
                         name: i,
                         operator: "=",
                         value: this.filterpreset[i]
-                    }
+                    };
+
+                    this.search_data.push(searchItem);
+                }
+
+                if(typeof this.location == 'object'){
+                    var searchItem = {
+                        name: 'db_lat',
+                        operator: "=",
+                        value: this.location.lat
+                    };
+                    this.search_data.push(searchItem);
+                    var searchItem = {
+                        name: 'db_lng',
+                        operator: "=",
+                        value: this.location.lng
+                    };
                     this.search_data.push(searchItem);
                 }
 
@@ -113,6 +129,7 @@
                     this.searchResults();
                 });
             }
+
 
             var _this = this;
             this.$root.$on("fieldChanged", function (fieldValues) {

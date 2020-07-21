@@ -794,6 +794,21 @@ $(document).ready(function () {
 });
 
 
+/* SWITCH AUTOCOMPLETION ON, CREATE LAT AND LNG */
+function initAutocomplete() {
+    var input = $(".js-autocomplete")[0];
+    var autocomplete = new google.maps.places.Autocomplete(input);
+
+    autocomplete.addListener('place_changed', function() {
+        var place = autocomplete.getPlace();
+        if (place.geometry) {
+            $(".js-autocomplete-lat").val(place.geometry.location.lat());
+            $(".js-autocomplete-lng").val(place.geometry.location.lng());
+        }
+    });
+}
+
+
 
 
 

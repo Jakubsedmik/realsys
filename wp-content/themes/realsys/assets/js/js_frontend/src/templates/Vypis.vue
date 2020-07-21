@@ -13,6 +13,7 @@
                 v-bind:assets_path="this.assetspath"
                 v-bind:translations="this.translations"
                 v-bind:map_layout="false"
+                v-bind:location="this.location"
         ></Vyhledavani>
         <section>
             <div class="wrapper">
@@ -153,10 +154,15 @@
             },
             translations: {
                 type: Object
+            },
+            location: {
+                type: Object,
+                required: false
             }
         },
         components: { Filtr, Inzerat, Paging, Vyhledavani },
         mounted() {
+
 
             if(Object.entries(this.filterpreset) == 0 ){
                 this.fetchData();

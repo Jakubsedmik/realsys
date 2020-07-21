@@ -44,6 +44,10 @@
             <input type="text" v-model="fieldValue" :placeholder="filterData.name" v-on:change="fireChange">
         </label>
 
+        <label v-else-if="filterData.type=='map-search'">{{filterData.name}}
+            <input type="text" v-model="fieldValue" :placeholder="filterData.name" v-on:change="fireChange" :class="filterData.class">
+        </label>
+
 
         <div class="vyhl-vyb-wrap" v-else-if="filterData.type=='option'">
             <div class="vyhl-radio-label">
@@ -119,6 +123,7 @@
             }
         },
         mounted() {
+
             if(this.filterData.type == "slider"){
                 this.min = this.filterData.values[0];
                 this.max = this.filterData.values[1];
@@ -147,6 +152,8 @@
                     operator = ['>','<'];
                 }else if(this.filterData.type == 'select-special'){
                     operator = this.filterData.values[this.fieldValue].operator;
+                }else if(this.filterData.type == 'map-search'){
+                    operator = '=';
                 }
 
                 var valueForFilter = "";
@@ -155,6 +162,8 @@
                 }else{
                     valueForFilter = this.fieldValue;
                 }
+
+                // bude třeba pro map search načíst mapy https://www.npmjs.com/package/vue-plugin-load-script
 
                 this.request.name = this.filterName;
                 this.request.value = valueForFilter;
