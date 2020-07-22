@@ -57,6 +57,7 @@
     import Vyhledavani from "./Vyhledavani.vue";
     import Axios from "axios";
     import VueAxios from 'vue-axios';
+    import {Loader, LoaderOptions} from 'google-maps';
 
 
     export default {
@@ -161,7 +162,22 @@
             }
         },
         components: { Filtr, Inzerat, Paging, Vyhledavani },
-        mounted() {
+        async mounted() {
+
+            // start map
+            try {
+                console.log(window['google']);
+                if(typeof window['google'] == "undefined"){
+                    const options = {libraries: ['places']};
+                    const loader = new Loader('AIzaSyDU9RxWxpRRoy9R-wAILv5Owb7GaXHLVaw', options);
+                    const google = await loader.load();
+                    this.google = google;
+                    window[google] = google;
+                    this.$root.$emit("mapsLoaded");
+                }
+            } catch (error) {
+                console.error(error);
+            }
 
 
             if(Object.entries(this.filterpreset) == 0 ){

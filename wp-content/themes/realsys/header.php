@@ -17,8 +17,8 @@
         gtag('config', 'UA-164036485-2');
     </script>
 
-		<!-- Facebook Pixel Code -->
-		<script>
+	<!-- Facebook Pixel Code -->
+	<script>
 		!function(f,b,e,v,n,t,s)
 		{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 		n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -29,13 +29,13 @@
 		'https://connect.facebook.net/en_US/fbevents.js');
 		 fbq('init', '917776338700849');
 		fbq('track', 'PageView');
-		</script>
-		<noscript>
+	</script>
+	<noscript>
 		 <img height="1" width="1"
 		src="https://www.facebook.com/tr?id=917776338700849&ev=PageView
 		&noscript=1"/>
-		</noscript>
-		<!-- End Facebook Pixel Code -->
+	</noscript>
+	<!-- End Facebook Pixel Code -->
 
 </head>
 

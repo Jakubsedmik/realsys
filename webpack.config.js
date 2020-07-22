@@ -23,7 +23,8 @@ module.exports = {
                 use: [
                     'vue-style-loader',
                     'style-loader',
-                    'css-loader'
+                    'css-loader',
+                    'sass-loader'
                 ]
             },
             {

@@ -98,6 +98,7 @@
 
 <script>
     import {Loader, LoaderOptions} from 'google-maps';
+
     import Filtr from "./Filtr.vue";
     import Inzerat from "./Inzerat.vue";
     import Paging from "./Paging.vue";
@@ -175,10 +176,12 @@
         async mounted() {
             // start map
             try {
-                const options = {libraries: []};
+                const options = {libraries: ['places']};
                 const loader = new Loader('AIzaSyDU9RxWxpRRoy9R-wAILv5Owb7GaXHLVaw', options);
                 const google = await loader.load();
                 this.google = google;
+                window['google'] = google;
+                this.$root.$emit("mapsLoaded");
 
             } catch (error) {
                 console.error(error);

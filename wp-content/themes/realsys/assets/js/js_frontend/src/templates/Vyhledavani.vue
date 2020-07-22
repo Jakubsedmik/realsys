@@ -133,17 +133,17 @@
 
             var _this = this;
             this.$root.$on("fieldChanged", function (fieldValues) {
-                var entryName = fieldValues.name;
+                if(fieldValues.hasOwnProperty("multiple")){
 
-                var found = false;
-                for (var index in _this.search_data){
-                    if(_this.search_data[index].name == entryName){
-                        _this.search_data[index] = fieldValues;
-                        found = true;
+                    // if the field have multiple values, eg. map autocomplete result
+                    for(var index in fieldValues['values']){
+                        var fieldValue = fieldValues['values'][index];
+                        _this.processChangedField(fieldValue);
                     }
-                }
-                if(!found){
-                    _this.search_data.push(fieldValues);
+                }else{
+
+                    // if the field have just one value
+                    _this.processChangedField(fieldValues);
                 }
                 _this.searchResults();
             });
@@ -166,6 +166,20 @@
             getPreset: function (fieldName) {
                 if(this.filterpreset.hasOwnProperty(fieldName)){
                     return this.filterpreset[fieldName];
+                }
+            },
+            processChangedField: function (fieldValues) {
+                
+                var entryName = fieldValues.name;
+                var found = false;
+                for (var index in this.search_data){
+                    if(this.search_data[index].name === entryName){
+                        this.search_data[index] = fieldValues;
+                        found = true;
+                    }
+                }
+                if(!found){
+                    this.search_data.push(fieldValues);
                 }
             }
         }

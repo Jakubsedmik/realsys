@@ -45,7 +45,17 @@
         </label>
 
         <label v-else-if="filterData.type=='map-search'">{{filterData.name}}
-            <input type="text" v-model="fieldValue" :placeholder="filterData.name" v-on:change="fireChange" :class="filterData.class">
+            <vue-google-autocomplete
+                    id="map-autocomplete"
+                    :classname="filterData.class"
+                    :placeholder="filterData.name"
+                    v-on:placechanged="generateCordinates"
+                    v-on:no-results-found="notFoundCordinates"
+                    :value="fieldValue"
+                    ref="autocomplete"
+                    types="geocode"
+            >
+            </vue-google-autocomplete>
         </label>
 
 
@@ -90,12 +100,13 @@
 
 <script>
 
-    import VueSlider from 'vue-slider-component'
+    import VueSlider from 'vue-slider-component';
+    import VueGoogleAutocomplete from 'vue-google-autocomplete'
 
     export default {
         name: "Filterfield",
         components: {
-            VueSlider
+            VueSlider, VueGoogleAutocomplete
         },
         props: {
             filterData : {
@@ -122,7 +133,7 @@
                 }
             }
         },
-        mounted() {
+        async mounted() {
 
             if(this.filterData.type == "slider"){
                 this.min = this.filterData.values[0];
@@ -163,13 +174,25 @@
                     valueForFilter = this.fieldValue;
                 }
 
-                // bude třeba pro map search načíst mapy https://www.npmjs.com/package/vue-plugin-load-script
 
                 this.request.name = this.filterName;
                 this.request.value = valueForFilter;
                 this.request.operator = operator;
 
                 this.$root.$emit("fieldChanged", this.request);
+            },
+            generateCordinates: function (addressData, placeResultData, id) {
+
+                var request = {
+                    multiple: true,
+                    values: [{name: "db_lat", value: addressData.latitude, operator: "="}, {name: "db_lng", value: addressData.longitude, operator: "="}]
+                };
+
+                this.$root.$emit("fieldChanged", request);
+            },
+            notFoundCordinates: function (obj) {
+                alert("Tuto adresu '" + obj.name + "' jsme nenalezli, prosím vyberte adresu z vyjížděcího seznamu");
+                this.$refs['autocomplete'].update(this.fieldValue);
             }
         }
     }
