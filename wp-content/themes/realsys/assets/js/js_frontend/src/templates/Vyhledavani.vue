@@ -169,7 +169,7 @@
                 }
             },
             processChangedField: function (fieldValues) {
-                
+
                 var entryName = fieldValues.name;
                 var found = false;
                 for (var index in this.search_data){
