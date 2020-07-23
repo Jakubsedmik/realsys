@@ -13,6 +13,6 @@ INSERT INTO `s7_uzivatel` (`id`, `jmeno`, `prijmeni`, `email`, `telefon`, `fbid`
 ALTER TABLE `s7_objednavka` ADD `invoice_link` VARCHAR(512) NULL COMMENT 'Link na fakturu staženou z fakturoid' AFTER `hash`;
 ALTER TABLE `s7_objednavka` ADD `invoice_id` INT NULL AFTER `invoice_link`;
 
-// 8.7.2020
+// 8.7.2020 only on dev
 ALTER TABLE `s7_uzivatel` ADD `anonymous` BOOLEAN NULL DEFAULT NULL AFTER `telefon`;
 
