@@ -1,5 +1,5 @@
 <?php 
-define("VERSION_LINKS", "1.0");
+define("VERSION_LINKS", "1.1");
 session_start();
 
 /*
