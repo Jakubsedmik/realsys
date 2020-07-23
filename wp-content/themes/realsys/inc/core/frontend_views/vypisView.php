@@ -17,9 +17,12 @@
             :user_logged="<?php echo ( uzivatelClass::getUserLoggedId() ) ? uzivatelClass::getUserLoggedId() : 'false'; ?>"
             :service="<?php global $cenik_sluzeb; echo Tools::prepareJsonToOutputHtmlAttr( $cenik_sluzeb[0] ); ?>"
             :translations="<?php echo Tools::prepareJsonToOutputHtmlAttr($vypis_merged_translations); ?>"
+            <?php if(isset($this->requestData['location'])) : ?>
             :location="<?php echo Tools::prepareJsonToOutputHtmlAttr($this->requestData['location']); ?>"
-
+            <?php endif; ?>
             v-cloak
     >
     </Vypis>
 </div>
+
+<?php Pixel::PixelSearch(); ?>

@@ -125,8 +125,9 @@
                     this.search_data.push(searchItem);
                 }
 
+                var _this = this;
                 this.$nextTick(function () {
-                    this.searchResults();
+                    _this.searchResults();
                 });
             }
 
@@ -157,6 +158,7 @@
         },
         methods: {
             searchResults: function (e) {
+
                 this.$root.$emit("searchFor", this.search_data);
             },
 

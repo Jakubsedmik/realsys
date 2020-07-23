@@ -535,13 +535,15 @@ function getInzeraty(){
 
 			/* FILTROVÁNÍ DLE LAT A LNG RADIUS */
 			if($value['name'] == 'db_lng' || $value['name'] == 'db_lat'){
-				$value_loc_min = floatval($value['value']) - RADIUS;
-				$value_loc_max = floatval($value['value']) + RADIUS;
-				$column = str_replace("db_","",$value['name']);
-				$filter = new filterClass($column, '<', $value_loc_max);
-				$filter_arr[] = $filter;
-				$filter = new filterClass($column, '>', $value_loc_min);
-				$filter_arr[] = $filter;
+				if($value['value'] != -1){
+					$value_loc_min = floatval($value['value']) - RADIUS;
+					$value_loc_max = floatval($value['value']) + RADIUS;
+					$column = str_replace("db_","",$value['name']);
+					$filter = new filterClass($column, '<', $value_loc_max);
+					$filter_arr[] = $filter;
+					$filter = new filterClass($column, '>', $value_loc_min);
+					$filter_arr[] = $filter;
+				}
 			}
 
 		}

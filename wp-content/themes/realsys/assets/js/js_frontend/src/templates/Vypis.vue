@@ -166,7 +166,6 @@
 
             // start map
             try {
-                console.log(window['google']);
                 if(typeof window['google'] == "undefined"){
                     const options = {libraries: ['places']};
                     const loader = new Loader('AIzaSyDU9RxWxpRRoy9R-wAILv5Owb7GaXHLVaw', options);
@@ -178,7 +177,10 @@
             } catch (error) {
                 console.error(error);
             }
+        },
+        created() {
 
+            var _this = this;
 
             if(Object.entries(this.filterpreset) == 0 ){
                 this.fetchData();
@@ -194,6 +196,11 @@
                 _this.sortBy = sort;
                 _this.fetchData();
                 _this.$forceUpdate();
+            });
+
+            this.$root.$on("searchFor", function (searchFor) {
+                _this.searchJson = searchFor;
+                _this.fetchData();
             });
 
             this.$root.$on("searchFor", function (searchFor) {

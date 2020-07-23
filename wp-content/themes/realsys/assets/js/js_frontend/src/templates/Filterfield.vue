@@ -44,7 +44,7 @@
             <input type="text" v-model="fieldValue" :placeholder="filterData.name" v-on:change="fireChange">
         </label>
 
-        <label v-else-if="filterData.type=='map-search'">{{filterData.name}}
+        <label v-else-if="filterData.type=='map-search'" class="map-search">{{filterData.name}}
             <vue-google-autocomplete
                     id="map-autocomplete"
                     :classname="filterData.class"
@@ -56,6 +56,7 @@
                     types="geocode"
             >
             </vue-google-autocomplete>
+            <i class="fas fa-times" v-if="autocomplete_value" @click="resetCordinates"></i>
         </label>
 
 
@@ -124,6 +125,7 @@
         data: function () {
             return {
                 fieldValue: "",
+                autocomplete_value: false,
                 min: 0,
                 max: 100,
                 request: {
@@ -133,7 +135,7 @@
                 }
             }
         },
-        async mounted() {
+        mounted() {
 
             if(this.filterData.type == "slider"){
                 this.min = this.filterData.values[0];
@@ -145,13 +147,14 @@
 
             if(this.preset != null){
                 this.fieldValue = this.preset;
+                this.autocomplete_value = true;
             }else{
                 if(this.filterData.type == "select" || this.filterData.type == "select-special"){
                     this.fieldValue = -1;
                 }
             }
         },
-        created() {
+        render() {
 
         },
         methods: {
@@ -183,16 +186,34 @@
             },
             generateCordinates: function (addressData, placeResultData, id) {
 
+                // toto určuje zdali se má zobrazit křížek
+                this.autocomplete_value = true;
+
+                // event pro získání výsledků ze serveru
                 var request = {
                     multiple: true,
                     values: [{name: "db_lat", value: addressData.latitude, operator: "="}, {name: "db_lng", value: addressData.longitude, operator: "="}]
                 };
-
                 this.$root.$emit("fieldChanged", request);
+
+                // event pro zobrazení circle na mapě
+                var cordinates = {lat: addressData.latitude, lng: addressData.longitude};
+                this.$root.$emit("coordinates_changed", cordinates);
             },
             notFoundCordinates: function (obj) {
                 alert("Tuto adresu '" + obj.name + "' jsme nenalezli, prosím vyberte adresu z vyjížděcího seznamu");
                 this.$refs['autocomplete'].update(this.fieldValue);
+            },
+            resetCordinates: function () {
+                var request = {
+                    multiple: true,
+                    values: [{name: "db_lat", value: -1, operator: "="}, {name: "db_lng", value: -1, operator: "="}]
+                };
+                this.$root.$emit("fieldChanged", request);
+                this.$root.$emit("coordinates_changed", false);
+                this.fieldValue = "";
+                this.autocomplete_value = false;
+                this.$refs['autocomplete'].update("");
             }
         }
     }
@@ -208,5 +229,17 @@
     .labelItself{
         margin-bottom: .5rem;
         display: inline-block;
+    }
+
+    .map-search i{
+        position: absolute;
+        top: 46%;
+        right: 15px;
+        color: grey;
+        cursor: pointer;
+    }
+
+    .map-search i:hover{
+        color: #FF951A;
     }
 </style>
