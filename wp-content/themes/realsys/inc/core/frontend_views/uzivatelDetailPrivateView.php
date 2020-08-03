@@ -14,7 +14,17 @@ if ( ! is_array( $inzeraty ) ) {
 
 $transakce  = $uzivatel->subobjects['transakceClass'];
 $objednavky = $uzivatel->subobjects['objednavkaClass'];
+/*if($_GET['tab']){
+    $rn_tab_id=$_GET['tab'];
 
+    }*/
+if($_SERVER["QUERY_STRING"]){
+    $x = parse_url($_SERVER["REQUEST_URI"]);
+    $x=$x[-2];
+    $rn_tab_id=str_replace("/", "", $x);
+}else{
+    $rn_tab_id=1;
+}
 
 ?>
 
@@ -36,13 +46,13 @@ $objednavky = $uzivatel->subobjects['objednavkaClass'];
                 <div class="profile-menu-wrap">
                     <nav class="profile-menu">
                         <ul>
-                            <li><a id="tab1"
-                                   class="profile-menu-link active"><?php _e( "Můj profil", "realsys" ); ?></a></li>
-                            <li><a id="tab2" class="profile-menu-link"><?php _e( "Moje peněženka", "realsys" ); ?></a>
+                            <li><a id="tab1" class="profile-menu-link <?php if($rn_tab_id=='1'){echo 'active';}?>"><?php _e( "Můj profil", "realsys" ); ?></a></li>
+
+                            <li><a id="tab2" class="profile-menu-link <?php if($rn_tab_id=='2'){echo 'active';}?>"><?php _e( "Moje peněženka", "realsys" ); ?></a>
                             </li>
-                            <li><a id="tab3" class="profile-menu-link"><?php _e( "Moje inzeráty", "realsys" ); ?></a>
+                            <li><a id="tab3" class="profile-menu-link <?php if($rn_tab_id=='3'){echo 'active';}?>"><?php _e( "Moje inzeráty", "realsys" ); ?></a>
                             </li>
-                            <li><a id="tab4" class="profile-menu-link"><?php _e( "Hlídací psi", "realsys" ); ?></a></li>
+                            <li><a id="tab4" class="profile-menu-link <?php if($rn_tab_id=='4'){echo 'active';}?>"><?php _e( "Hlídací psi", "realsys" ); ?></a></li>
                             <li>
                                 <a href="<?php echo Tools::getFERoute( "uzivatelClass", UzivatelClass::getUserLoggedId(), "detail", "logOut" ); ?>" class="profile-menu-link">
                                     <?php _e( "Odhlásit se", "realsys" ); ?>
@@ -54,7 +64,7 @@ $objednavky = $uzivatel->subobjects['objednavkaClass'];
 
             </div>
             <div class="col-lg-9">
-                <div class="content-wrap rounded-b shadow-sm p-20 tab-sl-content" id="tab1C">
+                <div class="content-wrap rounded-b shadow-sm p-20 tab-sl-content" id="tab1C" style="display:<?php if($rn_tab_id!='1'){echo 'none';}?>">
                     <h1 class="sz-tit text-center mb-3 mt-3"><?php _e( "Můj profil ", "realsys" ); ?></h1>
 
                     <!-- start profil view -->
@@ -235,7 +245,7 @@ $objednavky = $uzivatel->subobjects['objednavkaClass'];
 
                 </div>
 
-                <div class="content-wrap rounded-b shadow-sm p-20 tab-sl-content" id="tab2C">
+                <div class="content-wrap rounded-b shadow-sm p-20 tab-sl-content" id="tab2C" style="display:<?php if($rn_tab_id!='2'){echo 'none';}?>">
                     <h1 class="sz-tit text-center mb-4 mt-3"><?php _e( "Moje peněženka", "realsys" ); ?></h1>
                     <p class="text-center mb-sm-5">
                         <span class="sz-tip-desc"><?php _e( "Szukamdom Tip:", "realsys" ); ?></span>
@@ -319,7 +329,7 @@ $objednavky = $uzivatel->subobjects['objednavkaClass'];
 
                 </div>
 
-                <div class="content-wrap rounded-b shadow-sm p-20 tab-sl-content" id="tab3C">
+                <div class="content-wrap rounded-b shadow-sm p-20 tab-sl-content" id="tab3C"  style="display:<?php if($rn_tab_id!='3'){echo 'none';}?>">
                     <h1 class="sz-tit text-center mb-4 mt-3"><?php _e( "Moje inzeráty", "realsys" ); ?></h1>
 					<?php if ( count( $inzeraty ) > 0 ) : ?>
                         <section>
@@ -363,7 +373,7 @@ $objednavky = $uzivatel->subobjects['objednavkaClass'];
 					<?php endif; ?>
                 </div>
 
-                <div class="content-wrap rounded-b shadow-sm p-20 tab-sl-content" id="tab4C">
+                <div class="content-wrap rounded-b shadow-sm p-20 tab-sl-content" id="tab4C" style="display:<?php if($rn_tab_id!='4'){echo 'none';}?>">
                     <h1 class="sz-tit text-center mb-4 mt-3"><?php _e( "Moji hlídací psi", "realsys" ); ?></h1>
 
 					<?php if ( count( $hlidaci_psi ) > 0 ) : ?>
@@ -400,7 +410,7 @@ $objednavky = $uzivatel->subobjects['objednavkaClass'];
                             </div>
                         </section>
 					<?php endif; ?>
-
+					<a href="/vypismapa/" class="btn"><?php _e( "Vytvořit hlídacího psa", "realsys" ); ?></a>
                 </div>
 
 
