@@ -33,6 +33,13 @@ class vypisController extends frontendController {
 			}
 		}
 
+		if(Tools::checkPresenceOfParam("db_lat", $this->requestData) && Tools::checkPresenceOfParam("db_lng", $this->requestData)){
+			$this->requestData['location'] = array(
+				"lat" => $this->requestData['db_lat'],
+				"lng" => $this->requestData['db_lng']
+			);
+		}
+
 		$this->requestData['filter'] = Tools::prepareJsonToOutputHtmlAttr($filter_parameters);
 	}
 }

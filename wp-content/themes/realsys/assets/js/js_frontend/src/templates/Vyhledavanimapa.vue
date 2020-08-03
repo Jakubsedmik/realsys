@@ -98,6 +98,7 @@
 
 <script>
     import {Loader, LoaderOptions} from 'google-maps';
+
     import Filtr from "./Filtr.vue";
     import Inzerat from "./Inzerat.vue";
     import Paging from "./Paging.vue";
@@ -119,6 +120,7 @@
                 sortBy: Filtr.data().currentSort,
                 google: null,
                 map: null,
+                circle: null,
                 mapMarkers: {},
                 filteredResults: [],
                 markerClusterer: null,
@@ -175,10 +177,12 @@
         async mounted() {
             // start map
             try {
-                const options = {libraries: []};
+                const options = {libraries: ['places', 'drawing']};
                 const loader = new Loader('AIzaSyDU9RxWxpRRoy9R-wAILv5Owb7GaXHLVaw', options);
                 const google = await loader.load();
                 this.google = google;
+                window['google'] = google;
+                this.$root.$emit("mapsLoaded");
 
             } catch (error) {
                 console.error(error);
@@ -210,6 +214,30 @@
             this.$root.$on("searchFor", function (searchFor) {
                 _this.searchJson = searchFor;
                 _this.fetchData();
+            });
+
+            this.$root.$on("coordinates_changed",function (latlon) {
+
+                if(_this.circle !== null){
+                    _this.circle.setMap(null);
+                }
+
+                if(latlon === false){
+                    return false;
+                }else{
+                    var map = _this.map;
+                    const cityCircle = new _this.google.maps.Circle({
+                        strokeColor: "#FF0000",
+                        strokeOpacity: 0.8,
+                        strokeWeight: 2,
+                        fillColor: "#00ff00",
+                        fillOpacity: 0.35,
+                        map,
+                        center: latlon,
+                        radius: 50000
+                    });
+                    _this.circle = cityCircle;
+                }
             });
 
             this.$root.$on("dataLoaded", function () {

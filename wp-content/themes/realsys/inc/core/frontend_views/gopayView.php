@@ -17,3 +17,5 @@
         </div>
     </div>
 </section>
+
+<?php Pixel::PixelPayment(); ?>
