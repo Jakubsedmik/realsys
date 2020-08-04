@@ -19,13 +19,14 @@ $objednavky = $uzivatel->subobjects['objednavkaClass'];
 
     }*/
 		if($_SERVER["REQUEST_URI"]){
-		    $x = parse_url($_SERVER["REQUEST_URI"]);
+		    $x = ($_SERVER["REQUEST_URI"]);
 		    $x=$x[-2];
 		    $rn_tab_id=str_replace("/", "", $x);
 		}else{
 		    $rn_tab_id=1;
 		}
-		//echo $_SERVER["PATH_INFO"];
+		echo "ID: ";
+		echo $rn_tab_id;
 
 ?>
 
@@ -47,13 +48,13 @@ $objednavky = $uzivatel->subobjects['objednavkaClass'];
                 <div class="profile-menu-wrap">
                     <nav class="profile-menu">
                         <ul>
-                            <li><a id="tab1" class="profile-menu-link <?php if($rn_tab_id=='1'){echo 'active';}?>"><?php _e( "Můj profil", "realsys" ); ?></a></li>
+                            <li><a id="tab1" class="profile-menu-link <?php if($rn_tab_id=='1'){echo 'active';}else {echo 'inactive';}?>"><?php _e( "Můj profil", "realsys" ); ?></a></li>
 
-                            <li><a id="tab2" class="profile-menu-link <?php if($rn_tab_id=='2'){echo 'active';}?>"><?php _e( "Moje peněženka", "realsys" ); ?></a>
+                            <li><a id="tab2" class="profile-menu-link <?php if($rn_tab_id=='2'){echo 'active';}else {echo 'inactive';}?>"><?php _e( "Moje peněženka", "realsys" ); ?></a>
                             </li>
-                            <li><a id="tab3" class="profile-menu-link <?php if($rn_tab_id=='3'){echo 'active';}?>"><?php _e( "Moje inzeráty", "realsys" ); ?></a>
+                            <li><a id="tab3" class="profile-menu-link <?php if($rn_tab_id=='3'){echo 'active';}else {echo 'inactive';}?>"><?php _e( "Moje inzeráty", "realsys" ); ?></a>
                             </li>
-                            <li><a id="tab4" class="profile-menu-link <?php if($rn_tab_id=='4'){echo 'active';}?>"><?php _e( "Hlídací psi", "realsys" ); ?></a></li>
+                            <li><a id="tab4" class="profile-menu-link <?php if($rn_tab_id=='4'){echo 'active';}else {echo 'inactive';}?>"><?php _e( "Hlídací psi", "realsys" ); ?></a></li>
                             <li>
                                 <a href="<?php echo Tools::getFERoute( "uzivatelClass", UzivatelClass::getUserLoggedId(), "detail", "logOut" ); ?>" class="profile-menu-link">
                                     <?php _e( "Odhlásit se", "realsys" ); ?>
