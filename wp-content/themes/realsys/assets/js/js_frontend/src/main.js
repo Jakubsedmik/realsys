@@ -762,9 +762,9 @@ $(document).ready(function() {
 
 /* TABY V PROFILU */
 $(document).ready(function() {
-    $('.profil li a:not(:first)').addClass('inactive');
+    /*$('.profil li a:not(:first)').addClass('inactive');
     $('.tab-sl-content').hide();
-    $('.tab-sl-content:first').show();
+    $('.tab-sl-content:first').show();*/
 
     $('.profil li a').click(function(){
         var t = $(this).attr('id');
@@ -807,9 +807,3 @@ function initAutocomplete() {
         }
     });
 }
-
-
-
-
-
-

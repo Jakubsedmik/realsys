@@ -18,13 +18,14 @@ $objednavky = $uzivatel->subobjects['objednavkaClass'];
     $rn_tab_id=$_GET['tab'];
 
     }*/
-if($_SERVER["QUERY_STRING"]){
-    $x = parse_url($_SERVER["REQUEST_URI"]);
-    $x=$x[-2];
-    $rn_tab_id=str_replace("/", "", $x);
-}else{
-    $rn_tab_id=1;
-}
+		if($_SERVER["REQUEST_URI"]){
+		    $x = parse_url($_SERVER["REQUEST_URI"]);
+		    $x=$x[-2];
+		    $rn_tab_id=str_replace("/", "", $x);
+		}else{
+		    $rn_tab_id=1;
+		}
+		//echo $_SERVER["PATH_INFO"];
 
 ?>
 
