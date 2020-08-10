@@ -1127,6 +1127,8 @@ function payForContact(){
 								$response->telefon = $uzivatel->db_telefon;
 								$response->email = $uzivatel->db_email;
 								$response->uzivatel_url = Tools::getFERoute("uzivatelClass",$uzivatel->getId(),"detail");
+								$response->mnozstvi = $transaction->db_mnozstvi;
+								$response->currency = CURRENCY;
 
 								if($transaction->isRequestedByCurrentUser()){
 									$current_user = uzivatelClass::getUserLoggedObject();

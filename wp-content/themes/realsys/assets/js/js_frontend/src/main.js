@@ -498,6 +498,7 @@ function activeInzerat(element) {
     nemovitost.addClass("active");
     nemovitost.find(".inzeratActivator").hide();
     nemovitost.find(".inzeratDeactivator").show();
+    nemovitost.find(".js-nem-top").show();
 }
 
 function deactiveInzerat(element) {
@@ -506,6 +507,7 @@ function deactiveInzerat(element) {
     nemovitost.removeClass("active");
     nemovitost.find(".inzeratActivator").show();
     nemovitost.find(".inzeratDeactivator").hide();
+    nemovitost.find(".js-nem-top").hide();
 }
 
 function removePes(element) {

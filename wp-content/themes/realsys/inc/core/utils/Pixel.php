@@ -54,4 +54,26 @@ class Pixel {
 		<?php
 	}
 
+	public static function PixelBuy($waitForEvent=false, $value=0, $currency="TOKEN"){
+	    if($waitForEvent){
+	        ?>
+            <script>
+                $(window).on("PixelBuy", function (event, data) {
+                    fbq('track', 'Purchase', data);
+                });
+            </script>
+            <?php
+        }else{
+		    ?>
+            <script>fbq('track', 'Purchase', {value: <?php echo floatval($value) ?>, currency: '<?php echo $currency; ?>'});</script>
+            <?php
+        }
+    }
+
+    public static function PixelCreateProduct(){
+	    ?>
+        <script>fbq('track', 'CustomizeProduct');</script>
+	    <?php
+    }
+
 }

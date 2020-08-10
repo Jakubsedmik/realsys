@@ -314,3 +314,5 @@ if ( count( $similar ) > 0 ) :
         </div>
     </section>
 <?php endif; ?>
+
+<?php Pixel::PixelBuy(true); ?>
