@@ -2392,12 +2392,15 @@ msgstr "Moje konto "
 #: inc/core/frontend_views/uzivatelDetailView.php:48
 #: templates/page-profil.php:33 templates/page-profil.php:149
 msgid "Szukamdom Tip:"
-msgstr "Wskazówka SzukamDom:"
+msgstr "Wskazówki:"
 
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:67
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:125
 msgid "Čím více informací o sobě vyplníte, tím získáte lepší skóre."
-msgstr "Czym więcej informacji o sobie wypełnisz, tym lepszy wynik uzyskasz."
+msgstr ""
+"Napisz jak najwięcej o sobie, będzie widać, że podchodzisz do wszystkiego "
+"poważnie i zwiększysz swoje szanse na sukces. Dodatkowo otrzymasz kilka "
+"darmowych kredytów za kompletnie wypełniony profil."
 
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:73
 #: inc/core/frontend_views/uzivatelDetailView.php:57
@@ -2453,8 +2456,9 @@ msgid ""
 "Kredity můžete používat jako platidlo za služby. Nevyužité kredity Vám "
 "vrátíme zpět."
 msgstr ""
-"Kredytów możesz używać jako płatności za usługi. Zwrócimy Ci Twoje "
-"niewykorzystane kredyty."
+"Kredyty służą jako waluta do ujawniania danych kontaktowych i innych usług. "
+"Do portfela możesz dokupować nowe kredyty, sprawdzić ich aktualny stan lub "
+"przejrzeć historię swojego konta."
 
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:253
 msgid "Dobít kredity"
