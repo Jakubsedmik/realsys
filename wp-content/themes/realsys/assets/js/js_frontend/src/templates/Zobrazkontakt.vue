@@ -165,6 +165,10 @@
                             _this.email = response.data.email;
                             _this.uzivatel_url = response.data.uzivatel_url;
 
+                            // PIXEL SEND INFO
+                            var pixelData = {value: parseFloat(response.data.mnozstvi), currency: response.data.currency};
+                            $(window).trigger("PixelBuy", pixelData);
+
                             _this.contactAvailable = true;
 
                         }else{

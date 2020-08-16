@@ -88,7 +88,7 @@
 
 				</div>
 
-				<div class="col-sm-2 nemovitost-topovani">
+				<div class="col-sm-2 nemovitost-topovani js-nem-top" <?php if($item->db_stav_inzeratu == 2 || $item->db_stav_inzeratu == 0) : ?>style="display: none;" <?php endif; ?>>
                     <Servicebuy
                             design="inzeratTop"
                             login_link="<?php echo Tools::getFERoute("uzivatelClass", false, "login"); ?>"

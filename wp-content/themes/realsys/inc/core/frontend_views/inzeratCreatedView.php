@@ -2,7 +2,8 @@
 	$inzerat = $this->requestData['inzerat'];
 	$link = Tools::getFERoute("inzeratClass",$inzerat->getId(),"detail");
 
-	Tools::jsRedirect($link, 1500, "Přesměrování", "Probíhá přesměrování na nový inzerát");
+    Pixel::PixelCreateProduct();
+	Tools::jsRedirect($link, 2500, "Přesměrování", "Probíhá přesměrování na nový inzerát");
 ?>
 <section>
 	<div class="add-inz-con">

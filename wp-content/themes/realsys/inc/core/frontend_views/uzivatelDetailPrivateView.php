@@ -14,19 +14,15 @@ if ( ! is_array( $inzeraty ) ) {
 
 $transakce  = $uzivatel->subobjects['transakceClass'];
 $objednavky = $uzivatel->subobjects['objednavkaClass'];
-/*if($_GET['tab']){
-    $rn_tab_id=$_GET['tab'];
 
-    }*/
-		if($_SERVER["REQUEST_URI"]){
-		    $x = ($_SERVER["REQUEST_URI"]);
-		    $x=$x[-2];
-		    $rn_tab_id=str_replace("/", "", $x);
-		}else{
-		    $rn_tab_id=1;
-		}
-		echo "ID: ";
-		echo $rn_tab_id;
+
+if($_SERVER["REQUEST_URI"]){
+    $x = ($_SERVER["REQUEST_URI"]);
+    $x=$x[-2];
+    $rn_tab_id=str_replace("/", "", $x);
+}else{
+    $rn_tab_id=1;
+}
 
 ?>
 
