@@ -745,8 +745,8 @@ jQuery(document).ready(function($){
 $(document).ready(function() {
 
     $('#tabs li:not(:first)').addClass('inactive');
-    $('.tab-sl-content').hide();
-    $('.tab-sl-content:first').show();
+    $('#tabs .tab-sl-content').hide();
+    $('#tabs .tab-sl-content:first').show();
 
     $('#tabs li').click(function(){
         var t = $(this).attr('id');
@@ -754,7 +754,7 @@ $(document).ready(function() {
             $('#tabs li').addClass('inactive');
             $(this).removeClass('inactive');
 
-            $('.tab-sl-content').hide();
+            $('#tabs .tab-sl-content').hide();
             $('#'+ t + 'C').fadeIn('slow');
         }
     });

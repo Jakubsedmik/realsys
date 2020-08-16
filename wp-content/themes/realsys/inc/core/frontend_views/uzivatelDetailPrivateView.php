@@ -66,7 +66,7 @@ $objednavky = $uzivatel->subobjects['objednavkaClass'];
 
             </div>
             <div class="col-lg-9">
-                <div class="content-wrap rounded-b shadow-sm p-20 tab-sl-content" id="tab1C" style="display:<?php if($rn_tab_id!='1'){echo 'none';}?>">
+                <div class="content-wrap rounded-b shadow-sm p-20 tab-sl-content" id="tab1C" style="display:<?php if($rn_tab_id!='1'){echo 'none';}else{echo 'block';}?>">
                     <h1 class="sz-tit text-center mb-3 mt-3"><?php _e( "Můj profil ", "realsys" ); ?></h1>
 
                     <!-- start profil view -->
@@ -247,7 +247,7 @@ $objednavky = $uzivatel->subobjects['objednavkaClass'];
 
                 </div>
 
-                <div class="content-wrap rounded-b shadow-sm p-20 tab-sl-content" id="tab2C" style="display:<?php if($rn_tab_id!='2'){echo 'none';}?>">
+                <div class="content-wrap rounded-b shadow-sm p-20 tab-sl-content" id="tab2C" style="display:<?php if($rn_tab_id!='2'){echo 'none';}else{echo 'block';}?>">
                     <h1 class="sz-tit text-center mb-4 mt-3"><?php _e( "Moje peněženka", "realsys" ); ?></h1>
                     <p class="text-center mb-sm-5">
                         <span class="sz-tip-desc"><?php _e( "Szukamdom Tip:", "realsys" ); ?></span>
@@ -331,7 +331,7 @@ $objednavky = $uzivatel->subobjects['objednavkaClass'];
 
                 </div>
 
-                <div class="content-wrap rounded-b shadow-sm p-20 tab-sl-content" id="tab3C"  style="display:<?php if($rn_tab_id!='3'){echo 'none';}?>">
+                <div class="content-wrap rounded-b shadow-sm p-20 tab-sl-content" id="tab3C"  style="display:<?php if($rn_tab_id!='3'){echo 'none';}else{echo 'block';}?>">
                     <h1 class="sz-tit text-center mb-4 mt-3"><?php _e( "Moje inzeráty", "realsys" ); ?></h1>
 					<?php if ( count( $inzeraty ) > 0 ) : ?>
                         <section>
@@ -375,7 +375,7 @@ $objednavky = $uzivatel->subobjects['objednavkaClass'];
 					<?php endif; ?>
                 </div>
 
-                <div class="content-wrap rounded-b shadow-sm p-20 tab-sl-content" id="tab4C" style="display:<?php if($rn_tab_id!='4'){echo 'none';}?>">
+                <div class="content-wrap rounded-b shadow-sm p-20 tab-sl-content" id="tab4C" style="display:<?php if($rn_tab_id!='4'){echo 'none';}else{echo 'block';}?>">
                     <h1 class="sz-tit text-center mb-4 mt-3"><?php _e( "Moji hlídací psi", "realsys" ); ?></h1>
 
 					<?php if ( count( $hlidaci_psi ) > 0 ) : ?>
