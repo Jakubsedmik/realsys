@@ -1,0 +1,946 @@
+
+#regForm .form-field:after {
+	 content: "*";
+  display:block;
+  position:absolute;
+  right: 6px;
+  top: 0px;
+  color: #ff951a;
+  font-size: 20px;
+  font-weight: 700;
+  z-index:999;
+}
+.page-id-73 section {
+	display:block!important;
+}
+.add-inz-con .inz-box label {
+    font-size: 15px!important;
+}
+header .user-login a:first-child {
+	border:0;
+}
+.main-menu-top {
+    z-index: 999;
+}
+
+/* UPRAVY 12-05-2020 1859 */
+
+.sluzby-detail {
+	margin-top:80px;
+}
+.sluzby-detail .content {
+	margin-top:50px;
+}
+.sluzby-detail .sluzby-balicek {
+	margin-top:50px;
+}
+.sluzby-detail .sluzby-formular {
+	margin-top:60px;
+}
+.sluzby-balicek .sluzby-detail-cont {
+	padding:30px;
+}
+.sluzby-balicek .sluzby-detail-cont ul {
+	list-style-type:none;
+	margin-top:20px;
+}
+.sluzby-balicek .sluzby-detail-cont ul li {
+	position:relative;
+	font-size: 18px;
+  font-weight: 600;
+	margin-left:50px;
+}
+.sluzby-balicek .sluzby-detail-cont ul li:before {
+	content:"";
+	display:block;
+	position:absolute;
+	width:8px;
+	height:8px;
+	background:orange;
+	border-radius:50%;
+	left:-25px;
+	top:10px;
+}
+
+/* UPRAVY 13-05-2020 2128 */
+.sluzby-balicek .sluzby-detail-cont.pribeh {
+	background: #ABECF0!important;
+  box-shadow: 0 0 0!important;
+	padding-left: 50px;
+}
+.pribeh .row {
+	align-items:center;
+}
+
+/* ÚPRAVY 16.5.2020 */
+.page-id-79 .app {
+	margin-top:50px;
+	margin-bottom:50px;
+}
+.show-on-map {
+	display:none;
+}
+.mapa-wrap {
+	filter:grayscale(1);
+}
+
+/* ÚPRAVA 17.5.2020 */
+header nav ul li a:not(.btn) {
+	color: #243B4A!important;
+	cursor:pointer!important;
+	pointer-events:initial!important;
+}
+
+.user-menu a:nth-of-type(1) {
+display:block!important;
+}
+
+.btn.rozsirene-button {
+    background: none;
+    color: #243B4A!important;
+    text-decoration: underline!important;
+    margin-top: 20px;
+}
+.btn.rozsirene-button:hover {
+    color:#FF951A!important;
+}
+.range-cena {
+    margin-bottom: 2.5rem!important;
+}
+
+.jcf-checkbox, .jcf-radio {
+background:none!important;
+}
+
+nav.menu {
+    margin-left: auto;
+    margin-right: 25px;
+}
+
+/*---------upravy---17.5.2020------*/
+
+th {
+	font-size: 18px;
+}
+
+.btn {
+    font-size: 16px!important;
+		padding: 12px 45px;
+}
+label {
+	text-transform: initial;
+}
+.table-wrap {
+  overflow-x: auto;
+}
+
+
+/**/
+
+.menu-wrap.active {
+	min-height: calc(100vh - 65px);
+    height: auto;
+}
+.vyhl-razeni .customSel-wrapper .jcf-select {
+	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.27);
+}
+
+.price-bar {
+	padding-bottom: 20px;
+}
+
+.nemovitost-wrapper .price-bar {
+	flex-wrap: wrap;
+}
+.nemovitost-wrapper .price-bar .price {
+	margin-right: 10px;
+	margin-bottom: 7px;
+}
+.price-bar .btn.more {
+    padding: 9px 15px;
+    font-size: 14px!important;
+}
+
+.nemovitost-top .price-bar .btn:hover {
+	background: #16252f;
+}
+
+.range-cena .range-nazev {
+	font-family: "DM Sans";
+	font-weight: 700;
+}
+
+.vyhl-filtery .rozsirene-hledani .vyhl-vyb-colwrap {
+	width: 100%;
+	max-width: 800px;
+}
+
+.sluzby-sec .sec-title {
+	max-width: 800px;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.sluzby-cont h3 {
+	font-size: 25px;
+}
+
+.login-con .wrapper > h2, .login-con .wrapper > p {
+	text-align: center;
+}
+
+.add-inz-con .nav-box .tablinks {
+	cursor: pointer!important;
+}
+
+
+.profil .nem-row-box .nemovitost-topovani {
+    max-width: 27%!important;
+    width: 100%;
+	flex-grow: 1;
+}
+.nem-row-box .nemovitost-topovani .btn {
+    padding: 12px 16px;
+}
+
+.profil .nem-row-box .nemovitost-text {
+	max-width: 30%;
+	flex-grow: 1;
+}
+
+.profil #tab3C .top-nemovitosti {
+	padding-top: 20px!important;
+
+}
+.profil .wrapper .row > .col-lg-3 {
+	margin-bottom: 50px;
+}
+
+.profil .profil-main-content .input-desc {
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+.profil .profil-main-content .profil-form-content .row > div {
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
+.profil .profil-main-content .sz-tip-txt {
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+.profil .profil-main-content .row {
+	margin-bottom: 4px;
+}
+.profil .profil-main-content .correct:after {
+    top: 0px;
+	right: 6px;
+}
+
+.profil .profil-main-content form .correct:after {
+    top: 10px;
+	right: 26px;
+}
+
+
+.kred-big {
+    font-size: 52px;
+    flex-grow: 1;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+.kredity-con .col-first {
+	margin-bottom: 30px;
+}
+
+
+.kredity-con .inbox-form label {
+	max-width: 340px!important;
+    width: 100%!important;
+}
+.kredity-con .credits-div {
+	width: 100%;
+}
+label input ~ .credits-div:hover, label input:checked ~ .credits-div {
+	border-radius: 6px;
+	background: #DBF4F4;
+}
+
+
+.kontk-maj-kredit-modal .modal-body {
+	padding-bottom: 40px;
+}
+
+.close-icon {
+	cursor: pointer;
+}
+
+/**/
+footer .footer-primary-title, footer .wrapper .footer_block > h3 {
+	font-size: 28px;
+}
+
+footer {
+    padding-bottom: 170px;
+}
+footer .footer-contact a img {
+min-width: 30px;
+}
+footer .menu li {
+    margin-bottom: 24px;
+    line-height: 1;
+}
+
+.col-sm-3 {
+	max-width: 25%;
+}
+/*-----------respo---17.5.2020------*/
+
+.edit-icon-wrap {
+	z-index: 99;
+}
+
+.mob-menu-btns, .mob-user-wrap, .mob-menu-nav {
+    padding: 20px 20px 10px 20px;
+}
+
+.mob-menu-nav {
+	display: block!important;
+}
+
+@media only screen and (max-width: 1400px) {
+.map-vyhl-wrap .vyhl-filtery .filtr-row {
+	flex-wrap: wrap;
+}
+
+.map-vyhl-wrap .vyhl-filtery .filtr-row .customSel-wrapper {
+		width: calc(50% - 15px);
+	flex-grow: unset;
+}
+.map-vyhl-wrap .vyhl-filtery .filtr-row .customSel-wrapper:nth-child(2) {
+		margin-right: 0px;
+}
+.map-vyhl-wrap .vyhl-filtery .filtr-row .customSel-wrapper:nth-child(3) {
+		width: 100%;
+}
+}
+@media only screen and (max-width: 1200px) {
+footer .menu {
+    margin-left: 0px;
+}
+}
+
+@media only screen and (max-width: 1100px) {
+.btn {
+    padding: 12px 30px;
+}
+.main-header nav ul li {
+    margin-right: 0px!important;
+}
+}
+
+@media only screen and (max-width: 900px) {
+.btn {
+    padding: 12px 10px;
+    font-size: 14px!important;
+}
+
+}
+
+@media only screen and (max-width: 767px) {
+h1 {
+	font-size: 32px!important;
+}
+h2 {
+	font-size: 28px!important;
+}
+h3 {
+	font-size: 22px!important;
+}
+
+.slider-title h1 {
+  font-size: 32px!important;
+  margin-bottom: 22px;
+}
+
+
+th {
+	font-size: 16px;
+}
+.btn {
+    padding: 10px 20px;
+}
+
+.map-vyhl-wrap {
+    padding-right: 0px;
+}
+.mapa-wrap {
+    height: 30vh;
+    z-index: 99;
+	padding: 0px;
+}
+.mapa-wrap .fixed-mapa {
+	height: 100%!important;
+}
+
+.map-vyhl-wrap .map-vyhl.row {
+	margin-right: 0px;
+	margin-left: 0px;
+}
+
+.sluzby-balicek .sluzby-detail-cont.pribeh {
+  padding-left: 20px;
+	padding-right: 20px;
+}
+
+
+.sluzby-sec .wrapper {
+    padding-top: 20px;
+}
+.sluzby-tabs {
+    justify-content: center;
+    flex-direction: column;
+	align-items: center;
+}
+.sluzby-tabs .btn {
+    margin: 10px 0px;
+	padding: 20px 10px;
+	max-width: 350px;
+	width: 100%;
+}
+
+.add-inz-con .image-feed .image-choose {
+	max-width: 50%;
+    flex-basis: 50%;
+}
+
+.profil .profil-view .input-desc {
+	text-align: left;
+}
+
+#tab2C .sz-tit {
+	font-size: 22px!important;
+}
+
+#tab3C .wrapper {
+	padding: 0px;
+}
+
+.profil .section-btn {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+	.profil .section-btn .btn {
+		margin: 10px;
+	}
+
+.sluzby-balicek .sluzby-detail-cont {
+    padding: 10px 0px;
+    padding-right: 10px;
+}
+.sluzby-balicek .sluzby-detail-cont ul li {
+	font-size: 16px;
+}
+}
+
+
+@media only screen and (max-width: 576px) {
+.btn {
+	font-size: 15px!important;
+  padding: 10px 15px;
+}
+
+.map-vyhl-wrap .vyhl-filtery .filtr-row .customSel-wrapper {
+	width: 100%;
+	margin-right: 0px;
+}
+
+.map-vyhl-wrap .vyhl-razeni  {
+	flex-wrap: wrap;
+	justify-content: flex-start!important;
+}
+.map-vyhl-wrap .vyhl-razeni div:first-child {
+	margin-bottom: 20px;
+}
+
+.map-vyhl-wrap .vyhl-razeni label {
+    min-width: 65px;
+}
+.sluzby-detail h1 {
+	font-size: 28px;
+}
+body footer .wrapper .footer_block > h3, body footer .footer-primary-title, body footer .footer_block h3 {
+    color: #FF951A;
+	font-size: 16px!important;
+}
+
+.add-inz-con .image-feed .image-choose {
+	max-width: 100%;
+	flex-basis: 100%;
+}
+
+.profil .profil-main-content .row{
+	margin-bottom: 15px;
+}
+
+.profil .profil-main-content .profil-form-desc {
+	max-width: 100%;
+}
+.profil .profil-main-content .input-desc {
+    margin-bottom: 0px;
+}
+
+.profil .profil-main-content .correct:after {
+    right: 10px;
+}
+
+.profil .nem-row-box .nemovitost-wrapper .row > div {
+	padding: 2px 30px!important;
+}
+.profil .nem-row-box .nemovitost-wrapper .nemovitost-image{
+	height: 150px;
+}
+.profil .nem-row-box .nemovitost-text {
+	max-width: 100%;
+}
+.profil .nem-row-box .nemovitost-activate {
+	max-width: 100%;
+}
+.profil .nem-row-box .nemovitost-topovani {
+	max-width: 100%!important;
+	margin-bottom: 20px;
+}
+
+
+.sluzby-detail {
+    margin-top: 50px;
+}
+
+footer .row .col-sm:first-child {
+	margin-bottom: 15px;
+}
+
+	footer .row .col-sm:nth-child(2) h3, footer .row .col-sm:nth-child(3) h3, footer .row .col-sm:nth-child(4) h3 {
+    padding-right: 40px;
+	}
+
+body footer:after {
+    background-image: url(http://dev.szukamdom.pl/wp-content/themes/realsys/assets/images/images_frontend/sd-illu-min.png) !important;
+	}
+
+}
+
+/*---------18.5.2020--------*/
+
+@media only screen and (max-width: 900px) {
+.slider .home-search form {
+    flex-wrap: wrap;
+}
+.slider .home-search .customSel-wrapper {
+	flex-grow: 1;
+	margin-right: 0px;
+	width: calc(50% - 25px);
+}
+.slider .home-search .customSel-wrapper:first-child {
+	margin-right: 25px;
+}
+.slider .home-search .customSel-wrapper:nth-child(3) {
+	width: 100%;
+}
+.home-search form .submit-btn {
+    height: 52px;
+    padding: 12px 30px;
+    margin-left: auto;
+	margin-top: 10px;
+}
+
+.sluzby-sec .sec-title h2 {
+    margin-bottom: 40px;
+}
+}
+
+@media only screen and (max-width: 600px) {
+body.home .slider {
+    height: auto!important;
+    padding-top: 60px;
+    padding-bottom: 100px;
+	    min-height: 95vh;
+}
+
+.slider .home-search .customSel-wrapper {
+	margin-right: 0px!important;
+	width: 100%;
+}
+	.slider-title {
+		padding-bottom: 10px;
+	}
+}
+
+
+
+/* ÚPRAVA 18.5.2020 */
+@media screen and (min-width:1024px) {
+	.rn_widget_menu_2, .rn_widget_menu_3 {
+		display:block;
+	}
+}
+.sluzby-box img {
+	max-height:100px;
+}
+/*.fb_dialog, ._j68, .fb_iframe_widget iframe {
+	display:none!important;
+}*/
+body header nav ul li a:hover {
+	background:#fff
+}
+.contact-bar-new .btn {
+	padding: 12px 38px;
+}
+.bublina {
+	max-width:500px;
+	margin:0 auto;
+	margin-bottom:50px;
+	position:relative;
+	margin-right:0;
+}
+.bublina:after {
+    content: '';
+    position: absolute;
+    left: -4%;
+    top: 50px;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 20px solid #abecf0;
+    clear: both;
+}
+.sluzby-detail-cont ul {
+	margin-left:50px;
+}
+body.home .slider-content {
+    margin-bottom: 150px;
+}
+@media screen and (max-width:1200px) {
+	body.home .slider-content {
+    margin-bottom: 0;
+}
+}
+	@media screen and (min-width:1400px) {
+		body section {
+    min-height: 90vh;
+		}
+		body.page-id-67 section {
+			min-height:auto;
+		}
+		.sluzby-detail {
+    min-height: 80vh;
+		}
+	}
+.custom-logo-link {
+	position:relative;
+}
+.custom-logo-link:after {
+	content:"DEMO";
+	position:absolute;
+	right:-60px;
+	top:42%;
+	color:#243b4a;
+	font-size:15px;
+	font-family: "DM Sans";
+	font-weight:700;
+}
+.kred-big {
+	font-size:40px;
+}
+th {
+    font-size: 15px;
+}
+body a {
+    color: #ff951a;
+}
+@media only screen and (max-width: 576px) {
+#menu-kategorie {
+    display: none;
+}
+.custom-logo-link:after {
+    top: 29%;
+	}
+}
+@media screen and (max-width:800px) {
+	.sluzby-detail, .page-template-cms-template section {
+	padding-top: 50px;
+	}
+}
+.sluzby-detail {
+    min-height: 50vh;
+    background: url(/wp-content/themes/realsys/assets/images/images_frontend/sd-illu-min.png);
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-bottom: 160px;
+	}
+body section {
+    min-height: 50vh;
+}
+.page-template-cms-template section {
+    background: url(/wp-content/themes/realsys/assets/images/images_frontend/sd-illu-min.png);
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-bottom: 160px;
+}
+
+@media screen and (min-width: 1400px) {
+.sluzby-detail {
+    min-height: 84vh;
+    background: url(/wp-content/themes/realsys/assets/images/images_frontend/sd-illu-min.png);
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-bottom: 160px;
+}
+.page-template-cms-template section {
+    background: url(/wp-content/themes/realsys/assets/images/images_frontend/sd-illu-min.png);
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: no-repeat ;
+    padding-bottom: 160px;
+}
+body section {
+    min-height: 92vh;
+}
+}
+.menu-wrap.active {
+	width:100%;
+}
+.filepond--drop-label {
+    background: #dbf4f4;
+    border-radius: 8px;
+}
+.filepond--root .far {
+	margin-right:10px;
+}
+.nemovitost-topovani h4 {
+	display:none;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+input[name=db_uzitkova_plocha] {
+	position:relative;
+}
+.add-inz-con .inz-box:nth-of-type(4) label:before {
+	content:"m²";
+	position:absolute;
+	top:8px;
+	right:30px;
+	color:#86939B;
+	font-weight:400;
+	font-family:"DM Sans";
+	z-index: 99;
+}
+.add-inz-con .currency-input .price-field .currency {
+    right: 35px;
+}
+.add-inz-con #second .inz-box:nth-of-type(4) label:before {
+	display:none;
+}
+.map-vyhl-wrap .sel-input-name {
+	font-weight:400;
+}
+.map-vyhl-wrap .jcf-select .jcf-select-text {
+	font-size:14px!important;
+}
+.vyhl-razeni strong {
+	margin-right:5px;
+}
+
+/* ÚPRAVY 18.6.2020 */
+html body.home div.body-wrapper section div.slider {
+    height: 89vh!important;
+}
+body.home .slider-content {
+    margin-bottom: 180px;
+}
+.sluzby-box p {
+    max-width: 260px;
+}
+.slider .customSel-wrapper:nth-of-type(1) {
+	order:-1;
+}
+.slider .customSel-wrapper:nth-of-type(2) {
+	order:1;
+}
+.slider .customSel-wrapper:nth-of-type(3) {
+	order:0;
+}
+.home-search form .submit-btn {
+	order:4;
+}
+body .jcf-select .jcf-select-text {
+    color: #47b5c0;
+}
+.page-id-82 .app {
+    background: url(/wp-content/uploads/2020/06/pagebgright.png);
+    background-position: right bottom;
+    background-size: 35%;
+    background-repeat: no-repeat;
+}
+.vyhl-wrap {
+    padding-bottom: 120px;
+}
+.detail-nemovitosti.full-bg {
+	padding-bottom:0!important;
+}
+.contact-bar-new .btn {
+    padding: 12px 30px;
+}
+.nemovitost-detail .nemovitost-text h3 {
+    font-size: 24px!important;
+    max-width: 95%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+.nemovitost-detail .basic-table th, .nemovitost-detail .basic-table td {
+	padding-top:3px;
+	padding-bottom:2px;
+}
+.nemovitost-detail .basic-table th {
+	opacity:.7;
+}
+.inz-box {
+    padding-bottom: 50px;
+    margin-bottom: 50px;
+}
+body .inz-form-sec {
+    padding-top: 70px!important;
+}
+.single-input {
+    margin-bottom: 15px;
+}
+.page-id-36 section .app {
+    background: url(/wp-content/themes/realsys/assets/images/images_frontend/sd-illu-min.png);
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: no-repeat ;
+		padding-bottom:180px;
+}
+body .inz-form-sec.tabcontent {
+	margin-bottom:0;
+	background: #fff;
+}
+.sluzby-sec.sluzby-vsechny {
+    background: url(/wp-content/themes/realsys/assets/images/images_frontend/sd-illu-min.png);
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-bottom: 160px;
+}
+body .detail-nemovitosti.full-bg {
+    background: url(/wp-content/themes/realsys/assets/images/images_frontend/sd-illu-min.png);
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-bottom: 180px!important;
+}
+.mapa-cont {
+    filter: grayscale(1);
+}
+.mapa-cont .mapa {
+	border-radius: 15px;
+  overflow: hidden;
+}
+.podobne-nemovitosti {
+  margin-top: 50px;
+    background: url(/wp-content/uploads/2020/06/lower_bg.png);
+    background-position: left bottom;
+    background-size: 40%;
+    background-repeat: no-repeat;
+    padding-bottom: 180px!important;
+}
+.podobne-nemovitosti .section-title h2 {
+	font-size:30px;
+}
+body section.profil {
+    background: url(/wp-content/themes/realsys/assets/images/images_frontend/sd-illu-min.png);
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-bottom: 180px!important;
+	  margin-bottom:0!important;
+}
+.page-id-79 .app {
+    background: url(/wp-content/themes/realsys/assets/images/images_frontend/sd-illu-min.png);
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-bottom: 180px!important;
+	  margin-bottom:0!important;
+}
+body .jcf-select .jcf-select-text {
+    font-weight: 400;
+}
+body.home section:nth-of-type(2) {
+    background: url(/wp-content/uploads/2020/06/lower_bg.png);
+    background-position: left bottom;
+    background-size: 35%;
+    background-repeat: no-repeat;
+    padding-bottom: 180px!important;
+	  margin-bottom:0!important;
+}
+
+a.nemovitost {
+	text-decoration:none;
+}
+.slider .customSel-wrapper:nth-of-type(2) {
+	display:none;
+}
+.vyhl-razeni {
+	position:relative;
+	margin-top:80px;
+}
+.vyhl-razeni:before {
+content: "TIP: Pro nastavení hlídacího psa vyberte filtry";
+    position: absolute;
+    background: url(https://szukamdom.pl/wp-content/uploads/2020/05/zenek.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    color: #ff951a;
+    font-weight: 700;
+    left: 0;
+    top: -55px;
+    padding-left: 65px;
+    line-height: 60px;
+}
+
+@media screen and (max-width: 1200px) {
+body.home .body-wrapper .slider-content {
+    margin-bottom: 0;
+}
+}
+.sub_services_text {
+	max-width:500px;
+	text-align:justify;
+	margin:0 auto;
+	text-align:center;
+	margin-bottom:50px;
+}
+@media screen and (min-width: 1400px) {
+.sluzby-detail {
+    padding-bottom: 240px;
+}
+}
