@@ -92,6 +92,12 @@ class pridatInzeratController extends frontendController {
 
 
 					if($response){
+
+						$emailto = $uzivatel->db_email;
+						Tools::sendMail($emailto, "Inzerát vytvořen", "newAd", array(
+							'link' => Tools::getFERoute("inzeratClass",$this->requestData['inzerat']->getId(),"detail")
+						));
+
 						$this->setView("inzeratCreated");
 						return true;
 					}else{

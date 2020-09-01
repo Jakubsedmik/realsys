@@ -743,7 +743,7 @@
                             type: String
                         },
                         db_mestska_cast: {
-                            required: true,
+                            required: false,
                             appear: true,
                             type: String
                         },

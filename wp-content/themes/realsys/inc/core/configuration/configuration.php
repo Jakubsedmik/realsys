@@ -50,10 +50,10 @@ define("GOOGLE_API_KEY", "AIzaSyDU9RxWxpRRoy9R-wAILv5Owb7GaXHLVaw");
 define("GOOGLE_SERVER_API_KEY", "AIzaSyDLb5HxunZlhEtXHmELaNbd9XMajfkoQvc");
 
 // FAKTUROID Credentials
-define("FAKTUROID_SLUG", "szukamdomdev");
-define("FAKTUROID_MAIL", "sedmik@studioseven.cz");
-define("FAKTUROID_API_KEY", "0152b6409f5e3bd901c27826be6dd81dd57f796b");
-define("FAKTUROID_AGENT", "PHPlib <sedmik@studioseven.cz>");
+define("FAKTUROID_SLUG", "okpraha");
+define("FAKTUROID_MAIL", "jakub.kana@szukamdom.pl");
+define("FAKTUROID_API_KEY", "a0d1e36fa4b9ad2fb026d00bbc57aeecaf0adda9");
+define("FAKTUROID_AGENT", "PHPlib <jakub.kana@szukamdom.pl>");
 
 // CURRENCY
 define("CURRENCY", "PLN");
@@ -328,7 +328,7 @@ $field_rules = array(
 			'type'     => STRING255
 		),
 		'db_mestska_cast'           => array(
-			"required" => true,
+			"required" => false,
 			"type"     => STRING255
 		),
 		'db_psc'              => array(
@@ -583,7 +583,8 @@ $frontend_common_messages = array(
         "creditcard" => __("Zadejte platné číslo kreditní karty.", "realsys"),
         "maxlength" => __('Zadejte maximálně {0} znaků.', "realsys"),
         "minlength" => __('Zadejte minimálně {0} znaků.', "realsys"),
-        "range" => __('Zadejte hodnotu mezi {0} a {1}.', "realsys")
+        "range" => __('Zadejte hodnotu mezi {0} a {1}.', "realsys"),
+		"zip" =>  __("Toto PSČ je nevalidní. Zadávejte ve formátu 12-345", "realsys")
 );
 
 
@@ -916,7 +917,7 @@ $cenik = array(
 	500 => 800
 );
 
-define("ALONE_CREDIT_PRICE", 4);
+define("ALONE_CREDIT_PRICE", 1);
 
 
 // Ceníky služeb
@@ -927,13 +928,13 @@ $cenik_sluzeb = array(
 	0 => array(
 		'id' => 0,
 		'name' => __('Hlídací pes',"realsys"),
-		'price' => 2
+		'price' => 15
 	),
 	1 => array(
 		'id' => 1,
 		'name' => __('Topování inzerátu.',"realsys"),
 		'logName' => 'Top inzerátu ID: %d',
-		'price' => 1,
+		'price' => 6,
 		'requireEntity' => true,
 		'handleFunction' => "handleTopInzerat"
 	),
@@ -941,7 +942,7 @@ $cenik_sluzeb = array(
 		'id' => 2,
 		'name' => __('Zobrazení kontaktu',"realsys"),
 		'logName' => 'Zobrazení kontaktu ID: %d',
-		'price' => 3,
+		'price' => 1,
 		'requireEntity' => true
 	)
 );

@@ -16,3 +16,7 @@ ALTER TABLE `s7_objednavka` ADD `invoice_id` INT NULL AFTER `invoice_link`;
 // 8.7.2020 only on dev
 ALTER TABLE `s7_uzivatel` ADD `anonymous` BOOLEAN NULL DEFAULT NULL AFTER `telefon`;
 
+
+ALTER TABLE `s7_inzerat` CHANGE `mestska_cast` `mestska_cast` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_czech_ci NULL;
+
+

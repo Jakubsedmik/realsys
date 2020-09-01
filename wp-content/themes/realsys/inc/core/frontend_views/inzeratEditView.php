@@ -160,7 +160,7 @@ $uzivatel = $this->requestData['uzivatel'];
                             <label><?php _e( "Cena nemovitosti", "realsys" ); ?></label>
                             <div class="currency-input">
                                 <div class="form-field">
-                                    <input class="input-outline" type="number" placeholder="100 000" step="1000" value="<?php echo $inzerat->dejData( "db_cena" ); ?>" name="db_cena">
+                                    <input class="input-outline" type="number" placeholder="100 000" step="1" value="<?php echo $inzerat->dejData( "db_cena" ); ?>" name="db_cena">
                                 </div>
                                 <span class="currency"><?php echo CURRENCY; ?></span>
                             </div>
@@ -169,7 +169,7 @@ $uzivatel = $this->requestData['uzivatel'];
                             <label><?php _e( "Cena nájmu", "realsys" ); ?></label>
                             <div class="currency-input">
                                 <div class="form-field">
-                                    <input class="input-outline" type="number" placeholder="100 000" step="1000" value="<?php echo $inzerat->dejData( "db_cena_najem" ); ?>" name="db_cena_najem">
+                                    <input class="input-outline" type="number" placeholder="100 000" step="1" value="<?php echo $inzerat->dejData( "db_cena_najem" ); ?>" name="db_cena_najem">
                                 </div>
                                 <span class="currency"><?php echo CURRENCY; ?></span>
                             </div>
@@ -178,7 +178,7 @@ $uzivatel = $this->requestData['uzivatel'];
                             <label><?php _e( "Kauce", "realsys" ); ?></label>
                             <div class="currency-input">
                                 <div class="form-field">
-                                    <input class="input-outline" type="number" placeholder="100 000" step="1000" value="<?php echo $inzerat->dejData( "db_kauce" ); ?>" name="db_kauce">
+                                    <input class="input-outline" type="number" placeholder="100 000" step="1" value="<?php echo $inzerat->dejData( "db_kauce" ); ?>" name="db_kauce">
                                 </div>
                                 <span class="currency"><?php echo CURRENCY; ?></span>
                             </div>
@@ -187,7 +187,7 @@ $uzivatel = $this->requestData['uzivatel'];
                             <label><?php _e( "Poplatky", "realsys" ); ?></label>
                             <div class="currency-input">
                                 <div class="form-field">
-                                    <input class="input-outline" type="number" placeholder="100 000" step="1000" value="<?php echo $inzerat->dejData( "db_poplatky" ); ?>" name="db_poplatky">
+                                    <input class="input-outline" type="number" placeholder="100 000" step="1" value="<?php echo $inzerat->dejData( "db_poplatky" ); ?>" name="db_poplatky">
                                 </div>
                                 <span class="currency"><?php echo CURRENCY; ?></span>
                             </div>
