@@ -1,10 +1,10 @@
-INSERT INTO `realsys`.`s7_ciselnik` (`domain`, `property`, `value`, `translation`, `datum_zalozeni`, `datum_upravy`) VALUES ('inzeratClass', 'typ_stavby', '3', 'Pozemek', '1582996513', '1582996513');
-INSERT INTO `realsys`.`s7_ciselnik` (`domain`, `property`, `value`, `translation`, `datum_zalozeni`, `datum_upravy`) VALUES ('inzeratClass', 'typ_stavby', '4', 'Garáž', '1582996513', '1582996513');
-INSERT INTO `realsys`.`s7_ciselnik` (`domain`, `property`, `value`, `translation`, `datum_zalozeni`, `datum_upravy`) VALUES ('inzeratClass', 'typ_stavby', '5', 'Kancelář', '1582996513', '1582996513');
-INSERT INTO `realsys`.`s7_ciselnik` (`domain`, `property`, `value`, `translation`, `datum_zalozeni`, `datum_upravy`) VALUES ('inzeratClass', 'typ_stavby', '6', 'Nebytový prostor', '1582996513', '1582996513');
-INSERT INTO `realsys`.`s7_ciselnik` (`domain`, `property`, `value`, `translation`, `datum_zalozeni`, `datum_upravy`) VALUES ('inzeratClass', 'typ_stavby', '7', 'Chata/Chalupa', '1582996513', '1582996513');
+INSERT INTO `s7_ciselnik` (`domain`, `property`, `value`, `translation`, `datum_zalozeni`, `datum_upravy`) VALUES ('inzeratClass', 'typ_stavby', '3', 'Pozemek', '1582996513', '1582996513');
+INSERT INTO `s7_ciselnik` (`domain`, `property`, `value`, `translation`, `datum_zalozeni`, `datum_upravy`) VALUES ('inzeratClass', 'typ_stavby', '4', 'Garáž', '1582996513', '1582996513');
+INSERT INTO `s7_ciselnik` (`domain`, `property`, `value`, `translation`, `datum_zalozeni`, `datum_upravy`) VALUES ('inzeratClass', 'typ_stavby', '5', 'Kancelář', '1582996513', '1582996513');
+INSERT INTO `s7_ciselnik` (`domain`, `property`, `value`, `translation`, `datum_zalozeni`, `datum_upravy`) VALUES ('inzeratClass', 'typ_stavby', '6', 'Nebytový prostor', '1582996513', '1582996513');
+INSERT INTO `s7_ciselnik` (`domain`, `property`, `value`, `translation`, `datum_zalozeni`, `datum_upravy`) VALUES ('inzeratClass', 'typ_stavby', '7', 'Chata/Chalupa', '1582996513', '1582996513');
 
-INSERT INTO `realsys`.`s7_ciselnik` (`domain`, `property`, `value`, `translation`, `datum_zalozeni`, `datum_upravy`) VALUES ('inzeratClass', 'typ_inzeratu', '3', 'Spolubydlení', '1582996513', '1582996513');
+INSERT INTO `s7_ciselnik` (`domain`, `property`, `value`, `translation`, `datum_zalozeni`, `datum_upravy`) VALUES ('inzeratClass', 'typ_inzeratu', '3', 'Spolubydlení', '1582996513', '1582996513');
 
 
 // 21.6.2020 only on dev
@@ -18,5 +18,5 @@ ALTER TABLE `s7_uzivatel` ADD `anonymous` BOOLEAN NULL DEFAULT NULL AFTER `telef
 
 
 ALTER TABLE `s7_inzerat` CHANGE `mestska_cast` `mestska_cast` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_czech_ci NULL;
-
+// 1.9.2020 All on prod and dev
 
