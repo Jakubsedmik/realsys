@@ -88,11 +88,11 @@ class inzeratClass extends zakladniKamenClass {
 	}
 
 	public function getAerial(){
-		return $this->db_podlahova_plocha . " m<sup>2</sup>";
+		return $this->db_podlahova_plocha . " m&sup2;";
 	}
 
 	public function getTotalAerial(){
-		return $this->db_pozemkova_plocha . " m<sup>2</sup>";
+		return $this->db_pozemkova_plocha . " m&sup2;";
 	}
 
 
@@ -131,27 +131,33 @@ class inzeratClass extends zakladniKamenClass {
 		if(is_object($transakce) && get_class($transakce) == 'transakceClass' && $user){
 			if($transakce->db_accept == 0 && $transakce->db_id_odesilatel == $user->getId()){
 
-				// already topped, storno transaction and error
-				if($this->db_top == 1){
-					assetsFactory::removeEntity("transakceClass", $transakce);
-					$response->status = -12;
-					$response->realization = 0;
-					$response->message = "Tento inzerát je již topovaný. Stornuji transakci.";
+				if($this->db_stav_inzeratu==1){
+					// already topped, storno transaction and error
+					if($this->db_top == 1){
+						assetsFactory::removeEntity("transakceClass", $transakce);
+						$response->status = -12;
+						$response->realization = 0;
+						$response->message = "Tento inzerát je již topovaný. Stornuji transakci.";
+					}else{
+						// confirm transaction
+						$transakce->db_accept = 1;
+						$transakce->aktualizovat();
+
+						//top inzerat
+						$this->db_top = 1;
+						$this->db_datum_zalozeni = time();
+						$this->aktualizovat();
+
+						// response
+						$response->status = 1;
+						$response->realization = 1;
+						$response->message = "Platba za službu proběhla úspěšně";
+						$response->behavior = "finish";
+					}
 				}else{
-					// confirm transaction
-					$transakce->db_accept = 1;
-					$transakce->aktualizovat();
-
-					//top inzerat
-					$this->db_top = 1;
-					$this->db_datum_zalozeni = time();
-					$this->aktualizovat();
-
-					// response
-					$response->status = 1;
-					$response->realization = 1;
-					$response->message = "Platba za službu proběhla úspěšně";
-					$response->behavior = "finish";
+					$response->status = -12;
+					$response->message = "Inzerát který není aktivní nelze topovat.";
+					$response->realization = 0;
 				}
 
 			}else{

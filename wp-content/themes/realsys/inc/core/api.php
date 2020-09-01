@@ -33,6 +33,10 @@ $api_actions = array(
 		'callback' => 'checkUserExists',
 		'private' => false
 	),
+	'checkUserExistsAdvanced' => array(
+		'callback' => 'checkUserExistsAdvanced',
+		'private' => false
+	),
 	'getInzeraty' => array(
 		'callback' => 'getInzeraty',
 		'private' => false
@@ -109,11 +113,17 @@ foreach ($api_actions as $key => $value){
 
 
 function removeElement (){
+
+	// now shut down error reporting for a while
+	error_reporting(0);
+	ini_set('display_errors', 'Off');
+
 	$response = new stdClass();
 	if(Tools::checkPresenceOfParam("model", $_GET) && Tools::checkPresenceOfParam("id", $_GET)){
 		$model = $_GET['model'];
 		$id = $_GET['id'];
 		$result = assetsFactory::removeEntity($model, $id);
+
 		if($result){
 			$response->status = 1;
 			$response->message = __("Objekt byl odebrán","realsys");
@@ -434,6 +444,23 @@ function checkUserExists(){
 	die();
 }
 
+function checkUserExistsAdvanced(){
+
+	if(Tools::checkPresenceOfParam("db_email", $_GET)){
+
+		$email = $_GET['db_email'];
+		wp_send_json(uzivatelClass::isUserAnonymous($email));
+		die();
+
+	}else{
+		$response = new stdClass();
+		$response->status = -1;
+		$response->message = "Chybějící parametry kontroly.";
+		wp_send_json($response);
+		die();
+	}
+}
+
 
 function getInzeraty(){
 
@@ -479,6 +506,7 @@ function getInzeraty(){
 		global $filter_parameters;
 		$search_arr = $data['search'];
 
+
 		foreach ($search_arr as $key => $value){
 
 			if(Tools::checkPresenceOfParam($value['name'], $filter_parameters)){
@@ -492,6 +520,8 @@ function getInzeraty(){
 						$filter = new filterClass($column, $operator, "'" . $deserved_value . "'");
 						$filter_arr[] = $filter;
 					}
+				}elseif ($filter_parameters[$search_item['name']]['type'] == 'map-search'){
+					continue;
 				}else{
 
 					$wanted_value = $search_item['value'];
@@ -502,6 +532,20 @@ function getInzeraty(){
 					}
 				}
 			}
+
+			/* FILTROVÁNÍ DLE LAT A LNG RADIUS */
+			if($value['name'] == 'db_lng' || $value['name'] == 'db_lat'){
+				if($value['value'] != -1){
+					$value_loc_min = floatval($value['value']) - RADIUS;
+					$value_loc_max = floatval($value['value']) + RADIUS;
+					$column = str_replace("db_","",$value['name']);
+					$filter = new filterClass($column, '<', $value_loc_max);
+					$filter_arr[] = $filter;
+					$filter = new filterClass($column, '>', $value_loc_min);
+					$filter_arr[] = $filter;
+				}
+			}
+
 		}
 
 	}
@@ -902,6 +946,10 @@ function createWatchdog(){
 
 function checkUserCredits(){
 
+	// now shut down error reporting for a while
+	error_reporting(0);
+	ini_set('display_errors', 'Off');
+
 	$result = Tools::postChecker($_GET, array(
 		'serviceid' => array(
 			'type' => NUMBER,
@@ -1079,6 +1127,19 @@ function payForContact(){
 								$response->telefon = $uzivatel->db_telefon;
 								$response->email = $uzivatel->db_email;
 								$response->uzivatel_url = Tools::getFERoute("uzivatelClass",$uzivatel->getId(),"detail");
+								$response->mnozstvi = $transaction->db_mnozstvi;
+								$response->currency = CURRENCY;
+
+								if($transaction->isRequestedByCurrentUser()){
+									$current_user = uzivatelClass::getUserLoggedObject();
+									Tools::sendMail( $current_user->db_email, "Zobrazení kontaktu","sendContact",array(
+										"jmeno" => $uzivatel->db_jmeno,
+										"prijmeni" => $uzivatel->db_prijmeni,
+										"telefon" => $uzivatel->db_telefon,
+										"email" => $uzivatel->db_email
+									));
+								}
+
 								$response->message = __("Kontakt úspěšně získán","realsys");
 							}else{
 								$response->status = 0;

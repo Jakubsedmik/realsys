@@ -91,6 +91,8 @@ class objednavkaController extends frontendController {
 							"db_uzivatel_id" => uzivatelClass::getUserLoggedId(),
 							"db_stav" => 0
 						));
+
+
 						if($objednavka){
 							Tools::jsRedirect(Tools::getFERoute("gopay",$objednavka->getId(),"payment"), 1500, __("Potvrzení","realsys"), __("Potvrzujeme objednávku - přesměrováváme Vás na platební bránu","realsys"));
 							frontendError::addMessage(__("Objednávka","realsys"), SUCCESS, __("Potvrzujeme Vaši objednávku, přesměrováváme Vás na platební bránu","realsys"));

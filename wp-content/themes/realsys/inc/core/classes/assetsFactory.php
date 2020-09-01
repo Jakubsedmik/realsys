@@ -70,7 +70,9 @@ class assetsFactory {
         if($offset!==false && Tools::fieldChecker($offset, "number") && $countpage!==false && Tools::fieldChecker($countpage, "number")){
             $limit = 'LIMIT ' . $countpage . ' OFFSET ' . $offset;
         }
-        $results = $wpdb->get_results("SELECT * FROM " . $table . " " . $finalFilter . " " . $orderby . " " . $limit);
+        $query = "SELECT * FROM " . $table . " " . $finalFilter . " " . $orderby . " " . $limit;
+        //echo $query . "\n";
+        $results = $wpdb->get_results($query);
         $pole = array();
         foreach ($results as $key => $value) {
             $pole[$value->id] = self::getEntity($className, $value->id, $value);
@@ -122,6 +124,7 @@ class assetsFactory {
 			}
 			$index++;
 		}
+
 		return $finalFilter;
 	}
 

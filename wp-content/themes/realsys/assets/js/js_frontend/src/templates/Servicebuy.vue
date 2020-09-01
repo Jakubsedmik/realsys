@@ -48,10 +48,10 @@
 
                                 <div class="modal-body">
                                     <h2 class="sz-tit">{{translations.nemateDostatekKreditu}}</h2>
-                                    <p class="mb-4">{{creditStatus}}</p>
-                                    <p>{{translations.nejdrivePokracujteNakupemKreditu}}</p>
+                                    <p class="mb-4"><strong>{{creditStatus}}</strong></p>
+                                    <p class="mb-4">{{translations.nejdrivePokracujteNakupemKreditu}}</p>
 
-                                    <a :href="this.payment_link + '?serviceOrder=' + this.service.id" class="btn">{{translations.nakoupitKredity}}</a>
+                                    <a :href="this.payment_link + '?serviceOrder=' + this.service.id" class="btn mb-sm-3 mb-3">{{translations.nakoupitKredity}}</a>
                                 </div>
 
                             </div>
@@ -74,7 +74,7 @@
                                 <div class="modal-body">
                                     <h2 class="sz-tit">{{translations.sluzbaBylaZaplacena}}</h2>
                                     <p class="mb-4">{{translations.dekujeme}}</p>
-                                    <button class="btn" v-on:click="closePopup">{{translations.zavrit}}</button>
+                                    <button class="btn mb-sm-3 mb-3" v-on:click="closePopup">{{translations.zavrit}}</button>
                                 </div>
 
                             </div>
@@ -97,7 +97,7 @@
                                 <div class="modal-body">
                                     <h2 class="sz-tit">{{errorHeading}}</h2>
                                     <p class="mb-4">{{errorMessage}}</p>
-                                    <button class="btn" v-on:click="closePopup">{{translations.zavrit}}</button>
+                                    <button class="btn mb-sm-3 mb-3" v-on:click="closePopup">{{translations.zavrit}}</button>
                                 </div>
 
                             </div>
@@ -304,37 +304,40 @@
                         }
                     }
 
+
+
                     setTimeout(function () {
                         Axios.get(request).then(function (response) {
                             _this.loading = false;
-                            if(response.data.status > 0){
+                            if (response.data.status > 0) {
 
-                                if(response.data.hasOwnProperty("behavior")){
+                                if (response.data.hasOwnProperty("behavior")) {
                                     var behavior = response.data.behavior.split(",");
                                     _this.already_bought = 1;
 
-                                    if(behavior.includes("close")){
+                                    if (behavior.includes("close")) {
                                         _this.closePopup()
                                     }
 
-                                    if(behavior.includes("finish")){
+                                    if (behavior.includes("finish")) {
                                         _this.openFinishPopup = true;
                                     }
 
-                                    if(behavior.includes("announce")){
+                                    if (behavior.includes("announce")) {
                                         _this.$root.$emit("paymentCompleted", response.data);
                                     }
-                                }else{
+                                } else {
                                     _this.openFinishPopup = true;
                                 }
 
-                            }else{
-                                _this.showError("Došlo k chybám",response.data.message);
+                            } else {
+                                _this.showError("Došlo k chybám", response.data.message);
                             }
                         }).catch(function (error) {
                             console.error(error);
                         });
                     }, 1000);
+
 
                 }else{
                     this.showError("Chyba", "Pokoušíte se o něco nesprávného");

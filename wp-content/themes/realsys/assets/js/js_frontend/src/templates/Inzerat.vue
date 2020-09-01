@@ -1,6 +1,6 @@
 <template>
 
-    <div :class="getInzeratClass" @mouseover="highlightItem()" @mouseleave="unhighlightItem()">
+    <a :href="this.inzerat.link" :class="getInzeratClass" @mouseover="highlightItem()" @mouseleave="unhighlightItem()">
         <div class="nemovitost-wrapper">
             <div class="nemovitost-image" :style="getFrontImage"></div>
             <div class="nemovitost-text">
@@ -13,7 +13,7 @@
                 <a :href="this.inzerat.link" class="btn more">{{translations.detailInzeratu}}</a>
             </div>
         </div>
-    </div>
+    </a>
 </template>
 
 <script>

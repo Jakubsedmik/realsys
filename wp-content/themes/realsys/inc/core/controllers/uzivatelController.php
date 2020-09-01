@@ -7,7 +7,31 @@ class uzivatelController extends controller {
 		$this->performView();
 	}
 
+	public function rewriteFakturoidData(){
+		if(Tools::checkPresenceOfParam("id",$this->requestData)){
+			$id = $this->requestData['id'];
+			$uzivatel = assetsFactory::getEntity('uzivatelClass', $id);
+			if($uzivatel !== false){
+				$this->viewData['uzivatel'] = $uzivatel;
+			}
+
+			$fakturoid = new fakturoidClass();
+			$response = $fakturoid->sendContact($uzivatel, true);
+			if($response->getStatusCode() == 200){
+				frontendError::addMessage("Aktualizace", SUCCESS, "Uživatel byl ve fakturoidu aktualizován");
+			}else{
+				frontendError::addMessage("Chyba",ERROR, "Při aktualizace ve fakturoidu došlo k chybě");
+			}
+		}else{
+			frontendError::addMessage("ID", ERROR, "Chybějící ID");
+		}
+		$this->setView("upravUzivatele");
+		$this->performView();
+	}
+
 	public function edit(){
+
+		//  todo při editaci uživatele by se měl změnit kontakt v fakturoidu, respektive tato aktualizace by se měla provádět na tlačítko
 
 		if(Tools::checkPresenceOfParam("id",$this->requestData)){
 			$id = $this->requestData['id'];

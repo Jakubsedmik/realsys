@@ -50,6 +50,7 @@
                         <div class="fas fa-times" v-else-if="bunka.type=='boolean' && !bunka.value"></div>
                         <div class="fshr-icon fshr-icon--plus" v-else-if="bunka.type=='ajax_get_subinfo'"></div>
                         <span v-else-if="bunka.type=='date'">{{timeConverter(bunka.value)}}</span>
+                        <a target="_blank" :href="bunka.value" v-else-if="bunka.type=='pdf_url' && bunka.value!=='(hodnota nedostupná)' && bunka.value!==''" class="btn btn-small btn-blue"><i class="fas fa-check mr-2"></i>PDF faktura</a>
                         <span v-else>{{bunka.value}}</span>
                     </td>
                     <td>

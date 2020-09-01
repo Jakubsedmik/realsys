@@ -351,8 +351,8 @@ class Tools {
                     if($entity){
                         foreach ($db_properties as $key => $value){
                             $entity->set_not_update($key, $value);
-                            $entity->aktualizovat();
                         }
+	                    $entity->aktualizovat();
                     }
                     if(is_callable($callbackSuccess)){
 	                    call_user_func($callbackSuccess,$entity, $source);
@@ -408,6 +408,9 @@ class Tools {
 
         switch ($type){
             case "date" :
+                if(is_numeric($value)){
+                    return $value;
+                }
                 $timestamp = strtotime($value);
                 return $timestamp;
                 break;
@@ -772,7 +775,7 @@ class Tools {
 	}
 
 
-	public static function sendMail($to, $subject="Realys", $template=false, $data=array(), $headers=''){
+	public static function sendMail($to, $subject="Realys", $template=false, $data=array(), $headers='', $attachment = array()){
 	    if(is_array($data) && $to && is_string($to)){
 		    if($template){
 			    $cargo = self::serveTemplate($template, $data);
@@ -781,7 +784,8 @@ class Tools {
                         $to,
                         $subject,
                         $cargo,
-                        $headers
+                        $headers,
+                        $attachment
                     );
 			    }
 		    }else{
@@ -790,7 +794,8 @@ class Tools {
 				    $to,
 				    $subject,
 				    $cargo,
-				    $headers
+				    $headers,
+				    $attachment
 			    );
 
 		    }
@@ -868,18 +873,33 @@ class Tools {
 
 
     public static function getSelectBoxForDials($classname, $property, $currentValue, $label='Výběr', $id="vyber",$search_label='Vyhledávání'){
-        $allPossibleDials = assetsFactory::getAllDials($classname, $property);
-        $output = '<select id="' . $id . '" name="' . $id .'" class="mdb-select md-form mt-0" searchable="' . $search_label . '">';
-        $output .= '<option value="" disabled selected>' . $label . '</option>';
-        foreach ($allPossibleDials as $key => $value){
-            if($value->db_value == $currentValue) {
-	            $output .= '<option selected value="' . $value->db_value . '">' . $value->db_translation . '</option>';
-            }else{
-	            $output .= '<option value="' . $value->db_value . '">' . $value->db_translation . '</option>';
-            }
+	    $output = '<select id="' . $id . '" name="' . $id .'" class="mdb-select md-form mt-0" searchable="' . $search_label . '">';
+	    $output .= '<option value="" disabled selected>' . $label . '</option>';
+	    if(is_array($property)){
+	        $allPossibleDials = $property;
+
+		    foreach ($allPossibleDials as $key => $value){
+			    if($value == $currentValue) {
+				    $output .= '<option selected value="' . $value . '">' . $key . '</option>';
+			    }else{
+				    $output .= '<option value="' . $value . '">' . $key . '</option>';
+			    }
+		    }
+
+        }else{
+		    $allPossibleDials = assetsFactory::getAllDials($classname, $property);
+		    foreach ($allPossibleDials as $key => $value){
+			    if($value->db_value == $currentValue) {
+				    $output .= '<option selected value="' . $value->db_value . '">' . $value->db_translation . '</option>';
+			    }else{
+				    $output .= '<option value="' . $value->db_value . '">' . $value->db_translation . '</option>';
+			    }
+		    }
+
         }
-        $output .= '</select>';
-        return $output;
+	    $output .= '</select>';
+	    return $output;
+
     }
 
 
@@ -950,15 +970,32 @@ class Tools {
 			    if(is_array($filter_parameters[$value]['values']) && count($filter_parameters[$value]['values']) > 0){
 				    $final_filter[$value]['values'] = $filter_parameters[$value]['values'];
                 }else{
-				    $final_filter[$value]['values'] = globalUtils::getValuesForFilter("inzeratClass", $key_new, __("--Bez filtru--","realsys"));
+				    $final_filter[$value]['values'] = globalUtils::getValuesForFilter("inzeratClass", $key_new, __("-- Bez filtru --","realsys"));
                 }
 
 			    $final_filter[$value]['name'] = $filter_parameters[$value]['name'];
+			    $final_filter[$value]['class'] = $filter_parameters[$value]['class'];
+			    $final_filter[$value]['type'] = $filter_parameters[$value]['type'];
             }
 		}
 
 		foreach ($final_filter as $key => $val){
+		    if($val['type'] == 'text') :
 		    ?>
+            <div class="customSel-wrapper">
+                <label><?php echo $val['name']; ?></label>
+                <input type="text" name="<?php echo $key; ?>" placeholder="<?php echo $val['name']; ?>" class="<?php echo (isset($val['class'])) ? $val['class'] : ''; ?>">
+            </div>
+		    <?php elseif($val['type'] == 'map-search'): ?>
+                <div class="customSel-wrapper">
+                    <label><?php echo $val['name']; ?></label>
+                    <input type="text" name="<?php echo $key; ?>" placeholder="<?php echo $val['name']; ?>" class="<?php echo (isset($val['class'])) ? $val['class'] : ''; ?>">
+                    <input type="hidden" name="db_lat" class="js-autocomplete-lat">
+                    <input type="hidden" name="db_lng" class="js-autocomplete-lng">
+                </div>
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDU9RxWxpRRoy9R-wAILv5Owb7GaXHLVaw&libraries=places&callback=initAutocomplete"
+                        async defer></script>
+            <?php else: ?>
             <div class="customSel-wrapper">
                 <label><?php echo $val['name']; ?></label>
                 <select name="<?php echo $key; ?>" class="select-hidden">
@@ -968,6 +1005,7 @@ class Tools {
                 </select>
             </div>
             <?php
+            endif;
         }
 
     }

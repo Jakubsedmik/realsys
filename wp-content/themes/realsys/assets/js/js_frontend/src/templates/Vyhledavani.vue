@@ -94,7 +94,7 @@
     export default {
         name: "Vyhledavani",
         props: [
-            'filters', 'filterpreset', 'user_logged', 'home_url', 'login_link', 'payment_link', 'service', 'currency', 'ajax_url', 'assets_path', 'translations', 'map_layout'
+            'filters', 'filterpreset', 'user_logged', 'home_url', 'login_link', 'payment_link', 'service', 'currency', 'ajax_url', 'assets_path', 'translations', 'map_layout', 'location'
         ],
         components: { Filterfield, Hlidacipes },
         created() {
@@ -105,28 +105,46 @@
                         name: i,
                         operator: "=",
                         value: this.filterpreset[i]
-                    }
+                    };
+
                     this.search_data.push(searchItem);
                 }
 
+                if(typeof this.location == 'object'){
+                    var searchItem = {
+                        name: 'db_lat',
+                        operator: "=",
+                        value: this.location.lat
+                    };
+                    this.search_data.push(searchItem);
+                    var searchItem = {
+                        name: 'db_lng',
+                        operator: "=",
+                        value: this.location.lng
+                    };
+                    this.search_data.push(searchItem);
+                }
+
+                var _this = this;
                 this.$nextTick(function () {
-                    this.searchResults();
+                    _this.searchResults();
                 });
             }
 
+
             var _this = this;
             this.$root.$on("fieldChanged", function (fieldValues) {
-                var entryName = fieldValues.name;
+                if(fieldValues.hasOwnProperty("multiple")){
 
-                var found = false;
-                for (var index in _this.search_data){
-                    if(_this.search_data[index].name == entryName){
-                        _this.search_data[index] = fieldValues;
-                        found = true;
+                    // if the field have multiple values, eg. map autocomplete result
+                    for(var index in fieldValues['values']){
+                        var fieldValue = fieldValues['values'][index];
+                        _this.processChangedField(fieldValue);
                     }
-                }
-                if(!found){
-                    _this.search_data.push(fieldValues);
+                }else{
+
+                    // if the field have just one value
+                    _this.processChangedField(fieldValues);
                 }
                 _this.searchResults();
             });
@@ -140,6 +158,7 @@
         },
         methods: {
             searchResults: function (e) {
+
                 this.$root.$emit("searchFor", this.search_data);
             },
 
@@ -149,6 +168,20 @@
             getPreset: function (fieldName) {
                 if(this.filterpreset.hasOwnProperty(fieldName)){
                     return this.filterpreset[fieldName];
+                }
+            },
+            processChangedField: function (fieldValues) {
+
+                var entryName = fieldValues.name;
+                var found = false;
+                for (var index in this.search_data){
+                    if(this.search_data[index].name === entryName){
+                        this.search_data[index] = fieldValues;
+                        found = true;
+                    }
+                }
+                if(!found){
+                    this.search_data.push(fieldValues);
                 }
             }
         }

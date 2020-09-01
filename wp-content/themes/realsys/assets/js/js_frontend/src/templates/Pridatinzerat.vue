@@ -89,7 +89,7 @@
                             <div class="form-content">
                                 <h3>{{translations.dispozice}}</h3>
                                 <div class="single-val-form">
-                                    <label class="form-field" :class="errorClass('part_first','db_pocet_mistnosti')">
+                                    <label class="form-field form-field-select" :class="errorClass('part_first','db_pocet_mistnosti')">
                                         <select name="db_pocet_mistnosti" v-model.trim="$v.modelData.part_first.db_pocet_mistnosti.$model">
                                             <option v-for="index in options.dispozice" :value="index">{{index}}</option>
                                         </select>
@@ -272,21 +272,21 @@
                         <div class="inz-box" v-show="doesInputAppearRequire('db_patro') || doesInputAppearRequire('db_celkem_podlazi')">
                             <div class="form-content">
                                 <h3>{{translations.poschodi}}</h3>
-                                <div class="input-content">
-                                    <label class="form-field" v-show="doesInputAppearRequire('db_patro')" :class="errorClass('part_second','db_patro')">
-                                        <select name="db_patro" v-model.trim="$v.modelData.part_second.db_patro.$model">
-                                            <option v-for="(val,index) in options.patro" :value="index">{{val}}</option>
-                                        </select>
-                                        <div class="error" v-if="errorAppear('part_second','db_patro')">{{translations.poleJePovinne}}</div>
-                                    </label>
-                                    <span class="form-comment">{{translations.z}}</span>
-                                    <label class="form-field" v-show="doesInputAppearRequire('db_celkem_podlazi')" :class="errorClass('part_second','db_celkem_podlazi')">
-                                        <select name="db_celkem_podlazi" v-model.trim="$v.modelData.part_second.db_celkem_podlazi.$model">
-                                            <option v-for="(val,index) in options.celkem_podlazi" :value="index">{{val}}</option>
-                                        </select>
-                                        <div class="error" v-if="errorAppear('part_second','db_celkem_podlazi')">{{translations.poleJePovinne}}</div>
-                                    </label>
-                                </div>
+
+                                <label class="form-field form-field-select" v-show="doesInputAppearRequire('db_patro')" :class="errorClass('part_second','db_patro')">
+                                    <select name="db_patro" v-model.trim="$v.modelData.part_second.db_patro.$model">
+                                        <option v-for="(val,index) in options.patro" :value="index">{{val}}</option>
+                                    </select>
+                                    <div class="error" v-if="errorAppear('part_second','db_patro')">{{translations.poleJePovinne}}</div>
+                                </label>
+                                <span class="form-comment">{{translations.z}}</span>
+                                <label class="form-field form-field-select" v-show="doesInputAppearRequire('db_celkem_podlazi')" :class="errorClass('part_second','db_celkem_podlazi')">
+                                    <select name="db_celkem_podlazi" v-model.trim="$v.modelData.part_second.db_celkem_podlazi.$model">
+                                        <option v-for="(val,index) in options.celkem_podlazi" :value="index">{{val}}</option>
+                                    </select>
+                                    <div class="error" v-if="errorAppear('part_second','db_celkem_podlazi')">{{translations.poleJePovinne}}</div>
+                                </label>
+
                             </div>
                         </div>
 
@@ -309,11 +309,13 @@
                         <div class="inz-box" v-show="doesInputAppearRequire('db_typ_vlastnictvi')">
                             <div class="form-content">
                                 <h3>{{translations.vlastnictvi}}</h3>
-                                <div class="input-content form-field" :class="errorClass('part_second','db_typ_vlastnictvi')">
-                                    <select name="db_typ_vlastnictvi" v-model.trim="$v.modelData.part_second.db_typ_vlastnictvi.$model">
-                                        <option v-for="value in options.typ_vlastnictvi" :value="value.db_value.value">{{value.db_translation.value}}</option>
-                                    </select>
-                                    <div class="error" v-if="errorAppear('part_second','db_typ_vlastnictvi')">{{translations.poleJePovinne}}</div>
+                                <div class="input-content">
+                                    <div class="form-field-select form-field" :class="errorClass('part_second','db_typ_vlastnictvi')">
+                                        <select name="db_typ_vlastnictvi" v-model.trim="$v.modelData.part_second.db_typ_vlastnictvi.$model">
+                                            <option v-for="value in options.typ_vlastnictvi" :value="value.db_value.value">{{value.db_translation.value}}</option>
+                                        </select>
+                                        <div class="error" v-if="errorAppear('part_second','db_typ_vlastnictvi')">{{translations.poleJePovinne}}</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -322,11 +324,13 @@
                         <div class="inz-box" v-show="doesInputAppearRequire('db_material')">
                             <div class="form-content">
                                 <h3>{{translations.typStavby}}</h3>
-                                <div class="input-content form-field" :class="errorClass('part_second','db_material')">
-                                    <select name="db_material" v-model.trim="$v.modelData.part_second.db_material.$model">
-                                        <option :value="value.db_value.value" v-for="value in options.material">{{value.db_translation.value}}</option>
-                                    </select>
-                                    <div class="error" v-if="errorAppear('part_second','db_material')">{{translations.poleJePovinne}}</div>
+                                <div class="input-content">
+                                    <div class="form-field-select form-field" :class="errorClass('part_second','db_material')">
+                                        <select name="db_material" v-model.trim="$v.modelData.part_second.db_material.$model">
+                                            <option :value="value.db_value.value" v-for="value in options.material">{{value.db_translation.value}}</option>
+                                        </select>
+                                        <div class="error" v-if="errorAppear('part_second','db_material')">{{translations.poleJePovinne}}</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -335,11 +339,13 @@
                         <div class="inz-box align-left" v-show="doesInputAppearRequire('db_penb')">
                             <div class="form-content">
                                 <h3>{{translations.energetickaHodnota}}</h3>
-                                <div class="input-content form-field" :class="errorClass('part_second','db_penb')">
-                                    <select name="db_penb" v-model.trim="$v.modelData.part_second.db_penb.$model">
-                                        <option :value="value.db_value.value" v-for="value in options.penb">{{value.db_translation.value}}</option>
-                                    </select>
-                                    <div class="error" v-if="errorAppear('part_second','db_penb')">{{translations.poleJePovinne}}</div>
+                                <div class="input-content">
+                                    <div class="form-field form-field-select" :class="errorClass('part_second','db_penb')">
+                                        <select name="db_penb" v-model.trim="$v.modelData.part_second.db_penb.$model">
+                                            <option :value="value.db_value.value" v-for="value in options.penb">{{value.db_translation.value}}</option>
+                                        </select>
+                                        <div class="error" v-if="errorAppear('part_second','db_penb')">{{translations.poleJePovinne}}</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -737,7 +743,7 @@
                             type: String
                         },
                         db_mestska_cast: {
-                            required: true,
+                            required: false,
                             appear: true,
                             type: String
                         },
@@ -1284,7 +1290,14 @@
                             type: Number
                         },
                         db_vhodny_pro: {
-                            required: false,
+                            required: [
+                                /* PRONÁJEM */
+                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
+                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
+
+                                /* SPOLUBYDLENÍ */
+                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
+                            ],
                             appear: [
                                 /* PRONÁJEM */
                                 {db_typ_stavby: 1, db_typ_inzeratu: 1},
@@ -1296,7 +1309,7 @@
                             type: String
                         },
                         db_popis: {
-                            required: false,
+                            required: true,
                             appear: true,
                             type: String
                         },
@@ -1554,14 +1567,16 @@
                 this.modelData.part_third.db_obrazek_front = id;
             },
             removePhoto(index){
+
                 let arr = this.modelData.part_third.db_inzerat_obrazky;
                 for( var i = 0; i < arr.length; i++){
                     if ( i === index) {
                         if(arr[index].db_id == this.modelData.part_third.db_obrazek_front){
-                            this.modelData.part_third.db_obrazek_front = false;
+                            this.modelData.part_third.db_obrazek_front = null;
                         }
                         arr.splice(i, 1);
                     }
+
                 }
             },
             imageStyle(image){
@@ -1846,4 +1861,5 @@
         line-height: 30px;
         border-radius: 50%;
     }
+
 </style>

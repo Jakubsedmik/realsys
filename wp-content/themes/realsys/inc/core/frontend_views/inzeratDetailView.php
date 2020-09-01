@@ -31,11 +31,11 @@ if ( Tools::checkPresenceOfParam( "transactionid", $this->requestData ) ) {
     </div>
 </section>
 
-<section>
+<section class="">
     <div class="detail-nemovitosti full-bg">
         <div class="wrapper">
 			<?php echo frontendError::getFrontendErrors(); ?>
-            <div class="row">
+            <div class="row app">
                 <div class="col-sm nemovitost-detail">
                     <div class="nemovitost-wrapper">
                         <div class="row">
@@ -60,7 +60,7 @@ if ( Tools::checkPresenceOfParam( "transactionid", $this->requestData ) ) {
                             </div>
                             <div class="col-sm-5">
                                 <div class="nemovitost-text rounded-b">
-                                    <h3 class="sz-tit"><?php echo $inzerat->getAerialName(); ?><?php echo $inzerat->db_titulek; ?></h3>
+                                    <h3 class="sz-tit"><?php echo $inzerat->getAerialName(); ?> <?php echo $inzerat->db_titulek; ?></h3>
 
 
                                     <table class="basic-table th-row" style="border-collapse: initial;">
@@ -71,7 +71,7 @@ if ( Tools::checkPresenceOfParam( "transactionid", $this->requestData ) ) {
                                         </tr>
                                         <tr>
                                             <th><?php _e( "Podlahová plocha", "realsys" ); ?>:</th>
-                                            <td><?php echo $inzerat->getAerial(); ?></td>
+                                            <td><span><?php echo $inzerat->getAerial(); ?></span></td>
                                         </tr>
                                         <tr>
                                             <th><?php _e( "Cena", "realsys" ); ?>:</th>
@@ -105,9 +105,10 @@ if ( Tools::checkPresenceOfParam( "transactionid", $this->requestData ) ) {
                                         </tbody>
                                     </table>
 
-                                    <div class="contact-bar-new app">
+                                    <div class="contact-bar-new">
                                         <a class="btn btn-outline btn-small scroll-vice"
                                            href="#vice"><?php echo _e( "Viac informacií", "realsys" ); ?></a>
+
                                         <Zobrazkontakt
                                                 :user_logged="<?php echo ( uzivatelClass::getUserLoggedId() ) ? uzivatelClass::getUserLoggedId() : "false"; ?>"
                                                 :service="<?php global $cenik_sluzeb;
@@ -123,6 +124,8 @@ if ( Tools::checkPresenceOfParam( "transactionid", $this->requestData ) ) {
                                                 ajax_url="<?php echo AJAXURL; ?>"
                                                 currency="<?php echo CURRENCY; ?>"
                                                 assets_path="<?php echo FRONTEND_IMAGES_PATH; ?>"
+                                                user_name="<?php echo $uzivatel->getFullName(); ?>"
+                                                user_avatar="<?php echo $uzivatel->db_avatar; ?>"
 
                                         ></Zobrazkontakt>
                                     </div>
@@ -133,7 +136,7 @@ if ( Tools::checkPresenceOfParam( "transactionid", $this->requestData ) ) {
 
                         <div class="row">
                             <div class="col-sm-12">
-                                <div class="nem-detail-desc">
+                                <div class="nem-detail-desc" id="vice">
                                     <h3><?php echo $inzerat->getAerialName(); ?></h3>
                                     <p>
 										<?php echo $inzerat->dejData( "db_popis" ); ?>
@@ -239,23 +242,8 @@ if ( Tools::checkPresenceOfParam( "transactionid", $this->requestData ) ) {
                                             </div>
                                         </div>
                                         <div class="text-center mt-5">
-                                            <div class="contact-bar-new app">
-                                                <Zobrazkontakt
-                                                        :user_logged="<?php echo ( uzivatelClass::getUserLoggedId() ) ? uzivatelClass::getUserLoggedId() : "false"; ?>"
-                                                        :service="<?php global $cenik_sluzeb;
-														echo Tools::prepareJsonToOutputHtmlAttr( $cenik_sluzeb[2] ); ?>"
-                                                        :inzerat_id="<?php echo $inzerat->getId(); ?>"
-                                                        :translations="<?php echo Tools::prepareJsonToOutputHtmlAttr( array_merge( $zobrazkontakt_translations, $servicebuy_translations ) ); ?>"
-                                                        :transaction_id="<?php echo $transactionid; ?>"
-
-                                                        home_url="<?php echo home_url(); ?>"
-                                                        login_link="<?php echo Tools::getFERoute( "uzivatelClass", false, "login" ); ?>"
-                                                        payment_link="<?php echo Tools::getFERoute( "objednavkaClass" ); ?>"
-                                                        ajax_url="<?php echo AJAXURL; ?>"
-                                                        currency="<?php echo CURRENCY; ?>"
-                                                        assets_path="<?php echo FRONTEND_IMAGES_PATH; ?>"
-
-                                                ></Zobrazkontakt>
+                                            <div class="contact-bar-new">
+                                                <button class="btn btn-small js-transfer-from-click">Chci bydlet</button>
                                             </div>
                                         </div>
                                     </div>
@@ -326,3 +314,5 @@ if ( count( $similar ) > 0 ) :
         </div>
     </section>
 <?php endif; ?>
+
+<?php Pixel::PixelBuy(true); ?>

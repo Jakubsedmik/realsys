@@ -61,6 +61,41 @@
                 Launch demo modal
             </button>
 
+            <!-- TODO ANO/NE POLSKOČESKY -->
+            <script>
+            $('.detail-nemovitosti .basic-table tr td').each(function() {
+              //console.log($(this).text());
+              var text = $(this).text().replace('Ano', 'Tak');
+              $(this).text(text);
+            });
+
+            $('.detail-nemovitosti .basic-table tr td').each(function() {
+              //console.log($(this).text());
+              var text = $(this).text().replace('Ne', 'Nie');
+              $(this).text(text);
+            });
+
+            $('.premium-pes').each(function() {
+              //console.log($(this).text());
+              var text = $(this).text().replace('Ano', 'Tak');
+              $(this).text(text);
+            });
+
+            $('.premium-pes').each(function() {
+              //console.log($(this).text());
+              var text = $(this).text().replace('Ne', 'Nie');
+              $(this).text(text);
+            });
+
+            </script>
+            <!-- TODO ZMĚNA PŘEDVOLBY TELEFONU -->
+            <script>
+            $('.profil-val').each(function() {
+              //console.log($(this).text());
+              var text = $(this).text().replace('(+420)', '(+48)');
+              $(this).text(text);
+            });
+            </script>
             <?php
                 get_template_part("templates/page", "login");
             ?>

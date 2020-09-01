@@ -1,5 +1,7 @@
 <?php
 
+$dev_branch = true;
+
 
 /*
  * RUN VARS
@@ -47,6 +49,12 @@ define("GOOGLE_ID", "169419171066-51n84mk31m3sdi47rtkj84tprnrppker.apps.googleus
 define("GOOGLE_API_KEY", "AIzaSyDU9RxWxpRRoy9R-wAILv5Owb7GaXHLVaw");
 define("GOOGLE_SERVER_API_KEY", "AIzaSyDLb5HxunZlhEtXHmELaNbd9XMajfkoQvc");
 
+// FAKTUROID Credentials
+define("FAKTUROID_SLUG", "okpraha");
+define("FAKTUROID_MAIL", "jakub.kana@szukamdom.pl");
+define("FAKTUROID_API_KEY", "a0d1e36fa4b9ad2fb026d00bbc57aeecaf0adda9");
+define("FAKTUROID_AGENT", "PHPlib <jakub.kana@szukamdom.pl>");
+
 // CURRENCY
 define("CURRENCY", "PLN");
 define("CURRENCY_CODE", "PLN");
@@ -91,6 +99,7 @@ define( "PRICE", "price" ); // price only positive till 2 147 483 647 OK
 define( "PRICE_ZERO", "price_zero" ); // price only positive till 2 147 483 647, including zero
 define( "TIMESTAMP", "timestamp" ); // valid timestamp OK
 define( "PHPARRAY", "array" ); // valid PHP array
+define( "PDF_URL", "pdf_url"); // valid PDF URL
 
 define( "DATE", "date" ); // DEPRECATED
 define( "TIME", "time" ); // DEPRECATED
@@ -199,6 +208,14 @@ $field_rules = array(
 		'db_hash' => array(
 			'type' => STRING255,
 			'required' => false
+		),
+		'db_invoice_id' => array(
+			"type" => NUMBER,
+			'required' => false
+		),
+		'db_invoice_link' => array(
+			"type" => PDF_URL,
+			"required" => false
 		)
 	),
 	"inzeratClass"    => array(
@@ -228,7 +245,7 @@ $field_rules = array(
 		),
 		'db_pocet_mistnosti'  => array(
 			"required" => true,
-			"type"     => STRING
+			"type"     => STRING255
 		),
 		'db_patro'            => array(
 			"required" => true,
@@ -311,7 +328,7 @@ $field_rules = array(
 			'type'     => STRING255
 		),
 		'db_mestska_cast'           => array(
-			"required" => true,
+			"required" => false,
 			"type"     => STRING255
 		),
 		'db_psc'              => array(
@@ -382,6 +399,32 @@ $field_rules = array(
 		),
 		'db_translation' => array(
 			'type'     => STRING511,
+			'required' => true
+		),
+	),
+	"transakceClass" => array(
+		"db_id" => array(
+			"type" => NUMBER,
+			"required" => false
+		),
+		'db_nazev_sluzby'      => array(
+			'type'     => STRING255,
+			'required' => true
+		),
+		'db_id_odesilatel' => array(
+			'type' => FOREIGN_KEY,
+			'required' => true
+		),
+		'db_id_prijemce' => array(
+			'type' => NUMBER,
+			'required' => true
+		),
+		'db_mnozstvi' => array(
+			'type' => NUMBER,
+			'required' => true
+		),
+		'db_accept' => array(
+			'type' => BOOL,
 			'required' => true
 		),
 	)
@@ -540,7 +583,8 @@ $frontend_common_messages = array(
         "creditcard" => __("Zadejte platné číslo kreditní karty.", "realsys"),
         "maxlength" => __('Zadejte maximálně {0} znaků.', "realsys"),
         "minlength" => __('Zadejte minimálně {0} znaků.', "realsys"),
-        "range" => __('Zadejte hodnotu mezi {0} a {1}.', "realsys")
+        "range" => __('Zadejte hodnotu mezi {0} a {1}.', "realsys"),
+		"zip" =>  __("Toto PSČ je nevalidní. Zadávejte ve formátu 12-345", "realsys")
 );
 
 
@@ -592,7 +636,11 @@ $dictionary = array(
 	'db_stav_inzeratu'   => 'Stav inzerátu',
 	'db_stav'            => 'Stav objednávky',
 	'db_hash'            => 'Hash platební brány',
-	'db_uzivatel_id'     => 'Id uživatele'
+	'db_uzivatel_id'     => 'Id uživatele',
+	'db_nazev_sluzby' => "Název služby",
+	'db_accept' => "Zaúčtováno",
+	'db_invoice_link' => "Faktura",
+	'db_invoice_id' => "Fakturoid ID"
 );
 
 
@@ -622,6 +670,9 @@ $models = array(
 	),
 	"grafy"           => array(
 		"backendController" => "graf"
+	),
+	"transakceClass" => array(
+		"backendController" => "transakce"
 	)
 );
 
@@ -722,12 +773,15 @@ $ajax_localization = array(
 
 require_once __DIR__ . "/configuration_images.php";
 
+define("INVOICES_PATH","uploads/invoices/");
+define("INVOICES_URL", home_url() . "/wp-content/uploads/invoices/");
+
 
 define( "FRONTEND_IMAGES_PATH", get_template_directory_uri() . "/assets/images/images_frontend/" );
 
 // předvolby telefonní
 
-define( "PHONE", "(+49)" );
+define( "PHONE", "(+48)" );
 
 // RADIUS PRO PODOBNÉ INZERÁTY
 
@@ -747,7 +801,8 @@ $dispozice_options = array(
 	__("2+1", "realsys") => __("2+1", "realsys"),
 	__("3+1", "realsys") => __("3+1", "realsys"),
 	__("4+1", "realsys") => __("4+1", "realsys"),
-	__("5+1", "realsys") => __("5+1", "realsys")
+	__("5+1", "realsys") => __("5+1", "realsys"),
+	__("Více než 6", "realsys") => __("Více než 6", "realsys"),
 );
 
 
@@ -757,7 +812,7 @@ $before24 = time() - 24*60*60;
 $before_month = time() - 30*24*60*60;
 $before_three_month = time() - 3*30*24*60*60;
 $dispozice_filter_options = $dispozice_options;
-$dispozice_filter_options[-1] = __('--Bez filtru--',"realsys");
+$dispozice_filter_options[-1] = __("--Bez filtru--","realsys");
 
 $filter_parameters = array(
 	'db_typ_inzeratu' => array(
@@ -777,8 +832,9 @@ $filter_parameters = array(
 	),
 	'db_lokalita' => array(
 		'name' => __('Lokalita',"realsys"),
-		'type' => 'text',
-		'values' => false
+		'type' => 'map-search',
+		'values' => false,
+		'class' => "js-autocomplete"
 	),
 	'db_cena' => array(
 		'name' => __('Cena',"realsys"),
@@ -848,7 +904,8 @@ $filter_parameters = array(
 $filter_hp_parameters = array(
 	'db_typ_inzeratu',
 	'db_pocet_mistnosti',
-	'db_typ_stavby'
+	'db_typ_stavby',
+	'db_lokalita'
 );
 
 
@@ -860,7 +917,7 @@ $cenik = array(
 	500 => 800
 );
 
-define("ALONE_CREDIT_PRICE", 4);
+define("ALONE_CREDIT_PRICE", 1);
 
 
 // Ceníky služeb
@@ -871,13 +928,13 @@ $cenik_sluzeb = array(
 	0 => array(
 		'id' => 0,
 		'name' => __('Hlídací pes',"realsys"),
-		'price' => 2
+		'price' => 15
 	),
 	1 => array(
 		'id' => 1,
 		'name' => __('Topování inzerátu.',"realsys"),
 		'logName' => 'Top inzerátu ID: %d',
-		'price' => 1,
+		'price' => 6,
 		'requireEntity' => true,
 		'handleFunction' => "handleTopInzerat"
 	),
@@ -885,7 +942,7 @@ $cenik_sluzeb = array(
 		'id' => 2,
 		'name' => __('Zobrazení kontaktu',"realsys"),
 		'logName' => 'Zobrazení kontaktu ID: %d',
-		'price' => 3,
+		'price' => 1,
 		'requireEntity' => true
 	)
 );

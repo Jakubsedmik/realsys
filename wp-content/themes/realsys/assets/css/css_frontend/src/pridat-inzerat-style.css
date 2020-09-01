@@ -444,5 +444,8 @@ select option:hover {
     outline: 8px solid #7ec242;
 }
 
+.form-field.form-field-select {
+    padding-right: 25px;
+}
 
 

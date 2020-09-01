@@ -13,6 +13,7 @@
                 v-bind:assets_path="this.assetspath"
                 v-bind:translations="this.translations"
                 v-bind:map_layout="false"
+                v-bind:location="this.location"
         ></Vyhledavani>
         <section>
             <div class="wrapper">
@@ -56,6 +57,7 @@
     import Vyhledavani from "./Vyhledavani.vue";
     import Axios from "axios";
     import VueAxios from 'vue-axios';
+    import {Loader, LoaderOptions} from 'google-maps';
 
 
     export default {
@@ -153,10 +155,32 @@
             },
             translations: {
                 type: Object
+            },
+            location: {
+                type: Object,
+                required: false
             }
         },
         components: { Filtr, Inzerat, Paging, Vyhledavani },
-        mounted() {
+        async mounted() {
+
+            // start map
+            try {
+                if(typeof window['google'] == "undefined"){
+                    const options = {libraries: ['places']};
+                    const loader = new Loader('AIzaSyDU9RxWxpRRoy9R-wAILv5Owb7GaXHLVaw', options);
+                    const google = await loader.load();
+                    this.google = google;
+                    window[google] = google;
+                    this.$root.$emit("mapsLoaded");
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        },
+        created() {
+
+            var _this = this;
 
             if(Object.entries(this.filterpreset) == 0 ){
                 this.fetchData();
@@ -172,6 +196,11 @@
                 _this.sortBy = sort;
                 _this.fetchData();
                 _this.$forceUpdate();
+            });
+
+            this.$root.$on("searchFor", function (searchFor) {
+                _this.searchJson = searchFor;
+                _this.fetchData();
             });
 
             this.$root.$on("searchFor", function (searchFor) {

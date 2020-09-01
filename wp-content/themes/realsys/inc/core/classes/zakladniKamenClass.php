@@ -120,7 +120,6 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
         }elseif ($result === 0) {
             return true;
         }else {
-            print_r($result);
             trigger_error("Něco se pokazilo při změně objektu :: aktualizovat");
             return false;
         }
@@ -194,6 +193,8 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
                     $objectProperty = "db_" . $key;
                     
                     // pokud je proměnná serializovaná musíme ji deserializovat
+	                //echo var_dump($value) . "<br>";
+	                //echo var_dump(maybe_unserialize($value)) . "<br>";
                     $this->$objectProperty = maybe_unserialize($value);
 
                 }
@@ -225,12 +226,15 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
                 $db_properties[$newkey] = $newvalue; 
             }
         }
-        foreach ($this->maskProperties as $key => $value) {
-            if(isset($db_properties[$value])){
-                unset($db_properties[$value]);
-            }
+
+
+        if(!is_null($this->maskProperties)){
+	        foreach ($this->maskProperties as $key => $value) {
+	            if(isset($db_properties[$value])){
+	                unset($db_properties[$value]);
+	            }
+	        }
         }
-        
         return $db_properties;
     }
 
@@ -239,12 +243,13 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
      * magic set
      */
     public function __set($name, $value) {
-        if(isset($value) && isset($name)){
+    	if(isset($value) && isset($name)){
 	        if($this->valid) {
 		        $this->valid = $this->checkValidity( $name, $value );
 	        }
         	$this->$name = $value;
 	        if(!$this->forceNotUpdate){
+
                 return $this->aktualizovat();
 	        }
         }

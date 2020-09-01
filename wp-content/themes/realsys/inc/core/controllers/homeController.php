@@ -20,7 +20,6 @@ class homeController extends controller {
 		//$items = assetsFactory::getAllEntity("obrazekClass");
 		//globalUtils::writeDebug($items);
 
-		/* TODO zobrazování pouze vybraných polí */
 		//echo '<div class="app"><inzeraty api_url="/realsys/wp-admin/admin-ajax.php?action=getElements" base_url="/realsys/" model="obrazekClass" item_controller="" allowed_columns="[\'db_id\', \'db_prijmeni\']"></inzeraty></div>';
 		//echo frontendError::getBackendErrors();
 

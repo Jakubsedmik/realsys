@@ -42,10 +42,9 @@ class loginController extends frontendController {
 					if($login_result){
 						$uzivatel->logIn();
 						/* TODO prozatímní redirect na přidání inzerátu, po spuštění musí být na profil */
-						frontendError::addMessage(__("Přihlášení","realsys"), SUCCESS, __("Přihlášení proběhlo úspěšně, probíhá přesměrování na vytváření inzerátu","realsys"));
-						Tools::jsRedirect(Tools::getFERoute("inzeratClass",false, "add"),1500);
+						/*frontendError::addMessage(__("Přihlášení","realsys"), SUCCESS, __("Přihlášení proběhlo úspěšně, probíhá přesměrování na vytváření inzerátu","realsys"));
+						Tools::jsRedirect(Tools::getFERoute("inzeratClass",false, "add"),1500);*/
 
-						/*
 						if(Tools::checkPresenceOfParam("create",$this->requestData)){
 							frontendError::addMessage(__("Přihlášení","realsys"), SUCCESS, __("Přihlášení proběhlo úspěšně, probíhá přesměrování na vytváření inzerátu","realsys"));
 							Tools::jsRedirect(Tools::getFERoute("inzeratClass",$uzivatel->getId(), "add"),1500,__("Přesměrování na vytváření inzerátu","realsys"));
@@ -56,7 +55,7 @@ class loginController extends frontendController {
 						}else{
 							frontendError::addMessage(__("Přihlášení","realsys"), SUCCESS, __("Přihlášení proběhlo úspěšně, probíhá přesměrování na Váš profil.","realsys"));
 							Tools::jsRedirect(Tools::getFERoute("uzivatelClass",$uzivatel->getId()),1500, __("Přesměrování na Váš profil","realsys"));
-						}*/
+						}
 					}else{
 						frontendError::addMessage(__("Uživatel","realsys"),ERROR, __("Špatné heslo","realsys"));
 					}
@@ -158,9 +157,9 @@ class loginController extends frontendController {
 				if($uzivatel){
 					frontendError::addMessage(__("Registrace","realsys"),SUCCESS, __("Registrace proběhla úspěšně. Budete přesměrováni","realsys"));
 					$uzivatel->logIn();
-					//Tools::jsRedirect(Tools::getFERoute("uzivatelClass",$uzivatel->getId()),1500);
+					Tools::jsRedirect(Tools::getFERoute("uzivatelClass",$uzivatel->getId()),1500);
 					/* TODO prozatímní redirect na přidání inzerátu, po spuštění musí být na profil */
-					Tools::jsRedirect(Tools::getFERoute("inzeratClass",false, "add"),1500);
+					//Tools::jsRedirect(Tools::getFERoute("inzeratClass",false, "add"),1500);
 				}else{
 					frontendError::addMessage(__("Registrace","realsys"), ERROR, __("Nastala chyba při vytváření uživatele. Kontaktujte prosím podporu","realsys"));
 				}
@@ -318,11 +317,11 @@ class loginController extends frontendController {
 					);
 
 					/* TODO prozatímní redirect na přidání inzerátu, po spuštění musí být na profil */
-					frontendError::addMessage(__("Ověření","realsys"),SUCCESS, __("Uživatel byl ověřen.","realsys"));
-					Tools::jsRedirect(Tools::getFERoute("inzeratClass",false, "add"),1500);
-
 					/*frontendError::addMessage(__("Ověření","realsys"),SUCCESS, __("Uživatel byl ověřen.","realsys"));
-					Tools::jsRedirect(Tools::getFERoute("uzivatelClass",$uzivatel->getId()));*/
+					Tools::jsRedirect(Tools::getFERoute("inzeratClass",false, "add"),1500);*/
+
+					frontendError::addMessage(__("Ověření","realsys"),SUCCESS, __("Uživatel byl ověřen.","realsys"));
+					Tools::jsRedirect(Tools::getFERoute("uzivatelClass",$uzivatel->getId()));
 					return true;
 
 				}else{
@@ -429,7 +428,6 @@ class loginController extends frontendController {
 
 	public function resetPassword(){
 
-
 		if(uzivatelClass::getUserLoggedId() == false){
 
 
@@ -466,7 +464,8 @@ class loginController extends frontendController {
 						$data = array(
 							'link' => $link,
 							'jmeno' => $uzivatel->db_jmeno,
-							'prijmeni' => $uzivatel->db_prijmeni
+							'prijmeni' => $uzivatel->db_prijmeni,
+							'email' => $uzivatel->db_email
 						);
 
 						Tools::sendMail( $email, "Resetování hesla", "resetPassword", $data );

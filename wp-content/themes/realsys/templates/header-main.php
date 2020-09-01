@@ -39,7 +39,7 @@
                             <a class="logged"
                                href="<?php echo Tools::getFERoute( "uzivatelClass", UzivatelClass::getUserLoggedId() ) ?>">
                                 <span class="avatar icon-user ico"
-                                      style="background-image:url('<?php echo $uzivatel->db_avatar; ?>'');"></span>
+                                      style="background-image:url('<?php echo $uzivatel->db_avatar; ?>');"></span>
                             </a>
 						<?php endif; ?>
 

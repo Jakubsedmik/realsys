@@ -498,6 +498,7 @@ function activeInzerat(element) {
     nemovitost.addClass("active");
     nemovitost.find(".inzeratActivator").hide();
     nemovitost.find(".inzeratDeactivator").show();
+    nemovitost.find(".js-nem-top").show();
 }
 
 function deactiveInzerat(element) {
@@ -506,6 +507,7 @@ function deactiveInzerat(element) {
     nemovitost.removeClass("active");
     nemovitost.find(".inzeratActivator").show();
     nemovitost.find(".inzeratDeactivator").hide();
+    nemovitost.find(".js-nem-top").hide();
 }
 
 function removePes(element) {
@@ -745,8 +747,8 @@ jQuery(document).ready(function($){
 $(document).ready(function() {
 
     $('#tabs li:not(:first)').addClass('inactive');
-    $('.tab-sl-content').hide();
-    $('.tab-sl-content:first').show();
+    $('#tabs .tab-sl-content').hide();
+    $('#tabs .tab-sl-content:first').show();
 
     $('#tabs li').click(function(){
         var t = $(this).attr('id');
@@ -754,7 +756,7 @@ $(document).ready(function() {
             $('#tabs li').addClass('inactive');
             $(this).removeClass('inactive');
 
-            $('.tab-sl-content').hide();
+            $('#tabs .tab-sl-content').hide();
             $('#'+ t + 'C').fadeIn('slow');
         }
     });
@@ -762,9 +764,9 @@ $(document).ready(function() {
 
 /* TABY V PROFILU */
 $(document).ready(function() {
-    $('.profil li a:not(:first)').addClass('inactive');
+    /*$('.profil li a:not(:first)').addClass('inactive');
     $('.tab-sl-content').hide();
-    $('.tab-sl-content:first').show();
+    $('.tab-sl-content:first').show();*/
 
     $('.profil li a').click(function(){
         var t = $(this).attr('id');
@@ -784,7 +786,26 @@ function goBack() {
 }
 
 
+/* TRANSFER CLICK FROM ONE BUTT TO ANOTHER */
+
+$(document).ready(function () {
+    $(".js-transfer-from-click").click(function (e) {
+        e.preventDefault();
+        $(".js-transfer-to-click").click();
+    })
+});
 
 
+/* SWITCH AUTOCOMPLETION ON, CREATE LAT AND LNG */
+function initAutocomplete() {
+    var input = $(".js-autocomplete")[0];
+    var autocomplete = new google.maps.places.Autocomplete(input);
 
-
+    autocomplete.addListener('place_changed', function() {
+        var place = autocomplete.getPlace();
+        if (place.geometry) {
+            $(".js-autocomplete-lat").val(place.geometry.location.lat());
+            $(".js-autocomplete-lng").val(place.geometry.location.lng());
+        }
+    });
+}

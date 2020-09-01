@@ -9,7 +9,6 @@ import Vuelidate from 'vuelidate';
 Vue.use(Vuelidate);
 
 
-
 var app = $(".app");
 if(app.length > 0){
     var app = new Vue({
@@ -26,6 +25,7 @@ if(app.length > 0){
     });
 
     window.app = app;
+    window.procesingPayment = false;
 }
 
 

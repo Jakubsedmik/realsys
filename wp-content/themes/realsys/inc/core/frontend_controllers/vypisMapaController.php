@@ -24,7 +24,7 @@ class vypisMapaController extends frontendController {
 			$key_new = str_replace("db_","", $key);
 			if($value['type'] == "select"){
 				if(is_array($value['values']) && count($value['values'])==0){
-					$filter_parameters[$key]['values'] = globalUtils::getValuesForFilter("inzeratClass", $key_new, __("--Bez filtru--","realsys"));
+					$filter_parameters[$key]['values'] = globalUtils::getValuesForFilter("inzeratClass", $key_new, __("-- Bez filtru --","realsys"));
 				}
 			}elseif ($value['type'] == "customswitcher" || $value['type'] == 'option'){
 				$filter_parameters[$key]['values'] = globalUtils::getValuesForFilter("inzeratClass", $key_new, false);

@@ -3123,6 +3123,13 @@ body label {
   text-transform: initial;
   font-size: 15px;
 }
+section.front-lower-section {
+  background-image: url('http://localhost/realsys/wp-content/themes/realsys/assets/images/images_frontend/lower_bg.png');
+  background-repeat: no-repeat;
+  background-size: 40%;
+  background-position: bottom left;
+  padding-bottom: 120px;
+}
 /**********************/
 /**********************/
 /**********************/
