@@ -67,7 +67,7 @@
                             <div class="modal-body" v-else>
                                 <h2 class="sz-tit">{{translations.vytvoreniHlidacihoPsa}}</h2>
                                 <p class="mb-sm-5 mb-3">{{translations.vasHlidaciPesBylUspesneNastaven}}</p>
-                                <a :href="this.home_url + '/uzivatel/'+ this.user_logged + '/'" class="btn mb-sm-5 mb-3">{{translations.podivejteSeNaSveHlidaciPsi}}</a>
+                                <a :href="this.home_url + '/uzytkownik/'+ this.user_logged + '/'" class="btn mb-sm-5 mb-3">{{translations.podivejteSeNaSveHlidaciPsi}}</a>
                             </div>
 
                         </div>

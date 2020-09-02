@@ -911,10 +911,11 @@ $filter_hp_parameters = array(
 
 // CENIK TOPOVANI
 $cenik = array(
-	20 => 15,
-	50 => 200,
-	100 => 500,
-	500 => 800
+	15 => 15,
+	100 => 100,
+	300 => 300,
+	500 => 500,
+	1000 => 1000
 );
 
 define("ALONE_CREDIT_PRICE", 1);

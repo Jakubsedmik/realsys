@@ -13,10 +13,10 @@ class gopayController extends frontendController {
 
 	public function __construct( $actionName ) {
 		$this->gopay = GoPay\payments(array(
-			'goid' => '8292273517',
-			'clientId' => '1466427842',
-			'clientSecret' => 'Ebysb4Yw',
-			'isProductionMode' => false,
+			'goid' => '8221776618',
+			'clientId' => '1370207036',
+			'clientSecret' => 'df9t2hK5',
+			'isProductionMode' => true,
 			'language' => Language::CZECH
 		));
 
@@ -396,7 +396,8 @@ class gopayController extends frontendController {
 			'order_description' => $order_description,
 			'items' => $items,
 			'callback' => array(
-				'return_url' => $return_url
+				'return_url' => $return_url,
+				'notification_url' => $return_url
 			),
 			'lang' => $lang, // if lang is not specified, then default lang is used
 		));

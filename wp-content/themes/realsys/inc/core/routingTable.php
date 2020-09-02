@@ -4,16 +4,16 @@
 $base_url_regex = str_replace("/", "\/", BASE_URL);
 
 $routes = array(
-	$base_url_regex . 'inzerat\/' => "inzeratDetailController",
-	$base_url_regex . 'uzivatel\/' => "uzivatelDetailController",
-	$base_url_regex . "login\/" => "loginController",
-	$base_url_regex . "vypis\/" => "vypisController",
-	$base_url_regex . "vypismapa\/" => "vypisMapaController",
-	$base_url_regex . "gopay\/" => "gopayController",
-	$base_url_regex . "objednavka\/" => "objednavkaController",
-	$base_url_regex . "editace-inzeratu\/" => "inzeratEditController",
-	$base_url_regex . "pridat-inzerat\/" => "pridatInzeratController",
-	$base_url_regex . "hlidacipes\/" => "hlidacipesController",
+	$base_url_regex . 'inzerat\/' => "inzeratDetailController", // inzerat
+	$base_url_regex . 'uzytkownik\/' => "uzivatelDetailController", // uzivatel
+	$base_url_regex . "login\/" => "loginController", // login
+	$base_url_regex . "wyciag\/" => "vypisController", // vypis
+	$base_url_regex . "wyciag-mapa\/" => "vypisMapaController", // vypismapa
+	$base_url_regex . "gopay\/" => "gopayController", // gopay
+	$base_url_regex . "zamowienie\/" => "objednavkaController", // objednavka
+	$base_url_regex . "edycja-ogloszenia\/" => "inzeratEditController", // editace-inzeratu
+	$base_url_regex . "dodawaj-ogloszenia\/" => "pridatInzeratController", // pridat-inzerat
+	$base_url_regex . "pies-strozujacy\/" => "hlidacipesController", // hlidacipes
 );
 
 
@@ -28,8 +28,8 @@ $rewrites = array(
 		'rewrite' => 'index.php?pagename=inzerat&inzerat_id=$matches[1]'
 	),
 	'uzivatel_id' => array(
-		'regex' => '^uzivatel/([^/]*)/?',
-		'rewrite' => 'index.php?pagename=uzivatel&uzivatel_id=$matches[1]'
+		'regex' => '^uzytkownik/([^/]*)/?',
+		'rewrite' => 'index.php?pagename=uzytkownik&uzivatel_id=$matches[1]'
 	)
 );
 
@@ -41,18 +41,18 @@ $rewrites = array(
 $routing_urls = array(
 	"inzeratClass" => array(
 		'detail' => home_url() . '/inzerat/%d/',
-		'listing' => home_url() . '/vypis/',
-		'add' => home_url() . '/pridat-inzerat/',
-		'edit' => home_url() . '/editace-inzeratu/?id=%d'
+		'listing' => home_url() . '/wyciag/',
+		'add' => home_url() . '/dodawaj-ogloszenia/',
+		'edit' => home_url() . '/edycja-ogloszenia/?id=%d'
 	),
 	"uzivatelClass" => array(
-		'detail' => home_url() . '/uzivatel/%d/',
+		'detail' => home_url() . '/uzytkownik/%d/',
 		'login' => home_url() . "/login/",
 		'resetpwd' => home_url() . '/login/?action=requestResetPassword'
 	),
 	"vypis" => array(
-		'listing' => home_url() . '/vypis/',
-		'map' => home_url() . '/vypismapa/'
+		'listing' => home_url() . '/wyciag/',
+		'map' => home_url() . '/wyciag-mapa/'
 	),
 	"gopay" => array(
 		"payment" => home_url() . '/gopay/?id=%d',
@@ -60,10 +60,10 @@ $routing_urls = array(
 		"quickpayment" => home_url() . "/gopay/?action=quickOrder"
 	),
 	"hlidacipesClass" => array(
-		"detail" => home_url() . "/hlidacipes/?id=%d",
-		"listing" => home_url() . "/uzivatel/%d/"
+		"detail" => home_url() . "/pies-strozujacy/?id=%d",
+		"listing" => home_url() . "/uzytkownik/%d/"
 	),
 	"objednavkaClass" => array(
-		"detail" => home_url() . "/objednavka/"
+		"detail" => home_url() . "/zamowienie/"
 	)
 );

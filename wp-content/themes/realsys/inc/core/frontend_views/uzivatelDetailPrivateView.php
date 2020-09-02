@@ -408,7 +408,7 @@ if($_SERVER["REQUEST_URI"]){
                             </div>
                         </section>
 					<?php endif; ?>
-					<a href="/vypismapa/" class="btn"><?php _e( "Vytvořit hlídacího psa", "realsys" ); ?></a>
+					<a href="<?php echo Tools::getFERoute("vypis",false, "map"); ?>" class="btn"><?php _e( "Vytvořit hlídacího psa", "realsys" ); ?></a>
                 </div>
 
 
