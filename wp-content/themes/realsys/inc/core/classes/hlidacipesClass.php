@@ -28,7 +28,10 @@ class hlidacipesClass extends zakladniKamenClass {
 	public function nacistPosledniInzeraty(){
 		if(is_array($this->db_posledni_inzeraty) && count($this->db_posledni_inzeraty) > 0){
 			foreach ($this->db_posledni_inzeraty as $key => $value){
-				$this->posledni_inzeraty_objects[$value] = assetsFactory::getEntity("inzeratClass",$value);
+				$last = assetsFactory::getEntity("inzeratClass",$value);
+				if($last !== false){
+					$this->posledni_inzeraty_objects[$value] = $last;
+				}
 			}
 		}else{
 			$this->posledni_inzeraty_objects = array();

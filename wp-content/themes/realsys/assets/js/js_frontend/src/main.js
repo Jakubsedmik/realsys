@@ -66,13 +66,14 @@ $(document).ready(function () {
 
     $.validator.addMethod( "phoneCZ", function( phone_number, element ) {
         phone_number = phone_number.replace( /\s+/g, "" );
-        var regexp = /^(\+420)? ?[1-9][0-9]{2} ?[0-9]{3} ?[0-9]{3}$/;
+        var regexp = new RegExp(serverData.regexes.tel);
         return this.optional( element ) || regexp.test( phone_number );
     }, serverData.localizations.totoCisloNeniValidni );
 
     $.validator.addMethod( "zip", function( phone_number, element ) {
         phone_number = phone_number.replace( /\s+/g, "" );
-        var regexp = /\d{3} ?\d{2}/;
+        var regexp = new RegExp(serverData.regexes.zip);
+        console.log(regexp);
         return this.optional( element ) || regexp.test( phone_number );
     }, serverData.localizations.totoPscNeniVladini );
 

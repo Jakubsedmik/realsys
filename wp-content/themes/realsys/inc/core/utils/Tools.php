@@ -974,7 +974,9 @@ class Tools {
                 }
 
 			    $final_filter[$value]['name'] = $filter_parameters[$value]['name'];
-			    $final_filter[$value]['class'] = $filter_parameters[$value]['class'];
+			    if(isset($filter_parameters[$value]['class'])){
+				    $final_filter[$value]['class'] = $filter_parameters[$value]['class'];
+                }
 			    $final_filter[$value]['type'] = $filter_parameters[$value]['type'];
             }
 		}

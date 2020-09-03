@@ -189,7 +189,7 @@
 				<div class="col">
 					<!-- Podlahová plocha -->
 					<div class="md-form">
-						<input type="number" id="db_podlahova_plocha" name="db_podlahova_plocha" class="form-control" min="10" value="<?php echo $this->viewData['inzerat']->dejData('db_podlahova_plocha'); ?>">
+						<input type="number" id="db_podlahova_plocha" name="db_podlahova_plocha" class="form-control" value="<?php echo $this->viewData['inzerat']->dejData('db_podlahova_plocha'); ?>">
 						<label for="db_podlahova_plocha">Podlahová plocha</label>
 					</div>
 				</div>
@@ -197,7 +197,7 @@
 				<div class="col">
 					<!-- Pozemková plocha -->
 					<div class="md-form">
-						<input type="number" id="db_pozemkova_plocha" name="db_pozemkova_plocha" class="form-control" min="10" value="<?php echo $this->viewData['inzerat']->dejData('db_pozemkova_plocha'); ?>">
+						<input type="number" id="db_pozemkova_plocha" name="db_pozemkova_plocha" class="form-control" value="<?php echo $this->viewData['inzerat']->dejData('db_pozemkova_plocha'); ?>">
 						<label for="db_pozemkova_plocha">Pozemková plocha</label>
 					</div>
 				</div>
@@ -205,13 +205,11 @@
 				<div class="col">
 					<!-- Užitková plocha -->
 					<div class="md-form">
-						<input type="number" id="db_uzitkova_plocha" name="db_uzitkova_plocha" class="form-control" min="10" value="<?php echo $this->viewData['inzerat']->dejData('db_uzitkova_plocha'); ?>">
+						<input type="number" id="db_uzitkova_plocha" name="db_uzitkova_plocha" class="form-control" value="<?php echo $this->viewData['inzerat']->dejData('db_uzitkova_plocha'); ?>">
 						<label for="db_uzitkova_plocha">Užitková plocha</label>
 					</div>
 				</div>
 			</div>
-
-
 
 
 
