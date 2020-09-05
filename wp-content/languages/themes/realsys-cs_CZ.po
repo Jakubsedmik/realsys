@@ -546,10 +546,8 @@ msgid "5+1"
 msgstr "6"
 
 #: inc/core/configuration/configuration.php:793
-#, fuzzy
-#| msgid "Více info"
 msgid "Více než 6"
-msgstr "Więcej informacji"
+msgstr "Więcej niż 6"
 
 #: inc/core/configuration/configuration.php:803
 #: inc/core/configuration/configuration.php:858
@@ -1045,7 +1043,7 @@ msgstr "Wyświetl profil użytkownika"
 
 #: inc/core/configuration/vue-translations.php:76
 msgid "Zaplatit za kontakt bez přihlášení"
-msgstr ""
+msgstr "Płać za kontakt bez logowania"
 
 #: inc/core/configuration/vue-translations.php:80
 msgid "Toto pole je povinné"
