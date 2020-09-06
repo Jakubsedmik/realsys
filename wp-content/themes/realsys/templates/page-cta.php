@@ -38,7 +38,7 @@
                         <img src="<?php echo FRONTEND_IMAGES_PATH; ?>/ikony/bulb.png" alt="">
                         <h3><?php _e( "Jak to funguje", "realsys" ); ?></h3>
                         <p><?php _e( "Co je Hledámdům a proč tento projekt vznikl.", "realsys" ); ?></p>
-                        <a href="/jak-to-funguje-2/" class="btn"><?php echo _e( "O nás", "realsys" ); ?></a>
+                        <a href="/jak-to-dziala/" class="btn"><?php echo _e( "O nás", "realsys" ); ?></a>
                     </div>
                 </div>
 
@@ -47,7 +47,7 @@
                         <img src="<?php echo FRONTEND_IMAGES_PATH; ?>/ikony/sluzby.png" alt="">
                         <h3><?php _e( "Naše služby", "realsys" ); ?></h3>
                         <p><?php _e( "Všechno, co dokáže realitní makléř dokážete i vy - za zlomek ceny. My Vám s tím umíme pomoct.", "realsys" ); ?></p>
-                        <a href="/stranka-sluzeb/" class="btn"><?php echo _e( "Naše služby", "realsys" ); ?></a>
+                        <a href="/uslugi/" class="btn"><?php echo _e( "Naše služby", "realsys" ); ?></a>
                     </div>
                 </div>
 

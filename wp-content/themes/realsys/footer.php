@@ -87,6 +87,12 @@
               $(this).text(text);
             });
 
+            $('button').each(function() {
+              //console.log($(this).text());
+              var text = $(this).text().replace('Chci bydlet', 'Chcę zamieszkać');
+              $(this).text(text);
+            });            
+
             </script>
             <!-- TODO ZMĚNA PŘEDVOLBY TELEFONU -->
             <script>
