@@ -34,6 +34,7 @@
                             v-bind:currency="appData.currency"
                             v-bind:assetsPath="assetspath"
                             v-bind:translations="translations"
+                            v-bind:home_url="home_url"
                             proportion="6">
                     </Inzerat>
 

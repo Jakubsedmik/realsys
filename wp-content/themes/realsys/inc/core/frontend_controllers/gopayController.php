@@ -378,7 +378,7 @@ class gopayController extends frontendController {
 
 	protected function simplePayment($ammount, $items, $order_number, $contact, $return_url, $order_description){
 
-		$currency = Currency::CZECH_CROWNS;
+		$currency = CURRENCY;
 		$lang = Language::CZECH;
 
 		$gopay = $this->gopay;
