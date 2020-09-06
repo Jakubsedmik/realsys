@@ -327,6 +327,7 @@
 <div class="app" id="addImages">
     <Obrazky
             inzerat_id="<?php echo $this->viewData['inzerat']->getId(); ?>"
+            home_url="<?php echo home_url(); ?>"
             api_link="<?php echo AJAXURL; ?>"
             edit_link="<?php echo Tools::getRoute("obrazekClass","edit"); ?>"
     ></Obrazky>
