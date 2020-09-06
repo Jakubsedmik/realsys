@@ -16,7 +16,7 @@
 .add-inz-con .inz-box label {
     font-size: 15px!important;
 }
-header .user-login a:first-child {
+header .full-menu .main-header .user-login a:first-child {
 	border:0;
 }
 .main-menu-top {
