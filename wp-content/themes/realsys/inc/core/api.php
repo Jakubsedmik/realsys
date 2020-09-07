@@ -566,6 +566,9 @@ function getInzeraty(){
 	$ordered_list = array();
 	foreach ($inzeraty as $key => $val){
 		$val->ignoreInterface();
+		if(property_exists($val, 'db_typ_inzeratu')){
+			$val->typ_inzeratu_raw = $val->db_typ_inzeratu;
+		}
 		$val->writeDials();
 		$val->getSubobject("obrazek");
 		$val->setForceNotUpdate();
