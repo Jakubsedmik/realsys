@@ -69,7 +69,7 @@
             },
             formatMoney: function () {
                 var price_to_format = 0;
-                if(this.inzerat.db_typ_inzeratu === 2){
+                if(this.inzerat.db_typ_inzeratu == 2){
                     price_to_format = this.inzerat.db_cena;
                 }else{
                     price_to_format = this.inzerat.db_cena_najem;
