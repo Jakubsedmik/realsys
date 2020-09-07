@@ -68,12 +68,18 @@
                 return this.inzerat.db_pozemkova_plocha + " m<sup>2</sup>";
             },
             formatMoney: function () {
+                var price_to_format = 0;
+                if(this.inzerat.db_typ_inzeratu === 2){
+                    price_to_format = this.inzerat.db_cena;
+                }else{
+                    price_to_format = this.inzerat.db_cena_najem;
+                }
                 const formatter = new Intl.NumberFormat('cs-CZ', {
                     style: 'currency',
-                    currency: 'CZK',
+                    currency: this.currency,
                     minimumFractionDigits: 0
                 });
-                return formatter.format(this.inzerat.db_cena);
+                return formatter.format(price_to_format);
             },
             getFrontImage: function () {
                 var frontImageUrl = {'backgroundImage' : 'url(' + this.assetsPath + "loading.gif"};

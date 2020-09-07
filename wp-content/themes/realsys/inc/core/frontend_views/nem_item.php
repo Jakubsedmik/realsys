@@ -19,7 +19,15 @@
 			<p><?php echo $item->db_popis; ?></p>
 
 			<div class="price-bar">
-				<h4 class="price"><?php echo Tools::convertCurrency($item->db_cena); ?></h4>
+				<h4 class="price">
+                    <?php
+                        if($item->db_typ_inzeratu == 2){
+	                        echo Tools::convertCurrency($item->db_cena);
+                        }else{
+	                        echo Tools::convertCurrency($item->db_cena_najem);
+                        }
+                    ?>
+                </h4>
 				<a href="<?php echo Tools::getFERoute("inzeratClass", $item->getId()); ?>" class="btn more"><?php echo get_theme_mod("top_nemovitosti_nem_button_text"); ?></a>
 			</div>
 		</div>

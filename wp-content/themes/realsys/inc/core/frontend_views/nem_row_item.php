@@ -37,7 +37,15 @@
 				<div class="col-sm-3 nemovitost-text">
 					<h3><a href="<?php echo Tools::getFERoute("inzeratClass", $item->getId()); ?>"><?php echo $item->db_titulek . ', ' . $item->db_pocet_mistnosti . ', ' . $item->db_podlahova_plocha; ?> m<sup>2</sup></a></h3>
 					<p><?php echo $item->db_popis; ?></p>
-					<h4 class="price"><?php echo Tools::convertCurrency($item->db_cena); ?></h4>
+                    <h4 class="price">
+						<?php
+						if($item->db_typ_inzeratu == 2){
+							echo Tools::convertCurrency($item->db_cena);
+						}else{
+							echo Tools::convertCurrency($item->db_cena_najem);
+						}
+						?>
+                    </h4>
 				</div>
 
 				<div class="col-sm-3 nemovitost-activate">

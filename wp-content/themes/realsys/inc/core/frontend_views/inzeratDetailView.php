@@ -73,10 +73,26 @@ if ( Tools::checkPresenceOfParam( "transactionid", $this->requestData ) ) {
                                             <th><?php _e( "Podlahová plocha", "realsys" ); ?>:</th>
                                             <td><span><?php echo $inzerat->getAerial(); ?></span></td>
                                         </tr>
-                                        <tr>
-                                            <th><?php _e( "Cena", "realsys" ); ?>:</th>
-                                            <td><?php echo Tools::convertCurrency( $inzerat->db_cena ); ?></td>
-                                        </tr>
+
+                                        <?php if($this->workData['typ_inzeratu'] == 2 ): ?>
+                                            <tr>
+                                                <th><?php _e( "Cena", "realsys" ); ?>:</th>
+                                                <td><?php echo Tools::convertCurrency( $inzerat->db_cena ); ?></td>
+                                            </tr>
+                                        <?php else: ?>
+                                            <tr>
+                                                <th><?php _e( "Nájem", "realsys" ); ?>:</th>
+                                                <td><?php echo Tools::convertCurrency( $inzerat->db_cena_najem ); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th><?php _e( "Poplatky", "realsys" ); ?>:</th>
+                                                <td><?php echo Tools::convertCurrency( $inzerat->db_poplatky ); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th><?php _e( "Kauce", "realsys" ); ?>:</th>
+                                                <td><?php echo Tools::convertCurrency( $inzerat->db_kauce ); ?></td>
+                                            </tr>
+                                        <?php endif; ?>
                                         <tr>
                                             <th><?php _e( "Cena poznámka", "realsys" ); ?>:</th>
                                             <td><?php echo $inzerat->db_cena_poznamka; ?></td>
@@ -163,10 +179,25 @@ if ( Tools::checkPresenceOfParam( "transactionid", $this->requestData ) ) {
                                                         <th><?php _e( "Pozemková plocha", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->getTotalAerial(); ?></td>
                                                     </tr>
-                                                    <tr>
-                                                        <th><?php _e( "Cena", "realsys" ); ?>:</th>
-                                                        <td><?php echo Tools::convertCurrency( $inzerat->db_cena ); ?></td>
-                                                    </tr>
+                                                    <?php if($this->workData['typ_inzeratu'] == 2 ): ?>
+                                                        <tr>
+                                                            <th><?php _e( "Cena", "realsys" ); ?>:</th>
+                                                            <td><?php echo Tools::convertCurrency( $inzerat->db_cena ); ?></td>
+                                                        </tr>
+                                                    <?php else: ?>
+                                                        <tr>
+                                                            <th><?php _e( "Nájem", "realsys" ); ?>:</th>
+                                                            <td><?php echo Tools::convertCurrency( $inzerat->db_cena_najem ); ?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th><?php _e( "Poplatky", "realsys" ); ?>:</th>
+                                                            <td><?php echo Tools::convertCurrency( $inzerat->db_poplatky ); ?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th><?php _e( "Kauce", "realsys" ); ?>:</th>
+                                                            <td><?php echo Tools::convertCurrency( $inzerat->db_kauce ); ?></td>
+                                                        </tr>
+                                                    <?php endif; ?>
                                                     <tr>
                                                         <th><?php _e( "Cena poznámka", "realsys" ); ?>:</th>
                                                         <td><?php echo $inzerat->db_cena_poznamka; ?></td>

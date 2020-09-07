@@ -898,6 +898,7 @@ function createWatchdog(){
 								if($hlidacipes){
 									$response->status = 1;
 									$response->message = __("Hlídací pes úspěšně vytvořen","realsys");
+									Tools::sendMail($user->db_email, __("Hlídací pes","realsys"),"watchdogCreated");
 								}else{
 									$response->status = 0;
 									$response->message = __("Hlídací pes se nepodařil vytvořit","realsys");
@@ -925,6 +926,7 @@ function createWatchdog(){
 				if($hlidacipes){
 					$response->status = 1;
 					$response->message = __("Hlídací pes úspěšně vytvořen","realsys");
+					Tools::sendMail($user->db_email, __("Hlídací pes","realsys"),"watchdogCreated");
 				}else{
 					$response->status = 0;
 					$response->message = __("Hlídací pes se nepodařil vytvořit","realsys");
