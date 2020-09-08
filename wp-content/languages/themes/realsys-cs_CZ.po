@@ -2619,7 +2619,7 @@ msgstr "Wyszukaj ogłoszenia"
 
 #: templates/page-cta.php:32
 msgid "Hledám dům"
-msgstr "Szukam Dom"
+msgstr "Szukam Domu"
 
 #: templates/page-cta.php:39
 msgid "Jak to funguje"
