@@ -407,10 +407,8 @@ function googleVerification(){
 				$uzivatel->logIn();
 
 				ob_start();
-				/* TODO prozatímní redirect na přidání inzerátu, po spuštění musí být na profil */
-				Tools::jsRedirect(Tools::getFERoute("inzeratClass",false, "add"),1500);
 
-				//Tools::jsRedirect(Tools::getFERoute("uzivatelClass", $uzivatel->getId()),500);
+				Tools::jsRedirect(Tools::getFERoute("uzivatelClass", $uzivatel->getId()),500);
 				$ob = ob_get_clean();
 
 				$response->actionHtml = $ob;

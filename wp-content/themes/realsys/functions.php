@@ -362,7 +362,7 @@ function change_my_from_address( $original_email_address ) {
 add_filter( 'wp_mail_from', 'change_my_from_address' );
 
 function change_my_sender_name( $original_email_from ) {
-	return 'Automat';
+	return 'Szukam Domu';
 }
 add_filter( 'wp_mail_from_name', 'change_my_sender_name' );
 
