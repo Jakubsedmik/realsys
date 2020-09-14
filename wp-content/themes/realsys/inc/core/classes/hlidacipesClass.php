@@ -100,7 +100,7 @@ class hlidacipesClass extends zakladniKamenClass {
 
 		Tools::sendMail(
 			$uzivatel->db_email,
-			"Hlídací pes",
+			__("Hlídací pes","realsys"),
 			"watchdogInfo",
 			array("pocetNovychInzeratu" => $this->db_nove_inzeraty_pocet, "link" => Tools::getFERoute("uzivatelClass",false, "login"))
 		);
