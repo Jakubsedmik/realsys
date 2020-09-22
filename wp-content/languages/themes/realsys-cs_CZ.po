@@ -1245,7 +1245,7 @@ msgid ""
 "lorem sit amet nulla auctor varius vel at ipsum. Praesent placerat, nisl sit "
 "amet interdum ornare, lectus odio vestibulum nibh, sed iaculis nisl dolor "
 "pellentesque libero."
-msgstr "Przygotowujemy ..."
+msgstr "Wypróbuj promowanie ogłoszenia w swoim profilu."
 
 #: inc/core/configuration/vue-translations.php:132
 msgid "Vyzkoušejte topování"
@@ -1457,8 +1457,8 @@ msgid ""
 "Pozor tento inzerát je neaktivní. Buď čeká na schválení administrátorem a "
 "nebo jste ho deaktivovali. Tento inzerát vidíte pouze vy."
 msgstr ""
-"Uwaga to ogłoszenie jest nieaktywne. Czeka na akceptację Administratora lub "
-"ją wyłączyłeś. Tylko Ty możesz zobaczyć tą ogłoszenie."
+"Uwaga,to ogłoszenie jest nieaktywne. Czeka na akceptacje Administratora lub "
+"zostało przez Ciebie wyłączone. Tylko Ty możesz przeglądać to ogłoszenie."
 
 #: inc/core/frontend_controllers/inzeratDetailController.php:42
 #: inc/core/frontend_controllers/inzeratDetailController.php:47
@@ -1894,15 +1894,15 @@ msgstr "Zobacz, jakie nowe ogłoszenia znalazł Twój pies stróżujący."
 
 #: inc/core/frontend_views/inzeratCreatedView.php:11
 msgid "Inzerát byl vytvořen"
-msgstr "Ogłoszenie jest aktywna"
+msgstr "Ogłoszenie jest aktywne"
 
 #: inc/core/frontend_views/inzeratCreatedView.php:12
 msgid ""
 "Děkujeme za vytvoření inzerátu. Na inzerát budete přesměrováni. Nebo "
 "klikněte na tlačítko níže."
 msgstr ""
-"Dziękujemy za utworzenie ogłoszenia. Nastąpi przekierowanie do ogłoszenia. "
-"Lub kliknij przycisk poniżej."
+"Dziękujemy za utworzenie ogłoszenia. Jeżeli przekierowanie do ogłoszenia nie "
+"nastąpi automatycznie, kliknij w poniższy link."
 
 #: inc/core/frontend_views/inzeratDetailView.php:28
 msgid "Zpět na výpis"
@@ -1918,7 +1918,7 @@ msgstr "Nota cenowa"
 #: inc/core/frontend_views/inzeratDetailView.php:217
 #: inc/core/frontend_views/inzeratDetailView_zaloha.php:162
 msgid "Podlaží"
-msgstr "Podłoga"
+msgstr "Piętro"
 
 #: inc/core/frontend_views/inzeratDetailView.php:110
 msgid "Viac informacií"
