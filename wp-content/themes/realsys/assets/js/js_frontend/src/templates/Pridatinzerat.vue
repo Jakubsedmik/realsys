@@ -1251,24 +1251,7 @@
                             type: Number
                         },
                         db_penb: {
-                            required: [
-                                /* PRONÁJEM */
-                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
-
-                                /* SPOLUBYDLENÍ */
-                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
-
-                                /* PRODEJ */
-                                {db_typ_stavby: 1, db_typ_inzeratu: 2},
-                                {db_typ_stavby: 2, db_typ_inzeratu: 2},
-                                {db_typ_stavby: 5, db_typ_inzeratu: 2},
-                                {db_typ_stavby: 6, db_typ_inzeratu: 2},
-                                {db_typ_stavby: 7, db_typ_inzeratu: 2},
-                            ],
+                            required: false,
                             appear: [
                                 /* PRONÁJEM */
                                 {db_typ_stavby: 1, db_typ_inzeratu: 1},
@@ -1290,14 +1273,7 @@
                             type: Number
                         },
                         db_vhodny_pro: {
-                            required: [
-                                /* PRONÁJEM */
-                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
-
-                                /* SPOLUBYDLENÍ */
-                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
-                            ],
+                            required: false,
                             appear: [
                                 /* PRONÁJEM */
                                 {db_typ_stavby: 1, db_typ_inzeratu: 1},

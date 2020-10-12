@@ -285,7 +285,7 @@ $field_rules = array(
 			'type'     => NUMBER
 		),
 		'db_penb'           => array(
-			"required" => true,
+			"required" => false,
 			"type"     => NUMBER
 		),
 		'db_vybavenost'           => array(
@@ -934,7 +934,7 @@ $cenik_sluzeb = array(
 	0 => array(
 		'id' => 0,
 		'name' => __('Hlídací pes',"realsys"),
-		'price' => 15
+		'price' => 5
 	),
 	1 => array(
 		'id' => 1,

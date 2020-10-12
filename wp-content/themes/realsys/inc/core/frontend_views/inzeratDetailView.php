@@ -313,7 +313,7 @@ if ( Tools::checkPresenceOfParam( "transactionid", $this->requestData ) ) {
 </section>
 
 <?php
-$similar = $inzerat->getSimilar( 4 );
+$similar = $inzerat->getSimilar( 3 );
 if ( count( $similar ) > 0 ) :
 	?>
     <section>
@@ -329,7 +329,7 @@ if ( count( $similar ) > 0 ) :
 					"inzeratClass",
 					"nem_item.php",
 					1,
-					6,
+					3,
 					'div',
 					'row',
 					false,

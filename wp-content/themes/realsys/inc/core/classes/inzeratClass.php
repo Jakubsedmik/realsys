@@ -116,7 +116,8 @@ class inzeratClass extends zakladniKamenClass {
 				new filterClass("lat", "<", $latitudeMaxRadius),
 				new filterClass("lng", ">", $longitudeMinRadius),
 				new filterClass("lng", "<", $longitudeMaxRadius),
-				new filterClass("id", "!=" , $this->db_id)
+				new filterClass("id", "!=" , $this->db_id),
+				new FilterClass("stav_inzeratu","=","1")
 			),
 			0,
 			$max
