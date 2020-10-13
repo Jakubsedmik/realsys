@@ -104,6 +104,7 @@ class inzeratClass extends zakladniKamenClass {
 		$longitudeMaxRadius = $this->db_lng + RADIUS;
 		$longitudeMinRadius = $this->db_lng - RADIUS;
 
+
 		if($latitudeMaxRadius > 90 || $latitudeMinRadius < -90 || $longitudeMaxRadius > 180 || $longitudeMinRadius < -180){
 			trigger_error("getSimilar::Špatně zadané souřadnice");
 			return false;
@@ -117,7 +118,9 @@ class inzeratClass extends zakladniKamenClass {
 				new filterClass("lng", ">", $longitudeMinRadius),
 				new filterClass("lng", "<", $longitudeMaxRadius),
 				new filterClass("id", "!=" , $this->db_id),
-				new FilterClass("stav_inzeratu","=","1")
+				new FilterClass("stav_inzeratu","=","1"),
+				new FilterClass("typ_inzeratu","=", $this->db_typ_inzeratu),
+				new FilterClass("typ_stavby","=", $this->db_typ_stavby),
 			),
 			0,
 			$max
@@ -172,6 +175,62 @@ class inzeratClass extends zakladniKamenClass {
 			$response->realization = 0;
 		}
 		return $response;
+	}
+
+
+	public static function cleanUp(){
+		$all = assetsFactory::getAllEntity("inzeratClass");
+		$toOut = "";
+		foreach ($all as $key => $value){
+
+
+			/* PRONAJEM a SPOLUBYDLENI */
+			if($value->db_typ_inzeratu == 1 || $value->db_typ_inzeratu == 3){
+				if($value->olderThanMonth()){
+					$value->disable();
+					$toOut .= $value->getId() . " | " . Tools::formatTime($value->db_datum_upravy) . " Older than one month: <strong>deactivation</strong><br>";
+				}else{
+					$toOut .= $value->getId() . " | " . Tools::formatTime($value->db_datum_upravy) . "<br>";
+				}
+			}
+
+			/* PRODEJ */
+			if($value->db_typ_inzeratu == 2){
+				if($value->olderThanTwoMonth()){
+					$value->disable();
+					$toOut .= $value->getId() . " | " . Tools::formatTime($value->db_datum_upravy) . " Older than two months: <strong>deactivation</strong><br>";
+
+				}else{
+					$toOut .= $value->getId() . " | " . Tools::formatTime($value->db_datum_upravy) . "<br>";
+				}
+			}
+
+			if($value->olderThanHalfYear()){
+				assetsFactory::removeEntity("inzeratClass", $value->getId());
+				$toOut .= $value->getId() . " | " . Tools::formatTime($value->db_datum_upravy) . " Older than half year: <strong>deleting</strong><br>";
+			}
+		}
+		echo $toOut;
+	}
+
+	public function olderThanMonth(){
+		$one_month_back = time() - 30 * 24 * 60 * 60;
+		return $one_month_back >= $this->db_datum_upravy;
+	}
+
+	public function olderThanTwoMonth(){
+		$two_month_back = time() - 2 * 30 * 24 * 60 * 60;
+		return $two_month_back >= $this->db_datum_upravy;
+	}
+
+	public function olderThanHalfYear(){
+		$half_year_back = time() - 6 * 30 * 24 * 60 * 60;
+		return $half_year_back >= $this->db_datum_upravy;
+	}
+
+	public function disable(){
+		$this->db_stav_inzeratu = 0;
+		$this->aktualizovat();
 	}
 
 }

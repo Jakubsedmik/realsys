@@ -790,7 +790,7 @@ define( "PHONE", "(+48)" );
 
 // RADIUS PRO PODOBNÉ INZERÁTY
 
-define( "RADIUS", "0.5" );
+define( "RADIUS", "0.73" );
 
 // DATE FORMAT
 define("DATE_FORMAT", "d.m.Y");
@@ -989,3 +989,6 @@ $celkem_podlazi_options = array(
 	14 => __("čtrnácti", "realsys"),
 	15 => __("patnácti", "realsys"),
 );
+
+
+define("EXPORT_PATH", __DIR__ . "/../../../../../uploads/exports/");

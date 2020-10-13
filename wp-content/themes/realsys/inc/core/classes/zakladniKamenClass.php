@@ -248,8 +248,8 @@ abstract class zakladniKamenClass implements manipulationInterface, JsonSerializ
 		        $this->valid = $this->checkValidity( $name, $value );
 	        }
         	$this->$name = $value;
-	        if(!$this->forceNotUpdate){
 
+	        if(!$this->forceNotUpdate){
                 return $this->aktualizovat();
 	        }
         }

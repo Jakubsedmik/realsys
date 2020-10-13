@@ -1064,4 +1064,24 @@ class Tools {
             (isset($parts['query']) ? "?{$parts['query']}" : '') .
             (isset($parts['fragment']) ? "#{$parts['fragment']}" : '');
 	}
+
+
+
+	public static function exportToCsv($class,$writeDials){
+		$all = assetsFactory::getAllEntity($class);
+		$hlavicky = array_keys($all[array_key_first($all)]->vratDbPromenne());
+		$now = time();
+		$fp = fopen(EXPORT_PATH . "export_{$class}_{$now}.csv", 'w');
+		fputcsv($fp, $hlavicky, ";", '"');
+		foreach ($all as $key => $value){
+			if($writeDials){
+				$value->writeDials();
+			}
+			$export = $value->vratDbPromenne();
+			fputcsv($fp, $export,";",'"');
+		}
+
+		fclose($fp);
+	}
+
 }

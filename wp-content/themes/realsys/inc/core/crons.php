@@ -27,3 +27,7 @@ function runInvoicesPDF(){
 	$fakturoid = new fakturoidClass();
 	$fakturoid->generateAllInvoicesPDF();
 }
+
+function runCleanup(){
+	inzeratClass::cleanUp();
+}

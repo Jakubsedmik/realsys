@@ -40,7 +40,7 @@
 
                         <div class="vyhl-sep"></div>
 
-                        <div class="vyhl-vyb-wrap">
+                        <div class="vyhl-vyb-wrap" v-show="subfilters_available">
 
                             <div class="vyhl-vyb-colwrap">
 
@@ -146,6 +146,7 @@
                     // if the field have just one value
                     _this.processChangedField(fieldValues);
                 }
+
                 _this.searchResults();
             });
 
@@ -153,7 +154,8 @@
         data: function(){
             return {
                 search_data: [],
-                advanced: false
+                advanced: false,
+                subfilters_available: true,
             }
         },
         methods: {
@@ -183,7 +185,22 @@
                 if(!found){
                     this.search_data.push(fieldValues);
                 }
+                this.subfiltersAvailable();
+
+
+            },
+            subfiltersAvailable: function () {
+                for (var index in this.search_data){
+
+                    if(this.search_data[index].name == 'db_typ_stavby'){
+                        this.subfilters_available = !(this.search_data[index].value == 6 || this.search_data[index].value == 4);
+                        return true;
+                    }
+                }
+                this.subfilters_available = true;
+                return true;
             }
+
         }
     }
 </script>

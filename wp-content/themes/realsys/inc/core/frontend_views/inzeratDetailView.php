@@ -313,7 +313,7 @@ if ( Tools::checkPresenceOfParam( "transactionid", $this->requestData ) ) {
 </section>
 
 <?php
-$similar = $inzerat->getSimilar( 3 );
+$similar = $this->workData['similar'];
 if ( count( $similar ) > 0 ) :
 	?>
     <section>

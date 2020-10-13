@@ -73,7 +73,18 @@ $zobrazkontakt_translations = array(
 	"telefon" => __("Telefon:", "realsys"),
 	"email" => __("Email:", "realsys"),
 	"zobrazitProfilUzivatele" => __("Zobrazit profil uživatele", "realsys"),
-	"zaplatitZaKontaktBezPrihlaseni" => __("Zaplatit za kontakt bez přihlášení", "realsys")
+	"zaplatitZaKontaktBezPrihlaseni" => __("Zaplatit za kontakt bez přihlášení", "realsys"),
+	"zjistiliJsme" => __("Zjistili jsme že email který jste zadal patří již řádně registrovanému uživateli. Nejdříve se prosím tedy zalogujte.", "realsys"),
+	"kontaktBezPrihlaseni" => __("Kontakt bez přihlášení", "realsys"),
+	"abyJsteMohli" => __("Aby jste mohli zakoupit kontakt bez přihlášení je nutné vyplnit následující údaje.", "realsys"),
+	"totoPoleJePovinne" => __("Toto pole je povinné","realsys"),
+	"totoPoleNeniVeTvaru" => __("Toto pole není tvaru email.","realsys"),
+	"tutoEmailovouAdresu" => __("Tuto emailovou adresu jsme v našem systému nenalezli, proto prosím uveďte ještě Vaše jméno a příjmení","realsys"),
+	"vaseJmeno" => __("Vaše jméno","realsys"),
+	"vasePrijmeni" => __("Vaše příjmení","realsys"),
+	"zaplatit" => __("Zaplatit","realsys"),
+	"vasEmail" => __("Váš email","realsys"),
+
 );
 
 $pridat_inzerat_translations = array(

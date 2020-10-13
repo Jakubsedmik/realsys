@@ -54,30 +54,30 @@
 
                                 <a class="btn mb-sm-3 mb-3" :href="login_link">{{translations.prihlaseni}}</a>
                                 <a class="btn mb-sm-3 mb-3" @click.prevent="goBuyAnonymous" href="" v-if="!buyAnonymous">{{translations.zaplatitZaKontaktBezPrihlaseni}}</a>
-                                <p class="announcement" v-if="this.shouldLogin">Zjistili jsme že email který jste zadal patří již řádně registrovanému uživateli. Nejdříve se prosím tedy zalogujte.</p>
+                                <p class="announcement" v-if="this.shouldLogin">{{translations.zjistiliJsme}}</p>
 
                                 <form :action="quickOrderLink()" method="post" v-if="this.buyAnonymous" ref="anonymousRegForm">
-                                    <h3>Kontakt bez přihlášení</h3>
-                                    <p>Aby jste mohli zakoupit kontakt bez přihlášení je nutné vyplnit následující údaje.</p>
+                                    <h3>{{translations.kontaktBezPrihlaseni}}</h3>
+                                    <p>{{translations.abyJsteMohli}}</p>
                                     <label class="form-field" :class="errorClass('db_email')">
-                                        <input type="email" name="db_email" class="input-outline" placeholder="Váš email" v-model.trim="$v.modelData.db_email.$model" @keyup="">
-                                        <div class="error" v-if="errorAppear('db_email')">Toto pole je povinné</div>
-                                        <div class="error" v-if="errorAppear('db_email', 'email')">Toto pole není tvaru email.</div>
+                                        <input type="email" name="db_email" class="input-outline" :placeholder="translations.vasEmail" v-model.trim="$v.modelData.db_email.$model">
+                                        <div class="error" v-if="errorAppear('db_email')">{{translations.totoPoleJePovinne}}</div>
+                                        <div class="error" v-if="errorAppear('db_email', 'email')">{{translations.totoPoleNeniVeTvaru}}</div>
                                     </label>
 
                                     <div class="second-form-part" v-if="doesRequireName">
-                                        <p class="announcement">Tuto emailovou adresu jsme v našem systému nenalezli, proto prosím uveďte ještě Vaše jméno a příjmení</p>
+                                        <p class="announcement">{{translations.tutoEmailovouAdresu}}</p>
                                         <label class="form-field" :class="errorClass('db_jmeno')">
-                                            <input type="text" name="db_jmeno" class="input-outline" placeholder="Vaše jméno" v-model.trim="$v.modelData.db_jmeno.$model">
-                                            <div class="error" v-if="errorAppear('db_jmeno')">Toto pole je povinné</div>
+                                            <input type="text" name="db_jmeno" class="input-outline" :placeholder="translations.vaseJmeno" v-model.trim="$v.modelData.db_jmeno.$model">
+                                            <div class="error" v-if="errorAppear('db_jmeno')">{{translations.totoPoleJePovinne}}</div>
                                         </label>
                                         <label class="form-field" :class="errorClass('db_prijmeni')">
-                                            <input type="text" name="db_prijmeni" class="input-outline" placeholder="Vaše příjmení" v-model.trim="$v.modelData.db_prijmeni.$model">
-                                            <div class="error" v-if="errorAppear('db_prijmeni')">Toto pole je povinné</div>
+                                            <input type="text" name="db_prijmeni" class="input-outline" :placeholder="translations.vasePrijmeni" v-model.trim="$v.modelData.db_prijmeni.$model">
+                                            <div class="error" v-if="errorAppear('db_prijmeni')">{{translations.totoPoleJePovinne}}</div>
                                         </label>
                                     </div>
 
-                                    <button type="button" class="btn" @click="proceedAnonymousOrder()">Zaplatit</button>
+                                    <button type="button" class="btn" @click="proceedAnonymousOrder()">{{translations.zaplatit}}</button>
                                 </form>
                             </div>
 
