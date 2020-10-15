@@ -390,7 +390,7 @@ if($_SERVER["REQUEST_URI"]){
                                                         <strong><?php echo $value->db_nove_inzeraty_pocet; ?></strong> <?php _e( "inzerátů", "realsys" ); ?>
                                                     </p>
                                                 </div>
-                                                <div class="col-lg-6">
+                                                <div class="col-lg-3">
                                                     <div class="premium-pes"><?php _e( "Je prémium:", "realsys" ); ?>
                                                         <strong><?php echo ( $value->db_premium == 1 ) ? "Ano" : "Ne"; ?></strong>
                                                     </div>
@@ -401,6 +401,9 @@ if($_SERVER["REQUEST_URI"]){
                                                        data-finish="removePes"
                                                        data-confirm="1"><?php _e( "Odstranit psa", "realsys" ); ?></a>
                                                 </div>
+																								<div class="col-lg-3">
+																									<a class="btn button" href="<?php echo Tools::getFERoute( "hlidacipesClass", $value->getId(), "detail" ); ?>"><?php _e( "Vyzvedni si psa", "realsys" ); ?></a>
+																								</div>
                                             </div>
                                         </div>
 									<?php endforeach; ?>
