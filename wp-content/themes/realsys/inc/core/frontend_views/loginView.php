@@ -1,7 +1,15 @@
+<?php if(Tools::checkPresenceOfParam("redirectBack",$this->requestData)) : ?>
+    <script>
+        var redirectBack = "<?php echo urldecode($this->requestData['redirectBack']); ?>";
+    </script>
+<?php endif;?>
+
 <?php invisibleRecaptchaClass::generateRecaptchaListeners(); ?>
 <section>
 	<div class="login-con">
 		<div class="wrapper">
+
+
 			<?php
 			if (Tools::checkPresenceOfParam("create", $this->requestData)) :
 			?>

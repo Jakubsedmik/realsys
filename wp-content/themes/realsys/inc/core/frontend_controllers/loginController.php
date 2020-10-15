@@ -52,6 +52,11 @@ class loginController extends frontendController {
 							$watchdogid = $this->requestData['watchdog'];
 							frontendError::addMessage(__("Přihlášení","realsys"), SUCCESS, __("Přihlášení proběhlo úspěšně, probíhá přesměrování na výpis vašeho hlídacího psa.","realsys"));
 							Tools::jsRedirect(Tools::getFERoute("hlidacipesClass", $watchdogid),1500, __("Přesměrování na výpis hlídacího psa","realsys"));
+						}else if(Tools::checkPresenceOfParam("redirectBack", $this->requestData)){
+							$url = $this->requestData['redirectBack'];
+							$url = urldecode($url);
+							frontendError::addMessage(__("Přihlášení","realsys"), SUCCESS, __("Přihlášení proběhlo úspěšně, probíhá přesměrování zpět na Vaši objednávku","realsys"));
+							Tools::jsRedirect($url,1500, __("Přesměrování na vaši objednávku","realsys"));
 						}else{
 							frontendError::addMessage(__("Přihlášení","realsys"), SUCCESS, __("Přihlášení proběhlo úspěšně, probíhá přesměrování na Váš profil.","realsys"));
 							Tools::jsRedirect(Tools::getFERoute("uzivatelClass",$uzivatel->getId()),1500, __("Přesměrování na Váš profil","realsys"));
