@@ -206,7 +206,7 @@ class inzeratClass extends zakladniKamenClass {
 			}
 
 			if($value->olderThanHalfYear()){
-				assetsFactory::removeEntity("inzeratClass", $value->getId());
+				//assetsFactory::removeEntity("inzeratClass", $value->getId());
 				$toOut .= $value->getId() . " | " . Tools::formatTime($value->db_datum_upravy) . " Older than half year: <strong>deleting</strong><br>";
 			}
 		}
