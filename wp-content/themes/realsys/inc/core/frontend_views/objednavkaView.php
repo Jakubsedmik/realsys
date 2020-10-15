@@ -68,6 +68,9 @@
                     </div>
                     <div class="section-btn">
                         <input type="hidden" name="action" value="processPayment">
+                        <?php if(Tools::checkPresenceOfParam("redirectBack",$this->requestData)) : ?>
+                            <input type="hidden" name="redirectBack" value="<?php echo $this->requestData['redirectBack']; ?>" >
+                        <?php endif; ?>
                         <button type="submit" class="btn">
 	                        <?php _e("Potvrdit objednávku", "realsys"); ?>
                         </button>

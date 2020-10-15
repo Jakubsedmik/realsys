@@ -51,6 +51,7 @@ class inzeratDetailController extends frontendController{
 				}
 
 				$this->workData['typ_inzeratu'] = $inzerat->db_typ_inzeratu;
+				$this->workData['similar'] = $inzerat->getSimilar( 3 );
 				$inzerat->writeDials();
 				$inzerat->loadRelatedObjects();
 				$this->workData['inzerat'] = $inzerat;

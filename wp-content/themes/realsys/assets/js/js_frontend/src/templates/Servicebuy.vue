@@ -51,7 +51,7 @@
                                     <p class="mb-4"><strong>{{creditStatus}}</strong></p>
                                     <p class="mb-4">{{translations.nejdrivePokracujteNakupemKreditu}}</p>
 
-                                    <a :href="this.payment_link + '?serviceOrder=' + this.service.id" class="btn mb-sm-3 mb-3">{{translations.nakoupitKredity}}</a>
+                                    <a :href="getBuyLink()" class="btn mb-sm-3 mb-3">{{translations.nakoupitKredity}}</a>
                                 </div>
 
                             </div>
@@ -370,6 +370,9 @@
                 this.proceedAvailable = false;
                 this.errorHeading = errorHeading;
                 this.errorMessage = errorMessage;
+            },
+            getBuyLink: function () {
+                return this.payment_link + '?serviceOrder=' + this.service.id + '&redirectBack=' + window.location.href;
             }
 
         }

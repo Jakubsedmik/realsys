@@ -285,7 +285,7 @@ $field_rules = array(
 			'type'     => NUMBER
 		),
 		'db_penb'           => array(
-			"required" => true,
+			"required" => false,
 			"type"     => NUMBER
 		),
 		'db_vybavenost'           => array(
@@ -790,7 +790,7 @@ define( "PHONE", "(+48)" );
 
 // RADIUS PRO PODOBNÉ INZERÁTY
 
-define( "RADIUS", "0.5" );
+define( "RADIUS", "0.73" );
 
 // DATE FORMAT
 define("DATE_FORMAT", "d.m.Y");
@@ -934,7 +934,7 @@ $cenik_sluzeb = array(
 	0 => array(
 		'id' => 0,
 		'name' => __('Hlídací pes',"realsys"),
-		'price' => 15
+		'price' => 5
 	),
 	1 => array(
 		'id' => 1,
@@ -989,3 +989,6 @@ $celkem_podlazi_options = array(
 	14 => __("čtrnácti", "realsys"),
 	15 => __("patnácti", "realsys"),
 );
+
+
+define("EXPORT_PATH", __DIR__ . "/../../../../../uploads/exports/");

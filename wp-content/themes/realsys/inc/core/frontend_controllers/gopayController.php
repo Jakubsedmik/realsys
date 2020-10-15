@@ -12,13 +12,24 @@ class gopayController extends frontendController {
 	protected $preauthorizedPayment;
 
 	public function __construct( $actionName ) {
-		$this->gopay = GoPay\payments(array(
-			'goid' => '8221776618',
-			'clientId' => '1370207036',
-			'clientSecret' => 'df9t2hK5',
-			'isProductionMode' => true,
-			'language' => Language::CZECH
-		));
+		if(TEST_MODE){
+			$this->gopay = GoPay\payments(array(
+				'goid' => '8292273517',
+				'clientId' => '1466427842',
+				'clientSecret' => 'Ebysb4Yw',
+				'isProductionMode' => !TEST_MODE,
+				'language' => Language::CZECH
+			));
+		}else{
+			$this->gopay = GoPay\payments(array(
+				'goid' => '8221776618',
+				'clientId' => '1370207036',
+				'clientSecret' => 'df9t2hK5',
+				'isProductionMode' => !TEST_MODE,
+				'language' => Language::CZECH
+			));
+		}
+
 
 		// recurrent payment must have field ''
 		$this->recurrentPayment = array(
@@ -59,7 +70,11 @@ class gopayController extends frontendController {
 
 				if($objednavka && $uzivatel){
 					if($objednavka->db_stav == 0){
-						$this->simpleOrderPayment($objednavka, $uzivatel);
+						if(Tools::checkPresenceOfParam("redirectBack",$this->requestData)){
+							$this->simpleOrderPayment($objednavka, $uzivatel, $this->requestData['redirectBack']);
+						}else{
+							$this->simpleOrderPayment($objednavka, $uzivatel);
+						}
 						frontendError::addMessage(__("Platba", "realsys"), SUCCESS, __("Platební brána připravena. Pokračujte do platební brány", "realsys"));
 						return true;
 					}else{
@@ -122,6 +137,9 @@ class gopayController extends frontendController {
 						$this->requestData['uzivatel'] = $uzivatel;
 						$this->requestData['objednavka'] = $objednavka;
 						$this->setView("confirmPayment");
+						if(Tools::checkPresenceOfParam("callbackurl",$this->requestData)){
+							Tools::jsRedirect($this->requestData['callbackurl']);
+						}
 						return true;
 
 					}else{
@@ -345,7 +363,7 @@ class gopayController extends frontendController {
 
 	}
 
-	protected function simpleOrderPayment($order, $user){
+	protected function simpleOrderPayment($order, $user, $redirectBack = false){
 		$contact = array(
 			'first_name' => $user->db_jmeno,
 			'last_name' => $user->db_prijmeni,
@@ -357,6 +375,9 @@ class gopayController extends frontendController {
 			array('name' => 'Objednávka kreditů', 'amount' => $order->db_cena * 100)
 		);
 		$return_url = GOPAY_STANDARD_CALLBACK . "&orderid=" . $order->getId();
+		if($redirectBack){
+			$return_url .= '&callbackurl=' . $redirectBack;
+		}
 		return $this->simplePayment($order->db_cena, $items, $order->getId(),$contact, $return_url ,"Platba za kredity v systému");
 	}
 

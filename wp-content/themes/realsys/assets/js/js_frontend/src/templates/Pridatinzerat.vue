@@ -227,27 +227,27 @@
                         </div>
 
                         <!-- VYBAVENI -->
-                        <div class="inz-box no-border v2">
+                        <div class="inz-box no-border v2" v-show="doesInputAppearRequire('db_terasa') || doesInputAppearRequire('db_vytah') || doesInputAppearRequire('db_parkovaci_misto') || doesInputAppearRequire('db_garaz') || doesInputAppearRequire('db_balkon')">
                             <h3>{{translations.vybaveni}}</h3>
                             <div class="form-row checks">
 
-                                <label class="check-wrap">
+                                <label class="check-wrap" v-show="doesInputAppearRequire('db_terasa')">
                                     <input type="checkbox" name="db_terasa" value="1" v-model.trim="$v.modelData.part_second.db_terasa.$model">
                                     <span class="sel-input-name">{{translations.terasa}}</span>
                                 </label>
-                                <label class="check-wrap">
+                                <label class="check-wrap" v-show="doesInputAppearRequire('db_vytah')">
                                     <input type="checkbox" name="db_vytah" value="1" v-model.trim="$v.modelData.part_second.db_vytah.$model">
                                     <span class="sel-input-name">{{translations.vytah}}</span>
                                 </label>
-                                <label class="check-wrap">
+                                <label class="check-wrap" v-show="doesInputAppearRequire('db_parkovaci_misto')">
                                     <input type="checkbox" name="db_parkovaci_misto" value="1" v-model.trim="$v.modelData.part_second.db_parkovaci_misto.$model">
                                     <span class="sel-input-name">{{translations.parkovani}}</span>
                                 </label>
-                                <label class="check-wrap">
+                                <label class="check-wrap" v-show="doesInputAppearRequire('db_garaz')">
                                     <input type="checkbox" name="db_garaz" value="1" v-model.trim="$v.modelData.part_second.db_garaz.$model">
                                     <span class="sel-input-name">{{translations.garaz}}</span>
                                 </label>
-                                <label class="check-wrap">
+                                <label class="check-wrap" v-show="doesInputAppearRequire('db_balkon')">
                                     <input type="checkbox" name="db_balkon" value="1" v-model.trim="$v.modelData.part_second.db_balkon.$model">
                                     <span class="sel-input-name">{{translations.balkon}}</span>
                                 </label>
@@ -910,7 +910,6 @@
                                 {db_typ_stavby: 1, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 2, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 5, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 7, db_typ_inzeratu: 1},
 
                                 /* SPOLUBYDLENÍ */
@@ -920,7 +919,6 @@
                                 {db_typ_stavby: 1, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 2, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 5, db_typ_inzeratu: 2},
-                                {db_typ_stavby: 6, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 7, db_typ_inzeratu: 2},
                             ],
                             appear: [
@@ -928,7 +926,6 @@
                                 {db_typ_stavby: 1, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 2, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 5, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 7, db_typ_inzeratu: 1},
 
                                 /* SPOLUBYDLENÍ */
@@ -938,7 +935,6 @@
                                 {db_typ_stavby: 1, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 2, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 5, db_typ_inzeratu: 2},
-                                {db_typ_stavby: 6, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 7, db_typ_inzeratu: 2},
                             ],
                             type: Boolean
@@ -949,7 +945,6 @@
                                 {db_typ_stavby: 1, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 2, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 5, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 7, db_typ_inzeratu: 1},
 
                                 /* SPOLUBYDLENÍ */
@@ -959,7 +954,6 @@
                                 {db_typ_stavby: 1, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 2, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 5, db_typ_inzeratu: 2},
-                                {db_typ_stavby: 6, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 7, db_typ_inzeratu: 2},
                             ],
                             appear: [
@@ -967,7 +961,6 @@
                                 {db_typ_stavby: 1, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 2, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 5, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 7, db_typ_inzeratu: 1},
 
                                 /* SPOLUBYDLENÍ */
@@ -977,7 +970,6 @@
                                 {db_typ_stavby: 1, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 2, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 5, db_typ_inzeratu: 2},
-                                {db_typ_stavby: 6, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 7, db_typ_inzeratu: 2},
                             ],
                             type: Boolean
@@ -988,7 +980,6 @@
                                 {db_typ_stavby: 1, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 2, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 5, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 7, db_typ_inzeratu: 1},
 
                                 /* SPOLUBYDLENÍ */
@@ -998,7 +989,6 @@
                                 {db_typ_stavby: 1, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 2, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 5, db_typ_inzeratu: 2},
-                                {db_typ_stavby: 6, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 7, db_typ_inzeratu: 2},
                             ],
                             appear: [
@@ -1006,7 +996,6 @@
                                 {db_typ_stavby: 1, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 2, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 5, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 7, db_typ_inzeratu: 1},
 
                                 /* SPOLUBYDLENÍ */
@@ -1016,7 +1005,6 @@
                                 {db_typ_stavby: 1, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 2, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 5, db_typ_inzeratu: 2},
-                                {db_typ_stavby: 6, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 7, db_typ_inzeratu: 2},
                             ],
                             type: Boolean
@@ -1027,7 +1015,6 @@
                                 {db_typ_stavby: 1, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 2, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 5, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 7, db_typ_inzeratu: 1},
 
                                 /* SPOLUBYDLENÍ */
@@ -1037,7 +1024,6 @@
                                 {db_typ_stavby: 1, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 2, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 5, db_typ_inzeratu: 2},
-                                {db_typ_stavby: 6, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 7, db_typ_inzeratu: 2},
                             ],
                             appear: [
@@ -1045,7 +1031,6 @@
                                 {db_typ_stavby: 1, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 2, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 5, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 7, db_typ_inzeratu: 1},
 
                                 /* SPOLUBYDLENÍ */
@@ -1055,7 +1040,6 @@
                                 {db_typ_stavby: 1, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 2, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 5, db_typ_inzeratu: 2},
-                                {db_typ_stavby: 6, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 7, db_typ_inzeratu: 2},
                             ],
                             type: Boolean
@@ -1066,7 +1050,6 @@
                                 {db_typ_stavby: 1, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 2, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 5, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 7, db_typ_inzeratu: 1},
 
                                 /* SPOLUBYDLENÍ */
@@ -1076,7 +1059,6 @@
                                 {db_typ_stavby: 1, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 2, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 5, db_typ_inzeratu: 2},
-                                {db_typ_stavby: 6, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 7, db_typ_inzeratu: 2},
                             ],
                             appear: [
@@ -1084,7 +1066,6 @@
                                 {db_typ_stavby: 1, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 2, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 5, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
                                 {db_typ_stavby: 7, db_typ_inzeratu: 1},
 
                                 /* SPOLUBYDLENÍ */
@@ -1094,7 +1075,6 @@
                                 {db_typ_stavby: 1, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 2, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 5, db_typ_inzeratu: 2},
-                                {db_typ_stavby: 6, db_typ_inzeratu: 2},
                                 {db_typ_stavby: 7, db_typ_inzeratu: 2},
                             ],
                             type: Boolean
@@ -1251,24 +1231,7 @@
                             type: Number
                         },
                         db_penb: {
-                            required: [
-                                /* PRONÁJEM */
-                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 5, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 6, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 7, db_typ_inzeratu: 1},
-
-                                /* SPOLUBYDLENÍ */
-                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
-
-                                /* PRODEJ */
-                                {db_typ_stavby: 1, db_typ_inzeratu: 2},
-                                {db_typ_stavby: 2, db_typ_inzeratu: 2},
-                                {db_typ_stavby: 5, db_typ_inzeratu: 2},
-                                {db_typ_stavby: 6, db_typ_inzeratu: 2},
-                                {db_typ_stavby: 7, db_typ_inzeratu: 2},
-                            ],
+                            required: false,
                             appear: [
                                 /* PRONÁJEM */
                                 {db_typ_stavby: 1, db_typ_inzeratu: 1},
@@ -1290,14 +1253,7 @@
                             type: Number
                         },
                         db_vhodny_pro: {
-                            required: [
-                                /* PRONÁJEM */
-                                {db_typ_stavby: 1, db_typ_inzeratu: 1},
-                                {db_typ_stavby: 2, db_typ_inzeratu: 1},
-
-                                /* SPOLUBYDLENÍ */
-                                {db_typ_stavby: 2, db_typ_inzeratu: 3},
-                            ],
+                            required: false,
                             appear: [
                                 /* PRONÁJEM */
                                 {db_typ_stavby: 1, db_typ_inzeratu: 1},

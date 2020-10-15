@@ -55,6 +55,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 		runInvoicesPDF();
 	}
 
+	if(isset($_GET['start_clean_up'])){
+		runCleanup();
+	}
+
 }
 
 /**
