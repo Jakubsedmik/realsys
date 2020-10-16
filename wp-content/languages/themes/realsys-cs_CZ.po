@@ -2501,7 +2501,7 @@ msgstr "Historia zamówień"
 
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:297
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:299
 msgid "Množství"
