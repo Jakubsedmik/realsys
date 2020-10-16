@@ -315,7 +315,7 @@ if($_SERVER["REQUEST_URI"]){
                                         <?php if($value->isThereInvoice()) : ?>
                                             <a href="<?php echo $value->db_invoice_link; ?>" target="_blank" download><i class="fas fa-download"></i></a>
                                         <?php else: ?>
-                                            <span><?php _e( "Nie", "realsys" ); ?></span>
+                                            <span><?php _e( "Není", "realsys" ); ?></span>
                                         <?php endif; ?>
                                     </td>
                                 </tr>
