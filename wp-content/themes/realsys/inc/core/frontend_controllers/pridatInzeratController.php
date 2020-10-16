@@ -94,7 +94,7 @@ class pridatInzeratController extends frontendController {
 					if($response){
 
 						$emailto = $uzivatel->db_email;
-						Tools::sendMail($emailto, "Inzerát vytvořen", "newAd", array(
+						Tools::sendMail($emailto, __("Inzerát vytvořen","realsys"), "newAd", array(
 							'link' => Tools::getFERoute("inzeratClass",$this->requestData['inzerat']->getId(),"detail")
 						));
 

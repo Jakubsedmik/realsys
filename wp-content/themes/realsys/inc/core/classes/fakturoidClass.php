@@ -158,7 +158,7 @@ class fakturoidClass {
 
 			// pošli mail
 			if($sendmail){
-				Tools::sendMail($mail, "Objednávka služby","sendInvoice",array(), '',array(
+				Tools::sendMail($mail, __("Objednávka služby","realsys"),"sendInvoice",array(), '',array(
 					$storePath_filename
 				));
 			}

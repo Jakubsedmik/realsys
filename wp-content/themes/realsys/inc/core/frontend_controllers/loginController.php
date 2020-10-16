@@ -473,7 +473,7 @@ class loginController extends frontendController {
 							'email' => $uzivatel->db_email
 						);
 
-						Tools::sendMail( $email, "Resetování hesla", "resetPassword", $data );
+						Tools::sendMail( $email, __("Resetování hesla","realsys"), "resetPassword", $data );
 						$this->setView("resetPassword");
 
 					}else{

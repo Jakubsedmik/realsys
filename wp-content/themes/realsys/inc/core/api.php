@@ -1138,7 +1138,7 @@ function payForContact(){
 
 								if($transaction->isRequestedByCurrentUser()){
 									$current_user = uzivatelClass::getUserLoggedObject();
-									Tools::sendMail( $current_user->db_email, "Zobrazení kontaktu","sendContact",array(
+									Tools::sendMail( $current_user->db_email, __("Zobrazení kontaktu","realsys"),"sendContact",array(
 										"jmeno" => $uzivatel->db_jmeno,
 										"prijmeni" => $uzivatel->db_prijmeni,
 										"telefon" => $uzivatel->db_telefon,

@@ -245,7 +245,7 @@ $field_rules = array(
 			"type"     => NUMBER
 		),
 		'db_pocet_mistnosti'  => array(
-			"required" => true,
+			"required" => false,
 			"type"     => STRING255
 		),
 		'db_patro'            => array(

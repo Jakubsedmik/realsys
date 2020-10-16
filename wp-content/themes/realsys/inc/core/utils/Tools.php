@@ -1018,7 +1018,7 @@ class Tools {
     }
 
 	public static function getTextPart($string, $number_chars=32){
-		return strip_tags(substr($string, 0, $number_chars)) . "...";
+		return strip_tags(mb_substr($string, 0, $number_chars)) . "...";
 	}
 
 	public static function translateBinaryValue($binary){
