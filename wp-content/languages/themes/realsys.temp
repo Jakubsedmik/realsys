@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Package Name\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-15 20:26+0200\n"
+"POT-Creation-Date: 2020-10-16 13:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -317,6 +317,11 @@ msgid ""
 "její ID"
 msgstr ""
 
+#: inc/core/api.php:1141 inc/core/configuration/configuration.php:949
+#: inc/core/configuration/vue-translations.php:63
+msgid "Zobrazení kontaktu"
+msgstr ""
+
 #: inc/core/api.php:1149
 msgid "Kontakt úspěšně získán"
 msgstr ""
@@ -331,6 +336,10 @@ msgstr ""
 
 #: inc/core/api.php:1173
 msgid "Kontakt nebyl získán. Nejste přihlášen."
+msgstr ""
+
+#: inc/core/classes/fakturoidClass.php:161
+msgid "Objednávka služby"
 msgstr ""
 
 #: inc/core/classes/invisibleRecaptchaClass.php:66
@@ -658,11 +667,6 @@ msgstr ""
 
 #: inc/core/configuration/configuration.php:941
 msgid "Topování inzerátu."
-msgstr ""
-
-#: inc/core/configuration/configuration.php:949
-#: inc/core/configuration/vue-translations.php:63
-msgid "Zobrazení kontaktu"
 msgstr ""
 
 #: inc/core/configuration/configuration.php:957
@@ -1704,6 +1708,10 @@ msgstr ""
 msgid "Pokud jste přihlášený nemůžete žádat o reset hesla"
 msgstr ""
 
+#: inc/core/frontend_controllers/loginController.php:476
+msgid "Resetování hesla"
+msgstr ""
+
 #: inc/core/frontend_controllers/loginController.php:480
 msgid "Zadaný uživatel není v systému potvrzený"
 msgstr ""
@@ -1781,6 +1789,10 @@ msgstr ""
 
 #: inc/core/frontend_controllers/pridatInzeratController.php:87
 msgid "Některé obrázky nebyly nalezeny"
+msgstr ""
+
+#: inc/core/frontend_controllers/pridatInzeratController.php:97
+msgid "Inzerát vytvořen"
 msgstr ""
 
 #: inc/core/frontend_controllers/pridatInzeratController.php:114
@@ -2368,12 +2380,12 @@ msgid "Změnit heslo"
 msgstr ""
 
 #: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:109
-#: inc/core/frontend_views/uzivatelDetailPrivateView.php:425
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:428
 msgid "Změna obrázku uživatele"
 msgstr ""
 
 #: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:111
-#: inc/core/frontend_views/uzivatelDetailPrivateView.php:427
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:430
 msgid "Pro změnu obrázku nahrajte obrázek nový."
 msgstr ""
 
@@ -2570,7 +2582,11 @@ msgstr ""
 msgid "Odstranit psa"
 msgstr ""
 
-#: inc/core/frontend_views/uzivatelDetailPrivateView.php:411
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:405
+msgid "Vyzvedni si psa"
+msgstr ""
+
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:414
 msgid "Vytvořit hlídacího psa"
 msgstr ""
 

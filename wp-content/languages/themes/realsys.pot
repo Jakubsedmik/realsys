@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Package Name\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-16 13:38+0200\n"
+"POT-Creation-Date: 2020-10-16 14:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -667,6 +667,16 @@ msgstr ""
 
 #: inc/core/configuration/configuration.php:941
 msgid "Topování inzerátu."
+msgstr ""
+
+#: inc/core/configuration/configuration.php:942
+#, php-format
+msgid "Top inzerátu ID: %d"
+msgstr ""
+
+#: inc/core/configuration/configuration.php:950
+#, php-format
+msgid "Zobrazení kontaktu ID: %d"
 msgstr ""
 
 #: inc/core/configuration/configuration.php:957
