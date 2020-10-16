@@ -1071,7 +1071,8 @@ class Tools {
 		$all = assetsFactory::getAllEntity($class);
 		$hlavicky = array_keys($all[array_key_first($all)]->vratDbPromenne());
 		$now = time();
-		$fp = fopen(EXPORT_PATH . "export_{$class}_{$now}.csv", 'w');
+		$name = "export_{$class}_{$now}.csv";
+		$fp = fopen(EXPORT_PATH . $name, 'w');
 		fputcsv($fp, $hlavicky, ";", '"');
 		foreach ($all as $key => $value){
 			if($writeDials){
@@ -1082,6 +1083,8 @@ class Tools {
 		}
 
 		fclose($fp);
+
+		return home_url() . "/wp-content/uploads/exports/" . $name;
 	}
 
 }

@@ -81,4 +81,10 @@ class uzivatelController extends controller {
 		$this->setView("vytvoritUzivatele");
 		$this->performView();
 	}
+
+	public function export(){
+		$link = Tools::exportToCsv("uzivatelClass",true);
+		$this->viewData['export_link'] = $link;
+		$this->performView();
+	}
 }

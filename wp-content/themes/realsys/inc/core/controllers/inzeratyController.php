@@ -141,4 +141,10 @@ class inzeratyController extends controller {
 		$this->setView( "vytvoritInzerat" );
 		$this->performView();
 	}
+
+	public function export(){
+		$link = Tools::exportToCsv("inzeratClass",true);
+		$this->viewData['export_link'] = $link;
+		$this->performView();
+	}
 }

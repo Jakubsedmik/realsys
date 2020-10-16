@@ -48,6 +48,7 @@ $routing_urls = array(
 	"uzivatelClass" => array(
 		'detail' => home_url() . '/uzytkownik/%d/',
 		'login' => home_url() . "/login/",
+		'loginR' => home_url() . "/login/?redirectBack=%s",
 		'resetpwd' => home_url() . '/login/?action=requestResetPassword'
 	),
 	"vypis" => array(

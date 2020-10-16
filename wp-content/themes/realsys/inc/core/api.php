@@ -407,8 +407,11 @@ function googleVerification(){
 				$uzivatel->logIn();
 
 				ob_start();
-
-				Tools::jsRedirect(Tools::getFERoute("uzivatelClass", $uzivatel->getId()),500);
+				if(isset($_POST['redirectBack'])){
+					Tools::jsRedirect($_POST['redirectBack'], 500);
+				}else{
+					Tools::jsRedirect(Tools::getFERoute("uzivatelClass", $uzivatel->getId()),500);
+				}
 				$ob = ob_get_clean();
 
 				$response->actionHtml = $ob;

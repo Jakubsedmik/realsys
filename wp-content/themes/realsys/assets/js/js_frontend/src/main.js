@@ -328,7 +328,7 @@ function onSignIn(googleUser) {
     First check if user doesnt exist, if yes - request login and redirect
      */
 
-    $.post(serverData.ajaxUrl, {action: "googleVerification", 'email': email, 'gid': gid, 'token': token}, function (data) {
+    $.post(serverData.ajaxUrl, {action: "googleVerification", 'email': email, 'gid': gid, 'token': token, 'redirectBack': (typeof redirectBack == "string") ? redirectBack : ''}, function (data) {
         if(data.status == 1) {
             popupsHandler.showPopup("googleRegDetails");
             var el = $(".js-googleRegForm");

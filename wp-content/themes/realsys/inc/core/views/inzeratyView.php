@@ -19,5 +19,10 @@
 	<div class="container-fluid">
 		<a href="<?php echo ADMIN_BASE_URL;?>" class="btn btn-amber mt-3"><i class="fas fa-chevron-left mr-1"></i> Zpět na rozcestník</a>
         <a href="<?php echo Tools::getRoute('inzeratClass','create'); ?>" class="btn btn-success mt-3"><i class="fas fa-plus-circle"></i> Vytvořit inzerát</a>
+        <?php if(Tools::checkPresenceOfParam("export_link", $this->viewData)) : ?>
+	        <a href="<?php echo $this->viewData['export_link'] ?>" target="_blank" download class="btn btn-cyan mt-3"><i class="fas fa-file-export"></i> Stáhnout exportované inzeráty</a>
+		<?php else : ?>
+			<a href="<?php echo Tools::getRoute('inzeratClass','export'); ?>" class="btn btn-brown mt-3"><i class="fas fa-file-export"></i> Exportovat inzeráty</a>
+		<?php endif; ?>
 	</div>
 </div>

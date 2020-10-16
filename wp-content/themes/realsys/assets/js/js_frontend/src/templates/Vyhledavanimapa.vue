@@ -2,11 +2,11 @@
 
     <div class="map-vyhl-wrap" v-if="true">
         <section class="map-vyhl row">
-            <div class="col-md-6 col-xl-7 mapa-wrap">
+            <div class="col-md-6 col-xl-6 mapa-wrap">
                 <div class="map fixed-mapa" id="map"></div>
             </div>
 
-            <div class="col-md-6 col-xl-5 vyhl-wrap p-20">
+            <div class="col-md-6 col-xl-6 vyhl-wrap p-20">
 
                 <Vyhledavani
                         v-bind:filters="this.filters"
