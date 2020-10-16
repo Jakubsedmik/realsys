@@ -944,3 +944,199 @@ body.home .body-wrapper .slider-content {
     padding-bottom: 240px;
 }
 }
+
+
+
+
+/****************************/
+/**** PŘIDÁNO 16.10.2020 ****/
+/****************************/
+
+.ctyrbod .sluzby-box {
+	max-width:25%;
+}
+.vyhl-razeni:before {
+    content: "WSKAZÓWKA: Wybierz filtry, aby ustawić psa stróżująceho";
+}
+@media screen and (max-width:600px) {
+	html body.home div.body-wrapper section div.slider {
+    height: auto!important;
+}
+	.slider h1 {
+		line-height:1;
+	}
+	.home-search form .submit-btn {
+    margin: 0 auto;
+    margin-top: 20px;
+}
+	.map-vyhl-wrap .vyhl-razeni {
+		flex-direction:column;
+	}
+}
+body.home section.front-lower-section {
+    background-image: url(/wp-content/uploads/2020/09/lower_bg.png);
+}
+.vyhl-razeni:before {
+	background-image:url("/wp-content/uploads/2020/09/zeneknew.png");
+}
+
+@media screen and (max-width:600px) {
+	.mapa-wrap {
+		position:relative;
+		width:100%;
+		height:240px;
+	}
+	.map-vyhl-wrap {
+    padding-right: 0;
+}
+	.vyhl-razeni:before {
+    top: -55px;
+    padding-left: 64px;
+    line-height: 25px;
+}
+	body section {
+    min-height: auto;
+}
+	.nem-detail-desc {
+    max-width: 95%!important;
+	}
+}
+
+
+body.page-template-default section {
+    min-height: auto;
+}
+body a {
+    color: #ff951a;
+}
+.profile-img-wrap {
+    border: 6px solid #ff951a;
+}
+
+
+/* ÚPRAVY 15.10.2020 */
+.sluzby-sec.sluzby-vsechny {
+padding-top:250px;
+}
+body .slider-title h1 {
+	font-size:58px!important;
+}
+body.home .slider-content {
+    margin-bottom: 210px;
+}
+.slider .home-search {
+	padding:40px;
+	border-radius:15px;
+}
+.slider label {
+	margin-left: 15px;
+}
+body .slider .jcf-select .jcf-select-text, body .slider input[type=text] {
+	color:#243B4A;
+}
+body .slider ::placeholder {
+	color:#243B4A;
+}
+body.home .sluzby-box img {
+    max-width: 150px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    max-height: 140px;
+}
+body.home .sluzby-cont h3 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+body.home .sluzby-box p {
+	max-width:300px;
+}
+body.home .sluzby-sec .sec-title h2 {
+  margin-bottom: 90px;
+  margin-top: 10px;
+	font-size:58px;
+}
+.shadow-sm {
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.22) !important;
+}
+@media screen and (min-width:1200px) {
+	.table-wrap {
+    overflow-x: auto;
+}
+}
+.add-inz-con .inz-box label {
+    display: flex;
+    justify-content: space-between;
+}
+.add-inz-con .inz-box.v2 label {
+	justify-content:flex-start;
+}
+.add-inz-con .basic-select {
+    min-width: 200px;
+    max-width: 220px;
+}
+.slider {
+	position:relative;
+}
+.slider:after {
+content: "";
+    background: url(/wp-content/uploads/2020/10/mirek.png);
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: block;
+    width: 237px;
+    height: 208px;
+    bottom: 0;
+    left: 65%;
+}
+@media screen and (max-width:1280px) {
+	.slider:after {
+		display:none;
+	}
+}
+.user-logged .user-info .avatar {
+	border: 4px solid #FF951A;
+}
+.menu.rn_widget_menu_2 {
+	display:block;
+}
+@media only screen and (max-width: 576px) {
+footer .row .col-sm:first-child {
+    margin-bottom: 0;
+}
+	#menu-kategorie {
+    display: none;
+}
+html body .body-wrapper footer .wrapper .row .col-sm
+	.footer_block .textwidget .menu.rn_widget_menu_2 {
+		display:none;
+	}
+}
+@media screen and (max-width:1350px) {
+	.ctyrbod .sluzby-box {
+		max-width:48%;
+	}
+}
+@media screen and (max-width:800px) {
+	.ctyrbod .sluzby-box {
+		max-width:90%;
+	}
+	.sluzby-detail {
+    margin-top: 0;
+}
+	.profil .sides-align {
+		display:block;
+	}
+	.editace-inzeratu .btn-input {
+		max-width:50%;
+	}
+	.editace-inzeratu .inz-box .row.selects .col-sm-3 {
+		max-width:60%;
+	}
+	body .slider-title h1 {
+    font-size: 33px!important;
+}
+	.tab-header a {
+		flex-basis:100%;
+	}
+}

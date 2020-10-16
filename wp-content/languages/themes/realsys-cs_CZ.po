@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Package Name\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-16 13:38+0200\n"
+"POT-Creation-Date: 2020-10-16 14:06+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -673,6 +673,16 @@ msgstr "Parking"
 #: inc/core/configuration/configuration.php:941
 msgid "Topování inzerátu."
 msgstr "Wyróżnianie ogłoszenia."
+
+#: inc/core/configuration/configuration.php:942
+#, php-format
+msgid "Top inzerátu ID: %d"
+msgstr "Wyróżnianie ogłoszeń ID: %d"
+
+#: inc/core/configuration/configuration.php:950
+#, php-format
+msgid "Zobrazení kontaktu ID: %d"
+msgstr "Wyświetl kontakt ID: %d"
 
 #: inc/core/configuration/configuration.php:957
 msgid "1. patro"
