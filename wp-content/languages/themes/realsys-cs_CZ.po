@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Package Name\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-15 20:26+0200\n"
+"POT-Creation-Date: 2020-10-16 13:38+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -31,7 +31,7 @@ msgstr "Osobiste ustawienia szablonów"
 
 #: functions.php:158
 msgid "Text slider 1"
-msgstr ""
+msgstr "Text"
 
 #: functions.php:159
 msgid "Text - typicky najdi si nový domov bez reality a bez provize"
@@ -322,6 +322,11 @@ msgstr ""
 "Przy zamawianiu tego typu usługi, konieczne jest podanie informacji o "
 "jednostce i jej identyfikatorze"
 
+#: inc/core/api.php:1141 inc/core/configuration/configuration.php:949
+#: inc/core/configuration/vue-translations.php:63
+msgid "Zobrazení kontaktu"
+msgstr "Wyświetl kontakt"
+
 #: inc/core/api.php:1149
 msgid "Kontakt úspěšně získán"
 msgstr "Kontakt został pomyślnie uzyskany"
@@ -337,6 +342,10 @@ msgstr "Nie udało się nawiązać kontaktu. Nieprawidłowe ogłoszenie."
 #: inc/core/api.php:1173
 msgid "Kontakt nebyl získán. Nejste přihlášen."
 msgstr "Kontakt nie został uzyskany. Nie jesteś zalogowany."
+
+#: inc/core/classes/fakturoidClass.php:161
+msgid "Objednávka služby"
+msgstr "Zlecenie serwisowe"
 
 #: inc/core/classes/invisibleRecaptchaClass.php:66
 #: inc/core/frontend_controllers/loginController.php:308
@@ -664,11 +673,6 @@ msgstr "Parking"
 #: inc/core/configuration/configuration.php:941
 msgid "Topování inzerátu."
 msgstr "Wyróżnianie ogłoszenia."
-
-#: inc/core/configuration/configuration.php:949
-#: inc/core/configuration/vue-translations.php:63
-msgid "Zobrazení kontaktu"
-msgstr "Wyświetl kontakt"
 
 #: inc/core/configuration/configuration.php:957
 msgid "1. patro"
@@ -1577,15 +1581,11 @@ msgid "Přesměrování na výpis hlídacího psa"
 msgstr "Utworzenie psa stróżującego"
 
 #: inc/core/frontend_controllers/loginController.php:58
-#, fuzzy
-#| msgid "Přihlášení proběhlo úspěšně, probíhá přesměrování na Váš profil."
 msgid ""
 "Přihlášení proběhlo úspěšně, probíhá přesměrování zpět na Vaši objednávku"
-msgstr "Logowanie powiodło się, przekierowanie do twojego profilu."
+msgstr "Logowanie powiodło się, przekierowanie do twojego profilu"
 
 #: inc/core/frontend_controllers/loginController.php:59
-#, fuzzy
-#| msgid "Přesměrování na Váš profil"
 msgid "Přesměrování na vaši objednávku"
 msgstr "Przekieruj do swojego profilu"
 
@@ -1732,6 +1732,10 @@ msgstr "Użytkownik nie istnieje."
 msgid "Pokud jste přihlášený nemůžete žádat o reset hesla"
 msgstr "Dopóki jesteś zalogowany, nie możesz zresetować hasła"
 
+#: inc/core/frontend_controllers/loginController.php:476
+msgid "Resetování hesla"
+msgstr "Reset hasła"
+
 #: inc/core/frontend_controllers/loginController.php:480
 msgid "Zadaný uživatel není v systému potvrzený"
 msgstr "Określony użytkownik nie został potwierdzony w systemie"
@@ -1813,6 +1817,10 @@ msgstr "Zdjęcia"
 #: inc/core/frontend_controllers/pridatInzeratController.php:87
 msgid "Některé obrázky nebyly nalezeny"
 msgstr "Nie znaleziono niektórych zdjęć"
+
+#: inc/core/frontend_controllers/pridatInzeratController.php:97
+msgid "Inzerát vytvořen"
+msgstr "Ogłoszenie utworzono"
 
 #: inc/core/frontend_controllers/pridatInzeratController.php:114
 msgid "Uživatel není přihlášen nebo nemáte dostatečná oprávnění"
@@ -2275,7 +2283,7 @@ msgstr "Ogłoszenie jest aktywne"
 
 #: inc/core/frontend_views/nem_row_item.php:93
 msgid "Inzerát čeká na schválení"
-msgstr "Ogłoszenie jest nieaktywna"
+msgstr "Ogłoszenie jest nieaktywne"
 
 #: inc/core/frontend_views/objednavkaView.php:8
 msgid "Kredity"
@@ -2283,7 +2291,15 @@ msgstr "Kredyty"
 
 #: inc/core/frontend_views/objednavkaView.php:9
 msgid "KredityPopis"
-msgstr "Kredyty Opis"
+msgstr ""
+"Komunikacja z właścicielami nieruchomości jest u nas możliwa tylko po "
+"ujawnieniu zweryfikowanego kontaktu. Sprawdzamy każdego właściciela "
+"nieruchomości i upewniamy się, że kontakt jest zawsze aktywny. Kredyty można "
+"łatwo kupić w sekcji Mój portfel. Jeden kredyt kosztuje 1 PLN, za jeden "
+"kontakt z właścicielem płacisz 1 kredyt. Za kredyty możesz także wykupić "
+"dodatkowe usługi, takie jak pies stróżujący, dzięki czemu nie przegapisz "
+"żadnej oferty. Jeśli znajdziesz swoje gniazdko i w portfelu pozostanie "
+"więcej niż 20 kredytów, zwrócimy całą zainwestowaną kwotę na Twoje konto"
 
 #: inc/core/frontend_views/objednavkaView.php:17
 msgid "Kolik chcete zakoupit kreditů?"
@@ -2412,12 +2428,12 @@ msgid "Změnit heslo"
 msgstr "Zmień hasło"
 
 #: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:109
-#: inc/core/frontend_views/uzivatelDetailPrivateView.php:425
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:428
 msgid "Změna obrázku uživatele"
 msgstr "Zmień zdjęcie Użytkownika"
 
 #: inc/core/frontend_views/uzivatelDetailPrivateEditView.php:111
-#: inc/core/frontend_views/uzivatelDetailPrivateView.php:427
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:430
 msgid "Pro změnu obrázku nahrajte obrázek nový."
 msgstr "Aby zmienić zdjęcie, prześlij nowe zdjęcie."
 
@@ -2583,7 +2599,7 @@ msgstr "Zapłacono"
 
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:302
 msgid "Faktura"
-msgstr ""
+msgstr "Faktura"
 
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:339
 #: inc/core/frontend_views/uzivatelDetailView.php:103
@@ -2618,13 +2634,17 @@ msgstr "ogłoszenia"
 
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:394
 msgid "Je prémium:"
-msgstr "Premium jest:"
+msgstr "Premium:"
 
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:402
 msgid "Odstranit psa"
 msgstr "Usuń psa"
 
-#: inc/core/frontend_views/uzivatelDetailPrivateView.php:411
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:405
+msgid "Vyzvedni si psa"
+msgstr "Podnieś swojego psa"
+
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:414
 msgid "Vytvořit hlídacího psa"
 msgstr "Stwórz psa stróżującego"
 
