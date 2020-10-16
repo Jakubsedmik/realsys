@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Package Name\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-16 14:06+0200\n"
+"POT-Creation-Date: 2020-10-16 15:16+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -2610,6 +2610,10 @@ msgstr "Zapłacono"
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:302
 msgid "Faktura"
 msgstr "Faktura"
+
+#: inc/core/frontend_views/uzivatelDetailPrivateView.php:318
+msgid "Není"
+msgstr "Nie"
 
 #: inc/core/frontend_views/uzivatelDetailPrivateView.php:339
 #: inc/core/frontend_views/uzivatelDetailView.php:103
