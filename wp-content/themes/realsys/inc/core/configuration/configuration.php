@@ -939,7 +939,7 @@ $cenik_sluzeb = array(
 	1 => array(
 		'id' => 1,
 		'name' => __('Topování inzerátu.',"realsys"),
-		'logName' => 'Top inzerátu ID: %d',
+		'logName' => __('Top inzerátu ID: %d',"realsys"),
 		'price' => 6,
 		'requireEntity' => true,
 		'handleFunction' => "handleTopInzerat"
@@ -947,7 +947,7 @@ $cenik_sluzeb = array(
 	2 => array(
 		'id' => 2,
 		'name' => __('Zobrazení kontaktu',"realsys"),
-		'logName' => 'Zobrazení kontaktu ID: %d',
+		'logName' => __('Zobrazení kontaktu ID: %d',"realsys"),
 		'price' => 1,
 		'requireEntity' => true
 	)
